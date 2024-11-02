@@ -45,7 +45,7 @@ const LandingPage = () => {
       {/* Testimonios */}
       <section id="testimonials" className="p-10 bg-gray-200 text-center">
         <h3 className="text-3xl font-bold">Testimonios</h3>
-        <p className="mt-4">"Deivis transformó completamente nuestra estrategia digital. ¡Altamente recomendado!"</p>
+        <p className="mt-4">&quot;Deivis transformó completamente nuestra estrategia digital. ¡Altamente recomendado!&quot;</p>
         <p>- Cliente Satisfecho</p>
       </section>
 
@@ -60,4 +60,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-
