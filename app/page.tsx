@@ -16,4 +16,9 @@ const LandingPage = () => {
   );
 };
 
+export const getStaticProps = async () => {
+  return { props: {} };
+};
+
 export default LandingPage;
+
