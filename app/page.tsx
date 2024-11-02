@@ -1,4 +1,4 @@
-// app/page.tsx
+////// app/page.tsx
 import React from 'react';
 import { motion } from 'framer-motion';  // Asegúrate de que esta línea esté presente
 
