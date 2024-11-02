@@ -85,7 +85,7 @@ const LandingPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          "Deivis transformó completamente nuestra estrategia digital. ¡Altamente recomendado!"
+          &quot;Deivis transformó completamente nuestra estrategia digital. ¡Altamente recomendado!&quot;
         </motion.p>
         <p className="text-gray-700 mt-2">- Cliente Satisfecho</p>
       </section>
