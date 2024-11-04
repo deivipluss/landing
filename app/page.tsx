@@ -75,18 +75,24 @@ const HomePage = () => {
 
       {/* Elementos flotantes en el fondo */}
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-        {Array.from({ length: 5 }).map((_, index) => {
+        {Array.from({ length: 10 }).map((_, index) => {
           const { x, y } = getRandomPosition();
           return (
             <motion.div
               key={index}
-              className={`absolute w-${Math.random() * (64 - 24) + 24} h-${Math.random() * (64 - 24) + 24} bg-blue-${Math.floor(Math.random() * 6 + 200)} rounded-full opacity-30`}
-              animate={{
-                x: [x, x + (Math.random() > 0.5 ? 10 : -10)],
-                y: [y, y + (Math.random() > 0.5 ? 10 : -10)],
+              className="absolute rounded-full opacity-30"
+              style={{
+                width: `${Math.random() * 50 + 20}px`, // Tamaño aleatorio entre 20px y 70px
+                height: `${Math.random() * 50 + 20}px`, // Tamaño aleatorio entre 20px y 70px
+                backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`, // Color blanco con opacidad variable
+                top: `${y}%`,
+                left: `${x}%`,
               }}
-              transition={{ duration: Math.random() * 3 + 2, yoyo: Infinity }}
-              style={{ top: `${y}%`, left: `${x}%` }}
+              animate={{
+                x: [x, x + (Math.random() > 0.5 ? 20 : -20)],
+                y: [y, y + (Math.random() > 0.5 ? 20 : -20)],
+              }}
+              transition={{ duration: Math.random() * 5 + 2, yoyo: Infinity }}
             />
           );
         })}
