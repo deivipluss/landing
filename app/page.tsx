@@ -15,7 +15,7 @@ const HomePage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % texts.length);
-    }, currentText === 2 ? 5000 : 3000); // Mantiene el último texto más tiempo
+    }, currentText === 2 ? 6000 : 4000); // Mantiene el último texto más tiempo
 
     return () => clearInterval(timer);
   }, [currentText]);
@@ -34,8 +34,14 @@ const HomePage = () => {
         </svg>
       </div>
 
+      {/* Círculo como imagen de perfil */}
+      <motion.div className="w-24 h-24 rounded-full border-4 border-white bg-blue-800 absolute top-10 flex items-center justify-center">
+        {/* Aquí puedes añadir una imagen de perfil si deseas */}
+        <span className="text-3xl text-white">D</span>
+      </motion.div>
+
       <motion.h1
-        className="text-4xl font-bold text-white text-center md:text-5xl lg:text-6xl"
+        className="text-4xl font-bold text-white text-center md:text-5xl lg:text-6xl mt-20"
         key={currentText}  // Clave para identificar el texto animado
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
