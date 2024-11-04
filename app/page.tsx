@@ -1,4 +1,4 @@
-"use client"; // Asegúrate de que esta línea esté al inicio del archivo
+"use client";
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -15,15 +15,14 @@ const HomePage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % texts.length);
-    }, currentText === 2 ? 5000 : 3000); // Mantener el tercer texto por 5 segundos
+    }, currentText === 2 ? 5000 : 3000);
 
     return () => clearInterval(timer);
   }, [currentText]);
 
-  // Generar posiciones aleatorias
   const getRandomPosition = () => {
-    const x = Math.random() * 100; // Porcentaje en el eje X
-    const y = Math.random() * 100; // Porcentaje en el eje Y
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
     return { x, y };
   };
 
@@ -36,7 +35,7 @@ const HomePage = () => {
       </div>
 
       <motion.h1
-        className="text-4xl font-bold text-white"
+        className="text-4xl font-bold text-white text-center md:text-5xl lg:text-6xl"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -73,7 +72,6 @@ const HomePage = () => {
         </motion.button>
       </motion.div>
 
-      {/* Elementos flotantes en el fondo */}
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
         {Array.from({ length: 10 }).map((_, index) => {
           const { x, y } = getRandomPosition();
@@ -82,9 +80,9 @@ const HomePage = () => {
               key={index}
               className="absolute rounded-full opacity-30"
               style={{
-                width: `${Math.random() * 50 + 20}px`, // Tamaño aleatorio entre 20px y 70px
-                height: `${Math.random() * 50 + 20}px`, // Tamaño aleatorio entre 20px y 70px
-                backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`, // Color blanco con opacidad variable
+                width: `${Math.random() * 50 + 20}px`,
+                height: `${Math.random() * 50 + 20}px`,
+                backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`,
                 top: `${y}%`,
                 left: `${x}%`,
               }}
