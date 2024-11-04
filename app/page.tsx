@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { FaWhatsapp } from 'react-icons/fa'; // Asegúrate de instalar react-icons
 import 'tailwindcss/tailwind.css';
 
 const HomePage = () => {
@@ -35,13 +36,13 @@ const HomePage = () => {
       </div>
 
       {/* Círculo como imagen de perfil */}
-      <motion.div className="w-24 h-24 rounded-full border-4 border-white bg-blue-800 absolute top-10 flex items-center justify-center">
+      <motion.div className="w-24 h-24 rounded-full border-4 border-white bg-blue-800 flex items-center justify-center absolute top-24">
         {/* Aquí puedes añadir una imagen de perfil si deseas */}
         <span className="text-3xl text-white">D</span>
       </motion.div>
 
       <motion.h1
-        className="text-4xl font-bold text-white text-center md:text-5xl lg:text-6xl mt-20"
+        className="text-4xl font-bold text-white text-center md:text-5xl lg:text-6xl mt-6"
         key={currentText}  // Clave para identificar el texto animado
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -52,31 +53,17 @@ const HomePage = () => {
       </motion.h1>
 
       <motion.div
-        className="flex flex-col space-y-4 mt-6"
+        className="flex flex-col space-y-4 mt-4"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
         <motion.button
-          className="px-4 py-2 bg-white text-blue-600 rounded hover:bg-gray-200"
+          className="px-4 py-2 bg-white text-blue-600 rounded hover:bg-gray-200 flex items-center justify-center"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          Opción 1
-        </motion.button>
-        <motion.button
-          className="px-4 py-2 bg-white text-blue-600 rounded hover:bg-gray-200"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          Opción 2
-        </motion.button>
-        <motion.button
-          className="px-4 py-2 bg-white text-blue-600 rounded hover:bg-gray-200"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          Opción 3
+          <FaWhatsapp className="mr-2" /> Contacta conmigo
         </motion.button>
       </motion.div>
 
