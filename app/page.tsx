@@ -1,3 +1,5 @@
+"use client"; // Asegúrate de que esta línea esté al inicio del archivo
+
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import 'tailwindcss/tailwind.css';
