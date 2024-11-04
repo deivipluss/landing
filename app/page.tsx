@@ -26,10 +26,6 @@ const HomePage = () => {
     return { x, y };
   };
 
-  const getRandomShape = () => {
-    return Math.random() > 0.5 ? "circle" : "triangle";
-  };
-
   return (
     <div className="relative flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-600 to-blue-300 overflow-hidden">
       <div className="absolute inset-0">
@@ -79,34 +75,25 @@ const HomePage = () => {
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
         {Array.from({ length: 10 }).map((_, index) => {
           const { x, y } = getRandomPosition();
-          const shape = getRandomShape();
           const size = `${Math.random() * 50 + 20}px`;
           return (
             <motion.div
               key={index}
-              className={`absolute border-2 ${shape === "circle" ? "rounded-full" : ""} border-white`}
+              className="absolute border-2 border-white"
               style={{
                 width: size,
                 height: size,
+                borderRadius: '50%', // Hacer el div circular
                 top: `${y}%`,
                 left: `${x}%`,
+                opacity: 0.7, // Transparencia del círculo
               }}
               animate={{
                 x: [x, x + (Math.random() > 0.5 ? 20 : -20)],
                 y: [y, y + (Math.random() > 0.5 ? 20 : -20)],
               }}
               transition={{ duration: Math.random() * 5 + 2, yoyo: Infinity }}
-            >
-              {shape === "triangle" && (
-                <svg
-                  viewBox="0 0 100 100"
-                  className="absolute w-full h-full"
-                  style={{ clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}
-                >
-                  <polygon points="50,0 0,100 100,100" fill="none" stroke="white" strokeWidth="2" />
-                </svg>
-              )}
-            </motion.div>
+            />
           );
         })}
       </div>
