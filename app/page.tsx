@@ -36,7 +36,7 @@ const HomePage = () => {
       </div>
 
       {/* Círculo como imagen de perfil */}
-      <motion.div className="w-24 h-24 rounded-full border-4 border-white bg-blue-800 flex items-center justify-center absolute top-24">
+      <motion.div className="w-24 h-24 rounded-full border-4 border-white bg-blue-800 flex items-center justify-center absolute top-28"> {/* Ajustamos el valor de top */}
         {/* Aquí puedes añadir una imagen de perfil si deseas */}
         <span className="text-3xl text-white">D</span>
       </motion.div>
@@ -53,7 +53,7 @@ const HomePage = () => {
       </motion.h1>
 
       <motion.div
-        className="flex flex-col space-y-4 mt-4"
+        className="flex flex-col space-y-4 mt-8" // Aumentamos el margen superior aquí
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
