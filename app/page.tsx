@@ -36,10 +36,11 @@ const HomePage = () => {
 
       <motion.h1
         className="text-4xl font-bold text-white text-center md:text-5xl lg:text-6xl"
+        key={currentText}  // Clave para identificar el texto animado
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -50 }}
-        transition={{ duration: 1 }}
+        exit={{ opacity: 0, y: 50 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }} // Ajustar duración y suavidad
       >
         {texts[currentText]}
       </motion.h1>
