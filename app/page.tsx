@@ -15,7 +15,7 @@ const HomePage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % texts.length);
-    }, currentText === 2 ? 5000 : 3000);
+    }, currentText === 2 ? 5000 : 3000); // Mantiene el último texto más tiempo
 
     return () => clearInterval(timer);
   }, [currentText]);
@@ -38,6 +38,7 @@ const HomePage = () => {
         className="text-4xl font-bold text-white text-center md:text-5xl lg:text-6xl"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -50 }}
         transition={{ duration: 1 }}
       >
         {texts[currentText]}
@@ -83,16 +84,16 @@ const HomePage = () => {
               style={{
                 width: size,
                 height: size,
-                borderRadius: '50%', // Hacer el div circular
+                borderRadius: '50%',
                 top: `${y}%`,
                 left: `${x}%`,
-                opacity: 0.7, // Transparencia del círculo
+                opacity: 0.7,
               }}
               animate={{
-                x: [x, x + (Math.random() > 0.5 ? 20 : -20)],
-                y: [y, y + (Math.random() > 0.5 ? 20 : -20)],
+                translateX: [0, Math.random() > 0.5 ? 20 : -20],
+                translateY: [0, Math.random() > 0.5 ? 20 : -20],
               }}
-              transition={{ duration: Math.random() * 5 + 2, yoyo: Infinity }}
+              transition={{ duration: Math.random() * 5 + 2, repeat: Infinity, repeatType: "mirror" }}
             />
           );
         })}
