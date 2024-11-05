@@ -6,7 +6,7 @@ import 'tailwindcss/tailwind.css';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-gray-800">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-gray-800 overflow-hidden">
       {/* Centered Content Container */}
       <div className="flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 space-y-6">
         <h1 className="text-4xl font-bold text-gray-800 md:text-5xl lg:text-6xl">Hola, soy Deivis</h1>
@@ -62,7 +62,7 @@ const HomePage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="w-full bg-gray-200 text-gray-600 py-6 text-center mt-auto absolute bottom-0">
+      <footer className="w-full bg-gray-200 text-gray-600 py-6 text-center absolute bottom-0">
         <p>© 2024 Deivis Contreras - Todos los derechos reservados</p>
       </footer>
     </div>
