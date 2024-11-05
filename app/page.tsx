@@ -7,17 +7,17 @@ import 'tailwindcss/tailwind.css';
 const HomePage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 text-gray-800">
-      {/* Main Content Section */}
-      <main className="flex flex-col items-center text-center space-y-4 px-4 sm:px-6 lg:px-8">
+      {/* Centered Content Container */}
+      <div className="w-full max-w-md mx-auto flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 space-y-6">
         <h1 className="text-4xl font-bold text-gray-800 md:text-5xl lg:text-6xl">Hola, soy Deivis</h1>
-        <p className="text-lg text-gray-600 max-w-md">
+        <p className="text-lg text-gray-600">
           Ingeniero de sistemas especializado en transformación digital y desarrollo de negocios. Listo para llevar tu empresa al siguiente nivel.
         </p>
 
-        <div className="flex flex-col space-y-4 mt-6">
+        <div className="flex flex-col space-y-4">
           {/* "Mis Servicios" Button */}
           <motion.button
-            className="flex items-center space-x-2 px-6 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300"
+            className="flex items-center justify-center space-x-2 px-6 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300"
             whileHover={{ scale: 1.05 }}
           >
             <FaTools className="text-lg" />
@@ -26,14 +26,14 @@ const HomePage = () => {
 
           {/* "Contacta Conmigo" Button */}
           <motion.button
-            className="flex items-center space-x-2 px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-300"
+            className="flex items-center justify-center space-x-2 px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-300"
             whileHover={{ scale: 1.05 }}
           >
             <FaWhatsapp className="text-lg" />
             <span>Contacta conmigo</span>
           </motion.button>
         </div>
-      </main>
+      </div>
 
       {/* Floating Circles for Background Styling */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
