@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaWhatsapp } from 'react-icons/fa'; // Asegúrate de instalar react-icons
+import { FaWhatsapp } from 'react-icons/fa'; // Para el botón de WhatsApp
 import 'tailwindcss/tailwind.css';
 
 const HomePage = () => {
@@ -16,82 +16,86 @@ const HomePage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % texts.length);
-    }, currentText === 2 ? 6000 : 4000); // Mantiene el último texto más tiempo
+    }, currentText === 2 ? 6000 : 4000);
 
     return () => clearInterval(timer);
   }, [currentText]);
 
-  const getRandomPosition = () => {
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    return { x, y };
-  };
-
   return (
-    <div className="relative flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-600 to-blue-300 overflow-hidden">
-      <div className="absolute inset-0">
-        <svg viewBox="0 0 1440 320" className="absolute bottom-0">
-          <path fill="rgba(255, 255, 255, 0.1)" d="M0,192L30,186.7C60,181,120,171,180,160C240,149,300,139,360,154.7C420,171,480,213,540,202.7C600,192,660,128,720,128C780,128,840,192,900,213.3C960,235,1020,213,1080,197.3C1140,181,1200,171,1260,160C1320,149,1380,139,1410,134.7L1440,130L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320H0Z"></path>
-        </svg>
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-gray-800">
+      {/* Header */}
+      <header className="w-full bg-white shadow-md py-4 px-8 flex justify-between items-center fixed top-0">
+        <h1 className="text-2xl font-semibold text-blue-700">Deivis Contreras</h1>
+        <nav className="space-x-6">
+          <a href="#about" className="text-gray-600 hover:text-blue-700">Sobre mí</a>
+          <a href="#services" className="text-gray-600 hover:text-blue-700">Servicios</a>
+          <a href="#contact" className="text-gray-600 hover:text-blue-700">Contacto</a>
+        </nav>
+      </header>
 
-      {/* Círculo como imagen de perfil */}
-      <motion.div className="w-24 h-24 rounded-full border-4 border-white bg-blue-800 flex items-center justify-center absolute top-28"> {/* Ajustamos el valor de top */}
-        {/* Aquí puedes añadir una imagen de perfil si deseas */}
-        <span className="text-3xl text-white">D</span>
-      </motion.div>
-
-      <motion.h1
-        className="text-4xl font-bold text-white text-center md:text-5xl lg:text-6xl mt-6"
-        key={currentText}  // Clave para identificar el texto animado
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }} // Ajustar duración y suavidad
-      >
-        {texts[currentText]}
-      </motion.h1>
-
-      <motion.div
-        className="flex flex-col space-y-4 mt-8" // Aumentamos el margen superior aquí
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <motion.button
-          className="px-4 py-2 bg-white text-blue-600 rounded hover:bg-gray-200 flex items-center justify-center"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+      {/* Main Section */}
+      <main className="flex flex-col items-center justify-center mt-24 px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <motion.div
+          className="w-32 h-32 rounded-full border-4 border-blue-700 bg-gray-100 flex items-center justify-center mb-4"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          <FaWhatsapp className="mr-2" /> Contacta conmigo
-        </motion.button>
-      </motion.div>
+          <span className="text-3xl text-blue-700">D</span>
+        </motion.div>
 
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-        {Array.from({ length: 10 }).map((_, index) => {
-          const { x, y } = getRandomPosition();
-          const size = `${Math.random() * 50 + 20}px`;
-          return (
-            <motion.div
-              key={index}
-              className="absolute border-2 border-white"
-              style={{
-                width: size,
-                height: size,
-                borderRadius: '50%',
-                top: `${y}%`,
-                left: `${x}%`,
-                opacity: 0.7,
-              }}
-              animate={{
-                translateX: [0, Math.random() > 0.5 ? 20 : -20],
-                translateY: [0, Math.random() > 0.5 ? 20 : -20],
-              }}
-              transition={{ duration: Math.random() * 5 + 2, repeat: Infinity, repeatType: "mirror" }}
-            />
-          );
-        })}
+        <motion.h1
+          className="text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl"
+          key={currentText}
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+          {texts[currentText]}
+        </motion.h1>
+
+        <div className="flex space-x-4 mt-6">
+          <motion.button
+            className="flex items-center space-x-2 px-6 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300"
+            whileHover={{ scale: 1.05 }}
+          >
+            <FaWhatsapp className="text-lg" />
+            <span>Contacta conmigo</span>
+          </motion.button>
+        </div>
+      </main>
+
+      {/* Floating Circles for Background Styling */}
+      <div className="absolute inset-0 pointer-events-none opacity-10">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full border-2 border-blue-700"
+            style={{
+              width: `${Math.random() * 50 + 30}px`,
+              height: `${Math.random() * 50 + 30}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: 0.4,
+            }}
+            animate={{
+              translateX: [0, Math.random() > 0.5 ? 20 : -20],
+              translateY: [0, Math.random() > 0.5 ? 20 : -20],
+            }}
+            transition={{
+              duration: Math.random() * 5 + 3,
+              repeat: Infinity,
+              repeatType: "mirror",
+            }}
+          />
+        ))}
       </div>
+
+      {/* Footer */}
+      <footer className="w-full bg-gray-200 text-gray-600 py-6 text-center mt-auto">
+        <p>© 2024 Deivis Contreras - Todos los derechos reservados</p>
+      </footer>
     </div>
   );
 };
