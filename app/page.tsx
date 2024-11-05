@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FaStar, FaUser } from 'react-icons/fa';
 import 'tailwindcss/tailwind.css';
 
