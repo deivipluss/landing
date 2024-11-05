@@ -6,7 +6,7 @@ import 'tailwindcss/tailwind.css';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-gray-800">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-gray-800">
       {/* Main Content Section */}
       <main className="flex flex-col items-center text-center space-y-4 px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-gray-800 md:text-5xl lg:text-6xl">Hola, soy Deivis</h1>
