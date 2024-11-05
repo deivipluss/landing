@@ -3,12 +3,12 @@ import 'tailwindcss/tailwind.css';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-500 to-white text-white overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-500 to-white text-white overflow-hidden p-4">
       {/* Background and Header */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-300 to-white opacity-90 blur-2xl pointer-events-none"></div>
 
       {/* Profile Section */}
-      <div className="relative bg-white bg-opacity-20 backdrop-blur-md p-8 rounded-3xl shadow-lg text-center w-full max-w-sm space-y-6">
+      <div className="relative bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-3xl shadow-lg text-center w-full max-w-sm mx-auto my-auto space-y-6">
         {/* Profile Avatar */}
         <div className="flex justify-center">
           <div className="relative w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
@@ -42,7 +42,7 @@ const HomePage = () => {
       </div>
 
       {/* Threads Section */}
-      <div className="mt-10 bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-3xl shadow-lg w-full max-w-md">
+      <div className="mt-6 bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-3xl shadow-lg w-full max-w-md">
         <h3 className="text-xl font-bold text-center mb-6">Threads</h3>
         <div className="grid grid-cols-3 gap-4 text-center">
           <div className="bg-white bg-opacity-30 p-4 rounded-xl">
@@ -61,7 +61,7 @@ const HomePage = () => {
       </div>
 
       {/* Buttons Section */}
-      <div className="mt-10 space-y-4">
+      <div className="mt-6 space-y-4">
         <button className="w-48 py-2 px-4 bg-white bg-opacity-20 backdrop-blur-md text-white rounded-full shadow-lg transition duration-300 hover:bg-blue-300 hover:bg-opacity-40">
           Mis Servicios
         </button>
