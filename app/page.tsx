@@ -1,4 +1,5 @@
-// Importa los módulos y librerías necesarios
+"use client";
+
 import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 
@@ -7,7 +8,7 @@ const iconStyle = "text-[#4A90E2] text-2xl mx-3 cursor-pointer";
 const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D]";
 
 // Detecta si el dispositivo es móvil
-const isMobile = () => window.innerWidth < 768;
+const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768;
 
 const ProfileCard = () => (
   <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-4 shadow-lg">
