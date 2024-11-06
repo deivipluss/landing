@@ -1,76 +1,92 @@
-import { FaStar, FaUser } from 'react-icons/fa';
-import 'tailwindcss/tailwind.css';
+// Importa los módulos y librerías necesarios
+import React from "react";
+import { FaDribbble, FaTwitter, FaInstagram, FaEnvelope, FaFolder, FaHome, FaTools, FaPen, FaWindowMaximize } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-const HomePage = () => {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-500 to-white text-white overflow-hidden p-4">
-      {/* Background and Header */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-300 to-white opacity-90 blur-2xl pointer-events-none"></div>
+// Estilos de los íconos y contenedores
+const iconStyle = "text-white text-2xl mx-3";
+const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#111111]";
 
-      {/* Profile Section */}
-      <div className="relative bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-3xl shadow-lg text-center w-full max-w-sm mx-auto my-auto space-y-6">
-        {/* Profile Avatar */}
-        <div className="flex justify-center">
-          <div className="relative w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
-            {/* Placeholder silhouette for profile image */}
-            <FaUser className="text-4xl text-gray-500" />
-            {/* Badge Icon */}
-            <div className="absolute bottom-0 right-0 bg-blue-500 p-1 rounded-full border-2 border-white">
-              <FaStar className="text-sm text-white" />
-            </div>
-          </div>
-        </div>
+const ProfileCard = () => (
+  <div className="bg-white p-8 rounded-lg flex flex-col items-center text-center space-y-4">
+    {/* Imagen de perfil cuadrada */}
+    <div className="w-32 h-32 rounded bg-[#FF5722]"></div>
+    {/* Nombre y bio */}
+    <h2 className="text-[#FF5722] text-3xl font-bold">MARK SMITH</h2>
+    <div className="border-dotted border-t-2 border-[#FF5722] my-4 w-full flex justify-center items-center">
+      <span className="text-[#FF5722] text-2xl">🔥</span>
+    </div>
+    <p className="text-gray-500">Experienced Software Engineer</p>
+    {/* Íconos de redes sociales */}
+    <div className="flex space-x-4 text-[#FF5722]">
+      <FaDribbble />
+      <FaTwitter />
+      <FaInstagram />
+      <FaEnvelope />
+    </div>
+  </div>
+);
 
-        {/* Profile Info */}
-        <div>
-          <h2 className="text-2xl font-semibold">Angela Robinson</h2>
-          <p className="text-blue-100">24,973 Followers</p>
-        </div>
-
-        {/* Tags Section */}
-        <div className="flex flex-wrap justify-center gap-2">
-          {["Coach", "Architecture", "Personal Growth"].map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 bg-white bg-opacity-30 text-white rounded-full text-sm flex items-center space-x-2"
-            >
-              <FaStar className="text-xs" />
-              <span>{tag}</span>
-            </span>
-          ))}
-        </div>
+const ProfessionalInfo = () => (
+  <div className="text-white space-y-8">
+    {/* Título y subtítulo */}
+    <div>
+      <h1 className="text-5xl font-bold">SOFTWARE</h1>
+      <h2 className="text-2xl text-gray-400">ENGINEER</h2>
+    </div>
+    {/* Descripción */}
+    <p className="text-gray-300">
+      Passionate about creating dynamic animations and efficient design systems that make a difference.
+    </p>
+    {/* Estadísticas */}
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 text-center">
+      <div>
+        <p className="text-3xl font-bold text-white">+12</p>
+        <p className="text-gray-400">YEARS OF EXPERIENCE</p>
       </div>
-
-      {/* Threads Section */}
-      <div className="mt-6 bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-3xl shadow-lg w-full max-w-md">
-        <h3 className="text-xl font-bold text-center mb-6">Threads</h3>
-        <div className="grid grid-cols-3 gap-4 text-center">
-          <div className="bg-white bg-opacity-30 p-4 rounded-xl">
-            <p className="text-2xl font-bold">2,373</p>
-            <p className="text-sm">Sessions</p>
-          </div>
-          <div className="bg-white bg-opacity-30 p-4 rounded-xl">
-            <p className="text-2xl font-bold">32</p>
-            <p className="text-sm">Age</p>
-          </div>
-          <div className="bg-white bg-opacity-30 p-4 rounded-xl">
-            <p className="text-2xl font-bold">25,399</p>
-            <p className="text-sm">Videos</p>
-          </div>
-        </div>
+      <div>
+        <p className="text-3xl font-bold text-white">+46</p>
+        <p className="text-gray-400">PROJECTS COMPLETED</p>
       </div>
-
-      {/* Buttons Section */}
-      <div className="mt-6 space-y-4">
-        <button className="w-48 py-2 px-4 bg-white bg-opacity-20 backdrop-blur-md text-white rounded-full shadow-lg transition duration-300 hover:bg-blue-300 hover:bg-opacity-40">
-          Mis Servicios
-        </button>
-        <button className="w-48 py-2 px-4 bg-green-600 text-white rounded-full shadow-lg transition duration-300 hover:bg-green-700">
-          Contacta conmigo
-        </button>
+      <div>
+        <p className="text-3xl font-bold text-white">+20</p>
+        <p className="text-gray-400">WORLDWIDE CLIENTS</p>
       </div>
     </div>
-  );
-};
+    {/* Tarjetas de especialidad */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="bg-[#FF5722] text-white p-6 rounded-lg relative">
+        <h3 className="text-lg">DYNAMIC ANIMATION, MOTION DESIGN</h3>
+        <span className="absolute bottom-2 right-2 text-2xl">→</span>
+      </div>
+      <div className="bg-[#B4FF39] text-white p-6 rounded-lg relative">
+        <h3 className="text-lg">FRAMER, FIGMA, WORDPRESS, REACT.JS</h3>
+        <span className="absolute bottom-2 right-2 text-2xl">→</span>
+      </div>
+    </div>
+  </div>
+);
 
-export default HomePage;
+const App = () => (
+  <div className="bg-[#111111] min-h-screen">
+    {/* Navegación */}
+    <header className="flex justify-center py-4 space-x-6 bg-[#222222]">
+      <FaHome className={iconStyle} />
+      <FaFolder className={iconStyle} />
+      <FaWindowMaximize className={iconStyle} />
+      <FaTools className={iconStyle} />
+      <FaPen className={iconStyle} />
+    </header>
+    {/* Contenedor Principal */}
+    <div className={containerStyle}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-5xl">
+        {/* Columna Izquierda: Tarjeta de Perfil */}
+        <ProfileCard />
+        {/* Columna Derecha: Información Profesional */}
+        <ProfessionalInfo />
+      </div>
+    </div>
+  </div>
+);
+
+export default App;
