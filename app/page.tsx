@@ -11,10 +11,10 @@ const ProfileCard = () => (
     {/* Imagen de perfil cuadrada */}
     <div className="w-32 h-32 rounded-full bg-[#FF5C5C]"></div>
     {/* Nombre y bio */}
-    <h2 className="text-[#FF5C5C] text-3xl font-bold">DEIVIS CONTRERAS CÁRDENAS</h2>
-    {/* Bio potente */}
+    <h2 className="text-[#FF5C5C] text-3xl font-bold">DEIVIPLUSS</h2>
+    {/* Bio directa */}
     <p className="text-gray-500 mt-4">
-      Consultor digital y estratega especializado en transformar marcas y negocios en la era digital. Mi experiencia abarca la gestión de marcas, el desarrollo de productos innovadores, la creación de contenido impactante y el manejo de comunidades. Brindo asesorías exclusivas para plataformas como OnlyFans, Fansly y Patreon (+18), y entreno a gerentes para liderar con éxito en un entorno digital en constante evolución.
+      Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18). Entreno a líderes en estrategias digitales efectivas.
     </p>
     {/* Íconos de redes sociales */}
     <div className="flex space-x-4 text-[#FF5C5C] mt-4">
@@ -35,10 +35,10 @@ const ProfessionalInfo = () => (
     </div>
     {/* Descripción profesional */}
     <p className="text-[#E1E1E1]">
-      Experto en gestión de marcas, contenido y productos digitales con un enfoque disruptivo en el crecimiento y la fidelización de comunidades.
+      Experto en gestión de marcas, productos digitales y crecimiento de comunidades.
     </p>
     {/* Estadísticas en una sola fila */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-[#E1E1E1]">
+    <div className="flex flex-col md:flex-row gap-4 text-center text-[#E1E1E1] justify-center">
       <div>
         <p className="text-3xl font-bold text-[#4A90E2]">+10</p>
         <p className="text-gray-400">AÑOS DE EXPERIENCIA</p>
