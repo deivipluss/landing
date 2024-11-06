@@ -12,8 +12,8 @@ const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768;
 
 const ProfileCard = () => (
   <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto">
-    {/* Cuadrado en lugar de círculo */}
-    <div className="w-32 h-32 bg-[#FF5C5C] mb-4"></div> {/* Ahora es un cuadrado */}
+    {/* Cuadrado en lugar de círculo, ahora con el tamaño actualizado */}
+    <div className="w-[283px] h-[240px] bg-[#FF5C5C] mb-4"></div> {/* Cuadro de 283px de ancho y 240px de alto */}
     <h2 className="text-[#FF5C5C] text-3xl font-bold">DEIVIPLUSS</h2>
     <p className="text-gray-500 mt-4">
       Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18). Entreno a líderes en estrategias digitales efectivas.
