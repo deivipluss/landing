@@ -12,9 +12,9 @@ const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768;
 
 const ProfileCard = () => (
   <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto">
-    {/* Cuadro de color #FF5C5C con tamaño actualizado */}
-    <div className="w-[240px] h-[283px] bg-[#FF5C5C] mb-4"></div> {/* Cuadro de 240px de ancho y 283px de alto */}
-    <h2 className="text-[#FF5C5C] text-3xl font-bold">DEIVIPLUSS</h2>
+    {/* Cuadro de color #FF5C5C con bordes redondeados */}
+    <div className="w-[240px] h-[283px] bg-[#FF5C5C] mb-4 rounded-lg"></div> {/* Cuadro de 240px de ancho y 283px de alto */}
+    <h2 className="text-[#4A90E2] text-3xl font-bold">DEIVIPLUSS</h2> {/* Color azul oscuro */}
     <p className="text-gray-500 mt-4">
       Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18). Entreno a líderes en estrategias digitales efectivas.
     </p>
