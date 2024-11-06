@@ -11,14 +11,14 @@ const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0
 const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768;
 
 const ProfileCard = () => (
-  <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-4 shadow-lg">
+  <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-4 shadow-lg h-auto w-full max-w-sm mx-auto">
     {/* Cuadrado en lugar de círculo */}
-    <div className="w-32 h-32 bg-[#FF5C5C]"></div> {/* Ahora es un cuadrado */}
+    <div className="w-32 h-32 bg-[#FF5C5C] mb-4"></div> {/* Ahora es un cuadrado */}
     <h2 className="text-[#FF5C5C] text-3xl font-bold">DEIVIPLUSS</h2>
     <p className="text-gray-500 mt-4">
       Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18). Entreno a líderes en estrategias digitales efectivas.
     </p>
-    <div className="flex space-x-4 text-[#FF5C5C] mt-4">
+    <div className="flex space-x-4 text-[#FF5C5C] mt-4 justify-center">
       <FaHome />
       <FaWindowMaximize />
       <FaPen />
