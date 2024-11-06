@@ -1,7 +1,6 @@
 // Importa los módulos y librerías necesarios
 import React from "react";
 import { FaDribbble, FaTwitter, FaInstagram, FaEnvelope, FaFolder, FaHome, FaTools, FaPen, FaWindowMaximize } from "react-icons/fa";
-import { motion } from "framer-motion";
 
 // Estilos de los íconos y contenedores
 const iconStyle = "text-white text-2xl mx-3";
