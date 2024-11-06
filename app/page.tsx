@@ -27,15 +27,18 @@ const ProfileCard = () => (
 );
 
 const ProfessionalInfo = () => (
-  <div className="text-white space-y-8 text-center">
+  <div className="text-white space-y-8 text-left">
+    {/* Título DIGITAL CONSULTANT */}
     <div>
-      <h1 className="text-6xl font-bold text-[#4A90E2]">DIGITAL</h1>
-      <h2 className="text-3xl text-[#A9A9A9]">CONSULTANT</h2>
+      <h1 className="text-[110px] font-black text-[#4A90E2] opacity-100">DIGITAL</h1>
+      <h2 className="text-[110px] font-black text-[#4A90E2] opacity-80">CONSULTANT</h2>
     </div>
-    <p className="text-[#E1E1E1]">
+
+    {/* Descripción */}
+    <p className="text-[#E1E1E1] opacity-80">
       Experto en gestión de marcas, productos digitales y crecimiento de comunidades.
     </p>
-    <div className="flex flex-col md:flex-row gap-4 text-center text-[#E1E1E1] justify-center">
+    <div className="flex flex-col md:flex-row gap-4 text-left text-[#E1E1E1] justify-start">
       <div>
         <p className="text-3xl font-bold text-[#4A90E2]">+10</p>
         <p className="text-gray-400">AÑOS DE EXPERIENCIA</p>
