@@ -11,7 +11,7 @@ const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0
 const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768;
 
 const ProfileCard = () => (
-  <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[600px] w-[250px] mx-auto">
+  <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto">
     {/* Cuadrado en lugar de círculo */}
     <div className="w-32 h-32 bg-[#FF5C5C] mb-4"></div> {/* Ahora es un cuadrado */}
     <h2 className="text-[#FF5C5C] text-3xl font-bold">DEIVIPLUSS</h2>
