@@ -94,7 +94,9 @@ const App = () => {
       <div className={containerStyle}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-5xl items-center">
           {/* Columna Izquierda: Tarjeta de Perfil */}
-          <ProfileCard />
+          <div className="flex justify-center w-full">
+            <ProfileCard />
+          </div>
 
           {/* Columna Derecha: Información Profesional */}
           {activeSection === "profile" && <ProfessionalInfo />}
