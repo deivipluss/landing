@@ -31,7 +31,7 @@ const ProfessionalInfo = () => (
     {/* Título DIGITAL CONSULTANT */}
     <div className="relative">
       <h1 className="text-[110px] font-black text-[#4A90E2] opacity-100 leading-tight">DIGITAL</h1>
-      <h2 className="text-[110px] font-black text-[#4A90E2] opacity-40 absolute top-0 left-0 transform -translate-y-4 leading-tight">
+      <h2 className="text-[110px] font-black text-[#4A90E2] opacity-40 absolute top-0 left-0 transform -translate-y-2 leading-tight">
         CONSULTANT
       </h2>
     </div>
