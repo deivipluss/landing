@@ -5,13 +5,13 @@ import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 
 // Estilos actualizados con una paleta profesional y excéntrica
 const iconStyle = "text-[#4A90E2] text-2xl mx-3 cursor-pointer";
-const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D]";
+const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden"; // Agregamos overflow-hidden
 
 // Detecta si el dispositivo es móvil
 const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768;
 
 const ProfileCard = () => (
-  <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto">
+  <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto overflow-hidden">
     {/* Cuadro de color #FF5C5C con bordes redondeados */}
     <div className="w-[240px] h-[283px] bg-[#FF5C5C] mb-4 rounded-lg"></div> {/* Cuadro de 240px de ancho y 283px de alto */}
     <h2 className="text-[#4A90E2] text-3xl font-bold">DEIVIPLUSS</h2> {/* Color azul oscuro */}
@@ -27,7 +27,7 @@ const ProfileCard = () => (
 );
 
 const ProfessionalInfo = () => (
-  <div className="text-white space-y-8 text-left">
+  <div className="text-white space-y-8 text-left overflow-hidden">
     {/* Título DIGITAL CONSULTANT */}
     <div className="relative">
       <h1 className="text-[110px] font-black text-[#4A90E2] opacity-100 leading-tight">DIGITAL</h1>
@@ -82,7 +82,7 @@ const App = () => {
   };
 
   return (
-    <div className="bg-[#0D0C1D] min-h-screen">
+    <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       {/* Navegación */}
       <header className="flex justify-center py-4 space-x-6 bg-[#1A1A2E]">
         <FaHome className={iconStyle} onClick={() => handleNavigation("home")} />
