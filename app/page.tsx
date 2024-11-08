@@ -25,9 +25,8 @@ const ProfileCard = () => (
 );
 
 const ProfessionalInfo = () => (
-  <div className="text-white space-y-8 text-left">
-    <div className="relative">
-  <h1 className="text-[110px] font-black text-[#4A90E2] opacity-100 leading-none sm:leading-tight mb-24">
+  <div className="relative">
+  <h1 className="text-[110px] font-black text-[#4A90E2] opacity-100 leading-none sm:leading-tight mb-8">
     DIGITAL
   </h1>
   <h2 className="text-[110px] font-black text-[#4A90E2] opacity-40 leading-none sm:leading-tight">
