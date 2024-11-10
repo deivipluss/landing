@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
+import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
 
-// Define los colores de los íconos de acuerdo con la paleta de colores personalizada
 const iconStyle = "text-[#4A90E2] text-2xl mx-3 cursor-pointer";
-const iconCardStyle = "text-[#FF5C5C] text-2xl mx-2 cursor-pointer";  // Color de los íconos en la tarjeta de perfil
 const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
+
+// Función para detectar si el dispositivo es móvil
+const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
 const ProfileCard = () => (
   <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto overflow-hidden">
@@ -16,20 +18,21 @@ const ProfileCard = () => (
       Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18).
     </p>
     <div className="flex space-x-4 mt-4 justify-center">
-      <FaBehance className={iconCardStyle} />
-      <FaPinterest className={iconCardStyle} />
-      <FaGithub className={iconCardStyle} />
-      <FaWhatsapp className={iconCardStyle} />
+      <FaBehance className="text-[#4A90E2] text-2xl" />
+      <FaPinterest className="text-[#4A90E2] text-2xl" />
+      <FaGithub className="text-[#4A90E2] text-2xl" />
+      <FaWhatsapp className="text-[#4A90E2] text-2xl" />
     </div>
   </div>
 );
 
 const ProfessionalInfo = () => (
-  <div className="text-white space-y-8 text-center sm:text-left">
-    {/* Ajustes de tamaño y espaciado de caracteres */}
-    <h1 className="font-black text-[#4A90E2] leading-none sm:text-[88px] sm:tracking-wider text-[48px] sm:leading-tight">
-      DIGITAL <span style={{ opacity: 0.45 }}>CONSULTANT</span>
-    </h1>
+  <div className="text-white space-y-8 text-left">
+    <div className="relative">
+      <h1 className="text-[80px] md:text-[110px] font-black text-[#4A90E2] opacity-100 leading-none sm:leading-tight mb-24">
+        DIGITAL CONSULTANT
+      </h1>
+    </div>
     <p className="text-[#E1E1E1] opacity-80">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
     <div className="flex flex-col md:flex-row gap-4 text-left text-[#E1E1E1] justify-start">
       <div>
@@ -72,10 +75,9 @@ const App = () => {
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       <header className="flex justify-center py-4 space-x-6 bg-[#1A1A2E]">
-        <FaBehance className={iconStyle} onClick={() => handleNavigation("home")} />
-        <FaPinterest className={iconStyle} onClick={() => handleNavigation("specialties")} />
-        <FaGithub className={iconStyle} onClick={() => handleNavigation("contact")} />
-        <FaWhatsapp className={iconStyle} onClick={() => handleNavigation("contact")} />
+        <FaHome className={iconStyle} onClick={() => handleNavigation("home")} />
+        <FaWindowMaximize className={iconStyle} onClick={() => handleNavigation("specialties")} />
+        <FaPen className={iconStyle} onClick={() => handleNavigation("contact")} />
       </header>
 
       <div className={containerStyle}>
