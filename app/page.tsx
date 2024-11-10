@@ -27,38 +27,38 @@ const ProfileCard = () => (
 );
 
 const ProfessionalInfo = () => (
-  <div className="flex flex-col items-center">
+  <div>
     <div className="flex justify-center w-full">
       <div className="relative">
         <h1
-          className="text-[50px] md:text-[90px] font-black text-[#4A90E2] leading-none z-10 relative"
+          className="text-[40px] md:text-[80px] font-black text-[#4A90E2] leading-none z-10 relative"
           style={{ letterSpacing: "-1px" }}
         >
           DIGITAL
         </h1>
         <h2
-          className="text-[50px] md:text-[90px] font-black text-[#4A90E2] opacity-30 absolute top-4 left-0 -z-10"
+          className="text-[40px] md:text-[80px] font-black text-[#4A90E2] opacity-30 absolute top-4 left-0 -z-10"
           style={{ letterSpacing: "-1px" }}
         >
           CONSULTANT
         </h2>
       </div>
     </div>
-    <p className="text-[#E1E1E1] opacity-80 md:mt-2">
+    <p className="text-[#E1E1E1] opacity-80 md:mt-2 text-sm">
       Experto en gestión de marcas, productos digitales y crecimiento de comunidades.
     </p>
     <div className="flex flex-col md:flex-row gap-4 text-center md:text-left text-[#E1E1E1] justify-center md:justify-start mt-8">
       <div className="flex flex-col items-center">
-        <p className="text-[70px] font-bold text-[#4A90E2]">+10</p>
-        <p className="text-[15px] text-gray-400">AÑOS DE EXPERIENCIA</p>
+        <p className="text-[50px] font-bold text-[#4A90E2]">+10</p>
+        <p className="text-[13px] text-gray-400">AÑOS DE EXPERIENCIA</p>
       </div>
       <div className="flex flex-col items-center">
-        <p className="text-[70px] font-bold text-[#4A90E2]">+100</p>
-        <p className="text-[15px] text-gray-400">CLIENTES ASESORADOS</p>
+        <p className="text-[50px] font-bold text-[#4A90E2]">+100</p>
+        <p className="text-[13px] text-gray-400">CLIENTES ASESORADOS</p>
       </div>
       <div className="flex flex-col items-center">
-        <p className="text-[70px] font-bold text-[#4A90E2]">+50</p>
-        <p className="text-[15px] text-gray-400">PROYECTOS DIGITALES</p>
+        <p className="text-[50px] font-bold text-[#4A90E2]">+50</p>
+        <p className="text-[13px] text-gray-400">PROYECTOS DIGITALES</p>
       </div>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
@@ -99,12 +99,8 @@ const App = () => {
             <ProfileCard />
           </div>
           {activeSection === "profile" && <ProfessionalInfo />}
-          {activeSection === "specialties" && (
-            <div className="text-white"> {/* Sección especialidades */}</div>
-          )}
-          {activeSection === "contact" && (
-            <div className="text-white"> {/* Sección contacto */}</div>
-          )}
+          {activeSection === "specialties" && <div className="text-white"> {/* Sección especialidades */}</div>}
+          {activeSection === "contact" && <div className="text-white"> {/* Sección contacto */}</div>}
         </div>
       </div>
     </div>
