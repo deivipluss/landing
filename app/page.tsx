@@ -10,17 +10,17 @@ const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
 const ProfileCard = () => (
- <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto overflow-hidden">
-   <div className="w-[240px] h-[283px] bg-[#FF5C5C] mb-4 rounded-lg"></div>
-   <h2 className="text-[#FF5C5C] text-3xl font-bold">DEIVIPLUSS</h2>
-   <p className="text-gray-500 mt-4">
+ <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[640px] w-[350px] md:w-[344px] mx-auto overflow-hidden">
+   <div className="w-[200px] md:w-[240px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg"></div>
+   <h2 className="text-[#FF5C5C] text-2xl md:text-3xl font-bold">DEIVIPLUSS</h2>
+   <p className="text-gray-500 mt-2 md:mt-4 text-sm md:text-base">
      Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18).
    </p>
-   <div className="flex space-x-4 mt-4 justify-center">
-     <FaBehance className="text-[#FF5C5C] text-2xl" />
-     <FaPinterest className="text-[#FF5C5C] text-2xl" />
-     <FaGithub className="text-[#FF5C5C] text-2xl" />
-     <FaWhatsapp className="text-[#FF5C5C] text-2xl" />
+   <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
+     <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
+     <FaPinterest className="text-[#FF5C5C] text-xl md:text-2xl" />
+     <FaGithub className="text-[#FF5C5C] text-xl md:text-2xl" />
+     <FaWhatsapp className="text-[#FF5C5C] text-xl md:text-2xl" />
    </div>
  </div>
 );
