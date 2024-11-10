@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
+import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
 
 const iconStyle = "text-[#4A90E2] text-2xl mx-3 cursor-pointer";
 const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
@@ -17,9 +17,10 @@ const ProfileCard = () => (
       Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18).
     </p>
     <div className="flex space-x-4 text-[#FF5C5C] mt-4 justify-center">
-      <FaHome />
-      <FaWindowMaximize />
-      <FaPen />
+      <FaBehance className="text-[#4A90E2] text-2xl cursor-pointer" />
+      <FaPinterest className="text-[#E60023] text-2xl cursor-pointer" />
+      <FaGithub className="text-[#333] text-2xl cursor-pointer" />
+      <FaWhatsapp className="text-[#25D366] text-2xl cursor-pointer" />
     </div>
   </div>
 );
@@ -72,9 +73,10 @@ const App = () => {
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       <header className="flex justify-center py-4 space-x-6 bg-[#1A1A2E]">
-        <FaHome className={iconStyle} onClick={() => handleNavigation("home")} />
-        <FaWindowMaximize className={iconStyle} onClick={() => handleNavigation("specialties")} />
-        <FaPen className={iconStyle} onClick={() => handleNavigation("contact")} />
+        <FaBehance className={iconStyle} onClick={() => handleNavigation("home")} />
+        <FaPinterest className={iconStyle} onClick={() => handleNavigation("specialties")} />
+        <FaGithub className={iconStyle} onClick={() => handleNavigation("contact")} />
+        <FaWhatsapp className={iconStyle} onClick={() => handleNavigation("contact")} />
       </header>
 
       <div className={containerStyle}>
