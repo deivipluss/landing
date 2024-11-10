@@ -27,7 +27,7 @@ const ProfileCard = () => (
 
 const ProfessionalInfo = () => (
  <div>
-   <div className="flex justify-center w-full mb-12">
+   <div className="flex justify-center w-full mb-6 md:mb-8">
      <div className="relative">
        <h1
          className="text-[40px] md:text-[80px] font-black leading-none z-10 relative text-center"
@@ -38,25 +38,25 @@ const ProfessionalInfo = () => (
        </h1>
      </div>
    </div>
-   <p className="text-[#E1E1E1] opacity-80 md:mt-2 text-sm text-center md:text-left px-4">
+   <p className="text-[#E1E1E1] opacity-80 text-sm text-center md:text-left px-4 -mt-2">
      Experto en gestión de marcas, productos digitales y crecimiento de comunidades.
    </p>
    <div className="flex flex-row gap-8 md:gap-4 text-center text-[#E1E1E1] justify-center mt-8 px-4 md:px-0">
      <div className="flex flex-col items-center">
-       <p className="text-[40px] md:text-[50px] font-bold text-[#4A90E2]">+10</p>
-       <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight">
+       <p className="text-[40px] md:text-[80px] font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+10</p>
+       <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight mt-2">
          AÑOS DE<br />EXPERIENCIA
        </p>
      </div>
      <div className="flex flex-col items-center">
-       <p className="text-[40px] md:text-[50px] font-bold text-[#4A90E2]">+100</p>
-       <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight">
+       <p className="text-[40px] md:text-[80px] font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+100</p>
+       <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight mt-2">
          CLIENTES<br />ASESORADOS
        </p>
      </div>
      <div className="flex flex-col items-center">
-       <p className="text-[40px] md:text-[50px] font-bold text-[#4A90E2]">+50</p>
-       <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight">
+       <p className="text-[40px] md:text-[80px] font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+50</p>
+       <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight mt-2">
          PROYECTOS<br />DIGITALES
        </p>
      </div>
