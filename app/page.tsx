@@ -3,11 +3,10 @@
 import React, { useState } from "react";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
 
+// Define los colores de los íconos de acuerdo con la paleta de colores personalizada
 const iconStyle = "text-[#4A90E2] text-2xl mx-3 cursor-pointer";
+const iconCardStyle = "text-[#FF5C5C] text-2xl mx-2 cursor-pointer";  // Color de los íconos en la tarjeta de perfil
 const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
-
-// Detecta si el dispositivo es móvil
-const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768;
 
 const ProfileCard = () => (
   <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto overflow-hidden">
@@ -16,19 +15,19 @@ const ProfileCard = () => (
     <p className="text-gray-500 mt-4">
       Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18).
     </p>
-    <div className="flex space-x-4 text-[#FF5C5C] mt-4 justify-center">
-      <FaBehance className="text-[#4A90E2] text-2xl cursor-pointer" />
-      <FaPinterest className="text-[#E60023] text-2xl cursor-pointer" />
-      <FaGithub className="text-[#333] text-2xl cursor-pointer" />
-      <FaWhatsapp className="text-[#25D366] text-2xl cursor-pointer" />
+    <div className="flex space-x-4 mt-4 justify-center">
+      <FaBehance className={iconCardStyle} />
+      <FaPinterest className={iconCardStyle} />
+      <FaGithub className={iconCardStyle} />
+      <FaWhatsapp className={iconCardStyle} />
     </div>
   </div>
 );
 
 const ProfessionalInfo = () => (
   <div className="text-white space-y-8 text-center sm:text-left">
-    {/* Encabezado ajustado para móvil y desktop */}
-    <h1 className="font-black text-[#4A90E2] leading-none sm:text-[110px] text-[48px] sm:leading-tight">
+    {/* Ajustes de tamaño y espaciado de caracteres */}
+    <h1 className="font-black text-[#4A90E2] leading-none sm:text-[88px] sm:tracking-wider text-[48px] sm:leading-tight">
       DIGITAL <span style={{ opacity: 0.45 }}>CONSULTANT</span>
     </h1>
     <p className="text-[#E1E1E1] opacity-80">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
