@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
 
-const iconStyle = "text-[#4A90E2] text-2xl mx-3 cursor-pointer";
+const iconStyle = "text-[#FF5C5C] text-2xl mx-3 cursor-pointer";
 const containerStyle = "p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
 
 // Función para detectar si el dispositivo es móvil
@@ -13,28 +13,37 @@ const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
 const ProfileCard = () => (
   <div className="bg-[#F9F9F9] p-8 rounded-lg flex flex-col items-center text-center space-y-6 shadow-lg h-[640px] w-[344px] mx-auto overflow-hidden">
     <div className="w-[240px] h-[283px] bg-[#FF5C5C] mb-4 rounded-lg"></div>
-    <h2 className="text-[#4A90E2] text-3xl font-bold">DEIVIPLUSS</h2>
+    <h2 className="text-[#FF5C5C] text-3xl font-bold">DEIVIPLUSS</h2>
     <p className="text-gray-500 mt-4">
       Consultor digital enfocado en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18).
     </p>
     <div className="flex space-x-4 mt-4 justify-center">
-      <FaBehance className="text-[#4A90E2] text-2xl" />
-      <FaPinterest className="text-[#4A90E2] text-2xl" />
-      <FaGithub className="text-[#4A90E2] text-2xl" />
-      <FaWhatsapp className="text-[#4A90E2] text-2xl" />
+      <FaBehance className="text-[#FF5C5C] text-2xl" />
+      <FaPinterest className="text-[#FF5C5C] text-2xl" />
+      <FaGithub className="text-[#FF5C5C] text-2xl" />
+      <FaWhatsapp className="text-[#FF5C5C] text-2xl" />
     </div>
   </div>
 );
 
 const ProfessionalInfo = () => (
-  <div className="text-white space-y-8 text-left">
+  <div className="text-white space-y-4 text-left">
     <div className="relative">
-      <h1 className="text-[80px] md:text-[110px] font-black text-[#4A90E2] opacity-100 leading-none sm:leading-tight mb-24">
-        DIGITAL CONSULTANT
+      <h1
+        className="text-[60px] md:text-[110px] font-bold text-[#4A90E2] leading-none sm:leading-tight mb-4"
+        style={{ letterSpacing: "-1px" }}
+      >
+        DIGITAL
+      </h1>
+      <h1
+        className="text-[60px] md:text-[110px] font-bold text-[#4A90E2] opacity-45 absolute top-0 left-0"
+        style={{ letterSpacing: "-1px" }}
+      >
+        CONSULTANT
       </h1>
     </div>
-    <p className="text-[#E1E1E1] opacity-80">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
-    <div className="flex flex-col md:flex-row gap-4 text-left text-[#E1E1E1] justify-start">
+    <p className="text-[#E1E1E1] opacity-80 md:mt-2">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
+    <div className="flex flex-col md:flex-row gap-4 text-left text-[#E1E1E1] justify-start mt-8">
       <div>
         <p className="text-3xl font-bold text-[#4A90E2]">+10</p>
         <p className="text-gray-400">AÑOS DE EXPERIENCIA</p>
@@ -81,7 +90,7 @@ const App = () => {
       </header>
 
       <div className={containerStyle}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-5xl items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-5xl items-center mx-auto">
           <div className="flex justify-center w-full">
             <ProfileCard />
           </div>
