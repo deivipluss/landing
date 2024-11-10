@@ -28,20 +28,20 @@ const ProfileCard = () => (
 
 const ProfessionalInfo = () => (
   <div className="text-white space-y-4 text-left">
-    <div className="relative">
-      <h1
-        className="text-[50px] md:text-[90px] font-bold text-[#4A90E2] leading-none sm:leading-tight mb-4"
-        style={{ letterSpacing: "-1px" }}
-      >
-        DIGITAL
-      </h1>
-      <h1
-        className="text-[50px] md:text-[90px] font-bold text-[#4A90E2] opacity-45 absolute top-0 md:left-[110px] left-0"
-        style={{ letterSpacing: "-1px" }}
-      >
-        CONSULTANT
-      </h1>
-    </div>
+    <div className="relative flex flex-col items-center text-center">
+  <h1
+    className="text-[50px] md:text-[90px] font-bold text-[#4A90E2] leading-none sm:leading-tight mb-4"
+    style={{ letterSpacing: "-1px" }}
+  >
+    DIGITAL
+  </h1>
+  <h1
+    className="text-[50px] md:text-[90px] font-bold text-[#4A90E2] opacity-45 md:absolute md:top-0 md:left-[110px]"
+    style={{ letterSpacing: "-1px" }}
+  >
+    CONSULTANT
+  </h1>
+</div>
     <p className="text-[#E1E1E1] opacity-80 md:mt-2">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
     <div className="flex flex-col md:flex-row gap-4 text-center md:text-left text-[#E1E1E1] justify-center md:justify-start mt-8">
       <div className="flex flex-col items-center">
