@@ -27,13 +27,12 @@ const ProfileCard = () => (
 const ProfessionalInfo = () => (
   <div className="text-white space-y-8 text-left">
     <div className="relative">
-  <h1 className="text-[110px] font-black text-[#4A90E2] opacity-100 leading-none sm:leading-tight mb-24">
-    DIGITAL
-  </h1>
-  <h2 className="text-[110px] font-black text-[#4A90E2] opacity-40 leading-none sm:leading-tight">
-    CONSULTANT
-  </h2>
-</div>
+      {/* Texto como un solo elemento con tamaño dinámico en móvil */}
+      <h1 className="font-black text-[#4A90E2] leading-none text-center sm:text-left" 
+          style={{ fontSize: isMobile() ? '48px' : '110px' }}>
+        DIGITAL CONSULTANT
+      </h1>
+    </div>
     <p className="text-[#E1E1E1] opacity-80">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
     <div className="flex flex-col md:flex-row gap-4 text-left text-[#E1E1E1] justify-start">
       <div>
