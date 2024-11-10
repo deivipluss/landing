@@ -25,13 +25,9 @@ const ProfileCard = () => (
 );
 
 const ProfessionalInfo = () => (
-  <div className="text-white space-y-8 text-left">
-    {/* Encabezado ajustado para móvil y desktop con transparencia */}
-    <h1 className="font-black text-[#4A90E2] text-center sm:text-left leading-none" 
-        style={{
-          fontSize: isMobile() ? '36px' : '110px',
-          lineHeight: isMobile() ? '1.2' : '1'
-        }}>
+  <div className="text-white space-y-8 text-center sm:text-left">
+    {/* Encabezado ajustado para móvil y desktop */}
+    <h1 className="font-black text-[#4A90E2] leading-none sm:text-[110px] text-[48px] sm:leading-tight">
       DIGITAL <span style={{ opacity: 0.45 }}>CONSULTANT</span>
     </h1>
     <p className="text-[#E1E1E1] opacity-80">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
