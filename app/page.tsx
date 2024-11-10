@@ -30,31 +30,31 @@ const ProfessionalInfo = () => (
   <div className="text-white space-y-4 text-left">
     <div className="relative">
       <h1
-        className="text-[60px] md:text-[110px] font-bold text-[#4A90E2] leading-none sm:leading-tight mb-4"
+        className="text-[50px] md:text-[90px] font-bold text-[#4A90E2] leading-none sm:leading-tight mb-4"
         style={{ letterSpacing: "-1px" }}
       >
         DIGITAL
       </h1>
       <h1
-        className="text-[60px] md:text-[110px] font-bold text-[#4A90E2] opacity-45 absolute top-0 left-0"
+        className="text-[50px] md:text-[90px] font-bold text-[#4A90E2] opacity-45 absolute top-0 md:left-[110px] left-0"
         style={{ letterSpacing: "-1px" }}
       >
         CONSULTANT
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 md:mt-2">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
-    <div className="flex flex-col md:flex-row gap-4 text-left text-[#E1E1E1] justify-start mt-8">
-      <div>
-        <p className="text-3xl font-bold text-[#4A90E2]">+10</p>
-        <p className="text-gray-400">AÑOS DE EXPERIENCIA</p>
+    <div className="flex flex-col md:flex-row gap-4 text-center md:text-left text-[#E1E1E1] justify-center md:justify-start mt-8">
+      <div className="flex flex-col items-center">
+        <p className="text-[70px] font-bold text-[#4A90E2]">+10</p>
+        <p className="text-[15px] text-gray-400">AÑOS DE EXPERIENCIA</p>
       </div>
-      <div>
-        <p className="text-3xl font-bold text-[#4A90E2]">+100</p>
-        <p className="text-gray-400">CLIENTES ASESORADOS</p>
+      <div className="flex flex-col items-center">
+        <p className="text-[70px] font-bold text-[#4A90E2]">+100</p>
+        <p className="text-[15px] text-gray-400">CLIENTES ASESORADOS</p>
       </div>
-      <div>
-        <p className="text-3xl font-bold text-[#4A90E2]">+50</p>
-        <p className="text-gray-400">PROYECTOS DIGITALES</p>
+      <div className="flex flex-col items-center">
+        <p className="text-[70px] font-bold text-[#4A90E2]">+50</p>
+        <p className="text-[15px] text-gray-400">PROYECTOS DIGITALES</p>
       </div>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
