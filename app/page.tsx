@@ -30,17 +30,12 @@ const ProfessionalInfo = () => (
    <div className="flex justify-center w-full mb-12">
      <div className="relative">
        <h1
-         className="text-[40px] md:text-[80px] font-black text-[#4A90E2] leading-none z-10 relative text-center"
+         className="text-[40px] md:text-[80px] font-black leading-none z-10 relative text-center"
          style={{ letterSpacing: "-1px" }}
        >
-         DIGITAL
+         <span className="text-[#4A90E2]">DIGITAL </span>
+         <span className="text-[#4A90E2] opacity-40">CONSULTANT</span>
        </h1>
-       <h2
-         className="text-[40px] md:text-[80px] font-black text-[#4A90E2] opacity-30 absolute top-16 md:top-20 left-0 -z-10 w-full text-center"
-         style={{ letterSpacing: "-1px" }}
-       >
-         CONSULTANT
-       </h2>
      </div>
    </div>
    <p className="text-[#E1E1E1] opacity-80 md:mt-2 text-sm text-center md:text-left px-4">
