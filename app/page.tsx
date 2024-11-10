@@ -27,24 +27,22 @@ const ProfileCard = () => (
 );
 
 const ProfessionalInfo = () => (
-  <div className="flex justify-center w-full">
-  <div className="relative">
-    <h1
-      className="text-[50px] md:text-[90px] font-black text-[#4A90E2] leading-none z-10 relative"
-      style={{ letterSpacing: "-1px" }}
-    >
-      DIGITAL
-    </h1>
-    <h2
-      className="text-[50px] md:text-[90px] font-black text-[#4A90E2] opacity-30 absolute top-4 left-0 -z-10"
-      style={{ letterSpacing: "-1px" }}
-    >
-      CONSULTANT
-    </h2>
-  </div>
-</div>
-    <p className="text-[#E1E1E1] opacity-80 md:mt-2">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p>
-    <div className="flex flex-col md:flex-row gap-4 text-center md:text-left text-[#E1E1E1] justify-center md:justify-start mt-8">
+  <><div className="flex justify-center w-full">
+    <div className="relative">
+      <h1
+        className="text-[50px] md:text-[90px] font-black text-[#4A90E2] leading-none z-10 relative"
+        style={{ letterSpacing: "-1px" }}
+      >
+        DIGITAL
+      </h1>
+      <h2
+        className="text-[50px] md:text-[90px] font-black text-[#4A90E2] opacity-30 absolute top-4 left-0 -z-10"
+        style={{ letterSpacing: "-1px" }}
+      >
+        CONSULTANT
+      </h2>
+    </div>
+  </div><p className="text-[#E1E1E1] opacity-80 md:mt-2">Experto en gestión de marcas, productos digitales y crecimiento de comunidades.</p><div className="flex flex-col md:flex-row gap-4 text-center md:text-left text-[#E1E1E1] justify-center md:justify-start mt-8">
       <div className="flex flex-col items-center">
         <p className="text-[70px] font-bold text-[#4A90E2]">+10</p>
         <p className="text-[15px] text-gray-400">AÑOS DE EXPERIENCIA</p>
@@ -57,8 +55,7 @@ const ProfessionalInfo = () => (
         <p className="text-[70px] font-bold text-[#4A90E2]">+50</p>
         <p className="text-[15px] text-gray-400">PROYECTOS DIGITALES</p>
       </div>
-    </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+    </div><div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
       <div className="bg-[#FF5C5C] text-white p-6 rounded-lg relative shadow-md">
         <h3 className="text-lg">GESTIÓN DE MARCAS, DESARROLLO DE PRODUCTOS</h3>
         <span className="absolute bottom-2 right-2 text-2xl">→</span>
@@ -67,7 +64,7 @@ const ProfessionalInfo = () => (
         <h3 className="text-lg">ENTRENAMIENTO DIGITAL, COMMUNITY MANAGEMENT</h3>
         <span className="absolute bottom-2 right-2 text-2xl">→</span>
       </div>
-    </div>
+    </div></>
   </div>
 );
 
