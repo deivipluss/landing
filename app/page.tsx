@@ -37,28 +37,28 @@ const ProfessionalInfo = () => (
           DIGITAL
         </h1>
         <h2
-          className="text-[40px] md:text-[80px] font-black text-[#4A90E2] opacity-30 absolute top-4 left-0 -z-10"
+          className="text-[40px] md:text-[80px] font-black text-[#4A90E2] opacity-30 absolute top-8 md:top-4 left-0 -z-10"
           style={{ letterSpacing: "-1px" }}
         >
           CONSULTANT
         </h2>
       </div>
     </div>
-    <p className="text-[#E1E1E1] opacity-80 md:mt-2 text-sm">
+    <p className="text-[#E1E1E1] opacity-80 md:mt-2 text-sm text-center md:text-left">
       Experto en gestión de marcas, productos digitales y crecimiento de comunidades.
     </p>
-    <div className="flex flex-col md:flex-row gap-4 text-center md:text-left text-[#E1E1E1] justify-center md:justify-start mt-8">
-      <div className="flex flex-col items-center">
-        <p className="text-[50px] font-bold text-[#4A90E2]">+10</p>
-        <p className="text-[13px] text-gray-400">AÑOS DE EXPERIENCIA</p>
+    <div className="flex flex-row gap-4 text-center text-[#E1E1E1] justify-center mt-8 overflow-x-auto w-full">
+      <div className="flex flex-col items-center min-w-fit">
+        <p className="text-[40px] md:text-[50px] font-bold text-[#4A90E2]">+10</p>
+        <p className="text-[12px] md:text-[13px] text-gray-400">AÑOS DE EXPERIENCIA</p>
       </div>
-      <div className="flex flex-col items-center">
-        <p className="text-[50px] font-bold text-[#4A90E2]">+100</p>
-        <p className="text-[13px] text-gray-400">CLIENTES ASESORADOS</p>
+      <div className="flex flex-col items-center min-w-fit">
+        <p className="text-[40px] md:text-[50px] font-bold text-[#4A90E2]">+100</p>
+        <p className="text-[12px] md:text-[13px] text-gray-400">CLIENTES ASESORADOS</p>
       </div>
-      <div className="flex flex-col items-center">
-        <p className="text-[50px] font-bold text-[#4A90E2]">+50</p>
-        <p className="text-[13px] text-gray-400">PROYECTOS DIGITALES</p>
+      <div className="flex flex-col items-center min-w-fit">
+        <p className="text-[40px] md:text-[50px] font-bold text-[#4A90E2]">+50</p>
+        <p className="text-[12px] md:text-[13px] text-gray-400">PROYECTOS DIGITALES</p>
       </div>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
