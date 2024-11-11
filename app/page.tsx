@@ -9,7 +9,7 @@ const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen
 
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
-const ProfileCard: React.FC = () => (
+const ProfileCard = () => (
   <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[530px] w-[320px] md:w-[300px] mx-auto md:mb-8 overflow-hidden">
     <div className="w-[180px] md:w-[220px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg overflow-hidden">
       <img
@@ -34,7 +34,7 @@ const ProfileCard: React.FC = () => (
   </div>
 );
 
-const ProfessionalInfo: React.FC = () => (
+const ProfessionalInfo = () => (
   <div className="w-full max-w-[800px] px-4 md:px-0">
     <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
       <h1
@@ -68,8 +68,13 @@ const ProfessionalInfo: React.FC = () => (
         </p>
       </div>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-      <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between md:w-[360px]">
+  </div>
+);
+
+const CallToAction = () => (
+  <div className="w-full max-w-[800px] px-4 md:px-0 mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center transition-transform hover:scale-105">
         <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
           <RiCustomerService2Line className="hidden md:block text-3xl" />
           <h3 className="text-lg md:text-xl font-poppins font-semibold">SOLUCIONES POPULARES</h3>
@@ -78,7 +83,7 @@ const ProfessionalInfo: React.FC = () => (
           <span className="text-xl">→</span>
         </div>
       </div>
-      <div className="bg-[#32CD32] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between md:w-[360px]">
+      <div className="bg-[#32CD32] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center transition-transform hover:scale-105">
         <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
           <RiMessage2Line className="hidden md:block text-3xl" />
           <h3 className="text-lg md:text-xl font-poppins font-semibold">CONTACTA CONMIGO</h3>
@@ -91,8 +96,8 @@ const ProfessionalInfo: React.FC = () => (
   </div>
 );
 
-const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>("profile");
+const App = () => {
+  const [activeSection, setActiveSection] = useState("profile");
 
   const handleNavigation = (section: string) => {
     if (isMobile()) {
@@ -111,13 +116,14 @@ const App: React.FC = () => {
       </header>
 
       <div className={containerStyle}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
-          <div className="flex justify-center w-full">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 max-w-6xl mx-auto">
+          <div className="flex justify-center">
             <ProfileCard />
           </div>
-          {activeSection === "profile" && <ProfessionalInfo />}
-          {activeSection === "specialties" && <div className="text-white">{/* Sección especialidades */}</div>}
-          {activeSection === "contact" && <div className="text-white">{/* Sección contacto */}</div>}
+          <div className="flex flex-col flex-1">
+            <ProfessionalInfo />
+            <CallToAction />
+          </div>
         </div>
       </div>
 
