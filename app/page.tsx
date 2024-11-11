@@ -1,5 +1,4 @@
-'use client'; // Asegúrate de que este archivo es un componente de cliente
-
+"use client";
 import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
@@ -10,7 +9,6 @@ const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen
 
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
-// Componente ProfileCard
 const ProfileCard: React.FC = () => (
   <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[530px] w-[320px] md:w-[300px] mx-auto md:mb-8 overflow-hidden">
     <div className="w-[180px] md:w-[220px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg overflow-hidden">
@@ -36,7 +34,6 @@ const ProfileCard: React.FC = () => (
   </div>
 );
 
-// Componente ProfessionalInfo (información profesional)
 const ProfessionalInfo: React.FC = () => (
   <div className="w-full max-w-[800px] px-4 md:px-0">
     <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
@@ -71,33 +68,29 @@ const ProfessionalInfo: React.FC = () => (
         </p>
       </div>
     </div>
-  </div>
-);
-
-// Nuevo componente CallToActionSection (sección de llamadas a la acción)
-const CallToActionSection: React.FC = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mt-12 px-4">
-    {/* Caja de "SOLUCIONES POPULARES" */}
-    <div className="bg-[#FF5C5C] text-white p-6 rounded-lg relative shadow-md h-[220px] flex flex-col justify-center items-center">
-      <RiCustomerService2Line className="text-3xl" />
-      <h3 className="text-xl font-poppins font-semibold mt-4">SOLUCIONES POPULARES</h3>
-      <div className="absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
-        <span className="text-xl">→</span>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+      <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between md:w-[360px]">
+        <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
+          <RiCustomerService2Line className="hidden md:block text-3xl" />
+          <h3 className="text-lg md:text-xl font-poppins font-semibold">SOLUCIONES POPULARES</h3>
+        </div>
+        <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
+          <span className="text-xl">→</span>
+        </div>
       </div>
-    </div>
-
-    {/* Caja de "CONTACTA CONMIGO" */}
-    <div className="bg-[#32CD32] text-white p-6 rounded-lg relative shadow-md h-[220px] flex flex-col justify-center items-center">
-      <RiMessage2Line className="text-3xl" />
-      <h3 className="text-xl font-poppins font-semibold mt-4">CONTACTA CONMIGO</h3>
-      <div className="absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
-        <span className="text-xl">→</span>
+      <div className="bg-[#32CD32] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between md:w-[360px]">
+        <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
+          <RiMessage2Line className="hidden md:block text-3xl" />
+          <h3 className="text-lg md:text-xl font-poppins font-semibold">CONTACTA CONMIGO</h3>
+        </div>
+        <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
+          <span className="text-xl">→</span>
+        </div>
       </div>
     </div>
   </div>
 );
 
-// Componente principal App
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("profile");
 
@@ -112,22 +105,30 @@ const App: React.FC = () => {
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <FaHome className="text-[#FF5C5C] text-2xl mx-3 cursor-pointer" onClick={() => handleNavigation("home")} />
-        <FaWindowMaximize className="text-[#FF5C5C] text-2xl mx-3 cursor-pointer" onClick={() => handleNavigation("specialties")} />
-        <FaPen className="text-[#FF5C5C] text-2xl mx-3 cursor-pointer" onClick={() => handleNavigation("contact")} />
+        <FaHome className={iconStyle} onClick={() => handleNavigation("home")} />
+        <FaWindowMaximize className={iconStyle} onClick={() => handleNavigation("specialties")} />
+        <FaPen className={iconStyle} onClick={() => handleNavigation("contact")} />
       </header>
 
-      <div className="p-4 md:p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden">
+      <div className={containerStyle}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
           <div className="flex justify-center w-full">
             <ProfileCard />
           </div>
           {activeSection === "profile" && <ProfessionalInfo />}
+          {activeSection === "specialties" && <div className="text-white">{/* Sección especialidades */}</div>}
+          {activeSection === "contact" && <div className="text-white">{/* Sección contacto */}</div>}
         </div>
       </div>
 
-      {/* Sección de llamadas a la acción */}
-      <CallToActionSection />
+      <footer className="bg-[#1A1A2E] text-gray-400 py-6 mt-12 text-center">
+        <div className="flex justify-center space-x-6 mb-4">
+          <a href="#home" className="hover:text-[#FF5C5C]">Inicio</a>
+          <a href="#specialties" className="hover:text-[#FF5C5C]">Especialidades</a>
+          <a href="#contact" className="hover:text-[#FF5C5C]">Contacto</a>
+        </div>
+        <p>&copy; 2024 Deivipluss. Todos los derechos reservados.</p>
+      </footer>
     </div>
   );
 };
