@@ -13,8 +13,8 @@ const ProfileCard: React.FC = () => (
   <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[640px] w-[350px] md:w-[344px] mx-auto md:mb-8 overflow-hidden">
     <div className="w-[200px] md:w-[240px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg overflow-hidden">
   <img
-    src="/app/imagenes/perfil.jpg
-"  // Asegúrate de reemplazar esto con la URL de la imagen que quieres mostrar
+    src="/app/imagenes/perfil.jpg"
+
     alt="Descripción de la imagen"
     className="w-full h-full object-cover"
   />
