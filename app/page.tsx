@@ -92,13 +92,6 @@ const App = () => {
       setActiveSection(section);
     }
   };
-  
-    if (isMobile()) {
-      document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      setActiveSection(section);
-    }
-  };
 
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
