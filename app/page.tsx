@@ -14,7 +14,7 @@ const ProfileCard = () => (
     <div className="w-[200px] md:w-[240px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg"></div>
     <h2 className="text-[#FF5C5C] text-2xl md:text-3xl font-bold font-poppins">DEIVIPLUSS</h2>
     <p className="text-gray-500 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      Consultor digital especialista en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18).
+      Consultor digital especialista en gestión de marcas, desarrollo gerencial, desarrollo de negocios, desarrollo de productos, transformación digital y administración de comunidades.
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
       <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
@@ -32,8 +32,8 @@ const ProfessionalInfo = () => (
         className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center"
         style={{ letterSpacing: "-1px" }}
       >
-        <span className="text-[#4A90E2]">DIGITAL </span>
-        <span className="text-[#4A90E2] opacity-40">CONSULTANT</span>
+        <span className="text-[#4A90E2]">CONSULTOR</span>
+        <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
@@ -111,6 +111,15 @@ const App = () => {
           {activeSection === "contact" && <div className="text-white">{/* Sección contacto */}</div>}
         </div>
       </div>
+
+      <footer className="bg-[#1A1A2E] text-gray-400 py-6 mt-12 text-center">
+        <div className="flex justify-center space-x-6 mb-4">
+          <a href="#home" className="hover:text-[#FF5C5C] transition-colors">Inicio</a>
+          <a href="#specialties" className="hover:text-[#FF5C5C] transition-colors">Especialidades</a>
+          <a href="#contact" className="hover:text-[#FF5C5C] transition-colors">Contacto</a>
+        </div>
+        <p className="text-sm">© 2024 DEIVIPLUSS. Todos los derechos reservados.</p>
+      </footer>
     </div>
   );
 };
