@@ -10,7 +10,7 @@ const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
 const ProfileCard: React.FC = () => (
-  <div className="bg-[#F9F9F9] p-4 md:p-5 rounded-lg flex flex-col items-center text-center space-y-3 md:space-y-4 shadow-lg h-[280px] md:h-[320px] w-[300px] md:w-[280px] mx-auto md:mb-8 overflow-hidden">
+  <div className="bg-[#F9F9F9] p-4 md:p-5 rounded-lg flex flex-col items-center text-center space-y-3 md:space-y-4 shadow-lg h-[300px] w-[300px] md:w-[280px] mx-auto md:mb-8 overflow-y-hidden">
     <div className="w-[150px] md:w-[160px] h-[150px] md:h-[160px] bg-[#FF5C5C] mb-2 md:mb-3 rounded-lg overflow-hidden">
       <img
         src="/imagenes/perfil.jpg"
@@ -33,10 +33,6 @@ const ProfileCard: React.FC = () => (
     </div>
   </div>
 );
-
-
-
-
 const ProfessionalInfo: React.FC = () => (
   <div className="w-full max-w-[800px] px-4 md:px-0">
     <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
