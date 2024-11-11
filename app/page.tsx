@@ -26,7 +26,7 @@ const ProfileCard = () => (
 );
 
 const ProfessionalInfo = () => (
-  <div>
+  <div className="w-full max-w-[800px] px-4 md:px-0">
     <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
       <h1
         className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center"
@@ -60,21 +60,21 @@ const ProfessionalInfo = () => (
       </div>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-      <div className="bg-[#FF5C5C] text-white p-6 rounded-lg relative shadow-md h-[220px] flex flex-col justify-between">
-        <div className="flex items-start">
-          <RiCustomerService2Line className="text-3xl" />
-          <h3 className="text-xl font-poppins font-semibold ml-2">CONOCE MIS SERVICIOS</h3>
+      <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between">
+        <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
+          <RiCustomerService2Line className="hidden md:block text-3xl" />
+          <h3 className="text-lg md:text-xl font-poppins font-semibold">CONOCE MIS SERVICIOS</h3>
         </div>
-        <div className="absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
+        <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
           <span className="text-xl">→</span>
         </div>
       </div>
-      <div className="bg-[#32CD32] text-white p-6 rounded-lg relative shadow-md h-[220px] flex flex-col justify-between">
-        <div className="flex items-start">
-          <RiMessage2Line className="text-3xl" />
-          <h3 className="text-xl font-poppins font-semibold ml-2">CONTACTA CONMIGO</h3>
+      <div className="bg-[#32CD32] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between">
+        <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
+          <RiMessage2Line className="hidden md:block text-3xl" />
+          <h3 className="text-lg md:text-xl font-poppins font-semibold">CONTACTA CONMIGO</h3>
         </div>
-        <div className="absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
+        <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
           <span className="text-xl">→</span>
         </div>
       </div>
@@ -85,7 +85,7 @@ const ProfessionalInfo = () => (
 const App = () => {
   const [activeSection, setActiveSection] = useState("profile");
 
-  const handleNavigation = (section: string) => {
+  const handleNavigation = (section) => {
     if (isMobile()) {
       document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
     } else {
