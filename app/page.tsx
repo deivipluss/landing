@@ -14,7 +14,7 @@ const ProfileCard: React.FC = () => (
     <div className="w-[200px] md:w-[240px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg"></div>
     <h2 className="text-[#FF5C5C] text-2xl md:text-3xl font-bold font-poppins">DEIVIPLUSS</h2>
     <p className="text-gray-500 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      Consultor digital especialista en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18).
+      Alta competencia en mercados de porte mundial, me hacen la mejor opción para hacer realidad tus proyectos
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
       <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
@@ -37,7 +37,7 @@ const ProfessionalInfo: React.FC = () => (
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
-      Experto en gestión de marcas, productos digitales y crecimiento de comunidades.
+    Especialista en el desarrollo de marcas, desarrollo de negocios, desarrollo de productos, gerencias digitales, transformación difital y gestion de comunidades en Internet
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       <div className="flex flex-col items-center md:items-start">
