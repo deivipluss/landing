@@ -10,7 +10,7 @@ const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
 const ProfileCard: React.FC = () => (
-  <div className="bg-[#F9F9F9] p-6 md:p-6 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-5 shadow-lg h-[360px] md:h-[320px] w-[300px] md:w-[280px] mx-auto md:mb-8 overflow-hidden">
+  <div className="bg-[#F9F9F9] p-6 md:p-6 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-5 shadow-lg h-[260px] md:h-[240px] w-[300px] md:w-[280px] mx-auto md:mb-8 overflow-hidden">
     <div className="w-[150px] md:w-[160px] h-[150px] md:h-[160px] bg-[#FF5C5C] mb-2 md:mb-3 rounded-lg overflow-hidden">
       <img
         src="/imagenes/perfil.jpg"
@@ -23,7 +23,7 @@ const ProfileCard: React.FC = () => (
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
     <p className="text-gray-500 mt-2 md:mt-3 text-sm md:text-base font-poppins font-light">
-      Experiencia global y habilidades avanzadas que me convierten en la mejor opción para llevar tus proyectos al siguiente nivel.
+      Experiencia global y habilidades avanzadas me convierten en la mejor opción para llevar tus proyectos al siguiente nivel.
     </p>
     <div className="flex space-x-3 mt-2 md:mt-3 justify-center">
       <FaBehance className="text-[#FF5C5C] text-lg md:text-xl" />
@@ -33,6 +33,7 @@ const ProfileCard: React.FC = () => (
     </div>
   </div>
 );
+
 
 
 const ProfessionalInfo: React.FC = () => (
