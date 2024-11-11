@@ -1,5 +1,4 @@
 "use client";
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"></link>
 import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
