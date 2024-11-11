@@ -12,17 +12,18 @@ const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
 const ProfileCard: React.FC = () => (
   <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[640px] w-[350px] md:w-[344px] mx-auto md:mb-8 overflow-hidden">
     <div className="w-[200px] md:w-[240px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg overflow-hidden">
-  <img
-    src="/imagenes/perfil.jpg" 
+      <img
+        src="/imagenes/perfil.jpg"
+        alt="Foto de perfil de Deivipluss"
+        className="w-full h-full object-cover"
+      />
+    </div>
 
-    alt="Descripción de la imagen"
-    className="w-full h-full object-cover"
-  />
-</div>
-
-    <h2 className="text-[#FF5C5C] text-2xl md:text-3xl font-bold font-poppins">DEIVIPLUSS</h2>
+    <h2 className="text-[#0D0C1D] text-2xl md:text-3xl font-bold font-poppins">
+      <span style={{ color: '#4A90E2' }}>Deivipluss</span>
+    </h2>
     <p className="text-gray-500 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      Alta competencia en mercados de porte mundial, me hacen la mejor opción para hacer realidad tus proyectos
+      Experiencia global y habilidades avanzadas que me convierten en la mejor opción para llevar tus proyectos al siguiente nivel.
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
       <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
@@ -45,7 +46,7 @@ const ProfessionalInfo: React.FC = () => (
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
-    Especialista en el desarrollo de marcas, desarrollo de negocios, desarrollo de productos, gerencias digitales, transformación difital y gestion de comunidades en Internet
+      Especialista en el desarrollo de marcas, crecimiento de negocios, desarrollo de productos y gestión digital. Transformo ideas en realidades sólidas y rentables.
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       <div className="flex flex-col items-center md:items-start">
@@ -122,11 +123,11 @@ const App: React.FC = () => {
 
       <footer className="bg-[#1A1A2E] text-gray-400 py-6 mt-12 text-center">
         <div className="flex justify-center space-x-6 mb-4">
-          <a href="#home" className="hover:text-[#FF5C5C] transition-colors">Inicio</a>
-          <a href="#specialties" className="hover:text-[#FF5C5C] transition-colors">Especialidades</a>
-          <a href="#contact" className="hover:text-[#FF5C5C] transition-colors">Contacto</a>
+          <a href="#home" className="hover:text-[#FF5C5C]">Inicio</a>
+          <a href="#specialties" className="hover:text-[#FF5C5C]">Especialidades</a>
+          <a href="#contact" className="hover:text-[#FF5C5C]">Contacto</a>
         </div>
-        <p className="text-sm">&copy; 2024 Deivipluss. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Deivipluss. Todos los derechos reservados.</p>
       </footer>
     </div>
   );
