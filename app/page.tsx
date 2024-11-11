@@ -1,4 +1,5 @@
-// Importaciones necesarias
+'use client'; // Asegúrate de que este archivo es un componente de cliente
+
 import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
@@ -111,12 +112,12 @@ const App: React.FC = () => {
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <FaHome className={iconStyle} onClick={() => handleNavigation("home")} />
-        <FaWindowMaximize className={iconStyle} onClick={() => handleNavigation("specialties")} />
-        <FaPen className={iconStyle} onClick={() => handleNavigation("contact")} />
+        <FaHome className="text-[#FF5C5C] text-2xl mx-3 cursor-pointer" onClick={() => handleNavigation("home")} />
+        <FaWindowMaximize className="text-[#FF5C5C] text-2xl mx-3 cursor-pointer" onClick={() => handleNavigation("specialties")} />
+        <FaPen className="text-[#FF5C5C] text-2xl mx-3 cursor-pointer" onClick={() => handleNavigation("contact")} />
       </header>
 
-      <div className={containerStyle}>
+      <div className="p-4 md:p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
           <div className="flex justify-center w-full">
             <ProfileCard />
@@ -125,12 +126,8 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* Añadir nueva sección de CTA */}
-      <section id="cta">
-        <div className="container mx-auto px-6">
-          <CallToActionSection />
-        </div>
-      </section>
+      {/* Sección de llamadas a la acción */}
+      <CallToActionSection />
     </div>
   );
 };
