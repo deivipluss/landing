@@ -95,7 +95,7 @@ const App = () => {
 
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
-      <header className="flex justify-center py-4 space-x-6 bg-[#1A1A2E]">
+      <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
         <FaHome className={iconStyle} onClick={() => handleNavigation("home")} />
         <FaWindowMaximize className={iconStyle} onClick={() => handleNavigation("specialties")} />
         <FaPen className={iconStyle} onClick={() => handleNavigation("contact")} />
