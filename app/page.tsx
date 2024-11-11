@@ -69,7 +69,7 @@ const ProfessionalInfo: React.FC = () => (
       </div>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-      <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between md:w-[360px]">
+      <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md flex flex-col justify-center md:justify-between w-full sm:w-[360px] md:w-[380px]">
         <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
           <RiCustomerService2Line className="hidden md:block text-3xl" />
           <h3 className="text-lg md:text-xl font-poppins font-semibold">SOLUCIONES POPULARES</h3>
@@ -78,7 +78,7 @@ const ProfessionalInfo: React.FC = () => (
           <span className="text-xl">→</span>
         </div>
       </div>
-      <div className="bg-[#32CD32] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between md:w-[360px]">
+      <div className="bg-[#32CD32] text-white p-4 md:p-6 rounded-lg relative shadow-md flex flex-col justify-center md:justify-between w-full sm:w-[360px] md:w-[380px]">
         <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
           <RiMessage2Line className="hidden md:block text-3xl" />
           <h3 className="text-lg md:text-xl font-poppins font-semibold">CONTACTA CONMIGO</h3>
@@ -121,13 +121,8 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <footer className="bg-[#1A1A2E] text-gray-400 py-6 mt-12 text-center">
-        <div className="flex justify-center space-x-6 mb-4">
-          <a href="#home" className="hover:text-[#FF5C5C]">Inicio</a>
-          <a href="#specialties" className="hover:text-[#FF5C5C]">Especialidades</a>
-          <a href="#contact" className="hover:text-[#FF5C5C]">Contacto</a>
-        </div>
-        <p>&copy; 2024 Deivipluss. Todos los derechos reservados.</p>
+      <footer className="bg-[#1A1A2E] text-gray-400 py-4 mt-12 text-center">
+        <p className="text-sm font-poppins">&copy; 2024 Deivipluss</p>
       </footer>
     </div>
   );
