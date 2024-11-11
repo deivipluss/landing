@@ -10,8 +10,8 @@ const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
 const ProfileCard: React.FC = () => (
-  <div className="bg-[#F9F9F9] p-6 md:p-6 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-5 shadow-lg h-auto md:h-auto w-[300px] md:w-[280px] mx-auto md:mb-8">
-    <div className="w-[150px] md:w-[160px] h-[150px] md:h-[160px] bg-[#FF5C5C] mb-2 md:mb-3 rounded-lg overflow-hidden">
+  <div className="bg-[#F9F9F9] p-6 md:p-6 rounded-lg flex flex-col items-center text-center space-y-3 md:space-y-4 shadow-lg h-[480px] md:h-[520px] w-[300px] md:w-[280px] mx-auto mt-[60px] md:mt-[80px]">
+    <div className="w-[150px] md:w-[160px] h-[150px] md:h-[160px] bg-[#FF5C5C] rounded-lg overflow-hidden">
       <img
         src="/imagenes/perfil.jpg"
         alt="Foto de perfil de Deivipluss"
@@ -22,10 +22,10 @@ const ProfileCard: React.FC = () => (
     <h2 className="text-[#0D0C1D] text-xl md:text-2xl font-bold font-poppins">
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
-    <p className="text-gray-500 mt-2 md:mt-3 text-sm md:text-base font-poppins font-light">
+    <p className="text-gray-500 text-sm md:text-base font-poppins font-light line-clamp-3">
       Experiencia global y habilidades avanzadas que me convierten en la mejor opción para llevar tus proyectos al siguiente nivel.
     </p>
-    <div className="flex space-x-3 mt-2 md:mt-3 justify-center">
+    <div className="flex space-x-3 justify-center">
       <FaBehance className="text-[#FF5C5C] text-lg md:text-xl" />
       <FaPinterest className="text-[#FF5C5C] text-lg md:text-xl" />
       <FaGithub className="text-[#FF5C5C] text-lg md:text-xl" />
