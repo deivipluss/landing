@@ -85,7 +85,14 @@ const ProfessionalInfo = () => (
 const App = () => {
   const [activeSection, setActiveSection] = useState("profile");
 
-  const handleNavigation = (section) => {
+  const handleNavigation = (section: string) => {
+    if (isMobile()) {
+      document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      setActiveSection(section);
+    }
+  };
+  
     if (isMobile()) {
       document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
     } else {
