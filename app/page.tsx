@@ -9,12 +9,12 @@ const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen
 
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
-const ProfileCard = () => (
+const ProfileCard: React.FC = () => (
   <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[640px] w-[350px] md:w-[344px] mx-auto md:mb-8 overflow-hidden">
     <div className="w-[200px] md:w-[240px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg"></div>
     <h2 className="text-[#FF5C5C] text-2xl md:text-3xl font-bold font-poppins">DEIVIPLUSS</h2>
     <p className="text-gray-500 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      Consultor digital especialista en gestión de marcas, desarrollo gerencial, desarrollo de negocios, desarrollo de productos, transformación digital y administración de comunidades.
+      Consultor digital especialista en gestión de marcas, desarrollo de productos, y creación de comunidades para redes sociales (+18).
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
       <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
@@ -25,14 +25,14 @@ const ProfileCard = () => (
   </div>
 );
 
-const ProfessionalInfo = () => (
+const ProfessionalInfo: React.FC = () => (
   <div className="w-full max-w-[800px] px-4 md:px-0">
     <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
       <h1
         className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center"
         style={{ letterSpacing: "-1px" }}
       >
-        <span className="text-[#4A90E2]">CONSULTOR</span>
+        <span className="text-[#4A90E2]">CONSULTOR </span>
         <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
       </h1>
     </div>
@@ -63,7 +63,7 @@ const ProfessionalInfo = () => (
       <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between">
         <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
           <RiCustomerService2Line className="hidden md:block text-3xl" />
-          <h3 className="text-lg md:text-xl font-poppins font-semibold">SOLUCIONES POPULARES/h3>
+          <h3 className="text-lg md:text-xl font-poppins font-semibold">SOLUCIONES POPULARES</h3>
         </div>
         <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
           <span className="text-xl">→</span>
@@ -82,8 +82,8 @@ const ProfessionalInfo = () => (
   </div>
 );
 
-const App = () => {
-  const [activeSection, setActiveSection] = useState("profile");
+const App: React.FC = () => {
+  const [activeSection, setActiveSection] = useState<string>("profile");
 
   const handleNavigation = (section: string) => {
     if (isMobile()) {
@@ -118,7 +118,7 @@ const App = () => {
           <a href="#specialties" className="hover:text-[#FF5C5C] transition-colors">Especialidades</a>
           <a href="#contact" className="hover:text-[#FF5C5C] transition-colors">Contacto</a>
         </div>
-        <p className="text-sm">© 2024 DEIVIPLUSS. Todos los derechos reservados.</p>
+        <p className="text-sm">&copy; 2024 Deivipluss. Todos los derechos reservados.</p>
       </footer>
     </div>
   );
