@@ -134,5 +134,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-los cajones de soluciones populares y contacta conmigo están superpuestos en desktop, ajusta el ancho, re escribe el código completo
