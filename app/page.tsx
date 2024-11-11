@@ -47,7 +47,7 @@ const ProfessionalInfo = () => (
         </p>
       </div>
       <div className="flex flex-col items-center md:items-start">
-        <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+100</p>
+        <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+85</p>
         <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
           CLIENTES<br />ASESORADOS
         </p>
@@ -63,7 +63,7 @@ const ProfessionalInfo = () => (
       <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between">
         <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
           <RiCustomerService2Line className="hidden md:block text-3xl" />
-          <h3 className="text-lg md:text-xl font-poppins font-semibold">CONOCE MIS SERVICIOS</h3>
+          <h3 className="text-lg md:text-xl font-poppins font-semibold">SOLUCIONES POPULARES/h3>
         </div>
         <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
           <span className="text-xl">→</span>
