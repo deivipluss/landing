@@ -39,22 +39,22 @@ const ProfessionalInfo = () => (
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
       Experto en gestión de marcas, productos digitales y crecimiento de comunidades.
     </p>
-    <div className="flex flex-row gap-6 md:gap-12 mt-8 px-4 md:px-0 justify-center md:justify-start">
+    <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       <div className="flex flex-col items-center md:items-start">
         <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+10</p>
-        <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight mt-2 font-poppins font-medium">
+        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
           AÑOS DE<br />EXPERIENCIA
         </p>
       </div>
       <div className="flex flex-col items-center md:items-start">
         <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+100</p>
-        <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight mt-2 font-poppins font-medium">
+        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
           CLIENTES<br />ASESORADOS
         </p>
       </div>
       <div className="flex flex-col items-center md:items-start">
         <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+50</p>
-        <p className="text-[11px] md:text-[13px] text-gray-400 max-w-[80px] leading-tight mt-2 font-poppins font-medium">
+        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
           PROYECTOS<br />DIGITALES
         </p>
       </div>
