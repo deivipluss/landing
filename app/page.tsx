@@ -35,64 +35,71 @@ const ProfileCard: React.FC = () => (
 );
 
 const ProfessionalInfo: React.FC = () => (
-  <div className="w-full max-w-[800px] px-4 md:px-0">
-    <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
+  <div className="w-full max-w-[800px] px-4 md:px-0 mx-auto">
+    {/* Título "Consultor Digital" */}
+    <div className="flex justify-start mb-6 md:mb-8">
       <h1
-        className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center"
+        className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative"
         style={{ letterSpacing: "-1px" }}
       >
         <span className="text-[#4A90E2]">CONSULTOR </span>
         <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
       </h1>
     </div>
-    <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
+
+    {/* Descripción alineada */}
+    <p className="text-[#E1E1E1] opacity-80 text-[16px] text-left px-4 md:px-0 -mt-2 font-poppins font-light">
       Especialista en el desarrollo de marcas, crecimiento de negocios, desarrollo de productos y gestión digital. Transformo ideas en realidades sólidas y rentables.
     </p>
-    <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
-      <div className="flex flex-col items-center md:items-start">
+
+    {/* Estadísticas alineadas */}
+    <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 w-full">
+      <div className="flex flex-col items-start">
         <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+10</p>
         <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
           AÑOS DE<br />EXPERIENCIA
         </p>
       </div>
-      <div className="flex flex-col items-center md:items-start">
+      <div className="flex flex-col items-start">
         <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+85</p>
         <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
           CLIENTES<br />ASESORADOS
         </p>
       </div>
-      <div className="flex flex-col items-center md:items-start">
+      <div className="flex flex-col items-start">
         <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+50</p>
         <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
           PROYECTOS<br />DIGITALES
         </p>
       </div>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 px-4">
-      <div className="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto p-4">
-        <div className="bg-red-500 text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between w-full md:w-[320px]">
-          <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
-            <RiCustomerService2Line className="hidden md:block text-3xl" />
+
+    {/* ProfessionalInfo alineado a la izquierda */}
+    <div className="mt-8">
+      <div className="flex flex-col gap-6">
+        <div className="bg-red-500 text-white p-4 md:p-6 rounded-lg shadow-md flex flex-col justify-center h-[120px] md:h-[220px] w-full">
+          <div className="flex items-start space-x-2">
+            <RiCustomerService2Line className="text-3xl" />
             <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
           </div>
-          <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
-            <span className="text-xl">→</span>
-          </div>
+          <p className="mt-2 md:mt-4 text-[13px] md:text-[15px]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+          </p>
         </div>
-
-        <div className="bg-green-500 text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between w-full md:w-[320px]">
-          <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
-            <RiMessage2Line className="hidden md:block text-3xl" />
-            <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
+        <div className="bg-green-500 text-white p-4 md:p-6 rounded-lg shadow-md flex flex-col justify-center h-[120px] md:h-[220px] w-full">
+          <div className="flex items-start space-x-2">
+            <RiCustomerService2Line className="text-3xl" />
+            <h3 className="text-lg md:text-xl font-semibold">EXPERIENCIA AMPLIA</h3>
           </div>
-          <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
-            <span className="text-xl">→</span>
-          </div>
+          <p className="mt-2 md:mt-4 text-[13px] md:text-[15px]">
+            Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+          </p>
         </div>
       </div>
     </div>
   </div>
 );
+
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("profile");
