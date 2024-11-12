@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
-import { RiCustomerService2Line, RiMessage2Line } from "react-icons/ri";
+import { RiCustomerService2Line } from "react-icons/ri";
 
 const iconStyle = "text-[#FF5C5C] text-2xl mx-3 cursor-pointer";
 const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
@@ -68,25 +68,27 @@ const ProfessionalInfo: React.FC = () => (
         </p>
       </div>
     </div>
-    {/* Aquí comienzan los cambios principales */}
-    <div className="mt-8 space-y-4 md:space-y-6 px-4 md:px-0">
-      <div className="bg-red-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[120px] flex items-center w-full">
-        <div className="flex items-center space-x-3">
-          <RiCustomerService2Line className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
+    {/* Cards section with updated layout */}
+    <div className="mt-8 space-y-4 md:space-y-0 px-4 md:px-0">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+        <div className="bg-red-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
+          <div className="flex items-center md:items-start space-x-3">
+            <RiCustomerService2Line className="text-2xl md:text-3xl" />
+            <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES</h3>
+          </div>
+          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
+            <span className="text-xl">→</span>
+          </div>
         </div>
-        <div className="absolute right-4 bg-white/20 p-2 rounded-lg">
-          <span className="text-xl">→</span>
-        </div>
-      </div>
 
-      <div className="bg-green-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[120px] flex items-center w-full">
-        <div className="flex items-center space-x-3">
-          <RiMessage2Line className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
-        </div>
-        <div className="absolute right-4 bg-white/20 p-2 rounded-lg">
-          <span className="text-xl">→</span>
+        <div className="bg-green-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
+          <div className="flex items-center md:items-start space-x-3">
+            <FaWhatsapp className="text-2xl md:text-3xl" />
+            <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
+          </div>
+          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
+            <span className="text-xl">→</span>
+          </div>
         </div>
       </div>
     </div>
