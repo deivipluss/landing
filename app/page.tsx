@@ -69,28 +69,28 @@ const ProfessionalInfo: React.FC = () => (
       </div>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 px-4">
-    <div className="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto p-4">
-      <div className="bg-red-500 text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between w-full md:w-[320px]">
-        <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
-          <RiCustomerService2Line className="hidden md:block text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
+      <div className="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto p-4">
+        <div className="bg-red-500 text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between w-full md:w-[320px]">
+          <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
+            <RiCustomerService2Line className="hidden md:block text-3xl" />
+            <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
+          </div>
+          <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
+            <span className="text-xl">→</span>
+          </div>
         </div>
-        <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
-          <span className="text-xl">→</span>
-        </div>
-      </div>
 
-      <div className="bg-green-500 text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between w-full md:w-[320px]">
-        <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
-          <RiMessage2Line className="hidden md:block text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
-        </div>
-        <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
-          <span className="text-xl">→</span>
+        <div className="bg-green-500 text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between w-full md:w-[320px]">
+          <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
+            <RiMessage2Line className="hidden md:block text-3xl" />
+            <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
+          </div>
+          <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
+            <span className="text-xl">→</span>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 );
 
@@ -124,13 +124,8 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <footer className="bg-[#1A1A2E] text-gray-400 py-6 mt-12 text-center">
-        <div className="flex justify-center space-x-6 mb-4">
-          <a href="#home" className="hover:text-[#FF5C5C]">Inicio</a>
-          <a href="#specialties" className="hover:text-[#FF5C5C]">Especialidades</a>
-          <a href="#contact" className="hover:text-[#FF5C5C]">Contacto</a>
-        </div>
-        <p>&copy; 2024 Deivipluss. Todos los derechos reservados.</p>
+      <footer className="bg-[#1A1A2E] text-white text-center py-4 mt-8">
+        &copy; {new Date().getFullYear()} Deivipluss. Todos los derechos reservados.
       </footer>
     </div>
   );
