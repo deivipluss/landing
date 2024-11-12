@@ -69,25 +69,27 @@ const ProfessionalInfo: React.FC = () => (
       </div>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 px-4">
-  <div className="bg-[#FF5C5C] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between md:w-[320px] mx-auto">
-    <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
-      <RiCustomerService2Line className="hidden md:block text-3xl" />
-      <h3 className="text-lg md:text-xl font-poppins font-semibold">SOLUCIONES POPULARES</h3>
+    <div className="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto p-4">
+      <div className="bg-red-500 text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between w-full md:w-[320px]">
+        <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
+          <RiCustomerService2Line className="hidden md:block text-3xl" />
+          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
+        </div>
+        <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
+          <span className="text-xl">→</span>
+        </div>
+      </div>
+
+      <div className="bg-green-500 text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between w-full md:w-[320px]">
+        <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
+          <RiMessage2Line className="hidden md:block text-3xl" />
+          <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
+        </div>
+        <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
+          <span className="text-xl">→</span>
+        </div>
+      </div>
     </div>
-    <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
-      <span className="text-xl">→</span>
-    </div>
-  </div>
-  <div className="bg-[#32CD32] text-white p-4 md:p-6 rounded-lg relative shadow-md h-[120px] md:h-[220px] flex flex-col justify-center md:justify-between md:w-[320px] mx-auto">
-    <div className="flex items-center md:items-start justify-center md:justify-start space-x-2">
-      <RiMessage2Line className="hidden md:block text-3xl" />
-      <h3 className="text-lg md:text-xl font-poppins font-semibold">CONTACTA CONMIGO</h3>
-    </div>
-    <div className="hidden md:block absolute bottom-4 right-4 bg-white/20 p-2 rounded-lg">
-      <span className="text-xl">→</span>
-    </div>
-  </div>
-</div>
 
   </div>
 );
