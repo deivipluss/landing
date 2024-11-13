@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
-import { RiCustomerService2Line } from "react-icons/ri";
-import { FaPencilAlt } from "react-icons/fa"; // Cambié el ícono de Soluciones por el lápiz
+import Image from "next/image"; // Importa el componente Image de Next.js
 
 const iconStyle = (section: string, activeSection: string) =>
   `text-[#FF5C5C] text-2xl mx-3 cursor-pointer ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
@@ -14,9 +13,11 @@ const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768
 const ProfileCard: React.FC = () => (
   <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[530px] w-[320px] md:w-[360px] mx-auto md:mb-12 overflow-hidden"> {/* Ensanchado y más espacio en móvil */}
     <div className="w-[180px] md:w-[220px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg overflow-hidden">
-      <img
-        src="/imagenes/perfil.jpg"
+      <Image
+        src="/imagenes/perfil.jpg" // Usa la ruta de la imagen
         alt="Foto de perfil de Deivipluss"
+        width={220} // Tamaño de imagen ajustado
+        height={283} // Tamaño de imagen ajustado
         className="w-full h-full object-cover"
       />
     </div>
@@ -113,19 +114,12 @@ const App: React.FC = () => {
   const handleNavigation = (section: string) => {
     if (isMobile()) {
       document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      setActiveSection(section); // Esto actualiza la sección activa
     }
+    setActiveSection(section);
   };
 
   return (
-    <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
-      <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <FaHome className={iconStyle("home", activeSection)} onClick={() => handleNavigation("home")} />
-        <FaWindowMaximize className={iconStyle("specialties", activeSection)} onClick={() => handleNavigation("specialties")} />
-        <FaPen className={iconStyle("contact", activeSection)} onClick={() => handleNavigation("contact")} />
-      </header>
-
+    <div className="bg-[#0D0C1D]">
       <div className={containerStyle}>
         <ProfileCard />
       </div>
