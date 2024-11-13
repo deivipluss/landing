@@ -24,7 +24,7 @@ const ProfileCard: React.FC = () => (
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
     <p className="text-gray-500 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      Mi experiencia global y mis habilidades avanzadas me convierten en la mejor opción para llevar tus proyectos al siguiente nivel.
+      Mi experiencia global junto a mis habilidades avanzadas me convierten en la mejor opción para llevar tus proyectos al siguiente nivel.
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
       <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
@@ -47,7 +47,7 @@ const ProfessionalInfo: React.FC = () => (
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
-      Especialista en el desarrollo de marcas, comunicación en internet, evolución de negocios, desarrollo de productos y gestión digital. ¡Transformo ideas en realidades sólidas y rentables!
+      Inteligencia artifical, código y alta especialidad en desarrollo de marcas, comunicación en internet, evolución de negocios, desarrollo de productos y gestión digital. ¡Transformo ideas en realidades sólidas y rentables!
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       <div className="flex flex-col items-center md:items-start">
