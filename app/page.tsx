@@ -81,7 +81,7 @@ const ActionCards: React.FC = () => (
       <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex flex-col items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
           <RiCustomerService2Line className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
+          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES </h3>
         </div>
         {!isMobile() && (
           <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
