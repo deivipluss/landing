@@ -73,9 +73,9 @@ const ProfessionalInfo: React.FC = () => (
 );
 
 const ActionCards: React.FC = () => (
-  <div className="w-full max-w-[1100px] lg:max-w-[1250px] mt-8 px-4 md:px-0">
-    <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-      <div className="bg-red-500 text-white p-6 md:p-8 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center md:items-start w-full md:w-[49%]">
+  <div className="w-full max-w-[1300px] px-4 md:px-0 mt-8">
+    <div className="flex flex-col md:flex-row gap-6">
+      <div className="bg-red-500 text-white p-6 md:p-8 rounded-lg shadow-md h-[100px] md:h-[240px] flex items-center md:items-start w-full md:flex-1">
         <div className="flex items-center md:items-start space-x-3">
           <RiCustomerService2Line className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES</h3>
@@ -85,7 +85,7 @@ const ActionCards: React.FC = () => (
         </div>
       </div>
 
-      <div className="bg-green-500 text-white p-6 md:p-8 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center md:items-start w-full md:w-[49%]">
+      <div className="bg-green-500 text-white p-6 md:p-8 rounded-lg shadow-md h-[100px] md:h-[240px] flex items-center md:items-start w-full md:flex-1">
         <div className="flex items-center md:items-start space-x-3">
           <FaWhatsapp className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
