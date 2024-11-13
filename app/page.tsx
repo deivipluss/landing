@@ -73,9 +73,9 @@ const ProfessionalInfo: React.FC = () => (
 );
 
 const ActionCards: React.FC = () => (
-  <div className="w-full max-w-7xl mx-auto px-4 md:px-0 mt-8">
-    <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full">
-      <div className="bg-red-500 text-white p-4 rounded-lg shadow-md h-[80px] md:h-[220px] w-full md:w-[48%] relative">
+  <div className="w-full max-w-[800px] mt-8 px-4 md:px-0">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+      <div className="bg-red-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
         <div className="flex items-center md:items-start space-x-3">
           <RiCustomerService2Line className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES</h3>
@@ -85,7 +85,7 @@ const ActionCards: React.FC = () => (
         </div>
       </div>
 
-      <div className="bg-green-500 text-white p-4 rounded-lg shadow-md h-[80px] md:h-[220px] w-full md:w-[48%] relative">
+      <div className="bg-green-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
         <div className="flex items-center md:items-start space-x-3">
           <FaWhatsapp className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
@@ -105,7 +105,7 @@ const App: React.FC = () => {
     if (isMobile()) {
       document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
     } else {
-      setActiveSection(section);
+      setActiveSection(section); // Esto actualiza la sección activa
     }
   };
 
@@ -116,11 +116,22 @@ const App: React.FC = () => {
         <FaWindowMaximize className={iconStyle("specialties", activeSection)} onClick={() => handleNavigation("specialties")} />
         <FaPen className={iconStyle("contact", activeSection)} onClick={() => handleNavigation("contact")} />
       </header>
+
       <div className={containerStyle}>
-        <ProfileCard />
-        <ProfessionalInfo />
-        <ActionCards />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
+          <div className="flex justify-center w-full">
+            <ProfileCard />
+          </div>
+          <div className="space-y-8">
+            <ProfessionalInfo />
+            <ActionCards />
+          </div>
+        </div>
       </div>
+
+      <footer className="bg-[#1A1A2E] text-white text-center py-4 mt-8">
+        &copy; {new Date().getFullYear()} Deivipluss. Todos los derechos reservados.
+      </footer>
     </div>
   );
 };
