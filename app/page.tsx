@@ -47,7 +47,7 @@ const ProfessionalInfo: React.FC = () => (
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
-      Inteligencia artifical, código y alta especialidad en desarrollo de marcas, comunicación en internet, evolución de negocios, desarrollo de productos y gestión digital. ¡Transformo ideas en realidades sólidas y rentables!
+      Inteligencia artifical, código y alta especialidad para el desarrollo de marcas, comunicación en internet, evolución de negocios, desarrollo de productos y gestión digital. <br>¡Transformo ideas en realidades sólidas y rentables!</br>
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       <div className="flex flex-col items-center md:items-start">
