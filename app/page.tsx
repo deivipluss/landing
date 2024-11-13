@@ -11,7 +11,7 @@ const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
 const ProfileCard: React.FC = () => (
-  <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[530px] w-[320px] md:w-[300px] mx-auto md:mb-8 overflow-hidden">
+  <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[530px] w-[320px] md:w-[360px] mx-auto md:mb-12 overflow-hidden"> {/* Ensanchado y más espacio en móvil */}
     <div className="w-[180px] md:w-[220px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg overflow-hidden">
       <img
         src="/imagenes/perfil.jpg"
@@ -73,8 +73,8 @@ const ProfessionalInfo: React.FC = () => (
 );
 
 const ActionCards: React.FC = () => (
-  <div className="w-full max-w-[1000px] mt-12 px-4 md:px-0"> {/* Aumentar el ancho y separarlo un poco más */}
-    <div className="flex flex-col md:flex-row gap-6 md:gap-8"> {/* Incremento del gap para mayor separación */}
+  <div className="w-full max-w-[1000px] mt-16 px-4 md:px-0"> {/* Aumentado el margen superior y mayor ancho */}
+    <div className="flex flex-col md:flex-row gap-8 md:gap-12"> {/* Aumento del gap para más separación */}
       <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center md:items-start w-full md:w-1/2">
         <div className="flex items-center md:items-start space-x-3">
           <RiCustomerService2Line className="text-2xl md:text-3xl" />
@@ -97,7 +97,6 @@ const ActionCards: React.FC = () => (
     </div>
   </div>
 );
-
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
