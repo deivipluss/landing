@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
 import { RiCustomerService2Line } from "react-icons/ri";
+import { FaPencilAlt } from "react-icons/fa"; // Cambié el ícono de Soluciones por el lápiz
 
 const iconStyle = (section: string, activeSection: string) =>
   `text-[#FF5C5C] text-2xl mx-3 cursor-pointer ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
@@ -74,12 +75,12 @@ const ProfessionalInfo: React.FC = () => (
 
 const ActionCards: React.FC = () => (
   <div className="w-full max-w-[1000px] mt-16 px-4 md:px-0"> {/* Aumentado el margen superior y mayor ancho */}
-    <div className="flex flex-col md:flex-row gap-8 md:gap-12"> {/* Aumento del gap para más separación */}
+    <div className="flex flex-col md:flex-row gap-8 md:gap-12 justify-center"> {/* Aumento del gap y centré los elementos */}
       {/* Tarjeta de Soluciones */}
       <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center space-y-2">
-          <RiCustomerService2Line className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
+          <FaPencilAlt className="text-2xl md:text-3xl" /> {/* Cambié el ícono a lápiz */}
+          <h3 className="text-lg md:text-xl font-semibold text-center">SOLUCIONES POPULARES</h3> {/* Centré el texto */}
         </div>
         {/* Eliminar la flecha en móvil */}
         {!isMobile() && (
@@ -93,7 +94,7 @@ const ActionCards: React.FC = () => (
       <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center space-y-2">
           <FaWhatsapp className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
+          <h3 className="text-lg md:text-xl font-semibold text-center">CONTACTA CONMIGO</h3> {/* Centré el texto */}
         </div>
         {/* Eliminar la flecha en móvil */}
         {!isMobile() && (
@@ -105,7 +106,6 @@ const ActionCards: React.FC = () => (
     </div>
   </div>
 );
-
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
@@ -127,20 +127,16 @@ const App: React.FC = () => {
       </header>
 
       <div className={containerStyle}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
-          <div className="flex justify-center w-full">
-            <ProfileCard />
-          </div>
-          <div className="space-y-8">
-            <ProfessionalInfo />
-            <ActionCards />
-          </div>
-        </div>
+        <ProfileCard />
       </div>
 
-      <footer className="bg-[#1A1A2E] text-white text-center py-4 mt-8">
-        &copy; {new Date().getFullYear()} Deivipluss. Todos los derechos reservados.
-      </footer>
+      <div className={containerStyle}>
+        <ProfessionalInfo />
+      </div>
+
+      <div className={containerStyle}>
+        <ActionCards />
+      </div>
     </div>
   );
 };
