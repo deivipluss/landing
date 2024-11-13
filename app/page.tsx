@@ -76,7 +76,7 @@ const ProfessionalInfo: React.FC = () => (
 
 const ActionCards: React.FC = () => (
   <div className="w-full max-w-[1000px] mt-16 px-4 md:px-0">
-    <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+    <div className="flex flex-col md:flex-row gap-8 md:gap-12 mt-8 md:mt-16">
       <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex flex-col items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
           <FaLightbulb className="text-2xl md:text-3xl" />
@@ -124,7 +124,7 @@ const App: React.FC = () => {
       </header>
 
       <div className={containerStyle}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 px-4 md:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full md:w-[80%] mx-auto">
           <ProfileCard />
           <ProfessionalInfo />
         </div>
