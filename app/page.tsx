@@ -75,28 +75,37 @@ const ProfessionalInfo: React.FC = () => (
 const ActionCards: React.FC = () => (
   <div className="w-full max-w-[1000px] mt-16 px-4 md:px-0"> {/* Aumentado el margen superior y mayor ancho */}
     <div className="flex flex-col md:flex-row gap-8 md:gap-12"> {/* Aumento del gap para más separación */}
-      <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center md:items-start w-full md:w-1/2">
-        <div className="flex items-center md:items-start space-x-3">
+      {/* Tarjeta de Soluciones */}
+      <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
+        <div className="flex flex-col items-center justify-center space-y-2">
           <RiCustomerService2Line className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES</h3>
         </div>
-        <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-          <span className="text-xl">→</span>
-        </div>
+        {/* Eliminar la flecha en móvil */}
+        {!isMobile() && (
+          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
+            <span className="text-xl">→</span>
+          </div>
+        )}
       </div>
 
-      <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center md:items-start w-full md:w-1/2">
-        <div className="flex items-center md:items-start space-x-3">
+      {/* Tarjeta de Contacta conmigo */}
+      <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
+        <div className="flex flex-col items-center justify-center space-y-2">
           <FaWhatsapp className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
         </div>
-        <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-          <span className="text-xl">→</span>
-        </div>
+        {/* Eliminar la flecha en móvil */}
+        {!isMobile() && (
+          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
+            <span className="text-xl">→</span>
+          </div>
+        )}
       </div>
     </div>
   </div>
 );
+
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");

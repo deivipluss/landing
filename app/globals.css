@@ -5,11 +5,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #4A90E2;
+  --secondary-color: #FF5C5C;
+  --light-bg: #F9F9F9;
+  --dark-bg: #0a0a0a;
+  --text-dark: #0D0C1D;
+  --text-light: #E1E1E1;
+  --text-muted: #888;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: var(--dark-bg);
     --foreground: #ededed;
   }
 }
@@ -40,18 +47,18 @@ body {
 }
 
 .header .icon {
-  color: #FF5C5C;
+  color: var(--secondary-color);
   font-size: 2rem;
   margin: 0 20px;
   cursor: pointer;
 }
 
 .header .icon.active {
-  color: #4A90E2;
+  color: var(--primary-color);
 }
 
 .profile-card {
-  background-color: #F9F9F9;
+  background-color: var(--light-bg);
   padding: 20px;
   border-radius: 15px;
   text-align: center;
@@ -69,13 +76,13 @@ body {
 }
 
 .profile-card h2 {
-  color: #0D0C1D;
+  color: var(--text-dark);
   font-size: 2rem;
   margin: 20px 0 10px;
 }
 
 .profile-card p {
-  color: #888;
+  color: var(--text-muted);
   font-size: 14px;
 }
 
@@ -87,7 +94,7 @@ body {
 
 .social-icons .icon {
   font-size: 24px;
-  color: #FF5C5C;
+  color: var(--secondary-color);
 }
 
 .main-content {
@@ -99,14 +106,14 @@ body {
 .main-content h1 {
   font-size: 40px;
   font-weight: bold;
-  color: #4A90E2;
+  color: var(--primary-color);
   text-align: center;
 }
 
 .main-content p {
   font-size: 16px;
   text-align: center;
-  color: #E1E1E1;
+  color: var(--text-light);
   opacity: 0.8;
   margin-top: 10px;
 }
@@ -124,12 +131,12 @@ body {
 
 .stats .stat h3 {
   font-size: 50px;
-  color: #4A90E2;
+  color: var(--primary-color);
 }
 
 .stats .stat p {
   font-size: 14px;
-  color: #888;
+  color: var(--text-muted);
   margin-top: 10px;
 }
 
@@ -140,7 +147,7 @@ body {
 }
 
 .actions .card {
-  background-color: #FF5C5C;
+  background-color: var(--secondary-color);
   padding: 20px;
   border-radius: 15px;
   color: white;
