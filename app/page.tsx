@@ -72,31 +72,34 @@ const ProfessionalInfo: React.FC = () => (
   </div>
 );
 
-const ActionCards: React.FC = () => (
-  <div className="w-full max-w-[800px] mt-8 px-4 md:px-0">
-    <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-      <div className="bg-red-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
-        <div className="flex items-center md:items-start space-x-3">
-          <RiCustomerService2Line className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES</h3>
-        </div>
-        <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-          <span className="text-xl">→</span>
-        </div>
-      </div>
+const ActionCards: React.FC = () => {
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
 
-      <div className="bg-green-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
-        <div className="flex items-center md:items-start space-x-3">
-          <FaWhatsapp className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
+  return (
+    <div className="w-full max-w-[1000px] mt-8 px-4 md:px-0">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+        <div className="bg-red-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
+          <div className="flex items-center md:items-start space-x-3">
+            <RiCustomerService2Line className="text-2xl md:text-3xl" />
+            <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES</h3>
+          </div>
+          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
+            <span className="text-xl">→</span>
+          </div>
         </div>
-        <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-          <span className="text-xl">→</span>
+
+        <div className="bg-green-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
+          <div className="flex items-center md:items-start space-x-3">
+            <FaWhatsapp className="text-2xl md:text-3xl" />
+            <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
+          </div>
+          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
+            <span className="text-xl">→</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
