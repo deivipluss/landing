@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
-import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
-import { RiCustomerService2Line } from "react-icons/ri";
+import { FaFacebook, FaLinkedin, FaBehance, FaPinterest, FaGithub } from "react-icons/fa";
+import { FaRegLightbulb } from "react-icons/fa";
 
 const iconStyle = (section: string, activeSection: string) =>
   `text-[#FF5C5C] text-2xl mx-3 cursor-pointer ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
@@ -29,10 +29,21 @@ const ProfileCard: React.FC = () => (
       ¡Transformo ideas en realidades sólidas y rentables!
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
-      <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
-      <FaPinterest className="text-[#FF5C5C] text-xl md:text-2xl" />
-      <FaGithub className="text-[#FF5C5C] text-xl md:text-2xl" />
-      <FaWhatsapp className="text-[#FF5C5C] text-xl md:text-2xl" />
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+        <FaFacebook className="text-[#FF5C5C] text-xl md:text-2xl" />
+      </a>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+        <FaLinkedin className="text-[#FF5C5C] text-xl md:text-2xl" />
+      </a>
+      <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">
+        <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
+      </a>
+      <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
+        <FaPinterest className="text-[#FF5C5C] text-xl md:text-2xl" />
+      </a>
+      <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
+        <FaGithub className="text-[#FF5C5C] text-xl md:text-2xl" />
+      </a>
     </div>
   </div>
 );
@@ -49,7 +60,7 @@ const ProfessionalInfo: React.FC = () => (
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
-      Inteligencia artifical, código y alta especialidad para el desarrollo de marcas, comunicación en internet, evolución de negocios, desarrollo de productos y gestión digital. <br />
+      Inteligencia artificial, código y alta especialidad para el desarrollo de marcas, comunicación en internet, evolución de negocios, desarrollo de productos y gestión digital. <br />
       ¡Transformo ideas en realidades sólidas y rentables!
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
@@ -80,8 +91,8 @@ const ActionCards: React.FC = () => (
     <div className="flex flex-col md:flex-row gap-8 md:gap-12">
       <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex flex-col items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
-          <RiCustomerService2Line className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES </h3>
+          <FaRegLightbulb className="text-2xl md:text-3xl" />
+          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES</h3>
         </div>
         {!isMobile() && (
           <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
@@ -119,21 +130,23 @@ const App: React.FC = () => {
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <FaHome className={iconStyle("home", activeSection)} onClick={() => handleNavigation("home")} />
-        <FaWindowMaximize className={iconStyle("specialties", activeSection)} onClick={() => handleNavigation("specialties")} />
-        <FaPen className={iconStyle("contact", activeSection)} onClick={() => handleNavigation("contact")} />
+        <FaHome
+          className={iconStyle("home", activeSection)}
+          onClick={() => handleNavigation("home")}
+        />
+        <FaWindowMaximize
+          className={iconStyle("professionalInfo", activeSection)}
+          onClick={() => handleNavigation("professionalInfo")}
+        />
+        <FaPen
+          className={iconStyle("actionCards", activeSection)}
+          onClick={() => handleNavigation("actionCards")}
+        />
       </header>
-
       <div className={containerStyle}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
-          <div className="flex justify-center w-full">
-            <ProfileCard />
-          </div>
-          <div className="space-y-8">
-            <ProfessionalInfo />
-            <ActionCards />
-          </div>
-        </div>
+        {activeSection === "home" && <ProfileCard />}
+        {activeSection === "professionalInfo" && <ProfessionalInfo />}
+        {activeSection === "actionCards" && <ActionCards />}
       </div>
     </div>
   );
