@@ -4,7 +4,8 @@ import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
 import { RiCustomerService2Line } from "react-icons/ri";
 
-const iconStyle = "text-[#FF5C5C] text-2xl mx-3 cursor-pointer";
+const iconStyle = (section: string, activeSection: string) =>
+  `text-[#FF5C5C] text-2xl mx-3 cursor-pointer ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
 const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
 
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
@@ -72,7 +73,7 @@ const ProfessionalInfo: React.FC = () => (
 );
 
 const ActionCards: React.FC = () => (
-  <div className="w-full md:w-[900px] mt-8 px-4 md:px-0">
+  <div className="w-full max-w-[800px] mt-8 px-4 md:px-0">
     <div className="flex flex-col md:flex-row gap-4 md:gap-6">
       <div className="bg-red-500 text-white p-4 rounded-lg relative shadow-md h-[80px] md:h-[220px] flex items-center md:items-start w-full md:w-1/2">
         <div className="flex items-center md:items-start space-x-3">
@@ -98,22 +99,22 @@ const ActionCards: React.FC = () => (
 );
 
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>("profile");
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   const handleNavigation = (section: string) => {
     if (isMobile()) {
       document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
     } else {
-      setActiveSection(section);
+      setActiveSection(section); // Esto actualiza la sección activa
     }
   };
 
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <FaHome className={iconStyle} onClick={() => handleNavigation("home")} />
-        <FaWindowMaximize className={iconStyle} onClick={() => handleNavigation("specialties")} />
-        <FaPen className={iconStyle} onClick={() => handleNavigation("contact")} />
+        <FaHome className={iconStyle("home", activeSection)} onClick={() => handleNavigation("home")} />
+        <FaWindowMaximize className={iconStyle("specialties", activeSection)} onClick={() => handleNavigation("specialties")} />
+        <FaPen className={iconStyle("contact", activeSection)} onClick={() => handleNavigation("contact")} />
       </header>
 
       <div className={containerStyle}>
