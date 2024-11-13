@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
-import { FaFacebook, FaLinkedin, FaBehance, FaPinterest, FaGithub } from "react-icons/fa";
-import { FaRegLightbulb } from "react-icons/fa";
+import { FaHome, FaWindowMaximize, FaPen, FaLightbulb, FaFacebook, FaLinkedin, FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
 
 const iconStyle = (section: string, activeSection: string) =>
   `text-[#FF5C5C] text-2xl mx-3 cursor-pointer ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
@@ -29,21 +27,11 @@ const ProfileCard: React.FC = () => (
       ¡Transformo ideas en realidades sólidas y rentables!
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
-      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-        <FaFacebook className="text-[#FF5C5C] text-xl md:text-2xl" />
-      </a>
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-        <FaLinkedin className="text-[#FF5C5C] text-xl md:text-2xl" />
-      </a>
-      <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">
-        <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
-      </a>
-      <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
-        <FaPinterest className="text-[#FF5C5C] text-xl md:text-2xl" />
-      </a>
-      <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
-        <FaGithub className="text-[#FF5C5C] text-xl md:text-2xl" />
-      </a>
+      <FaFacebook className="text-[#FF5C5C] text-xl md:text-2xl" />
+      <FaLinkedin className="text-[#FF5C5C] text-xl md:text-2xl" />
+      <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
+      <FaPinterest className="text-[#FF5C5C] text-xl md:text-2xl" />
+      <FaGithub className="text-[#FF5C5C] text-xl md:text-2xl" />
     </div>
   </div>
 );
@@ -91,7 +79,7 @@ const ActionCards: React.FC = () => (
     <div className="flex flex-col md:flex-row gap-8 md:gap-12">
       <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex flex-col items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
-          <FaRegLightbulb className="text-2xl md:text-3xl" />
+          <FaLightbulb className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES</h3>
         </div>
         {!isMobile() && (
@@ -130,24 +118,19 @@ const App: React.FC = () => {
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <FaHome
-          className={iconStyle("home", activeSection)}
-          onClick={() => handleNavigation("home")}
-        />
-        <FaWindowMaximize
-          className={iconStyle("professionalInfo", activeSection)}
-          onClick={() => handleNavigation("professionalInfo")}
-        />
-        <FaPen
-          className={iconStyle("actionCards", activeSection)}
-          onClick={() => handleNavigation("actionCards")}
-        />
+        <FaHome className={iconStyle("home", activeSection)} onClick={() => handleNavigation("home")} />
+        <FaWindowMaximize className={iconStyle("specialties", activeSection)} onClick={() => handleNavigation("specialties")} />
+        <FaPen className={iconStyle("contact", activeSection)} onClick={() => handleNavigation("contact")} />
       </header>
+
       <div className={containerStyle}>
-        {activeSection === "home" && <ProfileCard />}
-        {activeSection === "professionalInfo" && <ProfessionalInfo />}
-        {activeSection === "actionCards" && <ActionCards />}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 px-4 md:px-8 w-full">
+          <ProfileCard />
+          <ProfessionalInfo />
+        </div>
       </div>
+
+      <ActionCards />
     </div>
   );
 };
