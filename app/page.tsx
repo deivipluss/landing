@@ -73,7 +73,8 @@ const ProfessionalInfo: React.FC = () => (
 );
 
 const ActionCards: React.FC = () => (
-  <div style={{ maxWidth: '1300px' }} className="px-4 md:px-0 mt-8 mx-auto">
+  <div className="w-full max-w-screen-2xl mx-auto px-4 md:px-0">
+  <div style={{ maxWidth: '1300px' }} className="mt-8">
     <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full">
     <div className="bg-red-500 text-white p-4 rounded-lg shadow-md h-[80px] md:h-[220px] w-full md:w-[48%]">
         <div className="flex items-center md:items-start space-x-3">
