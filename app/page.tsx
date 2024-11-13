@@ -94,6 +94,7 @@ const ActionCards: React.FC = () => (
         <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
           <span className="text-xl">→</span>
         </div>
+        </div>
       </div>
     </div>
   </div>
