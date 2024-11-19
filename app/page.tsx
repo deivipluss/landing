@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
 import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
-import { RiCustomerService2Line } from "react-icons/ri";
+import { FaRegLightbulb  } from "react-icons/ri";
 
 const iconStyle = (section: string, activeSection: string) =>
   `text-[#FF5C5C] text-2xl mx-3 cursor-pointer ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
@@ -77,8 +77,8 @@ const ActionCards: React.FC = () => (
     <div className="flex flex-col md:flex-row gap-8 md:gap-12"> {/* Aumento del gap para más separación */}
       {/* Tarjeta de Soluciones */}
       <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <RiCustomerService2Line className="text-2xl md:text-3xl" />
+        <div className="flex flex-col items-center justify-center text-center space-y-2">
+          <FaRegLightbulb className="text-2xl md:text-3xl" /> {/* Cambiado el ícono */}
           <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
         </div>
         {/* Eliminar la flecha en móvil */}
@@ -91,7 +91,7 @@ const ActionCards: React.FC = () => (
 
       {/* Tarjeta de Contacta conmigo */}
       <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
-        <div className="flex flex-col items-center justify-center space-y-2">
+        <div className="flex flex-col items-center justify-center text-center space-y-2">
           <FaWhatsapp className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
         </div>
