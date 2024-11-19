@@ -139,7 +139,7 @@ const App: React.FC = () => {
       </div>
 
       <footer className="bg-[#1A1A2E] text-white text-center py-4 mt-8">
-        &copy; {new Date().getFullYear()} Deivipluss. Todos los derechos reservados.
+        &copy; {new Date().getFullYear()} @ Deivipluss. Todos los derechos reservados.
       </footer>
     </div>
   );
