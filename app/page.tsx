@@ -35,40 +35,42 @@ const ProfileCard: React.FC = () => (
   </div>
 );
 
-const ActionCards: React.FC = () => (
-  <div className="w-full max-w-[1000px] mt-16 px-4 md:px-0"> 
-    <div className="flex flex-col md:flex-row gap-8 md:gap-12"> 
-      {/* Tarjeta de Soluciones */}
-      <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <RiLightbulbLine className="text-2xl md:text-3xl" /> {/* Cambiado de RiCustomerService2Line a RiLightbulbLine */}
-          <h3 className="text-lg md:text-xl font-semibold text-center w-full">SOLUCIONES POPULARES</h3>
-        </div>
-        {!isMobile() && (
-          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-            <span className="text-xl">→</span>
-          </div>
-        )}
+const ProfessionalInfo: React.FC = () => (
+  <div className="w-full max-w-[800px] px-4 md:px-0">
+    <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
+      <h1
+        className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center"
+        style={{ letterSpacing: "-1px" }}
+      >
+        <span className="text-[#4A90E2]">CONSULTOR </span>
+        <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
+      </h1>
+    </div>
+    <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
+      Especialista en el desarrollo de marcas, comunicación en internet, evolución de negocios, desarrollo de productos y gestión digital. ¡Transformo ideas en realidades sólidas y rentables!
+    </p>
+    <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
+      <div className="flex flex-col items-center md:items-start">
+        <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+10</p>
+        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
+          AÑOS DE<br />EXPERIENCIA
+        </p>
       </div>
-
-      {/* Tarjeta de Contacta conmigo */}
-      <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <FaWhatsapp className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold text-center w-full">CONTACTA CONMIGO</h3>
-        </div>
-        {!isMobile() && (
-          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-            <span className="text-xl">→</span>
-          </div>
-        )}
+      <div className="flex flex-col items-center md:items-start">
+        <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+85</p>
+        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
+          CLIENTES<br />ASESORADOS
+        </p>
+      </div>
+      <div className="flex flex-col items-center md:items-start">
+        <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+50</p>
+        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
+          PROYECTOS<br />DIGITALES
+        </p>
       </div>
     </div>
   </div>
 );
-
-// Añadir la importación del nuevo icono al inicio del archivo
-import { RiLightbulbLine } from "react-icons/ri";
 
 const ActionCards: React.FC = () => (
   <div className="w-full max-w-[1000px] mt-16 px-4 md:px-0"> {/* Aumentado el margen superior y mayor ancho */}
