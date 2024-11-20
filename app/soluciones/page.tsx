@@ -1,15 +1,16 @@
 "use client";
 import React from "react";
 import { 
-  FaLaptopCode, 
+  FaUserTie, 
   FaChartLine, 
   FaRobot, 
-  FaMobileAlt, 
+  FaUserCircle, 
+  FaLaptopCode, 
   FaShoppingCart, 
+  FaMobileAlt, 
   FaNetworkWired, 
-  FaUserTie, 
   FaChalkboardTeacher, 
-  FaUserCircle 
+  FaCoffee 
 } from "react-icons/fa";
 import Link from "next/link"; // Importamos Link de Next.js
 
@@ -38,10 +39,10 @@ const SolutionCard: React.FC<{
 const SolutionsPage: React.FC = () => {
   const solutions = [
     {
-      icon: FaLaptopCode,
-      title: "Desarrollo Web Profesional",
-      description: "Creamos sitios web modernos, responsivos y de alto rendimiento que representan tu marca.",
-      color: "blue"
+      icon: FaUserTie,
+      title: "Branding Digital",
+      description: "Creamos identidades de marca sólidas y estrategias de comunicación efectivas.",
+      color: "orange"
     },
     {
       icon: FaChartLine,
@@ -56,10 +57,16 @@ const SolutionsPage: React.FC = () => {
       color: "purple"
     },
     {
-      icon: FaMobileAlt,
-      title: "Desarrollo de Apps",
-      description: "Diseñamos aplicaciones móviles intuitivas y funcionales para iOS y Android.",
-      color: "indigo"
+      icon: FaCoffee,
+      title: "Consultoría OnlyFans",
+      description: "Te ayudamos a gestionar y optimizar tu cuenta de OnlyFans para maximizar tus ganancias.",
+      color: "pink"
+    },
+    {
+      icon: FaLaptopCode,
+      title: "Desarrollo Web Profesional",
+      description: "Creamos sitios web modernos, responsivos y de alto rendimiento que representan tu marca.",
+      color: "blue"
     },
     {
       icon: FaShoppingCart,
@@ -68,28 +75,28 @@ const SolutionsPage: React.FC = () => {
       color: "red"
     },
     {
+      icon: FaMobileAlt,
+      title: "Desarrollo de Apps",
+      description: "Diseñamos aplicaciones móviles intuitivas y funcionales para iOS y Android.",
+      color: "indigo"
+    },
+    {
       icon: FaNetworkWired,
       title: "Consultoría Tecnológica",
       description: "Asesoramiento integral en transformación digital y adopción de nuevas tecnologías.",
       color: "teal"
     },
     {
-      icon: FaUserTie,
-      title: "Branding Digital",
-      description: "Creamos identidades de marca sólidas y estrategias de comunicación efectivas.",
-      color: "orange"
+      icon: FaUserCircle,
+      title: "Desarrollo de Marca Personal",
+      description: "Te ayudamos a construir y consolidar tu marca personal para destacar en el mundo digital.",
+      color: "yellow"
     },
     {
       icon: FaChalkboardTeacher,
       title: "Entrenamientos para Gerentes",
       description: "Capacitación especializada para gerentes y líderes de equipos en la adopción de herramientas digitales y estrategias efectivas.",
-      color: "yellow"
-    },
-    {
-      icon: FaUserCircle,
-      title: "Desarrollo de Marca Personal",
-      description: "Te ayudamos a construir y consolidar tu marca personal para destacar en el mundo digital.",
-      color: "pink"
+      color: "blue"
     }
   ];
 
