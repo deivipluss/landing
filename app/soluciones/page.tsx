@@ -96,7 +96,7 @@ const SolutionsPage: React.FC = () => {
       </div>
 
       <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm">
-        © 2024 Deivipluss. Soluciones Digitales Innovadoras.
+        © 2024 Deivipluss. Soluciones Digitales.
       </footer>
     </div>
   );
