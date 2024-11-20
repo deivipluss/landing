@@ -11,6 +11,7 @@ import {
   FaBehance, 
   FaPinterest 
 } from "react-icons/fa";
+import Link from 'next/link';
 
 const iconStyle = (section: string, activeSection: string) =>
   `text-[#FF5C5C] text-2xl mx-3 cursor-pointer hover:text-[#4A90E2] transition-colors ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
@@ -93,17 +94,19 @@ const ProfessionalInfo: React.FC = () => (
 const ActionCards: React.FC = () => (
   <div className="w-full max-w-[1000px] mt-16 px-4 md:px-0">
     <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-      <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
-        <div className="flex flex-col items-center justify-center text-center space-y-2">
-          <FaLightbulb className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
-        </div>
-        {!isMobile() && (
-          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-            <span className="text-xl">→</span>
+      <Link href="/soluciones" className="w-full md:w-1/2">
+        <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full">
+          <div className="flex flex-col items-center justify-center text-center space-y-2">
+            <FaLightbulb className="text-2xl md:text-3xl" />
+            <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
           </div>
-        )}
-      </div>
+          {!isMobile() && (
+            <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
+              <span className="text-xl">→</span>
+            </div>
+          )}
+        </div>
+      </Link>
       <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
           <FaEnvelope className="text-2xl md:text-3xl" />
@@ -140,13 +143,10 @@ const App: React.FC = () => {
           <FaHome className={iconStyle("home", activeSection)} />
           <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Home</span>
         </button>
-        <button 
-          className="flex flex-col items-center group" 
-          onClick={() => handleNavigation("soluciones")}
-        >
+        <Link href="/soluciones" className="flex flex-col items-center group">
           <FaLightbulb className={iconStyle("soluciones", activeSection)} />
           <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Soluciones</span>
-        </button>
+        </Link>
         <button 
           className="flex flex-col items-center group" 
           onClick={() => handleNavigation("blog")}
