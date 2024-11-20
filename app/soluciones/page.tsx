@@ -11,6 +11,7 @@ import {
   FaChalkboardTeacher, 
   FaUserCircle 
 } from "react-icons/fa";
+import Link from "next/link"; // Importamos Link de Next.js
 
 const SolutionCard: React.FC<{
   icon: React.ElementType, 
@@ -99,9 +100,9 @@ const SolutionsPage: React.FC = () => {
         <div className="flex justify-between items-center px-6">
           <h1 className="text-[#4A90E2] text-3xl font-bold">Mis Soluciones</h1>
           <nav className="space-x-6">
-            <a href="/" className="text-white hover:text-[#4A90E2]">Inicio</a>
-            <a href="#services" className="text-white hover:text-[#4A90E2]">Servicios</a>
-            <a href="#contact" className="text-white hover:text-[#4A90E2]">Contacto</a>
+            <Link href="/" className="text-white hover:text-[#4A90E2]">Inicio</Link>
+            <Link href="#services" className="text-white hover:text-[#4A90E2]">Servicios</Link>
+            <Link href="#contact" className="text-white hover:text-[#4A90E2]">Contacto</Link>
           </nav>
         </div>
       </header>
