@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { FaHome, FaWindowMaximize, FaPen } from "react-icons/fa";
-import { FaBehance, FaPinterest, FaGithub, FaWhatsapp } from "react-icons/fa";
-import { RiLightbulbLine } from "react-icons/ri"; // Corregido: importando desde react-icons/ri
+import { FaHome, FaWindowMaximize, FaPen, FaLinkedin, FaFacebook, FaGithub, FaBehance, FaPinterest } from "react-icons/fa";
+import { RiLightbulbLine } from "react-icons/ri";
 
 const iconStyle = (section: string, activeSection: string) =>
   `text-[#FF5C5C] text-2xl mx-3 cursor-pointer ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
@@ -26,10 +25,21 @@ const ProfileCard: React.FC = () => (
       Mi experiencia global y mis habilidades avanzadas me convierten en la mejor opción para llevar tus proyectos al siguiente nivel.
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
-      <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl" />
-      <FaPinterest className="text-[#FF5C5C] text-xl md:text-2xl" />
-      <FaGithub className="text-[#FF5C5C] text-xl md:text-2xl" />
-      <FaWhatsapp className="text-[#FF5C5C] text-xl md:text-2xl" />
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <FaLinkedin className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <FaFacebook className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <FaGithub className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <FaPinterest className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
+      </a>
     </div>
   </div>
 );
@@ -87,7 +97,7 @@ const ActionCards: React.FC = () => (
       </div>
       <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
-          <FaWhatsapp className="text-2xl md:text-3xl" />
+          <RiLightbulbLine className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
         </div>
         {!isMobile() && (
