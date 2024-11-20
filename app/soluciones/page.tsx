@@ -7,7 +7,9 @@ import {
   FaMobileAlt, 
   FaShoppingCart, 
   FaNetworkWired, 
-  FaUserTie 
+  FaUserTie, 
+  FaChalkboardTeacher, 
+  FaUserCircle 
 } from "react-icons/fa";
 
 const SolutionCard: React.FC<{
@@ -17,9 +19,9 @@ const SolutionCard: React.FC<{
   color: string
 }> = ({ icon: Icon, title, description, color }) => (
   <div 
-    className={`bg-${color}-500 text-white p-6 rounded-lg shadow-lg 
+    className={`bg-${color}-500 text-white p-6 rounded-lg shadow-xl 
     transform transition-all duration-300 hover:scale-105 
-    flex flex-col justify-between h-[300px] md:h-[350px]`}
+    flex flex-col justify-between h-[350px] md:h-[400px]`}
   >
     <div className="flex flex-col items-center text-center space-y-4">
       <Icon className="text-4xl md:text-5xl mb-4" />
@@ -75,16 +77,38 @@ const SolutionsPage: React.FC = () => {
       title: "Branding Digital",
       description: "Creamos identidades de marca sólidas y estrategias de comunicación efectivas.",
       color: "orange"
+    },
+    {
+      icon: FaChalkboardTeacher,
+      title: "Entrenamientos para Gerentes",
+      description: "Capacitación especializada para gerentes y líderes de equipos en la adopción de herramientas digitales y estrategias efectivas.",
+      color: "yellow"
+    },
+    {
+      icon: FaUserCircle,
+      title: "Desarrollo de Marca Personal",
+      description: "Te ayudamos a construir y consolidar tu marca personal para destacar en el mundo digital.",
+      color: "pink"
     }
   ];
 
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
-      <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <h1 className="text-[#4A90E2] text-2xl font-bold">Mis Soluciones</h1>
+      {/* Header with Navigation */}
+      <header className="bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-6xl mx-auto mt-8 py-4">
+        <div className="flex justify-between items-center px-6">
+          <h1 className="text-[#4A90E2] text-3xl font-bold">Mis Soluciones</h1>
+          <nav className="space-x-6">
+            <a href="/" className="text-white hover:text-[#4A90E2]">Inicio</a>
+            <a href="#services" className="text-white hover:text-[#4A90E2]">Servicios</a>
+            <a href="#contact" className="text-white hover:text-[#4A90E2]">Contacto</a>
+          </nav>
+        </div>
       </header>
 
-      <div className="container mx-auto px-4 py-12">
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-12" id="services">
+        <h2 className="text-3xl text-white font-bold text-center mb-8">Soluciones Digitales para Impulsar tu Negocio</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {solutions.map((solution, index) => (
             <SolutionCard 
@@ -95,8 +119,9 @@ const SolutionsPage: React.FC = () => {
         </div>
       </div>
 
-      <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm">
-        © 2024 Deivipluss. Soluciones Digitales.
+      {/* Footer */}
+      <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm" id="contact">
+        <p>© 2024 Deivipluss. Soluciones Digitales.</p>
       </footer>
     </div>
   );
