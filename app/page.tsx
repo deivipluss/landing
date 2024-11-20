@@ -1,10 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import { FaHome, FaWindowMaximize, FaPen, FaLinkedin, FaFacebook, FaGithub, FaBehance, FaPinterest } from "react-icons/fa";
-import { RiLightbulbLine } from "react-icons/ri";
+import { 
+  FaHome, 
+  FaLightbulb, 
+  FaBlog, 
+  FaEnvelope,
+  FaLinkedin, 
+  FaFacebook, 
+  FaGithub, 
+  FaBehance, 
+  FaPinterest 
+} from "react-icons/fa";
 
 const iconStyle = (section: string, activeSection: string) =>
-  `text-[#FF5C5C] text-2xl mx-3 cursor-pointer ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
+  `text-[#FF5C5C] text-2xl mx-3 cursor-pointer hover:text-[#4A90E2] transition-colors ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
 const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
 
 const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
@@ -86,7 +95,7 @@ const ActionCards: React.FC = () => (
     <div className="flex flex-col md:flex-row gap-8 md:gap-12">
       <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
-          <RiLightbulbLine className="text-2xl md:text-3xl" />
+          <FaLightbulb className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
         </div>
         {!isMobile() && (
@@ -97,7 +106,7 @@ const ActionCards: React.FC = () => (
       </div>
       <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
-          <RiLightbulbLine className="text-2xl md:text-3xl" />
+          <FaEnvelope className="text-2xl md:text-3xl" />
           <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
         </div>
         {!isMobile() && (
@@ -124,9 +133,34 @@ const App: React.FC = () => {
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
       <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <FaHome className={iconStyle("home", activeSection)} onClick={() => handleNavigation("home")} />
-        <FaWindowMaximize className={iconStyle("specialties", activeSection)} onClick={() => handleNavigation("specialties")} />
-        <FaPen className={iconStyle("contact", activeSection)} onClick={() => handleNavigation("contact")} />
+        <button 
+          className="flex flex-col items-center group" 
+          onClick={() => handleNavigation("home")}
+        >
+          <FaHome className={iconStyle("home", activeSection)} />
+          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Home</span>
+        </button>
+        <button 
+          className="flex flex-col items-center group" 
+          onClick={() => handleNavigation("soluciones")}
+        >
+          <FaLightbulb className={iconStyle("soluciones", activeSection)} />
+          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Soluciones</span>
+        </button>
+        <button 
+          className="flex flex-col items-center group" 
+          onClick={() => handleNavigation("blog")}
+        >
+          <FaBlog className={iconStyle("blog", activeSection)} />
+          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Blog</span>
+        </button>
+        <button 
+          className="flex flex-col items-center group" 
+          onClick={() => handleNavigation("contacto")}
+        >
+          <FaEnvelope className={iconStyle("contacto", activeSection)} />
+          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Contacto</span>
+        </button>
       </header>
 
       <div className={containerStyle}>
