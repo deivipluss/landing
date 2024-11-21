@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { FaHome, FaBlog, FaEnvelope } from "react-icons/fa"; // Eliminamos FaLightbulb ya que no se usa
+import { FaHome, FaBlog, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
 
 const iconStyle = (section: string, activeSection: string) =>
-  `text-[#FF5C5C] text-2xl mx-3 cursor-pointer hover:text-[#4A90E2] transition-colors ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
+  `text-[var(--secondary-color)] text-2xl mx-3 cursor-pointer hover:text-[var(--primary-color)] transition-colors ${activeSection === section ? 'text-[var(--primary-color)]' : ''}`;
 
-const containerStyle = "p-4 md:p-8 flex flex-col items-center bg-[#0D0C1D] overflow-hidden min-h-screen";
+const containerStyle = "p-4 md:p-8 flex flex-col items-center bg-[var(--foreground)] overflow-hidden min-h-screen";
 
 const services = [
   {
@@ -52,7 +52,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0D0C1D] min-h-screen">
+    <div className="bg-[var(--background)] min-h-screen">
       {/* Navigation Bar */}
       <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
         <button 
@@ -60,18 +60,18 @@ const App: React.FC = () => {
           onClick={() => handleNavigation("home")}
         >
           <FaHome className={iconStyle("home", activeSection)} />
-          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Inicio</span>
+          <span className="text-xs text-[var(--secondary-color)] group-hover:text-[var(--primary-color)] transition-colors">Inicio</span>
         </button>
         <button 
           className="flex flex-col items-center group" 
           onClick={() => handleNavigation("contacto")}
         >
           <FaEnvelope className={iconStyle("contacto", activeSection)} />
-          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Contacto</span>
+          <span className="text-xs text-[var(--secondary-color)] group-hover:text-[var(--primary-color)] transition-colors">Contacto</span>
         </button>
         <Link href="/blog" className="flex flex-col items-center group">
           <FaBlog className={iconStyle("blog", activeSection)} />
-          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Blog</span>
+          <span className="text-xs text-[var(--secondary-color)] group-hover:text-[var(--primary-color)] transition-colors">Blog</span>
         </Link>
       </header>
 
@@ -81,16 +81,17 @@ const App: React.FC = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="bg-[#1A1A2E] text-[#E1E1E1] p-6 rounded-lg shadow-md transition-transform hover:scale-105"
+              className="bg-[#1A1A2E] text-[var(--text-light)] p-6 rounded-lg shadow-md transition-transform hover:scale-105"
             >
-              <h3 className="text-2xl font-bold mb-4 text-[#4A90E2]">{service.title}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-[var(--primary-color)]">{service.title}</h3>
               <p className="text-sm font-light">{service.description}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm">
+      {/* Footer */}
+      <footer className="bg-[#1A1A2E] text-center py-6 text-[var(--text-muted)] text-sm">
         © 2024 Deivipluss. Todos los derechos reservados.
       </footer>
     </div>
