@@ -45,37 +45,29 @@ const Soluciones = () => {
       <div className={containerStyle}>
         <div className="w-full max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#FF5C5C] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">Branding corporativo y comercial</h3>
-              <p>Construcción y desarrollo de identidades de marca impactantes.</p>
+            <div className="bg-[#FF5C5C] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
+              <h3 className="text-xl font-semibold">Branding Corporativo</h3>
             </div>
-            <div className="bg-[#4A90E2] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">Marca Personal</h3>
-              <p>Potencia tu imagen profesional y personal.</p>
+            <div className="bg-[#4A90E2] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
+              <h3 className="text-xl font-semibold">Marca Personal</h3>
             </div>
-            <div className="bg-[#FFC107] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">Entrenamiento Gerencial</h3>
-              <p>Capacitación para líderes que buscan resultados extraordinarios.</p>
+            <div className="bg-[#FFC107] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
+              <h3 className="text-xl font-semibold">Entrenamiento Gerencial</h3>
             </div>
-            <div className="bg-[#00C851] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">Community Manager</h3>
-              <p>Gestión de redes sociales con estrategias efectivas.</p>
+            <div className="bg-[#00C851] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
+              <h3 className="text-xl font-semibold">Community Manager</h3>
             </div>
-            <div className="bg-[#33B5E5] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">Contenido y estrategia digital</h3>
-              <p>Diseño y ejecución de campañas digitales de alto impacto.</p>
+            <div className="bg-[#33B5E5] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
+              <h3 className="text-xl font-semibold">Contenido Digital</h3>
             </div>
-            <div className="bg-[#AA66CC] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">Ecommerce</h3>
-              <p>Soluciones para construir y optimizar tiendas en línea.</p>
+            <div className="bg-[#AA66CC] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
+              <h3 className="text-xl font-semibold">Ecommerce</h3>
             </div>
-            <div className="bg-[#FF4444] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">IA para negocios</h3>
-              <p>Integración de inteligencia artificial para automatización y análisis.</p>
+            <div className="bg-[#FF4444] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
+              <h3 className="text-xl font-semibold">IA para Negocios</h3>
             </div>
-            <div className="bg-[#2BBBAD] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">Consultoría Only Fans</h3>
-              <p>Estrategias especializadas para maximizar tus ingresos.</p>
+            <div className="bg-[#2BBBAD] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
+              <h3 className="text-xl font-semibold">Consultoría OnlyFans</h3>
             </div>
           </div>
         </div>
