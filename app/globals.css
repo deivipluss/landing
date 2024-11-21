@@ -146,6 +146,11 @@ body {
   transition: opacity 0.3s ease;
 }
 
+.actions .card .description .icon {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
 .actions .card.expanded {
   background-color: white;
   color: black;
