@@ -4,7 +4,11 @@ import {
   FaHome, 
   FaLightbulb, 
   FaBlog, 
-  FaEnvelope 
+  FaEnvelope, 
+  FaChartLine, 
+  FaCog, 
+  FaDollarSign, 
+  FaTools 
 } from "react-icons/fa";
 import Link from 'next/link';
 
@@ -25,16 +29,28 @@ const Soluciones = () => {
     setExpandedCard(expandedCard === cardName ? null : cardName);
   };
 
-  // Descripción de las soluciones
+  // Descripción de las soluciones, ahora más orientada a la transformación digital y optimización
   const cardDescriptions: { [key: string]: string } = {
-    branding: "Branding Corporativo: Crear una imagen sólida y coherente para tu empresa.",
-    marcaPersonal: "Marca Personal: Desarrolla tu identidad personal y proyecta una imagen única.",
-    entrenamiento: "Entrenamiento Gerencial: Capacitación para líderes de empresas y equipos.",
-    communityManager: "Community Manager: Gestión de redes sociales para conectar con tu audiencia.",
-    contenidoDigital: "Contenido Digital: Creación y distribución de contenido atractivo en línea.",
-    ecommerce: "Ecommerce: Desarrolla y optimiza tu tienda online para vender de manera efectiva.",
-    iaNegocios: "IA para Negocios: Implementación de inteligencia artificial para mejorar procesos empresariales.",
-    onlyfans: "Consultoría OnlyFans: Asesoría estratégica para creadores en la plataforma OnlyFans.",
+    branding: "Transforma tu marca: Crea una imagen sólida y coherente con la evolución digital para destacar en un mercado competitivo.",
+    marcaPersonal: "Desarrolla tu identidad digital: Potencia tu marca personal en plataformas online para alcanzar nuevos mercados.",
+    entrenamiento: "Capacitación para líderes: Formación digital y estratégica para gerentes y equipos, con un enfoque en optimización y crecimiento.",
+    communityManager: "Gestión digital de redes: Conecta de manera efectiva con tu audiencia y aprovecha las redes sociales como canales rentables.",
+    contenidoDigital: "Contenido de valor: Desarrolla contenido estratégico que impulse el engagement y contribuya a la conversión.",
+    ecommerce: "Ecommerce inteligente: Optimiza tu tienda online con herramientas digitales para mejorar las ventas y la experiencia del cliente.",
+    iaNegocios: "Inteligencia Artificial para negocios: Mejora la eficiencia de tus procesos empresariales con la implementación de IA en operaciones clave.",
+    onlyfans: "Consultoría OnlyFans: Estrategias digitales para maximizar el rendimiento en plataformas de contenido exclusivo y aumentar la rentabilidad.",
+  };
+
+  // Íconos representativos de la transformación digital
+  const cardIcons = {
+    branding: <FaChartLine />,
+    marcaPersonal: <FaTools />,
+    entrenamiento: <FaCog />,
+    communityManager: <FaLightbulb />,
+    contenidoDigital: <FaDollarSign />,
+    ecommerce: <FaChartLine />,
+    iaNegocios: <FaCog />,
+    onlyfans: <FaLightbulb />,
   };
 
   return (
@@ -62,6 +78,7 @@ const Soluciones = () => {
       {/* Main Content */}
       <div className={containerStyle}>
         <div className="w-full max-w-4xl">
+          <h2 className="text-3xl font-bold text-[#FF5C5C] text-center mb-10">Soluciones para la Revolución Digital</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {Object.keys(cardDescriptions).map((card, index) => (
               <div
@@ -71,6 +88,7 @@ const Soluciones = () => {
                 } text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center cursor-pointer`}
                 onClick={() => toggleCard(card)}
               >
+                <div className="text-3xl mb-4">{cardIcons[card]}</div>
                 <h3 className="text-xl font-semibold">{cardDescriptions[card].split(":")[0]}</h3>
                 {/* Solo muestra la descripción si la tarjeta está expandida */}
                 {expandedCard === card && (
