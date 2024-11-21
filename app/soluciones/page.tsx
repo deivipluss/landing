@@ -1,138 +1,104 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { 
-  FaUserTie, 
-  FaChartLine, 
-  FaRobot, 
-  FaUserCircle, 
-  FaLaptopCode, 
-  FaShoppingCart, 
-  FaMobileAlt, 
-  FaNetworkWired, 
-  FaChalkboardTeacher, 
-  FaCoffee 
+  FaHome, 
+  FaLightbulb, 
+  FaBlog, 
+  FaEnvelope 
 } from "react-icons/fa";
-import Link from "next/link"; // Importamos Link de Next.js
+import Link from "next/link";
 
-const SolutionCard: React.FC<{
-  icon: React.ElementType, 
-  title: string, 
-  description: string, 
-  color: string
-}> = ({ icon: Icon, title, description, color }) => (
-  <div 
-    className={`bg-${color}-500 text-white p-6 rounded-lg shadow-xl 
-    transform transition-all duration-300 hover:scale-105 
-    flex flex-col justify-between h-[350px] md:h-[400px]`}
-  >
-    <div className="flex flex-col items-center text-center space-y-4">
-      <Icon className="text-4xl md:text-5xl mb-4" />
-      <h3 className="text-xl md:text-2xl font-bold">{title}</h3>
-      <p className="text-sm md:text-base opacity-80">{description}</p>
-    </div>
-    <div className="self-end bg-white/20 p-2 rounded-lg mt-4">
-      <span className="text-xl">→</span>
-    </div>
-  </div>
-);
+const iconStyle = (section: string, activeSection: string) =>
+  `text-[#FF5C5C] text-2xl mx-3 cursor-pointer hover:text-[#4A90E2] transition-colors ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
 
-const SolutionsPage: React.FC = () => {
-  const solutions = [
-    {
-      icon: FaUserTie,
-      title: "Branding Digital",
-      description: "Creamos identidades de marca sólidas y estrategias de comunicación efectivas.",
-      color: "orange"
-    },
-    {
-      icon: FaChartLine,
-      title: "Estrategia Digital",
-      description: "Optimizamos tu presencia online con análisis de datos y estrategias de crecimiento.",
-      color: "green"
-    },
-    {
-      icon: FaRobot,
-      title: "Automatización",
-      description: "Implementamos soluciones de IA y automatización para optimizar procesos empresariales.",
-      color: "purple"
-    },
-    {
-      icon: FaCoffee,
-      title: "Consultoría OnlyFans",
-      description: "Te ayudamos a gestionar y optimizar tu cuenta de OnlyFans para maximizar tus ganancias.",
-      color: "pink"
-    },
-    {
-      icon: FaLaptopCode,
-      title: "Desarrollo Web Profesional",
-      description: "Creamos sitios web modernos, responsivos y de alto rendimiento que representan tu marca.",
-      color: "blue"
-    },
-    {
-      icon: FaShoppingCart,
-      title: "E-commerce",
-      description: "Desarrollamos tiendas online completas con integración de pasarelas de pago.",
-      color: "red"
-    },
-    {
-      icon: FaMobileAlt,
-      title: "Desarrollo de Apps",
-      description: "Diseñamos aplicaciones móviles intuitivas y funcionales para iOS y Android.",
-      color: "indigo"
-    },
-    {
-      icon: FaNetworkWired,
-      title: "Consultoría Tecnológica",
-      description: "Asesoramiento integral en transformación digital y adopción de nuevas tecnologías.",
-      color: "teal"
-    },
-    {
-      icon: FaUserCircle,
-      title: "Desarrollo de Marca Personal",
-      description: "Te ayudamos a construir y consolidar tu marca personal para destacar en el mundo digital.",
-      color: "yellow"
-    },
-    {
-      icon: FaChalkboardTeacher,
-      title: "Entrenamientos para Gerentes",
-      description: "Capacitación especializada para gerentes y líderes de equipos en la adopción de herramientas digitales y estrategias efectivas.",
-      color: "blue"
-    }
-  ];
+const containerStyle = "p-4 md:p-8 flex flex-col items-center bg-[#0D0C1D] overflow-hidden min-h-screen";
+
+const services = [
+  {
+    title: "Branding corporativo y comercial",
+    description: "Establecemos marcas que conectan emocionalmente con los clientes y aumentan su valor percibido en mercados altamente competitivos.",
+  },
+  {
+    title: "Marca Personal",
+    description: "Creamos estrategias para construir una identidad única y sólida, aumentando la relevancia y autoridad en tu industria.",
+  },
+  {
+    title: "Entrenamiento gerencial",
+    description: "Capacitación avanzada para líderes, ayudándolos a maximizar la productividad y tomar decisiones estratégicas clave.",
+  },
+  {
+    title: "Community Manager",
+    description: "Gestionamos tus redes sociales para construir comunidades leales, impulsando el engagement y las conversiones.",
+  },
+  {
+    title: "Contenido y estrategia digital",
+    description: "Desarrollamos contenido poderoso y estrategias personalizadas que generan valor y posicionamiento digital.",
+  },
+  {
+    title: "IA para negocios",
+    description: "Integramos soluciones de inteligencia artificial para optimizar procesos, reducir costos y aumentar la eficiencia operativa.",
+  },
+  {
+    title: "Consultoría OnlyFans",
+    description: "Estrategias personalizadas para maximizar ingresos, fidelizar seguidores y profesionalizar tu presencia en plataformas de contenido.",
+  },
+  {
+    title: "E-commerce",
+    description: "Diseñamos y optimizamos tiendas online para aumentar las ventas, ofreciendo experiencias de usuario inolvidables.",
+  },
+];
+
+const App: React.FC = () => {
+  const [activeSection, setActiveSection] = useState<string>("soluciones");
+
+  const handleNavigation = (section: string) => {
+    document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
-      {/* Header with Navigation */}
-      <header className="bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-6xl mx-auto mt-8 py-4">
-        <div className="flex justify-between items-center px-6">
-          <h1 className="text-[#4A90E2] text-3xl font-bold">Mis Soluciones</h1>
-          <nav className="space-x-6">
-            <Link href="/" className="text-white hover:text-[#4A90E2]">Inicio</Link>
-            <Link href="#services" className="text-white hover:text-[#4A90E2]">Servicios</Link>
-            <Link href="#contact" className="text-white hover:text-[#4A90E2]">Contacto</Link>
-          </nav>
-        </div>
+    <div className="bg-[#0D0C1D] min-h-screen">
+      {/* Navigation Bar */}
+      <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
+        <button 
+          className="flex flex-col items-center group" 
+          onClick={() => handleNavigation("home")}
+        >
+          <FaHome className={iconStyle("home", activeSection)} />
+          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Inicio</span>
+        </button>
+        <button 
+          className="flex flex-col items-center group" 
+          onClick={() => handleNavigation("contacto")}
+        >
+          <FaEnvelope className={iconStyle("contacto", activeSection)} />
+          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Contacto</span>
+        </button>
+        <Link href="/blog" className="flex flex-col items-center group">
+          <FaBlog className={iconStyle("blog", activeSection)} />
+          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Blog</span>
+        </Link>
       </header>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12" id="services">
-        <h2 className="text-3xl text-white font-bold text-center mb-8">Soluciones Digitales para Impulsar tu Negocio</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {solutions.map((solution, index) => (
-            <SolutionCard 
+      {/* Services Section */}
+      <div className={containerStyle}>
+        <div className="max-w-[1200px] mt-12 space-y-8">
+          {services.map((service, index) => (
+            <div 
               key={index} 
-              {...solution} 
-            />
+              className="bg-[#1A1A2E] text-[#E1E1E1] p-6 rounded-lg shadow-md transition-transform hover:scale-105"
+            >
+              <h3 className="text-2xl font-bold mb-4 text-[#4A90E2]">{service.title}</h3>
+              <p className="text-sm font-light">{service.description}</p>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm" id="contact">
-        <p>© 2024 Deivipluss. Soluciones Digitales.</p>
+      <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm">
+        © 2024 Deivipluss. Todos los derechos reservados.
       </footer>
     </div>
   );
 };
 
-export default SolutionsPage;
+export default App;
