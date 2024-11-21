@@ -28,54 +28,62 @@ const navItems: NavItem[] = [
   { href: "/contacto", icon: <FaShareAlt />, label: "Contacto" },
 ];
 
-const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; color: string } } = {
+const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; color: string; link: string } } = {
   branding: {
     title: "Branding Empresarial",
     description: "Creamos una identidad sólida y coherente para tu empresa. Mejoramos la percepción de tu marca, generando confianza y fidelidad en tus clientes.",
     icon: <FaCogs className="text-3xl" />,
-    color: "bg-blue-500"
+    color: "bg-blue-500",
+    link: "/servicios/branding"
   },
   marcaPersonal: {
     title: "Marca Personal",
     description: "Desarrollamos tu imagen personal, proyectando autenticidad y profesionalismo. Te ayudamos a posicionarte como líder en tu industria.",
     icon: <FaUserTie className="text-3xl" />,
-    color: "bg-purple-500"
+    color: "bg-purple-500",
+    link: "/servicios/marca-personal"
   },
   entrenamiento: {
     title: "Entrenamiento",
     description: "Ofrecemos capacitaciones y entrenamientos especializados para líderes, equipos de trabajo y emprendedores, impulsando su rendimiento y crecimiento.",
     icon: <FaTrophy className="text-3xl" />,
-    color: "bg-yellow-500"
+    color: "bg-yellow-500",
+    link: "/servicios/entrenamiento"
   },
   communityManager: {
     title: "Community Manager",
     description: "Gestionamos tus redes sociales para mejorar la interacción con tu audiencia. Creamos contenido atractivo y gestionamos tu comunidad online.",
     icon: <FaShareAlt className="text-3xl" />,
-    color: "bg-green-500"
+    color: "bg-green-500",
+    link: "/servicios/community-manager"
   },
   contenidoDigital: {
     title: "Contenido Digital",
     description: "Creamos contenido digital de alta calidad que conecta con tu público objetivo. Desarrollamos estrategias efectivas para aumentar tu visibilidad online.",
     icon: <FaLaptop className="text-3xl" />,
-    color: "bg-indigo-500"
+    color: "bg-indigo-500",
+    link: "/servicios/contenido-digital"
   },
   ecommerce: {
     title: "E-commerce",
     description: "Desarrollamos tiendas online y optimizamos procesos de ventas, para maximizar tus ingresos. Te ayudamos a ofrecer una experiencia de compra excepcional.",
     icon: <FaChartLine className="text-3xl" />,
-    color: "bg-red-500"
+    color: "bg-red-500",
+    link: "/servicios/ecommerce"
   },
   iaNegocios: {
     title: "IA para Negocios",
     description: "Aplicamos inteligencia artificial para automatizar procesos, mejorar la toma de decisiones y optimizar el rendimiento de tu negocio.",
     icon: <FaBrain className="text-3xl" />,
-    color: "bg-cyan-500"
+    color: "bg-cyan-500",
+    link: "/servicios/ia-negocios"
   },
   onlyfans: {
     title: "OnlyFans Management",
     description: "Te ayudamos a gestionar y monetizar tu presencia en OnlyFans. Ofrecemos estrategias personalizadas para crecer y maximizar tus ingresos en esta plataforma.",
     icon: <FaRegLightbulb className="text-3xl" />,
-    color: "bg-pink-500"
+    color: "bg-pink-500",
+    link: "/servicios/onlyfans"
   }
 };
 
@@ -91,8 +99,8 @@ const SolutionCard: React.FC<{
       layout
       onClick={onClick}
       className={`
-        ${card.color} rounded-lg p-6 cursor-pointer
-        ${isExpanded ? 'bg-white text-gray-800' : 'text-white'}
+        ${isExpanded ? 'bg-white' : card.color} rounded-lg p-6 cursor-pointer
+        ${isExpanded ? 'text-gray-800' : 'text-white'}
         transition-all duration-300 ease-in-out
         hover:shadow-xl
       `}
@@ -107,14 +115,39 @@ const SolutionCard: React.FC<{
         </motion.h3>
         <AnimatePresence>
           {isExpanded && (
-            <motion.p
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="text-gray-600 mt-4 text-center"
-            >
-              {card.description}
-            </motion.p>
+            <>
+              <motion.p
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="text-gray-600 mt-4 text-center"
+              >
+                {card.description}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                className="mt-6 w-full flex justify-center"
+              >
+                <Link 
+                  href={card.link}
+                  target="_blank"
+                  onClick={(e) => e.stopPropagation()}
+                  className="
+                    px-6 py-2 bg-blue-500 text-white rounded-full
+                    hover:bg-blue-600 transition-colors duration-300
+                    transform hover:scale-105
+                    shadow-md hover:shadow-lg
+                    flex items-center justify-center
+                    text-sm md:text-base
+                    focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50
+                  "
+                >
+                  Más info
+                </Link>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </motion.div>
