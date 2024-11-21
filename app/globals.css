@@ -13,6 +13,8 @@
   --text-light: #E1E1E1;
   --text-muted: #888;
   --header-bg: #F1F5F9; /* Color más suave para el fondo del header */
+  --description-bg: #F1F5F9; /* Fondo suave para la descripción */
+  --description-text: #333333; /* Texto oscuro para la descripción */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,6 +22,8 @@
     --background: var(--dark-bg);
     --foreground: #ededed;
     --header-bg: #1A1A2E; /* Ajuste para modo oscuro */
+    --description-bg: #333333; /* Fondo oscuro para la descripción */
+    --description-text: #E1E1E1; /* Texto claro para la descripción */
   }
 }
 
@@ -122,6 +126,7 @@ body {
   position: relative;
   height: 200px;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Cambiar el cursor para indicar que la tarjeta es clickeable */
 }
 
 .actions .card:hover {
@@ -129,24 +134,28 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.actions .card .description {
+  display: none; /* La descripción está oculta inicialmente */
+  background-color: var(--description-bg);
+  color: var(--description-text);
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 .actions .card.expanded {
   background-color: white;
   color: black;
-  height: auto; /* Permite que la tarjeta crezca */
+  height: auto; /* Permite que la tarjeta crezca para mostrar la descripción */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.actions .card.expanded p {
-  display: block;
-  margin-top: 10px;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.actions .card p {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.actions .card.expanded .description {
+  display: block; /* Muestra la descripción cuando la tarjeta está expandida */
+  opacity: 1; /* La descripción es completamente visible */
 }
 
 footer {

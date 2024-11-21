@@ -71,9 +71,10 @@ const Soluciones = () => {
                 } text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center cursor-pointer`}
                 onClick={() => toggleCard(card)}
               >
-                <h3 className="text-xl font-semibold">{cardDescriptions[card]}</h3>
+                <h3 className="text-xl font-semibold">{cardDescriptions[card].split(":")[0]}</h3>
+                {/* Solo muestra la descripción si la tarjeta está expandida */}
                 {expandedCard === card && (
-                  <p className="mt-4">{cardDescriptions[card]}</p>
+                  <p className="mt-4 text-gray-800">{cardDescriptions[card].split(":")[1]}</p>
                 )}
               </div>
             ))}
