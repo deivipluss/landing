@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -8,10 +8,17 @@ import {
   FaLaptop, 
   FaChartLine, 
   FaRegLightbulb, 
-  FaTrophy 
+  FaTrophy,
+  FaChevronLeft,
+  FaChevronRight 
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 type CardKey = 'branding' | 'marcaPersonal' | 'entrenamiento' | 'communityManager' | 'contenidoDigital' | 'ecommerce' | 'iaNegocios' | 'onlyfans';
 
@@ -102,11 +109,11 @@ const SolutionCard: React.FC<{
         ${isExpanded ? 'bg-white' : card.color} rounded-lg p-6 cursor-pointer
         ${isExpanded ? 'text-gray-800' : 'text-white'}
         transition-all duration-300 ease-in-out
-        hover:shadow-xl
+        hover:shadow-xl h-full
       `}
       whileHover={{ scale: 1.02 }}
     >
-      <motion.div layout className="flex flex-col items-center">
+      <motion.div layout className="flex flex-col items-center h-full">
         <motion.div layout className="mb-4">
           {card.icon}
         </motion.div>
@@ -158,6 +165,13 @@ const SolutionCard: React.FC<{
 const Soluciones = () => {
   const [activeSection] = useState<string>("soluciones");
   const [expandedCard, setExpandedCard] = useState<CardKey | null>(null);
+  const [cardGroups] = useState(() => {
+    const allCards = Object.keys(cardData) as CardKey[];
+    return [
+      allCards.slice(0, 4),
+      allCards.slice(4)
+    ];
+  });
 
   const toggleCard = (cardKey: CardKey) => {
     setExpandedCard(expandedCard === cardKey ? null : cardKey);
@@ -187,21 +201,49 @@ const Soluciones = () => {
       </header>
 
       <main className="p-4 md:p-8 flex justify-center items-center min-h-[calc(100vh-200px)]">
-        <div className="w-full max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(Object.keys(cardData) as CardKey[]).map((cardKey) => (
-              <SolutionCard
-                key={cardKey}
-                cardKey={cardKey}
-                isExpanded={expandedCard === cardKey}
-                onClick={() => toggleCard(cardKey)}
-              />
+        <div className="w-full max-w-6xl relative">
+          <Swiper
+            modules={[Autoplay, Navigation, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation={{
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next',
+            }}
+            pagination={{ clickable: true }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            className="relative"
+          >
+            {cardGroups.map((group, groupIndex) => (
+              <SwiperSlide key={groupIndex}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                  {group.map((cardKey) => (
+                    <SolutionCard
+                      key={cardKey}
+                      cardKey={cardKey}
+                      isExpanded={expandedCard === cardKey}
+                      onClick={() => toggleCard(cardKey)}
+                    />
+                  ))}
+                </div>
+              </SwiperSlide>
             ))}
+          </Swiper>
+          
+          <div className="swiper-button-prev !text-white !w-8 !h-8 !left-2">
+            <FaChevronLeft className="text-2xl" />
+          </div>
+          <div className="swiper-button-next !text-white !w-8 !h-8 !right-2">
+            <FaChevronRight className="text-2xl" />
           </div>
         </div>
       </main>
 
-      <footer className="bg-gray-800/50 backdrop-blur-sm text-center py-6 text-gray-400 text-sm">
+      <footer className="bg-gray-800/50 backdrop-blur-sm text-center py-6 text-gray-400 text-sm mt-8">
         © 2024 Deivipluss. ¡Todos los derechos reservados!
       </footer>
     </div>
