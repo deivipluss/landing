@@ -176,7 +176,7 @@ const App: React.FC = () => {
       </div>
 
       <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm">
-        © 2024 Deivipluss. ¡¡Todos los derechos reservados!!.
+        © 2024 Deivipluss. ¡Todos los derechos reservados!.
       </footer>
     </div>
   );
