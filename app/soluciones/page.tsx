@@ -1,10 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { 
-  FaHome, 
-  FaLightbulb, 
-  FaBlog, 
-  FaEnvelope 
+  FaCogs, 
+  FaBrain, 
+  FaUserTie, 
+  FaShareAlt, 
+  FaLaptop, 
+  FaChartLine, 
+  FaRegLightbulb, 
+  FaTrophy 
 } from "react-icons/fa";
 import Link from 'next/link';
 
@@ -30,26 +34,26 @@ const Soluciones = () => {
 
   // Descripción de las soluciones
   const cardDescriptions: { [key in CardKey]: string } = {
-    branding: "Branding Corporativo: Crear una imagen sólida y coherente para tu empresa.",
-    marcaPersonal: "Marca Personal: Desarrolla tu identidad personal y proyecta una imagen única.",
-    entrenamiento: "Entrenamiento Gerencial: Capacitación para líderes de empresas y equipos.",
-    communityManager: "Community Manager: Gestión de redes sociales para conectar con tu audiencia.",
-    contenidoDigital: "Contenido Digital: Creación y distribución de contenido atractivo en línea.",
-    ecommerce: "Ecommerce: Desarrolla y optimiza tu tienda online para vender de manera efectiva.",
-    iaNegocios: "IA para Negocios: Implementación de inteligencia artificial para mejorar procesos empresariales.",
-    onlyfans: "Consultoría OnlyFans: Asesoría estratégica para creadores en la plataforma OnlyFans.",
+    branding: "Creamos una identidad sólida y coherente para tu empresa. Mejoramos la percepción de tu marca, generando confianza y fidelidad en tus clientes.",
+    marcaPersonal: "Desarrollamos tu imagen personal, proyectando autenticidad y profesionalismo. Te ayudamos a posicionarte como líder en tu industria.",
+    entrenamiento: "Ofrecemos capacitaciones y entrenamientos especializados para líderes, equipos de trabajo y emprendedores, impulsando su rendimiento y crecimiento.",
+    communityManager: "Gestionamos tus redes sociales para mejorar la interacción con tu audiencia. Creamos contenido atractivo y gestionamos tu comunidad online.",
+    contenidoDigital: "Creamos contenido digital de alta calidad que conecta con tu público objetivo. Desarrollamos estrategias efectivas para aumentar tu visibilidad online.",
+    ecommerce: "Desarrollamos tiendas online y optimizamos procesos de ventas, para maximizar tus ingresos. Te ayudamos a ofrecer una experiencia de compra excepcional.",
+    iaNegocios: "Aplicamos inteligencia artificial para automatizar procesos, mejorar la toma de decisiones y optimizar el rendimiento de tu negocio.",
+    onlyfans: "Te ayudamos a gestionar y monetizar tu presencia en OnlyFans. Ofrecemos estrategias personalizadas para crecer y maximizar tus ingresos en esta plataforma.",
   };
 
-  // Definimos los íconos para cada tarjeta
+  // Definimos los íconos para cada tarjeta, ahora más coherentes con cada servicio
   const cardIcons: { [key in CardKey]: JSX.Element } = {
-    branding: <FaHome />,
-    marcaPersonal: <FaLightbulb />,
-    entrenamiento: <FaBlog />,
-    communityManager: <FaEnvelope />,
-    contenidoDigital: <FaHome />,
-    ecommerce: <FaLightbulb />,
-    iaNegocios: <FaBlog />,
-    onlyfans: <FaEnvelope />,
+    branding: <FaCogs />,
+    marcaPersonal: <FaUserTie />,
+    entrenamiento: <FaTrophy />,
+    communityManager: <FaShareAlt />,
+    contenidoDigital: <FaLaptop />,
+    ecommerce: <FaChartLine />,
+    iaNegocios: <FaBrain />,
+    onlyfans: <FaRegLightbulb />,
   };
 
   return (
@@ -57,19 +61,19 @@ const Soluciones = () => {
       {/* Header */}
       <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
         <Link href="/" className="flex flex-col items-center group">
-          <FaHome className={iconStyle("home", activeSection)} />
+          <FaCogs className={iconStyle("home", activeSection)} />
           <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Home</span>
         </Link>
         <Link href="/soluciones" className="flex flex-col items-center group">
-          <FaLightbulb className={iconStyle("soluciones", activeSection)} />
+          <FaBrain className={iconStyle("soluciones", activeSection)} />
           <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Soluciones</span>
         </Link>
         <Link href="/blog" className="flex flex-col items-center group">
-          <FaBlog className={iconStyle("blog", activeSection)} />
+          <FaTrophy className={iconStyle("blog", activeSection)} />
           <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Blog</span>
         </Link>
         <Link href="/contacto" className="flex flex-col items-center group">
-          <FaEnvelope className={iconStyle("contacto", activeSection)} />
+          <FaShareAlt className={iconStyle("contacto", activeSection)} />
           <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Contacto</span>
         </Link>
       </header>
@@ -88,7 +92,10 @@ const Soluciones = () => {
                   } text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center cursor-pointer`}
                   onClick={() => toggleCard(card)}
                 >
-                  <div className="text-3xl mb-4">{cardIcons[card]}</div>
+                  {/* Solo muestra el ícono cuando la tarjeta está expandida */}
+                  {expandedCard === card && (
+                    <div className="text-3xl mb-4">{cardIcons[card]}</div>
+                  )}
                   <h3 className="text-xl font-semibold">{cardDescriptions[card].split(":")[0]}</h3>
                   {/* Solo muestra la descripción si la tarjeta está expandida */}
                   {expandedCard === card && (
