@@ -1,11 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { 
-  FaHome, 
-  FaLightbulb, 
-  FaBlog, 
-  FaEnvelope 
-} from "react-icons/fa";
+import { FaHome, FaBlog, FaEnvelope } from "react-icons/fa"; // Eliminamos FaLightbulb ya que no se usa
 import Link from "next/link";
 
 const iconStyle = (section: string, activeSection: string) =>
@@ -49,9 +44,10 @@ const services = [
 ];
 
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>("soluciones");
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   const handleNavigation = (section: string) => {
+    setActiveSection(section); // Actualiza la sección activa
     document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
   };
 
