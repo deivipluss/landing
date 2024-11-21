@@ -8,7 +8,8 @@ import {
 } from "react-icons/fa";
 import Link from 'next/link';
 
-const iconStyle = (section, activeSection) =>
+// Define el tipo explícito para los parámetros
+const iconStyle = (section: string, activeSection: string): string =>
   `text-[#FF5C5C] text-2xl mx-3 cursor-pointer hover:text-[#4A90E2] transition-colors ${
     activeSection === section ? 'text-[#4A90E2]' : ''
   }`;
@@ -16,7 +17,7 @@ const iconStyle = (section, activeSection) =>
 const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
 
 const Soluciones = () => {
-  const [activeSection] = useState("soluciones");
+  const [activeSection] = useState<string>("soluciones");
 
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
