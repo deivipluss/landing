@@ -121,12 +121,32 @@ body {
   margin: 0 10px;
   position: relative;
   height: 200px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .actions .card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+}
+
+.actions .card.expanded {
+  background-color: white;
+  color: black;
+  height: auto; /* Permite que la tarjeta crezca */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.actions .card.expanded p {
+  display: block;
+  margin-top: 10px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.actions .card p {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 footer {

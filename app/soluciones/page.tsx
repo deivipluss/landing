@@ -18,6 +18,24 @@ const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen
 
 const Soluciones = () => {
   const [activeSection] = useState<string>("soluciones");
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
+  // Maneja la expansión de las tarjetas
+  const toggleCard = (cardName: string) => {
+    setExpandedCard(expandedCard === cardName ? null : cardName);
+  };
+
+  // Descripción de las soluciones
+  const cardDescriptions: { [key: string]: string } = {
+    branding: "Branding Corporativo: Crear una imagen sólida y coherente para tu empresa.",
+    marcaPersonal: "Marca Personal: Desarrolla tu identidad personal y proyecta una imagen única.",
+    entrenamiento: "Entrenamiento Gerencial: Capacitación para líderes de empresas y equipos.",
+    communityManager: "Community Manager: Gestión de redes sociales para conectar con tu audiencia.",
+    contenidoDigital: "Contenido Digital: Creación y distribución de contenido atractivo en línea.",
+    ecommerce: "Ecommerce: Desarrolla y optimiza tu tienda online para vender de manera efectiva.",
+    iaNegocios: "IA para Negocios: Implementación de inteligencia artificial para mejorar procesos empresariales.",
+    onlyfans: "Consultoría OnlyFans: Asesoría estratégica para creadores en la plataforma OnlyFans.",
+  };
 
   return (
     <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
@@ -45,37 +63,27 @@ const Soluciones = () => {
       <div className={containerStyle}>
         <div className="w-full max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#FF5C5C] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h3 className="text-xl font-semibold">Branding Corporativo</h3>
-            </div>
-            <div className="bg-[#4A90E2] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h3 className="text-xl font-semibold">Marca Personal</h3>
-            </div>
-            <div className="bg-[#FFC107] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h3 className="text-xl font-semibold">Entrenamiento Gerencial</h3>
-            </div>
-            <div className="bg-[#00C851] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h3 className="text-xl font-semibold">Community Manager</h3>
-            </div>
-            <div className="bg-[#33B5E5] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h3 className="text-xl font-semibold">Contenido Digital</h3>
-            </div>
-            <div className="bg-[#AA66CC] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h3 className="text-xl font-semibold">Ecommerce</h3>
-            </div>
-            <div className="bg-[#FF4444] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h3 className="text-xl font-semibold">IA para Negocios</h3>
-            </div>
-            <div className="bg-[#2BBBAD] text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h3 className="text-xl font-semibold">Consultoría OnlyFans</h3>
-            </div>
+            {Object.keys(cardDescriptions).map((card, index) => (
+              <div
+                key={index}
+                className={`${
+                  expandedCard === card ? "bg-white text-black" : `bg-${card === "branding" ? "FF5C5C" : card === "marcaPersonal" ? "4A90E2" : card === "entrenamiento" ? "FFC107" : card === "communityManager" ? "00C851" : card === "contenidoDigital" ? "33B5E5" : card === "ecommerce" ? "AA66CC" : card === "iaNegocios" ? "FF4444" : "2BBBAD"}`
+                } text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center cursor-pointer`}
+                onClick={() => toggleCard(card)}
+              >
+                <h3 className="text-xl font-semibold">{cardDescriptions[card]}</h3>
+                {expandedCard === card && (
+                  <p className="mt-4">{cardDescriptions[card]}</p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm">
-        © 2024 Deivipluss. ¡Todos los derechos reservados!.
+        © 2024 Deivipluss. ¡Todos los derechos reservados!..
       </footer>
     </div>
   );
