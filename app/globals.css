@@ -3,195 +3,111 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary-color: #4A90E2;
-  --secondary-color: #FF5C5C;
-  --light-bg: #F9F9F9;
-  --dark-bg: #0a0a0a;
-  --text-dark: #0D0C1D;
-  --text-light: #E1E1E1;
-  --text-muted: #888;
-  --header-bg: #F1F5F9; /* Color más suave para el fondo del header */
-  --description-bg: #F1F5F9; /* Fondo suave para la descripción */
-  --description-text: #333333; /* Texto oscuro para la descripción */
+  --background: 255 255 255;
+  --foreground: 23 23 23;
+  --primary: 74 144 226;
+  --secondary: 255 92 92;
+  --accent: 37 99 235;
+  --muted: 115 115 115;
+  --dark: 13 12 29;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--dark-bg);
-    --foreground: #ededed;
-    --header-bg: #1A1A2E; /* Ajuste para modo oscuro */
-    --description-bg: #333333; /* Fondo oscuro para la descripción */
-    --description-text: #E1E1E1; /* Texto claro para la descripción */
+    --background: 13 12 29;
+    --foreground: 237 237 237;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  body {
+    @apply bg-[#0D0C1D] text-white antialiased;
+  }
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--header-bg);
-  padding: 15px 20px;
-  border-radius: 50px;
-  width: 90%;
-  max-width: 1000px;
-  margin: auto;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.header .icon {
-  color: var(--secondary-color);
-  font-size: 2rem;
-  margin: 0 20px;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.header .icon:hover {
-  color: var(--primary-color);
-  transform: scale(1.2);
-}
-
-.header .icon.active {
-  color: var(--primary-color);
-}
-
-.main-content {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 20px;
-}
-
-.main-content h1 {
-  font-size: 40px;
-  font-weight: bold;
-  color: var(--primary-color);
-  text-align: center;
-}
-
-.main-content p {
-  font-size: 16px;
-  text-align: center;
-  color: var(--text-light);
-  opacity: 0.8;
-  margin-top: 10px;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
-}
-
-.stats .stat {
-  text-align: center;
-  flex: 1;
-}
-
-.stats .stat h3 {
-  font-size: 50px;
-  color: var(--primary-color);
-}
-
-.stats .stat p {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-top: 10px;
-}
-
-.actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
-}
-
-.actions .card {
-  background-color: var(--secondary-color);
-  padding: 20px;
-  border-radius: 15px;
-  color: white;
-  text-align: center;
-  flex: 1;
-  margin: 0 10px;
-  position: relative;
-  height: 200px;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer; /* Cambiar el cursor para indicar que la tarjeta es clickeable */
-}
-
-.actions .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.actions .card .description {
-  display: none; /* La descripción está oculta inicialmente */
-  background-color: var(--description-bg);
-  color: var(--description-text);
-  padding: 20px;
-  margin-top: 15px;
-  border-radius: 10px;
-  text-align: left;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.actions .card .description .icon {
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
-.actions .card.expanded {
-  background-color: white;
-  color: black;
-  height: auto; /* Permite que la tarjeta crezca para mostrar la descripción */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.actions .card.expanded .description {
-  display: block; /* Muestra la descripción cuando la tarjeta está expandida */
-  opacity: 1; /* La descripción es completamente visible */
-}
-
-footer {
-  background-color: var(--header-bg);
-  text-align: center;
-  padding: 15px;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-top: auto;
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    padding: 10px;
+@layer components {
+  .nav-link {
+    @apply flex flex-col items-center transition-colors duration-300;
   }
 
-  .header .icon {
-    margin: 10px;
+  .nav-icon {
+    @apply text-2xl transition-transform duration-300 ease-in-out;
   }
 
-  .stats {
-    flex-direction: column;
+  .nav-label {
+    @apply text-xs mt-1 transition-colors duration-300;
   }
 
-  .actions {
-    flex-direction: column;
-    margin-top: 30px;
+  .solution-card {
+    @apply relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out;
   }
 
-  .actions .card {
-    margin: 10px 0;
+  .solution-card-expanded {
+    @apply bg-white text-gray-800;
+  }
+
+  .solution-icon {
+    @apply text-3xl mb-4 transition-transform duration-300;
+  }
+
+  .solution-title {
+    @apply text-xl font-semibold mb-2;
+  }
+
+  .solution-description {
+    @apply mt-4 text-gray-600 transition-opacity duration-300;
+  }
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Estilos para el modo oscuro */
+.dark {
+  color-scheme: dark;
+}
+
+/* Optimizaciones para dispositivos móviles */
+@media (max-width: 640px) {
+  .solution-card {
+    @apply mx-4;
   }
 }
