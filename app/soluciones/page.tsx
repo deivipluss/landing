@@ -96,6 +96,7 @@ const Soluciones = () => {
                   {expandedCard === card && (
                     <div className="text-3xl mb-4">{cardIcons[card]}</div>
                   )}
+                  {/* Título siempre visible */}
                   <h3 className="text-xl font-semibold">{cardDescriptions[card].split(":")[0]}</h3>
                   {/* Solo muestra la descripción si la tarjeta está expandida */}
                   {expandedCard === card && (
