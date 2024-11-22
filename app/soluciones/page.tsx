@@ -315,7 +315,7 @@ const Soluciones = () => {
       </main>
 
       <footer className="bg-gray-800/50 backdrop-blur-sm text-center py-6 text-gray-400 text-sm mt-8">
-        © 2024 Deivipluss. ¡Todos los derechos reservados!
+        © 2024 - Deivipluss. ¡Todos los derechos reservados!
       </footer>
     </div>
   );
