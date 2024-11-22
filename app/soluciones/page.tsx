@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -15,6 +15,7 @@ import {
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -110,6 +111,7 @@ const SolutionCard: React.FC<{
         ${isExpanded ? 'text-gray-800' : 'text-white'}
         transition-all duration-300 ease-in-out
         hover:shadow-xl h-full
+        ${isExpanded ? 'z-10' : 'z-0'}
       `}
       whileHover={{ scale: 1.02 }}
     >
@@ -117,7 +119,7 @@ const SolutionCard: React.FC<{
         <motion.div layout className="mb-4">
           {card.icon}
         </motion.div>
-        <motion.h3 layout className="text-xl font-semibold mb-2">
+        <motion.h3 layout className="text-xl font-semibold mb-2 text-center">
           {card.title}
         </motion.h3>
         <AnimatePresence>
@@ -165,14 +167,17 @@ const SolutionCard: React.FC<{
 const NavigationButton: React.FC<{
   direction: 'prev' | 'next';
   onClick: () => void;
-}> = ({ direction, onClick }) => (
+  disabled?: boolean;
+}> = ({ direction, onClick, disabled }) => (
   <button
     onClick={onClick}
+    disabled={disabled}
     className={`
       flex items-center justify-center
       w-12 h-12 rounded-full
-      bg-gray-800/50 backdrop-blur-sm
-      text-white hover:bg-gray-700/50
+      ${disabled ? 'bg-gray-600/30 cursor-not-allowed' : 'bg-gray-800/50 hover:bg-gray-700/50'}
+      backdrop-blur-sm
+      text-white
       transition-all duration-300
       focus:outline-none focus:ring-2 focus:ring-blue-400
       ${direction === 'prev' ? 'mr-2' : 'ml-2'}
@@ -189,6 +194,9 @@ const NavigationButton: React.FC<{
 const Soluciones = () => {
   const [activeSection] = useState<string>("soluciones");
   const [expandedCard, setExpandedCard] = useState<CardKey | null>(null);
+  const swiperRef = useRef<SwiperType>();
+  const autoplayRef = useRef<{ start: () => void; stop: () => void } | null>(null);
+
   const [cardGroups] = useState(() => {
     const allCards = Object.keys(cardData) as CardKey[];
     return [
@@ -198,7 +206,15 @@ const Soluciones = () => {
   });
 
   const toggleCard = (cardKey: CardKey) => {
-    setExpandedCard(expandedCard === cardKey ? null : cardKey);
+    if (expandedCard === cardKey) {
+      setExpandedCard(null);
+      // Reanudar autoplay cuando se cierra la tarjeta
+      autoplayRef.current?.start();
+    } else {
+      setExpandedCard(cardKey);
+      // Detener autoplay cuando se expande una tarjeta
+      autoplayRef.current?.stop();
+    }
   };
 
   return (
@@ -246,6 +262,10 @@ const Soluciones = () => {
             }}
             loop={true}
             className="mb-8"
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+              autoplayRef.current = swiper.autoplay;
+            }}
           >
             {cardGroups.map((group, groupIndex) => (
               <SwiperSlide key={groupIndex}>
@@ -268,19 +288,27 @@ const Soluciones = () => {
             <div className="swiper-button-prev !hidden"></div>
             <div className="swiper-button-next !hidden"></div>
             <div className="flex items-center">
-              <NavigationButton direction="prev" onClick={() => {
-                const prevButton = document.querySelector('.swiper-button-prev');
-                if (prevButton) {
-                  (prevButton as HTMLElement).click();
-                }
-              }} />
+              <NavigationButton 
+                direction="prev" 
+                onClick={() => {
+                  const prevButton = document.querySelector('.swiper-button-prev');
+                  if (prevButton) {
+                    (prevButton as HTMLElement).click();
+                  }
+                }}
+                disabled={expandedCard !== null}
+              />
               <div className="swiper-pagination !position-relative !bottom-0 !mx-4 !w-auto"></div>
-              <NavigationButton direction="next" onClick={() => {
-                const nextButton = document.querySelector('.swiper-button-next');
-                if (nextButton) {
-                  (nextButton as HTMLElement).click();
-                }
-              }} />
+              <NavigationButton 
+                direction="next" 
+                onClick={() => {
+                  const nextButton = document.querySelector('.swiper-button-next');
+                  if (nextButton) {
+                    (nextButton as HTMLElement).click();
+                  }
+                }}
+                disabled={expandedCard !== null}
+              />
             </div>
           </div>
         </div>
