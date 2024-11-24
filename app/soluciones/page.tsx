@@ -8,17 +8,14 @@ import {
   FaLaptop, 
   FaChartLine, 
   FaRegLightbulb, 
-  FaTrophy,
-  FaChevronLeft,
-  FaChevronRight 
+  FaTrophy
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 type CardKey = 'branding' | 'marcaPersonal' | 'entrenamiento' | 'communityManager' | 'contenidoDigital' | 'ecommerce' | 'iaNegocios' | 'onlyfans';
@@ -164,33 +161,6 @@ const SolutionCard: React.FC<{
   );
 };
 
-const NavigationButton: React.FC<{
-  direction: 'prev' | 'next';
-  onClick: () => void;
-  disabled?: boolean;
-}> = ({ direction, onClick, disabled }) => (
-  <button
-    onClick={onClick}
-    disabled={disabled}
-    className={`
-      flex items-center justify-center
-      w-12 h-12 rounded-full
-      ${disabled ? 'bg-gray-600/30 cursor-not-allowed' : 'bg-gray-800/50 hover:bg-gray-700/50'}
-      backdrop-blur-sm
-      text-white
-      transition-all duration-300
-      focus:outline-none focus:ring-2 focus:ring-blue-400
-      ${direction === 'prev' ? 'mr-2' : 'ml-2'}
-    `}
-  >
-    {direction === 'prev' ? (
-      <FaChevronLeft className="text-xl" />
-    ) : (
-      <FaChevronRight className="text-xl" />
-    )}
-  </button>
-);
-
 const Soluciones = () => {
   const [activeSection] = useState<string>("soluciones");
   const [expandedCard, setExpandedCard] = useState<CardKey | null>(null);
@@ -208,11 +178,9 @@ const Soluciones = () => {
   const toggleCard = (cardKey: CardKey) => {
     if (expandedCard === cardKey) {
       setExpandedCard(null);
-      // Reanudar autoplay cuando se cierra la tarjeta
       autoplayRef.current?.start();
     } else {
       setExpandedCard(cardKey);
-      // Detener autoplay cuando se expande una tarjeta
       autoplayRef.current?.stop();
     }
   };
@@ -243,17 +211,13 @@ const Soluciones = () => {
       <main className="p-4 md:p-8 flex flex-col justify-center items-center min-h-[calc(100vh-200px)]">
         <div className="w-full max-w-6xl">
           <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
+            modules={[Autoplay, Pagination]}
             spaceBetween={30}
             slidesPerView={1}
-            navigation={{
-              prevEl: '.swiper-button-prev',
-              nextEl: '.swiper-button-next',
-            }}
             pagination={{ 
               clickable: true,
               el: '.swiper-pagination',
-              bulletClass: 'swiper-pagination-bullet !bg-red-400 !opacity-50',
+              bulletClass: 'swiper-pagination-bullet !bg-red-400/50 !w-2 !h-2 !mx-1',
               bulletActiveClass: '!bg-blue-400 !opacity-100'
             }}
             autoplay={{
@@ -283,33 +247,9 @@ const Soluciones = () => {
             ))}
           </Swiper>
 
-          {/* Navigation Controls */}
-          <div className="flex justify-center items-center space-x-8 mt-4">
-            <div className="swiper-button-prev !hidden"></div>
-            <div className="swiper-button-next !hidden"></div>
-            <div className="flex items-center">
-              <NavigationButton 
-                direction="prev" 
-                onClick={() => {
-                  const prevButton = document.querySelector('.swiper-button-prev');
-                  if (prevButton) {
-                    (prevButton as HTMLElement).click();
-                  }
-                }}
-                disabled={expandedCard !== null}
-              />
-              <div className="swiper-pagination !position-relative !bottom-0 !mx-4 !w-auto"></div>
-              <NavigationButton 
-                direction="next" 
-                onClick={() => {
-                  const nextButton = document.querySelector('.swiper-button-next');
-                  if (nextButton) {
-                    (nextButton as HTMLElement).click();
-                  }
-                }}
-                disabled={expandedCard !== null}
-              />
-            </div>
+          {/* Pagination dots */}
+          <div className="flex justify-center mt-4">
+            <div className="swiper-pagination"></div>
           </div>
         </div>
       </main>
