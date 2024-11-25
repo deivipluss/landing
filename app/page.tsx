@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const navItems = [
   { 
@@ -23,7 +24,7 @@ const navItems = [
     label: "Home" 
   },
   { 
-    href: "#solutions-section", // Anchor link to the solutions section
+    href: "#solutions", // Changed to a proper anchor
     icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
     label: "Soluciones" 
   },
@@ -132,16 +133,30 @@ const ProfessionalInfo: React.FC = () => (
     </div>
   </motion.div>
 );
+
 const App: React.FC = () => {
+  const router = useRouter();
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith('#')) {
+      const elementId = href.substring(1);
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      router.push(href);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
         {navItems.map((item) => (
-          <Link 
+          <div 
             key={item.href}
-            href={item.href}
-            scroll={false}
-            className="group flex flex-col items-center"
+            onClick={() => handleNavClick(item.href)}
+            className="group flex flex-col items-center cursor-pointer"
           >
             <div className={`
               text-2xl mx-3
@@ -153,7 +168,7 @@ const App: React.FC = () => {
             <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
               {item.label}
             </span>
-          </Link>
+          </div>
         ))}
       </header>
 
@@ -163,11 +178,11 @@ const App: React.FC = () => {
           <div className="space-y-8">
             <ProfessionalInfo />
             <motion.div 
+              id="solutions"  // Changed from solutions-section to match anchor
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               className="w-full max-w-[1000px] mt-16 px-4 md:px-0"
-              id="solutions-section"
             >
               <div className="flex flex-col md:flex-row gap-8 md:gap-12">
                 <Link href="/soluciones" className="w-full md:w-1/2">
