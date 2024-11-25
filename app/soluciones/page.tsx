@@ -38,56 +38,56 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     title: "Branding Empresarial",
     description: "Creamos una identidad sólida y coherente para tu empresa. Mejoramos la percepción de tu marca, generando confianza y fidelidad en tus clientes.",
     icon: <FaCogs className="text-3xl" />,
-    color: "bg-blue-500",
+    color: "bg-[#4A90E2]",
     link: "/servicios/branding"
   },
   marcaPersonal: {
     title: "Marca Personal",
     description: "Desarrollamos tu imagen personal, proyectando autenticidad y profesionalismo. Te ayudamos a posicionarte como líder en tu industria.",
     icon: <FaUserTie className="text-3xl" />,
-    color: "bg-purple-500",
+    color: "bg-[#FF5C5C]",
     link: "/servicios/marca-personal"
   },
   entrenamiento: {
     title: "Entrenamiento",
     description: "Ofrecemos capacitaciones y entrenamientos especializados para líderes, equipos de trabajo y emprendedores, impulsando su rendimiento y crecimiento.",
     icon: <FaTrophy className="text-3xl" />,
-    color: "bg-yellow-500",
+    color: "bg-[#4A90E2]",
     link: "/servicios/entrenamiento"
   },
   communityManager: {
     title: "Community Manager",
     description: "Gestionamos tus redes sociales para mejorar la interacción con tu audiencia. Creamos contenido atractivo y gestionamos tu comunidad online.",
     icon: <FaShareAlt className="text-3xl" />,
-    color: "bg-green-500",
+    color: "bg-[#FF5C5C]",
     link: "/servicios/community-manager"
   },
   contenidoDigital: {
     title: "Contenido Digital",
     description: "Creamos contenido digital de alta calidad que conecta con tu público objetivo. Desarrollamos estrategias efectivas para aumentar tu visibilidad online.",
     icon: <FaLaptop className="text-3xl" />,
-    color: "bg-indigo-500",
+    color: "bg-[#4A90E2]",
     link: "/servicios/contenido-digital"
   },
   ecommerce: {
     title: "E-commerce",
     description: "Desarrollamos tiendas online y optimizamos procesos de ventas, para maximizar tus ingresos. Te ayudamos a ofrecer una experiencia de compra excepcional.",
     icon: <FaChartLine className="text-3xl" />,
-    color: "bg-red-500",
+    color: "bg-[#FF5C5C]",
     link: "/servicios/ecommerce"
   },
   iaNegocios: {
     title: "IA para Negocios",
     description: "Aplicamos inteligencia artificial para automatizar procesos, mejorar la toma de decisiones y optimizar el rendimiento de tu negocio.",
     icon: <FaBrain className="text-3xl" />,
-    color: "bg-cyan-500",
+    color: "bg-[#4A90E2]",
     link: "/servicios/ia-negocios"
   },
   onlyfans: {
     title: "OnlyFans Management",
     description: "Te ayudamos a gestionar y monetizar tu presencia en OnlyFans. Ofrecemos estrategias personalizadas para crecer y maximizar tus ingresos en esta plataforma.",
     icon: <FaRegLightbulb className="text-3xl" />,
-    color: "bg-pink-500",
+    color: "bg-[#FF5C5C]",
     link: "/servicios/onlyfans"
   }
 };
@@ -102,7 +102,7 @@ const SolutionCard: React.FC<{
   const variants = {
     container: {
       expanded: { 
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#1A1A2E",
         transition: { duration: 0.4, ease: "easeInOut" }
       },
       collapsed: { 
@@ -139,8 +139,9 @@ const SolutionCard: React.FC<{
       variants={variants.container}
       className={`
         gpu-accelerated solution-card
-        ${isExpanded ? 'text-gray-800' : 'text-white'}
+        ${isExpanded ? 'text-white' : 'text-white'}
         ${!isExpanded ? card.color : ''}
+        hover:shadow-lg hover:shadow-[#4A90E2]/20
       `}
       style={{ 
         minHeight: isExpanded ? "var(--card-expanded-height)" : "var(--card-min-height)"
@@ -163,7 +164,7 @@ const SolutionCard: React.FC<{
           animate={isExpanded ? "expanded" : "collapsed"}
           className="w-full overflow-hidden"
         >
-          <p className="solution-description text-center">
+          <p className="solution-description text-gray-300 text-center">
             {card.description}
           </p>
           <div className="mt-6 w-full flex justify-center">
@@ -172,13 +173,13 @@ const SolutionCard: React.FC<{
               target="_blank"
               onClick={(e) => e.stopPropagation()}
               className="
-                px-6 py-2 bg-blue-500 text-white rounded-full
-                hover:bg-blue-600 transition-colors duration-300
+                px-6 py-2 bg-[#FF5C5C] text-white rounded-full
+                hover:bg-[#4A90E2] transition-colors duration-300
                 transform hover:scale-105
                 shadow-md hover:shadow-lg
                 flex items-center justify-center
                 text-sm md:text-base
-                focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50
+                focus:outline-none focus:ring-2 focus:ring-[#4A90E2] focus:ring-opacity-50
                 transition-smooth
               "
             >
@@ -216,8 +217,8 @@ const Soluciones = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex flex-col">
-      <header className="flex justify-center py-6 mt-8 space-x-6 bg-gray-800/50 backdrop-blur-sm shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
+    <div className="min-h-screen bg-[#0D0C1D] flex flex-col">
+      <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
         {navItems.map((item) => (
           <Link 
             key={item.href}
@@ -226,12 +227,12 @@ const Soluciones = () => {
           >
             <div className={`
               nav-icon mx-3
-              ${activeSection === item.label.toLowerCase() ? 'text-blue-400' : 'text-red-400'}
-              group-hover:text-blue-400
+              ${activeSection === item.label.toLowerCase() ? 'text-[#4A90E2]' : 'text-[#FF5C5C]'}
+              group-hover:text-[#4A90E2]
             `}>
               {item.icon}
             </div>
-            <span className="nav-label text-red-400 group-hover:text-blue-400">
+            <span className="nav-label text-[#FF5C5C] group-hover:text-[#4A90E2]">
               {item.label}
             </span>
           </Link>
@@ -248,8 +249,8 @@ const Soluciones = () => {
               pagination={{ 
                 clickable: true,
                 el: '.swiper-pagination',
-                bulletClass: 'swiper-pagination-bullet !bg-red-400/50 !w-2 !h-2 !mx-1',
-                bulletActiveClass: '!bg-blue-400 !opacity-100'
+                bulletClass: 'swiper-pagination-bullet !bg-[#FF5C5C]/50 !w-2 !h-2 !mx-1',
+                bulletActiveClass: '!bg-[#4A90E2] !opacity-100'
               }}
               autoplay={{
                 delay: 5000,
@@ -285,7 +286,7 @@ const Soluciones = () => {
         </div>
       </main>
 
-      <footer className="bg-gray-800/50 backdrop-blur-sm text-center py-6 text-gray-400 text-sm mt-auto">
+      <footer className="bg-[#1A1A2E] text-center py-6 text-gray-400 text-sm mt-auto">
         © 2024 - Deivipluss. ¡Todos los derechos reservados!
       </footer>
     </div>
