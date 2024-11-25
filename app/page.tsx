@@ -1,183 +1,223 @@
 "use client";
 import React, { useState } from "react";
 import { 
-  FaHome, 
+  FaCogs, 
+  FaBrain, 
+  FaTrophy,
+  FaShareAlt,
   FaLightbulb, 
-  FaBlog, 
-  FaEnvelope,
-  FaLinkedin, 
-  FaFacebook, 
-  FaGithub, 
-  FaBehance, 
-  FaPinterest 
+  FaEnvelope 
 } from "react-icons/fa";
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-const iconStyle = (section: string, activeSection: string) =>
-  `text-[#FF5C5C] text-2xl mx-3 cursor-pointer hover:text-[#4A90E2] transition-colors ${activeSection === section ? 'text-[#4A90E2]' : ''}`;
-const containerStyle = "p-4 md:p-8 flex justify-center items-center min-h-screen bg-[#0D0C1D] overflow-hidden";
-
-const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
+const navItems = [
+  { 
+    href: "/", 
+    icon: <FaCogs className="transition-transform duration-300 group-hover:rotate-180" />, 
+    label: "Home" 
+  },
+  { 
+    href: "/soluciones", 
+    icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
+    label: "Soluciones" 
+  },
+  { 
+    href: "/blog", 
+    icon: <FaTrophy className="transition-transform duration-300 group-hover:scale-110" />, 
+    label: "Blog" 
+  },
+  { 
+    href: "/contacto", 
+    icon: <FaShareAlt className="transition-transform duration-300 group-hover:rotate-12" />, 
+    label: "Contacto" 
+  },
+];
 
 const ProfileCard: React.FC = () => (
-  <div className="bg-[#F9F9F9] p-6 md:p-8 rounded-lg flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-lg h-[456px] md:h-[530px] w-[320px] md:w-[360px] mx-auto md:mb-12 overflow-hidden">
-    <div className="w-[180px] md:w-[220px] h-[200px] md:h-[283px] bg-[#FF5C5C] mb-2 md:mb-4 rounded-lg overflow-hidden">
+  <motion.div 
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}
+    className="bg-[#1A1A2E] p-6 md:p-8 rounded-xl flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-glow h-[456px] md:h-[530px] w-[320px] md:w-[360px] mx-auto md:mb-12 overflow-hidden border border-[#4A90E2]/20"
+  >
+    <div className="w-[180px] md:w-[220px] h-[200px] md:h-[283px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 md:mb-4 rounded-lg overflow-hidden animate-float">
       <img
         src="/imagenes/perfil.jpg"
         alt="Foto de perfil de Deivipluss"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
       />
     </div>
-    <h2 className="text-[#0D0C1D] text-2xl md:text-3xl font-bold font-poppins">
+    <h2 className="text-white text-2xl md:text-3xl font-bold font-poppins">
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
-    <p className="text-gray-500 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      Mi experiencia global y mis habilidades avanzadas me convierten en la mejor opción para llevar tus proyectos al siguiente nivel.
+    <p className="text-gray-300 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
+      Transformando ideas digitales en estrategias de alto impacto con experiencia global.
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
-      <a href="#" target="_blank" rel="noopener noreferrer">
-        <FaLinkedin className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
-      </a>
-      <a href="#" target="_blank" rel="noopener noreferrer">
-        <FaFacebook className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
-      </a>
-      <a href="#" target="_blank" rel="noopener noreferrer">
-        <FaGithub className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
-      </a>
-      <a href="#" target="_blank" rel="noopener noreferrer">
-        <FaBehance className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
-      </a>
-      <a href="#" target="_blank" rel="noopener noreferrer">
-        <FaPinterest className="text-[#FF5C5C] text-xl md:text-2xl hover:text-[#4A90E2] transition-colors" />
-      </a>
+      {[
+        { Icon: FaLightbulb, color: '#4A90E2' },
+        { Icon: FaBrain, color: '#FF5C5C' },
+        { Icon: FaTrophy, color: '#00F5D4' }
+      ].map(({ Icon, color }, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.2, rotate: 15 }}
+          whileTap={{ scale: 0.9 }}
+          className="cursor-pointer"
+        >
+          <Icon 
+            className={`text-xl md:text-2xl`} 
+            style={{ color }} 
+          />
+        </motion.div>
+      ))}
     </div>
-  </div>
+  </motion.div>
 );
 
 const ProfessionalInfo: React.FC = () => (
-  <div className="w-full max-w-[800px] px-4 md:px-0">
+  <motion.div 
+    initial={{ opacity: 0, x: 50 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.7 }}
+    className="w-full max-w-[800px] px-4 md:px-0"
+  >
     <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
       <h1
         className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center"
-        style={{ letterSpacing: "-1px" }}
+        style={{ letterSpacing: "-2px" }}
       >
-        <span className="text-[#4A90E2]">CONSULTOR </span>
+        <span className="text-[#4A90E2] drop-shadow-glow">CONSULTOR </span>
         <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
-      Especialista en el desarrollo de marcas, comunicación en internet, evolución de negocios, desarrollo de productos y gestión digital. ¡Transformo ideas en realidades sólidas y rentables!
+      Estratega digital especializado en transformar visiones complejas en soluciones innovadoras y rentables.
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
-      <div className="flex flex-col items-center md:items-start">
-        <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+10</p>
-        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
-          AÑOS DE<br />EXPERIENCIA
-        </p>
-      </div>
-      <div className="flex flex-col items-center md:items-start">
-        <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+85</p>
-        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
-          CLIENTES<br />ASESORADOS
-        </p>
-      </div>
-      <div className="flex flex-col items-center md:items-start">
-        <p className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" style={{ letterSpacing: "-1px" }}>+50</p>
-        <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium">
-          PROYECTOS<br />DIGITALES
-        </p>
-      </div>
+      {[
+        { value: "+10", label: "AÑOS DE\nEXPERIENCIA" },
+        { value: "+85", label: "CLIENTES\nASESORADOS" },
+        { value: "+50", label: "PROYECTOS\nDIGITALES" }
+      ].map(({ value, label }, index) => (
+        <motion.div 
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.2, duration: 0.5 }}
+          className="flex flex-col items-center md:items-start"
+        >
+          <p 
+            className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" 
+            style={{ letterSpacing: "-1px" }}
+          >
+            {value}
+          </p>
+          <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium text-center md:text-left">
+            {label}
+          </p>
+        </motion.div>
+      ))}
     </div>
-  </div>
-);
-
-const ActionCards: React.FC = () => (
-  <div className="w-full max-w-[1000px] mt-16 px-4 md:px-0">
-    <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-      <Link href="/soluciones" className="w-full md:w-1/2">
-        <div className="bg-red-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full">
-          <div className="flex flex-col items-center justify-center text-center space-y-2">
-            <FaLightbulb className="text-2xl md:text-3xl" />
-            <h3 className="text-lg md:text-xl font-semibold">SOLUCIONES POPULARES</h3>
-          </div>
-          {!isMobile() && (
-            <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-              <span className="text-xl">→</span>
-            </div>
-          )}
-        </div>
-      </Link>
-      <div className="bg-green-500 text-white p-6 rounded-lg relative shadow-md h-[100px] md:h-[240px] flex items-center justify-center w-full md:w-1/2">
-        <div className="flex flex-col items-center justify-center text-center space-y-2">
-          <FaEnvelope className="text-2xl md:text-3xl" />
-          <h3 className="text-lg md:text-xl font-semibold">CONTACTA CONMIGO</h3>
-        </div>
-        {!isMobile() && (
-          <div className="absolute right-4 bottom-4 bg-white/20 p-2 rounded-lg">
-            <span className="text-xl">→</span>
-          </div>
-        )}
-      </div>
-    </div>
-  </div>
+  </motion.div>
 );
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
 
-  const handleNavigation = (section: string) => {
-    if (isMobile()) {
-      document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      setActiveSection(section);
-    }
-  };
-
   return (
-    <div className="bg-[#0D0C1D] min-h-screen overflow-hidden">
-      <header className="flex justify-center py-4 mt-8 space-x-6 bg-[#1A1A2E] shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
-        <button 
-          className="flex flex-col items-center group" 
-          onClick={() => handleNavigation("home")}
-        >
-          <FaHome className={iconStyle("home", activeSection)} />
-          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Home</span>
-        </button>
-        <Link href="/soluciones" className="flex flex-col items-center group">
-          <FaLightbulb className={iconStyle("soluciones", activeSection)} />
-          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Soluciones</span>
-        </Link>
-        <button 
-          className="flex flex-col items-center group" 
-          onClick={() => handleNavigation("blog")}
-        >
-          <FaBlog className={iconStyle("blog", activeSection)} />
-          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Blog</span>
-        </button>
-        <button 
-          className="flex flex-col items-center group" 
-          onClick={() => handleNavigation("contacto")}
-        >
-          <FaEnvelope className={iconStyle("contacto", activeSection)} />
-          <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors">Contacto</span>
-        </button>
+    <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
+      <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
+        {navItems.map((item) => (
+          <Link 
+            key={item.href}
+            href={item.href} 
+            className="group flex flex-col items-center"
+          >
+            <div className={`
+              text-2xl mx-3
+              ${activeSection === item.label.toLowerCase() ? 'text-[#4A90E2]' : 'text-[#FF5C5C]'}
+              group-hover:text-[#4A90E2] transition-all duration-300
+            `}>
+              {item.icon}
+            </div>
+            <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
+              {item.label}
+            </span>
+          </Link>
+        ))}
       </header>
 
-      <div className={containerStyle}>
+      <main className="flex-grow flex justify-center items-center p-4 md:p-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
-          <div className="flex justify-center w-full">
-            <ProfileCard />
-          </div>
+          <ProfileCard />
           <div className="space-y-8">
             <ProfessionalInfo />
-            <ActionCards />
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="w-full max-w-[1000px] mt-16 px-4 md:px-0"
+            >
+              <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+                <Link href="/soluciones" className="w-full md:w-1/2">
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                  >
+                    <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
+                      <FaLightbulb className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES INNOVADORAS</h3>
+                      <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                        Descubrir más
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+                <Link href="/contacto" className="w-full md:w-1/2">
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                  >
+                    <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
+                      <FaEnvelope className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                      <h3 className="text-xl font-bold tracking-wide">CONTÁCTAME AHORA</h3>
+                      <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                        Iniciar conversación
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </main>
 
-      <footer className="bg-[#1A1A2E] text-center py-6 text-gray-300 text-sm">
-        © 2024 Deivipluss. ¡Todos los derechos reservados!.
+      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
+        © 2024 - Deivipluss. Todos los derechos reservados.
       </footer>
+
+      <style jsx global>{`
+        .drop-shadow-glow {
+          text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+        }
+
+        .shadow-glow {
+          box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
+        }
+
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };
