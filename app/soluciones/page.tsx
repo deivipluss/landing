@@ -11,10 +11,9 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 type CardKey = 'branding' | 'marcaPersonal' | 'entrenamiento' | 'communityManager' | 'contenidoDigital' | 'ecommerce' | 'iaNegocios' | 'onlyfans';
 
@@ -121,45 +120,49 @@ const SolutionCard: React.FC<{
         `}
       />
       
-      <motion.div className="relative h-full p-6 flex flex-col items-center justify-center">
-        <motion.div 
-          layout="position"
-          className="text-white mb-2 transition-transform duration-300 group-hover:scale-110"
-        >
-          {card.icon}
-        </motion.div>
-        
-        <motion.h3 
-          layout="position"
-          className="text-white text-lg font-bold text-center mb-2 
-                     transition-all duration-300 group-hover:text-shadow-glow"
-        >
-          {card.title}
-        </motion.h3>
+      <motion.div className="relative h-full p-6 flex flex-col">
+        <div className="flex flex-col items-center justify-center flex-grow">
+          <motion.div 
+            layout="position"
+            className="text-white mb-2 transition-transform duration-300 group-hover:scale-110"
+          >
+            {card.icon}
+          </motion.div>
+          
+          <motion.h3 
+            layout="position"
+            className="text-white text-lg font-bold text-center mb-2 
+                       transition-all duration-300 group-hover:text-shadow-glow"
+          >
+            {card.title}
+          </motion.h3>
+        </div>
         
         {isExpanded && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-white/90 text-center text-sm mb-4"
+            className="text-white/90 text-center text-sm flex flex-col justify-between"
           >
-            {card.description}
-            <Link 
-              href={card.link}
-              className="
-                mt-4 inline-block px-6 py-2 
-                bg-white/20 hover:bg-white/30
-                backdrop-blur-md rounded-full
-                text-white text-sm font-medium
-                transition-all duration-300
-                hover:scale-105 hover:shadow-glow
-                border border-white/30
-              "
-              onClick={(e) => e.stopPropagation()}
-            >
-              Descubrir más
-            </Link>
+            <p className="mb-4">{card.description}</p>
+            <div className="flex justify-center">
+              <Link 
+                href={card.link}
+                className="
+                  inline-block px-6 py-2 
+                  bg-white/20 hover:bg-white/30
+                  backdrop-blur-md rounded-full
+                  text-white text-sm font-medium
+                  transition-all duration-300
+                  hover:scale-105 hover:shadow-glow
+                  border border-white/30
+                "
+                onClick={(e) => e.stopPropagation()}
+              >
+                Descubrir más
+              </Link>
+            </div>
           </motion.div>
         )}
       </motion.div>
@@ -205,7 +208,7 @@ const Soluciones = () => {
       <main className="flex-grow flex flex-col justify-center items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
           <Swiper
-            modules={[Autoplay, Pagination, Navigation]}
+            modules={[Autoplay, Pagination]}
             spaceBetween={30}
             slidesPerView={1}
             pagination={{
@@ -217,7 +220,6 @@ const Soluciones = () => {
               delay: 5000,
               disableOnInteraction: false,
             }}
-            navigation={true}
             loop={true}
             className="solutions-swiper"
             onSwiper={(swiper) => {
@@ -292,18 +294,6 @@ const Soluciones = () => {
 
         .animate-float {
           animation: float 3s ease-in-out infinite;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-          color: #4A90E2;
-          opacity: 0.7;
-          transition: opacity 0.3s ease;
-        }
-
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-          opacity: 1;
         }
       `}</style>
     </div>
