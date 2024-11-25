@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import SelectionModal from './SelectionModal';
 
 const navItems = [
   { 
@@ -23,12 +24,13 @@ const navItems = [
     label: "Home" 
   },
   { 
-    href: "/empresariales", 
+    href: "#", // Placeholder for triggering the modal
     icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
-    label: "Soluciones" 
+    label: "Soluciones",
+    isSoluciones: true // Flag to identify the "Soluciones" item
   },
   { 
-    href: "/freelance", 
+    href: "/novedades-tech", 
     icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110" />, 
     label: "Tech News" 
   },
@@ -108,7 +110,7 @@ const ProfessionalInfo: React.FC = () => (
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       {[
         { value: "+10", label: "AÑOS DE\nEXPERIENCIA" },
-        { value: "+173", label: "CLIENTES\nASESORDOS" },
+        { value: "+123", label: "CLIENTES\nASESORDOS" },
         { value: "+500", label: "PROYECTOS\nDIGITALES" }
       ].map(({ value, label }, index) => (
         <motion.div 
@@ -133,14 +135,23 @@ const ProfessionalInfo: React.FC = () => (
   </motion.div>
 );
 const App: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleNavClick = (isSoluciones: boolean) => {
+    if (isSoluciones) {
+      setShowModal(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
+      {showModal && <SelectionModal />}
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
         {navItems.map((item) => (
-          <Link 
+          <div
             key={item.href}
-            href={item.href} 
-            className="group flex flex-col items-center"
+            onClick={() => handleNavClick(item.isSoluciones || false)}
+            className="group flex flex-col items-center cursor-pointer"
           >
             <div className={`
               text-2xl mx-3
@@ -152,7 +163,7 @@ const App: React.FC = () => {
             <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
               {item.label}
             </span>
-          </Link>
+          </div>
         ))}
       </header>
 
@@ -166,67 +177,68 @@ const App: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               className="w-full max-w-[1000px] mt-16 px-4 md:px-0"
-            >
-              <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-                <Link href="/soluciones" className="w-full md:w-1/2">
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
-                  >
-                    <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                      <FaRocket className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES EMPRESARIALES</h3>
-                      <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
-                        Descubrir más
+              >
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+                  <Link href="/soluciones" className="w-full md:w-1/2">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                    >
+                      <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
+                        <FaRocket className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-xl font-bold tracking-wide">SOLUCIONES EMPRESARIALES</h3>
+                        <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                          Descubrir más
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                </Link>
-                <Link href="/contacto" className="w-full md:w-1/2">
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
-                  >
-                    <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                      <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES INDIVIDUALES</h3>
-                      <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
-                        Descubrir más
+                    </motion.div>
+                  </Link>
+                  <Link href="/contacto" className="w-full md:w-1/2">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                    >
+                      <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
+                        <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-xl font-bold tracking-wide">SOLUCIONES FREELANCE</h3>
+                        <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                          Descubrir más
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                </Link>
-              </div>
-            </motion.div>
+                    </motion.div>
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </main>
-
-      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
-        © 2024 - Deivipluss. Todos los derechos reservados.
-      </footer>
-
-      <style jsx global>{`
-        .drop-shadow-glow {
-          text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
-        }
-
-        .shadow-glow {
-          box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
-        }
-
-        @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-          100% { transform: translateY(0px); }
-        }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
-    </div>
-  );
-};
-
-export default App;
+        </main>
+  
+        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
+          © 2024 - Deivipluss. Todos los derechos reservados.
+        </footer>
+  
+        <style jsx global>{`
+          .drop-shadow-glow {
+            text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+          }
+  
+          .shadow-glow {
+            box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
+          }
+  
+          @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+          }
+  
+          .animate-float {
+            animation: float 3s ease-in-out infinite;
+          }
+        `}</style>
+      </div>
+    );
+  };
+  
+  export default App;
+  
