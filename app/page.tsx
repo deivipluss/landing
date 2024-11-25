@@ -66,7 +66,7 @@ const ProfileCard: React.FC = () => (
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
     <p className="text-gray-300 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      De generación noventera, fanático tecnológico y poseedor de curiosidad infinita!
+      De generación noventera, de alto fanatismo tecnológico y con curiosidad infinita para competir en mercados de clase mundial!
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
       {socialLinks.map(({ Icon, href }, index) => (
