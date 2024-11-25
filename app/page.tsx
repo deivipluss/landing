@@ -10,8 +10,7 @@ import {
   FaBehance,
   FaPinterest,
   FaSpotify,
-  FaLightbulb, 
-  FaEnvelope 
+  FaLightbulb 
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -29,7 +28,7 @@ const navItems = [
   },
   { 
     href: "/novedades-tech", 
-    icon: <FaTrophy className="transition-transform duration-300 group-hover:scale-110" />, 
+    icon: <FaLightbulb className="transition-transform duration-300 group-hover:scale-110" />, 
     label: "Novedades tech" 
   },
   { 
