@@ -18,6 +18,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+// [Tipos y datos permanecen igual...]
 type CardKey = 'branding' | 'marcaPersonal' | 'entrenamiento' | 'communityManager' | 'contenidoDigital' | 'ecommerce' | 'iaNegocios' | 'onlyfans';
 
 interface NavItem {
@@ -186,7 +187,8 @@ const Soluciones = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex flex-col">
+      {/* Header */}
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-gray-800/50 backdrop-blur-sm shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
         {navItems.map((item) => (
           <Link 
@@ -208,53 +210,58 @@ const Soluciones = () => {
         ))}
       </header>
 
-      <main className="p-4 md:p-8 flex flex-col justify-center items-center min-h-[calc(100vh-200px)]">
+      {/* Main Content */}
+      <main className="flex-grow flex flex-col justify-center items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            pagination={{ 
-              clickable: true,
-              el: '.swiper-pagination',
-              bulletClass: 'swiper-pagination-bullet !bg-red-400/50 !w-2 !h-2 !mx-1',
-              bulletActiveClass: '!bg-blue-400 !opacity-100'
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-            className="mb-8"
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-              autoplayRef.current = swiper.autoplay;
-            }}
-          >
-            {cardGroups.map((group, groupIndex) => (
-              <SwiperSlide key={groupIndex}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                  {group.map((cardKey) => (
-                    <SolutionCard
-                      key={cardKey}
-                      cardKey={cardKey}
-                      isExpanded={expandedCard === cardKey}
-                      onClick={() => toggleCard(cardKey)}
-                    />
-                  ))}
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          {/* Pagination dots */}
-          <div className="flex justify-center mt-4">
-            <div className="swiper-pagination"></div>
+          {/* Swiper Container */}
+          <div className="relative pb-12"> {/* Added padding-bottom for pagination */}
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={30}
+              slidesPerView={1}
+              pagination={{ 
+                clickable: true,
+                el: '.swiper-pagination',
+                bulletClass: 'swiper-pagination-bullet !bg-red-400/50 !w-2 !h-2 !mx-1',
+                bulletActiveClass: '!bg-blue-400 !opacity-100'
+              }}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              className="mb-4" // Reduced bottom margin
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+                autoplayRef.current = swiper.autoplay;
+              }}
+            >
+              {cardGroups.map((group, groupIndex) => (
+                <SwiperSlide key={groupIndex}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                    {group.map((cardKey) => (
+                      <SolutionCard
+                        key={cardKey}
+                        cardKey={cardKey}
+                        isExpanded={expandedCard === cardKey}
+                        onClick={() => toggleCard(cardKey)}
+                      />
+                    ))}
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            
+            {/* Pagination dots - Positioned absolutely within the container */}
+            <div className="absolute bottom-0 left-0 right-0">
+              <div className="swiper-pagination"></div>
+            </div>
           </div>
         </div>
       </main>
 
-      <footer className="bg-gray-800/50 backdrop-blur-sm text-center py-6 text-gray-400 text-sm mt-8">
+      {/* Footer */}
+      <footer className="bg-gray-800/50 backdrop-blur-sm text-center py-6 text-gray-400 text-sm mt-auto">
         © 2024 - Deivipluss. ¡Todos los derechos reservados!
       </footer>
     </div>
