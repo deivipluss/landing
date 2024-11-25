@@ -11,7 +11,7 @@ import {
   FaTrophy
 } from "react-icons/fa";
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Autoplay, Pagination } from 'swiper/modules';
@@ -99,33 +99,33 @@ const SolutionCard: React.FC<{
 }> = ({ cardKey, isExpanded, onClick }) => {
   const card = cardData[cardKey];
 
-  const cardVariants = {
-    collapsed: {
-      scale: 1,
-      transition: { duration: 0.4, ease: "easeInOut" }
-    },
-    expanded: {
-      scale: 1,
-      transition: { duration: 0.4, ease: "easeInOut" }
-    }
-  };
-
-  const contentVariants = {
-    collapsed: {
-      opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
+  const variants = {
+    container: {
+      expanded: { 
+        backgroundColor: "#FFFFFF",
+        transition: { duration: 0.4, ease: "easeInOut" }
+      },
+      collapsed: { 
+        backgroundColor: "transparent",
+        transition: { duration: 0.4, ease: "easeInOut" }
       }
     },
-    expanded: {
-      opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-        delay: 0.1
+    content: {
+      expanded: {
+        opacity: 1,
+        height: "auto",
+        transition: {
+          height: { duration: 0.4, ease: "easeInOut" },
+          opacity: { duration: 0.4, delay: 0.2, ease: "easeInOut" }
+        }
+      },
+      collapsed: {
+        opacity: 0,
+        height: 0,
+        transition: {
+          height: { duration: 0.4, ease: "easeInOut" },
+          opacity: { duration: 0.2, ease: "easeInOut" }
+        }
       }
     }
   };
@@ -134,52 +134,39 @@ const SolutionCard: React.FC<{
     <motion.div
       layout
       onClick={onClick}
-      variants={cardVariants}
-      initial="collapsed"
+      initial={false}
       animate={isExpanded ? "expanded" : "collapsed"}
+      variants={variants.container}
       className={`
-        relative overflow-hidden
-        ${isExpanded ? 'bg-white' : card.color} 
-        rounded-lg p-6 cursor-pointer
+        gpu-accelerated solution-card
         ${isExpanded ? 'text-gray-800' : 'text-white'}
-        transition-colors duration-500 ease-in-out
-        hover:shadow-xl
+        ${!isExpanded ? card.color : ''}
       `}
       style={{ 
-        transformOrigin: "center center",
-        minHeight: isExpanded ? "320px" : "200px" 
+        minHeight: isExpanded ? "var(--card-expanded-height)" : "var(--card-min-height)"
       }}
     >
       <motion.div 
         layout="position" 
-        className="flex flex-col items-center h-full"
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="flex flex-col items-center h-full p-6"
       >
-        <motion.div 
-          layout="position" 
-          className="mb-4"
-          transition={{ duration: 0.4 }}
-        >
+        <motion.div layout="position" className="solution-icon">
           {card.icon}
         </motion.div>
-        <motion.h3 
-          layout="position" 
-          className="text-xl font-semibold mb-2 text-center"
-          transition={{ duration: 0.4 }}
-        >
+        <motion.h3 layout="position" className="solution-title text-center">
           {card.title}
         </motion.h3>
         
         <motion.div
-          variants={contentVariants}
+          variants={variants.content}
           initial="collapsed"
           animate={isExpanded ? "expanded" : "collapsed"}
-          className="w-full"
+          className="w-full overflow-hidden"
         >
-          <motion.p className="text-gray-600 mt-4 text-center">
+          <p className="solution-description text-center">
             {card.description}
-          </motion.p>
-          <motion.div className="mt-6 w-full flex justify-center">
+          </p>
+          <div className="mt-6 w-full flex justify-center">
             <Link 
               href={card.link}
               target="_blank"
@@ -192,11 +179,12 @@ const SolutionCard: React.FC<{
                 flex items-center justify-center
                 text-sm md:text-base
                 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50
+                transition-smooth
               "
             >
               Más info
             </Link>
-          </motion.div>
+          </div>
         </motion.div>
       </motion.div>
     </motion.div>
@@ -234,16 +222,16 @@ const Soluciones = () => {
           <Link 
             key={item.href}
             href={item.href} 
-            className="flex flex-col items-center group"
+            className="nav-link group"
           >
             <div className={`
-              text-2xl mx-3 transition-colors duration-300
+              nav-icon mx-3
               ${activeSection === item.label.toLowerCase() ? 'text-blue-400' : 'text-red-400'}
               group-hover:text-blue-400
             `}>
               {item.icon}
             </div>
-            <span className="text-xs text-red-400 group-hover:text-blue-400 transition-colors duration-300">
+            <span className="nav-label text-red-400 group-hover:text-blue-400">
               {item.label}
             </span>
           </Link>
