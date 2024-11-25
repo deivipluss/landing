@@ -3,10 +3,9 @@ import React from "react";
 import { 
   FaCogs, 
   FaBrain, 
-  FaLightbulb,
-  FaCode,
   FaRocket,
   FaUserTie,
+  FaWhatsapp,
   FaLinkedin,
   FaFacebook,
   FaGithub,
@@ -30,12 +29,12 @@ const navItems = [
   },
   { 
     href: "/novedades-tech", 
-    icon: <FaLightbulb className="transition-transform duration-300 group-hover:scale-110" />, 
-    label: "Novedades tech" 
+    icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110" />, 
+    label: "Tech News" 
   },
   { 
     href: "/contacto", 
-    icon: <FaCode className="transition-transform duration-300 group-hover:rotate-12" />, 
+    icon: <FaWhatsapp className="transition-transform duration-300 group-hover:rotate-12" />, 
     label: "Contacto" 
   },
 ];
@@ -67,7 +66,7 @@ const ProfileCard: React.FC = () => (
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
     <p className="text-gray-300 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      Transformando ideas digitales en estrategias de alto impacto con experiencia global.
+      Niño de los 90, lector apasionado y fanático tecnológico con una curiosidad infinita que convierte los desafíos en oportunidades de innovación.
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
       {socialLinks.map(({ Icon, href }, index) => (
@@ -104,7 +103,7 @@ const ProfessionalInfo: React.FC = () => (
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
-      Estratega digital especializado en transformar visiones complejas en soluciones innovadoras y rentables.
+      Transformo visiones complejas en soluciones innovadoras, combinando pasión tecnológica con estrategia empresarial de vanguardia.
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       {[
@@ -133,7 +132,6 @@ const ProfessionalInfo: React.FC = () => (
     </div>
   </motion.div>
 );
-
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
