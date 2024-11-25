@@ -3,8 +3,13 @@ import React from "react";
 import { 
   FaCogs, 
   FaBrain, 
-  FaTrophy,
-  FaShareAlt,
+  FaWhatsapp,
+  FaLinkedin,
+  FaFacebook,
+  FaGithub,
+  FaBehance,
+  FaPinterest,
+  FaSpotify,
   FaLightbulb, 
   FaEnvelope 
 } from "react-icons/fa";
@@ -23,15 +28,48 @@ const navItems = [
     label: "Soluciones" 
   },
   { 
-    href: "/blog", 
+    href: "/novedades-tech", 
     icon: <FaTrophy className="transition-transform duration-300 group-hover:scale-110" />, 
-    label: "Blog" 
+    label: "Novedades tech" 
   },
   { 
     href: "/contacto", 
-    icon: <FaShareAlt className="transition-transform duration-300 group-hover:rotate-12" />, 
+    icon: <FaWhatsapp className="transition-transform duration-300 group-hover:rotate-12" />, 
     label: "Contacto" 
   },
+];
+
+const socialLinks = [
+  { 
+    Icon: FaLinkedin, 
+    color: '#0077B5', 
+    href: "https://www.linkedin.com/in/deivipluss" 
+  },
+  { 
+    Icon: FaFacebook, 
+    color: '#1877F2', 
+    href: "https://www.facebook.com/deivipluss" 
+  },
+  { 
+    Icon: FaGithub, 
+    color: '#333', 
+    href: "https://www.github.com/deivipluss" 
+  },
+  { 
+    Icon: FaBehance, 
+    color: '#1769FF', 
+    href: "https://www.behance.net/deivipluss" 
+  },
+  { 
+    Icon: FaPinterest, 
+    color: '#E60023', 
+    href: "https://www.pinterest.com/deivipluss" 
+  },
+  { 
+    Icon: FaSpotify, 
+    color: '#1DB954', 
+    href: "https://open.spotify.com/user/deivipluss" 
+  }
 ];
 
 const ProfileCard: React.FC = () => (
@@ -55,13 +93,12 @@ const ProfileCard: React.FC = () => (
       Transformando ideas digitales en estrategias de alto impacto con experiencia global.
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
-      {[
-        { Icon: FaLightbulb, color: '#4A90E2' },
-        { Icon: FaBrain, color: '#FF5C5C' },
-        { Icon: FaTrophy, color: '#00F5D4' }
-      ].map(({ Icon, color }, index) => (
-        <motion.div
+      {socialLinks.map(({ Icon, color, href }, index) => (
+        <motion.a
           key={index}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.2, rotate: 15 }}
           whileTap={{ scale: 0.9 }}
           className="cursor-pointer"
@@ -70,7 +107,7 @@ const ProfileCard: React.FC = () => (
             className={`text-xl md:text-2xl`} 
             style={{ color }} 
           />
-        </motion.div>
+        </motion.a>
       ))}
     </div>
   </motion.div>
@@ -166,7 +203,7 @@ const App: React.FC = () => {
                   >
                     <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
                       <FaLightbulb className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES INNOVADORAS</h3>
+                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES EMPRESARIALES</h3>
                       <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
                         Descubrir más
                       </div>
@@ -179,8 +216,8 @@ const App: React.FC = () => {
                     className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
                   >
                     <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                      <FaEnvelope className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">CONTÁCTAME AHORA</h3>
+                      <FaWhatsapp className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES FREELANCE</h3>
                       <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
                         Iniciar conversación
                       </div>
