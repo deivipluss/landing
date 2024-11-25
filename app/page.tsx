@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -98,7 +98,7 @@ const ProfessionalInfo: React.FC = () => (
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       {[
         { value: "+10", label: "AÑOS DE\nEXPERIENCIA" },
-        { value: "+85", label: "CLIENTES\nASESORADOS" },
+        { value: "+85", label: "CLIENTES\nASESORDOS" },
         { value: "+50", label: "PROYECTOS\nDIGITALES" }
       ].map(({ value, label }, index) => (
         <motion.div 
@@ -124,8 +124,6 @@ const ProfessionalInfo: React.FC = () => (
 );
 
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>("home");
-
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
@@ -137,7 +135,7 @@ const App: React.FC = () => {
           >
             <div className={`
               text-2xl mx-3
-              ${activeSection === item.label.toLowerCase() ? 'text-[#4A90E2]' : 'text-[#FF5C5C]'}
+              text-[#FF5C5C]
               group-hover:text-[#4A90E2] transition-all duration-300
             `}>
               {item.icon}
