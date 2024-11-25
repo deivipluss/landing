@@ -6,7 +6,9 @@ import {
   FaFilm, 
   FaRobot, 
   FaPenFancy, 
-  FaHandsHelping 
+  FaHandsHelping,
+  FaEnvelope, 
+  FaServer
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -16,7 +18,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-type CardKey = 'logo' | 'flyers' | 'reels' | 'iaGeneration' | 'copywritter' | 'salesTraining';
+type CardKey = 'logo' | 'flyers' | 'reels' | 'iaGeneration' | 'copywritter' | 'salesTraining' | 'corporateEmail' | 'hosting';
 
 interface NavItem {
   href: string;
@@ -73,9 +75,22 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     icon: <FaHandsHelping className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-pink-500 via-rose-500 to-red-500",
     link: "/servicios/salesTraining"
+  },
+  corporateEmail: {
+    title: "Correo Corporativo",
+    description: "Configuración y gestión de correos corporativos profesionales para tu empresa.",
+    icon: <FaEnvelope className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-500",
+    link: "/servicios/corporateEmail"
+  },
+  hosting: {
+    title: "Hosting",
+    description: "Servicios de hosting confiables y seguros para tu sitio web.",
+    icon: <FaServer className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500",
+    link: "/servicios/hosting"
   }
 };
-
 const SolutionCard: React.FC<{
   cardKey: CardKey;
   isExpanded: boolean;
@@ -172,8 +187,8 @@ const SolucionesFreelance = () => {
 
   const cardKeys = Object.keys(cardData) as CardKey[];
   const cardGroups = [
-    cardKeys.slice(0, 3),
-    cardKeys.slice(3)
+    cardKeys.slice(0, 4),
+    cardKeys.slice(4)
   ];
 
   return (
@@ -211,88 +226,87 @@ const SolucionesFreelance = () => {
               bulletActiveClass: 'swiper-bullet-active',
             }}
             autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
-              loop={true}
-              className="solutions-swiper"
-              onSwiper={(swiper) => {
-                swiperRef.current = swiper;
-              }}
-            >
-              {cardGroups.map((group, groupIndex) => (
-                <SwiperSlide key={groupIndex}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                    {group.map((cardKey) => (
-                      <SolutionCard
-                        key={cardKey}
-                        cardKey={cardKey}
-                        isExpanded={expandedCard === cardKey}
-                        onClick={() => handleCardClick(cardKey)}
-                      />
-                    ))}
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </main>
-  
-        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
-          © 2024 - Deivipluss. ¡Todos los derechos reservados!
-        </footer>
-  
-        <style jsx global>{`
-          .solutions-swiper {
-            width: 100%;
-            padding: 20px 0;
-          }
-  
-          .swiper-slide {
-            opacity: 1 !important;
-            transform: none !important;
-          }
-  
-          .swiper-bullet {
-            width: 8px;
-            height: 8px;
-            display: inline-block;
-            border-radius: 9999px;
-            background: rgba(255, 92, 92, 0.3);
-            margin: 0 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-          }
-          
-          .swiper-bullet-active {
-            background: #4A90E2;
-            transform: scale(1.2);
-            border-color: rgba(74, 144, 226, 0.3);
-            box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
-          }
-  
-          .text-shadow-glow {
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-          }
-  
-          .shadow-glow {
-            box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
-          }
-  
-          @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-          }
-  
-          .animate-float {
-            animation: float 3s ease-in-out infinite;
-          }
-        `}</style>
-      </div>
-    );
-  };
-  
-  export default SolucionesFreelance;
-  
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            className="solutions-swiper"
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+          >
+            {cardGroups.map((group, groupIndex) => (
+              <SwiperSlide key={groupIndex}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                  {group.map((cardKey) => (
+                    <SolutionCard
+                      key={cardKey}
+                      cardKey={cardKey}
+                      isExpanded={expandedCard === cardKey}
+                      onClick={() => handleCardClick(cardKey)}
+                    />
+                  ))}
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </main>
+
+      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
+        © 2024 - Deivipluss. ¡Todos los derechos reservados!
+      </footer>
+
+      <style jsx global>{`
+        .solutions-swiper {
+          width: 100%;
+          padding: 20px 0;
+        }
+
+        .swiper-slide {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+
+        .swiper-bullet {
+          width: 8px;
+          height: 8px;
+          display: inline-block;
+          border-radius: 9999px;
+          background: rgba(255, 92, 92, 0.3);
+          margin: 0 4px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          border: 2px solid transparent;
+        }
+        
+        .swiper-bullet-active {
+          background: #4A90E2;
+          transform: scale(1.2);
+          border-color: rgba(74, 144, 226, 0.3);
+          box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+        }
+
+        .text-shadow-glow {
+          text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .shadow-glow {
+          box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
+        }
+
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default SolucionesFreelance;
