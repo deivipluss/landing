@@ -175,6 +175,20 @@ const Soluciones = () => {
   const [expandedCard, setExpandedCard] = useState<CardKey | null>(null);
   const swiperRef = useRef<SwiperType>();
 
+  // Handle card expansion
+  const handleCardClick = (cardKey: CardKey) => {
+    setExpandedCard(expandedCard === cardKey ? null : cardKey);
+    
+    // Control autoplay based on card expansion
+    if (expandedCard === cardKey) {
+      // Card is being collapsed, resume autoplay
+      swiperRef.current?.autoplay?.start();
+    } else {
+      // Card is being expanded, pause autoplay
+      swiperRef.current?.autoplay?.stop();
+    }
+  };
+
   // Split cards into groups of 4
   const cardKeys = Object.keys(cardData) as CardKey[];
   const cardGroups = [
@@ -234,7 +248,7 @@ const Soluciones = () => {
                       key={cardKey}
                       cardKey={cardKey}
                       isExpanded={expandedCard === cardKey}
-                      onClick={() => setExpandedCard(expandedCard === cardKey ? null : cardKey)}
+                      onClick={() => handleCardClick(cardKey)}
                     />
                   ))}
                 </div>
