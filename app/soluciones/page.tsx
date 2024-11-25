@@ -138,10 +138,11 @@ const SolutionCard: React.FC<{
       animate={isExpanded ? "expanded" : "collapsed"}
       variants={variants.container}
       className={`
-        gpu-accelerated solution-card
+        gpu-accelerated solution-card cursor-pointer
         ${isExpanded ? 'text-white' : 'text-white'}
         ${!isExpanded ? card.color : ''}
         hover:shadow-lg hover:shadow-[#4A90E2]/20
+        rounded-lg transition-all duration-300
       `}
       style={{ 
         minHeight: isExpanded ? "var(--card-expanded-height)" : "var(--card-min-height)"
@@ -151,10 +152,10 @@ const SolutionCard: React.FC<{
         layout="position" 
         className="flex flex-col items-center h-full p-6"
       >
-        <motion.div layout="position" className="solution-icon">
+        <motion.div layout="position" className="solution-icon mb-4">
           {card.icon}
         </motion.div>
-        <motion.h3 layout="position" className="solution-title text-center">
+        <motion.h3 layout="position" className="solution-title text-center text-lg font-semibold mb-4">
           {card.title}
         </motion.h3>
         
@@ -164,7 +165,7 @@ const SolutionCard: React.FC<{
           animate={isExpanded ? "expanded" : "collapsed"}
           className="w-full overflow-hidden"
         >
-          <p className="solution-description text-gray-300 text-center">
+          <p className="solution-description text-gray-300 text-center mb-6">
             {card.description}
           </p>
           <div className="mt-6 w-full flex justify-center">
@@ -180,7 +181,6 @@ const SolutionCard: React.FC<{
                 flex items-center justify-center
                 text-sm md:text-base
                 focus:outline-none focus:ring-2 focus:ring-[#4A90E2] focus:ring-opacity-50
-                transition-smooth
               "
             >
               Más info
@@ -223,16 +223,16 @@ const Soluciones = () => {
           <Link 
             key={item.href}
             href={item.href} 
-            className="nav-link group"
+            className="nav-link group flex flex-col items-center"
           >
             <div className={`
               nav-icon mx-3
               ${activeSection === item.label.toLowerCase() ? 'text-[#4A90E2]' : 'text-[#FF5C5C]'}
-              group-hover:text-[#4A90E2]
+              group-hover:text-[#4A90E2] transition-colors duration-300
             `}>
               {item.icon}
             </div>
-            <span className="nav-label text-[#FF5C5C] group-hover:text-[#4A90E2]">
+            <span className="nav-label text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
               {item.label}
             </span>
           </Link>
@@ -248,9 +248,9 @@ const Soluciones = () => {
               slidesPerView={1}
               pagination={{ 
                 clickable: true,
-                el: '.swiper-pagination',
-                bulletClass: 'swiper-pagination-bullet !bg-[#FF5C5C]/50 !w-2 !h-2 !mx-1',
-                bulletActiveClass: '!bg-[#4A90E2] !opacity-100'
+                el: '.custom-pagination',
+                bulletClass: 'custom-bullet',
+                bulletActiveClass: 'custom-bullet-active'
               }}
               autoplay={{
                 delay: 5000,
@@ -280,7 +280,7 @@ const Soluciones = () => {
             </Swiper>
             
             <div className="absolute bottom-0 left-0 right-0">
-              <div className="swiper-pagination"></div>
+              <div className="custom-pagination flex justify-center gap-2"></div>
             </div>
           </div>
         </div>
@@ -289,6 +289,34 @@ const Soluciones = () => {
       <footer className="bg-[#1A1A2E] text-center py-6 text-gray-400 text-sm mt-auto">
         © 2024 - Deivipluss. ¡Todos los derechos reservados!
       </footer>
+
+      <style jsx global>{`
+        :root {
+          --card-min-height: 180px;
+          --card-expanded-height: 400px;
+        }
+        
+        .custom-bullet {
+          width: 8px;
+          height: 8px;
+          display: inline-block;
+          border-radius: 50%;
+          background: rgba(255, 92, 92, 0.5);
+          margin: 0 4px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .custom-bullet-active {
+          background: #4A90E2;
+          transform: scale(1.2);
+        }
+        
+        .solution-card {
+          border-radius: 1rem;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 };
