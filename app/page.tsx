@@ -66,7 +66,7 @@ const ProfileCard: React.FC = () => (
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
     <p className="text-gray-300 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
-      Niño de los 90, lector apasionado y fanático tecnológico con una curiosidad infinita que convierte los desafíos en oportunidades de innovación.
+      De generación noventera, fanático tecnológico y poseedor de curiosidad infinita!
     </p>
     <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
       {socialLinks.map(({ Icon, href }, index) => (
@@ -103,13 +103,13 @@ const ProfessionalInfo: React.FC = () => (
       </h1>
     </div>
     <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
-      Transformo visiones complejas en soluciones innovadoras, combinando pasión tecnológica con estrategia empresarial de vanguardia.
+      Transformo visiones complejas en soluciones innovadoras combinando mi talento, la tecnología y estrategias empresariales de vanguardia.
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       {[
         { value: "+10", label: "AÑOS DE\nEXPERIENCIA" },
-        { value: "+85", label: "CLIENTES\nASESORDOS" },
-        { value: "+50", label: "PROYECTOS\nDIGITALES" }
+        { value: "+123", label: "CLIENTES\nASESORDOS" },
+        { value: "+500", label: "PROYECTOS\nDIGITALES" }
       ].map(({ value, label }, index) => (
         <motion.div 
           key={index}
