@@ -108,7 +108,7 @@ const ProfessionalInfo: React.FC = () => (
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       {[
         { value: "+10", label: "AÑOS DE\nEXPERIENCIA" },
-        { value: "+123", label: "CLIENTES\nASESORDOS" },
+        { value: "+173", label: "CLIENTES\nASESORDOS" },
         { value: "+500", label: "PROYECTOS\nDIGITALES" }
       ].map(({ value, label }, index) => (
         <motion.div 
@@ -189,7 +189,7 @@ const App: React.FC = () => {
                   >
                     <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
                       <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES FREELANCE</h3>
+                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES INDIVIDUALES</h3>
                       <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
                         Descubrir más
                       </div>
