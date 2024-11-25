@@ -23,12 +23,12 @@ const navItems = [
     label: "Home" 
   },
   { 
-    href: "/soluciones", 
+    href: "/empresariales", 
     icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
     label: "Soluciones" 
   },
   { 
-    href: "/novedades-tech", 
+    href: "/freelance", 
     icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110" />, 
     label: "Tech News" 
   },
