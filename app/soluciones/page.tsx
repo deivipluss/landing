@@ -11,10 +11,10 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
-import { Autoplay, Pagination, EffectCards } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/effect-cards';
+import 'swiper/css/navigation';
 
 type CardKey = 'branding' | 'marcaPersonal' | 'entrenamiento' | 'communityManager' | 'contenidoDigital' | 'ecommerce' | 'iaNegocios' | 'onlyfans';
 
@@ -110,6 +110,7 @@ const SolutionCard: React.FC<{
         transition-all duration-500 ease-in-out
         cursor-pointer
         ${isExpanded ? 'h-auto md:h-64' : 'h-32 md:h-40'}
+        w-full
       `}
     >
       <motion.div 
@@ -171,6 +172,13 @@ const Soluciones = () => {
   const [expandedCard, setExpandedCard] = useState<CardKey | null>(null);
   const swiperRef = useRef<SwiperType>();
 
+  // Split cards into groups of 4
+  const cardKeys = Object.keys(cardData) as CardKey[];
+  const cardGroups = [
+    cardKeys.slice(0, 4),
+    cardKeys.slice(4)
+  ];
+
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col">
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
@@ -197,7 +205,7 @@ const Soluciones = () => {
       <main className="flex-grow flex flex-col justify-center items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
           <Swiper
-            modules={[Autoplay, Pagination, EffectCards]}
+            modules={[Autoplay, Pagination, Navigation]}
             spaceBetween={30}
             slidesPerView={1}
             pagination={{
@@ -209,37 +217,27 @@ const Soluciones = () => {
               delay: 5000,
               disableOnInteraction: false,
             }}
-            effect="cards"
+            navigation={true}
             loop={true}
-            className="mb-12"
+            className="solutions-swiper"
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
           >
-            <SwiperSlide>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-                {Object.keys(cardData).slice(0, 6).map((cardKey) => (
-                  <SolutionCard
-                    key={cardKey}
-                    cardKey={cardKey as CardKey}
-                    isExpanded={expandedCard === cardKey}
-                    onClick={() => setExpandedCard(expandedCard === cardKey ? null : cardKey as CardKey)}
-                  />
-                ))}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-                {Object.keys(cardData).slice(6).map((cardKey) => (
-                  <SolutionCard
-                    key={cardKey}
-                    cardKey={cardKey as CardKey}
-                    isExpanded={expandedCard === cardKey}
-                    onClick={() => setExpandedCard(expandedCard === cardKey ? null : cardKey as CardKey)}
-                  />
-                ))}
-              </div>
-            </SwiperSlide>
+            {cardGroups.map((group, groupIndex) => (
+              <SwiperSlide key={groupIndex}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                  {group.map((cardKey) => (
+                    <SolutionCard
+                      key={cardKey}
+                      cardKey={cardKey}
+                      isExpanded={expandedCard === cardKey}
+                      onClick={() => setExpandedCard(expandedCard === cardKey ? null : cardKey)}
+                    />
+                  ))}
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </main>
@@ -249,6 +247,16 @@ const Soluciones = () => {
       </footer>
 
       <style jsx global>{`
+        .solutions-swiper {
+          width: 100%;
+          padding: 20px 0;
+        }
+
+        .swiper-slide {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+
         .swiper-bullet {
           width: 8px;
           height: 8px;
@@ -284,6 +292,18 @@ const Soluciones = () => {
 
         .animate-float {
           animation: float 3s ease-in-out infinite;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          color: #4A90E2;
+          opacity: 0.7;
+          transition: opacity 0.3s ease;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+          opacity: 1;
         }
       `}</style>
     </div>
