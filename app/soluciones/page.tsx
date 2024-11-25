@@ -18,7 +18,6 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-// [Tipos y datos permanecen igual...]
 type CardKey = 'branding' | 'marcaPersonal' | 'entrenamiento' | 'communityManager' | 'contenidoDigital' | 'ecommerce' | 'iaNegocios' | 'onlyfans';
 
 interface NavItem {
@@ -100,63 +99,105 @@ const SolutionCard: React.FC<{
 }> = ({ cardKey, isExpanded, onClick }) => {
   const card = cardData[cardKey];
 
+  const cardVariants = {
+    collapsed: {
+      scale: 1,
+      transition: { duration: 0.4, ease: "easeInOut" }
+    },
+    expanded: {
+      scale: 1,
+      transition: { duration: 0.4, ease: "easeInOut" }
+    }
+  };
+
+  const contentVariants = {
+    collapsed: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    expanded: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut",
+        delay: 0.1
+      }
+    }
+  };
+
   return (
     <motion.div
       layout
       onClick={onClick}
+      variants={cardVariants}
+      initial="collapsed"
+      animate={isExpanded ? "expanded" : "collapsed"}
       className={`
-        ${isExpanded ? 'bg-white' : card.color} rounded-lg p-6 cursor-pointer
+        relative overflow-hidden
+        ${isExpanded ? 'bg-white' : card.color} 
+        rounded-lg p-6 cursor-pointer
         ${isExpanded ? 'text-gray-800' : 'text-white'}
-        transition-all duration-300 ease-in-out
-        hover:shadow-xl h-full
-        ${isExpanded ? 'z-10' : 'z-0'}
+        transition-colors duration-500 ease-in-out
+        hover:shadow-xl
       `}
-      whileHover={{ scale: 1.02 }}
+      style={{ 
+        transformOrigin: "center center",
+        minHeight: isExpanded ? "320px" : "200px" 
+      }}
     >
-      <motion.div layout className="flex flex-col items-center h-full">
-        <motion.div layout className="mb-4">
+      <motion.div 
+        layout="position" 
+        className="flex flex-col items-center h-full"
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      >
+        <motion.div 
+          layout="position" 
+          className="mb-4"
+          transition={{ duration: 0.4 }}
+        >
           {card.icon}
         </motion.div>
-        <motion.h3 layout className="text-xl font-semibold mb-2 text-center">
+        <motion.h3 
+          layout="position" 
+          className="text-xl font-semibold mb-2 text-center"
+          transition={{ duration: 0.4 }}
+        >
           {card.title}
         </motion.h3>
-        <AnimatePresence>
-          {isExpanded && (
-            <>
-              <motion.p
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="text-gray-600 mt-4 text-center"
-              >
-                {card.description}
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                className="mt-6 w-full flex justify-center"
-              >
-                <Link 
-                  href={card.link}
-                  target="_blank"
-                  onClick={(e) => e.stopPropagation()}
-                  className="
-                    px-6 py-2 bg-blue-500 text-white rounded-full
-                    hover:bg-blue-600 transition-colors duration-300
-                    transform hover:scale-105
-                    shadow-md hover:shadow-lg
-                    flex items-center justify-center
-                    text-sm md:text-base
-                    focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50
-                  "
-                >
-                  Más info
-                </Link>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
+        
+        <motion.div
+          variants={contentVariants}
+          initial="collapsed"
+          animate={isExpanded ? "expanded" : "collapsed"}
+          className="w-full"
+        >
+          <motion.p className="text-gray-600 mt-4 text-center">
+            {card.description}
+          </motion.p>
+          <motion.div className="mt-6 w-full flex justify-center">
+            <Link 
+              href={card.link}
+              target="_blank"
+              onClick={(e) => e.stopPropagation()}
+              className="
+                px-6 py-2 bg-blue-500 text-white rounded-full
+                hover:bg-blue-600 transition-colors duration-300
+                transform hover:scale-105
+                shadow-md hover:shadow-lg
+                flex items-center justify-center
+                text-sm md:text-base
+                focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50
+              "
+            >
+              Más info
+            </Link>
+          </motion.div>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -188,7 +229,6 @@ const Soluciones = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex flex-col">
-      {/* Header */}
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-gray-800/50 backdrop-blur-sm shadow-lg rounded-full w-[90%] max-w-3xl mx-auto">
         {navItems.map((item) => (
           <Link 
@@ -210,11 +250,9 @@ const Soluciones = () => {
         ))}
       </header>
 
-      {/* Main Content */}
       <main className="flex-grow flex flex-col justify-center items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
-          {/* Swiper Container */}
-          <div className="relative pb-12"> {/* Added padding-bottom for pagination */}
+          <div className="relative pb-12">
             <Swiper
               modules={[Autoplay, Pagination]}
               spaceBetween={30}
@@ -230,7 +268,7 @@ const Soluciones = () => {
                 disableOnInteraction: false,
               }}
               loop={true}
-              className="mb-4" // Reduced bottom margin
+              className="mb-4"
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
                 autoplayRef.current = swiper.autoplay;
@@ -252,7 +290,6 @@ const Soluciones = () => {
               ))}
             </Swiper>
             
-            {/* Pagination dots - Positioned absolutely within the container */}
             <div className="absolute bottom-0 left-0 right-0">
               <div className="swiper-pagination"></div>
             </div>
@@ -260,7 +297,6 @@ const Soluciones = () => {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="bg-gray-800/50 backdrop-blur-sm text-center py-6 text-gray-400 text-sm mt-auto">
         © 2024 - Deivipluss. ¡Todos los derechos reservados!
       </footer>

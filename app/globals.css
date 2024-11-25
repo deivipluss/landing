@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  /* Colores base */
   --background: 255 255 255;
   --foreground: 23 23 23;
   --primary: 74 144 226;
@@ -10,6 +11,20 @@
   --accent: 37 99 235;
   --muted: 115 115 115;
   --dark: 13 12 29;
+
+  /* Variables de animación */
+  --transition-fast: 150ms;
+  --transition-normal: 300ms;
+  --transition-slow: 500ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Variables de expansión de tarjetas */
+  --card-min-height: 200px;
+  --card-expanded-height: 320px;
+  --card-border-radius: 0.5rem;
+  --card-padding: 1.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,44 +37,72 @@
 @layer base {
   body {
     @apply bg-[#0D0C1D] text-white antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Mejora del comportamiento del scroll */
+  html {
+    scroll-behavior: smooth;
+    @apply overflow-x-hidden;
   }
 }
 
 @layer components {
   .nav-link {
-    @apply flex flex-col items-center transition-colors duration-300;
+    @apply flex flex-col items-center;
+    transition: color var(--transition-normal) var(--ease-default);
   }
 
   .nav-icon {
-    @apply text-2xl transition-transform duration-300 ease-in-out;
+    @apply text-2xl;
+    transition: transform var(--transition-normal) var(--ease-bounce);
+  }
+
+  .nav-link:hover .nav-icon {
+    transform: translateY(-2px);
   }
 
   .nav-label {
-    @apply text-xs mt-1 transition-colors duration-300;
+    @apply text-xs mt-1;
+    transition: color var(--transition-normal) var(--ease-default);
   }
 
   .solution-card {
-    @apply relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out;
+    @apply relative overflow-hidden rounded-lg shadow-lg;
+    min-height: var(--card-min-height);
+    transition: all var(--transition-normal) var(--ease-in-out);
+    transform-origin: center center;
+    will-change: transform, opacity, background-color;
+  }
+
+  .solution-card:hover {
+    transform: translateY(-2px);
   }
 
   .solution-card-expanded {
     @apply bg-white text-gray-800;
+    min-height: var(--card-expanded-height);
   }
 
   .solution-icon {
-    @apply text-3xl mb-4 transition-transform duration-300;
+    @apply text-3xl mb-4;
+    transition: transform var(--transition-normal) var(--ease-bounce);
   }
 
   .solution-title {
     @apply text-xl font-semibold mb-2;
+    transition: transform var(--transition-normal) var(--ease-default);
   }
 
   .solution-description {
-    @apply mt-4 text-gray-600 transition-opacity duration-300;
+    @apply mt-4 text-gray-600;
+    transition: opacity var(--transition-normal) var(--ease-default),
+                transform var(--transition-normal) var(--ease-default);
   }
 }
 
-/* Animaciones personalizadas */
+/* Sistema de animaciones mejorado */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -82,16 +125,48 @@
   }
 }
 
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+  animation: fadeIn var(--transition-normal) var(--ease-default) forwards;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.3s ease-out forwards;
+  animation: scaleIn var(--transition-normal) var(--ease-default) forwards;
 }
 
-/* Mejoras de accesibilidad */
+.animate-slide-in {
+  animation: slideInRight var(--transition-normal) var(--ease-default) forwards;
+}
+
+/* Clases de utilidad para transiciones */
+.transition-smooth {
+  transition-timing-function: var(--ease-default);
+  transition-duration: var(--transition-normal);
+}
+
+.transition-bounce {
+  transition-timing-function: var(--ease-bounce);
+  transition-duration: var(--transition-normal);
+}
+
+/* Optimizaciones para accesibilidad */
 @media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0.01ms;
+    --transition-normal: 0.01ms;
+    --transition-slow: 0.01ms;
+  }
+
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -100,14 +175,26 @@
   }
 }
 
-/* Estilos para el modo oscuro */
+/* Estilos para modo oscuro */
 .dark {
   color-scheme: dark;
 }
 
-/* Optimizaciones para dispositivos móviles */
+/* Optimizaciones móviles */
 @media (max-width: 640px) {
+  :root {
+    --card-min-height: 180px;
+    --card-expanded-height: 280px;
+  }
+
   .solution-card {
     @apply mx-4;
   }
+}
+
+/* Optimizaciones de rendimiento */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
