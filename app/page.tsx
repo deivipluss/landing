@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -11,7 +11,8 @@ import {
   FaGithub,
   FaBehance,
   FaPinterest,
-  FaSpotify
+  FaSpotify,
+  FaArrowUp
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -24,7 +25,7 @@ const navItems = [
     label: "Home" 
   },
   { 
-    href: "#solutions", // Changed to a proper anchor
+    href: "#solutions", 
     icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
     label: "Soluciones" 
   },
@@ -136,6 +137,23 @@ const ProfessionalInfo: React.FC = () => (
 
 const App: React.FC = () => {
   const router = useRouter();
+  const [scrollY, setScrollY] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    setIsDesktop(mediaQuery.matches);
+    const handleResize = () => setIsDesktop(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      mediaQuery.removeEventListener('change', handleResize);
+    };
+  }, []);
 
   const handleNavClick = (href: string) => {
     if (href.startsWith('#')) {
@@ -143,10 +161,20 @@ const App: React.FC = () => {
       const element = document.getElementById(elementId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+        if (isDesktop && href === '#solutions') {
+          element.classList.add('highlight');
+          setTimeout(() => {
+            element.classList.remove('highlight');
+          }, 1000);
+        }
       }
     } else {
       router.push(href);
     }
+  };
+
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -182,11 +210,11 @@ const App: React.FC = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="w-full max-w-[1000px] mt-16 px-4 md:px-0"
+              className="w-full max-w-[1000px] mt-16 px-4 md:px-0 highlight"
             >
               <div className="flex flex-col md:flex-row gap-8 md:gap-12">
                 <Link href="/soluciones" className="w-full md:w-1/2">
-                <motion.div 
+                  <motion.div 
                     whileHover={{ scale: 1.05 }}
                     className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
                   >
@@ -219,6 +247,15 @@ const App: React.FC = () => {
         </div>
       </main>
 
+      <motion.button
+        className="fixed bottom-8 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300"
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.8 }}
+        onClick={handleBackToTop}
+      >
+        <FaArrowUp className="text-xl" />
+      </motion.button>
+
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
         © 2024 - Deivipluss. Todos los derechos reservados.
       </footer>
@@ -240,6 +277,15 @@ const App: React.FC = () => {
 
         .animate-float {
           animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes highlight {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.02); }
+        }
+
+        .highlight {
+          animation: highlight 1s ease-in-out;
         }
       `}</style>
     </div>
