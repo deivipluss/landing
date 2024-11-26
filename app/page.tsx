@@ -134,7 +134,6 @@ const ProfessionalInfo: React.FC = () => (
     </div>
   </motion.div>
 );
-
 const App: React.FC = () => {
   const router = useRouter();
   const [isDesktop, setIsDesktop] = useState(false);
@@ -156,10 +155,10 @@ const App: React.FC = () => {
       const element = document.getElementById(elementId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
-        if (isDesktop && href === '#solutions') {
-          element.classList.add('highlight');
+        if (href === '#solutions') {
+          element.classList.add(isDesktop ? 'highlight-desktop' : 'highlight-mobile');
           setTimeout(() => {
-            element.classList.remove('highlight');
+            element.classList.remove('highlight-desktop', 'highlight-mobile');
           }, 1000);
         }
       }
@@ -243,7 +242,7 @@ const App: React.FC = () => {
         </main>
   
         <motion.button
-          className="fixed bottom-8 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300"
+          className="fixed bottom-8 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 lg:hidden"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
           onClick={handleBackToTop}
@@ -273,13 +272,22 @@ const App: React.FC = () => {
           animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes highlight {
+        @keyframes highlight-desktop {
           0%, 100% { transform: scale(1); }
           50% { transform: scale(1.02); }
         }
 
-        .highlight {
-          animation: highlight 1s ease-in-out;
+        @keyframes highlight-mobile {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+
+        .highlight-desktop {
+          animation: highlight-desktop 1s ease-in-out;
+        }
+
+        .highlight-mobile {
+          animation: highlight-mobile 1s ease-in-out;
         }
       `}</style>
     </div>
