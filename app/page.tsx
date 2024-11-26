@@ -134,6 +134,7 @@ const ProfessionalInfo: React.FC = () => (
     </div>
   </motion.div>
 );
+
 const App: React.FC = () => {
   const router = useRouter();
   const [isDesktop, setIsDesktop] = useState(false);
@@ -172,7 +173,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
+    <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden relative">
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
         {navItems.map((item) => (
           <div 
@@ -242,7 +243,7 @@ const App: React.FC = () => {
         </main>
   
         <motion.button
-          className="fixed bottom-8 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 lg:hidden"
+          className="fixed bottom-24 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 lg:hidden z-50"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
           onClick={handleBackToTop}
@@ -295,4 +296,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-  
