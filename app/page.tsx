@@ -110,7 +110,7 @@ const ProfessionalInfo: React.FC = () => (
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
       {[
         { value: "+11", label: "AÑOS DE\nEXPERIENCIA" },
-        { value: "+173", label: "CLIENTES\nASESORDOS" },
+        { value: "+173", label: "CLIENTES\nASESORADOS" },
         { value: "+382", label: "PROYECTOS\nDIGITALES" }
       ].map(({ value, label }, index) => (
         <motion.div 
@@ -137,20 +137,15 @@ const ProfessionalInfo: React.FC = () => (
 
 const App: React.FC = () => {
   const router = useRouter();
-  const [scrollY, setScrollY] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
     setIsDesktop(mediaQuery.matches);
     const handleResize = () => setIsDesktop(mediaQuery.matches);
     mediaQuery.addEventListener('change', handleResize);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       mediaQuery.removeEventListener('change', handleResize);
     };
   }, []);
@@ -185,82 +180,81 @@ const App: React.FC = () => {
             key={item.href}
             onClick={() => handleNavClick(item.href)}
             className="group flex flex-col items-center cursor-pointer"
-          >
-            <div className={`
-              text-2xl mx-3
-              text-[#FF5C5C]
-              group-hover:text-[#4A90E2] transition-all duration-300
-            `}>
-              {item.icon}
-            </div>
-            <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
-              {item.label}
-            </span>
-          </div>
-        ))}
-      </header>
-
-      <main className="flex-grow flex justify-center items-center p-4 md:p-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
-          <ProfileCard />
-          <div className="space-y-8">
-            <ProfessionalInfo />
-            <motion.div 
-              id="solutions"  // Changed from solutions-section to match anchor
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="w-full max-w-[1000px] mt-16 px-4 md:px-0 highlight"
             >
-              <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-                <Link href="/soluciones" className="w-full md:w-1/2">
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
-                  >
-                    <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                      <FaRocket className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">EMPRESAS</h3>
-                      <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
-                        Descubrir más
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
-                <Link href="/contacto" className="w-full md:w-1/2">
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
-                  >
-                    <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                      <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">INDIVIDUOS</h3>
-                      <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
-                        Descubrir más
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
+              <div className={`
+                text-2xl mx-3
+                text-[#FF5C5C]
+                group-hover:text-[#4A90E2] transition-all duration-300
+              `}>
+                {item.icon}
               </div>
-            </motion.div>
+              <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </header>
+  
+        <main className="flex-grow flex justify-center items-center p-4 md:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
+            <ProfileCard />
+            <div className="space-y-8">
+              <ProfessionalInfo />
+              <motion.div 
+                id="solutions"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="w-full max-w-[1000px] mt-16 px-4 md:px-0 highlight"
+              >
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+                  <Link href="/soluciones" className="w-full md:w-1/2">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                    >
+                      <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
+                        <FaRocket className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-xl font-bold tracking-wide">EMPRESAS</h3>
+                        <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                          Descubrir más
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
+                  <Link href="/contacto" className="w-full md:w-1/2">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                    >
+                      <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
+                        <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-xl font-bold tracking-wide">INDIVIDUOS</h3>
+                        <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                          Descubrir más
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </main>
-
-      <motion.button
-        className="fixed bottom-8 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300"
-        whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 0.8 }}
-        onClick={handleBackToTop}
-      >
-        <FaArrowUp className="text-xl" />
-      </motion.button>
-
-      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
-        © 2024 - Deivipluss. Todos los derechos reservados.
-      </footer>
-
-      <style jsx global>{`
+        </main>
+  
+        <motion.button
+          className="fixed bottom-8 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300"
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          onClick={handleBackToTop}
+        >
+          <FaArrowUp className="text-xl" />
+        </motion.button>
+  
+        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
+          © 2024 - Deivipluss. Todos los derechos reservados.
+        </footer>
+        <style jsx global>{`
         .drop-shadow-glow {
           text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
         }
@@ -293,3 +287,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+  
