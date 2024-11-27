@@ -4,13 +4,7 @@ import {
   FaCogs, 
   FaBrain, 
   FaRocket,
-  FaWhatsapp,
-  FaLinkedin,
-  FaFacebook,
-  FaGithub,
-  FaBehance,
-  FaPinterest,
-  FaSpotify
+  FaWhatsapp
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
