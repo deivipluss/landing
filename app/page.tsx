@@ -225,7 +225,7 @@ const App: React.FC = () => {
                   >
                     <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
                       <FaRocket className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">EMPRESAS PARA EMPRESAS</h3>
+                      <h3 className="text-xl font-bold tracking-wide">PARA EMPRESAS</h3>
                       <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
                         Descubrir más
                       </div>
@@ -239,7 +239,7 @@ const App: React.FC = () => {
                   >
                     <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
                       <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">SOLUCIONES PARA INDIVIDUOS</h3>
+                      <h3 className="text-xl font-bold tracking-wide">PARA PERSONAS</h3>
                       <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
                         Descubrir más
                       </div>
