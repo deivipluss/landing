@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, Suspense } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -44,7 +44,7 @@ const navItems = [
   },
 ];
 
-const Contact: React.FC = () => {
+const ContactForm: React.FC = () => {
   const searchParams = useSearchParams();
   const [formState, setFormState] = useState({
     name: '',
@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
     selectedService: ''
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const serviceParam = searchParams.get('servicio');
     if (serviceParam && serviceParam in serviceLabels) {
       setFormState(prevState => ({
@@ -71,14 +71,110 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a un servidor
-    console.log('Formulario enviado:', formState);
-    
-    // Opcional: Agregar lógica de envío de formulario
+    try {
+      // Example of potential form submission logic
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (response.ok) {
+        alert('Mensaje enviado exitosamente');
+        // Reset form after successful submission
+        setFormState({
+          name: '',
+          email: '',
+          message: '',
+          selectedService: ''
+        });
+      } else {
+        alert('Error al enviar el mensaje');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Error al enviar el mensaje');
+    }
   };
 
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      className="w-full max-w-[700px] bg-[#1A1A2E] p-8 rounded-lg shadow-glow"
+    >
+      <h2 className="text-3xl font-bold text-white mb-6 text-center">Contáctanos</h2>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-300">Nombre</label>
+          <input 
+            type="text"
+            id="name"
+            name="name"
+            value={formState.name}
+            onChange={handleInputChange}
+            className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-300">Correo Electrónico</label>
+          <input 
+            type="email"
+            id="email"
+            name="email"
+            value={formState.email}
+            onChange={handleInputChange}
+            className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="selectedService" className="block text-sm font-medium text-gray-300">Servicio de Interés</label>
+          <select
+            id="selectedService"
+            name="selectedService"
+            value={formState.selectedService}
+            onChange={handleInputChange}
+            className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+          >
+            <option value="">Selecciona un servicio</option>
+            {Object.entries(serviceLabels).map(([key, label]) => (
+              <option key={key} value={key}>{label}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-300">Mensaje</label>
+          <textarea 
+            id="message"
+            name="message"
+            value={formState.message}
+            onChange={handleInputChange}
+            className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+            rows={5}
+            required
+          ></textarea>
+        </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          type="submit"
+          className="w-full bg-[#4A90E2] text-white p-3 rounded-md shadow-lg hover:bg-blue-600 transition-all duration-300"
+        >
+          Enviar
+        </motion.button>
+      </form>
+    </motion.div>
+  );
+};
+
+const Contact: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden relative">
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
@@ -103,75 +199,9 @@ const Contact: React.FC = () => {
       </header>
 
       <main className="flex-grow flex justify-center items-center p-4 md:p-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="w-full max-w-[700px] bg-[#1A1A2E] p-8 rounded-lg shadow-glow"
-        >
-          <h2 className="text-3xl font-bold text-white mb-6 text-center">Contáctanos</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300">Nombre</label>
-              <input 
-                type="text"
-                id="name"
-                name="name"
-                value={formState.name}
-                onChange={handleInputChange}
-                className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300">Correo Electrónico</label>
-              <input 
-                type="email"
-                id="email"
-                name="email"
-                value={formState.email}
-                onChange={handleInputChange}
-                className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="selectedService" className="block text-sm font-medium text-gray-300">Servicio de Interés</label>
-              <select
-                id="selectedService"
-                name="selectedService"
-                value={formState.selectedService}
-                onChange={handleInputChange}
-                className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-              >
-                <option value="">Selecciona un servicio</option>
-                {Object.entries(serviceLabels).map(([key, label]) => (
-                  <option key={key} value={key}>{label}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300">Mensaje</label>
-              <textarea 
-                id="message"
-                name="message"
-                value={formState.message}
-                onChange={handleInputChange}
-                className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-                rows={5}
-                required
-              ></textarea>
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              type="submit"
-              className="w-full bg-[#4A90E2] text-white p-3 rounded-md shadow-lg hover:bg-blue-600 transition-all duration-300"
-            >
-              Enviar
-            </motion.button>
-          </form>
-        </motion.div>
+        <Suspense fallback={<div>Cargando...</div>}>
+          <ContactForm />
+        </Suspense>
       </main>
 
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
