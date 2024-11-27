@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -7,7 +7,19 @@ import {
   FaWhatsapp
 } from "react-icons/fa";
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
+
+const serviceLabels = {
+  branding: "Branding Empresarial",
+  marcaPersonal: "Marca Personal",
+  entrenamiento: "Entrenamiento Digital",
+  communityManager: "Community Management",
+  contenidoDigital: "Contenido Digital",
+  ecommerce: "E-commerce",
+  iaNegocios: "IA para Negocios",
+  onlyfans: "OnlyFans Management"
+};
 
 const navItems = [
   { 
@@ -33,13 +45,25 @@ const navItems = [
 ];
 
 const Contact: React.FC = () => {
+  const searchParams = useSearchParams();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    selectedService: ''
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    const serviceParam = searchParams.get('servicio');
+    if (serviceParam && serviceParam in serviceLabels) {
+      setFormState(prevState => ({
+        ...prevState,
+        selectedService: serviceParam
+      }));
+    }
+  }, [searchParams]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormState(prevState => ({
       ...prevState,
@@ -51,6 +75,8 @@ const Contact: React.FC = () => {
     e.preventDefault();
     // Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a un servidor
     console.log('Formulario enviado:', formState);
+    
+    // Opcional: Agregar lógica de envío de formulario
   };
 
   return (
@@ -108,6 +134,21 @@ const Contact: React.FC = () => {
                 className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
                 required
               />
+            </div>
+            <div>
+              <label htmlFor="selectedService" className="block text-sm font-medium text-gray-300">Servicio de Interés</label>
+              <select
+                id="selectedService"
+                name="selectedService"
+                value={formState.selectedService}
+                onChange={handleInputChange}
+                className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+              >
+                <option value="">Selecciona un servicio</option>
+                {Object.entries(serviceLabels).map(([key, label]) => (
+                  <option key={key} value={key}>{label}</option>
+                ))}
+              </select>
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-300">Mensaje</label>

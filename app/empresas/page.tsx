@@ -36,56 +36,56 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     description: "Creamos una identidad sólida y coherente para tu empresa. Mejoramos la percepción de tu marca, generando confianza y fidelidad en tus clientes.",
     icon: <FaCogs className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600",
-    link: "/servicios/branding"
+    link: "/contacto?servicio=branding"
   },
   marcaPersonal: {
     title: "Marca Personal",
     description: "Desarrollamos tu imagen personal, proyectando autenticidad y profesionalismo. Te ayudamos a posicionarte como líder en tu industria.",
     icon: <FaUserTie className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-red-500 via-pink-500 to-purple-500",
-    link: "/servicios/marca-personal"
+    link: "/contacto?servicio=marcaPersonal"
   },
   entrenamiento: {
     title: "Entrenamiento Digital",
     description: "Capacitación personalizada para dominar las herramientas digitales esenciales en tu negocio.",
     icon: <FaBrain className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-green-500 via-teal-500 to-blue-500",
-    link: "/servicios/entrenamiento"
+    link: "/contacto?servicio=entrenamiento"
   },
   communityManager: {
     title: "Community Management",
     description: "Gestión profesional de tus redes sociales para aumentar engagement y alcance.",
     icon: <FaShareAlt className="text-3xl group-hover:rotate-12 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500",
-    link: "/servicios/community-management"
+    link: "/contacto?servicio=communityManager"
   },
   contenidoDigital: {
     title: "Contenido Digital",
     description: "Creación de contenido estratégico que conecta con tu audiencia y genera resultados.",
     icon: <FaTrophy className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500",
-    link: "/servicios/contenido-digital"
+    link: "/contacto?servicio=contenidoDigital"
   },
   ecommerce: {
     title: "E-commerce",
     description: "Desarrollo y optimización de tu tienda online para maximizar ventas.",
     icon: <FaCogs className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500",
-    link: "/servicios/ecommerce"
+    link: "/contacto?servicio=ecommerce"
   },
   iaNegocios: {
     title: "IA para Negocios",
     description: "Implementación de soluciones de inteligencia artificial para optimizar procesos.",
     icon: <FaBrain className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500",
-    link: "/servicios/ia-negocios"
+    link: "/contacto?servicio=iaNegocios"
   },
   onlyfans: {
     title: "OnlyFans Management",
     description: "Gestión profesional y estratégica de tu cuenta de OnlyFans.",
     icon: <FaUserTie className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-pink-500 via-rose-500 to-red-500",
-    link: "/servicios/onlyfans"
+    link: "/contacto?servicio=onlyfans"
   }
 };
 
