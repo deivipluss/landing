@@ -218,7 +218,7 @@ const App: React.FC = () => {
               className="w-full max-w-[1000px] mt-16 px-4 md:px-0 highlight"
             >
               <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-                <Link href="/soluciones/empresas" className="w-full md:w-1/2">
+                <Link href="/empresas" className="w-full md:w-1/2">
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
                     className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
@@ -232,7 +232,7 @@ const App: React.FC = () => {
                     </div>
                   </motion.div>
                 </Link>
-                <Link href="/soluciones/individuos" className="w-full md:w-1/2">
+                <Link href="/personas" className="w-full md:w-1/2">
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
                     className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
