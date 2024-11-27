@@ -4,7 +4,6 @@ import {
   FaCogs, 
   FaBrain, 
   FaRocket,
-  FaUserTie,
   FaWhatsapp,
   FaLinkedin,
   FaFacebook,
@@ -15,7 +14,6 @@ import {
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 
 const navItems = [
   { 
@@ -40,17 +38,7 @@ const navItems = [
   },
 ];
 
-const socialLinks = [
-  { Icon: FaLinkedin, href: "https://www.linkedin.com/in/deivipluss" },
-  { Icon: FaFacebook, href: "https://www.facebook.com/deivipluss" },
-  { Icon: FaGithub, href: "https://www.github.com/deivipluss" },
-  { Icon: FaBehance, href: "https://www.behance.net/deivipluss" },
-  { Icon: FaPinterest, href: "https://www.pinterest.com/deivipluss" },
-  { Icon: FaSpotify, href: "https://open.spotify.com/user/deivipluss" }
-];
-
 const Contact: React.FC = () => {
-  const router = useRouter();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
