@@ -75,19 +75,15 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/contact', formState);
+      await axios.post('/api/contact', formState);
 
-      if (response.status === 200) {
-        alert('Mensaje enviado exitosamente');
-        setFormState({
-          name: '',
-          email: '',
-          message: '',
-          selectedService: ''
-        });
-      } else {
-        alert('Error al enviar el mensaje');
-      }
+      alert('Mensaje enviado exitosamente');
+      setFormState({
+        name: '',
+        email: '',
+        message: '',
+        selectedService: ''
+      });
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
       alert('Error al enviar el mensaje');
@@ -204,7 +200,7 @@ const Contact: React.FC = () => {
           text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
         }
 
-        .shadow-glow {
+                .shadow-glow {
           box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
         }
 
