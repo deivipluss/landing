@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const WHATSAPP_API_URL = 'https://graph.facebook.com/v12.0/YOUR_PHONE_NUMBER_ID/messages';
-const ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN';
+const WHATSAPP_API_URL = 'https://graph.facebook.com/v12.0/51989843709/messages';
+const ACCESS_TOKEN = 'EAAO4PAdWXGsBOZB762fB0NakQksIay5SdZB3pfI37it4kjVuD4hPx7pvS0tQryJMhLboxbZBJ1BFIh1OAPPHCVpW2ZAJPbZCk3i40GXrmH11Auvrg91n6jZB77oOVMdcAGMVn609jMvjCHxJ3OEOClBqsHbt8hbqjCLTypZCVcZAEmYHZAfPxDDBnbxhPXQcmxph4Kpdi8DJiCjJPCDOG6hZBLtCCkCMkZD';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -188,7 +188,9 @@ const Contact: React.FC = () => {
       </header>
 
       <main className="flex-grow flex justify-center items-center p-4 md:p-8">
-        <ContactForm />
+        <Suspense fallback={<div>Cargando...</div>}>
+          <ContactForm />
+        </Suspense>
       </main>
 
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
@@ -200,7 +202,7 @@ const Contact: React.FC = () => {
           text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
         }
 
-                .shadow-glow {
+        .shadow-glow {
           box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
         }
 
