@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -9,6 +9,7 @@ import {
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const serviceLabels = {
   branding: "Branding Empresarial",
@@ -53,7 +54,7 @@ const ContactForm: React.FC = () => {
     selectedService: ''
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const serviceParam = searchParams.get('servicio');
     if (serviceParam && serviceParam in serviceLabels) {
       setFormState(prevState => ({
@@ -74,18 +75,10 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // Example of potential form submission logic
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formState),
-      });
+      const response = await axios.post('/api/contact', formState);
 
-      if (response.ok) {
+      if (response.status === 200) {
         alert('Mensaje enviado exitosamente');
-        // Reset form after successful submission
         setFormState({
           name: '',
           email: '',
@@ -96,7 +89,7 @@ const ContactForm: React.FC = () => {
         alert('Error al enviar el mensaje');
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Error al enviar el formulario:', error);
       alert('Error al enviar el mensaje');
     }
   };
@@ -199,9 +192,7 @@ const Contact: React.FC = () => {
       </header>
 
       <main className="flex-grow flex justify-center items-center p-4 md:p-8">
-        <Suspense fallback={<div>Cargando...</div>}>
-          <ContactForm />
-        </Suspense>
+        <ContactForm />
       </main>
 
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
