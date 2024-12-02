@@ -49,7 +49,8 @@ const ContactForm: React.FC = () => {
   const searchParams = useSearchParams();
   const [formState, setFormState] = useState({
     name: '',
-    whatsapp: '',
+    whatsappCode: '+51',
+    whatsappNumber: '',
     selectedService: ''
   });
 
@@ -79,7 +80,8 @@ const ContactForm: React.FC = () => {
       alert('Formulario enviado exitosamente');
       setFormState({
         name: '',
-        whatsapp: '',
+        whatsappCode: '+51',
+        whatsappNumber: '',
         selectedService: ''
       });
     } catch (error) {
@@ -124,33 +126,37 @@ const ContactForm: React.FC = () => {
             ))}
           </select>
         </div>
-        <div className="flex items-center space-x-4">
-          <div className="flex-shrink-0">
-            <label htmlFor="countryCode" className="block text-sm font-medium text-gray-300">Código</label>
-            <select
-              id="countryCode"
-              name="countryCode"
-              className="mt-1 p-3 block rounded-md bg-gray-800 border-gray-700 text-white"
-              required
-            >
-              <option value="+1">🇺🇸 +1</option>
-              <option value="+52">🇲🇽 +52</option>
-              <option value="+57">🇨🇴 +57</option>
-              <option value="+34">🇪🇸 +34</option>
-              <option value="+51">🇵🇪 +51</option>
-            </select>
-          </div>
-          <div className="flex-grow">
-            <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-300">WhatsApp</label>
-            <input 
-              type="tel"
-              id="whatsapp"
-              name="whatsapp"
-              value={formState.whatsapp}
-              onChange={handleInputChange}
-              className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-              required
-            />
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-1">Número WhatsApp</label>
+          <div className="flex items-center space-x-4">
+            <div className="flex-shrink-0">
+              <select
+                id="whatsappCode"
+                name="whatsappCode"
+                value={formState.whatsappCode}
+                onChange={handleInputChange}
+                className="p-3 block rounded-md bg-gray-800 border-gray-700 text-white"
+                required
+              >
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+52">🇲🇽 +52</option>
+                <option value="+57">🇨🇴 +57</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+51">🇵🇪 +51</option>
+              </select>
+            </div>
+            <div className="flex-grow">
+              <input 
+                type="tel"
+                id="whatsappNumber"
+                name="whatsappNumber"
+                value={formState.whatsappNumber}
+                onChange={handleInputChange}
+                placeholder="Ingrese su número"
+                className="p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+                required
+              />
+            </div>
           </div>
         </div>
         <motion.button
