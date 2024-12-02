@@ -1,13 +1,7 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { 
-  FaCogs, 
-  FaBrain, 
-  FaRocket
-} from "react-icons/fa";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import axios from "axios";
@@ -22,24 +16,6 @@ const serviceLabels = {
   iaNegocios: "IA para Negocios",
   onlyfans: "OnlyFans Management"
 };
-
-const navItems = [
-  { 
-    href: "/", 
-    icon: <FaCogs className="transition-transform duration-300 group-hover:rotate-180" />, 
-    label: "Home" 
-  },
-  { 
-    href: "#solutions", 
-    icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
-    label: "Soluciones" 
-  },
-  { 
-    href: "/novedades-tech", 
-    icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110" />, 
-    label: "Tech News" 
-  }
-];
 
 const ContactForm: React.FC = () => {
   const searchParams = useSearchParams();
