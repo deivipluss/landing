@@ -5,8 +5,6 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import axios from "axios";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 
 const serviceLabels = {
   branding: "Branding Empresarial",
@@ -27,11 +25,11 @@ const navItems = [
 ];
 
 const countries = [
-  { code: "pe", name: "Perú" },
-  { code: "us", name: "Estados Unidos" },
-  { code: "es", name: "España" },
-  { code: "mx", name: "México" },
-  { code: "ar", name: "Argentina" },
+  { code: "51", name: "Perú" },
+  { code: "1", name: "Estados Unidos" },
+  { code: "34", name: "España" },
+  { code: "52", name: "México" },
+  { code: "54", name: "Argentina" },
   // Agrega más países según sea necesario
 ];
 
