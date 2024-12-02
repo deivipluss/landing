@@ -1,11 +1,6 @@
 "use client";
 import React, { useState, useEffect, Suspense } from "react";
-import { 
-  FaCogs, 
-  FaBrain, 
-  FaRocket,
-  FaWhatsapp 
-} from "react-icons/fa";
+import { FaCogs, FaBrain, FaRocket, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -24,33 +19,11 @@ const serviceLabels = {
   onlyfans: "OnlyFans Management",
 };
 
-const uniqueCountries = [
-  "Perú", "Estados Unidos", "México", "Argentina", 
-  "Canadá", "Australia", "España", "Colombia", 
-  "Chile", "Brasil", "Reino Unido", "Alemania"
-];
-
 const navItems = [
-  { 
-    href: "/", 
-    icon: <FaCogs className="transition-transform duration-300 group-hover:rotate-180" />, 
-    label: "Home" 
-  },
-  { 
-    href: "#solutions", 
-    icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
-    label: "Soluciones" 
-  },
-  { 
-    href: "/novedades-tech", 
-    icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110" />, 
-    label: "Tech News" 
-  },
-  { 
-    href: "/contacto", 
-    icon: <FaWhatsapp className="transition-transform duration-300 group-hover:rotate-12" />, 
-    label: "Contacto" 
-  },
+  { href: "/", icon: <FaCogs className="transition-transform duration-300 group-hover:rotate-180" />, label: "Home" },
+  { href: "#solutions", icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, label: "Soluciones" },
+  { href: "/novedades-tech", icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110" />, label: "Tech News" },
+  { href: "/contacto", icon: <FaWhatsapp className="transition-transform duration-300 group-hover:rotate-12" />, label: "Contacto" },
 ];
 
 const ContactForm: React.FC = () => {
@@ -82,7 +55,6 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
     try {
       await axios.post("/api/contact", formState);
-
       alert("Formulario enviado exitosamente");
       setFormState({
         name: "",
@@ -140,7 +112,7 @@ const ContactForm: React.FC = () => {
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-1">Número WhatsApp</label>
           <PhoneInput
-            country={"pe"}
+            country={"pe"} // Código predeterminado: Perú
             value={formState.whatsapp}
             onChange={(value) => handleInputChange("whatsapp", value)}
             inputClass="text-black"
