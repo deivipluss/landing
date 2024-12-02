@@ -142,6 +142,10 @@ const ContactForm: React.FC = () => {
             enableSearch
             searchClass="bg-[#1A1A2E] text-white p-2 rounded-md"
             searchPlaceholder="Buscar"
+            dropdownClass="bg-[#1A1A2E] text-white"
+            onlyCountries={["us", "pe", "gb", "fr", "de", "es", "br"]} // Aquí defines los países que aparecerán
+            countriesFlags={true}
+            preferredCountries={["pe", "us", "gb", "fr"]} // Aquí puedes ajustar qué países son preferidos
           />
         </div>
         <motion.button
