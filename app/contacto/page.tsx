@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, Suspense } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useSearchParams } from "next/navigation";
@@ -14,7 +15,7 @@ const serviceLabels = {
   contenidoDigital: "Contenido Digital",
   ecommerce: "E-commerce",
   iaNegocios: "IA para Negocios",
-  onlyfans: "OnlyFans Management"
+  onlyfans: "OnlyFans Management",
 };
 
 const ContactForm: React.FC = () => {
@@ -22,7 +23,7 @@ const ContactForm: React.FC = () => {
   const [formState, setFormState] = useState({
     name: "",
     phone: "",
-    selectedService: ""
+    selectedService: "",
   });
 
   const [phoneValue, setPhoneValue] = useState("");
@@ -32,7 +33,7 @@ const ContactForm: React.FC = () => {
     if (serviceParam && serviceParam in serviceLabels) {
       setFormState((prevState) => ({
         ...prevState,
-        selectedService: serviceParam
+        selectedService: serviceParam,
       }));
     }
   }, [searchParams]);
@@ -43,7 +44,7 @@ const ContactForm: React.FC = () => {
     const { name, value } = e.target;
     setFormState((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -60,7 +61,7 @@ const ContactForm: React.FC = () => {
       setFormState({
         name: "",
         phone: "",
-        selectedService: ""
+        selectedService: "",
       });
       setPhoneValue("");
     } catch (error) {
@@ -76,10 +77,15 @@ const ContactForm: React.FC = () => {
       transition={{ duration: 0.7 }}
       className="w-full max-w-[700px] bg-[#1A1A2E] p-8 rounded-lg shadow-glow"
     >
-      <h2 className="text-3xl font-bold text-white mb-6 text-center">Contáctanos</h2>
+      <h2 className="text-3xl font-bold text-white mb-6 text-center">
+        Contáctanos
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-300">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-300"
+          >
             Nombre
           </label>
           <input
@@ -93,7 +99,10 @@ const ContactForm: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-300">
+          <label
+            htmlFor="phone"
+            className="block text-sm font-medium text-gray-300"
+          >
             Número WhatsApp
           </label>
           <PhoneInput
@@ -107,7 +116,7 @@ const ContactForm: React.FC = () => {
               backgroundColor: "#1A1A2E",
               color: "#FFFFFF",
               maxHeight: "200px",
-              overflow: "auto"
+              overflow: "auto",
             }}
             enableAreaCodes={true}
             preferredCountries={[
@@ -115,7 +124,7 @@ const ContactForm: React.FC = () => {
               "us", "ca", // Norteamérica
               "mx", "gt", "hn", "ni", "pa", "cr", "sv", // Centroamérica
               "es", "fr", "de", "it", "pt", // Europa
-              "au", "in", "jp", "cn" // Resto del mundo
+              "au", "in", "jp", "cn", // Resto del mundo
             ]}
             localization={{
               pe: "Perú",
@@ -127,7 +136,7 @@ const ContactForm: React.FC = () => {
               ec: "Ecuador",
               py: "Paraguay",
               uy: "Uruguay",
-              ve: "Venezuela"
+              ve: "Venezuela",
             }}
           />
         </div>
@@ -166,4 +175,12 @@ const ContactForm: React.FC = () => {
   );
 };
 
-export default ContactForm;
+const Page: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <ContactForm />
+    </Suspense>
+  );
+};
+
+export default Page;
