@@ -1,11 +1,12 @@
 "use client";
+
 import React, { useState, useEffect, Suspense } from "react";
 import { FaCogs, FaBrain, FaRocket, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import axios from "axios";
-import PhoneInput from "react-phone-input-2";
+import PhoneInput, { CountryData } from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const serviceLabels = {
@@ -135,7 +136,13 @@ const ContactForm: React.FC = () => {
               scrollbarColor: "#4A90E2 transparent",
               scrollbarWidth: "thin",
             }}
-            enableSearch={true} // Habilitar búsqueda
+            localization={{
+              search: "Buscar",
+            }}
+            enableSearch
+            searchClass="bg-gray-700 text-white p-2 rounded-md"
+            searchPlaceholder="Buscar"
+            flagDropdownField="dialCode"
           />
         </div>
         <motion.button
