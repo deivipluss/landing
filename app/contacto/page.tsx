@@ -135,6 +135,7 @@ const ContactForm: React.FC = () => {
               scrollbarColor: "#4A90E2 transparent",
               scrollbarWidth: "thin",
             }}
+            enableSearch={true} // Habilitar búsqueda
           />
         </div>
         <motion.button
