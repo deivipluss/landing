@@ -140,10 +140,6 @@ const ContactForm: React.FC = () => {
               scrollbarWidth: "thin",
               zIndex: 10, // Asegura que las banderas no se muestren sobre el campo de búsqueda
             }}
-            dropdownContainerStyle={{
-              maxHeight: "200px", // Limitar la altura del dropdown
-              overflowY: "auto", // Hacer scroll en el dropdown si hay demasiados países
-            }}
           />
         </div>
         <motion.button
