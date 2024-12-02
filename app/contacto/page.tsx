@@ -4,7 +4,7 @@ import {
   FaCogs, 
   FaBrain, 
   FaRocket,
-  FaWhatsapp
+  FaWhatsapp 
 } from "react-icons/fa";
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -49,9 +49,7 @@ const ContactForm: React.FC = () => {
   const searchParams = useSearchParams();
   const [formState, setFormState] = useState({
     name: '',
-    email: '',
     whatsapp: '',
-    countryCode: '',
     selectedService: ''
   });
 
@@ -78,17 +76,15 @@ const ContactForm: React.FC = () => {
     try {
       await axios.post('/api/contact', formState);
 
-      alert('Mensaje enviado exitosamente');
+      alert('Formulario enviado exitosamente');
       setFormState({
         name: '',
-        email: '',
         whatsapp: '',
-        countryCode: '',
         selectedService: ''
       });
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
-      alert('Error al enviar el mensaje');
+      alert('Error al enviar el formulario');
     }
   };
 
@@ -114,49 +110,6 @@ const ContactForm: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-300">Correo Electrónico</label>
-          <input 
-            type="email"
-            id="email"
-            name="email"
-            value={formState.email}
-            onChange={handleInputChange}
-            className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-            required
-          />
-        </div>
-        <div className="flex items-center space-x-4">
-          <div className="w-1/3">
-            <label htmlFor="countryCode" className="block text-sm font-medium text-gray-300">Código</label>
-            <select
-              id="countryCode"
-              name="countryCode"
-              value={formState.countryCode}
-              onChange={handleInputChange}
-              className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-              required
-            >
-              <option value="">Seleccionar</option>
-              <option value="+51">Perú (+51)</option>
-              <option value="+1">EE.UU. (+1)</option>
-              <option value="+34">España (+34)</option>
-              {/* Agrega más opciones según sea necesario */}
-            </select>
-          </div>
-          <div className="w-2/3">
-            <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-300">WhatsApp</label>
-            <input 
-              type="text"
-              id="whatsapp"
-              name="whatsapp"
-              value={formState.whatsapp}
-              onChange={handleInputChange}
-              className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-              required
-            />
-          </div>
-        </div>
-        <div>
           <label htmlFor="selectedService" className="block text-sm font-medium text-gray-300">Servicio de Interés</label>
           <select
             id="selectedService"
@@ -170,6 +123,35 @@ const ContactForm: React.FC = () => {
               <option key={key} value={key}>{label}</option>
             ))}
           </select>
+        </div>
+        <div className="flex items-center space-x-4">
+          <div className="flex-shrink-0">
+            <label htmlFor="countryCode" className="block text-sm font-medium text-gray-300">Código</label>
+            <select
+              id="countryCode"
+              name="countryCode"
+              className="mt-1 p-3 block rounded-md bg-gray-800 border-gray-700 text-white"
+              required
+            >
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+52">🇲🇽 +52</option>
+              <option value="+57">🇨🇴 +57</option>
+              <option value="+34">🇪🇸 +34</option>
+              <option value="+51">🇵🇪 +51</option>
+            </select>
+          </div>
+          <div className="flex-grow">
+            <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-300">WhatsApp</label>
+            <input 
+              type="tel"
+              id="whatsapp"
+              name="whatsapp"
+              value={formState.whatsapp}
+              onChange={handleInputChange}
+              className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+              required
+            />
+          </div>
         </div>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -194,11 +176,7 @@ const Contact: React.FC = () => {
             href={item.href}
             className="group flex flex-col items-center cursor-pointer"
           >
-            <div className={`
-              text-2xl mx-3
-              text-[#FF5C5C]
-              group-hover:text-[#4A90E2] transition-all duration-300
-            `}>
+            <div className={`text-2xl mx-3 text-[#FF5C5C] group-hover:text-[#4A90E2] transition-all duration-300`}>
               {item.icon}
             </div>
             <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
