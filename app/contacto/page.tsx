@@ -126,9 +126,12 @@ const ContactForm: React.FC = () => {
               border: "1px solid #4A90E2",
               borderRadius: "8px",
             }}
-            buttonStyle={{
-              backgroundColor: "#4A90E2",
-              color: "#FFFFFF",
+            enableSearch
+            searchClass="bg-gray-700 text-white p-2 rounded-md"
+            searchPlaceholder="Buscar"
+            searchStyle={{
+              width: "calc(100% - 40px)", // Ajustar el ancho del campo de búsqueda
+              paddingLeft: "10px", // Asegurar que la lupa no se solape
             }}
             dropdownStyle={{
               backgroundColor: "#FFFFFF", // Fondo blanco para el dropdown
@@ -140,18 +143,6 @@ const ContactForm: React.FC = () => {
             dropdownContainerStyle={{
               maxHeight: "200px", // Limitar la altura del dropdown
               overflowY: "auto", // Hacer scroll en el dropdown si hay demasiados países
-            }}
-            enableSearch
-            searchClass="bg-gray-700 text-white p-2 rounded-md"
-            searchPlaceholder="Buscar"
-            searchStyle={{
-              width: "calc(100% - 40px)", // Ajustar el ancho del campo de búsqueda
-              paddingLeft: "10px", // Asegurar que la lupa no se solape
-            }}
-            buttonStyle={{
-              backgroundColor: "#4A90E2",
-              color: "#FFFFFF",
-              borderRadius: "8px",
             }}
           />
         </div>
