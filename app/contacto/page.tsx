@@ -131,9 +131,9 @@ const ContactForm: React.FC = () => {
               color: "#FFFFFF",
             }}
             dropdownStyle={{
-              backgroundColor: "#1A1A2E",
-              color: "#FFFFFF",
-              scrollbarColor: "#4A90E2 transparent",
+              backgroundColor: "#FFFFFF", // Fondo blanco para el dropdown
+              color: "#333", // Color oscuro para el texto de los países
+              scrollbarColor: "#4A90E2 transparent", // Color de la barra de desplazamiento
               scrollbarWidth: "thin",
             }}
             localization={{
@@ -162,7 +162,7 @@ const Contact: React.FC = () => {
     <div className="min-h-screen bg-[#0D0C1D] flex flex-col overflow-hidden relative">
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 shadow-glow rounded-full w-[90%] max-w-3xl mx-auto">
         {navItems.map((item) => (
-          <Link key={item.href} href={item.href} className="group" aria-label={item.label}>
+          <Link key={item.href} href={item.href} className="group">
             <div className="text-2xl text-[#FF5C5C]">{item.icon}</div>
           </Link>
         ))}
