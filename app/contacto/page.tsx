@@ -142,7 +142,6 @@ const ContactForm: React.FC = () => {
             enableSearch
             searchClass="bg-gray-700 text-white p-2 rounded-md"
             searchPlaceholder="Buscar"
-            flagDropdownField="dialCode"
           />
         </div>
         <motion.button
