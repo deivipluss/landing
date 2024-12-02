@@ -50,7 +50,8 @@ const ContactForm: React.FC = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    message: '',
+    whatsapp: '',
+    countryCode: '',
     selectedService: ''
   });
 
@@ -64,7 +65,7 @@ const ContactForm: React.FC = () => {
     }
   }, [searchParams]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormState(prevState => ({
       ...prevState,
@@ -81,7 +82,8 @@ const ContactForm: React.FC = () => {
       setFormState({
         name: '',
         email: '',
-        message: '',
+        whatsapp: '',
+        countryCode: '',
         selectedService: ''
       });
     } catch (error) {
@@ -123,6 +125,37 @@ const ContactForm: React.FC = () => {
             required
           />
         </div>
+        <div className="flex items-center space-x-4">
+          <div className="w-1/3">
+            <label htmlFor="countryCode" className="block text-sm font-medium text-gray-300">Código</label>
+            <select
+              id="countryCode"
+              name="countryCode"
+              value={formState.countryCode}
+              onChange={handleInputChange}
+              className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+              required
+            >
+              <option value="">Seleccionar</option>
+              <option value="+51">Perú (+51)</option>
+              <option value="+1">EE.UU. (+1)</option>
+              <option value="+34">España (+34)</option>
+              {/* Agrega más opciones según sea necesario */}
+            </select>
+          </div>
+          <div className="w-2/3">
+            <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-300">WhatsApp</label>
+            <input 
+              type="text"
+              id="whatsapp"
+              name="whatsapp"
+              value={formState.whatsapp}
+              onChange={handleInputChange}
+              className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+              required
+            />
+          </div>
+        </div>
         <div>
           <label htmlFor="selectedService" className="block text-sm font-medium text-gray-300">Servicio de Interés</label>
           <select
@@ -137,18 +170,6 @@ const ContactForm: React.FC = () => {
               <option key={key} value={key}>{label}</option>
             ))}
           </select>
-        </div>
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300">Mensaje</label>
-          <textarea 
-            id="message"
-            name="message"
-            value={formState.message}
-            onChange={handleInputChange}
-            className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
-            rows={5}
-            required
-          ></textarea>
         </div>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -196,26 +217,6 @@ const Contact: React.FC = () => {
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
         © 2024 - Deivipluss. Todos los derechos reservados
       </footer>
-
-      <style jsx global>{`
-        .drop-shadow-glow {
-          text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
-        }
-
-        .shadow-glow {
-          box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
-        }
-
-        @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-          100% { transform: translateY(0px); }
-        }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 };
