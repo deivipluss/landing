@@ -140,8 +140,9 @@ const ContactForm: React.FC = () => {
               search: "Buscar",
             }}
             enableSearch
-            searchClass="bg-gray-700 text-white p-2 rounded-md"
+            searchClass="bg-[#1A1A2E] text-white p-2 rounded-md"
             searchPlaceholder="Buscar"
+            displayInitialValue={false} // Ocultar el texto con nombre del país
           />
         </div>
         <motion.button
