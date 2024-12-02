@@ -162,7 +162,7 @@ const Contact: React.FC = () => {
     <div className="min-h-screen bg-[#0D0C1D] flex flex-col overflow-hidden relative">
       <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 shadow-glow rounded-full w-[90%] max-w-3xl mx-auto">
         {navItems.map((item) => (
-          <Link key={item.href} href={item.href} className="group">
+          <Link key={item.href} href={item.href} className="group" aria-label={item.label}>
             <div className="text-2xl text-[#FF5C5C]">{item.icon}</div>
           </Link>
         ))}
