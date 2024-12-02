@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import axios from "axios";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const serviceLabels = {
   branding: "Branding Empresarial",
@@ -18,19 +20,10 @@ const serviceLabels = {
 };
 
 const navItems = [
-  { href: "/", icon: <FaCogs className="transition-transform duration-300 group-hover:rotate-180" />, label: "Home" },
-  { href: "#solutions", icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, label: "Soluciones" },
-  { href: "/novedades-tech", icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110" />, label: "Tech News" },
-  { href: "/contacto", icon: <FaWhatsapp className="transition-transform duration-300 group-hover:rotate-12" />, label: "Contacto" },
-];
-
-const countries = [
-  { code: "51", name: "Perú" },
-  { code: "1", name: "Estados Unidos" },
-  { code: "34", name: "España" },
-  { code: "52", name: "México" },
-  { code: "54", name: "Argentina" },
-  // Agrega más países según sea necesario
+  { href: "/", icon: <FaCogs />, label: "Home" },
+  { href: "#solutions", icon: <FaBrain />, label: "Soluciones" },
+  { href: "/novedades-tech", icon: <FaRocket />, label: "Tech News" },
+  { href: "/contacto", icon: <FaWhatsapp />, label: "Contacto" },
 ];
 
 const ContactForm: React.FC = () => {
@@ -39,8 +32,6 @@ const ContactForm: React.FC = () => {
     name: "",
     whatsapp: "+51",
     selectedService: "",
-    searchQuery: "",
-    filteredCountries: countries,
   });
 
   useEffect(() => {
@@ -60,18 +51,6 @@ const ContactForm: React.FC = () => {
     }));
   };
 
-  const handleSearch = (query: string) => {
-    const lowercasedQuery = query.toLowerCase();
-    const filtered = countries.filter((country) =>
-      country.name.toLowerCase().includes(lowercasedQuery)
-    );
-    setFormState((prevState) => ({
-      ...prevState,
-      searchQuery: query,
-      filteredCountries: filtered,
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -81,8 +60,6 @@ const ContactForm: React.FC = () => {
         name: "",
         whatsapp: "+51",
         selectedService: "",
-        searchQuery: "",
-        filteredCountries: countries,
       });
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
@@ -133,25 +110,32 @@ const ContactForm: React.FC = () => {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1">Buscar País</label>
-          <input
-            type="text"
-            placeholder="Buscar país..."
-            value={formState.searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            className="mt-1 p-3 block w-full rounded-md bg-gray-800 border-gray-700 text-white"
+          <label className="block text-sm font-medium text-gray-300 mb-1">Número WhatsApp</label>
+          <PhoneInput
+            country={"pe"}
+            value={formState.whatsapp}
+            onChange={(value) => handleInputChange("whatsapp", value)}
+            inputClass="text-black"
+            buttonClass="bg-gray-800 text-white"
+            containerClass="mt-1 rounded-md bg-gray-800"
+            inputStyle={{
+              width: "100%",
+              backgroundColor: "#1A1A2E",
+              color: "#FFFFFF",
+              border: "1px solid #4A90E2",
+              borderRadius: "8px",
+            }}
+            buttonStyle={{
+              backgroundColor: "#4A90E2",
+              color: "#FFFFFF",
+            }}
+            dropdownStyle={{
+              backgroundColor: "#1A1A2E",
+              color: "#FFFFFF",
+              scrollbarColor: "#4A90E2 transparent",
+              scrollbarWidth: "thin",
+            }}
           />
-          <div className="mt-2 max-h-40 overflow-y-auto bg-gray-700 rounded-md p-2">
-            {formState.filteredCountries.map((country) => (
-              <div
-                key={country.code}
-                className="text-white cursor-pointer p-2 hover:bg-gray-600 rounded-md"
-                onClick={() => handleInputChange("whatsapp", `+${country.code}`)}
-              >
-                {country.name}
-              </div>
-            ))}
-          </div>
         </div>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -168,35 +152,19 @@ const ContactForm: React.FC = () => {
 
 const Contact: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden relative">
-      <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
+    <div className="min-h-screen bg-[#0D0C1D] flex flex-col overflow-hidden relative">
+      <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 shadow-glow rounded-full w-[90%] max-w-3xl mx-auto">
         {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="group flex flex-col items-center cursor-pointer"
-          >
-            <div
-              className={`text-2xl mx-3 text-[#FF5C5C] group-hover:text-[#4A90E2] transition-all duration-300`}
-            >
-              {item.icon}
-            </div>
-            <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
-              {item.label}
-            </span>
+          <Link key={item.href} href={item.href} className="group">
+            <div className="text-2xl text-[#FF5C5C]">{item.icon}</div>
           </Link>
         ))}
       </header>
-
-      <main className="flex-grow flex justify-center items-center p-4 md:p-8">
+      <main className="flex-grow flex justify-center items-center">
         <Suspense fallback={<div>Cargando...</div>}>
           <ContactForm />
         </Suspense>
       </main>
-
-      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
-        © 2024 - Deivipluss. Todos los derechos reservados
-      </footer>
     </div>
   );
 };
