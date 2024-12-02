@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="w-full max-w-[700px] bg-[#1A1A2E] p-8 rounded-lg shadow-glow"
+      className="w-full max-w-[90%] sm:max-w-[700px] bg-[#1A1A2E] p-6 sm:p-8 rounded-lg shadow-glow mx-auto"
     >
       <h2 className="text-3xl font-bold text-white mb-6 text-center">
         Contáctanos
@@ -120,7 +120,8 @@ const ContactForm: React.FC = () => {
             }}
             enableAreaCodes={true}
             preferredCountries={[
-              "pe", "ar", "bo", "br", "cl", "co", "ec", "py", "uy", "ve", // Sudamérica
+              "pe", // Perú primero
+              "ar", "bo", "br", "cl", "co", "ec", "py", "uy", "ve", // Sudamérica
               "us", "ca", // Norteamérica
               "mx", "gt", "hn", "ni", "pa", "cr", "sv", // Centroamérica
               "es", "fr", "de", "it", "pt", // Europa
@@ -137,6 +138,24 @@ const ContactForm: React.FC = () => {
               py: "Paraguay",
               uy: "Uruguay",
               ve: "Venezuela",
+              us: "Estados Unidos",
+              ca: "Canadá",
+              mx: "México",
+              gt: "Guatemala",
+              hn: "Honduras",
+              ni: "Nicaragua",
+              pa: "Panamá",
+              cr: "Costa Rica",
+              sv: "El Salvador",
+              es: "España",
+              fr: "Francia",
+              de: "Alemania",
+              it: "Italia",
+              pt: "Portugal",
+              au: "Australia",
+              in: "India",
+              jp: "Japón",
+              cn: "China",
             }}
           />
         </div>
