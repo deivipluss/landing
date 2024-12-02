@@ -126,20 +126,22 @@ const ContactForm: React.FC = () => {
               border: "1px solid #4A90E2",
               borderRadius: "8px",
             }}
-            enableSearch
-            searchClass="bg-gray-700 text-white p-2 rounded-md"
-            searchPlaceholder="Buscar"
-            searchStyle={{
-              width: "calc(100% - 40px)", // Ajustar el ancho del campo de búsqueda
-              paddingLeft: "10px", // Asegurar que la lupa no se solape
+            buttonStyle={{
+              backgroundColor: "#4A90E2",
+              color: "#FFFFFF",
             }}
             dropdownStyle={{
               backgroundColor: "#FFFFFF", // Fondo blanco para el dropdown
               color: "#333", // Color oscuro para el texto de los países
               scrollbarColor: "#4A90E2 transparent", // Color de la barra de desplazamiento
               scrollbarWidth: "thin",
-              zIndex: 10, // Asegura que las banderas no se muestren sobre el campo de búsqueda
             }}
+            localization={{
+              search: "Buscar",
+            }}
+            enableSearch
+            searchClass="bg-gray-700 text-white p-2 rounded-md"
+            searchPlaceholder="Buscar"
           />
         </div>
         <motion.button
