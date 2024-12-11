@@ -105,6 +105,7 @@
     box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
   }
 }
+
 /* Sistema de animaciones mejorado */
 @keyframes fadeIn {
   from {
@@ -328,21 +329,62 @@
   background-color: #E02424;
 }
 
-/* iPad Portrait */
-@media (min-width: 768px) and (max-width: 834px) and (orientation: portrait) {
-  .ipad-portrait\:text-center {
-    text-align: center;
+/* iPad y dispositivos similares */
+@media (min-width: 768px) and (max-width: 1366px) {
+  .main-container {
+    @apply px-4;
+  }
+
+  .profile-card-container {
+    @apply flex justify-center;
+  }
+
+  .professional-info-container {
+    @apply items-center;
+  }
+
+  h1 {
+    @apply text-center;
+  }
+
+  .solutions-container {
+    @apply flex-col items-center;
+  }
+
+  .solution-card {
+    @apply w-full max-w-md mx-auto;
   }
 }
 
-/* iPad Landscape */
-@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
-  .ipad-landscape\:text-left {
-    text-align: left;
+/* iPad Pro vertical */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+  .main-container {
+    @apply flex-col items-center;
   }
 
-  .ipad-landscape\:justify-center {
-    justify-content: center;
+  .profile-card-container,
+  .professional-info-container {
+    @apply w-full max-w-2xl;
+  }
+}
+
+/* iPad mini horizontal */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .main-container {
+    @apply flex-row items-start;
+  }
+
+  .profile-card-container,
+  .professional-info-container {
+    @apply w-1/2;
+  }
+
+  .solutions-container {
+    @apply flex-row;
+  }
+
+  .solution-card {
+    @apply w-1/2;
   }
 }
 

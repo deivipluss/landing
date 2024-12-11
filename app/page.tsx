@@ -95,16 +95,16 @@ const ProfessionalInfo: React.FC = () => (
     transition={{ duration: 0.7 }}
     className="w-full max-w-[800px] px-4 md:px-0"
   >
-    <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
+    <div className="flex justify-center w-full mb-6 md:mb-8">
       <h1
-        className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center ipad-portrait:text-center ipad-landscape:text-left"
+        className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative text-center"
         style={{ letterSpacing: "-2px" }}
       >
         <span className="text-[#4A90E2] drop-shadow-glow">CONSULTOR </span>
         <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
       </h1>
     </div>
-    <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center md:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
+    <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center px-4 md:px-0 -mt-2 font-poppins font-light">
       Transformo visiones complejas en soluciones innovadoras combinando mi talento, la tecnología y estrategias empresariales de vanguardia.
     </p>
     <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
@@ -118,7 +118,7 @@ const ProfessionalInfo: React.FC = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.2, duration: 0.5 }}
-          className="flex flex-col items-center md:items-start"
+          className="flex flex-col items-center"
         >
           <p 
             className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" 
@@ -126,7 +126,7 @@ const ProfessionalInfo: React.FC = () => (
           >
             {value}
           </p>
-          <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium text-center md:text-left">
+          <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium text-center">
             {label}
           </p>
         </motion.div>
@@ -206,9 +206,11 @@ const App: React.FC = () => {
       </header>
 
       <main className="flex-grow flex justify-center items-center p-4 md:p-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto ipad-landscape:justify-center">
-          <ProfileCard />
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl w-full items-center mx-auto">
+          <div className="flex justify-center lg:justify-end">
+            <ProfileCard />
+          </div>
+          <div className="space-y-8 flex flex-col items-center lg:items-start">
             <ProfessionalInfo />
             <motion.div 
               id="solutions"
