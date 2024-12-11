@@ -264,7 +264,7 @@ const App: React.FC = () => {
       )}
 
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
-        © 2024 - Deivipluss - Todos los derechos reservados.
+        © 2024 - Deivipluss. Todos los derechos reservados.
       </footer>
       <style jsx global>{`
         .drop-shadow-glow {
