@@ -203,130 +203,36 @@
   perspective: 1000px;
 }
 
-/* Estilos para el Popup/Modal de Selección */
-.fixed {
-  position: fixed;
-}
+/* Responsive adjustments */
+@media (orientation: landscape) {
+  .container {
+    @apply px-4 py-2;
+  }
 
-.inset-0 {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
+  .profile-card-container,
+  .professional-info-container {
+    @apply flex-row items-start;
+  }
 
-.z-50 {
-  z-index: 50;
-}
+  .profile-card-container {
+    @apply justify-center lg:justify-end;
+  }
 
-.bg-black {
-  background-color: black;
-}
+  .professional-info-container {
+    @apply items-start;
+  }
 
-.bg-opacity-50 {
-  background-opacity: 0.5;
-}
+  h1 {
+    @apply text-left;
+  }
 
-.flex {
-  display: flex;
-}
+  .solutions-container {
+    @apply flex-row;
+  }
 
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.bg-[#1A1A2E] {
-  background-color: #1A1A2E;
-}
-
-.p-8 {
-  padding: 2rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
-.text-white {
-  color: #ffffff;
-}
-
-.space-x-4 {
-  margin-left: 1rem;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.bg-blue-500 {
-  background-color: #3B82F6;
-}
-
-.text-white {
-  color: #ffffff;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.shadow-lg {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-.hover\:bg-blue-600:hover {
-  background-color: #2563EB;
-}
-
-.transition-all {
-  transition: all 0.2s;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
-}
-
-.bg-[#4A90E2] {
-  background-color: #4A90E2;
-}
-
-.bg-[#FF5C5C] {
-  background-color: #FF5C5C;
-}
-
-.hover\:bg-red-600:hover {
-  background-color: #E02424;
+  .solution-card {
+    @apply w-1/2;
+  }
 }
 
 /* iPad y dispositivos similares */
@@ -385,6 +291,33 @@
 
   .solution-card {
     @apply w-1/2;
+  }
+}
+
+/* Ajustes específicos para dispositivos más pequeños en modo horizontal */
+@media (max-height: 500px) and (orientation: landscape) {
+  .container {
+    @apply py-2;
+  }
+
+  .profile-card-container {
+    @apply scale-75 origin-top;
+  }
+
+  .professional-info-container {
+    @apply scale-90 origin-top;
+  }
+
+  h1 {
+    @apply text-5xl;
+  }
+
+  .solutions-container {
+    @apply mt-4;
+  }
+
+  .solution-card {
+    @apply h-[180px];
   }
 }
 
