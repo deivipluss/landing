@@ -55,22 +55,22 @@ const ProfileCard: React.FC = () => (
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.5 }}
-    className="bg-[#1A1A2E] p-6 md:p-8 rounded-xl flex flex-col items-center text-center space-y-4 md:space-y-6 shadow-glow h-[456px] md:h-[530px] w-[320px] md:w-[360px] mx-auto md:mb-12 overflow-hidden border border-[#4A90E2]/20"
+    className="bg-[#1A1A2E] p-4 sm:p-6 md:p-8 rounded-xl flex flex-col items-center text-center space-y-4 shadow-glow h-auto sm:h-[456px] md:h-[530px] w-full sm:w-[320px] md:w-[360px] mx-auto overflow-hidden border border-[#4A90E2]/20"
   >
-    <div className="w-[180px] md:w-[220px] h-[200px] md:h-[283px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 md:mb-4 rounded-lg overflow-hidden animate-float">
+    <div className="w-[140px] sm:w-[180px] md:w-[220px] h-[160px] sm:h-[200px] md:h-[283px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 md:mb-4 rounded-lg overflow-hidden animate-float">
       <img
         src="/imagenes/perfil.jpg"
         alt="Foto de perfil de Deivipluss"
         className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
       />
     </div>
-    <h2 className="text-white text-2xl md:text-3xl font-bold font-poppins">
+    <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-bold font-poppins">
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
-    <p className="text-gray-300 mt-2 md:mt-4 text-sm md:text-base font-poppins font-light">
+    <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base font-poppins font-light">
       De generación noventera, con maníaco fanatismo tecnológico, curiosidad infinita y alto profesionalismo para competir en mercados de clase mundial!.
     </p>
-    <div className="flex space-x-4 mt-2 md:mt-4 justify-center">
+    <div className="flex space-x-2 sm:space-x-4 mt-2 justify-center">
       {socialLinks.map(({ Icon, href }, index) => (
         <motion.a
           key={index}
@@ -81,7 +81,7 @@ const ProfileCard: React.FC = () => (
           whileTap={{ scale: 0.9 }}
           className="cursor-pointer text-gray-300 hover:text-[#4A90E2] transition-colors duration-300"
         >
-          <Icon className={`text-xl md:text-2xl`} />
+          <Icon className="text-lg sm:text-xl md:text-2xl" />
         </motion.a>
       ))}
     </div>
@@ -95,19 +95,19 @@ const ProfessionalInfo: React.FC = () => (
     transition={{ duration: 0.7 }}
     className="w-full max-w-[800px] px-4 md:px-0"
   >
-    <div className="flex justify-center w-full mb-6 md:mb-8">
+    <div className="flex justify-center w-full mb-4 sm:mb-6 md:mb-8">
       <h1
-        className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative text-center"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] font-poppins font-black leading-none z-10 relative text-center"
         style={{ letterSpacing: "-2px" }}
       >
         <span className="text-[#4A90E2] drop-shadow-glow">CONSULTOR </span>
         <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
       </h1>
     </div>
-    <p className="text-[#E1E1E1] opacity-80 text-[16px] text-center px-4 md:px-0 -mt-2 font-poppins font-light">
+    <p className="text-[#E1E1E1] opacity-80 text-sm sm:text-base md:text-lg text-center px-4 md:px-0 -mt-2 font-poppins font-light">
       Transformo visiones complejas en soluciones innovadoras combinando mi talento, la tecnología y estrategias empresariales de vanguardia.
     </p>
-    <div className="grid grid-cols-3 gap-6 md:gap-12 mt-8 px-4 md:px-0 w-full">
+    <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-12 mt-6 sm:mt-8 px-4 md:px-0 w-full">
       {[
         { value: "+10", label: "AÑOS DE\nEXPERIENCIA" },
         { value: "+180", label: "CLIENTES\nASESORADOS" },
@@ -121,12 +121,12 @@ const ProfessionalInfo: React.FC = () => (
           className="flex flex-col items-center"
         >
           <p 
-            className="text-[30px] md:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" 
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" 
             style={{ letterSpacing: "-1px" }}
           >
             {value}
           </p>
-          <p className="text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium text-center">
+          <p className="text-[10px] sm:text-[11px] md:text-[13px] text-gray-400 leading-tight mt-2 font-poppins font-medium text-center">
             {label}
           </p>
         </motion.div>
@@ -178,14 +178,15 @@ const App: React.FC = () => {
       router.push(href);
     }
   };
+
   const handleBackToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden relative">
-      <div className="container mx-auto px-4 flex flex-col items-center">
-        <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
+      <div className="container mx-auto px-4 flex flex-col items-center min-h-screen">
+        <header className="flex justify-center py-4 sm:py-6 mt-6 sm:mt-10 mb-8 sm:mb-12 space-x-4 sm:space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
           {navItems.map((item) => (
             <div 
               key={item.href}
@@ -193,57 +194,57 @@ const App: React.FC = () => {
               className="group flex flex-col items-center cursor-pointer"
             >
               <div className={`
-                text-2xl mx-3
+                text-xl sm:text-2xl mx-2 sm:mx-3
                 text-[#FF5C5C]
                 group-hover:text-[#4A90E2] transition-all duration-300
               `}>
                 {item.icon}
               </div>
-              <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
+              <span className="text-[10px] sm:text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
                 {item.label}
               </span>
             </div>
           ))}
         </header>
 
-        <main className="flex-grow flex justify-center items-center py-8 w-full">
+        <main className="flex-grow flex justify-center items-center py-6 sm:py-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-7xl items-center">
             <div className="flex justify-center lg:justify-end">
               <ProfileCard />
             </div>
-            <div className="space-y-8 flex flex-col items-center lg:items-start">
+            <div className="space-y-8 sm:space-y-12 flex flex-col items-center lg:items-start">
               <ProfessionalInfo />
               <motion.div 
                 id="solutions"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="w-full mt-16 highlight"
+                className="w-full mt-8 sm:mt-16 highlight"
               >
-                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-                  <Link href="/empresas" className="w-full md:w-1/2">
+                <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-12">
+                  <Link href="/empresas" className="w-full sm:w-1/2">
                     <motion.div 
                       whileHover={{ scale: 1.05 }}
-                      className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                      className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-4 sm:p-6 rounded-xl relative shadow-glow h-[200px] sm:h-[240px] flex items-center justify-center w-full overflow-hidden"
                     >
                       <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                        <FaRocket className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <h3 className="text-xl font-bold tracking-wide">PARA EMPRESAS</h3>
-                        <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                        <FaRocket className="text-3xl sm:text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-lg sm:text-xl font-bold tracking-wide">PARA EMPRESAS</h3>
+                        <div className="bg-white/20 px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm hover:bg-white/30 transition-all">
                           Descubrir más
                         </div>
                       </div>
                     </motion.div>
                   </Link>
-                  <Link href="/personas" className="w-full md:w-1/2">
+                  <Link href="/personas" className="w-full sm:w-1/2">
                     <motion.div 
                       whileHover={{ scale: 1.05 }}
-                      className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                      className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-4 sm:p-6 rounded-xl relative shadow-glow h-[200px] sm:h-[240px] flex items-center justify-center w-full overflow-hidden"
                     >
                       <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                        <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <h3 className="text-xl font-bold tracking-wide">PARA PERSONAS</h3>
-                        <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                        <FaUserTie className="text-3xl sm:text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-lg sm:text-xl font-bold tracking-wide">PARA PERSONAS</h3>
+                        <div className="bg-white/20 px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm hover:bg-white/30 transition-all">
                           Descubrir más
                         </div>
                       </div>
@@ -257,16 +258,16 @@ const App: React.FC = () => {
 
         {showBackToTop && (
           <motion.button
-            className="fixed bottom-24 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 lg:hidden z-50"
+            className="fixed bottom-16 sm:bottom-24 right-4 sm:right-8 bg-[#4A90E2] text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 lg:hidden z-50"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
             onClick={handleBackToTop}
           >
-            <FaArrowUp className="text-xl" />
+            <FaArrowUp className="text-lg sm:text-xl" />
           </motion.button>
         )}
 
-        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20 w-full">
+        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20 w-full">
           © 2024 - Deivipluss. Todos los derechos reservados.
         </footer>
       </div>
@@ -306,9 +307,29 @@ const App: React.FC = () => {
         .highlight-mobile {
           animation: highlight-mobile 1s ease-in-out;
         }
+
+        @media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+          .container {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .grid {
+            grid-template-columns: 1fr;
+          }
+
+          .lg\:justify-end {
+            justify-content: center;
+          }
+
+          .lg\:items-start {
+            align-items: center;
+          }
+        }
       `}</style>
     </div>
   );
 };
 
 export default App;
+

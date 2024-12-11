@@ -209,6 +209,10 @@
     @apply px-4 py-2;
   }
 
+  header {
+    @apply py-2 mt-2;
+  }
+
   .profile-card-container,
   .professional-info-container {
     @apply flex-row items-start;
@@ -223,7 +227,7 @@
   }
 
   h1 {
-    @apply text-left;
+    @apply text-left text-4xl sm:text-5xl md:text-6xl;
   }
 
   .solutions-container {
@@ -300,16 +304,20 @@
     @apply py-2;
   }
 
-  .profile-card-container {
-    @apply scale-75 origin-top;
+  header {
+    @apply py-2 mt-2;
   }
 
-  .professional-info-container {
+  .profile-card-container {
     @apply scale-90 origin-top;
   }
 
+  .professional-info-container {
+    @apply scale-95 origin-top;
+  }
+
   h1 {
-    @apply text-5xl;
+    @apply text-3xl sm:text-4xl;
   }
 
   .solutions-container {
@@ -317,7 +325,7 @@
   }
 
   .solution-card {
-    @apply h-[180px];
+    @apply h-[160px] sm:h-[180px];
   }
 }
 
