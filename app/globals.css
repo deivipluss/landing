@@ -331,7 +331,7 @@
 
 /* iPad y dispositivos similares */
 @media (min-width: 768px) and (max-width: 1366px) {
-  .main-container {
+  .container {
     @apply px-4;
   }
 
@@ -358,7 +358,7 @@
 
 /* iPad Pro vertical */
 @media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
-  .main-container {
+  .container {
     @apply flex-col items-center;
   }
 
@@ -370,7 +370,7 @@
 
 /* iPad mini horizontal */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  .main-container {
+  .container {
     @apply flex-row items-start;
   }
 

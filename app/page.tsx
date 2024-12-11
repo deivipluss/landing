@@ -184,90 +184,92 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden relative">
-      <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
-        {navItems.map((item) => (
-          <div 
-            key={item.href}
-            onClick={() => handleNavClick(item.href)}
-            className="group flex flex-col items-center cursor-pointer"
-          >
-            <div className={`
-              text-2xl mx-3
-              text-[#FF5C5C]
-              group-hover:text-[#4A90E2] transition-all duration-300
-            `}>
-              {item.icon}
-            </div>
-            <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
-              {item.label}
-            </span>
-          </div>
-        ))}
-      </header>
-
-      <main className="flex-grow flex justify-center items-center p-4 md:p-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl w-full items-center mx-auto">
-          <div className="flex justify-center lg:justify-end">
-            <ProfileCard />
-          </div>
-          <div className="space-y-8 flex flex-col items-center lg:items-start">
-            <ProfessionalInfo />
-            <motion.div 
-              id="solutions"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="w-full max-w-[1000px] mt-16 px-4 md:px-0 highlight"
+      <div className="container mx-auto px-4 flex flex-col items-center">
+        <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
+          {navItems.map((item) => (
+            <div 
+              key={item.href}
+              onClick={() => handleNavClick(item.href)}
+              className="group flex flex-col items-center cursor-pointer"
             >
-              <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-                <Link href="/empresas" className="w-full md:w-1/2">
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
-                  >
-                    <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                      <FaRocket className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">PARA EMPRESAS</h3>
-                      <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
-                        Descubrir más
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
-                <Link href="/personas" className="w-full md:w-1/2">
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
-                  >
-                    <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                      <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <h3 className="text-xl font-bold tracking-wide">PARA PERSONAS</h3>
-                      <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
-                        Descubrir más
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
+              <div className={`
+                text-2xl mx-3
+                text-[#FF5C5C]
+                group-hover:text-[#4A90E2] transition-all duration-300
+              `}>
+                {item.icon}
               </div>
-            </motion.div>
+              <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </header>
+
+        <main className="flex-grow flex justify-center items-center py-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-7xl items-center">
+            <div className="flex justify-center lg:justify-end">
+              <ProfileCard />
+            </div>
+            <div className="space-y-8 flex flex-col items-center lg:items-start">
+              <ProfessionalInfo />
+              <motion.div 
+                id="solutions"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="w-full mt-16 highlight"
+              >
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+                  <Link href="/empresas" className="w-full md:w-1/2">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                    >
+                      <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
+                        <FaRocket className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-xl font-bold tracking-wide">PARA EMPRESAS</h3>
+                        <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                          Descubrir más
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
+                  <Link href="/personas" className="w-full md:w-1/2">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-6 rounded-xl relative shadow-glow h-[240px] flex items-center justify-center w-full overflow-hidden"
+                    >
+                      <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
+                        <FaUserTie className="text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-xl font-bold tracking-wide">PARA PERSONAS</h3>
+                        <div className="bg-white/20 px-6 py-2 rounded-full text-sm hover:bg-white/30 transition-all">
+                          Descubrir más
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      {showBackToTop && (
-        <motion.button
-          className="fixed bottom-24 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 lg:hidden z-50"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.8 }}
-          onClick={handleBackToTop}
-        >
-          <FaArrowUp className="text-xl" />
-        </motion.button>
-      )}
+        {showBackToTop && (
+          <motion.button
+            className="fixed bottom-24 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 lg:hidden z-50"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+            onClick={handleBackToTop}
+          >
+            <FaArrowUp className="text-xl" />
+          </motion.button>
+        )}
 
-      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
-        © 2024 - Deivipluss. Todos los derechos reservados.
-      </footer>
+        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20 w-full">
+          © 2024 - Deivipluss. Todos los derechos reservados.
+        </footer>
+      </div>
       <style jsx global>{`
         .drop-shadow-glow {
           text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
@@ -278,8 +280,7 @@ const App: React.FC = () => {
         }
 
         @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
+          0% { transform: translateY(0px); }50% { transform: translateY(-10px); }
           100% { transform: translateY(0px); }
         }
 
@@ -310,4 +311,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
