@@ -97,7 +97,7 @@ const ProfessionalInfo: React.FC = () => (
   >
     <div className="flex justify-center md:justify-start w-full mb-6 md:mb-8">
       <h1
-        className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center"
+        className="text-[40px] md:text-[80px] font-poppins font-black leading-none z-10 relative md:text-left text-center ipad-portrait:text-center ipad-landscape:text-left"
         style={{ letterSpacing: "-2px" }}
       >
         <span className="text-[#4A90E2] drop-shadow-glow">CONSULTOR </span>
@@ -206,7 +206,7 @@ const App: React.FC = () => {
       </header>
 
       <main className="flex-grow flex justify-center items-center p-4 md:p-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl items-center mx-auto ipad-landscape:justify-center">
           <ProfileCard />
           <div className="space-y-8">
             <ProfessionalInfo />
@@ -308,3 +308,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+

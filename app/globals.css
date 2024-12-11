@@ -327,3 +327,22 @@
 .hover\:bg-red-600:hover {
   background-color: #E02424;
 }
+
+/* iPad Portrait */
+@media (min-width: 768px) and (max-width: 834px) and (orientation: portrait) {
+  .ipad-portrait\:text-center {
+    text-align: center;
+  }
+}
+
+/* iPad Landscape */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  .ipad-landscape\:text-left {
+    text-align: left;
+  }
+
+  .ipad-landscape\:justify-center {
+    justify-content: center;
+  }
+}
+
