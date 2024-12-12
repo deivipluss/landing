@@ -57,7 +57,7 @@ const ProfileCard: React.FC = () => (
     transition={{ duration: 0.5 }}
     className="bg-[#1A1A2E] p-6 rounded-xl flex flex-col items-center text-center space-y-4 shadow-glow h-auto w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] mx-auto overflow-hidden border border-[#4A90E2]/20"
   >
-    <div className="w-[120px] h-[140px] sm:w-[140px] sm:h-[160px] md:w-[160px] md:h-[180px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-4 rounded-lg overflow-hidden animate-float">
+    <div className="w-[120px] h-[150px] sm:w-[140px] sm:h-[170px] md:w-[160px] md:h-[190px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-4 rounded-lg overflow-hidden animate-float">
       <img
         src="/imagenes/perfil.jpg"
         alt="Foto de perfil de Deivipluss"
@@ -191,7 +191,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden relative">
       <div className="container mx-auto px-4 flex flex-col items-center min-h-screen">
-        <header className="flex justify-center py-4 sm:py-6 mt-6 sm:mt-10 mb-8 sm:mb-12 space-x-4 sm:space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
+        <header className="flex justify-center py-4 sm:py-6 mt-4 sm:mt-6 lg:mt-10 mb-4 sm:mb-6 lg:mb-12 space-x-4 sm:space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
           {navItems.map((item) => (
             <div 
               key={item.href}
@@ -212,9 +212,9 @@ const App: React.FC = () => {
           ))}
         </header>
 
-        <main className="flex-grow flex justify-center items-start py-6 sm:py-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-7xl items-start">
-            <div className="flex justify-center lg:justify-end">
+        <main className="flex-grow flex justify-center items-center py-6 sm:py-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-7xl items-center">
+            <div className="flex justify-center lg:justify-end items-center">
               <ProfileCard />
             </div>
             <div className="space-y-8 sm:space-y-12 flex flex-col items-center lg:items-start">
