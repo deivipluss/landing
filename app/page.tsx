@@ -55,22 +55,22 @@ const ProfileCard: React.FC = () => (
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.5 }}
-    className="bg-[#1A1A2E] p-4 sm:p-6 md:p-8 rounded-xl flex flex-col items-center text-center space-y-4 shadow-glow h-auto sm:h-[456px] md:h-[530px] w-full sm:w-[320px] md:w-[360px] mx-auto overflow-hidden border border-[#4A90E2]/20"
+    className="bg-[#1A1A2E] p-6 rounded-xl flex flex-col items-center text-center space-y-4 shadow-glow h-auto w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] mx-auto overflow-hidden border border-[#4A90E2]/20"
   >
-    <div className="w-[140px] sm:w-[180px] md:w-[220px] h-[160px] sm:h-[200px] md:h-[283px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 md:mb-4 rounded-lg overflow-hidden animate-float">
+    <div className="w-[120px] h-[140px] sm:w-[140px] sm:h-[160px] md:w-[160px] md:h-[180px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-4 rounded-lg overflow-hidden animate-float">
       <img
         src="/imagenes/perfil.jpg"
         alt="Foto de perfil de Deivipluss"
         className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
       />
     </div>
-    <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-bold font-poppins">
+    <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold font-poppins">
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
-    <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base font-poppins font-light">
+    <p className="text-gray-300 mt-1 text-xs sm:text-sm font-poppins font-light">
       De generación noventera, con maníaco fanatismo tecnológico, curiosidad infinita y alto profesionalismo para competir en mercados de clase mundial!.
     </p>
-    <div className="flex space-x-2 sm:space-x-4 mt-2 justify-center">
+    <div className="flex space-x-2 mt-2 justify-center">
       {socialLinks.map(({ Icon, href }, index) => (
         <motion.a
           key={index}
@@ -81,7 +81,7 @@ const ProfileCard: React.FC = () => (
           whileTap={{ scale: 0.9 }}
           className="cursor-pointer text-gray-300 hover:text-[#4A90E2] transition-colors duration-300"
         >
-          <Icon className="text-lg sm:text-xl md:text-2xl" />
+          <Icon className="text-base sm:text-lg md:text-xl" />
         </motion.a>
       ))}
     </div>
@@ -95,16 +95,21 @@ const ProfessionalInfo: React.FC = () => (
     transition={{ duration: 0.7 }}
     className="w-full max-w-[800px] px-4 md:px-0"
   >
-    <div className="flex justify-center w-full mb-4 sm:mb-6 md:mb-8">
+    <div className="flex flex-col justify-center w-full mb-4 sm:mb-6 md:mb-8 lg:items-start">
       <h1
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] font-poppins font-black leading-none z-10 relative text-center"
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-poppins font-black leading-none z-10 relative text-center lg:text-left"
         style={{ letterSpacing: "-2px" }}
       >
-        <span className="text-[#4A90E2] drop-shadow-glow">CONSULTOR </span>
+        <span className="text-[#4A90E2] drop-shadow-glow">CONSULTOR</span>
+      </h1>
+      <h1
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-poppins font-black leading-none z-10 relative text-center lg:text-left mt-2"
+        style={{ letterSpacing: "-2px" }}
+      >
         <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
       </h1>
     </div>
-    <p className="text-[#E1E1E1] opacity-80 text-sm sm:text-base md:text-lg text-center px-4 md:px-0 -mt-2 font-poppins font-light">
+    <p className="text-[#E1E1E1] opacity-80 text-sm sm:text-base md:text-lg text-center lg:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
       Transformo visiones complejas en soluciones innovadoras combinando mi talento, la tecnología y estrategias empresariales de vanguardia.
     </p>
     <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-12 mt-6 sm:mt-8 px-4 md:px-0 w-full">
@@ -207,8 +212,8 @@ const App: React.FC = () => {
           ))}
         </header>
 
-        <main className="flex-grow flex justify-center items-center py-6 sm:py-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-7xl items-center">
+        <main className="flex-grow flex justify-center items-start py-6 sm:py-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-7xl items-start">
             <div className="flex justify-center lg:justify-end">
               <ProfileCard />
             </div>
