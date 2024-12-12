@@ -55,19 +55,19 @@ const ProfileCard: React.FC = () => (
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.5 }}
-    className="bg-[#1A1A2E] p-6 rounded-xl flex flex-col items-center text-center space-y-4 shadow-glow h-auto w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] mx-auto overflow-hidden border border-[#4A90E2]/20"
+    className="bg-[#1A1A2E] p-6 rounded-xl flex flex-col items-center text-center space-y-3 shadow-glow h-auto w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] mx-auto overflow-hidden border border-[#4A90E2]/20"
   >
-    <div className="w-[120px] h-[150px] sm:w-[140px] sm:h-[170px] md:w-[160px] md:h-[190px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-4 rounded-lg overflow-hidden animate-float">
+    <div className="w-[120px] h-[150px] sm:w-[140px] sm:h-[170px] md:w-[160px] md:h-[190px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 rounded-lg overflow-hidden animate-float">
       <img
         src="/imagenes/perfil.jpg"
         alt="Foto de perfil de Deivipluss"
         className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
       />
     </div>
-    <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold font-poppins">
+    <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold font-poppins mt-1">
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
-    <p className="text-gray-300 mt-1 text-xs sm:text-sm font-poppins font-light">
+    <p className="text-gray-300 text-xs sm:text-sm font-poppins font-light">
       De generación noventera, con maníaco fanatismo tecnológico, curiosidad infinita y alto profesionalismo para competir en mercados de clase mundial!.
     </p>
     <div className="flex space-x-2 mt-2 justify-center">
@@ -329,6 +329,49 @@ const App: React.FC = () => {
 
           .lg\:items-start {
             align-items: center;
+          }
+        }
+
+        @media (orientation: landscape) {
+          .container {
+            min-height: auto;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+          }
+
+          header {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+          }
+
+          main {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+          }
+
+          .grid {
+            gap: 1rem;
+          }
+        }
+
+        @media (max-width: 640px) and (orientation: landscape) {
+          .container {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+          }
+
+          header {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+          }
+
+          main {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+          }
+
+          .grid {
+            gap: 0.5rem;
           }
         }
       `}</style>
