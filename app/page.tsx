@@ -112,7 +112,7 @@ const ProfessionalInfo: React.FC<{ className?: string }> = ({ className }) => (
     <p className="text-[#E1E1E1] opacity-80 text-sm sm:text-base md:text-lg text-center lg:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
       Transformo visiones complejas en soluciones innovadoras combinando mi talento, la tecnología y estrategias empresariales de vanguardia.
     </p>
-    <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-12 mt-6 sm:mt-8 px-4 md:px-0 w-full">
+    <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-12 mt-6 sm:mt-8 mb-8 sm:mb-10 px-4 md:px-0 w-full">
       {[
         { value: "+10", label: "AÑOS DE\nEXPERIENCIA" },
         { value: "+180", label: "CLIENTES\nASESORADOS" },
@@ -197,8 +197,8 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden relative">
-      <div className="container mx-auto px-4 flex flex-col items-center min-h-screen">
-        <header className="flex justify-center py-3 sm:py-4 mt-3 sm:mt-4 lg:mt-6 mb-3 sm:mb-4 lg:mb-6 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
+      <div className="container mx-auto px-4 pt-16 sm:pt-20 md:pt-24 lg:pt-32 flex flex-col items-center min-h-screen">
+        <header className="flex justify-center py-3 sm:py-4 mt-6 sm:mt-8 md:mt-10 lg:mt-12 mb-6 sm:mb-8 md:mb-10 lg:mb-12 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
           {navItems.map((item) => (
             <div 
               key={item.href}
@@ -224,14 +224,14 @@ const App: React.FC = () => {
             <div className="flex justify-center lg:justify-end items-center">
               <ProfileCard />
             </div>
-            <div className="space-y-6 sm:space-y-8 lg:space-y-6 flex flex-col items-center lg:items-start">
-              <ProfessionalInfo className="mt-8 lg:mt-0" />
+            <div className="space-y-6 sm:space-y-8 lg:space-y-10 flex flex-col items-center lg:items-start">
+              <ProfessionalInfo className="mt-6 sm:mt-8 lg:mt-0" />
               <motion.div 
                 id="solutions"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="w-full mt-6 sm:mt-8 highlight"
+                className="w-full mt-8 sm:mt-10 highlight"
               >
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8">
                   <Link href="/empresas" className="w-full sm:w-1/2">
@@ -344,43 +344,29 @@ const App: React.FC = () => {
         @media (orientation: landscape) {
           .container {
             min-height: auto;
-            padding-top: 1rem;
+            padding-top: 2rem;
             padding-bottom: 1rem;
           }
 
           header {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-          }
-
-          main {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-          }
-
-          .grid {
-            gap: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
           }
         }
 
         @media (max-width: 640px) {
           .container {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-          }
-
-          header {
-            padding-top: 0.25rem;
-            padding-bottom: 0.25rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1rem;
           }
 
           main {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
           }
 
           .grid {
-            gap: 0.5rem;
+            gap: 1.5rem;
           }
         }
 
