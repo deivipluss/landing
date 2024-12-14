@@ -55,22 +55,22 @@ const ProfileCard: React.FC = () => (
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.5 }}
-    className="bg-[#1A1A2E] p-6 rounded-xl flex flex-col items-center text-center space-y-3 shadow-glow h-auto w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] mx-auto overflow-hidden border border-[#4A90E2]/20"
+    className="bg-[#1A1A2E] p-4 sm:p-6 rounded-xl flex flex-col items-center text-center space-y-3 shadow-glow h-auto w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] mx-auto overflow-hidden border border-[#4A90E2]/20"
   >
-    <div className="w-[120px] h-[150px] sm:w-[140px] sm:h-[170px] md:w-[160px] md:h-[190px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 rounded-lg overflow-hidden animate-float">
+    <div className="w-[120px] h-[150px] sm:w-[140px] sm:h-[175px] md:w-[160px] md:h-[200px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 rounded-lg overflow-hidden animate-float">
       <img
         src="/imagenes/perfil.jpg"
         alt="Foto de perfil de Deivipluss"
         className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
       />
     </div>
-    <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold font-poppins mt-1">
+    <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold font-poppins">
       <span style={{ color: '#4A90E2' }}>Deivipluss</span>
     </h2>
     <p className="text-gray-300 text-xs sm:text-sm font-poppins font-light">
       De generación noventera, con maníaco fanatismo tecnológico, curiosidad infinita y alto profesionalismo para competir en mercados de clase mundial!.
     </p>
-    <div className="flex space-x-2 mt-2 justify-center">
+    <div className="flex space-x-2 justify-center">
       {socialLinks.map(({ Icon, href }, index) => (
         <motion.a
           key={index}
@@ -97,13 +97,13 @@ const ProfessionalInfo: React.FC = () => (
   >
     <div className="flex flex-col justify-center w-full mb-4 sm:mb-6 md:mb-8 lg:items-start">
       <h1
-        className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-poppins font-black leading-none z-10 relative text-center lg:text-left"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-black leading-none z-10 relative text-center lg:text-left"
         style={{ letterSpacing: "-2px" }}
       >
         <span className="text-[#4A90E2] drop-shadow-glow">CONSULTOR</span>
       </h1>
       <h1
-        className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-poppins font-black leading-none z-10 relative text-center lg:text-left mt-2"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-black leading-none z-10 relative text-center lg:text-left mt-2"
         style={{ letterSpacing: "-2px" }}
       >
         <span className="text-[#4A90E2] opacity-40">DIGITAL</span>
@@ -191,7 +191,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden relative">
       <div className="container mx-auto px-4 flex flex-col items-center min-h-screen">
-        <header className="flex justify-center py-4 sm:py-6 mt-4 sm:mt-6 lg:mt-10 mb-4 sm:mb-6 lg:mb-12 space-x-4 sm:space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
+        <header className="flex justify-center py-3 sm:py-4 mt-3 sm:mt-4 lg:mt-6 mb-3 sm:mb-4 lg:mb-6 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
           {navItems.map((item) => (
             <div 
               key={item.href}
@@ -212,21 +212,21 @@ const App: React.FC = () => {
           ))}
         </header>
 
-        <main className="flex-grow flex justify-center items-center py-6 sm:py-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-7xl items-center">
+        <main className="flex-grow flex justify-center items-center py-4 sm:py-6 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 w-full max-w-7xl items-center">
             <div className="flex justify-center lg:justify-end items-center">
               <ProfileCard />
             </div>
-            <div className="space-y-8 sm:space-y-12 flex flex-col items-center lg:items-start">
+            <div className="space-y-6 sm:space-y-8 flex flex-col items-center lg:items-start">
               <ProfessionalInfo />
               <motion.div 
                 id="solutions"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="w-full mt-8 sm:mt-16 highlight"
+                className="w-full mt-6 sm:mt-8 highlight"
               >
-                <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-12">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8">
                   <Link href="/empresas" className="w-full sm:w-1/2">
                     <motion.div 
                       whileHover={{ scale: 1.05 }}
@@ -354,7 +354,7 @@ const App: React.FC = () => {
           }
         }
 
-        @media (max-width: 640px) and (orientation: landscape) {
+        @media (max-width: 640px) {
           .container {
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
@@ -372,6 +372,22 @@ const App: React.FC = () => {
 
           .grid {
             gap: 0.5rem;
+          }
+        }
+
+        @media (max-width: 640px) and (orientation: landscape) {
+          .container {
+            min-height: auto;
+          }
+
+          .profile-card-container {
+            transform: scale(0.9);
+            transform-origin: top center;
+          }
+
+          .professional-info-container {
+            transform: scale(0.95);
+            transform-origin: top center;
           }
         }
       `}</style>
