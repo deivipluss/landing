@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -88,12 +88,12 @@ const ProfileCard: React.FC = () => (
   </motion.div>
 );
 
-const ProfessionalInfo: React.FC = () => (
+const ProfessionalInfo: React.FC<{ className?: string }> = ({ className }) => (
   <motion.div 
     initial={{ opacity: 0, x: 50 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.7 }}
-    className="w-full max-w-[800px] px-4 md:px-0"
+    className={`w-full max-w-[800px] px-4 md:px-0 ${className}`}
   >
     <div className="flex flex-col justify-center w-full mb-4 sm:mb-6 md:mb-8 lg:items-start">
       <h1
@@ -144,6 +144,8 @@ const App: React.FC = () => {
   const router = useRouter();
   const [isDesktop, setIsDesktop] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
@@ -156,9 +158,14 @@ const App: React.FC = () => {
       if (nav) {
         setShowBackToTop(window.scrollY > nav.clientHeight);
       }
+      if (mainRef.current) {
+        const { bottom } = mainRef.current.getBoundingClientRect();
+        setShowFooter(bottom <= window.innerHeight);
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
 
     return () => {
       mediaQuery.removeEventListener('change', handleResize);
@@ -212,13 +219,13 @@ const App: React.FC = () => {
           ))}
         </header>
 
-        <main className="flex-grow flex justify-center items-center py-4 sm:py-6 w-full">
+        <main ref={mainRef} className="flex-grow flex justify-center items-center py-4 sm:py-6 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 w-full max-w-7xl items-center">
             <div className="flex justify-center lg:justify-end items-center">
               <ProfileCard />
             </div>
-            <div className="space-y-6 sm:space-y-8 flex flex-col items-center lg:items-start">
-              <ProfessionalInfo />
+            <div className="space-y-6 sm:space-y-8 lg:space-y-6 flex flex-col items-center lg:items-start">
+              <ProfessionalInfo className="mt-8 lg:mt-0" />
               <motion.div 
                 id="solutions"
                 initial={{ opacity: 0, y: 50 }}
@@ -272,9 +279,11 @@ const App: React.FC = () => {
           </motion.button>
         )}
 
-        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20 w-full">
-          © 2024 - Deivipluss. Todos los derechos reservados.
-        </footer>
+        {showFooter && (
+          <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20 w-full">
+            © 2024 - Deivipluss. Todos los derechos reservados.
+          </footer>
+        )}
       </div>
       <style jsx global>{`
         .drop-shadow-glow {
