@@ -235,8 +235,7 @@ const App: React.FC = () => {
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-black leading-none z-10 relative text-center lg:hidden mb-4" style={{ letterSpacing: "-2px" }}>
                   <span className="text-[#4A90E2] drop-shadow-glow">SOLUCIONES</span>
-                  <span className="text-[#4A90E2] opacity-40 ml-2">DISPONIBLES</span>
-                </h2>
+                                  </h2>
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8">
                   <Link href="/empresas" className="w-full sm:w-1/2">
                     <motion.div 
