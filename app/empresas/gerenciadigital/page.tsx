@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Rocket, Users, Zap, Brain, Code, BarChart2, Globe, Briefcase } from 'lucide-react';
+import { Brain, Code, BarChart2, Globe, Briefcase } from 'lucide-react';
 import Image from 'next/image';
 import {
   Accordion,
