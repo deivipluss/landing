@@ -112,7 +112,7 @@ const ProfessionalInfo: React.FC<{ className?: string }> = ({ className }) => (
     <p className="text-[#E1E1E1] opacity-80 text-sm sm:text-base md:text-lg text-center lg:text-left px-4 md:px-0 -mt-2 font-poppins font-light">
       Transformo visiones complejas en soluciones innovadoras combinando mi talento, la tecnología y estrategias empresariales de vanguardia.
     </p>
-    <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-12 mt-6 sm:mt-8 mb-8 sm:mb-10 px-4 md:px-0 w-full">
+    <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-12 mt-6 sm:mt-8 mb-8 sm:mb-10 lg:mb-6 px-4 md:px-0 w-full">
       {[
         { value: "+10", label: "AÑOS DE\nEXPERIENCIA" },
         { value: "+180", label: "CLIENTES\nASESORADOS" },
@@ -224,15 +224,18 @@ const App: React.FC = () => {
             <div className="flex justify-center lg:justify-end items-center">
               <ProfileCard />
             </div>
-            <div className="space-y-6 sm:space-y-8 lg:space-y-10 flex flex-col items-center lg:items-start">
-              <ProfessionalInfo className="mt-6 sm:mt-8 lg:mt-0" />
+            <div className="space-y-6 sm:space-y-8 lg:space-y-8 flex flex-col items-center lg:items-start">
+              <ProfessionalInfo className="mt-4 sm:mt-6 lg:mt-0" />
               <motion.div 
                 id="solutions"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="w-full mt-8 sm:mt-10 highlight"
+                className="w-full mt-6 sm:mt-8 lg:mt-4 highlight"
               >
+                <h2 className="text-2xl font-bold text-[#4A90E2] mb-4 text-center lg:hidden">
+                  Soluciones<br />disponibles
+                </h2>
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8">
                   <Link href="/empresas" className="w-full sm:w-1/2">
                     <motion.div 
