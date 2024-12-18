@@ -67,10 +67,7 @@ const GerenciaDigital: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const nav = document.querySelector('header');
-      if (nav) {
-        setShowBackToTop(window.scrollY > nav.clientHeight);
-      }
+      setShowBackToTop(window.scrollY > 100);
       if (mainRef.current) {
         const { bottom } = mainRef.current.getBoundingClientRect();
         setShowFooter(bottom <= window.innerHeight);
@@ -109,9 +106,9 @@ const GerenciaDigital: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] text-white">
-      <header className="fixed top-0 left-0 right-0 z-50">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D0C1D] py-4">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center py-3 sm:py-4 mt-6 sm:mt-8 md:mt-10 lg:mt-12 mb-6 sm:mb-8 md:mb-10 lg:mb-12 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
+          <div className="flex justify-center py-3 sm:py-4 mb-4 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
             {navItems.map((item) => (
               <div 
                 key={item.href}
@@ -130,20 +127,22 @@ const GerenciaDigital: React.FC = () => {
         </div>
       </header>
 
-      <main ref={mainRef} className="pt-40 px-4 sm:px-6 lg:px-8">
+      <main ref={mainRef} className="pt-48 md:pt-56 px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="max-w-7xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div className="text-center mb-16" {...fadeInUp}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <motion.div className="text-center mb-24" {...fadeInUp}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8">
               <span className="text-[#4A90E2] drop-shadow-glow">INNOVACIÓN</span>
               <span className="text-[#FF5C5C] ml-2">EMPRESARIAL</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Transformación Digital & Estrategia Empresarial
+            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Como experto en transformación digital, te guío en el camino hacia una 
+              revolución empresarial que maximizará tu potencial en la era digital.
+              Mi misión es convertir tu visión en una realidad tecnológica tangible.
             </p>
           </motion.div>
 
@@ -151,7 +150,7 @@ const GerenciaDigital: React.FC = () => {
             <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
               <Image
                 src="/placeholder.svg?height=500&width=1000"
-                alt="Innovación Empresarial en acción"
+                alt="Mi visión de la Innovación Empresarial en acción"
                 layout="fill"
                 objectFit="cover"
                 className="rounded-xl"
@@ -159,14 +158,14 @@ const GerenciaDigital: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#4A90E2]/80 to-[#FF5C5C]/80 mix-blend-multiply" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <h2 className="text-4xl md:text-5xl font-bold text-white text-center px-4">
-                  Impulse su Negocio al Futuro Digital
+                  Juntos Crearemos tu Futuro Digital
                 </h2>
               </div>
             </div>
           </motion.div>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"
             variants={{
               animate: { transition: { staggerChildren: 0.1 } }
             }}
@@ -176,74 +175,75 @@ const GerenciaDigital: React.FC = () => {
             <motion.div {...fadeInUp}>
               <FeatureCard
                 icon={<Brain className="h-6 w-6" />}
-                title="IA Avanzada"
-                description="Integre inteligencia artificial en sus procesos para toma de decisiones más inteligentes y eficientes."
+                title="Mi Enfoque en IA"
+                description="Implemento soluciones de IA personalizadas que transformarán tus procesos de negocio, permitiéndote tomar decisiones más inteligentes y predictivas."
                 color="[#4A90E2]"
               />
             </motion.div>
             <motion.div {...fadeInUp}>
               <FeatureCard
                 icon={<Code className="h-6 w-6" />}
-                title="Desarrollo de Software"
-                description="Soluciones de software personalizadas para optimizar sus operaciones y mejorar la experiencia del cliente."
+                title="Desarrollo Estratégico"
+                description="Creo software a medida que no solo resuelve tus desafíos actuales, sino que se adapta y escala con tu crecimiento futuro."
                 color="[#FF5C5C]"
               />
             </motion.div>
             <motion.div {...fadeInUp}>
               <FeatureCard
                 icon={<BarChart2 className="h-6 w-6" />}
-                title="Ciencia de Datos"
-                description="Aproveche el poder de sus datos para obtener insights valiosos y tomar decisiones basadas en evidencia."
+                title="Análisis de Datos"
+                description="Transformo tus datos en insights accionables, construyendo una base sólida para tu toma de decisiones estratégicas."
                 color="[#00F5D4]"
               />
             </motion.div>
           </motion.div>
 
           <motion.div className="mb-24" {...fadeInUp}>
-            <h2 className="text-3xl font-semibold mb-8 text-center text-[#4A90E2]">Pilares de Nuestra Innovación</h2>
+            <h2 className="text-3xl font-semibold mb-8 text-center text-[#4A90E2]">Mi Metodología de Innovación</h2>
             <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
               <AccordionItem value="item-1" className="border-[#4A90E2]/20">
-                <AccordionTrigger className="text-[#4A90E2]">Cultura Digital</AccordionTrigger>
+                <AccordionTrigger className="text-[#4A90E2]">Transformación Cultural</AccordionTrigger>
                 <AccordionContent className="text-gray-300">
-                  Fomentamos una cultura de innovación y adaptabilidad digital en su organización. 
-                  Nuestros programas de capacitación y cambio cultural preparan a su equipo para 
-                  prosperar en la era digital, mejorando la colaboración y la eficiencia.
+                  Mi enfoque va más allá de la tecnología: construyo una cultura de innovación 
+                  en tu organización. Implemento programas de cambio que empoderan a tu equipo, 
+                  fomentando la colaboración digital y el pensamiento innovador.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2" className="border-[#FF5C5C]/20">
-                <AccordionTrigger className="text-[#FF5C5C]">Entrenamiento del Recurso Humano</AccordionTrigger>
+                <AccordionTrigger className="text-[#FF5C5C]">Desarrollo de Talento Digital</AccordionTrigger>
                 <AccordionContent className="text-gray-300">
-                  Ofrecemos sistemas de entrenamiento avanzados para su personal, utilizando 
-                  tecnologías de e-learning y realidad virtual. Nuestros programas personalizados 
-                  aseguran que su equipo esté siempre a la vanguardia de las habilidades digitales.
+                  Diseño programas de capacitación inmersivos y personalizados, utilizando las últimas 
+                  tecnologías en e-learning y realidad virtual. Mi objetivo es potenciar las habilidades 
+                  digitales de tu equipo, preparándolos para liderar en la era digital.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3" className="border-[#00F5D4]/20">
-                <AccordionTrigger className="text-[#00F5D4]">Experiencia en Ventas Digitales</AccordionTrigger>
+                <AccordionTrigger className="text-[#00F5D4]">Estrategia de Ventas Digital</AccordionTrigger>
                 <AccordionContent className="text-gray-300">
-                  Con nuestra amplia experiencia en ventas digitales, transformamos su estrategia 
-                  de comercialización. Implementamos técnicas de marketing digital, análisis de datos 
-                  y automatización para maximizar sus conversiones y retención de clientes.
+                  Mi expertise en ventas digitales revolucionará tu approach comercial. 
+                  Implemento estrategias de marketing digital basadas en datos, automatización 
+                  inteligente y experiencia del cliente para maximizar tus conversiones.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
           </motion.div>
 
           <motion.div className="mb-24" {...fadeInUp}>
-            <h2 className="text-3xl font-semibold mb-8 text-center text-[#4A90E2]">Casos de Éxito</h2>
+            <h2 className="text-3xl font-semibold mb-8 text-center text-[#4A90E2]">Mis Casos de Éxito</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <Card className="bg-[#1A1A2E] border-[#4A90E2]/20">
                 <CardHeader>
                   <CardTitle className="text-[#4A90E2] flex items-center">
                     <Globe className="h-6 w-6 mr-2" />
-                    Transformación E-commerce
+                    Revolución E-commerce
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-gray-300">
-                    Implementamos una estrategia de innovación completa para una empresa 
-                    minorista tradicional, resultando en un aumento del 200% en ventas en línea 
-                    y una mejora del 50% en la eficiencia operativa.
+                    Lideré la transformación digital de un minorista tradicional hacia un 
+                    líder del e-commerce, logrando un incremento del 200% en ventas digitales 
+                    y mejorando la eficiencia operativa en un 50% a través de mi metodología 
+                    de innovación integral.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -251,36 +251,37 @@ const GerenciaDigital: React.FC = () => {
                 <CardHeader>
                   <CardTitle className="text-[#FF5C5C] flex items-center">
                     <Briefcase className="h-6 w-6 mr-2" />
-                    Innovación en Servicios Financieros
+                    Transformación Financiera
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-gray-300">
-                    Ayudamos a un banco tradicional a digitalizar sus procesos, resultando en 
-                    una reducción del 40% en costos operativos y un aumento del 80% en la 
-                    satisfacción del cliente a través de nuevas aplicaciones móviles y servicios en línea.
+                    Desarrollé e implementé una estrategia de digitalización bancaria que 
+                    redujo costos operativos en un 40% y elevó la satisfacción del cliente 
+                    en un 80%, mediante soluciones móviles innovadoras y servicios digitales 
+                    de próxima generación.
                   </CardDescription>
                 </CardContent>
               </Card>
             </div>
           </motion.div>
 
-          <motion.div className="text-center mb-16" {...fadeInUp}>
-            <h2 className="text-3xl font-semibold mb-6 text-[#4A90E2]">Comience su Transformación Digital Hoy</h2>
+          <motion.div className="text-center mb-24" {...fadeInUp}>
+            <h2 className="text-3xl font-semibold mb-6 text-[#4A90E2]">Comienza Tu Viaje Digital Conmigo</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Descubra cómo nuestra estrategia de innovación puede revolucionar su negocio. 
-              Estamos listos para crear una experiencia digital única para su organización.
+              Mi compromiso es guiarte en cada paso de tu transformación digital. 
+              Juntos, crearemos una estrategia única que llevará tu negocio al siguiente nivel.
             </p>
             <Button className="bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-[#3A7BC8] hover:to-[#FF3C3C] transition-all duration-300 shadow-glow">
-              Solicitar Consulta Personalizada
+              Agenda tu Consultoría Estratégica
             </Button>
           </motion.div>
 
-          <motion.div className="mb-16" {...fadeInUp}>
+          <motion.div className="mb-24" {...fadeInUp}>
             <div className="relative h-[200px] sm:h-[300px] rounded-xl overflow-hidden shadow-2xl">
               <Image
                 src="/placeholder.svg?height=300&width=1000"
-                alt="Equipo de Innovación Digital"
+                alt="Mi Equipo de Innovación Digital"
                 layout="fill"
                 objectFit="cover"
                 className="rounded-xl"
@@ -288,7 +289,7 @@ const GerenciaDigital: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1A1A2E]" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
                 <p className="text-white text-xl font-semibold">
-                Nuestro equipo de expertos está listo para impulsar su éxito digital
+                  Mi equipo de expertos y yo estamos listos para potenciar tu éxito digital
                 </p>
               </div>
             </div>
