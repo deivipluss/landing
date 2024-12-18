@@ -1,17 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaCogs, FaBrain, FaRocket, FaWhatsapp, FaArrowUp } from "react-icons/fa";
 import { Brain, Code, BarChart2, Globe, Briefcase } from 'lucide-react';
 import Image from 'next/image';
-import { 
-  FaCogs, 
-  FaBrain, 
-  FaRocket,
-  FaWhatsapp,
-  FaArrowUp
-} from "react-icons/fa";
-
 import { useRouter } from 'next/navigation';
 import {
   Accordion,
@@ -26,10 +19,10 @@ const navItems = [
   { 
     href: "/", 
     icon: <FaCogs className="transition-transform duration-300 group-hover:rotate-180" />, 
-    label: "Home" 
+    label: "Inicio" 
   },
   { 
-    href: "#solutions", 
+    href: "#soluciones", 
     icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
     label: "Soluciones" 
   },
@@ -62,15 +55,19 @@ const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; description:
 const GerenciaDigital: React.FC = () => {
   const router = useRouter();
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [showFooter, setShowFooter] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 100);
-      if (mainRef.current) {
-        const { bottom } = mainRef.current.getBoundingClientRect();
-        setShowFooter(bottom <= window.innerHeight);
+      if (headerRef.current) {
+        setShowBackToTop(window.scrollY > headerRef.current.offsetHeight);
       }
     };
     
@@ -98,24 +95,18 @@ const GerenciaDigital: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] text-white">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D0C1D] py-4">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center py-3 sm:py-4 mb-4 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-full max-w-3xl mx-auto border border-[#4A90E2]/20">
+    <div className="min-h-screen bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] text-white overflow-x-hidden">
+      <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-[#0D0C1D]/90 backdrop-blur-lg shadow-md px-4 py-2">
+        <nav className="container mx-auto">
+          <div className="flex justify-center items-center space-x-4 sm:space-x-6 md:space-x-8 bg-[#1A1A2E] rounded-full py-2 px-4">
             {navItems.map((item) => (
               <div 
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
                 className="group flex flex-col items-center cursor-pointer"
               >
-                <div className="text-xl sm:text-2xl mx-2 sm:mx-3 text-[#FF5C5C] group-hover:text-[#4A90E2] transition-all duration-300">
+                <div className="text-xl sm:text-2xl text-[#FF5C5C] group-hover:text-[#4A90E2] transition-all duration-300">
                   {item.icon}
                 </div>
                 <span className="text-[10px] sm:text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
@@ -124,32 +115,32 @@ const GerenciaDigital: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </nav>
       </header>
 
-      <main ref={mainRef} className="pt-48 md:pt-56 px-4 sm:px-6 lg:px-8">
+      <main ref={mainRef} className="pt-24 sm:pt-28 px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="max-w-7xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div className="text-center mb-24" {...fadeInUp}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8">
-              <span className="text-[#4A90E2] drop-shadow-glow">INNOVACIÓN</span>
-              <span className="text-[#FF5C5C] ml-2">EMPRESARIAL</span>
+          <motion.div className="text-center mb-16 sm:mb-24" {...fadeInUp}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 mt-8 sm:mt-16">
+              <span className="text-[#4A90E2] drop-shadow-glow block sm:inline">INNOVACIÓN</span>
+              <span className="text-[#FF5C5C] block sm:inline sm:ml-2">EMPRESARIAL</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Como experto en transformación digital, te guío en el camino hacia una 
-              revolución empresarial que maximizará tu potencial en la era digital.
-              Mi misión es convertir tu visión en una realidad tecnológica tangible.
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Como tu aliado en transformación digital, te guío en un viaje de innovación 
+              que revolucionará tu negocio. Mi misión es convertir tu visión en una 
+              realidad tecnológica tangible, maximizando tu potencial en la era digital.
             </p>
           </motion.div>
 
-          <motion.div className="mb-24" {...fadeInUp}>
-            <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+          <motion.div className="mb-16 sm:mb-24" {...fadeInUp}>
+            <div className="relative h-[200px] sm:h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/placeholder.svg?height=500&width=1000"
+                src="/placeholder.svg?height=400&width=800"
                 alt="Mi visión de la Innovación Empresarial en acción"
                 layout="fill"
                 objectFit="cover"
@@ -157,7 +148,7 @@ const GerenciaDigital: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#4A90E2]/80 to-[#FF5C5C]/80 mix-blend-multiply" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-white text-center px-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center px-4">
                   Juntos Crearemos tu Futuro Digital
                 </h2>
               </div>
@@ -165,7 +156,8 @@ const GerenciaDigital: React.FC = () => {
           </motion.div>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"
+            id="soluciones"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 sm:mb-24"
             variants={{
               animate: { transition: { staggerChildren: 0.1 } }
             }}
@@ -176,7 +168,7 @@ const GerenciaDigital: React.FC = () => {
               <FeatureCard
                 icon={<Brain className="h-6 w-6" />}
                 title="Mi Enfoque en IA"
-                description="Implemento soluciones de IA personalizadas que transformarán tus procesos de negocio, permitiéndote tomar decisiones más inteligentes y predictivas."
+                description="Implemento soluciones de IA personalizadas que transformarán tus procesos, permitiéndote tomar decisiones más inteligentes y predictivas."
                 color="[#4A90E2]"
               />
             </motion.div>
@@ -198,8 +190,8 @@ const GerenciaDigital: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          <motion.div className="mb-24" {...fadeInUp}>
-            <h2 className="text-3xl font-semibold mb-8 text-center text-[#4A90E2]">Mi Metodología de Innovación</h2>
+          <motion.div className="mb-16 sm:mb-24" {...fadeInUp}>
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-8 text-center text-[#4A90E2]">Mi Metodología de Innovación</h2>
             <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
               <AccordionItem value="item-1" className="border-[#4A90E2]/20">
                 <AccordionTrigger className="text-[#4A90E2]">Transformación Cultural</AccordionTrigger>
@@ -228,8 +220,8 @@ const GerenciaDigital: React.FC = () => {
             </Accordion>
           </motion.div>
 
-          <motion.div className="mb-24" {...fadeInUp}>
-            <h2 className="text-3xl font-semibold mb-8 text-center text-[#4A90E2]">Mis Casos de Éxito</h2>
+          <motion.div className="mb-16 sm:mb-24" {...fadeInUp}>
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-8 text-center text-[#4A90E2]">Mis Casos de Éxito</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <Card className="bg-[#1A1A2E] border-[#4A90E2]/20">
                 <CardHeader>
@@ -266,18 +258,18 @@ const GerenciaDigital: React.FC = () => {
             </div>
           </motion.div>
 
-          <motion.div className="text-center mb-24" {...fadeInUp}>
-            <h2 className="text-3xl font-semibold mb-6 text-[#4A90E2]">Comienza Tu Viaje Digital Conmigo</h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <motion.div className="text-center mb-16 sm:mb-24" {...fadeInUp}>
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-[#4A90E2]">Comienza Tu Viaje Digital Conmigo</h2>
+            <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
               Mi compromiso es guiarte en cada paso de tu transformación digital. 
               Juntos, crearemos una estrategia única que llevará tu negocio al siguiente nivel.
             </p>
-            <Button className="bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-[#3A7BC8] hover:to-[#FF3C3C] transition-all duration-300 shadow-glow">
+            <Button className="bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-white px-6 py-3 rounded-full text-lg font-semibold hover:from-[#3A7BC8] hover:to-[#FF3C3C] transition-all duration-300 shadow-glow">
               Agenda tu Consultoría Estratégica
             </Button>
           </motion.div>
 
-          <motion.div className="mb-24" {...fadeInUp}>
+          <motion.div className="mb-16 sm:mb-24" {...fadeInUp}>
             <div className="relative h-[200px] sm:h-[300px] rounded-xl overflow-hidden shadow-2xl">
               <Image
                 src="/placeholder.svg?height=300&width=1000"
@@ -288,7 +280,7 @@ const GerenciaDigital: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1A1A2E]" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
-                <p className="text-white text-xl font-semibold">
+                <p className="text-white text-lg sm:text-xl font-semibold">
                   Mi equipo de expertos y yo estamos listos para potenciar tu éxito digital
                 </p>
               </div>
@@ -297,22 +289,25 @@ const GerenciaDigital: React.FC = () => {
         </motion.div>
       </main>
 
-      {showBackToTop && (
-        <motion.button
-          className="fixed bottom-16 sm:bottom-24 right-4 sm:right-8 bg-[#4A90E2] text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 z-50"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.8 }}
-          onClick={handleBackToTop}
-        >
-          <FaArrowUp className="text-lg sm:text-xl" />
-        </motion.button>
-      )}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-8 right-8 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 z-50"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleBackToTop}
+          >
+            <FaArrowUp className="text-xl" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
-      {showFooter && (
-        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20 w-full">
-          © 2024 - Deivipluss. Todos los derechos reservados.
-        </footer>
-      )}
+      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm border-t border-[#4A90E2]/20 mt-auto">
+        © {new Date().getFullYear()} - Deivipluss. Todos los derechos reservados.
+      </footer>
 
       <style jsx global>{`
         .drop-shadow-glow {
@@ -328,3 +323,4 @@ const GerenciaDigital: React.FC = () => {
 };
 
 export default GerenciaDigital;
+
