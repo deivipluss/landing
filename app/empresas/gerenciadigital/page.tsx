@@ -97,9 +97,9 @@ const GerenciaDigital: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] text-white overflow-x-hidden">
-      <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-[#0D0C1D]/90 backdrop-blur-lg shadow-md px-4 py-2">
-        <nav className="container mx-auto">
-          <div className="flex justify-center items-center space-x-4 sm:space-x-6 md:space-x-8 bg-[#1A1A2E] rounded-full py-2 px-4">
+      <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 px-4 py-2">
+        <nav className="container mx-auto max-w-7xl">
+          <div className="flex justify-center items-center space-x-4 sm:space-x-6 md:space-x-8 bg-[#1A1A2E]/80 backdrop-blur-lg rounded-full py-2 px-4 shadow-glow">
             {navItems.map((item) => (
               <div 
                 key={item.href}
@@ -264,7 +264,7 @@ const GerenciaDigital: React.FC = () => {
               Mi compromiso es guiarte en cada paso de tu transformación digital. 
               Juntos, crearemos una estrategia única que llevará tu negocio al siguiente nivel.
             </p>
-            <Button className="bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-white px-6 py-3 rounded-full text-lg font-semibold hover:from-[#3A7BC8] hover:to-[#FF3C3C] transition-all duration-300 shadow-glow">
+            <Button className="bg-[#4A90E2] text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-[#3A7BC8] transition-all duration-300 shadow-glow">
               Agenda tu Consultoría Estratégica
             </Button>
           </motion.div>
