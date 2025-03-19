@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
     console.log('Enviando datos a Google Sheets:', Object.fromEntries(formData.entries()));
     
     // Hacer la solicitud POST al script de Google
-    const { name, email, company, phone, dniOrRuc, accepted } = req.body; // Eliminar "position"
+    const { name, email, company, phone, dniOrRuc, accepted } = body; // Corregido: eliminar comentario dentro de la desestructuración
     const response = await fetch(scriptURL, {
       method: 'POST',
       headers: {
