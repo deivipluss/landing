@@ -171,7 +171,7 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
         
         {!formSubmitted && (
           <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-2">
-            Al hacer clic en "Firmar y aceptar", confirmas que has leído y aceptas los términos y condiciones descritos en este documento.
+            Al hacer clic en &ldquo;Firmar y aceptar&rdquo;, confirmas que has leído y aceptas los términos y condiciones descritos en este documento.
           </p>
         )}
       </form>
