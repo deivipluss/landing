@@ -1,5 +1,5 @@
-// Asegúrate de que estás usando la ruta correcta para el endpoint
-const handleSubmit = async (formData) => {
+// Exportamos la función para que pueda ser utilizada por otros componentes
+export const submitFormData = async (formData) => {
   try {
     console.log('Enviando datos al proxy API:', formData);
     

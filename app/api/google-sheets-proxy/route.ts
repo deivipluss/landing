@@ -57,7 +57,8 @@ export async function POST(req: NextRequest) {
     let result;
     try {
       result = JSON.parse(responseText);
-    } catch (e) {
+    } catch (error) {
+      // Cambiamos de 'e' a 'error' para evitar el error de ESLint
       result = { rawResponse: responseText };
     }
     
