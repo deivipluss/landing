@@ -17,6 +17,7 @@ import {
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import Image from "next/image";
 
 const navItems = [
   { 
@@ -58,9 +59,12 @@ const ProfileCard: React.FC = () => (
     className="bg-[#1A1A2E] p-4 sm:p-6 rounded-xl flex flex-col items-center text-center space-y-3 shadow-glow h-auto w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] mx-auto overflow-hidden border border-[#4A90E2]/20"
   >
     <div className="w-[120px] h-[150px] sm:w-[140px] sm:h-[175px] md:w-[160px] md:h-[200px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 rounded-lg overflow-hidden animate-float">
-      <img
+      <Image
         src="/imagenes/perfil.jpg"
         alt="Foto de perfil de Deivipluss"
+        width={160}
+        height={200}
+        priority={true}
         className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
       />
     </div>

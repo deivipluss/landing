@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import fs from 'fs/promises';
-import path from 'path';
 
 export async function POST(req: NextRequest) {
   try {
