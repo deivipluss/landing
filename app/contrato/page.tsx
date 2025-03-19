@@ -98,14 +98,12 @@ export default function ContratoPage() {
     // Obtener datos del usuario
     const userEmail = localStorage.getItem('contractUserEmail') || '';
     const userName = localStorage.getItem('contractUserName') || '';
-    
-    if (!userEmail) {
-      alert('No se encontró un correo electrónico para enviar el contrato.');
+    const contractContent = contractRef.current?.innerHTML || '';
+
+    if (!userEmail || !userName || !contractContent) {
+      alert('Faltan datos necesarios para enviar el correo.');
       return;
     }
-
-    // Obtener el HTML del contrato para enviarlo por correo
-    const contractContent = contractRef.current?.innerHTML || '';
 
     try {
       // Enviar a la API de correo
@@ -118,7 +116,7 @@ export default function ContratoPage() {
           email: userEmail,
           name: userName,
           date: new Date().toLocaleString('es-ES'),
-          contractHTML: contractContent
+          contractHTML: contractContent,
         }),
       });
 
@@ -126,11 +124,12 @@ export default function ContratoPage() {
         alert('El contrato ha sido enviado a tu correo electrónico.');
       } else {
         const errorData = await response.json();
-        throw new Error(errorData.error || 'Error al enviar el correo');
+        console.error('Error al enviar el correo:', errorData);
+        alert(errorData.error || 'Error al enviar el correo. Por favor intenta nuevamente.');
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Hubo un problema al enviar el contrato. Por favor intenta nuevamente.');
+      console.error('Error al enviar el correo:', error);
+      alert('Hubo un problema al enviar el correo. Por favor intenta nuevamente.');
     }
   };
 
