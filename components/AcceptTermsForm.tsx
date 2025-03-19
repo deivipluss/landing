@@ -30,36 +30,32 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
     setIsChecked(e.target.checked);
   };
 
-  // Función para enviar datos a Google Sheets
+  // Función para enviar datos a Google Sheets usando el proxy API
   const sendToGoogleSheets = async (data: typeof formData) => {
     try {
-      // URL específica de tu Google Apps Script
-      const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || 'https://script.google.com/macros/s/AKfycbybpFGQH3U_Ik_5RMVB19keINDRJ901Q2BJzcxjmB54SIMcR5rzUxt5eptWnTIPLTS8/exec';
+      console.log('Enviando datos al proxy API:', data);
       
-      const formToSubmit = new FormData();
-      // Añadir fecha y hora actual
-      const currentDate = new Date().toLocaleString('es-ES');
-      
-      formToSubmit.append('timestamp', currentDate);
-      formToSubmit.append('name', data.name);
-      formToSubmit.append('email', data.email);
-      formToSubmit.append('company', data.company || 'No especificado');
-      formToSubmit.append('phone', data.phone || 'No especificado');
-      formToSubmit.append('accepted', 'true');
-      
-      const response = await fetch(scriptURL, {
+      // Usar nuestro proxy API para evitar problemas de CORS
+      const response = await fetch('/api/google-sheets-proxy', {
         method: 'POST',
-        body: formToSubmit
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
       });
       
+      const responseData = await response.json();
+      console.log('Respuesta del proxy API:', responseData);
+      
       if (response.ok) {
-        console.log('Datos enviados correctamente a Google Sheets');
+        console.log('Datos enviados correctamente a Google Sheets mediante proxy');
         return true;
       } else {
-        throw new Error('Error al enviar datos');
+        console.error('Error al enviar datos mediante proxy:', responseData.error);
+        throw new Error(responseData.error || 'Error al enviar datos mediante proxy');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error al enviar datos a Google Sheets:', error);
       return false;
     }
   };
