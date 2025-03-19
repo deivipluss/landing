@@ -61,7 +61,7 @@ export default function ApiTestPage() {
       <Container className="py-12">
         <div className="w-full max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-8 text-center">
-            Prueba de API de Google Sheets
+            Prueba de API de Google Sheets Pluss
           </h1>
           
           <div className="bg-white dark:bg-slate-800 shadow-md rounded-lg p-6 mb-8">
