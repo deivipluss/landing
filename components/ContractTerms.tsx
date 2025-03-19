@@ -7,8 +7,8 @@ const ContractTerms = () => {
       
       <p className="mb-4">
         El presente documento constituye un acuerdo vinculante entre Deivis Contreras Cárdenas, 
-        especialista en transformación digital (en adelante "El Consultor"), y la persona, 
-        empresa u organización que contrata sus servicios (en adelante "El Cliente").
+        especialista en transformación digital (en adelante &ldquo;El Consultor&rdquo;), y la persona, 
+        empresa u organización que contrata sus servicios (en adelante &ldquo;El Cliente&rdquo;).
       </p>
 
       <h3 className="text-lg font-medium mt-6 mb-2">1. Servicios</h3>
