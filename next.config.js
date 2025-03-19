@@ -10,4 +10,5 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+// Usar module.exports en lugar de export default para compatibilidad con CommonJS
+module.exports = nextConfig;
