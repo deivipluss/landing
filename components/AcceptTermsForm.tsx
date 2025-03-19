@@ -16,6 +16,7 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,26 +30,81 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
     setIsChecked(e.target.checked);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Función para enviar datos a Google Sheets
+  const sendToGoogleSheets = async (data: typeof formData) => {
+    try {
+      // URL específica de tu Google Apps Script
+      const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || 'https://script.google.com/macros/s/AKfycbybpFGQH3U_Ik_5RMVB19keINDRJ901Q2BJzcxjmB54SIMcR5rzUxt5eptWnTIPLTS8/exec';
+      
+      const formToSubmit = new FormData();
+      // Añadir fecha y hora actual
+      const currentDate = new Date().toLocaleString('es-ES');
+      
+      formToSubmit.append('timestamp', currentDate);
+      formToSubmit.append('name', data.name);
+      formToSubmit.append('email', data.email);
+      formToSubmit.append('company', data.company || 'No especificado');
+      formToSubmit.append('phone', data.phone || 'No especificado');
+      formToSubmit.append('accepted', 'true');
+      
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: formToSubmit
+      });
+      
+      if (response.ok) {
+        console.log('Datos enviados correctamente a Google Sheets');
+        return true;
+      } else {
+        throw new Error('Error al enviar datos');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     if (!isChecked) {
       setError("Debes aceptar los términos y condiciones para continuar.");
+      setLoading(false);
       return;
     }
 
     if (!formData.name || !formData.email) {
       setError("Por favor completa todos los campos obligatorios.");
+      setLoading(false);
       return;
     }
 
-    // Aquí puedes implementar la lógica para enviar los datos a tu backend o API
-    console.log("Formulario enviado:", formData);
+    // Guardar datos en localStorage para poder accederlos al imprimir o enviar por email
+    localStorage.setItem('contractUserName', formData.name);
+    localStorage.setItem('contractUserEmail', formData.email);
+    localStorage.setItem('contractUserCompany', formData.company || '');
+    localStorage.setItem('contractUserPhone', formData.phone || '');
+    localStorage.setItem('contractAcceptedDate', new Date().toISOString());
 
-    // Simulación de envío exitoso
-    setFormSubmitted(true);
-    onAccept(true);
+    // Enviar datos a Google Sheets
+    try {
+      const success = await sendToGoogleSheets(formData);
+      
+      if (success) {
+        // Simulación de envío exitoso
+        setFormSubmitted(true);
+        onAccept(true);
+      } else {
+        setError("Hubo un problema al procesar tu solicitud. Por favor intenta nuevamente.");
+      }
+    } catch (err) {
+      console.error("Error al enviar datos:", err);
+      setError("Error al enviar datos. Inténtalo nuevamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -155,9 +211,17 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
               ? "bg-green-600 hover:bg-green-700 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
               : "bg-blue-600 hover:bg-blue-700 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           }`}
-          disabled={formSubmitted}
+          disabled={formSubmitted || loading}
         >
-          {formSubmitted ? (
+          {loading ? (
+            <>
+              <svg className="w-5 h-5 mr-2 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Procesando...
+            </>
+          ) : formSubmitted ? (
             <>
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
