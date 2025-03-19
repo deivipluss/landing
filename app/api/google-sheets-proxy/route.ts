@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const body = await req.json(); // Convertir el cuerpo de la solicitud en un objeto JSON
     
+    // Desestructurar las propiedades del cuerpo
+    const { name, email, company, phone, dniOrRuc, accepted } = body;
+
     // Intentar todas las posibles variables de entorno
     const scriptURL = process.env.GOOGLE_SCRIPT_URL || 
                       process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || 
@@ -41,7 +44,6 @@ export async function POST(req: NextRequest) {
     console.log('Enviando datos a Google Sheets:', Object.fromEntries(formData.entries()));
     
     // Hacer la solicitud POST al script de Google
-    const { name, email, company, phone, dniOrRuc, accepted } = body; // Corregido: eliminar comentario dentro de la desestructuración
     const response = await fetch(scriptURL, {
       method: 'POST',
       headers: {
