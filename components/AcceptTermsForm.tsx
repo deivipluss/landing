@@ -12,7 +12,8 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
     name: "",
     email: "",
     company: "",
-    phone: ""
+    phone: "",
+    dniOrRuc: "" // Mantener solo los campos necesarios
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -82,6 +83,7 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
     localStorage.setItem('contractUserEmail', formData.email);
     localStorage.setItem('contractUserCompany', formData.company || '');
     localStorage.setItem('contractUserPhone', formData.phone || '');
+    localStorage.setItem('contractUserDniOrRuc', formData.dniOrRuc || '');
     localStorage.setItem('contractAcceptedDate', new Date().toISOString());
 
     // Enviar datos a Google Sheets
@@ -144,6 +146,22 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
+            <label htmlFor="dniOrRuc" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+              DNI/RUC <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="dniOrRuc"
+              name="dniOrRuc"
+              value={formData.dniOrRuc}
+              onChange={handleChange}
+              placeholder="Tu DNI o RUC"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 transition-all duration-200"
+              required
+            />
+          </div>
+
+          <div>
             <label htmlFor="company" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
               Empresa/Organización
             </label>
@@ -157,7 +175,9 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 transition-all duration-200"
             />
           </div>
+        </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
               Teléfono

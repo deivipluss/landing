@@ -35,10 +35,11 @@ function doPost(e) {
     var email = e.parameter.email || '';
     var company = e.parameter.company || 'No especificado';
     var phone = e.parameter.phone || 'No especificado';
+    var dniOrRuc = e.parameter.dniOrRuc || 'No especificado';
     var accepted = e.parameter.accepted || 'true';
     
     // Añadir una nueva fila con los datos
-    sheet.appendRow([timestamp, name, email, company, phone, accepted]);
+    sheet.appendRow([timestamp, name, email, company, phone, dniOrRuc, accepted]);
     
     // Devolver una respuesta de éxito con los encabezados CORS
     return ContentService

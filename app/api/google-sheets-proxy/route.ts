@@ -41,12 +41,13 @@ export async function POST(req: NextRequest) {
     console.log('Enviando datos a Google Sheets:', Object.fromEntries(formData.entries()));
     
     // Hacer la solicitud POST al script de Google
+    const { name, email, company, phone, dniOrRuc, accepted } = req.body; // Eliminar "position"
     const response = await fetch(scriptURL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: formData.toString()
+      body: new URLSearchParams({ name, email, company, phone, dniOrRuc, accepted }).toString()
     });
 
     // Intentar obtener la respuesta como texto primero

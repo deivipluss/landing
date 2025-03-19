@@ -30,6 +30,8 @@ export default function ContratoPage() {
       name: localStorage.getItem('contractUserName') || '',
       email: localStorage.getItem('contractUserEmail') || '',
       company: localStorage.getItem('contractUserCompany') || '',
+      phone: localStorage.getItem('contractUserPhone') || '',
+      dniOrRuc: localStorage.getItem('contractUserDniOrRuc') || '' // Mantener solo los campos necesarios
     };
 
     const currentDate = new Date().toLocaleDateString('es-ES');
@@ -65,6 +67,7 @@ export default function ContratoPage() {
             <p><strong>Nombre:</strong> ${userData.name}</p>
             <p><strong>Email:</strong> ${userData.email}</p>
             ${userData.company ? `<p><strong>Empresa/Organización:</strong> ${userData.company}</p>` : ''}
+            <p><strong>DNI/RUC:</strong> ${userData.dniOrRuc}</p>
             
             <div class="signatures">
               <div style="display: flex; justify-content: space-between; margin-top: 40px;">
