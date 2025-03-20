@@ -109,6 +109,7 @@ export default function ContratoPage() {
     // Obtener datos del usuario
     const userEmail = localStorage.getItem('contractUserEmail') || '';
     const userName = localStorage.getItem('contractUserName') || '';
+    const userDniRuc = localStorage.getItem('contractUserDniOrRuc') || '';
     const contractContent = contractRef.current?.innerHTML || '';
 
     if (!userEmail || !userName || !contractContent) {
@@ -126,6 +127,7 @@ export default function ContratoPage() {
         body: JSON.stringify({
           email: userEmail,
           name: userName,
+          dniOrRuc: userDniRuc, // Asegurarse de enviar el DNI/RUC
           date: new Date().toLocaleString('es-ES'),
           contractHTML: contractContent,
         }),

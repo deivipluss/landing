@@ -202,31 +202,27 @@ export async function POST(req: NextRequest) {
       });
     };
     
-    // Función para dibujar marca de agua en cada página
+    // Función para dibujar marca de agua en cada página - versión simplificada para garantizar que aparezca
     const drawWatermark = (currentPage: PDFPage) => {
-      // Primera marca de agua horizontal
-      const watermarkText = "DeivisPluss.pro";
-      const fontSize = 50;
-      const watermarkWidth = helveticaBold.widthOfTextAtSize(watermarkText, fontSize);
-      
-      currentPage.drawText(watermarkText, {
-        x: (pageWidth - watermarkWidth) / 2,
-        y: pageHeight / 2,
-        size: fontSize,
-        font: helveticaBold,
-        color: watermarkColor,
-        opacity: 0.15,
-      });
-      
-      // Segunda marca de agua vertical (simulando rotación)
-      currentPage.drawText("CONFIDENCIAL", {
-        x: pageWidth / 2 - 20, // Ajuste horizontal aproximado
-        y: pageHeight / 2 + watermarkWidth / 4, // Ajuste vertical aproximado
-        size: fontSize - 10, // Un poco más pequeña
-        font: helveticaBold,
-        color: watermarkColor,
-        opacity: 0.1,
-      });
+      try {
+        // Marca de agua principal
+        const watermarkText = "DeivisPluss.pro";
+        const fontSize = 60; // Aumentado para mayor visibilidad
+        const watermarkWidth = helveticaBold.widthOfTextAtSize(watermarkText, fontSize);
+        
+        currentPage.drawText(watermarkText, {
+          x: (pageWidth - watermarkWidth) / 2,
+          y: pageHeight / 2,
+          size: fontSize,
+          font: helveticaBold,
+          color: watermarkColor,
+          opacity: 0.2, // Aumentado para mayor visibilidad
+        });
+        
+        console.log("Marca de agua aplicada correctamente");
+      } catch (error) {
+        console.error("Error al aplicar marca de agua:", error);
+      }
     };
     
     // Dibujar encabezado, pie de página y marca de agua en la primera página
@@ -468,50 +464,31 @@ export async function POST(req: NextRequest) {
       color: textColor,
     });
     
-    // Agregar DNI/RUC del cliente si está disponible
-    if (dniOrRuc) {
-      page.drawText(`DNI/RUC: ${dniOrRuc}`, {
-        x: pageWidth - marginRight - signatureWidth,
-        y: yPosition - 75, // Misma posición que el DNI del consultor
-        size: 10,
-        font: helvetica,
-        color: textColor,
-      });
-      
-      // Ajustar posición de la fecha y el rol debido al nuevo campo
-      page.drawText(`Fecha: ${date}`, {
-        x: pageWidth - marginRight - signatureWidth,
-        y: yPosition - 90, // Movido más abajo
-        size: 10,
-        font: helvetica,
-        color: textColor,
-      });
-      
-      page.drawText('EL CLIENTE', {
-        x: pageWidth - marginRight - signatureWidth,
-        y: yPosition - 105, // Movido más abajo
-        size: 10,
-        font: helveticaOblique,
-        color: textColor,
-      });
-    } else {
-      // Si no hay DNI/RUC, mantener el formato original
-      page.drawText(`Fecha: ${date}`, {
-        x: pageWidth - marginRight - signatureWidth,
-        y: yPosition - 75,
-        size: 10,
-        font: helvetica,
-        color: textColor,
-      });
-      
-      page.drawText('EL CLIENTE', {
-        x: pageWidth - marginRight - signatureWidth,
-        y: yPosition - 90,
-        size: 10,
-        font: helveticaOblique,
-        color: textColor,
-      });
-    }
+    // Agregar DNI/RUC del cliente
+    page.drawText(`DNI/RUC: ${dniOrRuc || "No especificado"}`, { // Usamos "No especificado" si no hay DNI/RUC
+      x: pageWidth - marginRight - signatureWidth,
+      y: yPosition - 75, // Misma posición que el DNI del consultor
+      size: 10,
+      font: helvetica,
+      color: textColor,
+    });
+    
+    // Ajustar posición de la fecha y el rol debido al nuevo campo
+    page.drawText(`Fecha: ${date}`, {
+      x: pageWidth - marginRight - signatureWidth,
+      y: yPosition - 90, // Movido más abajo
+      size: 10,
+      font: helvetica,
+      color: textColor,
+    });
+    
+    page.drawText('EL CLIENTE', {
+      x: pageWidth - marginRight - signatureWidth,
+      y: yPosition - 105, // Movido más abajo
+      size: 10,
+      font: helveticaOblique,
+      color: textColor,
+    });
     
     // Dibujar pie de página en la última página
     drawFooter(page, pageNumber, totalPages);
