@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json(); // Convertir el cuerpo de la solicitud en un objeto JSON
     
     // Desestructurar las propiedades del cuerpo
-    const { name, email, company, phone, dniOrRuc, accepted } = body;
+    const { name, email, company, phone, dniOrRuc, accepted } = body; // Asegurarse de incluir "accepted"
 
     // Intentar todas las posibles variables de entorno
     const scriptURL = process.env.GOOGLE_SCRIPT_URL || 
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: new URLSearchParams({ name, email, company, phone, dniOrRuc, accepted }).toString()
+      body: new URLSearchParams({ name, email, company, phone, dniOrRuc, accepted }).toString() // Asegurarse de incluir "accepted"
     });
 
     // Intentar obtener la respuesta como texto primero
@@ -99,13 +99,11 @@ export async function GET() {
                       process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
     
     if (!scriptURL) {
-      console.error('Variables de entorno disponibles:', {
-        GOOGLE_SCRIPT_URL: process.env.GOOGLE_SCRIPT_URL,
-        NEXT_PUBLIC_GOOGLE_SCRIPT_URL: process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL,
-        NEXT_PUBLIC_GOOGLE_SHEETS_URL: process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL
-      });
-      
-      return NextResponse.json({ error: 'Falta configuración de URL del script de Google' }, { status: 500 });
+      console.error('Falta la URL del script de Google en las variables de entorno');
+      return NextResponse.json(
+        { error: 'Falta configuración de URL del script de Google' },
+        { status: 500 }
+      );
     }
 
     // Intentar hacer una solicitud GET al script
