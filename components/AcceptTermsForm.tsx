@@ -34,9 +34,8 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
   // Función para enviar datos a Google Sheets usando el proxy API
   const sendToGoogleSheets = async (data: typeof formData) => {
     try {
-      console.log('Enviando datos al proxy API:', { ...data, accepted: isChecked }); // Agregar "accepted"
+      console.log('Enviando datos al proxy API:', { ...data, accepted: isChecked }); // Verificar datos enviados
       
-      // Usar nuestro proxy API para evitar problemas de CORS
       const response = await fetch('/api/google-sheets-proxy', {
         method: 'POST',
         headers: {

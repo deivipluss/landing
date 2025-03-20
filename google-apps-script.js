@@ -37,9 +37,12 @@ function doPost(e) {
     var phone = e.parameter.phone || 'No especificado';
     var dniOrRuc = e.parameter.dniOrRuc || 'No especificado'; // Asegurarse de que el parámetro exista
     var accepted = e.parameter.accepted || 'false'; // Asegurarse de que el parámetro exista
+
+    Logger.log("DNI/RUC recibido: " + dniOrRuc); // Log para depuración
+    Logger.log("Aceptado recibido: " + accepted); // Log para depuración
     
     // Añadir una nueva fila con los datos
-    sheet.appendRow([timestamp, name, email, company, phone, dniOrRuc, accepted]); // Asegurarse de que los datos se agreguen correctamente
+    sheet.appendRow([timestamp, name, email, dniOrRuc, company, phone, accepted]); // Asegurarse de que los datos se agreguen correctamente
     
     // Devolver una respuesta de éxito con los encabezados CORS
     return ContentService

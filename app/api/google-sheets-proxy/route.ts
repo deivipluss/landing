@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     // Construir los datos para enviar a Google
     const formData = new URLSearchParams();
     Object.keys(body).forEach(key => {
-      formData.append(key, body[key] || '');
+      formData.append(key, body[key] || ''); // Asegurarse de que todos los valores se envíen correctamente
     });
     
     // Asegurar que tenemos un timestamp
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: new URLSearchParams({ name, email, company, phone, dniOrRuc, accepted }).toString() // Asegurarse de incluir "accepted"
+      body: formData.toString() // Enviar todos los datos correctamente
     });
 
     // Intentar obtener la respuesta como texto primero
