@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     } catch (verifyError) {
       console.error('Error al verificar el transportador:', verifyError);
       return NextResponse.json(
-        { error: 'Error al configurar el transportador de correo.' },
+        { error: `Error al configurar el transportador de correo: ${verifyError.message}` },
         { status: 500 }
       );
     }
