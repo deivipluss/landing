@@ -15,12 +15,12 @@ export async function POST(req: NextRequest) {
 
     // Configura el transportador
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-      port: Number(process.env.EMAIL_PORT) || 587,
-      secure: Boolean(process.env.EMAIL_SECURE) || false,
+      host: process.env.EMAIL_HOST || 'smtp.gmail.com', // Servidor SMTP de Gmail
+      port: Number(process.env.EMAIL_PORT) || 587, // Puerto para STARTTLS
+      secure: process.env.EMAIL_SECURE === 'true', // Convertir a booleano explícitamente
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
+        user: process.env.EMAIL_USER, // Tu correo de Gmail
+        pass: process.env.EMAIL_PASSWORD, // Contraseña de aplicación generada en Gmail
       },
     });
 
