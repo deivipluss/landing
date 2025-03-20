@@ -95,15 +95,6 @@ export async function POST(req: NextRequest) {
     
     // Función para dibujar encabezado en cada página
     const drawHeader = (currentPage: PDFPage) => {
-      // Línea decorativa superior - usando drawRectangle en lugar de drawLine
-      currentPage.drawRectangle({
-        x: marginLeft,
-        y: pageHeight - 42,
-        width: pageWidth - marginLeft - marginRight,
-        height: 1,
-        color: accentColor,
-      });
-      
       // Título del documento en dos líneas
       currentPage.drawText('CONTRATO DE SERVICIOS', {
         x: marginLeft,
@@ -122,6 +113,15 @@ export async function POST(req: NextRequest) {
         color: accentColor,
       });
       
+      // Línea decorativa - REPOSICIONADA PARA QUE ESTÉ DEBAJO DEL TEXTO
+      currentPage.drawRectangle({
+        x: marginLeft,
+        y: pageHeight - 55, // Ajustado para estar debajo del texto www.deivipluss.pro
+        width: pageWidth - marginLeft - marginRight,
+        height: 1,
+        color: accentColor,
+      });
+      
       // Fecha en la parte derecha
       currentPage.drawText(`Fecha: ${new Date().toLocaleDateString('es-ES')}`, {
         x: pageWidth - marginRight - 120,
@@ -134,10 +134,10 @@ export async function POST(req: NextRequest) {
     
     // Función para dibujar pie de página en cada página
     const drawFooter = (currentPage: PDFPage, pageNumber: number, totalPages: number) => {
-      // Línea decorativa inferior - usando drawRectangle en lugar de drawLine
+      // Línea decorativa - REPOSICIONADA PARA QUE ESTÉ ARRIBA DEL TEXTO
       currentPage.drawRectangle({
         x: marginLeft,
-        y: marginBottom - 32,
+        y: marginBottom - 15, // Ajustado para estar arriba del texto de Deivis Contreras
         width: pageWidth - marginLeft - marginRight,
         height: 1,
         color: accentColor,
@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
       // Firma del consultor a la izquierda en dos líneas
       currentPage.drawText('Deivis Contreras Cárdenas', {
         x: marginLeft,
-        y: marginBottom - 20,
+        y: marginBottom - 28, // Ajustado para estar debajo de la línea
         size: 8,
         font: helveticaBold,
         color: accentColor,
@@ -154,7 +154,7 @@ export async function POST(req: NextRequest) {
       
       currentPage.drawText('Consultor Digital', {
         x: marginLeft,
-        y: marginBottom - 32,
+        y: marginBottom - 40, // Ajustado para mantener proporción
         size: 7,
         font: helvetica,
         color: accentColor,
@@ -163,7 +163,7 @@ export async function POST(req: NextRequest) {
       // Número de página a la derecha
       currentPage.drawText(`Página ${pageNumber} de ${totalPages}`, {
         x: pageWidth - marginRight - 80,
-        y: marginBottom - 20,
+        y: marginBottom - 28, // Alineado con el texto de Deivis Contreras
         size: 8,
         font: helvetica,
         color: accentColor,
