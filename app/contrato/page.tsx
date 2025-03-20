@@ -83,7 +83,7 @@ export default function ContratoPage() {
             <div class="signatures">
               <div style="display: flex; justify-content: space-between; margin-top: 40px;">
                 <div>
-                  <img src="/images/firma-consultor.png" alt="Firma del consultor" class="signature-img" />
+                  <img src="/imagenes/firma-consultor.png" alt="Firma del consultor" class="signature-img" />
                   <span class="signature-line"></span>
                   <p>Firma del Consultor<br>Deivis Contreras Cárdenas</p>
                 </div>
