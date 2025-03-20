@@ -180,11 +180,6 @@ const ContractTerms = () => {
         En caso de terminación anticipada, EL CLIENTE deberá pagar los servicios prestados hasta la fecha de terminación.
       </p>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">9. JURISDICCIÓN Y LEY APLICABLE</h3>
-      <p className="mb-4">
-        Este contrato se rige por las leyes de la República del Perú. Cualquier controversia derivada de este contrato se resolverá en los tribunales competentes de Lima, Perú.
-      </p>
-
       <div className="mt-8 italic bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg border-l-4 border-gray-300 dark:border-gray-600">
         <p>Al aceptar este contrato, EL CLIENTE reconoce haber leído, entendido y aceptado todas las cláusulas y condiciones establecidas en este documento.</p>
       </div>

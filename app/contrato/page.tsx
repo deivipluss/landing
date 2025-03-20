@@ -36,6 +36,12 @@ export default function ContratoPage() {
 
     const currentDate = new Date().toLocaleDateString('es-ES');
     
+    // Obtener el HTML del contrato pero excluir el mensaje instructivo
+    const contractHTML = contractContent.innerHTML;
+    // Usar RegExp con el constructor en lugar de la notación literal para evitar problemas con escape de /
+    const instructiveMessageRegex = new RegExp('<div class="bg-blue-50 dark:bg-blue-900\\/20 p-4 rounded-lg mb-6 border-l-4 border-blue-500">[\\s\\S]*?<\\/div>', 'g');
+    const cleanContractHTML = contractHTML.replace(instructiveMessageRegex, '');
+    
     printWindow.document.write(`
       <html>
         <head>
@@ -59,7 +65,7 @@ export default function ContratoPage() {
           </div>
           
           <div class="content">
-            ${contractContent.innerHTML}
+            ${cleanContractHTML}
           </div>
           
           <div class="signature-area">

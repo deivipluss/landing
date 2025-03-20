@@ -47,7 +47,13 @@ export async function POST(req: NextRequest) {
     let contractText = '';
     if (typeof contractHTML === 'string' && contractHTML.trim() !== '') {
       try {
-        contractText = htmlToText(contractHTML, { wordwrap: 130 }); // Ajustar el texto a un ancho razonable
+        // Primero, eliminamos el mensaje instructivo del HTML
+        // Usar RegExp con el constructor en lugar de la notación literal para evitar problemas con escape de /
+        const instructiveMessageRegex = new RegExp('<div class="bg-blue-50 dark:bg-blue-900\\/20 p-4 rounded-lg mb-6 border-l-4 border-blue-500">[\\s\\S]*?<\\/div>', 'g');
+        const cleanHTML = contractHTML.replace(instructiveMessageRegex, '');
+        
+        // Luego convertimos a texto plano
+        contractText = htmlToText(cleanHTML, { wordwrap: 130 }); // Ajustar el texto a un ancho razonable
       } catch (error) {
         console.error('Error al convertir contractHTML a texto plano:', error);
         contractText = ''; // Asignar un valor predeterminado en caso de error
@@ -83,7 +89,7 @@ export async function POST(req: NextRequest) {
     // Configuración de márgenes
     const marginLeft = 60;
     const marginRight = 60;
-    const marginTop = 80;
+    const marginTop = 100; // Aumentado para dar más espacio al encabezado
     const marginBottom = 80;
     const textMaxWidth = pageWidth - marginLeft - marginRight;
     
@@ -98,12 +104,21 @@ export async function POST(req: NextRequest) {
         color: accentColor,
       });
       
-      // Título del documento
+      // Título del documento en dos líneas
       currentPage.drawText('CONTRATO DE SERVICIOS', {
         x: marginLeft,
         y: pageHeight - 30,
         size: 10,
         font: helveticaBold,
+        color: accentColor,
+      });
+      
+      // URL debajo del título
+      currentPage.drawText('www.deivipluss.pro', {
+        x: marginLeft,
+        y: pageHeight - 45,
+        size: 8,
+        font: helvetica,
         color: accentColor,
       });
       
@@ -128,12 +143,20 @@ export async function POST(req: NextRequest) {
         color: accentColor,
       });
       
-      // Firma del consultor a la izquierda
+      // Firma del consultor a la izquierda en dos líneas
       currentPage.drawText('Deivis Contreras Cárdenas', {
         x: marginLeft,
         y: marginBottom - 20,
         size: 8,
         font: helveticaBold,
+        color: accentColor,
+      });
+      
+      currentPage.drawText('Consultor Digital', {
+        x: marginLeft,
+        y: marginBottom - 32,
+        size: 7,
+        font: helvetica,
         color: accentColor,
       });
       
@@ -212,6 +235,11 @@ export async function POST(req: NextRequest) {
       const isSectionTitle = paragraph.match(/^\d+\.\s[A-ZÁÉÍÓÚÑ\s]+$/); // Ejemplo: "1. OBJETO DEL CONTRATO"
       const isSubSectionTitle = paragraph.match(/^\d+\.\d+\.\s[A-Za-záéíóúñ\s]+$/); // Ejemplo: "4.1. Obligaciones de EL CONSULTOR"
       const isPhase = paragraph.includes('Fase') && paragraph.includes(':');
+      
+      // Si el párrafo contiene "9. JURISDICCIÓN" o menciona "jurisdicción", lo omitimos
+      if (paragraph.includes("9. JURISDICCIÓN") || paragraph.toLowerCase().includes("jurisdicción")) {
+        continue;
+      }
       
       let fontSize = 10;
       let font = helvetica;
