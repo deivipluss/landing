@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { PDFDocument, rgb, StandardFonts, PDFPage } from 'pdf-lib'; // Importar StandardFonts para usar fuentes estándar estándar
-const { htmlToText } = require('html-to-text'); // Usar require para versiones antiguas
+import { PDFDocument, rgb, StandardFonts, PDFPage } from 'pdf-lib';
+import * as fs from 'fs';
+import * as path from 'path';
+// Corrección: usar require para html-to-text en lugar de import ESM
+const { htmlToText } = require('html-to-text');
 
 export async function POST(req: NextRequest) {
   try {
@@ -48,11 +51,10 @@ export async function POST(req: NextRequest) {
     if (typeof contractHTML === 'string' && contractHTML.trim() !== '') {
       try {
         // Primero, eliminamos el mensaje instructivo del HTML
-        // Usar RegExp con el constructor en lugar de la notación literal para evitar problemas con escape de /
         const instructiveMessageRegex = new RegExp('<div class="bg-blue-50 dark:bg-blue-900\\/20 p-4 rounded-lg mb-6 border-l-4 border-blue-500">[\\s\\S]*?<\\/div>', 'g');
         const cleanHTML = contractHTML.replace(instructiveMessageRegex, '');
         
-        // Luego convertimos a texto plano
+        // Luego convertimos a texto plano usando la función importada correctamente
         contractText = htmlToText(cleanHTML, { wordwrap: 130 }); // Ajustar el texto a un ancho razonable
       } catch (error) {
         console.error('Error al convertir contractHTML a texto plano:', error);
@@ -74,6 +76,35 @@ export async function POST(req: NextRequest) {
     const helvetica = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const helveticaBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
     const helveticaOblique = await pdfDoc.embedFont(StandardFonts.HelveticaOblique);
+    
+    // Cargar la imagen de la firma
+    let signatureImage;
+    try {
+      let signatureImageBytes;
+      
+      // Intentamos dos métodos para cargar la imagen, dependiendo del entorno
+      try {
+        // Método 1: Intentar cargar desde el sistema de archivos local (desarrollo)
+        const signatureImagePath = path.join(process.cwd(), 'public', 'imagenes', 'firma-consultor.png');
+        signatureImageBytes = fs.readFileSync(signatureImagePath);
+      } catch (localError) {
+        console.log('No se pudo cargar la imagen localmente, intentando con fetch:', localError);
+        
+        // Método 2: Intentar cargar usando fetch (producción/serverless)
+        const imageUrl = new URL('/imagenes/firma-consultor.png', process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000').toString();
+        const response = await fetch(imageUrl);
+        if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
+        const arrayBuffer = await response.arrayBuffer();
+        signatureImageBytes = Buffer.from(arrayBuffer);
+      }
+      
+      // Embeber la imagen en el documento PDF
+      signatureImage = await pdfDoc.embedPng(signatureImageBytes);
+      console.log('Imagen de firma cargada correctamente');
+    } catch (imageError) {
+      console.error('Error al cargar la imagen de la firma:', imageError);
+      // Continuamos sin la imagen en caso de error
+    }
     
     // Configuración de la página
     const pageWidth = 600;
@@ -370,10 +401,29 @@ export async function POST(req: NextRequest) {
       color: accentColor,
     });
     
+    // Si tenemos la imagen de la firma, la dibujamos
+    if (signatureImage) {
+      // Obtener dimensiones de la imagen
+      const imgWidth = signatureImage.width;
+      const imgHeight = signatureImage.height;
+      
+      // Calcular la escala para que la firma tenga un ancho adecuado
+      // pero mantenga su proporción de aspecto
+      const scale = Math.min(signatureWidth * 0.8 / imgWidth, 40 / imgHeight);
+      
+      // Dibujar la imagen de la firma
+      page.drawImage(signatureImage, {
+        x: marginLeft + 10, // Un poco más a la derecha para centrar mejor
+        y: yPosition - 18 - (imgHeight * scale) / 2, // Posicionamos la imagen sobre la línea
+        width: imgWidth * scale,
+        height: imgHeight * scale,
+      });
+    }
+    
     // Información del consultor
     page.drawText('Deivis Contreras Cárdenas', {
       x: marginLeft,
-      y: yPosition - 20,
+      y: yPosition - 40, // Ajustado para dejar espacio a la imagen
       size: 10,
       font: helveticaBold,
       color: textColor,
@@ -381,7 +431,7 @@ export async function POST(req: NextRequest) {
     
     page.drawText('DNI: 71035458', {
       x: marginLeft,
-      y: yPosition - 35,
+      y: yPosition - 55, // Ajustado para dejar espacio a la imagen
       size: 10,
       font: helvetica,
       color: textColor,
@@ -389,7 +439,7 @@ export async function POST(req: NextRequest) {
     
     page.drawText('EL CONSULTOR', {
       x: marginLeft,
-      y: yPosition - 50,
+      y: yPosition - 70, // Ajustado para dejar espacio a la imagen
       size: 10,
       font: helveticaOblique,
       color: textColor,
@@ -445,14 +495,22 @@ export async function POST(req: NextRequest) {
         <p>Gracias por aceptar los términos y condiciones del contrato de servicios de consultoría digital con Deivis Contreras Cárdenas.</p>
         <p>Has aceptado este contrato el día ${date}. El contrato se adjunta a este correo electrónico para tus registros.</p>
         <p>Saludos cordiales,</p>
-        <p><b>Deivis Contreras Cárdenas</b><br>Consultor en Transformación Digital<br>info@deiviscontreras.com</p>
+        <div style="margin-top: 20px;">
+          <img src="cid:firma-consultor" alt="Firma" style="max-width: 150px; height: auto; margin-bottom: 5px;" />
+          <p><b>Deivis Contreras Cárdenas</b><br>Consultor en Transformación Digital<br>info@deiviscontreras.com</p>
+        </div>
       `,
       attachments: [
         {
           filename: 'contrato-consultoria-digital.pdf',
-          content: pdfBytes, // Adjuntar el PDF generado
+          content: pdfBytes,
           contentType: 'application/pdf',
         },
+        {
+          filename: 'firma-consultor.png',
+          path: path.join(process.cwd(), 'public', 'imagenes', 'firma-consultor.png'),
+          cid: 'firma-consultor' // El mismo CID referenciado en el html
+        }
       ],
     };
 

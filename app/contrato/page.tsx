@@ -56,6 +56,11 @@ export default function ContratoPage() {
             .signature-area { margin-top: 40px; padding: 20px; border-top: 1px dashed #ccc; }
             .signature-line { display: block; margin-top: 40px; border-top: 1px solid #000; width: 220px; }
             .date { margin-top: 20px; }
+            .signature-img {
+              max-width: 150px;
+              max-height: 60px;
+              margin-bottom: 5px;
+            }
           </style>
         </head>
         <body>
@@ -78,6 +83,7 @@ export default function ContratoPage() {
             <div class="signatures">
               <div style="display: flex; justify-content: space-between; margin-top: 40px;">
                 <div>
+                  <img src="/images/firma-consultor.png" alt="Firma del consultor" class="signature-img" />
                   <span class="signature-line"></span>
                   <p>Firma del Consultor<br>Deivis Contreras Cárdenas</p>
                 </div>
