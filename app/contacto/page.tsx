@@ -36,12 +36,14 @@ const ContactForm: React.FC = () => {
   });
 
   useEffect(() => {
-    const serviceParam = searchParams.get("servicio");
-    if (serviceParam && serviceParam in serviceLabels) {
-      setFormState((prevState) => ({
-        ...prevState,
-        selectedService: serviceParam,
-      }));
+    if (searchParams) { // Verificar que searchParams no sea null
+      const serviceParam = searchParams.get("servicio");
+      if (serviceParam && serviceParam in serviceLabels) {
+        setFormState((prevState) => ({
+          ...prevState,
+          selectedService: serviceParam,
+        }));
+      }
     }
   }, [searchParams]);
 

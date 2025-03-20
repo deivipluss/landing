@@ -30,8 +30,15 @@ export async function POST(req: NextRequest) {
       console.log('Transportador configurado correctamente.');
     } catch (verifyError) {
       console.error('Error al verificar el transportador:', verifyError);
+
+      // Asegurarse de que verifyError sea tratado como un Error
+      const errorMessage =
+        verifyError instanceof Error
+          ? verifyError.message
+          : 'Error desconocido al verificar el transportador';
+
       return NextResponse.json(
-        { error: `Error al configurar el transportador de correo: ${verifyError.message}` },
+        { error: `Error al configurar el transportador de correo: ${errorMessage}` },
         { status: 500 }
       );
     }
