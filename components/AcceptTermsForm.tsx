@@ -1,12 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface AcceptTermsFormProps {
   onAccept: (value: boolean) => void;
+  isAlreadyAccepted?: boolean; // Nuevo prop para saber si ya fue aceptado
 }
 
-const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
+const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ 
+  onAccept, 
+  isAlreadyAccepted = false 
+}) => {
   const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +23,35 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Efecto para cargar datos guardados y estado de aceptación
+  useEffect(() => {
+    // Recuperar datos del formulario si ya fue aceptado anteriormente
+    if (isAlreadyAccepted) {
+      setFormSubmitted(true);
+      setIsChecked(true);
+      
+      // Cargar datos guardados en localStorage
+      const savedName = localStorage.getItem('contractUserName');
+      const savedEmail = localStorage.getItem('contractUserEmail');
+      const savedCompany = localStorage.getItem('contractUserCompany');
+      const savedPhone = localStorage.getItem('contractUserPhone');
+      const savedDniOrRuc = localStorage.getItem('contractUserDniOrRuc');
+      
+      // Actualizar el estado del formulario con los datos guardados
+      setFormData({
+        name: savedName || '',
+        email: savedEmail || '',
+        company: savedCompany || '',
+        phone: savedPhone || '',
+        dniOrRuc: savedDniOrRuc || ''
+      });
+    }
+  }, [isAlreadyAccepted]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // No permitir cambios si el formulario ya fue enviado
+    if (formSubmitted) return;
+    
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -28,6 +60,9 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // No permitir cambios si el formulario ya fue enviado
+    if (formSubmitted) return;
+    
     setIsChecked(e.target.checked);
   };
 
@@ -62,6 +97,10 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // No procesar si el formulario ya fue enviado
+    if (formSubmitted) return;
+    
     setError("");
     setLoading(true);
 
@@ -108,7 +147,21 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
     <div className="mt-4">
       <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Tus datos para el contrato</h3>
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className={`space-y-4 ${formSubmitted ? 'opacity-90 pointer-events-none' : ''}`}>
+        {/* Si el formulario ya fue enviado, mostrar un overlay informativo */}
+        {formSubmitted && (
+          <div className="absolute inset-0 bg-white dark:bg-slate-800 bg-opacity-50 dark:bg-opacity-50 flex items-center justify-center z-10">
+            <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg shadow-lg border-l-4 border-green-500 max-w-sm">
+              <p className="flex items-center text-green-700 dark:text-green-300">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Contrato firmado correctamente
+              </p>
+            </div>
+          </div>
+        )}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -201,9 +254,10 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
               checked={isChecked}
               onChange={handleCheckboxChange}
               className="w-5 h-5 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600"
+              disabled={formSubmitted} // Deshabilitar si ya fue aceptado
             />
           </div>
-          <label htmlFor="terms" className="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label htmlFor="terms" className={`ml-3 text-sm font-medium ${formSubmitted ? 'text-green-600 dark:text-green-400' : 'text-gray-700 dark:text-gray-300'}`}>
             He leído y acepto los términos y condiciones de este contrato <span className="text-red-500">*</span>
           </label>
         </div>
@@ -223,7 +277,7 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
           type="submit"
           className={`w-full text-white font-medium rounded-lg text-base px-6 py-4 text-center flex justify-center items-center transition-all duration-200 ${
             formSubmitted
-              ? "bg-green-600 hover:bg-green-700 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              ? "bg-green-600 hover:bg-green-700 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 cursor-default"
               : "bg-blue-600 hover:bg-blue-700 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           }`}
           disabled={formSubmitted || loading}
@@ -248,9 +302,13 @@ const AcceptTermsForm: React.FC<AcceptTermsFormProps> = ({ onAccept }) => {
           )}
         </button>
         
-        {!formSubmitted && (
+        {!formSubmitted ? (
           <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-2">
             Al hacer clic en &ldquo;Firmar y aceptar&rdquo;, confirmas que has leído y aceptas los términos y condiciones descritos en este documento.
+          </p>
+        ) : (
+          <p className="text-xs text-center text-green-500 dark:text-green-400 mt-2">
+            Has aceptado este contrato el día {new Date().toLocaleDateString('es-ES')}. Puedes imprimir o enviar el contrato por email en cualquier momento.
           </p>
         )}
       </form>

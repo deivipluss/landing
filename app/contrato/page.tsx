@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion"; // Asegúrate de que framer-motion está instalado
+import { AnimatePresence, motion } from "framer-motion";
 import ContractTerms from "@/components/ContractTerms";
 import AcceptTermsForm from "@/components/AcceptTermsForm";
 import Container from "@/components/Container";
@@ -17,10 +17,20 @@ export default function ContratoPage() {
 
   // Verificar si es seguro cerrar el modal
   const canCloseModal = isPrinted || isEmailSent;
+  
+  // Comprobar si hay un estado guardado al cargar la página
+  useEffect(() => {
+    const savedAccepted = localStorage.getItem('contractAccepted') === 'true';
+    if (savedAccepted) {
+      setAccepted(true);
+    }
+  }, []);
 
   const handleAccept = (value: boolean) => {
     setAccepted(value);
     if (value) {
+      // Guardar en localStorage para mantener el estado entre recargas
+      localStorage.setItem('contractAccepted', 'true');
       // Mostrar modal automáticamente cuando se acepta el contrato
       setShowModal(true);
       // Reiniciar estados cuando se acepta el contrato nuevamente
@@ -227,7 +237,37 @@ export default function ContratoPage() {
             </div>
             
             <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
-              <AcceptTermsForm onAccept={handleAccept} />
+              <AcceptTermsForm onAccept={handleAccept} isAlreadyAccepted={accepted} />
+              
+              {accepted && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-6 flex flex-col md:flex-row justify-center gap-4"
+                >
+                  <Link 
+                    href="/"
+                    className="flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                    Volver al Inicio
+                  </Link>
+                  
+                  <button
+                    onClick={() => setShowModal(true)}
+                    className="flex items-center justify-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
+                      <path fillRule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clipRule="evenodd" />
+                    </svg>
+                    Gestionar Contrato
+                  </button>
+                </motion.div>
+              )}
             </div>
           </div>
           
@@ -240,10 +280,10 @@ export default function ContratoPage() {
             </Link>
           </div>
           
-          {/* Información de contacto */}
+          {/* Información de contacto - dirección actualizada */}
           <div className="mt-12 text-center text-sm text-gray-500 dark:text-gray-400">
             <p>¿Tienes alguna pregunta sobre el contrato?</p>
-            <p className="mt-1">Contáctanos a <span className="text-blue-600 dark:text-blue-400">info@deiviscontreras.com</span></p>
+            <p className="mt-1">Contáctanos a <span className="text-blue-600 dark:text-blue-400">deivipluss@gmail.com</span></p>
           </div>
         </div>
       </Container>
