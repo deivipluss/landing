@@ -44,9 +44,22 @@ export async function POST(req: NextRequest) {
     }
 
     // Convertir el contenido HTML a texto plano
-    const contractText = htmlToText(contractHTML, {
-      wordwrap: 130, // Ajustar el texto a un ancho razonable
-    }).replace(/\n/g, ' '); // Reemplazar saltos de línea con espacios
+    let contractText = '';
+    if (typeof contractHTML === 'string' && contractHTML.trim() !== '') {
+      try {
+        contractText = htmlToText(contractHTML, { wordwrap: 130 }); // Ajustar el texto a un ancho razonable
+      } catch (error) {
+        console.error('Error al convertir contractHTML a texto plano:', error);
+        contractText = ''; // Asignar un valor predeterminado en caso de error
+      }
+    } else {
+      console.warn('El contenido de contractHTML no es válido o está vacío.');
+    }
+
+    // Dividir el texto en párrafos utilizando los saltos de línea
+    const paragraphs = contractText
+      ? contractText.split('\n').filter((p) => typeof p === 'string' && p.trim() !== '')
+      : []; // Si contractText está vacío, asignar un arreglo vacío
 
     // Generar el archivo PDF
     const pdfDoc = await PDFDocument.create();
@@ -72,36 +85,49 @@ export async function POST(req: NextRequest) {
     page.drawText(`Fecha: ${date}`, { x: marginLeft, y: height - 120, size: 12, font: font });
     page.drawText('Contenido del contrato:', { x: marginLeft, y: height - 160, size: 12, font: font });
 
-    // Dividir el texto del contrato en líneas ajustadas al ancho disponible
+    // Dibujar los párrafos en el PDF
     const fontSize = 10;
-    const lines = [];
-    const words = contractText.split(' ');
-    let currentLine = '';
-
-    for (const word of words) {
-      const testLine = currentLine ? `${currentLine} ${word}` : word;
-      const textWidth = font.widthOfTextAtSize(testLine, fontSize); // Calcular el ancho del texto
-
-      if (textWidth <= maxWidth) {
-        currentLine = testLine;
-      } else {
-        lines.push(currentLine);
-        currentLine = word;
-      }
-    }
-    if (currentLine) lines.push(currentLine); // Agregar la última línea
-
-    // Dibujar las líneas en el PDF
     let yPosition = height - 180;
 
-    for (const line of lines) {
+    for (const paragraph of paragraphs) {
+      const words = paragraph.split(' ');
+      let currentLine = '';
+
+      for (const word of words) {
+        const testLine = currentLine ? `${currentLine} ${word}` : word;
+        const textWidth = font.widthOfTextAtSize(testLine, fontSize); // Calcular el ancho del texto
+
+        if (textWidth <= maxWidth) {
+          currentLine = testLine;
+        } else {
+          // Dibujar la línea actual y comenzar una nueva
+          page.drawText(currentLine, { x: marginLeft, y: yPosition, size: fontSize, font: font });
+          yPosition -= 15;
+
+          if (yPosition < 50) {
+            // Agregar una nueva página si el contenido excede el espacio
+            page = pdfDoc.addPage([600, 800]);
+            yPosition = height - 50;
+          }
+
+          currentLine = word;
+        }
+      }
+
+      // Dibujar la última línea del párrafo
+      if (currentLine) {
+        page.drawText(currentLine, { x: marginLeft, y: yPosition, size: fontSize, font: font });
+        yPosition -= 15;
+      }
+
+      // Agregar espacio vertical entre párrafos
+      yPosition -= 10;
+
       if (yPosition < 50) {
         // Agregar una nueva página si el contenido excede el espacio
         page = pdfDoc.addPage([600, 800]);
         yPosition = height - 50;
       }
-      page.drawText(line, { x: marginLeft, y: yPosition, size: fontSize, font: font });
-      yPosition -= 15;
     }
 
     // Serializar el PDF a un archivo
