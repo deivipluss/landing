@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
     // Convertir el contenido HTML a texto plano
     const contractText = htmlToText(contractHTML, {
       wordwrap: 130, // Ajustar el texto a un ancho razonable
-    });
+    }).replace(/\n/g, ' '); // Reemplazar saltos de línea con espacios
 
     // Generar el archivo PDF
     const pdfDoc = await PDFDocument.create();
