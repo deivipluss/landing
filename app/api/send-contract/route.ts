@@ -380,26 +380,11 @@ export async function POST(req: NextRequest) {
     
     yPosition -= 40;
     
-    page.drawText('ACEPTACIÓN Y FIRMA', {
-      x: (pageWidth - helveticaBold.widthOfTextAtSize('ACEPTACIÓN Y FIRMA', 14)) / 2,
-      y: yPosition,
-      size: 14,
-      font: helveticaBold,
-      color: titleColor,
-    });
-    
-    yPosition -= 40;
+    // Eliminamos el título "ACEPTACIÓN Y FIRMA"
     
     const signatureWidth = (pageWidth - marginLeft - marginRight - 60) / 2;
     
-    // Línea de firma para el consultor - usando drawRectangle en lugar de drawLine
-    page.drawRectangle({
-      x: marginLeft,
-      y: yPosition - 1,
-      width: signatureWidth,
-      height: 1,
-      color: accentColor,
-    });
+    // Eliminamos la línea horizontal para la firma del consultor
     
     // Si tenemos la imagen de la firma, la dibujamos
     if (signatureImage) {
@@ -414,16 +399,16 @@ export async function POST(req: NextRequest) {
       // Dibujar la imagen de la firma
       page.drawImage(signatureImage, {
         x: marginLeft + 10, // Un poco más a la derecha para centrar mejor
-        y: yPosition - 18 - (imgHeight * scale) / 2, // Posicionamos la imagen sobre la línea
+        y: yPosition - 30, // Posicionamos la imagen con más espacio
         width: imgWidth * scale,
         height: imgHeight * scale,
       });
     }
     
-    // Información del consultor
+    // Información del consultor - con más espacio vertical
     page.drawText('Deivis Contreras Cárdenas', {
       x: marginLeft,
-      y: yPosition - 40, // Ajustado para dejar espacio a la imagen
+      y: yPosition - 70, // Más espacio debajo de la firma
       size: 10,
       font: helveticaBold,
       color: textColor,
@@ -431,7 +416,7 @@ export async function POST(req: NextRequest) {
     
     page.drawText('DNI: 71035458', {
       x: marginLeft,
-      y: yPosition - 55, // Ajustado para dejar espacio a la imagen
+      y: yPosition - 85, // Mantenemos la separación relativa
       size: 10,
       font: helvetica,
       color: textColor,
@@ -439,25 +424,18 @@ export async function POST(req: NextRequest) {
     
     page.drawText('EL CONSULTOR', {
       x: marginLeft,
-      y: yPosition - 70, // Ajustado para dejar espacio a la imagen
+      y: yPosition - 100, // Mantenemos la separación relativa
       size: 10,
       font: helveticaOblique,
       color: textColor,
     });
     
-    // Línea de firma para el cliente - usando drawRectangle en lugar de drawLine
-    page.drawRectangle({
-      x: pageWidth - marginRight - signatureWidth,
-      y: yPosition - 1,
-      width: signatureWidth,
-      height: 1,
-      color: accentColor,
-    });
+    // Eliminamos también la línea horizontal para el cliente
     
-    // Información del cliente
+    // Información del cliente - con más espacio vertical
     page.drawText(name, {
       x: pageWidth - marginRight - signatureWidth,
-      y: yPosition - 20,
+      y: yPosition - 70, // Alineado con el nombre del consultor
       size: 10,
       font: helveticaBold,
       color: textColor,
@@ -465,7 +443,7 @@ export async function POST(req: NextRequest) {
     
     page.drawText(`Fecha: ${date}`, {
       x: pageWidth - marginRight - signatureWidth,
-      y: yPosition - 35,
+      y: yPosition - 85, // Mantenemos la separación relativa
       size: 10,
       font: helvetica,
       color: textColor,
@@ -473,7 +451,7 @@ export async function POST(req: NextRequest) {
     
     page.drawText('EL CLIENTE', {
       x: pageWidth - marginRight - signatureWidth,
-      y: yPosition - 50,
+      y: yPosition - 100, // Mantenemos la separación relativa
       size: 10,
       font: helveticaOblique,
       color: textColor,
