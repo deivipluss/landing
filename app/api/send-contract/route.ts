@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'; // Importar StandardFonts para usar fuentes estándar
+import { PDFDocument, rgb, StandardFonts, PDFPage } from 'pdf-lib'; // Importar StandardFonts para usar fuentes estándar estándar
 const { htmlToText } = require('html-to-text'); // Usar require para versiones antiguas
 
 export async function POST(req: NextRequest) {
@@ -61,78 +61,352 @@ export async function POST(req: NextRequest) {
       ? contractText.split('\n').filter((p) => typeof p === 'string' && p.trim() !== '')
       : []; // Si contractText está vacío, asignar un arreglo vacío
 
-    // Generar el archivo PDF
+    // Generar el archivo PDF mejorado
     const pdfDoc = await PDFDocument.create();
-    const font = await pdfDoc.embedFont(StandardFonts.Helvetica); // Registrar la fuente estándar Helvetica
-    let page = pdfDoc.addPage([600, 800]); // Tamaño de página A4
-    const { width, height } = page.getSize();
-
+    
+    // Embeber las fuentes necesarias para diferentes estilos
+    const helvetica = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const helveticaBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    const helveticaOblique = await pdfDoc.embedFont(StandardFonts.HelveticaOblique);
+    
+    // Configuración de la página
+    const pageWidth = 600;
+    const pageHeight = 840;
+    let page = pdfDoc.addPage([pageWidth, pageHeight]);
+    
+    // Colores del documento
+    const titleColor = rgb(0.1, 0.3, 0.6); // Azul oscuro para títulos
+    const subtitleColor = rgb(0.2, 0.4, 0.7); // Azul medio para subtítulos
+    const textColor = rgb(0.1, 0.1, 0.1); // Negro para texto general
+    const accentColor = rgb(0.6, 0.6, 0.6); // Gris para elementos decorativos
+    
     // Configuración de márgenes
-    const marginLeft = 50;
-    const marginRight = 50;
-    const maxWidth = width - marginLeft - marginRight;
-
-    // Agregar contenido al PDF
-    page.drawText('Contrato de Servicios de Consultoría Digital', {
-      x: marginLeft,
-      y: height - 50,
-      size: 18,
-      font: font,
-      color: rgb(0, 0.53, 0.71), // Azul
+    const marginLeft = 60;
+    const marginRight = 60;
+    const marginTop = 80;
+    const marginBottom = 80;
+    const textMaxWidth = pageWidth - marginLeft - marginRight;
+    
+    // Función para dibujar encabezado en cada página
+    const drawHeader = (currentPage: PDFPage) => {
+      // Línea decorativa superior - usando drawRectangle en lugar de drawLine
+      currentPage.drawRectangle({
+        x: marginLeft,
+        y: pageHeight - 42,
+        width: pageWidth - marginLeft - marginRight,
+        height: 1,
+        color: accentColor,
+      });
+      
+      // Título del documento
+      currentPage.drawText('CONTRATO DE SERVICIOS', {
+        x: marginLeft,
+        y: pageHeight - 30,
+        size: 10,
+        font: helveticaBold,
+        color: accentColor,
+      });
+      
+      // Fecha en la parte derecha
+      currentPage.drawText(`Fecha: ${new Date().toLocaleDateString('es-ES')}`, {
+        x: pageWidth - marginRight - 120,
+        y: pageHeight - 30,
+        size: 8,
+        font: helvetica,
+        color: accentColor,
+      });
+    };
+    
+    // Función para dibujar pie de página en cada página
+    const drawFooter = (currentPage: PDFPage, pageNumber: number, totalPages: number) => {
+      // Línea decorativa inferior - usando drawRectangle en lugar de drawLine
+      currentPage.drawRectangle({
+        x: marginLeft,
+        y: marginBottom - 32,
+        width: pageWidth - marginLeft - marginRight,
+        height: 1,
+        color: accentColor,
+      });
+      
+      // Firma del consultor a la izquierda
+      currentPage.drawText('Deivis Contreras Cárdenas', {
+        x: marginLeft,
+        y: marginBottom - 20,
+        size: 8,
+        font: helveticaBold,
+        color: accentColor,
+      });
+      
+      // Número de página a la derecha
+      currentPage.drawText(`Página ${pageNumber} de ${totalPages}`, {
+        x: pageWidth - marginRight - 80,
+        y: marginBottom - 20,
+        size: 8,
+        font: helvetica,
+        color: accentColor,
+      });
+    };
+    
+    // Dibujar encabezado y pie de página en la primera página
+    drawHeader(page);
+    
+    // Título principal del contrato
+    let yPosition = pageHeight - marginTop;
+    
+    page.drawText('CONTRATO DE PRESTACIÓN DE SERVICIOS DE', {
+      x: (pageWidth - helveticaBold.widthOfTextAtSize('CONTRATO DE PRESTACIÓN DE SERVICIOS DE', 16)) / 2,
+      y: yPosition,
+      size: 16,
+      font: helveticaBold,
+      color: titleColor,
     });
-
-    page.drawText(`Nombre: ${name}`, { x: marginLeft, y: height - 100, size: 12, font: font });
-    page.drawText(`Fecha: ${date}`, { x: marginLeft, y: height - 120, size: 12, font: font });
-    page.drawText('Contenido del contrato:', { x: marginLeft, y: height - 160, size: 12, font: font });
-
-    // Dibujar los párrafos en el PDF
-    const fontSize = 10;
-    let yPosition = height - 180;
-
+    
+    yPosition -= 20;
+    page.drawText('CONSULTORÍA Y TRANSFORMACIÓN DIGITAL', {
+      x: (pageWidth - helveticaBold.widthOfTextAtSize('CONSULTORÍA Y TRANSFORMACIÓN DIGITAL', 16)) / 2,
+      y: yPosition,
+      size: 16,
+      font: helveticaBold,
+      color: titleColor,
+    });
+    
+    yPosition -= 40;
+    
+    // Datos del cliente
+    page.drawText(`Cliente: ${name}`, {
+      x: marginLeft,
+      y: yPosition,
+      size: 12,
+      font: helveticaBold,
+      color: textColor,
+    });
+    
+    yPosition -= 20;
+    page.drawText(`Fecha: ${date}`, {
+      x: marginLeft,
+      y: yPosition,
+      size: 12,
+      font: helveticaBold,
+      color: textColor,
+    });
+    
+    yPosition -= 40;
+    
+    // Partes del contrato
+    page.drawText('Entre las partes:', {
+      x: marginLeft,
+      y: yPosition,
+      size: 12,
+      font: helveticaBold,
+      color: subtitleColor,
+    });
+    
+    yPosition -= 25;
+    
+    // Procesamiento de los párrafos del contrato
+    let pageNumber = 1;
+    const totalPages = Math.ceil(paragraphs.length / 25) + 1; // Estimación aproximada
+    
     for (const paragraph of paragraphs) {
+      // Detectar si es un título o subtítulo basado en el texto
+      const isSectionTitle = paragraph.match(/^\d+\.\s[A-ZÁÉÍÓÚÑ\s]+$/); // Ejemplo: "1. OBJETO DEL CONTRATO"
+      const isSubSectionTitle = paragraph.match(/^\d+\.\d+\.\s[A-Za-záéíóúñ\s]+$/); // Ejemplo: "4.1. Obligaciones de EL CONSULTOR"
+      const isPhase = paragraph.includes('Fase') && paragraph.includes(':');
+      
+      let fontSize = 10;
+      let font = helvetica;
+      let color = textColor;
+      let alignment = 'left';
+      let lineSpacing = 15;
+      
+      if (isSectionTitle) {
+        // Es un título principal
+        yPosition -= 15;
+        fontSize = 12;
+        font = helveticaBold;
+        color = titleColor;
+        lineSpacing = 25;
+      } else if (isSubSectionTitle || isPhase) {
+        // Es un subtítulo
+        yPosition -= 10;
+        fontSize = 11;
+        font = helveticaBold;
+        color = subtitleColor;
+        lineSpacing = 20;
+      }
+      
+      // Dividir párrafos largos en líneas que se ajusten al ancho disponible
       const words = paragraph.split(' ');
       let currentLine = '';
-
+      
       for (const word of words) {
         const testLine = currentLine ? `${currentLine} ${word}` : word;
-        const textWidth = font.widthOfTextAtSize(testLine, fontSize); // Calcular el ancho del texto
-
-        if (textWidth <= maxWidth) {
+        const lineWidth = font.widthOfTextAtSize(testLine, fontSize);
+        
+        if (lineWidth <= textMaxWidth) {
           currentLine = testLine;
         } else {
-          // Dibujar la línea actual y comenzar una nueva
-          page.drawText(currentLine, { x: marginLeft, y: yPosition, size: fontSize, font: font });
-          yPosition -= 15;
-
-          if (yPosition < 50) {
-            // Agregar una nueva página si el contenido excede el espacio
-            page = pdfDoc.addPage([600, 800]);
-            yPosition = height - 50;
+          // Verificar si hay espacio suficiente para esta línea
+          if (yPosition < marginBottom) {
+            // Agregar nueva página
+            drawFooter(page, pageNumber, totalPages);
+            pageNumber++;
+            page = pdfDoc.addPage([pageWidth, pageHeight]);
+            drawHeader(page);
+            yPosition = pageHeight - marginTop;
           }
-
+          
+          // Dibujar la línea con alineación adecuada
+          let xPosition = marginLeft;
+          if (alignment === 'center') {
+            xPosition = (pageWidth - font.widthOfTextAtSize(currentLine, fontSize)) / 2;
+          } else if (alignment === 'right') {
+            xPosition = pageWidth - marginRight - font.widthOfTextAtSize(currentLine, fontSize);
+          }
+          
+          page.drawText(currentLine, {
+            x: xPosition,
+            y: yPosition,
+            size: fontSize,
+            font: font,
+            color: color,
+          });
+          
+          yPosition -= lineSpacing;
           currentLine = word;
         }
       }
-
-      // Dibujar la última línea del párrafo
+      
+      // Dibujar la última línea del párrafo si hay contenido
       if (currentLine) {
-        page.drawText(currentLine, { x: marginLeft, y: yPosition, size: fontSize, font: font });
-        yPosition -= 15;
+        // Verificar si hay espacio suficiente
+        if (yPosition < marginBottom) {
+          drawFooter(page, pageNumber, totalPages);
+          pageNumber++;
+          page = pdfDoc.addPage([pageWidth, pageHeight]);
+          drawHeader(page);
+          yPosition = pageHeight - marginTop;
+        }
+        
+        let xPosition = marginLeft;
+        if (alignment === 'center') {
+          xPosition = (pageWidth - font.widthOfTextAtSize(currentLine, fontSize)) / 2;
+        } else if (alignment === 'right') {
+          xPosition = pageWidth - marginRight - font.widthOfTextAtSize(currentLine, fontSize);
+        }
+        
+        page.drawText(currentLine, {
+          x: xPosition,
+          y: yPosition,
+          size: fontSize,
+          font: font,
+          color: color,
+        });
+        
+        yPosition -= lineSpacing;
       }
-
-      // Agregar espacio vertical entre párrafos
-      yPosition -= 10;
-
-      if (yPosition < 50) {
-        // Agregar una nueva página si el contenido excede el espacio
-        page = pdfDoc.addPage([600, 800]);
-        yPosition = height - 50;
-      }
+      
+      // Agregar espacio después del párrafo
+      yPosition -= 5;
     }
-
+    
+    // Agregar sección de firmas al final
+    if (yPosition < marginBottom + 150) {
+      drawFooter(page, pageNumber, totalPages);
+      pageNumber++;
+      page = pdfDoc.addPage([pageWidth, pageHeight]);
+      drawHeader(page);
+      yPosition = pageHeight - marginTop;
+    }
+    
+    yPosition -= 40;
+    
+    page.drawText('ACEPTACIÓN Y FIRMA', {
+      x: (pageWidth - helveticaBold.widthOfTextAtSize('ACEPTACIÓN Y FIRMA', 14)) / 2,
+      y: yPosition,
+      size: 14,
+      font: helveticaBold,
+      color: titleColor,
+    });
+    
+    yPosition -= 40;
+    
+    const signatureWidth = (pageWidth - marginLeft - marginRight - 60) / 2;
+    
+    // Línea de firma para el consultor - usando drawRectangle en lugar de drawLine
+    page.drawRectangle({
+      x: marginLeft,
+      y: yPosition - 1,
+      width: signatureWidth,
+      height: 1,
+      color: accentColor,
+    });
+    
+    // Información del consultor
+    page.drawText('Deivis Contreras Cárdenas', {
+      x: marginLeft,
+      y: yPosition - 20,
+      size: 10,
+      font: helveticaBold,
+      color: textColor,
+    });
+    
+    page.drawText('DNI: 71035458', {
+      x: marginLeft,
+      y: yPosition - 35,
+      size: 10,
+      font: helvetica,
+      color: textColor,
+    });
+    
+    page.drawText('EL CONSULTOR', {
+      x: marginLeft,
+      y: yPosition - 50,
+      size: 10,
+      font: helveticaOblique,
+      color: textColor,
+    });
+    
+    // Línea de firma para el cliente - usando drawRectangle en lugar de drawLine
+    page.drawRectangle({
+      x: pageWidth - marginRight - signatureWidth,
+      y: yPosition - 1,
+      width: signatureWidth,
+      height: 1,
+      color: accentColor,
+    });
+    
+    // Información del cliente
+    page.drawText(name, {
+      x: pageWidth - marginRight - signatureWidth,
+      y: yPosition - 20,
+      size: 10,
+      font: helveticaBold,
+      color: textColor,
+    });
+    
+    page.drawText(`Fecha: ${date}`, {
+      x: pageWidth - marginRight - signatureWidth,
+      y: yPosition - 35,
+      size: 10,
+      font: helvetica,
+      color: textColor,
+    });
+    
+    page.drawText('EL CLIENTE', {
+      x: pageWidth - marginRight - signatureWidth,
+      y: yPosition - 50,
+      size: 10,
+      font: helveticaOblique,
+      color: textColor,
+    });
+    
+    // Dibujar pie de página en la última página
+    drawFooter(page, pageNumber, totalPages);
+    
     // Serializar el PDF a un archivo
-    const pdfBytes = Buffer.from(await pdfDoc.save()); // Convertir a Buffer para asegurarse de que sea compatible
-
+    const pdfBytes = Buffer.from(await pdfDoc.save());
+    
     // Configuración del email
     const mailOptions = {
       from: `"Deivis Contreras" <${process.env.EMAIL_USER}>`,
