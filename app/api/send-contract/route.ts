@@ -216,7 +216,7 @@ export async function POST(req: NextRequest) {
           size: fontSize,
           font: helveticaBold,
           color: watermarkColor,
-          opacity: 0.6, // Aumentado para mayor visibilidad
+          opacity: 0.7, // Aumentado para mayor visibilidad
         });
         
         console.log("Marca de agua aplicada correctamente");
