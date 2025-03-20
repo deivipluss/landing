@@ -4,19 +4,8 @@ const ContractTerms = () => {
   return (
     <div className="contract-terms overflow-y-auto max-h-[60vh] mb-6 pr-2 text-sm md:text-base text-gray-700 dark:text-gray-300 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-800">
       <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6 border-l-4 border-blue-500">
-        <p className="text-blue-700 dark:text-blue-400 font-medium">
-          Por favor, lee detenidamente los siguientes términos y condiciones antes de aceptar el contrato.
-        </p>
-      </div>
-      
-      <h2 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">
-        CONTRATO DE PRESTACIÓN DE SERVICIOS DE CONSULTORÍA Y TRANSFORMACIÓN DIGITAL
-      </h2>
-      
-      <p className="mb-4">
-        Entre las partes:
-      </p>
-      
+              </div>
+              
       <p className="mb-4">
         <strong>Deivis Contreras Cárdenas</strong>, especialista en Transformación Digital, identificado con DNI N° 71035458, en adelante "EL CONSULTOR".
       </p>
