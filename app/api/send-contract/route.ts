@@ -9,7 +9,7 @@ const { htmlToText } = require('html-to-text');
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, name, date, contractHTML } = body;
+    const { email, name, date, contractHTML, dniOrRuc } = body;
 
     if (!email || !name) {
       return NextResponse.json(
@@ -116,6 +116,7 @@ export async function POST(req: NextRequest) {
     const subtitleColor = rgb(0.2, 0.4, 0.7); // Azul medio para subtítulos
     const textColor = rgb(0.1, 0.1, 0.1); // Negro para texto general
     const accentColor = rgb(0.6, 0.6, 0.6); // Gris para elementos decorativos
+    const watermarkColor = rgb(0.85, 0.85, 0.85); // Gris muy claro para la marca de agua
     
     // Configuración de márgenes
     const marginLeft = 60;
@@ -201,12 +202,39 @@ export async function POST(req: NextRequest) {
       });
     };
     
-    // Dibujar encabezado y pie de página en la primera página
+    // Función para dibujar marca de agua en cada página
+    const drawWatermark = (currentPage: PDFPage) => {
+      // Primera marca de agua horizontal
+      const watermarkText = "DeivisPluss.pro";
+      const fontSize = 50;
+      const watermarkWidth = helveticaBold.widthOfTextAtSize(watermarkText, fontSize);
+      
+      currentPage.drawText(watermarkText, {
+        x: (pageWidth - watermarkWidth) / 2,
+        y: pageHeight / 2,
+        size: fontSize,
+        font: helveticaBold,
+        color: watermarkColor,
+        opacity: 0.15,
+      });
+      
+      // Segunda marca de agua vertical (simulando rotación)
+      currentPage.drawText("CONFIDENCIAL", {
+        x: pageWidth / 2 - 20, // Ajuste horizontal aproximado
+        y: pageHeight / 2 + watermarkWidth / 4, // Ajuste vertical aproximado
+        size: fontSize - 10, // Un poco más pequeña
+        font: helveticaBold,
+        color: watermarkColor,
+        opacity: 0.1,
+      });
+    };
+    
+    // Dibujar encabezado, pie de página y marca de agua en la primera página
     drawHeader(page);
+    drawWatermark(page);
     
     // Título principal del contrato
     let yPosition = pageHeight - marginTop;
-    
     page.drawText('CONTRATO DE PRESTACIÓN DE SERVICIOS DE', {
       x: (pageWidth - helveticaBold.widthOfTextAtSize('CONTRATO DE PRESTACIÓN DE SERVICIOS DE', 16)) / 2,
       y: yPosition,
@@ -312,6 +340,7 @@ export async function POST(req: NextRequest) {
             pageNumber++;
             page = pdfDoc.addPage([pageWidth, pageHeight]);
             drawHeader(page);
+            drawWatermark(page); // Agregar la marca de agua a cada página nueva
             yPosition = pageHeight - marginTop;
           }
           
@@ -344,6 +373,7 @@ export async function POST(req: NextRequest) {
           pageNumber++;
           page = pdfDoc.addPage([pageWidth, pageHeight]);
           drawHeader(page);
+          drawWatermark(page); // Agregar la marca de agua a cada página nueva
           yPosition = pageHeight - marginTop;
         }
         
@@ -375,6 +405,7 @@ export async function POST(req: NextRequest) {
       pageNumber++;
       page = pdfDoc.addPage([pageWidth, pageHeight]);
       drawHeader(page);
+      drawWatermark(page); // Agregar marca de agua a la página de firmas
       yPosition = pageHeight - marginTop;
     }
     
@@ -383,8 +414,6 @@ export async function POST(req: NextRequest) {
     // Eliminamos el título "ACEPTACIÓN Y FIRMA"
     
     const signatureWidth = (pageWidth - marginLeft - marginRight - 60) / 2;
-    
-    // Eliminamos la línea horizontal para la firma del consultor
     
     // Si tenemos la imagen de la firma, la dibujamos
     if (signatureImage) {
@@ -405,10 +434,10 @@ export async function POST(req: NextRequest) {
       });
     }
     
-    // Información del consultor - con más espacio vertical
+    // Información del consultor - con un espacio equilibrado
     page.drawText('Deivis Contreras Cárdenas', {
       x: marginLeft,
-      y: yPosition - 70, // Más espacio debajo de la firma
+      y: yPosition - 60, // Ajustado para dejar espacio adecuado
       size: 10,
       font: helveticaBold,
       color: textColor,
@@ -416,7 +445,7 @@ export async function POST(req: NextRequest) {
     
     page.drawText('DNI: 71035458', {
       x: marginLeft,
-      y: yPosition - 85, // Mantenemos la separación relativa
+      y: yPosition - 75, // Ajustado para mantener separación relativa
       size: 10,
       font: helvetica,
       color: textColor,
@@ -424,38 +453,65 @@ export async function POST(req: NextRequest) {
     
     page.drawText('EL CONSULTOR', {
       x: marginLeft,
-      y: yPosition - 100, // Mantenemos la separación relativa
+      y: yPosition - 90, // Ajustado para mantener separación relativa
       size: 10,
       font: helveticaOblique,
       color: textColor,
     });
     
-    // Eliminamos también la línea horizontal para el cliente
-    
-    // Información del cliente - con más espacio vertical
+    // Información del cliente - sin línea horizontal
     page.drawText(name, {
       x: pageWidth - marginRight - signatureWidth,
-      y: yPosition - 70, // Alineado con el nombre del consultor
+      y: yPosition - 60, // Alineado con el nombre del consultor
       size: 10,
       font: helveticaBold,
       color: textColor,
     });
     
-    page.drawText(`Fecha: ${date}`, {
-      x: pageWidth - marginRight - signatureWidth,
-      y: yPosition - 85, // Mantenemos la separación relativa
-      size: 10,
-      font: helvetica,
-      color: textColor,
-    });
-    
-    page.drawText('EL CLIENTE', {
-      x: pageWidth - marginRight - signatureWidth,
-      y: yPosition - 100, // Mantenemos la separación relativa
-      size: 10,
-      font: helveticaOblique,
-      color: textColor,
-    });
+    // Agregar DNI/RUC del cliente si está disponible
+    if (dniOrRuc) {
+      page.drawText(`DNI/RUC: ${dniOrRuc}`, {
+        x: pageWidth - marginRight - signatureWidth,
+        y: yPosition - 75, // Misma posición que el DNI del consultor
+        size: 10,
+        font: helvetica,
+        color: textColor,
+      });
+      
+      // Ajustar posición de la fecha y el rol debido al nuevo campo
+      page.drawText(`Fecha: ${date}`, {
+        x: pageWidth - marginRight - signatureWidth,
+        y: yPosition - 90, // Movido más abajo
+        size: 10,
+        font: helvetica,
+        color: textColor,
+      });
+      
+      page.drawText('EL CLIENTE', {
+        x: pageWidth - marginRight - signatureWidth,
+        y: yPosition - 105, // Movido más abajo
+        size: 10,
+        font: helveticaOblique,
+        color: textColor,
+      });
+    } else {
+      // Si no hay DNI/RUC, mantener el formato original
+      page.drawText(`Fecha: ${date}`, {
+        x: pageWidth - marginRight - signatureWidth,
+        y: yPosition - 75,
+        size: 10,
+        font: helvetica,
+        color: textColor,
+      });
+      
+      page.drawText('EL CLIENTE', {
+        x: pageWidth - marginRight - signatureWidth,
+        y: yPosition - 90,
+        size: 10,
+        font: helveticaOblique,
+        color: textColor,
+      });
+    }
     
     // Dibujar pie de página en la última página
     drawFooter(page, pageNumber, totalPages);

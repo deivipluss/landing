@@ -84,12 +84,11 @@ export default function ContratoPage() {
               <div style="display: flex; justify-content: space-between; margin-top: 40px;">
                 <div>
                   <img src="/imagenes/firma-consultor.png" alt="Firma del consultor" class="signature-img" />
-                  <span class="signature-line"></span>
-                  <p>Firma del Consultor<br>Deivis Contreras Cárdenas</p>
+                  <p>Firma del Consultor<br>Deivis Contreras Cárdenas<br>DNI: 71035458</p>
                 </div>
                 <div>
                   <span class="signature-line"></span>
-                  <p>Firma del Cliente<br>${userData.name}</p>
+                  <p>Firma del Cliente<br>${userData.name}<br>DNI/RUC: ${userData.dniOrRuc}</p>
                 </div>
               </div>
             </div>
