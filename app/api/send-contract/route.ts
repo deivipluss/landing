@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { PDFDocument, rgb } from 'pdf-lib'; // Importar pdf-lib para generar PDFs
+import { PDFDocument, rgb } from 'pdf-lib';
+const { htmlToText } = require('html-to-text'); // Usar require para versiones antiguas
 
 export async function POST(req: NextRequest) {
   try {
@@ -42,6 +43,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Convertir el contenido HTML a texto plano
+    const contractText = htmlToText(contractHTML, {
+      wordwrap: 130, // Ajustar el texto a un ancho razonable
+    });
+
     // Generar el archivo PDF
     const pdfDoc = await PDFDocument.create();
     let page = pdfDoc.addPage([600, 800]); // Tamaño de página A4
@@ -59,14 +65,15 @@ export async function POST(req: NextRequest) {
     page.drawText(`Fecha: ${date}`, { x: 50, y: height - 120, size: 12 });
     page.drawText('Contenido del contrato:', { x: 50, y: height - 160, size: 12 });
 
-    const lines = (typeof contractHTML === 'string' ? contractHTML : '').split('\n'); // Asegurarse de que contractHTML sea una cadena
+    // Dividir el texto del contrato en líneas para ajustarlo al PDF
+    const lines = contractText.split('\n');
     let yPosition = height - 180;
 
     for (const line of lines) {
       if (yPosition < 50) {
         // Agregar una nueva página si el contenido excede el espacio
-        page = pdfDoc.addPage([600, 800]); // Crear una nueva página
-        yPosition = height - 50; // Reiniciar la posición Y en la nueva página
+        page = pdfDoc.addPage([600, 800]);
+        yPosition = height - 50;
       }
       page.drawText(line, { x: 50, y: yPosition, size: 10 });
       yPosition -= 15;
