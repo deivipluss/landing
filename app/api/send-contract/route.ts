@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { PDFDocument, rgb } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'; // Importar StandardFonts para usar fuentes estándar
 const { htmlToText } = require('html-to-text'); // Usar require para versiones antiguas
 
 export async function POST(req: NextRequest) {
@@ -50,23 +50,48 @@ export async function POST(req: NextRequest) {
 
     // Generar el archivo PDF
     const pdfDoc = await PDFDocument.create();
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica); // Registrar la fuente estándar Helvetica
     let page = pdfDoc.addPage([600, 800]); // Tamaño de página A4
     const { width, height } = page.getSize();
 
+    // Configuración de márgenes
+    const marginLeft = 50;
+    const marginRight = 50;
+    const maxWidth = width - marginLeft - marginRight;
+
     // Agregar contenido al PDF
     page.drawText('Contrato de Servicios de Consultoría Digital', {
-      x: 50,
+      x: marginLeft,
       y: height - 50,
       size: 18,
+      font: font,
       color: rgb(0, 0.53, 0.71), // Azul
     });
 
-    page.drawText(`Nombre: ${name}`, { x: 50, y: height - 100, size: 12 });
-    page.drawText(`Fecha: ${date}`, { x: 50, y: height - 120, size: 12 });
-    page.drawText('Contenido del contrato:', { x: 50, y: height - 160, size: 12 });
+    page.drawText(`Nombre: ${name}`, { x: marginLeft, y: height - 100, size: 12, font: font });
+    page.drawText(`Fecha: ${date}`, { x: marginLeft, y: height - 120, size: 12, font: font });
+    page.drawText('Contenido del contrato:', { x: marginLeft, y: height - 160, size: 12, font: font });
 
-    // Dividir el texto del contrato en líneas para ajustarlo al PDF
-    const lines = contractText.split('\n');
+    // Dividir el texto del contrato en líneas ajustadas al ancho disponible
+    const fontSize = 10;
+    const lines = [];
+    const words = contractText.split(' ');
+    let currentLine = '';
+
+    for (const word of words) {
+      const testLine = currentLine ? `${currentLine} ${word}` : word;
+      const textWidth = font.widthOfTextAtSize(testLine, fontSize); // Calcular el ancho del texto
+
+      if (textWidth <= maxWidth) {
+        currentLine = testLine;
+      } else {
+        lines.push(currentLine);
+        currentLine = word;
+      }
+    }
+    if (currentLine) lines.push(currentLine); // Agregar la última línea
+
+    // Dibujar las líneas en el PDF
     let yPosition = height - 180;
 
     for (const line of lines) {
@@ -75,7 +100,7 @@ export async function POST(req: NextRequest) {
         page = pdfDoc.addPage([600, 800]);
         yPosition = height - 50;
       }
-      page.drawText(line, { x: 50, y: yPosition, size: 10 });
+      page.drawText(line, { x: marginLeft, y: yPosition, size: fontSize, font: font });
       yPosition -= 15;
     }
 
