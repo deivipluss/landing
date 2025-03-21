@@ -197,7 +197,7 @@ const SolucionesFreelance = () => {
       {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
 
-      <main className="flex-grow flex flex-col justify-center items-center p-4 md:p-8">
+      <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
           <Swiper
             modules={[Autoplay, Pagination]}

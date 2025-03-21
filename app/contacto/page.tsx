@@ -166,7 +166,7 @@ const Contact: React.FC = () => {
       {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
       
-      <main className="flex-grow flex justify-center items-center">
+      <main className="flex-grow flex justify-center items-center pt-4">
         <Suspense fallback={<div>Cargando...</div>}>
           <ContactForm />
         </Suspense>

@@ -14,7 +14,7 @@ export default function NovedadesTechPage() {
       {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
       
-      <Container className="py-12 md:py-20">
+      <Container className="py-6 md:py-10">
         <div className="w-full max-w-4xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-extrabold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500">
             Novedades Tecnológicas
