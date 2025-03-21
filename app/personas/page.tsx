@@ -282,7 +282,7 @@ const SolucionesFreelance = () => {
           display: inline-block;
           border-radius: 9999px;
           background: rgba(255, 92, 92, 0.3);
-          margin: 0 4px;
+          margin: 0 6px; /* Aumentado el margen de 4px a 6px */
           cursor: pointer;
           transition: all 0.3s ease;
           border: 2px solid transparent;
@@ -293,6 +293,21 @@ const SolucionesFreelance = () => {
           transform: scale(1.2);
           border-color: rgba(74, 144, 226, 0.3);
           box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+        }
+
+        .swiper-pagination {
+          bottom: -5px !important; /* Ajustar la posición de los bullets */
+          padding: 10px 0;
+        }
+
+        @media (max-width: 640px) {
+          .swiper-bullet {
+            margin: 0 5px; /* Ajustado para móviles */
+          }
+          
+          .swiper-pagination {
+            bottom: -8px !important;
+          }
         }
 
         .text-shadow-glow {

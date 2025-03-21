@@ -45,14 +45,14 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     title: "Community Manager",
     description: "Gestión profesional de la comunicación con tu comunidad digital para aumentar la fidelización y el engagement.",
     icon: <FaUsers className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-purple-400 via-violet-500 to-indigo-500",
+    gradient: "bg-gradient-to-br from-fuchsia-500 via-pink-500 to-rose-500",
     link: "/contacto?servicio=communityManager"
   },
   socialMediaManager: {
     title: "Social Media Manager",
     description: "Estrategia, planificación y gestión integral de tus redes sociales con enfoque en resultados tangibles.",
     icon: <FaChartLine className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-purple-400 via-violet-500 to-indigo-500",
+    gradient: "bg-gradient-to-br from-blue-500 via-indigo-500 to-violet-600",
     link: "/contacto?servicio=socialMediaManager"
   },
   landingPages: {
@@ -340,7 +340,7 @@ const Negocios = () => {
           display: inline-block;
           border-radius: 9999px;
           background: rgba(255, 92, 92, 0.3);
-          margin: 0 4px;
+          margin: 0 6px; /* Aumentado el margen de 4px a 6px */
           cursor: pointer;
           transition: all 0.3s ease;
           border: 2px solid transparent;
@@ -351,6 +351,11 @@ const Negocios = () => {
           transform: scale(1.2);
           border-color: rgba(147, 112, 219, 0.3);
           box-shadow: 0 0 15px rgba(147, 112, 219, 0.5);
+        }
+
+        .swiper-pagination {
+          bottom: -5px !important; /* Ajustar la posición de los bullets */
+          padding: 10px 0;
         }
 
         .text-shadow-glow {
