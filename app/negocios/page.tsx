@@ -354,8 +354,28 @@ const Negocios = () => {
         }
 
         .swiper-pagination {
-          bottom: -5px !important; /* Ajustar la posición de los bullets */
+          bottom: 20px !important; /* Aumentar la distancia desde abajo para separar más los dots */
           padding: 10px 0;
+          position: relative; /* Asegurarse de que la posición sea relativa */
+          margin-top: 15px; /* Añadir margen superior para separar más los dots de las tarjetas */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+          .solutions-swiper {
+            padding-top: 5px;
+          }
+          
+          .swiper-bullet {
+            width: 6px;
+            height: 6px;
+            margin: 0 3px;
+          }
+
+          .swiper-pagination {
+            bottom: 15px !important; /* Ajustar para móviles */
+            margin-top: 10px;
+          }
         }
 
         .text-shadow-glow {

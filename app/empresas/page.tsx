@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { 
-  FaDigitalTachograph, // Nuevo icono para Transformación Digital
+  FaRocket, // Nuevo ícono para Transformación Digital más creativo
   FaCogs, 
   FaUserTie, 
   FaShareAlt,
@@ -44,7 +44,7 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
   transformacionDigital: {
     title: "Transformación Digital",
     description: "Reinventa tu empresa con tecnologías disruptivas. Optimiza procesos, mejora la experiencia del cliente y aumenta la competitividad en el mercado actual.",
-    icon: <FaDigitalTachograph className="text-3xl group-hover:scale-125 transition-transform duration-500" />,
+    icon: <FaRocket className="text-3xl group-hover:scale-125 transition-transform duration-500" />, // Cambiado el ícono a FaRocket
     gradient: "bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600",
     link: "/contacto?servicio=transformacionDigital",
     featured: true // Marcado como destacado
@@ -364,8 +364,10 @@ const Soluciones = () => {
         }
 
         .swiper-pagination {
-          bottom: -5px !important; /* Ajustar la posición de los bullets */
+          bottom: 20px !important; /* Aumentar la distancia desde abajo para separar más los dots */
           padding: 10px 0;
+          position: relative; /* Asegurarse de que la posición sea relativa */
+          margin-top: 15px; /* Añadir margen superior para separar más los dots de las tarjetas */
         }
 
         /* Responsive adjustments */
@@ -375,7 +377,8 @@ const Soluciones = () => {
           }
           
           .swiper-pagination {
-            bottom: -8px !important;
+            bottom: 15px !important;
+            margin-top: 10px;
           }
         }
 

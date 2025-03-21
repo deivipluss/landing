@@ -296,8 +296,10 @@ const SolucionesFreelance = () => {
         }
 
         .swiper-pagination {
-          bottom: -5px !important; /* Ajustar la posición de los bullets */
+          bottom: 20px !important; /* Aumentar la distancia desde abajo para separar más los dots */
           padding: 10px 0;
+          position: relative; /* Asegurarse de que la posición sea relativa */
+          margin-top: 15px; /* Añadir margen superior para separar más los dots de las tarjetas */
         }
 
         @media (max-width: 640px) {
@@ -306,7 +308,8 @@ const SolucionesFreelance = () => {
           }
           
           .swiper-pagination {
-            bottom: -8px !important;
+            bottom: 15px !important; /* Ajustar para móviles */
+            margin-top: 10px;
           }
         }
 
