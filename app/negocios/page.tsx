@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { 
   FaStore, 
   FaChartLine, 
@@ -12,7 +12,8 @@ import {
   FaPencilAlt,
   FaSearchDollar,
   FaCog,
-  FaDesktop
+  FaDesktop,
+  FaArrowUp
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -196,6 +197,21 @@ const SolutionCard: React.FC<{
 const Negocios = () => {
   const [expandedCard, setExpandedCard] = useState<CardKey | null>(null);
   const swiperRef = useRef<SwiperType>();
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  
+  // Añadir efecto para detectar scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 300);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Manejar expansión de tarjeta
   const handleCardClick = (cardKey: CardKey) => {
@@ -225,22 +241,20 @@ const Negocios = () => {
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
       <HomeNavigation />
 
-      {/* Botón de regreso elegante */}
-      <Link href="/#solutions" className="fixed left-4 top-20 z-40">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          whileHover={{ scale: 1.1, x: 3 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center space-x-1 bg-[#9370DB]/20 hover:bg-[#9370DB]/30 text-[#9370DB] backdrop-blur-md py-2 px-3 rounded-full border border-[#9370DB]/30 shadow-glow-purple group"
+      {/* Eliminar el botón Home y añadir flecha flotante para volver arriba */}
+      {showBackToTop && (
+        <motion.button
+          className="fixed bottom-16 sm:bottom-24 right-4 sm:right-8 bg-[#9370DB] text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-purple-600 transition-all duration-300 z-50"
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          onClick={handleBackToTop}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform transition-transform group-hover:translate-x-[-2px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          <span className="text-sm font-medium">Home</span>
-        </motion.div>
-      </Link>
+          <FaArrowUp className="text-lg sm:text-xl" />
+        </motion.button>
+      )}
 
       <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
