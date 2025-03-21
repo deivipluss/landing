@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import Navigation from "@/components/Navigation"; // Importar el componente Navigation
+import MainNavigation from "@/components/MainNavigation"; // Importar el componente de navegación principal
 
 const serviceLabels = {
   branding: "Branding Empresarial",
@@ -163,14 +163,14 @@ const ContactForm: React.FC = () => {
 const Contact: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0D0C1D] flex flex-col overflow-hidden relative">
-      {/* Usar el componente Navigation compartido en lugar del header hardcodeado */}
-      <Navigation />
-      
       <main className="flex-grow flex justify-center items-center">
         <Suspense fallback={<div>Cargando...</div>}>
           <ContactForm />
         </Suspense>
       </main>
+      
+      {/* Usar el mismo menú que en la página principal */}
+      <MainNavigation />
     </div>
   );
 };

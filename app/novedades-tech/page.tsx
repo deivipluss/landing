@@ -2,17 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
 import Container from "@/components/Container";
+import MainNavigation from "@/components/MainNavigation"; // Importar el menú principal
 
 export default function NovedadesTechPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-800">
       {/* Header decorativo */}
       <div className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 h-2"></div>
-      
-      {/* Navegación consistente */}
-      <Navigation />
       
       <Container className="py-12 md:py-20">
         <div className="w-full max-w-4xl mx-auto">
@@ -52,6 +49,9 @@ export default function NovedadesTechPage() {
           </div>
         </div>
       </Container>
+      
+      {/* Usar exactamente el mismo menú que en la página principal */}
+      <MainNavigation />
       
       {/* Footer decorativo */}
       <div className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 h-1 mt-auto"></div>
