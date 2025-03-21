@@ -225,6 +225,23 @@ const Negocios = () => {
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
       <HomeNavigation />
 
+      {/* Botón de regreso elegante */}
+      <Link href="/#solutions" className="fixed left-4 top-20 z-40">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          whileHover={{ scale: 1.1, x: 3 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center space-x-1 bg-[#9370DB]/20 hover:bg-[#9370DB]/30 text-[#9370DB] backdrop-blur-md py-2 px-3 rounded-full border border-[#9370DB]/30 shadow-glow-purple group"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform transition-transform group-hover:translate-x-[-2px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span className="text-sm font-medium">Home</span>
+        </motion.div>
+      </Link>
+
       <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
           {/* Título eliminado */}
@@ -304,6 +321,10 @@ const Negocios = () => {
         }
 
         .shadow-glow {
+          box-shadow: 0 0 25px rgba(147, 112, 219, 0.3);
+        }
+
+        .shadow-glow-purple {
           box-shadow: 0 0 25px rgba(147, 112, 219, 0.3);
         }
       `}</style>

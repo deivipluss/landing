@@ -6,8 +6,8 @@ import {
   FaFilm, 
   FaRobot, 
   FaPenFancy, 
-  FaHandsHelping,
-  FaEnvelope, 
+  FaUserTie,
+  FaRegGem, 
   FaServer
 } from "react-icons/fa";
 import Link from 'next/link';
@@ -19,13 +19,8 @@ import HomeNavigation from "@/components/HomeNavigation";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-type CardKey = 'logo' | 'flyers' | 'reels' | 'iaGeneration' | 'copywritter' | 'salesTraining' | 'corporateEmail' | 'hosting';
-
-interface NavItem {
-  href: string;
-  icon: JSX.Element;
-  label: string;
-}
+// Actualizamos las claves de tarjeta para reflejar los nuevos servicios
+type CardKey = 'marcaPersonal' | 'copywritter' | 'onlyFans' | 'iaContent';
 
 const navItems: NavItem[] = [
   { href: "/", icon: <FaPalette className="transition-transform duration-300 group-hover:rotate-180" />, label: "Home" },
@@ -35,63 +30,36 @@ const navItems: NavItem[] = [
 ];
 
 const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; gradient: string; link: string } } = {
-  logo: {
-    title: "Diseño de Logo",
-    description: "Creación de logos únicos y representativos que capturan la esencia de tu marca.",
-    icon: <FaPalette className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600",
-    link: "/servicios/logo"
-  },
-  flyers: {
-    title: "Diseño de Flyer's",
-    description: "Flyers impactantes para promocionar tus eventos, productos o servicios.",
-    icon: <FaFileAlt className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-red-500 via-pink-500 to-purple-500",
-    link: "/servicios/flyers"
-  },
-  reels: {
-    title: "Producción de Reel's",
-    description: "Creación de reels atractivos para redes sociales que aumentan tu visibilidad.",
-    icon: <FaFilm className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-green-500 via-teal-500 to-blue-500",
-    link: "/servicios/reels"
-  },
-  iaGeneration: {
-    title: "Generación con IA",
-    description: "Implementación de tecnología IA para crear contenido y soluciones avanzadas.",
-    icon: <FaRobot className="text-3xl group-hover:rotate-12 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500",
-    link: "/servicios/iaGeneration"
+  marcaPersonal: {
+    title: "Marca Personal",
+    description: "Desarrollo y posicionamiento de tu marca personal para destacar en tu industria y atraer oportunidades profesionales.",
+    icon: <FaUserTie className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700",
+    link: "/servicios/marca-personal"
   },
   copywritter: {
-    title: "Copywritter",
-    description: "Redacción de contenido persuasivo y efectivo para tus necesidades de marketing.",
+    title: "Copywriter",
+    description: "Creación de textos persuasivos y efectivos que convierten lectores en clientes, optimizados para captar la atención y generar acción.",
     icon: <FaPenFancy className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500",
+    gradient: "bg-gradient-to-br from-pink-500 via-rose-500 to-red-600",
     link: "/servicios/copywritter"
   },
-  salesTraining: {
-    title: "Entrenamientos en Ventas",
-    description: "Capacitación personalizada para mejorar tus habilidades de ventas y estrategias.",
-    icon: <FaHandsHelping className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-pink-500 via-rose-500 to-red-500",
-    link: "/servicios/salesTraining"
+  onlyFans: {
+    title: "OnlyFans Management",
+    description: "Gestión profesional de cuentas de OnlyFans, incluyendo estrategia de contenido, monetización y crecimiento de audiencia.",
+    icon: <FaRegGem className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500",
+    link: "/servicios/onlyfans"
   },
-  corporateEmail: {
-    title: "Correo Corporativo",
-    description: "Configuración y gestión de correos corporativos profesionales para tu empresa.",
-    icon: <FaEnvelope className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-500",
-    link: "/servicios/corporateEmail"
-  },
-  hosting: {
-    title: "Hosting",
-    description: "Servicios de hosting confiables y seguros para tu sitio web.",
-    icon: <FaServer className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500",
-    link: "/servicios/hosting"
+  iaContent: {
+    title: "Contenido con IA",
+    description: "Creación de contenido de alta calidad utilizando las últimas tecnologías de inteligencia artificial, adaptado a tus necesidades específicas.",
+    icon: <FaRobot className="text-3xl group-hover:rotate-12 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700",
+    link: "/servicios/ia-content"
   }
 };
+
 const SolutionCard: React.FC<{
   cardKey: CardKey;
   isExpanded: boolean;
@@ -186,16 +154,30 @@ const SolucionesFreelance = () => {
     }
   };
 
+  // Ya que sólo tenemos 4 tarjetas, las mostramos todas en un solo grupo
   const cardKeys = Object.keys(cardData) as CardKey[];
-  const cardGroups = [
-    cardKeys.slice(0, 4),
-    cardKeys.slice(4)
-  ];
+  const cardGroups = [cardKeys];
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
-      {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
+
+      {/* Botón de regreso elegante */}
+      <Link href="/#solutions" className="fixed left-4 top-20 z-40">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          whileHover={{ scale: 1.1, x: 3 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center space-x-1 bg-[#FF5C5C]/20 hover:bg-[#FF5C5C]/30 text-[#FF5C5C] backdrop-blur-md py-2 px-3 rounded-full border border-[#FF5C5C]/30 shadow-glow-red group"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform transition-transform group-hover:translate-x-[-2px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span className="text-sm font-medium">Home</span>
+        </motion.div>
+      </Link>
 
       <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
@@ -276,6 +258,10 @@ const SolucionesFreelance = () => {
 
         .shadow-glow {
           box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
+        }
+
+        .shadow-glow-red {
+          box-shadow: 0 0 25px rgba(255, 92, 92, 0.3);
         }
 
         @keyframes float {
