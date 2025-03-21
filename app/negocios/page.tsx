@@ -343,6 +343,11 @@ const Negocios = () => {
           position: relative;
           margin-top: 15px;
         }
+
+        /* Ajuste de alineación superior */
+        .container {
+          padding-top: 4rem; /* Ajuste para alinear con personas y empresas */
+        }
       `}</style>
     </div>
   );
