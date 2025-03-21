@@ -31,9 +31,9 @@ const Navigation: React.FC<NavigationProps> = ({ className = "" }) => {
             href={item.href} 
             className={`group transition-all duration-300 ${isActive ? "scale-125" : ""}`}
           >
-            <div className={`text-2xl ${isActive ? "text-white" : "text-[#FF5C5C]"} hover:text-white`}>
+            <div className={`text-2xl ${isActive ? "text-white" : "text-[#FF5C5C]"} hover:text-white flex flex-col items-center`}>
               {item.icon}
-              <span className="sr-only">{item.label}</span>
+              <span className="text-xs mt-1 font-medium">{item.label}</span>
             </div>
           </Link>
         );
