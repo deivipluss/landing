@@ -14,6 +14,7 @@ import type { Swiper as SwiperType } from 'swiper';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import HomeNavigation from "@/components/HomeNavigation";
 
 type CardKey = 'branding' | 'marcaPersonal' | 'entrenamiento' | 'communityManager' | 'contenidoDigital' | 'ecommerce' | 'iaNegocios' | 'onlyfans';
 
@@ -198,26 +199,8 @@ const Soluciones = () => {
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col">
-      <header className="flex justify-center py-6 mt-8 space-x-6 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
-        {navItems.map((item) => (
-          <Link 
-            key={item.href}
-            href={item.href} 
-            className="group flex flex-col items-center"
-          >
-            <div className={`
-              text-2xl mx-3
-              ${activeSection === item.label.toLowerCase() ? 'text-[#4A90E2]' : 'text-[#FF5C5C]'}
-              group-hover:text-[#4A90E2] transition-all duration-300
-            `}>
-              {item.icon}
-            </div>
-            <span className="text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
-              {item.label}
-            </span>
-          </Link>
-        ))}
-      </header>
+      {/* Utilizar exactamente el mismo componente de navegación del home */}
+      <HomeNavigation />
 
       <main className="flex-grow flex flex-col justify-center items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">

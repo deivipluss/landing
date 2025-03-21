@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import ContractTerms from "@/components/ContractTerms";
 import AcceptTermsForm from "@/components/AcceptTermsForm";
 import Container from "@/components/Container";
-import MainNavigation from "@/components/MainNavigation"; // Importar el menú principal
+import HomeNavigation from "@/components/HomeNavigation";
 
 export default function ContratoPage() {
   const [accepted, setAccepted] = useState(false);
@@ -200,7 +200,9 @@ export default function ContratoPage() {
       {/* Header decorativo */}
       <div className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 h-2"></div>
       
-      {/* Contenido principal */}
+      {/* Utilizar exactamente el mismo componente de navegación del home */}
+      <HomeNavigation />
+      
       <Container className="py-12 md:py-20">
         <div className="w-full max-w-4xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-extrabold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500">
