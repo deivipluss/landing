@@ -131,14 +131,14 @@ const SolutionCard: React.FC<{
         damping: 30, 
         stiffness: 200,
         duration: 0.3
-      }} // Ajuste de la animación para hacerla más suave
+      }}
       className={`
         group relative overflow-hidden rounded-xl
         ${card.gradient}
         shadow-lg hover:shadow-2xl
         transition-all duration-500 ease-in-out
         cursor-pointer
-        ${isExpanded ? 'h-auto md:h-64' : 'h-32 md:h-40'}
+        ${isExpanded ? 'h-auto' : 'h-32 md:h-40'} /* Eliminado el límite de altura en md para expandido */
         w-full
       `}
     >
@@ -288,7 +288,7 @@ const Negocios = () => {
               }}
             >
               {cardGroups.map((group, groupIndex) => (
-                <SwiperSlide key={groupIndex}>
+                <SwiperSlide key={groupIndex} className="h-auto"> {/* Añadido h-auto aquí */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-2 sm:p-4">
                     {group.map((cardKey) => (
                       <SolutionCard
@@ -316,6 +316,7 @@ const Negocios = () => {
           padding: 10px 0 20px 0; /* Reducir padding superior en móvil */
           height: auto;
           min-height: 300px; /* Altura mínima para asegurar visibilidad */
+          overflow: visible; /* Añadido para evitar scroll */
         }
 
         /* Asegurar que las tarjetas se muestren completas */
@@ -327,7 +328,12 @@ const Negocios = () => {
         .swiper-slide {
           opacity: 1 !important;
           transform: none !important;
-          height: auto !important;
+          height: auto !important; /* Asegurando que la altura sea automática */
+        }
+        
+        /* Ajustar container para evitar scroll innecesario */
+        .solutions-swiper .swiper-container {
+          overflow: visible !important;
         }
         
         /* Responsive adjustments */

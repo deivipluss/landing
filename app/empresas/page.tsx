@@ -127,7 +127,7 @@ const SolutionCard: React.FC<{
         hover:shadow-2xl
         transition-all duration-500 ease-in-out
         cursor-pointer
-        ${isExpanded ? 'h-auto md:h-64' : 'h-32 md:h-40'}
+        ${isExpanded ? 'h-auto' : 'h-32 md:h-40'} /* Eliminado el límite de altura en md para expandido */
         w-full
       `}
     >
@@ -278,7 +278,7 @@ const Soluciones = () => {
               }}
             >
               {cardGroups.map((group, groupIndex) => (
-                <SwiperSlide key={groupIndex}>
+                <SwiperSlide key={groupIndex} className="h-auto"> {/* Añadido h-auto aquí */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-2 sm:p-4">
                     {group.map((cardKey) => (
                       <SolutionCard
