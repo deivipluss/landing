@@ -242,7 +242,7 @@ const Negocios = () => {
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
       <div className="pt-20 sm:pt-24 md:pt-28 lg:pt-32 container mx-auto px-4 flex-1">
         {/* Ajuste del padding superior para alinearlo con empresas y personas */}
-        <HomeNavigation />ersonas */}
+        <HomeNavigation />
 
         {showBackToTop && (
           <motion.button
@@ -296,7 +296,7 @@ const Negocios = () => {
       </div>
 
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm border-t border-[#4A90E2]/20">
-        © 2024 - Deivipluss. ¡Todos los derechos reservados!t-auto">
+        © 2024 - Deivipluss. ¡Todos los derechos reservados!
       </footer>
 
       <style jsx global>{`
@@ -340,14 +340,13 @@ const Negocios = () => {
 
         .swiper-pagination {
           bottom: 20px !important;
-          bottom: 20px !important;
-          padding: 10px 0;ve;
+          padding: 10px 0;
           position: relative;
           margin-top: 15px;
-        }/style>
+        }
       `}</style>
     </div>
   );
 };
-export default Negocios;
+
 export default Negocios;
