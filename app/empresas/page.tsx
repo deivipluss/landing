@@ -243,7 +243,49 @@ const Soluciones = () => {
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
-      <HomeNavigation />
+      {/* Aumentar padding-top para alinearlo con la página principal */}
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4">
+        <HomeNavigation />
+
+        <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
+          <div className="w-full max-w-6xl">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={30}
+              slidesPerView={1}
+              pagination={{
+                clickable: true,
+                bulletClass: 'swiper-bullet',
+                bulletActiveClass: 'swiper-bullet-active',
+              }}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              className="solutions-swiper"
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+            >
+              {cardGroups.map((group, groupIndex) => (
+                <SwiperSlide key={groupIndex}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                    {group.map((cardKey) => (
+                      <SolutionCard
+                        key={cardKey}
+                        cardKey={cardKey}
+                        isExpanded={expandedCard === cardKey}
+                        onClick={() => handleCardClick(cardKey)}
+                      />
+                    ))}
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </main>
+      </div>
 
       {/* Eliminar el botón Home y añadir flecha flotante para volver arriba */}
       {showBackToTop && (
@@ -259,45 +301,6 @@ const Soluciones = () => {
           <FaArrowUp className="text-lg sm:text-xl" />
         </motion.button>
       )}
-
-      <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
-        <div className="w-full max-w-6xl">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            pagination={{
-              clickable: true,
-              bulletClass: 'swiper-bullet',
-              bulletActiveClass: 'swiper-bullet-active',
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-            className="solutions-swiper"
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-          >
-            {cardGroups.map((group, groupIndex) => (
-              <SwiperSlide key={groupIndex}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                  {group.map((cardKey) => (
-                    <SolutionCard
-                      key={cardKey}
-                      cardKey={cardKey}
-                      isExpanded={expandedCard === cardKey}
-                      onClick={() => handleCardClick(cardKey)}
-                    />
-                  ))}
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </main>
 
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
         © 2024 - Deivipluss. ¡Todos los derechos reservados!

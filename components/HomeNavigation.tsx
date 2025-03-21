@@ -57,29 +57,28 @@ const HomeNavigation = () => {
   };
 
   return (
-    <div className="container mx-auto px-4">
-      <header className="flex justify-center py-3 sm:py-4 mt-4 sm:mt-6 mb-2 sm:mb-4 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
-        {navItems.map((item) => (
-          <Link 
-            key={item.href}
-            href={item.href}
-            onClick={(e) => item.href.includes('#') && handleNavClick(item.href, e)}
-            className="group flex flex-col items-center cursor-pointer"
-          >
-            <div className={`
-              text-xl sm:text-2xl mx-2 sm:mx-3
-              ${isActive(item.href) ? 'text-[#4A90E2]' : 'text-[#FF5C5C]'}
-              group-hover:text-[#4A90E2] transition-all duration-300
-            `}>
-              {item.icon}
-            </div>
-            <span className="text-[10px] sm:text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
-              {item.label}
-            </span>
-          </Link>
-        ))}
-      </header>
-    </div>
+    // Eliminar el container externo ya que ahora se maneja en cada página
+    <header className="flex justify-center py-3 sm:py-4 mb-6 sm:mb-8 md:mb-10 lg:mb-12 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
+      {navItems.map((item) => (
+        <Link 
+          key={item.href}
+          href={item.href}
+          onClick={(e) => item.href.includes('#') && handleNavClick(item.href, e)}
+          className="group flex flex-col items-center cursor-pointer"
+        >
+          <div className={`
+            text-xl sm:text-2xl mx-2 sm:mx-3
+            ${isActive(item.href) ? 'text-[#4A90E2]' : 'text-[#FF5C5C]'}
+            group-hover:text-[#4A90E2] transition-all duration-300
+          `}>
+            {item.icon}
+          </div>
+          <span className="text-[10px] sm:text-xs text-[#FF5C5C] group-hover:text-[#4A90E2] transition-colors duration-300">
+            {item.label}
+          </span>
+        </Link>
+      ))}
+    </header>
   );
 };
 

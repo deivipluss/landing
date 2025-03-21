@@ -162,15 +162,17 @@ const ContactForm: React.FC = () => {
 
 const Contact: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#0D0C1D] flex flex-col overflow-hidden">
-      {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
-      <HomeNavigation />
-      
-      <main className="flex-grow flex justify-center items-center pt-4">
-        <Suspense fallback={<div>Cargando...</div>}>
-          <ContactForm />
-        </Suspense>
-      </main>
+    <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
+      {/* Aumentar padding-top para alinearlo con la página principal */}
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4">
+        <HomeNavigation />
+        
+        <main className="flex-grow flex justify-center items-center pt-4">
+          <Suspense fallback={<div>Cargando...</div>}>
+            <ContactForm />
+          </Suspense>
+        </main>
+      </div>
     </div>
   );
 };
