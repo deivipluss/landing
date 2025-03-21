@@ -207,60 +207,43 @@ const Negocios = () => {
   const [expandedCard, setExpandedCard] = useState<CardKey | null>(null);
   const swiperRef = useRef<SwiperType>();
   const [showBackToTop, setShowBackToTop] = useState(false);
-  
-  // Añadir efecto para detectar scroll
+
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 300);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   const handleBackToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Manejar expansión de tarjeta
   const handleCardClick = (cardKey: CardKey) => {
     setExpandedCard(expandedCard === cardKey ? null : cardKey);
-    
-    // Control de autoplay basado en expansión de tarjeta
+
     if (expandedCard === cardKey) {
-      // Tarjeta está colapsándose, reanudar autoplay
       swiperRef.current?.autoplay?.start();
     } else {
-      // Tarjeta está expandiéndose, pausar autoplay
       swiperRef.current?.autoplay?.stop();
     }
   };
 
-  // Reorganizamos los servicios para que los de comunicación digital aparezcan primero
-  const digitalServices = ['contentManager', 'communityManager', 'socialMediaManager', 'landingPages'];
-  const mainServices = ['logo', 'seo', 'desarrolloProductos', 'ecommerce', 'estrategiaVentas', 'entrenamientoVentas', 'asesoriaComercial', 'gestionFinanciera'];
-  
-  const cardGroups = [
-    digitalServices as CardKey[], // Estos aparecen primero
-    mainServices.slice(0, 4) as CardKey[],
-    mainServices.slice(4) as CardKey[]
-  ];
+  const cardKeys = Object.keys(cardData) as CardKey[];
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
-      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4">
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1">
         <HomeNavigation />
 
-        {/* Eliminar el botón Home y añadir flecha flotante para volver arriba */}
         {showBackToTop && (
           <motion.button
             className="fixed bottom-16 sm:bottom-24 right-4 sm:right-8 bg-[#9370DB] text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-purple-600 transition-all duration-300 z-50"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
             onClick={handleBackToTop}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
           >
             <FaArrowUp className="text-lg sm:text-xl" />
           </motion.button>
@@ -272,6 +255,10 @@ const Negocios = () => {
               modules={[Autoplay, Pagination]}
               spaceBetween={30}
               slidesPerView={1}
+              breakpoints={{
+                768: { slidesPerView: 2 }, // Mostrar 2 tarjetas por slide en tablet
+                1024: { slidesPerView: 4 }, // Mostrar 4 tarjetas por slide en escritorio
+              }}
               pagination={{
                 clickable: true,
                 bulletClass: 'swiper-bullet',
@@ -287,18 +274,13 @@ const Negocios = () => {
                 swiperRef.current = swiper;
               }}
             >
-              {cardGroups.map((group, groupIndex) => (
-                <SwiperSlide key={groupIndex} className="h-auto"> {/* Añadido h-auto aquí */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-2 sm:p-4">
-                    {group.map((cardKey) => (
-                      <SolutionCard
-                        key={cardKey}
-                        cardKey={cardKey}
-                        isExpanded={expandedCard === cardKey}
-                        onClick={() => handleCardClick(cardKey)}
-                      />
-                    ))}
-                  </div>
+              {cardKeys.map((cardKey) => (
+                <SwiperSlide key={cardKey} className="h-auto py-4">
+                  <SolutionCard
+                    cardKey={cardKey}
+                    isExpanded={expandedCard === cardKey}
+                    onClick={() => handleCardClick(cardKey)}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -306,20 +288,19 @@ const Negocios = () => {
         </main>
       </div>
 
-      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
+      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm border-t border-[#4A90E2]/20">
         © 2024 - Deivipluss. ¡Todos los derechos reservados!
       </footer>
 
       <style jsx global>{`
         .solutions-swiper {
           width: 100%;
-          padding: 10px 0 20px 0; /* Reducir padding superior en móvil */
+          padding: 10px 0 30px 0;
           height: auto;
-          min-height: 300px; /* Altura mínima para asegurar visibilidad */
-          overflow: visible; /* Añadido para evitar scroll */
+          min-height: 300px;
+          overflow: hidden;
         }
 
-        /* Asegurar que las tarjetas se muestren completas */
         .swiper-wrapper {
           align-items: center;
           height: auto;
@@ -328,25 +309,7 @@ const Negocios = () => {
         .swiper-slide {
           opacity: 1 !important;
           transform: none !important;
-          height: auto !important; /* Asegurando que la altura sea automática */
-        }
-        
-        /* Ajustar container para evitar scroll innecesario */
-        .solutions-swiper .swiper-container {
-          overflow: visible !important;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 640px) {
-          .solutions-swiper {
-            padding-top: 5px;
-          }
-          
-          .swiper-bullet {
-            width: 6px;
-            height: 6px;
-            margin: 0 3px;
-          }
+          height: auto !important;
         }
 
         .swiper-bullet {
@@ -355,12 +318,12 @@ const Negocios = () => {
           display: inline-block;
           border-radius: 9999px;
           background: rgba(255, 92, 92, 0.3);
-          margin: 0 6px; /* Aumentado el margen de 4px a 6px */
+          margin: 0 6px;
           cursor: pointer;
           transition: all 0.3s ease;
           border: 2px solid transparent;
         }
-        
+
         .swiper-bullet-active {
           background: #9370DB;
           transform: scale(1.2);
@@ -369,40 +332,10 @@ const Negocios = () => {
         }
 
         .swiper-pagination {
-          bottom: 20px !important; /* Aumentar la distancia desde abajo para separar más los dots */
+          bottom: 20px !important;
           padding: 10px 0;
-          position: relative; /* Asegurarse de que la posición sea relativa */
-          margin-top: 15px; /* Añadir margen superior para separar más los dots de las tarjetas */
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 640px) {
-          .solutions-swiper {
-            padding-top: 5px;
-          }
-          
-          .swiper-bullet {
-            width: 6px;
-            height: 6px;
-            margin: 0 3px;
-          }
-
-          .swiper-pagination {
-            bottom: 15px !important; /* Ajustar para móviles */
-            margin-top: 10px;
-          }
-        }
-
-        .text-shadow-glow {
-          text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .shadow-glow {
-          box-shadow: 0 0 25px rgba(147, 112, 219, 0.3);
-        }
-
-        .shadow-glow-purple {
-          box-shadow: 0 0 25px rgba(147, 112, 219, 0.3);
+          position: relative;
+          margin-top: 15px;
         }
       `}</style>
     </div>
