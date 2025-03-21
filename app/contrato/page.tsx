@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import ContractTerms from "@/components/ContractTerms";
 import AcceptTermsForm from "@/components/AcceptTermsForm";
 import Container from "@/components/Container";
+import Navigation from "@/components/Navigation";
 
 export default function ContratoPage() {
   const [accepted, setAccepted] = useState(false);
@@ -198,6 +199,9 @@ export default function ContratoPage() {
     <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-800">
       {/* Header decorativo */}
       <div className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 h-2"></div>
+      
+      {/* Navegación consistente */}
+      <Navigation />
       
       {/* Contenido principal */}
       <Container className="py-12 md:py-20">
