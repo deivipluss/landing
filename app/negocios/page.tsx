@@ -138,8 +138,9 @@ const SolutionCard: React.FC<{
         shadow-lg hover:shadow-2xl
         transition-all duration-500 ease-in-out
         cursor-pointer
-        ${isExpanded ? 'h-auto' : 'h-32 md:h-40'} /* Eliminado el límite de altura en md para expandido */
+        ${isExpanded ? 'h-auto' : 'h-32 md:h-40'}
         w-full
+        mt-4 /* Ajuste para alinear las tarjetas con personas y empresas */
       `}
     >
       <motion.div 
