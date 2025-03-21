@@ -114,6 +114,12 @@ const SolutionCard: React.FC<{
       onClick={onClick}
       initial={false}
       animate={isExpanded ? "expanded" : "collapsed"}
+      transition={{ 
+        type: "spring", 
+        damping: 30, 
+        stiffness: 200,
+        duration: 0.3
+      }} // Ajuste de la animación para hacerla más suave
       className={`
         group relative overflow-hidden rounded-xl
         ${card.gradient}
@@ -150,7 +156,7 @@ const SolutionCard: React.FC<{
         </div>
       )}
       
-      <motion.div className="relative h-full p-6 flex flex-col">
+      <motion.div className="relative h-full p-6 flex flex-col justify-between">
         <div className="flex flex-col items-center justify-center flex-grow">
           <motion.div 
             layout="position"
@@ -172,7 +178,10 @@ const SolutionCard: React.FC<{
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ 
+              duration: 0.3,
+              delay: 0.1 // Pequeño retraso para mejorar la transición
+            }}
             className="text-white/90 text-center text-sm flex flex-col justify-between"
           >
             <p className="mb-4">{card.description}</p>
