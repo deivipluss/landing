@@ -22,6 +22,13 @@ import 'swiper/css/pagination';
 // Actualizamos las claves de tarjeta para reflejar los nuevos servicios
 type CardKey = 'marcaPersonal' | 'copywritter' | 'onlyFans' | 'iaContent';
 
+// Añadir la definición de la interfaz NavItem que falta
+interface NavItem {
+  href: string;
+  icon: JSX.Element;
+  label: string;
+}
+
 const navItems: NavItem[] = [
   { href: "/", icon: <FaPalette className="transition-transform duration-300 group-hover:rotate-180" />, label: "Home" },
   { href: "/soluciones", icon: <FaRobot className="transition-transform duration-300 group-hover:scale-110" />, label: "Soluciones" },
