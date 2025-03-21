@@ -24,7 +24,7 @@ import 'swiper/css/pagination';
 import HomeNavigation from "@/components/HomeNavigation";
 
 // Actualización de los tipos de tarjetas
-type CardKey = 'branding' | 'transformacionDigital' | 'relacionesPublicas' | 'entrenamientoGerentes' | 'entrenamientoRH' | 'auditoriaTecnologica' | 'auditoriaOptimizacion' | 'ciberseguridad';
+type CardKey = 'transformacionDigital' | 'branding' | 'relacionesPublicas' | 'entrenamientoGerentes' | 'entrenamientoRH' | 'auditoriaTecnologica' | 'auditoriaOptimizacion' | 'ciberseguridad';
 
 interface NavItem {
   href: string;
@@ -40,13 +40,6 @@ const navItems: NavItem[] = [
 ];
 
 const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; gradient: string; link: string; featured?: boolean } } = {
-  branding: {
-    title: "Branding Empresarial",
-    description: "Creamos una identidad sólida y coherente para tu empresa. Mejoramos la percepción de tu marca, generando confianza y fidelidad en tus clientes.",
-    icon: <FaBuilding className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600",
-    link: "/contacto?servicio=branding"
-  },
   transformacionDigital: {
     title: "Transformación Digital",
     description: "Reinventa tu empresa con tecnologías disruptivas. Optimiza procesos, mejora la experiencia del cliente y aumenta la competitividad en el mercado actual.",
@@ -54,6 +47,13 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     gradient: "bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600",
     link: "/contacto?servicio=transformacionDigital",
     featured: true // Marcado como destacado
+  },
+  branding: {
+    title: "Branding Empresarial",
+    description: "Creamos una identidad sólida y coherente para tu empresa. Mejoramos la percepción de tu marca, generando confianza y fidelidad en tus clientes.",
+    icon: <FaBuilding className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600",
+    link: "/contacto?servicio=branding"
   },
   relacionesPublicas: {
     title: "Relaciones Públicas Digitales",
@@ -231,12 +231,6 @@ const Soluciones = () => {
 
       <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-6 text-center text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#4A90E2] to-[#00F5D4]">
-              Soluciones para Empresas
-            </span>
-          </h1>
-
           <Swiper
             modules={[Autoplay, Pagination]}
             spaceBetween={30}

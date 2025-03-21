@@ -6,7 +6,13 @@ import {
   FaShoppingCart, 
   FaMoneyBillWave,
   FaRegHandshake,
-  FaBrain // Añadimos esta importación que faltaba
+  FaBrain,
+  FaFileContract,
+  FaUsers,
+  FaPencilAlt,
+  FaSearchDollar,
+  FaCog,
+  FaDesktop
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -17,50 +23,96 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import HomeNavigation from "@/components/HomeNavigation";
 
-type CardKey = 'tienda' | 'marketingDigital' | 'ecommerce' | 'finanzas' | 'asesoria' | 'ventas';
+type CardKey = 'branding' | 'marketingDigital' | 'contentManager' | 'communityManager' | 'socialMediaManager' | 'landingPages' | 'seo' | 'ecommerce' | 'estrategiaVentas' | 'entrenamientoVentas' | 'asesoriaComercial' | 'gestionFinanciera';
 
-const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; gradient: string; link: string } } = {
-  tienda: {
-    title: "Gestión de Tienda",
-    description: "Optimización de procesos para tiendas físicas y virtuales, mejorando la experiencia del cliente.",
+const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; gradient: string; link: string; parent?: string } } = {
+  branding: {
+    title: "Branding Comercial",
+    description: "Creamos una identidad de marca poderosa para tu negocio que conecta con tus clientes ideales y te diferencia de la competencia.",
     icon: <FaStore className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-600",
-    link: "/contacto?servicio=tienda"
+    link: "/contacto?servicio=branding"
   },
   marketingDigital: {
     title: "Marketing Digital",
-    description: "Estrategias de marketing enfocadas en resultados para pequeños negocios.",
+    description: "Estrategias personalizadas para atraer clientes, aumentar ventas y hacer crecer tu negocio en el entorno digital.",
     icon: <FaChartLine className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500",
     link: "/contacto?servicio=marketingDigital"
   },
+  contentManager: {
+    title: "Content Manager",
+    description: "Creación y gestión de contenido relevante y valioso para tu audiencia, con enfoque en conversión y engagement.",
+    icon: <FaPencilAlt className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-purple-400 via-violet-500 to-indigo-500",
+    link: "/contacto?servicio=contentManager",
+    parent: "Marketing Digital"
+  },
+  communityManager: {
+    title: "Community Manager",
+    description: "Gestión profesional de la comunicación con tu comunidad digital para aumentar la fidelización y el engagement.",
+    icon: <FaUsers className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-purple-400 via-violet-500 to-indigo-500",
+    link: "/contacto?servicio=communityManager",
+    parent: "Marketing Digital"
+  },
+  socialMediaManager: {
+    title: "Social Media Manager",
+    description: "Estrategia, planificación y gestión integral de tus redes sociales con enfoque en resultados tangibles.",
+    icon: <FaChartLine className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-purple-400 via-violet-500 to-indigo-500",
+    link: "/contacto?servicio=socialMediaManager",
+    parent: "Marketing Digital"
+  },
+  landingPages: {
+    title: "Landing Pages",
+    description: "Diseño de páginas de aterrizaje optimizadas para convertir visitantes en leads y clientes.",
+    icon: <FaDesktop className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-purple-400 via-violet-500 to-indigo-500",
+    link: "/contacto?servicio=landingPages",
+    parent: "Marketing Digital"
+  },
+  seo: {
+    title: "SEO",
+    description: "Optimización para motores de búsqueda que mejora tu visibilidad online y atrae tráfico orgánico de calidad.",
+    icon: <FaSearchDollar className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-teal-500 via-green-500 to-emerald-600",
+    link: "/contacto?servicio=seo"
+  },
   ecommerce: {
     title: "E-commerce",
-    description: "Implementación y optimización de tiendas en línea para maximizar ventas.",
+    description: "Implementación y optimización de tiendas en línea para maximizar ventas y mejorar la experiencia del cliente.",
     icon: <FaShoppingCart className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500",
     link: "/contacto?servicio=ecommerce"
   },
-  finanzas: {
-    title: "Gestión Financiera",
-    description: "Asesoría en gestión financiera para mejorar la rentabilidad de tu negocio.",
-    icon: <FaMoneyBillWave className="text-3xl group-hover:rotate-12 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-green-500 via-teal-500 to-blue-500",
-    link: "/contacto?servicio=finanzas"
+  estrategiaVentas: {
+    title: "Estrategia de Ventas",
+    description: "Desarrollo de planes de venta efectivos adaptados a tu modelo de negocio para aumentar conversiones.",
+    icon: <FaChartLine className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500",
+    link: "/contacto?servicio=estrategiaVentas"
   },
-  asesoria: {
-    title: "Asesoría Comercial",
-    description: "Consultoría especializada para mejorar tus procesos de venta y atención al cliente.",
+  entrenamientoVentas: {
+    title: "Entrenamiento en Ventas",
+    description: "Capacitación personalizada para equipos comerciales y de atención al cliente para maximizar resultados.",
     icon: <FaRegHandshake className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500",
+    gradient: "bg-gradient-to-br from-orange-500 via-amber-500 to-yellow-500",
+    link: "/contacto?servicio=entrenamientoVentas"
+  },
+  asesoriaComercial: {
+    title: "Asesoría Comercial",
+    description: "Consultoría especializada para optimizar tus procesos comerciales y estrategias de crecimiento.",
+    icon: <FaFileContract className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-yellow-500 via-amber-500 to-orange-500",
     link: "/contacto?servicio=asesoria"
   },
-  ventas: {
-    title: "Estrategias de Venta",
-    description: "Desarrollo de estrategias efectivas para aumentar tus ventas y fidelizar clientes.",
-    icon: <FaChartLine className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-red-500 via-pink-500 to-purple-500",
-    link: "/contacto?servicio=ventas"
+  gestionFinanciera: {
+    title: "Gestión Financiera",
+    description: "Asesoría en gestión financiera para optimizar recursos, mejorar la rentabilidad y tomar decisiones basadas en datos.",
+    icon: <FaMoneyBillWave className="text-3xl group-hover:rotate-12 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500",
+    link: "/contacto?servicio=finanzas"
   }
 };
 
@@ -163,26 +215,23 @@ const Negocios = () => {
     }
   };
 
-  // Dividir tarjetas en grupos de 3
-  const cardKeys = Object.keys(cardData) as CardKey[];
+  // Organizamos las tarjetas principales primero, seguidas por los servicios de marketing digital
+  const mainServices = ['branding', 'marketingDigital', 'seo', 'ecommerce', 'estrategiaVentas', 'entrenamientoVentas', 'asesoriaComercial', 'gestionFinanciera'];
+  const marketingServices = ['contentManager', 'communityManager', 'socialMediaManager', 'landingPages'];
+  
   const cardGroups = [
-    cardKeys.slice(0, 3),
-    cardKeys.slice(3)
+    mainServices.slice(0, 4) as CardKey[],
+    mainServices.slice(4) as CardKey[],
+    marketingServices as CardKey[]
   ];
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
-      {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
 
       <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-6 text-center text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#9370DB] to-[#6A5ACD]">
-              Soluciones para Negocios
-            </span>
-          </h1>
-          
+          {/* Título eliminado */}
           <Swiper
             modules={[Autoplay, Pagination]}
             spaceBetween={30}
@@ -204,7 +253,7 @@ const Negocios = () => {
           >
             {cardGroups.map((group, groupIndex) => (
               <SwiperSlide key={groupIndex}>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
                   {group.map((cardKey) => (
                     <SolutionCard
                       key={cardKey}
