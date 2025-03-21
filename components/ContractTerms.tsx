@@ -2,9 +2,9 @@ import React from "react";
 
 const ContractTerms = () => {
   return (
-    <div className="contract-terms overflow-y-auto max-h-[60vh] mb-6 pr-2 text-sm md:text-base text-gray-700 dark:text-gray-300 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-800">
-      <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6 border-l-4 border-blue-500">
-        <p className="text-blue-700 dark:text-blue-400 font-medium">
+    <div className="contract-terms overflow-y-auto max-h-[60vh] mb-6 pr-2 text-sm md:text-base text-gray-300 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-800/30">
+      <div className="bg-[#4A90E2]/20 p-4 rounded-lg mb-6 border-l-4 border-[#4A90E2]">
+        <p className="text-[#4A90E2] font-medium">
           Por favor, lee detenidamente los siguientes términos y condiciones.
         </p>
       </div>
@@ -22,7 +22,7 @@ const ContractTerms = () => {
         Ambas partes acuerdan celebrar el presente contrato de prestación de servicios, sujeto a las siguientes cláusulas y condiciones:
       </p>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">1. OBJETO DEL CONTRATO</h3>
+      <h3 className="text-lg font-semibold mt-6 mb-2 text-[#4A90E2]">1. OBJETO DEL CONTRATO</h3>
       <p className="mb-4">
         EL CONSULTOR se compromete a prestar servicios de consultoría y transformación digital bajo el "PLAN INTEGRAL", que incluye:
       </p>
@@ -38,12 +38,12 @@ const ContractTerms = () => {
         Estos servicios estarán enfocados en cumplir los objetivos establecidos en las fases descritas en el plan de trabajo acordado previamente.
       </p>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">2. DURACIÓN DEL CONTRATO</h3>
+      <h3 className="text-lg font-semibold mt-6 mb-2 text-[#4A90E2]">2. DURACIÓN DEL CONTRATO</h3>
       <p className="mb-4">
         El presente contrato tendrá una duración de 6 meses, contados a partir de la fecha de firma. Durante este período, EL CONSULTOR garantiza la prestación continua de los servicios descritos.
       </p>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">3. FASES DEL PLAN INTEGRAL</h3>
+      <h3 className="text-lg font-semibold mt-6 mb-2 text-[#4A90E2]">3. FASES DEL PLAN INTEGRAL</h3>
       
       <p className="font-medium mt-4 mb-2">Fase 1: Día 1-7 – Los Cimientos de una Revolución</p>
       <ul className="list-disc pl-6 mb-4">
@@ -81,7 +81,7 @@ const ContractTerms = () => {
         <li className="mb-2">Reuniones mensuales con EL CLIENTE para revisión de KPIs y resultados.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">4. OBLIGACIONES DE LAS PARTES</h3>
+      <h3 className="text-lg font-semibold mt-6 mb-2 text-[#4A90E2]">4. OBLIGACIONES DE LAS PARTES</h3>
       
       <p className="font-medium mt-4 mb-2">4.1. Obligaciones de EL CONSULTOR</p>
       <ul className="list-disc pl-6 mb-4">
@@ -99,7 +99,7 @@ const ContractTerms = () => {
         <li className="mb-2">Notificar cualquier inconveniente o requerimiento adicional en un plazo máximo de 48 horas.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">5. CONDICIONES DE PAGO</h3>
+      <h3 className="text-lg font-semibold mt-6 mb-2 text-[#4A90E2]">5. CONDICIONES DE PAGO</h3>
       <ul className="list-disc pl-6 mb-4">
         <li className="mb-2">El costo mensual de los servicios es de S/ 2,000 (Dos Mil Soles), pagaderos cada 30 días en modalidad prepago.</li>
         <li className="mb-2">Los pagos se realizarán el 21 de cada mes, comenzando el 21/03/2025.</li>
@@ -157,19 +157,19 @@ const ContractTerms = () => {
         <li>Si EL CLIENTE requiere factura con IGV, deberá abonar el 18% adicional sobre el monto mensual.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">6. CANAL DE COMUNICACIÓN Y COORDINACIÓN</h3>
+      <h3 className="text-lg font-semibold mt-6 mb-2 text-[#4A90E2]">6. CANAL DE COMUNICACIÓN Y COORDINACIÓN</h3>
       <ul className="list-disc pl-6 mb-4">
         <li className="mb-2">Toda la coordinación, seguimiento y comunicación relacionada con los servicios se realizará exclusivamente a través de un grupo de trabajo en una plataforma digital (WhatsApp, Slack, Telegram o similar).</li>
         <li className="mb-2">EL CLIENTE y EL CONSULTOR se comprometen a mantener una comunicación clara y oportuna en dicho canal.</li>
         <li className="mb-2">Cualquier solicitud, cambio o ajuste en los servicios deberá ser notificado por este medio.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">7. CONFIDENCIALIDAD</h3>
+      <h3 className="text-lg font-semibold mt-6 mb-2 text-[#4A90E2]">7. CONFIDENCIALIDAD</h3>
       <p className="mb-4">
         Ambas partes se comprometen a mantener en estricta confidencialidad toda la información intercambiada durante la ejecución del contrato.
       </p>
 
-      <h3 className="text-lg font-semibold mt-6 mb-2 text-indigo-600 dark:text-indigo-400">8. TERMINACIÓN DEL CONTRATO</h3>
+      <h3 className="text-lg font-semibold mt-6 mb-2 text-[#4A90E2]">8. TERMINACIÓN DEL CONTRATO</h3>
       <p className="mb-2">El contrato podrá terminarse anticipadamente por las siguientes causas:</p>
       <ul className="list-disc pl-6 mb-4">
         <li className="mb-2">Incumplimiento de las obligaciones por parte de EL CLIENTE, incluyendo el no pago de los servicios.</li>
@@ -180,7 +180,7 @@ const ContractTerms = () => {
         En caso de terminación anticipada, EL CLIENTE deberá pagar los servicios prestados hasta la fecha de terminación.
       </p>
 
-      <div className="mt-8 italic bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg border-l-4 border-gray-300 dark:border-gray-600">
+      <div className="mt-8 italic bg-gray-800/50 p-4 rounded-lg border-l-4 border-gray-600">
         <p>Al aceptar este contrato, EL CLIENTE reconoce haber leído, entendido y aceptado todas las cláusulas y condiciones establecidas en este documento.</p>
       </div>
     </div>

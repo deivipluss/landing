@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import ContractTerms from "@/components/ContractTerms";
 import AcceptTermsForm from "@/components/AcceptTermsForm";
 import Container from "@/components/Container";
-import HomeNavigation from "@/components/HomeNavigation";
 
 export default function ContratoPage() {
   const [accepted, setAccepted] = useState(false);
@@ -196,50 +195,49 @@ export default function ContratoPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E]">
       {/* Header decorativo */}
-      <div className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 h-2"></div>
+      <div className="w-full bg-gradient-to-r from-[#4A90E2] to-[#9370DB] h-2"></div>
       
-      {/* Utilizar exactamente el mismo componente de navegación del home */}
-      <HomeNavigation />
+      {/* No incluir el menú de navegación aquí */}
       
       <Container className="py-12 md:py-20">
         <div className="w-full max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500">
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#4A90E2] to-[#9370DB] font-poppins" style={{ letterSpacing: "-1px" }}>
             Contrato de Servicios de Consultoría Digital
           </h1>
           
-          <p className="text-center text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-center text-[#E1E1E1] opacity-80 mb-8 max-w-2xl mx-auto font-poppins font-light">
             Revisa y acepta los términos y condiciones para contratar los servicios 
             de consultoría en transformación digital de Deivis Contreras Cárdenas.
           </p>
           
-          <div className="bg-white dark:bg-slate-800 shadow-xl rounded-xl p-6 md:p-8 mb-8 border border-gray-100 dark:border-slate-700">
+          <div className="bg-[#1A1A2E] shadow-glow rounded-xl p-6 md:p-8 mb-8 border border-[#4A90E2]/20">
             {/* Indicadores de progreso */}
             <div className="flex justify-between items-center mb-8 text-sm font-medium">
               <div className="flex items-center">
-                <div className="h-8 w-8 rounded-full bg-blue-600 text-white flex items-center justify-center">
+                <div className="h-8 w-8 rounded-full bg-[#4A90E2] text-white flex items-center justify-center">
                   1
                 </div>
-                <span className="ml-2 text-blue-600 dark:text-blue-400">Revisar términos</span>
+                <span className="ml-2 text-[#4A90E2]">Revisar términos</span>
               </div>
-              <div className="h-px bg-gray-300 dark:bg-gray-600 w-1/4"></div>
+              <div className="h-px bg-gray-700 w-1/4"></div>
               <div className="flex items-center">
-                <div className={`h-8 w-8 rounded-full ${accepted ? 'bg-green-600' : 'bg-gray-300 dark:bg-gray-600'} text-white flex items-center justify-center`}>
+                <div className={`h-8 w-8 rounded-full ${accepted ? 'bg-[#FF5C5C]' : 'bg-gray-700'} text-white flex items-center justify-center`}>
                   2
                 </div>
-                <span className={`ml-2 ${accepted ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}>
+                <span className={`ml-2 ${accepted ? 'text-[#FF5C5C]' : 'text-gray-500'}`}>
                   Aceptar contrato
                 </span>
               </div>
             </div>
             
             {/* Contenido del contrato (referenciado para imprimir) */}
-            <div ref={contractRef}>
+            <div ref={contractRef} className="text-[#E1E1E1]">
               <ContractTerms />
             </div>
             
-            <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
+            <div className="mt-8 border-t border-gray-700 pt-6">
               <AcceptTermsForm onAccept={handleAccept} isAlreadyAccepted={accepted} />
               
               {accepted && (
@@ -251,7 +249,7 @@ export default function ContratoPage() {
                 >
                   <Link 
                     href="/"
-                    className="flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                    className="flex items-center justify-center px-6 py-3 bg-[#4A90E2] text-white rounded-lg hover:bg-[#4A90E2]/80 transition-colors duration-200"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -261,7 +259,7 @@ export default function ContratoPage() {
                   
                   <button
                     onClick={() => setShowModal(true)}
-                    className="flex items-center justify-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200"
+                    className="flex items-center justify-center px-6 py-3 bg-[#FF5C5C] text-white rounded-lg hover:bg-[#FF5C5C]/80 transition-colors duration-200"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
@@ -275,7 +273,7 @@ export default function ContratoPage() {
           </div>
           
           <div className="text-center mt-6">
-            <Link href="/" className="inline-flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors">
+            <Link href="/" className="inline-flex items-center text-[#4A90E2] hover:text-[#4A90E2]/80 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
               </svg>
@@ -284,9 +282,9 @@ export default function ContratoPage() {
           </div>
           
           {/* Información de contacto - dirección actualizada */}
-          <div className="mt-12 text-center text-sm text-gray-500 dark:text-gray-400">
+          <div className="mt-12 text-center text-sm text-gray-400">
             <p>¿Tienes alguna pregunta sobre el contrato?</p>
-            <p className="mt-1">Contáctanos a <span className="text-blue-600 dark:text-blue-400">deivipluss@gmail.com</span></p>
+            <p className="mt-1">Contáctanos a <span className="text-[#4A90E2]">deivipluss@gmail.com</span></p>
           </div>
         </div>
       </Container>
@@ -300,10 +298,10 @@ export default function ContratoPage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
-              className={`px-6 py-3 rounded-lg shadow-lg flex items-center ${
+              className={`px-6 py-3 rounded-lg shadow-glow flex items-center ${
                 toast.type === 'success' ? 'bg-green-500 text-white' : 
-                toast.type === 'error' ? 'bg-red-500 text-white' : 
-                'bg-blue-500 text-white'
+                toast.type === 'error' ? 'bg-[#FF5C5C] text-white' : 
+                'bg-[#4A90E2] text-white'
               }`}
             >
               {toast.type === 'success' && (
@@ -346,26 +344,26 @@ export default function ContratoPage() {
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 transition={{ type: "spring", duration: 0.5 }}
                 onClick={e => e.stopPropagation()}
-                className="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-md w-full p-8 relative overflow-hidden border border-gray-100 dark:border-slate-700"
+                className="bg-[#1A1A2E] rounded-xl shadow-glow max-w-md w-full p-8 relative overflow-hidden border border-[#4A90E2]/20"
               >
                 {/* Glow effects */}
-                <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500 rounded-full opacity-20 blur-3xl"></div>
-                <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-indigo-500 rounded-full opacity-20 blur-3xl"></div>
+                <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#4A90E2] rounded-full opacity-20 blur-3xl"></div>
+                <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#FF5C5C] rounded-full opacity-20 blur-3xl"></div>
                 
                 {/* Check icon */}
                 <div className="flex justify-center mb-6">
-                  <div className="h-20 w-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                  <div className="h-20 w-20 rounded-full bg-green-900/30 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-2">
+                <h3 className="text-2xl font-bold text-center text-white mb-2 font-poppins">
                   ¡Contrato Aceptado!
                 </h3>
                 
-                <p className="text-center text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-center text-gray-300 mb-6">
                   Gracias por aceptar los términos y condiciones. Elige cómo quieres recibir tu contrato.
                 </p>
                 
@@ -391,7 +389,7 @@ export default function ContratoPage() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={handlePrint}
-                    className={`flex items-center justify-center px-6 py-3 ${isPrinted ? 'bg-green-600' : 'bg-blue-600'} text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 w-full`}
+                    className={`flex items-center justify-center px-6 py-3 ${isPrinted ? 'bg-green-600' : 'bg-[#4A90E2]'} text-white rounded-lg hover:bg-[#4A90E2]/80 transition-colors duration-200 w-full`}
                     disabled={isLoading}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -404,7 +402,7 @@ export default function ContratoPage() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={handleEmail}
-                    className={`flex items-center justify-center px-6 py-3 ${isEmailSent ? 'bg-green-600' : 'bg-indigo-600'} text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 w-full`}
+                    className={`flex items-center justify-center px-6 py-3 ${isEmailSent ? 'bg-green-600' : 'bg-[#FF5C5C]'} text-white rounded-lg hover:bg-[#FF5C5C]/80 transition-colors duration-200 w-full`}
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -431,12 +429,12 @@ export default function ContratoPage() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setShowModal(false)}
-                      className="mt-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 text-sm font-medium"
+                      className="mt-2 text-gray-400 hover:text-gray-200 text-sm font-medium"
                     >
                       Cerrar
                     </motion.button>
                   ) : (
-                    <p className="mt-3 text-sm text-center text-amber-600 dark:text-amber-400">
+                    <p className="mt-3 text-sm text-center text-amber-400">
                       Debes imprimir o enviar por email el contrato antes de cerrar
                     </p>
                   )}
@@ -447,11 +445,8 @@ export default function ContratoPage() {
         )}
       </AnimatePresence>
       
-      {/* Usar exactamente el mismo menú que en la página principal */}
-      <MainNavigation />
-      
       {/* Footer decorativo */}
-      <div className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 h-1 mt-auto"></div>
+      <div className="w-full bg-gradient-to-r from-[#4A90E2] to-[#9370DB] h-1 mt-auto"></div>
     </main>
   );
 }
