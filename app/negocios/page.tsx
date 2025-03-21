@@ -23,7 +23,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import HomeNavigation from "@/components/HomeNavigation";
 
-type CardKey = 'logo' | 'contentManager' | 'communityManager' | 'socialMediaManager' | 'landingPages' | 'seo' | 'ecommerce' | 'estrategiaVentas' | 'tomaDecisiones' | 'entrenamientoVentas' | 'asesoriaComercial' | 'gestionFinanciera';
+type CardKey = 'logo' | 'contentManager' | 'communityManager' | 'socialMediaManager' | 'landingPages' | 'seo' | 'desarrolloProductos' | 'ecommerce' | 'estrategiaVentas' | 'entrenamientoVentas' | 'asesoriaComercial' | 'gestionFinanciera';
 
 const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; gradient: string; link: string; parent?: string } } = {
   logo: {
@@ -68,6 +68,13 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     gradient: "bg-gradient-to-br from-teal-500 via-green-500 to-emerald-600",
     link: "/contacto?servicio=seo"
   },
+  desarrolloProductos: {
+    title: "Desarrollo de Productos",
+    description: "Creación y planificación estratégica de productos digitales y físicos con alto valor agregado para tu mercado objetivo.",
+    icon: <FaCog className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-500",
+    link: "/contacto?servicio=desarrolloProductos"
+  },
   ecommerce: {
     title: "E-commerce",
     description: "Implementación y optimización de tiendas en línea para maximizar ventas y mejorar la experiencia del cliente.",
@@ -81,13 +88,6 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     icon: <FaChartLine className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500",
     link: "/contacto?servicio=estrategiaVentas"
-  },
-  tomaDecisiones: {
-    title: "Toma de Decisiones",
-    description: "Metodologías y herramientas para facilitar procesos de toma de decisiones estratégicas basadas en datos.",
-    icon: <FaBrain className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-blue-500 via-indigo-500 to-violet-500",
-    link: "/contacto?servicio=tomaDecisiones"
   },
   entrenamientoVentas: {
     title: "Entrenamiento en Ventas",
@@ -213,7 +213,7 @@ const Negocios = () => {
 
   // Reorganizamos los servicios para que los de comunicación digital aparezcan primero
   const digitalServices = ['contentManager', 'communityManager', 'socialMediaManager', 'landingPages'];
-  const mainServices = ['logo', 'seo', 'ecommerce', 'estrategiaVentas', 'tomaDecisiones', 'entrenamientoVentas', 'asesoriaComercial', 'gestionFinanciera'];
+  const mainServices = ['logo', 'seo', 'desarrolloProductos', 'ecommerce', 'estrategiaVentas', 'entrenamientoVentas', 'asesoriaComercial', 'gestionFinanciera'];
   
   const cardGroups = [
     digitalServices as CardKey[], // Estos aparecen primero
