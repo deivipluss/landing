@@ -5,7 +5,8 @@ import {
   FaChartLine, 
   FaShoppingCart, 
   FaMoneyBillWave,
-  FaRegHandshake
+  FaRegHandshake,
+  FaBrain // Añadimos esta importación que faltaba
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';

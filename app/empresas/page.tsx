@@ -1,11 +1,18 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { 
+  FaDigitalTachograph, // Nuevo icono para Transformación Digital
   FaCogs, 
-  FaBrain, 
   FaUserTie, 
   FaShareAlt,
-  FaTrophy
+  FaShieldAlt, // Nuevo icono para Ciberseguridad
+  FaNetworkWired, // Nuevo icono para Auditoría Tecnológica
+  FaChartLine, // Nuevo icono para Optimización de Procesos
+  FaUsers, // Nuevo icono para Recursos Humanos
+  FaBriefcase, // Nuevo icono para Gerentes
+  FaBuilding,
+  FaTrophy, // Faltaba este icono
+  FaBrain // Añadido FaBrain que faltaba en los imports
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -16,7 +23,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import HomeNavigation from "@/components/HomeNavigation";
 
-type CardKey = 'branding' | 'marcaPersonal' | 'entrenamiento' | 'communityManager' | 'contenidoDigital' | 'ecommerce' | 'iaNegocios' | 'onlyfans';
+// Actualización de los tipos de tarjetas
+type CardKey = 'branding' | 'transformacionDigital' | 'relacionesPublicas' | 'entrenamientoGerentes' | 'entrenamientoRH' | 'auditoriaTecnologica' | 'auditoriaOptimizacion' | 'ciberseguridad';
 
 interface NavItem {
   href: string;
@@ -31,62 +39,63 @@ const navItems: NavItem[] = [
   { href: "/contacto", icon: <FaShareAlt className="transition-transform duration-300 group-hover:rotate-12" />, label: "Contacto" },
 ];
 
-const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; gradient: string; link: string } } = {
+const cardData: { [key in CardKey]: { title: string; description: string; icon: JSX.Element; gradient: string; link: string; featured?: boolean } } = {
   branding: {
     title: "Branding Empresarial",
     description: "Creamos una identidad sólida y coherente para tu empresa. Mejoramos la percepción de tu marca, generando confianza y fidelidad en tus clientes.",
-    icon: <FaCogs className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
+    icon: <FaBuilding className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600",
     link: "/contacto?servicio=branding"
   },
-  marcaPersonal: {
-    title: "Marca Personal",
-    description: "Desarrollamos tu imagen personal, proyectando autenticidad y profesionalismo. Te ayudamos a posicionarte como líder en tu industria.",
-    icon: <FaUserTie className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-red-500 via-pink-500 to-purple-500",
-    link: "/contacto?servicio=marcaPersonal"
+  transformacionDigital: {
+    title: "Transformación Digital",
+    description: "Reinventa tu empresa con tecnologías disruptivas. Optimiza procesos, mejora la experiencia del cliente y aumenta la competitividad en el mercado actual.",
+    icon: <FaDigitalTachograph className="text-3xl group-hover:scale-125 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600",
+    link: "/contacto?servicio=transformacionDigital",
+    featured: true // Marcado como destacado
   },
-  entrenamiento: {
-    title: "Entrenamiento Digital",
-    description: "Capacitación personalizada para dominar las herramientas digitales esenciales en tu negocio.",
-    icon: <FaBrain className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-green-500 via-teal-500 to-blue-500",
-    link: "/contacto?servicio=entrenamiento"
-  },
-  communityManager: {
-    title: "Community Management",
-    description: "Gestión profesional de tus redes sociales para aumentar engagement y alcance.",
+  relacionesPublicas: {
+    title: "Relaciones Públicas Digitales",
+    description: "Gestión estratégica de la comunicación entre tu empresa y sus públicos clave en el entorno digital para construir una reputación sólida.",
     icon: <FaShareAlt className="text-3xl group-hover:rotate-12 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500",
-    link: "/contacto?servicio=communityManager"
+    gradient: "bg-gradient-to-br from-purple-500 via-pink-500 to-red-500",
+    link: "/contacto?servicio=relacionesPublicas"
   },
-  contenidoDigital: {
-    title: "Contenido Digital",
-    description: "Creación de contenido estratégico que conecta con tu audiencia y genera resultados.",
-    icon: <FaTrophy className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500",
-    link: "/contacto?servicio=contenidoDigital"
+  entrenamientoGerentes: {
+    title: "Entrenamiento para Gerentes",
+    description: "Capacitación especializada en competencias digitales y liderazgo tecnológico para directivos y gerentes.",
+    icon: <FaBriefcase className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-amber-500 via-orange-500 to-red-500",
+    link: "/contacto?servicio=entrenamientoGerentes"
   },
-  ecommerce: {
-    title: "E-commerce",
-    description: "Desarrollo y optimización de tu tienda online para maximizar ventas.",
-    icon: <FaCogs className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
+  entrenamientoRH: {
+    title: "Entrenamiento para Recursos Humanos",
+    description: "Formación específica para equipos de RRHH en herramientas digitales, gestión de talento y cultura digital corporativa.",
+    icon: <FaUsers className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-green-500 via-teal-500 to-blue-500",
+    link: "/contacto?servicio=entrenamientoRH"
+  },
+  auditoriaTecnologica: {
+    title: "Auditoría Tecnológica",
+    description: "Evaluación exhaustiva de la infraestructura tecnológica para identificar oportunidades de mejora y optimización de recursos.",
+    icon: <FaNetworkWired className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500",
-    link: "/contacto?servicio=ecommerce"
+    link: "/contacto?servicio=auditoriaTecnologica"
   },
-  iaNegocios: {
-    title: "IA para Negocios",
-    description: "Implementación de soluciones de inteligencia artificial para optimizar procesos.",
-    icon: <FaBrain className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+  auditoriaOptimizacion: {
+    title: "Auditoría y Optimización de Procesos",
+    description: "Análisis y mejora de procesos empresariales para aumentar eficiencia, reducir costos y mejorar la calidad del servicio.",
+    icon: <FaChartLine className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500",
-    link: "/contacto?servicio=iaNegocios"
+    link: "/contacto?servicio=auditoriaOptimizacion"
   },
-  onlyfans: {
-    title: "OnlyFans Management",
-    description: "Gestión profesional y estratégica de tu cuenta de OnlyFans.",
-    icon: <FaUserTie className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-pink-500 via-rose-500 to-red-500",
-    link: "/contacto?servicio=onlyfans"
+  ciberseguridad: {
+    title: "Ciberseguridad Empresarial",
+    description: "Auditoría, implementación y gestión de soluciones de seguridad para proteger los activos digitales de tu empresa contra ciberamenazas.",
+    icon: <FaShieldAlt className="text-3xl group-hover:pulse transition-all duration-500" />,
+    gradient: "bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900",
+    link: "/contacto?servicio=ciberseguridad"
   }
 };
 
@@ -96,6 +105,7 @@ const SolutionCard: React.FC<{
   onClick: () => void;
 }> = ({ cardKey, isExpanded, onClick }) => {
   const card = cardData[cardKey];
+  const isFeatured = card.featured;
 
   return (
     <motion.div
@@ -106,13 +116,24 @@ const SolutionCard: React.FC<{
       className={`
         group relative overflow-hidden rounded-xl
         ${card.gradient}
-        shadow-lg hover:shadow-2xl
+        ${isFeatured ? 'ring-2 ring-blue-300 ring-opacity-60 shadow-lg shadow-blue-400/20' : 'shadow-lg'} 
+        hover:shadow-2xl
         transition-all duration-500 ease-in-out
         cursor-pointer
         ${isExpanded ? 'h-auto md:h-64' : 'h-32 md:h-40'}
         w-full
       `}
     >
+      {/* Efecto de partículas para la tarjeta destacada */}
+      {isFeatured && (
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute w-2 h-2 rounded-full bg-blue-300 opacity-60 top-1/4 left-1/4 animate-ping-slow"></div>
+          <div className="absolute w-1 h-1 rounded-full bg-white opacity-40 top-3/4 left-1/3 animate-ping-slow animation-delay-300"></div>
+          <div className="absolute w-1.5 h-1.5 rounded-full bg-blue-200 opacity-50 bottom-1/4 right-1/4 animate-ping-slow animation-delay-500"></div>
+          <div className="absolute w-1 h-1 rounded-full bg-cyan-300 opacity-40 top-1/3 right-1/3 animate-ping-slow animation-delay-700"></div>
+        </div>
+      )}
+
       <motion.div 
         className={`
           absolute inset-0 bg-black/10
@@ -120,20 +141,27 @@ const SolutionCard: React.FC<{
           ${isExpanded ? 'opacity-80' : 'opacity-0 group-hover:opacity-40'}
         `}
       />
+
+      {/* Badge para destacar */}
+      {isFeatured && !isExpanded && (
+        <div className="absolute top-2 right-2 py-1 px-2 bg-blue-500/80 rounded-full text-[10px] text-white font-semibold backdrop-blur-sm z-10">
+          Destacado
+        </div>
+      )}
       
       <motion.div className="relative h-full p-6 flex flex-col">
         <div className="flex flex-col items-center justify-center flex-grow">
           <motion.div 
             layout="position"
-            className="text-white mb-2 transition-transform duration-300 group-hover:scale-110"
+            className={`text-white mb-2 transition-transform duration-300 ${isFeatured && !isExpanded ? 'text-shadow-blue' : ''} group-hover:scale-110`}
           >
             {card.icon}
           </motion.div>
           
           <motion.h3 
             layout="position"
-            className="text-white text-lg font-bold text-center mb-2 
-                       transition-all duration-300 group-hover:text-shadow-glow"
+            className={`text-white text-lg font-bold text-center mb-2 
+                       transition-all duration-300 ${isFeatured ? 'text-shadow-blue-strong group-hover:text-shadow-blue-stronger' : 'group-hover:text-shadow-glow'}`}
           >
             {card.title}
           </motion.h3>
@@ -150,15 +178,15 @@ const SolutionCard: React.FC<{
             <div className="flex justify-center">
               <Link 
                 href={card.link}
-                className="
+                className={`
                   inline-block px-6 py-2 
-                  bg-white/20 hover:bg-white/30
+                  ${isFeatured ? 'bg-white/30 hover:bg-white/40 border-blue-300/50' : 'bg-white/20 hover:bg-white/30 border-white/30'}
                   backdrop-blur-md rounded-full
                   text-white text-sm font-medium
                   transition-all duration-300
                   hover:scale-105 hover:shadow-glow
-                  border border-white/30
-                "
+                  border
+                `}
                 onClick={(e) => e.stopPropagation()}
               >
                 Descubrir más
@@ -199,11 +227,16 @@ const Soluciones = () => {
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
-      {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
 
       <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
         <div className="w-full max-w-6xl">
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-6 text-center text-white">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#4A90E2] to-[#00F5D4]">
+              Soluciones para Empresas
+            </span>
+          </h1>
+
           <Swiper
             modules={[Autoplay, Pagination]}
             spaceBetween={30}
@@ -278,9 +311,52 @@ const Soluciones = () => {
         .text-shadow-glow {
           text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
+        
+        .text-shadow-blue {
+          text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        .text-shadow-blue-strong {
+          text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+        }
+        
+        .text-shadow-blue-stronger {
+          text-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        }
 
         .shadow-glow {
           box-shadow: 0 0 25px rgba(74, 144, 226, 0.3);
+        }
+        
+        @keyframes ping-slow {
+          0% {
+            transform: scale(0.8);
+            opacity: 0.8;
+          }
+          50% {
+            transform: scale(1.5);
+            opacity: 0.2;
+          }
+          100% {
+            transform: scale(0.8);
+            opacity: 0.8;
+          }
+        }
+        
+        .animate-ping-slow {
+          animation: ping-slow 3s infinite;
+        }
+        
+        .animation-delay-300 {
+          animation-delay: 0.3s;
+        }
+        
+        .animation-delay-500 {
+          animation-delay: 0.5s;
+        }
+        
+        .animation-delay-700 {
+          animation-delay: 0.7s;
         }
 
         @keyframes float {
