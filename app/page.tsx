@@ -12,7 +12,9 @@ import {
   FaBehance,
   FaPinterest,
   FaSpotify,
-  FaArrowUp
+  FaArrowUp,
+  FaBuilding,  // Nuevo icono para Empresas
+  FaStore      // Nuevo icono para Negocios
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -55,7 +57,7 @@ const ProfileCard: React.FC = () => (
   <motion.div 
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5 }}
+    transition={{ duration: 0.5 }} 
     className="bg-[#1A1A2E] p-4 sm:p-6 rounded-xl flex flex-col items-center text-center space-y-3 shadow-glow h-auto w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] mx-auto overflow-hidden border border-[#4A90E2]/20"
   >
     <div className="w-[120px] h-[150px] sm:w-[140px] sm:h-[175px] md:w-[160px] md:h-[200px] bg-gradient-to-br from-[#FF5C5C] to-[#4A90E2] mb-2 rounded-lg overflow-hidden animate-float">
@@ -130,7 +132,7 @@ const ProfessionalInfo: React.FC<{ className?: string }> = ({ className }) => (
           className="flex flex-col items-center"
         >
           <p 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-poppins font-black text-[#4A90E2] leading-none" 
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-poppins font-black text-[#4A90E2] leading-none"
             style={{ letterSpacing: "-1px" }}
           >
             {value}
@@ -239,31 +241,52 @@ const App: React.FC = () => {
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-black leading-none z-10 relative text-center lg:hidden mb-4" style={{ letterSpacing: "-2px" }}>
                   <span className="text-[#4A90E2] drop-shadow-glow">SOLUCIONES</span>
-                                  </h2>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8">
-                  <Link href="/empresas" className="w-full sm:w-1/2">
+                </h2>
+                
+                {/* Nueva implementación para tres tarjetas */}
+                <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
+                  {/* Tarjeta 1: Para Empresas */}
+                  <Link href="/empresas" className="w-full">
                     <motion.div 
-                      whileHover={{ scale: 1.05 }}
-                      className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-4 sm:p-6 rounded-xl relative shadow-glow h-[200px] sm:h-[240px] flex items-center justify-center w-full overflow-hidden"
+                      whileHover={{ scale: 1.03 }}
+                      className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden"
                     >
-                      <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                        <FaRocket className="text-3xl sm:text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <h3 className="text-lg sm:text-xl font-bold tracking-wide">PARA EMPRESAS</h3>
-                        <div className="bg-white/20 px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm hover:bg-white/30 transition-all">
+                      <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+                        <FaBuilding className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-lg font-bold tracking-wide">EMPRESAS</h3>
+                        <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all">
                           Descubrir más
                         </div>
                       </div>
                     </motion.div>
                   </Link>
-                  <Link href="/personas" className="w-full sm:w-1/2">
+                  
+                  {/* Tarjeta 2: Para Negocios */}
+                  <Link href="/negocios" className="w-full">
                     <motion.div 
-                      whileHover={{ scale: 1.05 }}
-                      className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-4 sm:p-6 rounded-xl relative shadow-glow h-[200px] sm:h-[240px] flex items-center justify-center w-full overflow-hidden"
+                      whileHover={{ scale: 1.03 }}
+                      className="bg-gradient-to-br from-[#9370DB] to-[#6A5ACD] text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden"
                     >
-                      <div className="flex flex-col items-center justify-center text-center space-y-4 z-10">
-                        <FaUserTie className="text-3xl sm:text-4xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <h3 className="text-lg sm:text-xl font-bold tracking-wide">PARA PERSONAS</h3>
-                        <div className="bg-white/20 px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm hover:bg-white/30 transition-all">
+                      <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+                        <FaStore className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-lg font-bold tracking-wide">NEGOCIOS</h3>
+                        <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all">
+                          Descubrir más
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
+                  
+                  {/* Tarjeta 3: Para Personas */}
+                  <Link href="/personas" className="w-full">
+                    <motion.div 
+                      whileHover={{ scale: 1.03 }}
+                      className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden"
+                    >
+                      <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+                        <FaUserTie className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <h3 className="text-lg font-bold tracking-wide">PERSONAS</h3>
+                        <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all">
                           Descubrir más
                         </div>
                       </div>
@@ -339,11 +362,11 @@ const App: React.FC = () => {
             grid-template-columns: 1fr;
           }
 
-          .lg\:justify-end {
+          .lg\\:justify-end {
             justify-content: center;
           }
 
-          .lg\:items-start {
+          .lg\\:items-start {
             align-items: center;
           }
         }
@@ -398,4 +421,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
