@@ -31,14 +31,14 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     title: "Logo",
     description: "Creamos una identidad visual poderosa para tu negocio que conecta con tus clientes ideales y te diferencia de la competencia.",
     icon: <FaStore className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-600",
+    gradient: "bg-gradient-to-br from-amber-500 via-orange-600 to-red-600", // Nuevo gradiente naranja-rojo
     link: "/contacto?servicio=logo"
   },
   contentManager: {
     title: "Content Manager",
     description: "Creación y gestión de contenido relevante y valioso para tu audiencia, con enfoque en conversión y engagement.",
     icon: <FaPencilAlt className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-purple-400 via-violet-500 to-indigo-500",
+    gradient: "bg-gradient-to-br from-green-400 via-teal-500 to-emerald-600", // Nuevo gradiente verde-esmeralda
     link: "/contacto?servicio=contentManager"
   },
   communityManager: {
@@ -52,14 +52,14 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     title: "Social Media Manager",
     description: "Estrategia, planificación y gestión integral de tus redes sociales con enfoque en resultados tangibles.",
     icon: <FaChartLine className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-blue-500 via-indigo-500 to-violet-600",
+    gradient: "bg-gradient-to-br from-blue-500 via-indigo-500 to-violet-600", // Mantener este gradiente
     link: "/contacto?servicio=socialMediaManager"
   },
   landingPages: {
     title: "Landing Pages",
     description: "Diseño de páginas de aterrizaje optimizadas para convertir visitantes en leads y clientes.",
     icon: <FaDesktop className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-purple-400 via-violet-500 to-indigo-500",
+    gradient: "bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-600", // Nuevo gradiente azul-cielo
     link: "/contacto?servicio=landingPages"
   },
   seo: {
