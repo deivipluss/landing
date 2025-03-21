@@ -232,6 +232,11 @@ const Negocios = () => {
   };
 
   const cardKeys = Object.keys(cardData) as CardKey[];
+  const cardGroups = [
+    cardKeys.slice(0, 4), // Primer grupo de 4 tarjetas
+    cardKeys.slice(4, 8), // Segundo grupo de 4 tarjetas
+    cardKeys.slice(8),    // Tercer grupo (restantes)
+  ];
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
@@ -255,10 +260,6 @@ const Negocios = () => {
               modules={[Autoplay, Pagination]}
               spaceBetween={30}
               slidesPerView={1}
-              breakpoints={{
-                768: { slidesPerView: 2 }, // Mostrar 2 tarjetas por slide en tablet
-                1024: { slidesPerView: 4 }, // Mostrar 4 tarjetas por slide en escritorio
-              }}
               pagination={{
                 clickable: true,
                 bulletClass: 'swiper-bullet',
@@ -274,13 +275,18 @@ const Negocios = () => {
                 swiperRef.current = swiper;
               }}
             >
-              {cardKeys.map((cardKey) => (
-                <SwiperSlide key={cardKey} className="h-auto py-4">
-                  <SolutionCard
-                    cardKey={cardKey}
-                    isExpanded={expandedCard === cardKey}
-                    onClick={() => handleCardClick(cardKey)}
-                  />
+              {cardGroups.map((group, groupIndex) => (
+                <SwiperSlide key={groupIndex} className="h-auto py-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-2 sm:p-4">
+                    {group.map((cardKey) => (
+                      <SolutionCard
+                        key={cardKey}
+                        cardKey={cardKey}
+                        isExpanded={expandedCard === cardKey}
+                        onClick={() => handleCardClick(cardKey)}
+                      />
+                    ))}
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
