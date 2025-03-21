@@ -198,11 +198,11 @@ const Soluciones = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col">
-      {/* Utilizar exactamente el mismo componente de navegación del home */}
+    <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
+      {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
 
-      <main className="flex-grow flex flex-col justify-center items-center p-4 md:p-8">
+      <main className="flex-grow flex flex-col justify-center items-center p-4 md:p-8 mt-12 sm:mt-16 md:mt-24">
         <div className="w-full max-w-6xl">
           <Swiper
             modules={[Autoplay, Pagination]}

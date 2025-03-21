@@ -57,7 +57,7 @@ const HomeNavigation = () => {
   };
 
   return (
-    <div className="flex justify-center w-full px-4 sm:px-6 md:px-8">
+    <div className="container mx-auto px-4 pt-4 sm:pt-6 md:pt-8">
       <header className="flex justify-center py-3 sm:py-4 mt-6 sm:mt-8 md:mt-10 lg:mt-12 mb-6 sm:mb-8 md:mb-10 lg:mb-12 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
         {navItems.map((item) => (
           <Link 

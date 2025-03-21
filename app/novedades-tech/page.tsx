@@ -7,14 +7,14 @@ import HomeNavigation from "@/components/HomeNavigation";
 
 export default function NovedadesTechPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-800 overflow-hidden">
       {/* Header decorativo */}
       <div className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 h-2"></div>
       
-      {/* Utilizar exactamente el mismo componente de navegación del home */}
+      {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
       
-      <Container className="py-12 md:py-20">
+      <Container className="py-12 md:py-20 mt-12 sm:mt-16 md:mt-24">
         <div className="w-full max-w-4xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-extrabold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500">
             Novedades Tecnológicas

@@ -162,11 +162,11 @@ const ContactForm: React.FC = () => {
 
 const Contact: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#0D0C1D] flex flex-col overflow-hidden relative">
-      {/* Utilizar exactamente el mismo componente de navegación del home */}
+    <div className="min-h-screen bg-[#0D0C1D] flex flex-col overflow-hidden">
+      {/* Utilizamos el componente HomeNavigation directamente sin contenedores adicionales */}
       <HomeNavigation />
       
-      <main className="flex-grow flex justify-center items-center">
+      <main className="flex-grow flex justify-center items-center mt-12 sm:mt-16 md:mt-24">
         <Suspense fallback={<div>Cargando...</div>}>
           <ContactForm />
         </Suspense>
