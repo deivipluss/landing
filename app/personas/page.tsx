@@ -199,7 +199,7 @@ const SolucionesFreelance = () => {
           </motion.button>
         )}
 
-        <main className="flex-grow flex flex-col justify-start pt-2 items-center p-4 md:p-8">
+        <main className="flex-grow flex flex-col justify-start items-center p-2 md:p-8">
           <div className="w-full max-w-6xl">
             <Swiper
               modules={[Autoplay, Pagination]}
@@ -222,7 +222,7 @@ const SolucionesFreelance = () => {
             >
               {cardGroups.map((group, groupIndex) => (
                 <SwiperSlide key={groupIndex}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-2 sm:p-4">
                     {group.map((cardKey) => (
                       <SolutionCard
                         key={cardKey}
@@ -246,12 +246,34 @@ const SolucionesFreelance = () => {
       <style jsx global>{`
         .solutions-swiper {
           width: 100%;
-          padding: 20px 0;
+          padding: 10px 0 20px 0; /* Reducir padding superior en móvil */
+          height: auto;
+          min-height: 300px; /* Altura mínima para asegurar visibilidad */
+        }
+
+        /* Asegurar que las tarjetas se muestren completas */
+        .swiper-wrapper {
+          align-items: center;
+          height: auto;
         }
 
         .swiper-slide {
           opacity: 1 !important;
           transform: none !important;
+          height: auto !important;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+          .solutions-swiper {
+            padding-top: 5px;
+          }
+          
+          .swiper-bullet {
+            width: 6px;
+            height: 6px;
+            margin: 0 3px;
+          }
         }
 
         .swiper-bullet {

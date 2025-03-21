@@ -57,8 +57,7 @@ const HomeNavigation = () => {
   };
 
   return (
-    // Eliminar el container externo ya que ahora se maneja en cada página
-    <header className="flex justify-center py-3 sm:py-4 mb-6 sm:mb-8 md:mb-10 lg:mb-12 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
+    <header className="flex justify-center py-3 sm:py-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
       {navItems.map((item) => (
         <Link 
           key={item.href}
