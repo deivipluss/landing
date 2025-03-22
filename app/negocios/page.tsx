@@ -32,84 +32,84 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     description: "Creamos una identidad visual poderosa para tu negocio que conecta con tus clientes ideales y te diferencia de la competencia.",
     icon: <FaStore className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-amber-500 via-orange-600 to-red-600", // Nuevo gradiente naranja-rojo
-    link: "/contacto?servicio=logo"
+    link: "/servicios/logo"
   },
   contentManager: {
     title: "Content Manager",
     description: "Creación y gestión de contenido relevante y valioso para tu audiencia, con enfoque en conversión y engagement.",
     icon: <FaPencilAlt className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-green-400 via-teal-500 to-emerald-600", // Nuevo gradiente verde-esmeralda
-    link: "/contacto?servicio=contentManager"
+    link: "/servicios/content-manager"
   },
   communityManager: {
     title: "Community Manager",
     description: "Gestión profesional de la comunicación con tu comunidad digital para aumentar la fidelización y el engagement.",
     icon: <FaUsers className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-fuchsia-500 via-pink-500 to-rose-500",
-    link: "/contacto?servicio=communityManager"
+    link: "/servicios/community-manager"
   },
   socialMediaManager: {
     title: "Social Media Manager",
     description: "Estrategia, planificación y gestión integral de tus redes sociales con enfoque en resultados tangibles.",
     icon: <FaChartLine className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-indigo-500 to-violet-600", // Mantener este gradiente
-    link: "/contacto?servicio=socialMediaManager"
+    link: "/servicios/social-media-manager"
   },
   landingPages: {
     title: "Landing Pages",
     description: "Diseño de páginas de aterrizaje optimizadas para convertir visitantes en leads y clientes.",
     icon: <FaDesktop className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-600", // Nuevo gradiente azul-cielo
-    link: "/contacto?servicio=landingPages"
+    link: "/servicios/landing-pages"
   },
   seo: {
     title: "SEO",
     description: "Optimización para motores de búsqueda que mejora tu visibilidad online y atrae tráfico orgánico de calidad.",
     icon: <FaSearchDollar className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-teal-500 via-green-500 to-emerald-600",
-    link: "/contacto?servicio=seo"
+    link: "/servicios/seo"
   },
   desarrolloProductos: {
     title: "Desarrollo de Productos",
     description: "Creación y planificación estratégica de productos digitales y físicos con alto valor agregado para tu mercado objetivo.",
     icon: <FaCog className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-500",
-    link: "/contacto?servicio=desarrolloProductos"
+    link: "/servicios/desarrollo-productos"
   },
   ecommerce: {
     title: "E-commerce",
     description: "Implementación y optimización de tiendas en línea para maximizar ventas y mejorar la experiencia del cliente.",
     icon: <FaShoppingCart className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500",
-    link: "/contacto?servicio=ecommerce"
+    link: "/servicios/ecommerce"
   },
   estrategiaVentas: {
     title: "Estrategia de Ventas",
     description: "Desarrollo de planes de venta efectivos adaptados a tu modelo de negocio para aumentar conversiones.",
     icon: <FaChartLine className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500",
-    link: "/contacto?servicio=estrategiaVentas"
+    link: "/servicios/estrategia-ventas"
   },
   entrenamientoVentas: {
     title: "Entrenamiento en Ventas",
     description: "Capacitación personalizada para equipos comerciales y de atención al cliente para maximizar resultados.",
     icon: <FaRegHandshake className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-orange-500 via-amber-500 to-yellow-500",
-    link: "/contacto?servicio=entrenamientoVentas"
+    link: "/servicios/entrenamiento-ventas"
   },
   asesoriaComercial: {
     title: "Asesoría Comercial",
     description: "Consultoría especializada para optimizar tus procesos comerciales y estrategias de crecimiento.",
     icon: <FaFileContract className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-yellow-500 via-amber-500 to-orange-500",
-    link: "/contacto?servicio=asesoria"
+    link: "/servicios/asesoria-comercial"
   },
   gestionFinanciera: {
     title: "Gestión Financiera",
     description: "Asesoría en gestión financiera para optimizar recursos, mejorar la rentabilidad y tomar decisiones basadas en datos.",
     icon: <FaMoneyBillWave className="text-3xl group-hover:rotate-12 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500",
-    link: "/contacto?servicio=finanzas"
+    link: "/servicios/gestion-financiera"
   }
 };
 
@@ -301,7 +301,10 @@ const Negocios = () => {
       <style jsx global>{`
         .solutions-swiper {
           width: 100%;
-          padding: 10px 0 30px 0;
+          padding-top: 10px;
+          padding-bottom: 30px;
+          padding-left: 0;
+          padding-right: 0;
           height: auto;
           min-height: 300px;
           overflow: hidden;
@@ -339,7 +342,10 @@ const Negocios = () => {
 
         .swiper-pagination {
           bottom: 20px !important;
-          padding: 10px 0;
+          padding-top: 10px;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
           position: relative;
           margin-top: 15px;
         }

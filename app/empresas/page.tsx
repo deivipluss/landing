@@ -46,7 +46,7 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     description: "Reinventa tu empresa con tecnologías disruptivas. Optimiza procesos, mejora la experiencia del cliente y aumenta la competitividad en el mercado actual.",
     icon: <FaRocket className="text-3xl group-hover:scale-125 transition-transform duration-500" />, // Cambiado el ícono a FaRocket
     gradient: "bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600",
-    link: "/contacto?servicio=transformacionDigital",
+    link: "/servicios/transformacion-digital",
     featured: true // Marcado como destacado
   },
   branding: {
@@ -54,49 +54,49 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     description: "Creamos una identidad sólida y coherente para tu empresa. Mejoramos la percepción de tu marca, generando confianza y fidelidad en tus clientes.",
     icon: <FaBuilding className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600",
-    link: "/contacto?servicio=branding"
+    link: "/servicios/branding-empresarial"
   },
   relacionesPublicas: {
     title: "Relaciones Públicas Digitales",
     description: "Gestión estratégica de la comunicación entre tu empresa y sus públicos clave en el entorno digital para construir una reputación sólida.",
     icon: <FaShareAlt className="text-3xl group-hover:rotate-12 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-purple-500 via-pink-500 to-red-500",
-    link: "/contacto?servicio=relacionesPublicas"
+    link: "/servicios/relaciones-publicas"
   },
   entrenamientoGerentes: {
     title: "Entrenamiento para Gerentes",
     description: "Capacitación especializada en competencias digitales y liderazgo tecnológico para directivos y gerentes.",
     icon: <FaBriefcase className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-amber-500 via-orange-500 to-red-500",
-    link: "/contacto?servicio=entrenamientoGerentes"
+    link: "/servicios/entrenamiento-gerentes"
   },
   entrenamientoRH: {
     title: "Entrenamiento para Recursos Humanos",
     description: "Formación específica para equipos de RRHH en herramientas digitales, gestión de talento y cultura digital corporativa.",
     icon: <FaUsers className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-green-500 via-teal-500 to-blue-500",
-    link: "/contacto?servicio=entrenamientoRH"
+    link: "/servicios/entrenamiento-rh"
   },
   auditoriaTecnologica: {
     title: "Auditoría Tecnológica",
     description: "Evaluación exhaustiva de la infraestructura tecnológica para identificar oportunidades de mejora y optimización de recursos.",
     icon: <FaNetworkWired className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500",
-    link: "/contacto?servicio=auditoriaTecnologica"
+    link: "/servicios/auditoria-tecnologica"
   },
   auditoriaOptimizacion: {
     title: "Auditoría y Optimización de Procesos",
     description: "Análisis y mejora de procesos empresariales para aumentar eficiencia, reducir costos y mejorar la calidad del servicio.",
     icon: <FaChartLine className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500",
-    link: "/contacto?servicio=auditoriaOptimizacion"
+    link: "/servicios/auditoria-procesos"
   },
   ciberseguridad: {
     title: "Ciberseguridad Empresarial",
     description: "Auditoría, implementación y gestión de soluciones de seguridad para proteger los activos digitales de tu empresa contra ciberamenazas.",
     icon: <FaShieldAlt className="text-3xl group-hover:pulse transition-all duration-500" />,
     gradient: "bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900",
-    link: "/contacto?servicio=ciberseguridad"
+    link: "/servicios/ciberseguridad"
   }
 };
 
@@ -318,7 +318,10 @@ const Soluciones = () => {
       <style jsx global>{`
         .solutions-swiper {
           width: 100%;
-          padding: 10px 0 20px 0; /* Reducir padding superior en móvil */
+          padding-top: 10px;
+          padding-bottom: 20px;
+          padding-left: 0;
+          padding-right: 0;
           height: auto;
           min-height: 300px; /* Altura mínima para asegurar visibilidad */
         }
@@ -374,7 +377,10 @@ const Soluciones = () => {
 
         .swiper-pagination {
           bottom: 20px !important; /* Aumentar la distancia desde abajo para separar más los dots */
-          padding: 10px 0;
+          padding-top: 10px;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
           position: relative; /* Asegurarse de que la posición sea relativa */
           margin-top: 15px; /* Añadir margen superior para separar más los dots de las tarjetas */
         }

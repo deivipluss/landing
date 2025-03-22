@@ -50,7 +50,7 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     description: "Creación de textos persuasivos y efectivos que convierten lectores en clientes, optimizados para captar la atención y generar acción.",
     icon: <FaPenFancy className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
     gradient: "bg-gradient-to-br from-pink-500 via-rose-500 to-red-600",
-    link: "/servicios/copywritter"
+    link: "/servicios/copywriter"
   },
   onlyFans: {
     title: "OnlyFans Management",
@@ -246,7 +246,10 @@ const SolucionesFreelance = () => {
       <style jsx global>{`
         .solutions-swiper {
           width: 100%;
-          padding: 10px 0 20px 0; /* Reducir padding superior en móvil */
+          padding-top: 10px;
+          padding-bottom: 20px;
+          padding-left: 0;
+          padding-right: 0;
           height: auto;
           min-height: 300px; /* Altura mínima para asegurar visibilidad */
         }
@@ -297,7 +300,10 @@ const SolucionesFreelance = () => {
 
         .swiper-pagination {
           bottom: 20px !important; /* Aumentar la distancia desde abajo para separar más los dots */
-          padding: 10px 0;
+          padding-top: 10px;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
           position: relative; /* Asegurarse de que la posición sea relativa */
           margin-top: 15px; /* Añadir margen superior para separar más los dots de las tarjetas */
         }
