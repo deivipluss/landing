@@ -240,8 +240,7 @@ const Negocios = () => {
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
-      <div className="pt-20 sm:pt-24 md:pt-28 lg:pt-32 container mx-auto px-4 flex-1">
-        {/* Ajuste del padding superior para alinearlo con empresas y personas */}
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1">
         <HomeNavigation />
 
         {showBackToTop && (
@@ -255,7 +254,7 @@ const Negocios = () => {
           </motion.button>
         )}
 
-        <main className="flex-grow flex flex-col justify-start items-center p-2 md:p-8">
+        <main className="flex-grow flex flex-col justify-start items-center p-2 md:p-4">
           <div className="w-full max-w-6xl">
             <Swiper
               modules={[Autoplay, Pagination]}
@@ -343,6 +342,13 @@ const Negocios = () => {
           padding: 10px 0;
           position: relative;
           margin-top: 15px;
+        }
+
+        /* Ajuste específico para alinear con empresas y personas */
+        @media (min-width: 768px) {
+          .md\\:p-4 {
+            padding: 1rem;
+          }
         }
       `}</style>
     </div>
