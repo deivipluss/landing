@@ -291,30 +291,24 @@ export default function CiberseguridadEmpresarialPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-slate-800/40 to-slate-900/40 rounded-xl overflow-hidden border border-slate-700/20 hover:border-slate-600/30 transition-all duration-300 group"
+                  className="bg-gradient-to-br from-[#1A1A2E]/80 to-[#1A1A2E]/40 rounded-xl p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300"
                 >
-                  <div className="p-6">
-                    <div className="w-14 h-14 rounded-lg bg-gradient-to-r from-slate-700 to-blue-900 flex items-center justify-center text-white text-xl mb-5">
-                      {service.icon}
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-white mb-3">
-                      {service.title}
-                    </h3>
-                    
-                    <p className="text-gray-300 mb-5">{service.description}</p>
-                    
-                    <div className="space-y-2">
-                      {service.benefits.map((benefit, i) => (
-                        <div key={i} className="flex items-start">
-                          <div className="text-cyan-400 mr-2">✓</div>
-                          <p className="text-gray-400 text-sm">{benefit}</p>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white text-xl mb-5">
+                    {service.icon}
                   </div>
                   
-                  <div className="h-1 w-full bg-gradient-to-r from-cyan-500 to-blue-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+                  
+                  <p className="text-gray-300 mb-5">{service.description}</p>
+                  
+                  <div className="grid grid-cols-2 gap-2">
+                    {service.benefits.map((benefit, i) => (
+                      <div key={i} className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-cyan-500 mr-2"></div>
+                        <span className="text-gray-300 text-sm">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -504,11 +498,11 @@ export default function CiberseguridadEmpresarialPage() {
                   icon: <FaSearch />
                 },
                 {
-                  title: "Diseño de Estrategia",
-                  description: "Desarrollo un plan de ciberseguridad personalizado según los riesgos detectados y los objetivos específicos de tu negocio.",
+                  title: "Análisis y Auditoría",
+                  description: "Examino minuciosamente tu infraestructura para identificar y priorizar vulnerabilidades antes de que sean explotadas.",
                   icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg> />
+                  </svg>
                 },
                 {
                   title: "Implementación",
@@ -516,7 +510,7 @@ export default function CiberseguridadEmpresarialPage() {
                   icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg> />
+                  </svg>
                 },
                 {
                   title: "Capacitación",
@@ -525,14 +519,14 @@ export default function CiberseguridadEmpresarialPage() {
                     <path d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                  </svg> />
+                  </svg>
                 },
                 {
                   title: "Monitoreo Continuo",
                   description: "Vigilo constantemente tu entorno para detectar y responder a amenazas emergentes en tiempo real, ofreciendo protección constante.",
                   icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg> />
+                  </svg>
                 }
               ].map((step, index) => (
                 <motion.div 
