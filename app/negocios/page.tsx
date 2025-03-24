@@ -13,7 +13,11 @@ import {
   FaSearchDollar,
   FaCog,
   FaDesktop,
-  FaArrowUp
+  FaArrowUp,
+  FaSyncAlt,
+  FaUserTie,
+  FaHandshake,
+  FaArrowRight
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -112,6 +116,43 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
     link: "/servicios/gestion-financiera"
   }
 };
+
+// Modificamos la definición de servicios de ventas para usar diferentes gradientes
+const serviciosVentas = [
+  {
+    icon: <FaSyncAlt className="text-xl" />,
+    title: "Estrategia de Ventas",
+    description: "Desarrollo planes estratégicos para optimizar el proceso comercial y maximizar resultados.",
+    link: "/servicios/estrategia-ventas",
+    color: "from-purple-500 to-indigo-600", // Mantenemos el violeta-índigo para estrategia
+    bgOpacity: "from-purple-500/10 to-indigo-500/10",
+    textOpacity: "from-purple-500/20 to-indigo-500/20",
+    borderColor: "border-purple-500/30",
+    textColor: "text-purple-300",
+  },
+  {
+    icon: <FaUserTie className="text-xl" />,
+    title: "Entrenamiento en Ventas",
+    description: "Capacito equipos comerciales con habilidades prácticas para cerrar más ventas.",
+    link: "/servicios/entrenamiento-ventas",
+    color: "from-amber-500 to-orange-600", // Nuevo: Degradado cálido para entrenamiento
+    bgOpacity: "from-amber-500/10 to-orange-500/10",
+    textOpacity: "from-amber-500/20 to-orange-500/20",
+    borderColor: "border-amber-500/30",
+    textColor: "text-amber-300",
+  },
+  {
+    icon: <FaHandshake className="text-xl" />,
+    title: "Asesoría Comercial",
+    description: "Acompaño líderes y gerentes en la toma de decisiones comerciales estratégicas.",
+    link: "/servicios/asesoria-comercial",
+    color: "from-emerald-500 to-teal-600", // Nuevo: Degradado verde para asesoría
+    bgOpacity: "from-emerald-500/10 to-teal-500/10",
+    textOpacity: "from-emerald-500/20 to-teal-500/20",
+    borderColor: "border-emerald-500/30",
+    textColor: "text-emerald-300",
+  },
+];
 
 const SolutionCard: React.FC<{
   cardKey: CardKey;

@@ -190,7 +190,7 @@ export default function EstrategiaVentasPage() {
         "Seguimiento por 30 días",
         "Métricas y KPIs personalizados"
       ],
-      color: "teal",
+      color: "indigo",
       popular: true
     },
     {
@@ -207,7 +207,7 @@ export default function EstrategiaVentasPage() {
         "Seguimiento por 90 días",
         "Optimización continua del proceso"
       ],
-      color: "cyan",
+      color: "violet",
       popular: false
     }
   ];
@@ -227,11 +227,11 @@ export default function EstrategiaVentasPage() {
       onClick={onClick}
       className={`flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors duration-300 w-full ${
         active
-          ? "bg-gradient-to-r from-teal-600/30 to-emerald-700/30 border border-teal-500/30 text-white" 
-          : "text-gray-400 hover:bg-teal-900/20 hover:text-gray-300"
+          ? "bg-gradient-to-r from-purple-600/30 to-indigo-700/30 border border-purple-500/30 text-white" 
+          : "text-gray-400 hover:bg-purple-900/20 hover:text-gray-300"
       }`}
     >
-      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center text-white">
+      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center text-white">
         {estrategia.icon}
       </div>
       <span className="hidden md:block">{estrategia.title}</span>
@@ -254,20 +254,20 @@ export default function EstrategiaVentasPage() {
   }) => {
     // Define color classes mapping
     const colorVariants = {
-      emerald: {
-        bg: "from-emerald-500 to-emerald-700",
-        border: "border-emerald-500/30",
-        text: "text-emerald-400",
+      purple: {
+        bg: "from-purple-500 to-purple-700",
+        border: "border-purple-500/30",
+        text: "text-purple-400",
       },
-      teal: {
-        bg: "from-teal-500 to-emerald-600",
-        border: "border-teal-500/30",
-        text: "text-teal-400",
+      indigo: {
+        bg: "from-indigo-500 to-purple-600",
+        border: "border-indigo-500/30",
+        text: "text-indigo-400",
       },
-      cyan: {
-        bg: "from-cyan-500 to-teal-600",
-        border: "border-cyan-500/30",
-        text: "text-cyan-400",
+      violet: {
+        bg: "from-violet-500 to-indigo-600",
+        border: "border-violet-500/30",
+        text: "text-violet-400",
       }
     };
     
@@ -281,7 +281,7 @@ export default function EstrategiaVentasPage() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className={`bg-gradient-to-br from-[#1A1A2E]/80 to-[#1A1A2E]/40 rounded-xl overflow-hidden ${
-          popular ? `ring-2 ring-${color}-500/30 ${colorClasses.border}` : 'border border-teal-500/20'
+          popular ? `ring-2 ring-${color}-500/30 ${colorClasses.border}` : 'border border-purple-500/20'
         }`}
       >
         {popular && (
@@ -324,8 +324,8 @@ export default function EstrategiaVentasPage() {
         <HomeNavigation />
         
         {/* Elementos decorativos */}
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-teal-600/5 filter blur-[150px] pointer-events-none"></div>
-        <div className="absolute bottom-1/3 left-0 w-[600px] h-[600px] rounded-full bg-emerald-600/5 filter blur-[120px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-purple-600/5 filter blur-[150px] pointer-events-none"></div>
+        <div className="absolute bottom-1/3 left-0 w-[600px] h-[600px] rounded-full bg-indigo-600/5 filter blur-[120px] pointer-events-none"></div>
         
         {/* Sección Hero */}
         <div ref={headerRef} className="relative py-12 md:py-16 mb-20">
@@ -336,12 +336,12 @@ export default function EstrategiaVentasPage() {
                 animate={{ opacity: isHeaderInView ? 1 : 0, y: isHeaderInView ? 0 : 20 }}
                 transition={{ duration: 0.7 }}
               >
-                <div className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-teal-500/20 to-emerald-500/20 text-teal-300 text-sm font-medium mb-4 border border-teal-500/30">
+                <div className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-4 border border-purple-500/30">
                   ESTRATEGIAS DE VENTA
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                  Transformo equipos en <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-emerald-500">máquinas de venta</span>
+                  Transformo equipos en <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-500">máquinas de venta</span>
                 </h1>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
@@ -351,7 +351,7 @@ export default function EstrategiaVentasPage() {
                 <div className="flex flex-wrap gap-4">
                   <button 
                     onClick={() => setShowContactForm(true)}
-                    className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-lg hover:shadow-glow-teal transition-all duration-300 flex items-center gap-2 group"
+                    className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg hover:shadow-glow-purple transition-all duration-300 flex items-center gap-2 group"
                   >
                     <span>Potencia tus ventas ahora</span>
                     <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -361,7 +361,7 @@ export default function EstrategiaVentasPage() {
                     href="https://calendly.com/deivipluss/30min"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 bg-transparent border border-teal-500 text-teal-400 rounded-lg hover:bg-teal-500/10 transition-all duration-300"
+                    className="px-6 py-3 bg-transparent border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-all duration-300"
                   >
                     Agendar llamada de diagnóstico
                   </Link>
@@ -369,7 +369,7 @@ export default function EstrategiaVentasPage() {
                 
                 <div className="mt-8 flex flex-wrap gap-y-4 gap-x-6">
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center text-white">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">
                       <FaTrophy />
                     </div>
                     <div>
@@ -379,7 +379,7 @@ export default function EstrategiaVentasPage() {
                   </div>
                   
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center text-white">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">
                       <FaChartLine />
                     </div>
                     <div>
@@ -390,6 +390,7 @@ export default function EstrategiaVentasPage() {
                 </div>
               </motion.div>
               
+              {/* Dashboard con imagen y métricas */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: isHeaderInView ? 1 : 0, scale: isHeaderInView ? 1 : 0.9 }}
@@ -397,7 +398,7 @@ export default function EstrategiaVentasPage() {
                 className="relative hidden md:block"
               >
                 <div className="relative h-[400px] w-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-emerald-500/10 rounded-xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 rounded-xl"></div>
                   <Image
                     src="/imagenes/estrategias-venta-hero.webp"
                     alt="Estrategias de venta efectivas"
@@ -413,9 +414,9 @@ export default function EstrategiaVentasPage() {
                     transition={{ duration: 0.5, delay: 0.7 }}
                     className="absolute bottom-0 left-0 right-0 p-6"
                   >
-                    <div className="bg-[#1A1A2E]/80 backdrop-blur-sm p-4 rounded-lg border border-teal-500/20">
+                    <div className="bg-[#1A1A2E]/80 backdrop-blur-sm p-4 rounded-lg border border-purple-500/20">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="h-10 w-10 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center text-white">
+                        <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">
                           <FaChartLine />
                         </div>
                         <div>
@@ -429,15 +430,15 @@ export default function EstrategiaVentasPage() {
                       </div>
                       
                       <div className="grid grid-cols-3 gap-2">
-                        <div className="bg-teal-900/20 p-2 rounded-lg">
+                        <div className="bg-purple-900/20 p-2 rounded-lg">
                           <div className="text-white font-bold">89%</div>
                           <div className="text-gray-400 text-xs">Tasa de cierre</div>
                         </div>
-                        <div className="bg-teal-900/20 p-2 rounded-lg">
+                        <div className="bg-purple-900/20 p-2 rounded-lg">
                           <div className="text-white font-bold">-27%</div>
                           <div className="text-gray-400 text-xs">Ciclo de venta</div>
                         </div>
-                        <div className="bg-teal-900/20 p-2 rounded-lg">
+                        <div className="bg-purple-900/20 p-2 rounded-lg">
                           <div className="text-white font-bold">3.8X</div>
                           <div className="text-gray-400 text-xs">ROI medio</div>
                         </div>
@@ -448,6 +449,7 @@ export default function EstrategiaVentasPage() {
               </motion.div>
             </div>
 
+            {/* Tarjetas de resultados */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isHeaderInView ? 1 : 0, y: isHeaderInView ? 0 : 30 }}
@@ -461,16 +463,16 @@ export default function EstrategiaVentasPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-br from-[#1A1A2E]/80 to-[#1A1A2E]/40 border border-teal-500/10 p-5 rounded-xl"
+                  className="bg-gradient-to-br from-[#1A1A2E]/80 to-[#1A1A2E]/40 border border-purple-500/10 p-5 rounded-xl"
                 >
-                  <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500 mb-2">{resultado.metric}</p>
+                  <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500 mb-2">{resultado.metric}</p>
                   <p className="text-gray-400 text-sm">{resultado.description}</p>
                 </motion.div>
               ))}
             </motion.div>
           </div>
           
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/20 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
         </div>
         
         {/* Sección de Servicios de Estrategias */}
@@ -483,7 +485,7 @@ export default function EstrategiaVentasPage() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-teal-500/20 to-emerald-500/20 text-teal-300 text-sm font-medium mb-3">
+              <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-3">
                 SOLUCIONES COMERCIALES
               </span>
               
@@ -516,10 +518,10 @@ export default function EstrategiaVentasPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="bg-gradient-to-br from-[#1A1A2E]/80 to-[#1A1A2E]/40 rounded-xl p-8 border border-teal-500/20"
+                className="bg-gradient-to-br from-[#1A1A2E]/80 to-[#1A1A2E]/40 rounded-xl p-8 border border-purple-500/20"
               >
                 <div className="flex flex-col md:flex-row gap-8 items-start">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center text-white text-2xl flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white text-2xl flex-shrink-0">
                     {estrategiasDeVenta[activeTab].icon}
                   </div>
                   
@@ -529,9 +531,9 @@ export default function EstrategiaVentasPage() {
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       {estrategiasDeVenta[activeTab].features.map((feature, i) => (
-                        <div key={i} className="bg-teal-900/20 py-2 px-3 rounded-lg border border-teal-500/10 flex items-center">
-                          <div className="w-2 h-2 rounded-full bg-teal-400 mr-2"></div>
-                          <span className="text-teal-300 text-sm">{feature}</span>
+                        <div key={i} className="bg-purple-900/20 py-2 px-3 rounded-lg border border-purple-500/10 flex items-center">
+                          <div className="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
+                          <span className="text-purple-300 text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -539,7 +541,7 @@ export default function EstrategiaVentasPage() {
                   
                   <button
                     onClick={() => setShowContactForm(true)}
-                    className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-lg hover:shadow-md transition-all duration-300 flex items-center gap-2 flex-shrink-0 mt-4 md:mt-0"
+                    className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg hover:shadow-md transition-all duration-300 flex items-center gap-2 flex-shrink-0 mt-4 md:mt-0"
                   >
                     <span>Solicitar presupuesto</span>
                     <FaArrowRight />
@@ -560,7 +562,7 @@ export default function EstrategiaVentasPage() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-teal-500/20 to-emerald-500/20 text-teal-300 text-sm font-medium mb-3">
+              <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-3">
                 ENFOQUE
               </span>
               
@@ -582,9 +584,9 @@ export default function EstrategiaVentasPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-[#1A1A2E]/80 to-[#1A1A2E]/40 rounded-xl p-6 border border-teal-500/20 hover:border-teal-500/40 transition-all duration-300"
+                  className="bg-gradient-to-br from-[#1A1A2E]/80 to-[#1A1A2E]/40 rounded-xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
                 >
-                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-teal-600 to-emerald-700 flex items-center justify-center text-white text-xl mb-5">
+                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center text-white text-xl mb-5">
                     {metodologia.icon}
                   </div>
                   
@@ -609,7 +611,7 @@ export default function EstrategiaVentasPage() {
               transition={{ duration: 0.5 }}
               className="text-center mb-16"
             >
-              <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-teal-500/20 to-emerald-500/20 text-teal-300 text-sm font-medium mb-3">
+              <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-3">
                 IMPLEMENTACIÓN
               </span>
               
@@ -625,7 +627,7 @@ export default function EstrategiaVentasPage() {
             
             <div className="relative">
               {/* Línea central del timeline con gradiente */}
-              <div className="absolute h-full w-1 bg-gradient-to-b from-teal-500 via-emerald-600 to-teal-800/40 left-[15px] md:left-1/2 top-0 transform md:-translate-x-1/2 hidden sm:block"></div>
+              <div className="absolute h-full w-1 bg-gradient-to-b from-purple-500 via-indigo-600 to-purple-800/40 left-[15px] md:left-1/2 top-0 transform md:-translate-x-1/2 hidden sm:block"></div>
               
               {procesosImplementacion.map((proceso, index) => (
                 <motion.div
@@ -640,17 +642,17 @@ export default function EstrategiaVentasPage() {
                 >
                   {/* Indicador de número de paso con efecto de brillo */}
                   <div className={`relative flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center z-10 
-                    bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-bold shadow-md shadow-teal-500/30 ${
+                    bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold shadow-md shadow-purple-500/30 ${
                     index % 2 === 1 ? 'md:order-1' : ''
                   }`}>
                     {index + 1}
-                    <div className="absolute inset-0 rounded-full bg-teal-500/20 animate-pulse"></div>
+                    <div className="absolute inset-0 rounded-full bg-purple-500/20 animate-pulse"></div>
                   </div>
                   
                   {/* Caja de contenido del paso con gradiente mejorado */}
-                  <div className="bg-gradient-to-br from-[#1A1A2E]/90 to-[#1A1A2E]/70 p-5 md:p-6 rounded-lg border border-teal-500/20 flex-grow hover:border-teal-500/40 transition-all duration-300 group shadow-lg shadow-teal-900/10">
+                  <div className="bg-gradient-to-br from-[#1A1A2E]/90 to-[#1A1A2E]/70 p-5 md:p-6 rounded-lg border border-purple-500/20 flex-grow hover:border-purple-500/40 transition-all duration-300 group shadow-lg shadow-purple-900/10">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-teal-900/30 text-teal-400 mr-3 group-hover:bg-teal-800/40 transition-colors duration-300">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-purple-900/30 text-purple-400 mr-3 group-hover:bg-purple-800/40 transition-colors duration-300">
                         {proceso.icon}
                       </div>
                       <h3 className="text-xl font-bold text-white">{proceso.title}</h3>
@@ -658,7 +660,7 @@ export default function EstrategiaVentasPage() {
                     <p className="text-gray-300">{proceso.description}</p>
                     
                     {/* Línea de conexión al timeline (solo visible en pantallas grandes) */}
-                    <div className={`absolute top-[20px] w-4 h-1 bg-gradient-to-r from-teal-500 to-emerald-600 hidden md:block
+                    <div className={`absolute top-[20px] w-4 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 hidden md:block
                       ${index % 2 === 0 ? 'right-0 translate-x-[calc(100%+1rem)]' : 'left-0 -translate-x-[calc(100%+1rem)]'}`}>
                     </div>
                   </div>
@@ -678,7 +680,7 @@ export default function EstrategiaVentasPage() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-teal-500/20 to-emerald-500/20 text-teal-300 text-sm font-medium mb-3">
+              <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-3">
                 PLANES DE SERVICIO
               </span>
               
@@ -710,10 +712,10 @@ export default function EstrategiaVentasPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mt-10 bg-gradient-to-br from-[#1A1A2E]/90 to-[#1A1A2E]/70 p-6 rounded-xl border border-teal-500/20 flex flex-col md:flex-row items-center gap-6"
+              className="mt-10 bg-gradient-to-br from-[#1A1A2E]/90 to-[#1A1A2E]/70 p-6 rounded-xl border border-purple-500/20 flex flex-col md:flex-row items-center gap-6"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center text-white">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">
                   <FaHandshake className="text-xl" />
                 </div>
                 <div>
@@ -723,7 +725,7 @@ export default function EstrategiaVentasPage() {
               </div>
               <button
                 onClick={() => setShowContactForm(true)}
-                className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-lg hover:shadow-md transition-all duration-300 whitespace-nowrap md:ml-auto"
+                className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg hover:shadow-md transition-all duration-300 whitespace-nowrap md:ml-auto"
               >
                 Solicitar consultoría estratégica
               </button>
@@ -731,7 +733,7 @@ export default function EstrategiaVentasPage() {
           </div>
         </section>
         
-        {/* Sección de Casos de Éxito */}
+        {/* Restantes secciones: Casos de Éxito, FAQ y CTA */}
         <section className="py-12 mb-20">
           <div className="max-w-6xl mx-auto">
             <motion.div 
