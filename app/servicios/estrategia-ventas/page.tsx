@@ -650,8 +650,7 @@ export default function EstrategiaVentasPage() {
                   {/* Caja de contenido del paso con gradiente mejorado */}
                   <div className="bg-gradient-to-br from-[#1A1A2E]/90 to-[#1A1A2E]/70 p-5 md:p-6 rounded-lg border border-teal-500/20 flex-grow hover:border-teal-500/40 transition-all duration-300 group shadow-lg shadow-teal-900/10">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-teal-900/30 text-teal-400 mr-3 
-                        group-hover:bg-teal-800/40 transition-colors duration-300">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-teal-900/30 text-teal-400 mr-3 group-hover:bg-teal-800/40 transition-colors duration-300">
                         {proceso.icon}
                       </div>
                       <h3 className="text-xl font-bold text-white">{proceso.title}</h3>
