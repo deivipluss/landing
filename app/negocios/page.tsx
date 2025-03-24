@@ -90,22 +90,22 @@ const cardData: { [key in CardKey]: { title: string; description: string; icon: 
   estrategiaVentas: {
     title: "Estrategia de Ventas",
     description: "Desarrollo de planes de venta efectivos adaptados a tu modelo de negocio para aumentar conversiones.",
-    icon: <FaChartLine className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500",
+    icon: <FaSyncAlt className="text-3xl group-hover:rotate-180 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-purple-500 to-indigo-600", // Actualizado para coincidir con serviciosVentas
     link: "/servicios/estrategia-ventas"
   },
   entrenamientoVentas: {
     title: "Entrenamiento en Ventas",
     description: "Capacitación personalizada para equipos comerciales y de atención al cliente para maximizar resultados.",
-    icon: <FaRegHandshake className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-orange-500 via-amber-500 to-yellow-500",
+    icon: <FaUserTie className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-amber-500 to-orange-600", // Actualizado para coincidir con serviciosVentas
     link: "/servicios/entrenamiento-ventas"
   },
   asesoriaComercial: {
     title: "Asesoría Comercial",
     description: "Consultoría especializada para optimizar tus procesos comerciales y estrategias de crecimiento.",
-    icon: <FaFileContract className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
-    gradient: "bg-gradient-to-br from-yellow-500 via-amber-500 to-orange-500",
+    icon: <FaHandshake className="text-3xl group-hover:scale-110 transition-transform duration-500" />,
+    gradient: "bg-gradient-to-br from-emerald-500 to-teal-600", // Actualizado para coincidir con serviciosVentas
     link: "/servicios/asesoria-comercial"
   },
   gestionFinanciera: {
