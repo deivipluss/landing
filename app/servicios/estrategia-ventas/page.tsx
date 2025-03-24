@@ -174,7 +174,7 @@ export default function EstrategiaVentasPage() {
         "1 sesión estratégica de 2h",
         "Recomendaciones prioritarias"
       ],
-      color: "emerald",
+      color: "purple", // Cambiamos de "emerald" a "purple"
       popular: false
     },
     {
@@ -190,7 +190,7 @@ export default function EstrategiaVentasPage() {
         "Seguimiento por 30 días",
         "Métricas y KPIs personalizados"
       ],
-      color: "indigo",
+      color: "indigo", // Mantenemos "indigo"
       popular: true
     },
     {
@@ -207,7 +207,7 @@ export default function EstrategiaVentasPage() {
         "Seguimiento por 90 días",
         "Optimización continua del proceso"
       ],
-      color: "violet",
+      color: "violet", // Mantenemos "violet"
       popular: false
     }
   ];
@@ -268,11 +268,26 @@ export default function EstrategiaVentasPage() {
         bg: "from-violet-500 to-indigo-600",
         border: "border-violet-500/30",
         text: "text-violet-400",
+      },
+      emerald: {
+        bg: "from-emerald-500 to-emerald-700",
+        border: "border-emerald-500/30",
+        text: "text-emerald-400",
+      },
+      teal: {
+        bg: "from-teal-500 to-emerald-600",
+        border: "border-teal-500/30",
+        text: "text-teal-400",
+      },
+      cyan: {
+        bg: "from-cyan-500 to-teal-600",
+        border: "border-cyan-500/30",
+        text: "text-cyan-400",
       }
     };
     
     // Get the correct variant based on the color prop
-    const colorClasses = colorVariants[color as keyof typeof colorVariants];
+    const colorClasses = colorVariants[color as keyof typeof colorVariants] || colorVariants.purple; // Fallback a purple si el color no existe
 
     return (
       <motion.div
@@ -322,11 +337,9 @@ export default function EstrategiaVentasPage() {
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
         <HomeNavigation />
-        
         {/* Elementos decorativos */}
         <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-purple-600/5 filter blur-[150px] pointer-events-none"></div>
         <div className="absolute bottom-1/3 left-0 w-[600px] h-[600px] rounded-full bg-indigo-600/5 filter blur-[120px] pointer-events-none"></div>
-        
         {/* Sección Hero */}
         <div ref={headerRef} className="relative py-12 md:py-16 mb-20">
           <div className="max-w-6xl mx-auto">
@@ -339,15 +352,12 @@ export default function EstrategiaVentasPage() {
                 <div className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-4 border border-purple-500/30">
                   ESTRATEGIAS DE VENTA
                 </div>
-                
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                   Transformo equipos en <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-500">máquinas de venta</span>
                 </h1>
-                
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
                   Diseño estrategias comerciales que maximizan resultados, optimizan procesos de venta y capacitan a tu equipo para superar constantemente sus objetivos.
                 </p>
-                
                 <div className="flex flex-wrap gap-4">
                   <button 
                     onClick={() => setShowContactForm(true)}
@@ -356,7 +366,6 @@ export default function EstrategiaVentasPage() {
                     <span>Potencia tus ventas ahora</span>
                     <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
-                  
                   <Link 
                     href="https://calendly.com/deivipluss/30min"
                     target="_blank"
@@ -366,7 +375,6 @@ export default function EstrategiaVentasPage() {
                     Agendar llamada de diagnóstico
                   </Link>
                 </div>
-                
                 <div className="mt-8 flex flex-wrap gap-y-4 gap-x-6">
                   <div className="flex items-center gap-2">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">
@@ -377,7 +385,6 @@ export default function EstrategiaVentasPage() {
                       <div className="text-gray-400 text-xs">equipos transformados</div>
                     </div>
                   </div>
-                  
                   <div className="flex items-center gap-2">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">
                       <FaChartLine />
@@ -389,68 +396,65 @@ export default function EstrategiaVentasPage() {
                   </div>
                 </div>
               </motion.div>
-              
               {/* Dashboard con imagen y métricas */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: isHeaderInView ? 1 : 0, scale: isHeaderInView ? 1 : 0.9 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="relative hidden md:block"
               >
-                <div className="relative h-[400px] w-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 rounded-xl"></div>
-                  <Image
-                    src="/imagenes/estrategias-venta-hero.webp"
-                    alt="Estrategias de venta efectivas"
-                    fill
-                    className="object-cover rounded-xl"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D0C1D] via-transparent to-transparent opacity-60"></div>
-                  
-                  {/* Dashboard de ventas flotante */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.7 }}
-                    className="absolute bottom-0 left-0 right-0 p-6"
-                  >
-                    <div className="bg-[#1A1A2E]/80 backdrop-blur-sm p-4 rounded-lg border border-purple-500/20">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">
-                          <FaChartLine />
+                <div className="relative hidden md:block">
+                  <div className="relative h-[400px] w-full">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 rounded-xl"></div>
+                    <Image
+                      src="/imagenes/estrategias-venta-hero.webp"
+                      alt="Estrategias de venta efectivas"
+                      fill
+                      className="object-cover rounded-xl"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D0C1D] via-transparent to-transparent opacity-60"></div>
+                    {/* Dashboard de ventas flotante */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.7 }}
+                      className="absolute bottom-0 left-0 right-0 p-6"
+                    >
+                      <div className="bg-[#1A1A2E]/80 backdrop-blur-sm p-4 rounded-lg border border-purple-500/20">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center text-white">
+                            <FaChartLine />
+                          </div>
+                          <div>
+                            <h3 className="text-white font-medium">Rendimiento de ventas</h3>
+                          </div>
+                          <span className="ml-auto text-emerald-400 text-sm flex items-center">
+                            +147% <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                          </span>
                         </div>
-                        <div>
-                          <h3 className="text-white font-medium">Rendimiento de ventas</h3>
+                        <div className="grid grid-cols-3 gap-2">
+                          <div className="bg-purple-900/20 p-2 rounded-lg">
+                            <div className="text-white font-bold">89%</div>
+                            <div className="text-gray-400 text-xs">Tasa de cierre</div>
+                          </div>
+                          <div className="bg-purple-900/20 p-2 rounded-lg">
+                            <div className="text-white font-bold">-27%</div>
+                            <div className="text-gray-400 text-xs">Ciclo de venta</div>
+                          </div>
+                          <div className="bg-purple-900/20 p-2 rounded-lg">
+                            <div className="text-white font-bold">3.8X</div>
+                            <div className="text-gray-400 text-xs">ROI medio</div>
+                          </div>
                         </div>
-                        <span className="ml-auto text-emerald-400 text-sm flex items-center">
-                          +147% <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                          </svg>
-                        </span>
                       </div>
-                      
-                      <div className="grid grid-cols-3 gap-2">
-                        <div className="bg-purple-900/20 p-2 rounded-lg">
-                          <div className="text-white font-bold">89%</div>
-                          <div className="text-gray-400 text-xs">Tasa de cierre</div>
-                        </div>
-                        <div className="bg-purple-900/20 p-2 rounded-lg">
-                          <div className="text-white font-bold">-27%</div>
-                          <div className="text-gray-400 text-xs">Ciclo de venta</div>
-                        </div>
-                        <div className="bg-purple-900/20 p-2 rounded-lg">
-                          <div className="text-white font-bold">3.8X</div>
-                          <div className="text-gray-400 text-xs">ROI medio</div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
             </div>
-
             {/* Tarjetas de resultados */}
-            <motion.div
+            <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isHeaderInView ? 1 : 0, y: isHeaderInView ? 0 : 30 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -471,14 +475,12 @@ export default function EstrategiaVentasPage() {
               ))}
             </motion.div>
           </div>
-          
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
         </div>
-        
         {/* Sección de Servicios de Estrategias */}
         <section className="py-12 mb-20">
           <div className="max-w-6xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -488,17 +490,14 @@ export default function EstrategiaVentasPage() {
               <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-3">
                 SOLUCIONES COMERCIALES
               </span>
-              
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Servicios de estrategia comercial
               </h2>
-              
               <p className="text-gray-300 max-w-3xl mx-auto">
                 Desarrollo planes personalizados para potenciar tu área comercial, 
                 optimizar la conversión y aumentar drásticamente la efectividad de tu equipo de ventas.
               </p>
             </motion.div>
-            
             <div className="grid md:grid-cols-4 gap-4 mb-8">
               {estrategiasDeVenta.map((estrategia, index) => (
                 <EstrategiaTab
@@ -510,7 +509,6 @@ export default function EstrategiaVentasPage() {
                 />
               ))}
             </div>
-            
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -538,7 +536,6 @@ export default function EstrategiaVentasPage() {
                       ))}
                     </div>
                   </div>
-                  
                   <button
                     onClick={() => setShowContactForm(true)}
                     className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg hover:shadow-md transition-all duration-300 flex items-center gap-2 flex-shrink-0 mt-4 md:mt-0"
@@ -551,11 +548,10 @@ export default function EstrategiaVentasPage() {
             </AnimatePresence>
           </div>
         </section>
-        
         {/* Sección de Metodologías */}
         <section className="py-12 mb-20">
           <div className="max-w-6xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -565,17 +561,14 @@ export default function EstrategiaVentasPage() {
               <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-3">
                 ENFOQUE
               </span>
-              
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Metodologías probadas que funcionan
               </h2>
-              
               <p className="text-gray-300 max-w-3xl mx-auto">
                 Combino técnicas modernas y validadas para crear estrategias comerciales 
                 efectivas que se adaptan perfectamente a tu sector y público objetivo.
               </p>
             </motion.div>
-
             <div className="grid md:grid-cols-3 gap-6">
               {metodologias.map((metodologia, index) => (
                 <motion.div
@@ -598,11 +591,9 @@ export default function EstrategiaVentasPage() {
             </div>
           </div>
         </section>
-        
         {/* Sección de Proceso */}
         <section className="py-12 mb-20 relative">
           <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E]/40 to-transparent rounded-xl"></div>
-          
           <div className="max-w-6xl mx-auto relative">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -624,11 +615,9 @@ export default function EstrategiaVentasPage() {
                 garantizando resultados medibles y sostenibles en el tiempo.
               </p>
             </motion.div>
-            
             <div className="relative">
               {/* Línea central del timeline con gradiente */}
               <div className="absolute h-full w-1 bg-gradient-to-b from-purple-500 via-indigo-600 to-purple-800/40 left-[15px] md:left-1/2 top-0 transform md:-translate-x-1/2 hidden sm:block"></div>
-              
               {procesosImplementacion.map((proceso, index) => (
                 <motion.div
                   key={index}
@@ -648,7 +637,6 @@ export default function EstrategiaVentasPage() {
                     {index + 1}
                     <div className="absolute inset-0 rounded-full bg-purple-500/20 animate-pulse"></div>
                   </div>
-                  
                   {/* Caja de contenido del paso con gradiente mejorado */}
                   <div className="bg-gradient-to-br from-[#1A1A2E]/90 to-[#1A1A2E]/70 p-5 md:p-6 rounded-lg border border-purple-500/20 flex-grow hover:border-purple-500/40 transition-all duration-300 group shadow-lg shadow-purple-900/10">
                     <div className="flex items-center mb-3">
@@ -658,7 +646,6 @@ export default function EstrategiaVentasPage() {
                       <h3 className="text-xl font-bold text-white">{proceso.title}</h3>
                     </div>
                     <p className="text-gray-300">{proceso.description}</p>
-                    
                     {/* Línea de conexión al timeline (solo visible en pantallas grandes) */}
                     <div className={`absolute top-[20px] w-4 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 hidden md:block
                       ${index % 2 === 0 ? 'right-0 translate-x-[calc(100%+1rem)]' : 'left-0 -translate-x-[calc(100%+1rem)]'}`}>
@@ -669,11 +656,10 @@ export default function EstrategiaVentasPage() {
             </div>
           </div>
         </section>
-        
         {/* Sección de Precios */}
         <section className="py-12 mb-20">
           <div className="max-w-6xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -683,17 +669,14 @@ export default function EstrategiaVentasPage() {
               <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 text-sm font-medium mb-3">
                 PLANES DE SERVICIO
               </span>
-              
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Inversión en tu estrategia comercial
               </h2>
-              
               <p className="text-gray-300 max-w-2xl mx-auto">
                 Planes diseñados para diferentes niveles de necesidad, 
                 desde consultoría puntual hasta transformación comercial completa.
               </p>
             </motion.div>
-
             <div className="grid md:grid-cols-3 gap-6">
               {paquetes.map((paquete, index) => (
                 <PaqueteCard
@@ -706,7 +689,6 @@ export default function EstrategiaVentasPage() {
                 />
               ))}
             </div>
-            
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -732,11 +714,10 @@ export default function EstrategiaVentasPage() {
             </motion.div>
           </div>
         </section>
-        
         {/* Restantes secciones: Casos de Éxito, FAQ y CTA */}
         <section className="py-12 mb-20">
           <div className="max-w-6xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -746,17 +727,14 @@ export default function EstrategiaVentasPage() {
               <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-teal-500/20 to-emerald-500/20 text-teal-300 text-sm font-medium mb-3">
                 RESULTADOS
               </span>
-              
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Casos de éxito recientes
               </h2>
-              
               <p className="text-gray-300 max-w-2xl mx-auto">
                 Empresas que han transformado sus resultados comerciales 
                 implementando mis estrategias y metodologías.
               </p>
             </motion.div>
-
             <div className="grid md:grid-cols-2 gap-8">
               {[
                 {
@@ -800,7 +778,6 @@ export default function EstrategiaVentasPage() {
                       <h3 className="text-2xl font-bold text-white">{caso.title}</h3>
                     </div>
                   </div>
-                  
                   <div className="p-6">
                     <p className="text-gray-300 mb-6">{caso.description}</p>
                     
@@ -816,9 +793,8 @@ export default function EstrategiaVentasPage() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </div>  
         </section>
-        
         {/* Sección FAQ */}
         <section className="py-12 mb-20">
           <div className="max-w-6xl mx-auto">
@@ -836,7 +812,6 @@ export default function EstrategiaVentasPage() {
                 Resuelve tus dudas sobre mis servicios de estrategia comercial
               </p>
             </motion.div>
-
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 {
@@ -856,7 +831,7 @@ export default function EstrategiaVentasPage() {
                   answer: "Mi enfoque no es reemplazar sino optimizar lo que funciona. Primero analizamos los procesos actuales, identificamos fortalezas y áreas de mejora, para luego refinar estratégicamente sin interrumpir la operación. La mayoría de mis clientes ya tienen sistemas establecidos; mi valor está en potenciarlos con elementos estratégicos que maximizan su efectividad y resultados."
                 }
               ].map((faq, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -869,13 +844,12 @@ export default function EstrategiaVentasPage() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </div>  
         </section>
-        
         {/* Sección CTA */}
         <section className="py-12 mb-20">
           <div className="max-w-6xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -883,12 +857,10 @@ export default function EstrategiaVentasPage() {
               className="relative overflow-hidden rounded-2xl border border-teal-500/20"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-teal-600/20 to-emerald-700/20"></div>
-              
               <div className="relative p-8 md:p-12 z-10">
                 <div className="absolute inset-0 bg-[#1A1A2E]/40 backdrop-blur-sm"></div>
                 <div className="absolute top-0 right-0 w-80 h-80 bg-teal-500/10 rounded-full filter blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full filter blur-3xl"></div>
-                
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
                   <div className="md:flex-1">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -916,7 +888,6 @@ export default function EstrategiaVentasPage() {
                       ))}
                     </div>
                   </div>
-                  
                   <div className="flex flex-col gap-4">
                     <button
                       onClick={() => setShowContactForm(true)}
@@ -925,7 +896,7 @@ export default function EstrategiaVentasPage() {
                       <span>Potenciar mis ventas ahora</span>
                       <FaArrowRight />
                     </button>
-                    <Link
+                    <Link 
                       href="https://calendly.com/deivipluss/30min"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -940,15 +911,13 @@ export default function EstrategiaVentasPage() {
           </div>
         </section>
       </div>
-      
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
         © 2024 - Deivipluss. ¡Todos los derechos reservados!
       </footer>
-    
       {/* Formulario de contacto modal */}
       <AnimatePresence>
         {showContactForm && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -968,7 +937,6 @@ export default function EstrategiaVentasPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              
               <div className="mb-6">
                 <div className="flex justify-center mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center">
@@ -978,7 +946,6 @@ export default function EstrategiaVentasPage() {
                 <h3 className="text-2xl font-bold text-center text-white mb-1">Estrategia de Ventas</h3>
                 <p className="text-gray-300 text-center mb-6">Cuéntame sobre tu equipo comercial y tus objetivos</p>
               </div>
-              
               <form className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
@@ -1039,7 +1006,6 @@ export default function EstrategiaVentasPage() {
                     placeholder="Describe los retos que enfrenta tu equipo comercial, objetivos que quieres alcanzar y cualquier detalle relevante..."
                   ></textarea>
                 </div>
-                
                 <div className="pt-2">
                   <button
                     type="submit"
