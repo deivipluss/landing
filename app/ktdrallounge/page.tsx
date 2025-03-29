@@ -87,7 +87,7 @@ export default function DiagnosticoDigital() {
         <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow">
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800">Software</div>
-            <div className="text-xs text-red-600 mt-1 md:hidden">Error</div>
+            <div className="text-xs text-red-600 mt-1 md:hidden">En espera</div>
           </CardContent>
         </Card>
       </div>
@@ -119,7 +119,7 @@ export default function DiagnosticoDigital() {
               <div className="text-gray-600">Vistas</div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
-              <div className="text-orange-600 font-semibold text-lg">123% + 123%</div>
+              <div className="text-orange-600 font-semibold text-lg">123%</div>
               <div className="text-gray-600">Crecimiento</div>
             </div>
           </div>
@@ -571,7 +571,7 @@ export default function DiagnosticoDigital() {
             >
               <div className="text-lg font-semibold text-green-700 mb-1">¡OFERTA ESPECIAL HOY!</div>
               <div className="text-2xl font-bold text-green-600">Descuento de S/1,000</div>
-              <p className="text-gray-600 text-sm mt-1">Si completas la transacción hoy mismo</p>
+              <p className="text-gray-600 text-sm mt-1">Solo si completas la transacción hoy mismo</p>
             </motion.div>
 
             <a
