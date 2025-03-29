@@ -84,10 +84,10 @@ export default function DiagnosticoDigital() {
         </div>
 
         {/* Software - Pendiente */}
-        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-blue-400 bg-blue-50 shadow-lg hover:shadow-xl transition-shadow">
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800">Software</div>
-            <div className="text-xs text-red-600 mt-1 md:hidden">En espera</div>
+            <div className="text-xs text-blue-600 mt-1 md:hidden">En espera</div>
           </CardContent>
         </Card>
       </div>
@@ -140,7 +140,7 @@ export default function DiagnosticoDigital() {
       </Card>
 
       {/* ANALICEMOS LA REALIDAD */}
-      <div className="w-full max-w-3xl mt-2">
+      <div className="w-full max-w-3xl mt-2 text-center">
         <div className="flex items-center justify-center mb-2">
           <Search className="text-red-600 h-6 w-6 mr-2" />
           <h2 className="text-xl font-bold text-red-600 uppercase tracking-wider">ANALICEMOS LA REALIDAD</h2>
@@ -234,8 +234,8 @@ export default function DiagnosticoDigital() {
       {/* Problemas y Soluciones en columnas paralelas */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mt-8">
         {/* Columna Problemas */}
-        <div>
-          <h2 className="text-xl font-bold text-red-600 mb-4 flex items-center">
+        <div className="text-center">
+          <h2 className="text-xl font-bold text-red-600 mb-4 flex items-center justify-center">
             <X className="h-5 w-5 mr-2" /> Problemas Detectados
           </h2>
           <div className="space-y-4">
@@ -285,8 +285,8 @@ export default function DiagnosticoDigital() {
         </div>
 
         {/* Columna Soluciones */}
-        <div>
-          <h2 className="text-xl font-bold text-green-600 mb-4 flex items-center">
+        <div className="text-center">
+          <h2 className="text-xl font-bold text-green-600 mb-4 flex items-center justify-center">
             <CheckCircle className="h-5 w-5 mr-2" /> Plan de Soluciones
           </h2>
           <div className="space-y-4">
