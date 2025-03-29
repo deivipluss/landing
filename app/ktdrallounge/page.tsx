@@ -36,13 +36,13 @@ export default function DiagnosticoDigital() {
       {/* Flowchart principal */}
       <div className="flex flex-wrap items-center justify-center gap-2 relative w-full px-4 md:px-8">
         {/* Contenido - Completado */}
-        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow relative">
-          <div className="absolute top-1 left-1 bg-green-500 text-white text-xs px-2 py-1 rounded">Superado</div>
+        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow">
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800 flex items-center justify-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-2 hidden md:inline" />
               Contenido
             </div>
+            <div className="text-xs text-green-600 mt-1 md:hidden">Superado</div>
           </CardContent>
         </Card>
 
@@ -50,14 +50,14 @@ export default function DiagnosticoDigital() {
           <ChevronRight className="text-green-500 h-6 w-6" />
         </div>
 
-        {/* Comunidad - Completado */}
-        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow relative">
-          <div className="absolute top-1 left-1 bg-green-500 text-white text-xs px-2 py-1 rounded">Superado</div>
+        {/* Comunidad - En curso */}
+        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-yellow-500 bg-yellow-50 shadow-lg hover:shadow-xl transition-shadow">
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800 flex items-center justify-center">
-              <CheckCircle className="h-4 w-4 text-green-500 mr-2 hidden md:inline" />
+              <CheckCircle className="h-4 w-4 text-yellow-500 mr-2 hidden md:inline" />
               Comunidad
             </div>
+            <div className="text-xs text-yellow-600 mt-1 md:hidden">En curso</div>
           </CardContent>
         </Card>
 
@@ -71,10 +71,10 @@ export default function DiagnosticoDigital() {
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow relative">
-            <div className="absolute top-1 left-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Error</div>
+          <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow">
             <CardContent className="p-2">
               <div className="font-semibold text-gray-800">Social Media</div>
+              <div className="text-xs text-red-600 mt-1 md:hidden">Error</div>
             </CardContent>
           </Card>
         </motion.div>
@@ -84,10 +84,10 @@ export default function DiagnosticoDigital() {
         </div>
 
         {/* Software - Pendiente */}
-        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow relative">
-          <div className="absolute top-1 left-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Error</div>
+        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow">
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800">Software</div>
+            <div className="text-xs text-red-600 mt-1 md:hidden">Error</div>
           </CardContent>
         </Card>
       </div>
@@ -586,6 +586,10 @@ export default function DiagnosticoDigital() {
           </div>
         </CardContent>
       </Card>
+
+      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
+        © 2025 - Deivipluss. ¡Todos los derechos reservados!
+      </footer>
     </div>
   );
 }
