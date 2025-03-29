@@ -95,7 +95,7 @@ export default function DiagnosticoDigital() {
       {/* Bloqueo destacado */}
       <div className="flex items-center bg-red-50 px-4 py-3 rounded-lg border border-red-200 mt-4 w-full max-w-xl">
         <AlertCircle className="text-red-500 h-5 w-5 mr-2 flex-shrink-0" />
-        <span className="text-red-600 font-medium text-sm md:text-base">Bloqueo crítico: Comunidad → Social Media</span>
+        <span className="text-red-600 font-medium text-sm md:text-base">Bloqueo crítico al tratar de pasar de Comunidad a Social Media</span>
       </div>
 
       {/* Resultados */}
