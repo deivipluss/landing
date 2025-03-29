@@ -6,7 +6,14 @@ import {
   X,
   ChevronRight,
   Zap,
+  Clock,
+  Users,
+  Calendar,
+  Star,
+  Shield,
   Search,
+  DollarSign,
+  Sparkles,
 } from "lucide-react";
 
 export default function DiagnosticoDigital() {
@@ -129,6 +136,9 @@ export default function DiagnosticoDigital() {
         </div>
         <div className="w-full h-1 bg-gradient-to-r from-red-500 to-purple-500 rounded-full"></div>
       </div>
+
+      {/* Recurso Humano Disponible */}
+      {/* ...existing code... */}
     </div>
   );
 }
