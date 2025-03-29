@@ -1,20 +1,21 @@
-"use client"
-import { Card, CardContent } from "@/components/ui/card"
+"use client";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   AlertCircle,
   CheckCircle,
   X,
   ChevronRight,
   Zap,
-  Clock,
-  Users,
   Calendar,
   Star,
   Shield,
   Search,
   DollarSign,
   Sparkles,
-} from "lucide-react"
+  Users,
+  Clock,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function DiagnosticoDigital() {
   return (
@@ -38,13 +39,13 @@ export default function DiagnosticoDigital() {
         <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow">
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800 flex items-center justify-center">
-              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+              <CheckCircle className="h-4 w-4 text-green-500 mr-2 hidden md:inline" />
               Contenido
             </div>
           </CardContent>
         </Card>
 
-        <div className="mx-2">
+        <div className="mx-2 hidden md:block">
           <ChevronRight className="text-green-500 h-6 w-6" />
         </div>
 
@@ -52,24 +53,30 @@ export default function DiagnosticoDigital() {
         <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow">
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800 flex items-center justify-center">
-              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+              <CheckCircle className="h-4 w-4 text-green-500 mr-2 hidden md:inline" />
               Comunidad
             </div>
           </CardContent>
         </Card>
 
-        <div className="mx-2">
+        <div className="mx-2 hidden md:block">
           <X className="text-red-500 h-6 w-6 animate-pulse" />
         </div>
 
         {/* Social Media - Pendiente */}
-        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow">
-          <CardContent className="p-2">
-            <div className="font-semibold text-gray-800">Social Media</div>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ scale: 1 }}
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow">
+            <CardContent className="p-2">
+              <div className="font-semibold text-gray-800">Social Media</div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-        <div className="mx-2">
+        <div className="mx-2 hidden md:block">
           <ChevronRight className="text-red-500 h-6 w-6" />
         </div>
 
@@ -541,23 +548,27 @@ export default function DiagnosticoDigital() {
         </CardContent>
       </Card>
 
-      {/* Inversión */}
+      {/* Propuesta de Inversión */}
       <Card className="w-full max-w-3xl mt-8 border-2 border-yellow-300 bg-gradient-to-r from-amber-50 to-yellow-50 shadow-lg">
         <CardContent className="p-6">
           <div className="flex flex-col items-center text-center">
-            <DollarSign className="h-10 w-10 text-amber-500 mb-2" />
-            <h3 className="text-xl font-bold text-amber-800 mb-3">Inversión para tu Transformación Digital</h3>
+            <h3 className="text-xl font-bold text-amber-800 mb-3">Propuesta de Inversión</h3>
 
             <div className="bg-white p-4 rounded-lg border border-yellow-200 w-full max-w-md mb-4">
               <div className="text-3xl font-bold text-amber-600 mb-1">$1,000 USD</div>
               <p className="text-gray-600 text-sm">Implementación completa del plan estratégico</p>
             </div>
 
-            <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4">
+            <motion.div
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4"
+            >
               <div className="text-lg font-semibold text-green-700 mb-1">¡OFERTA ESPECIAL HOY!</div>
               <div className="text-2xl font-bold text-green-600">Descuento de S/1,000</div>
               <p className="text-gray-600 text-sm mt-1">Si completas la transacción hoy mismo</p>
-            </div>
+            </motion.div>
 
             <button className="bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition-colors mt-2 flex items-center">
               <Zap className="h-5 w-5 mr-2" />
@@ -567,6 +578,6 @@ export default function DiagnosticoDigital() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
 
