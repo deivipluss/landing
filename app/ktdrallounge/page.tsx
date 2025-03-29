@@ -1,5 +1,5 @@
-"use client";
-import { Card, CardContent } from "@/components/ui/card";
+"use client"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   AlertCircle,
   CheckCircle,
@@ -14,7 +14,7 @@ import {
   Search,
   DollarSign,
   Sparkles,
-} from "lucide-react";
+} from "lucide-react"
 
 export default function DiagnosticoDigital() {
   return (
@@ -138,7 +138,400 @@ export default function DiagnosticoDigital() {
       </div>
 
       {/* Recurso Humano Disponible */}
-      {/* ...existing code... */}
+      <Card className="w-full max-w-3xl border border-blue-200 bg-white mt-2">
+        <CardContent className="p-4">
+          <div className="flex items-center mb-3">
+            <Users className="text-blue-500 h-5 w-5 mr-2" />
+            <h3 className="font-bold text-lg text-gray-800">Recurso Humano Disponible</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {/* Funciona bien */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-green-600 flex items-center text-sm">
+                <CheckCircle className="h-4 w-4 mr-1" /> Funciona bien
+              </h4>
+              <ul className="bg-green-50 p-3 rounded-lg border border-green-200 text-sm">
+                <li className="mb-1 flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  Community Manager
+                </li>
+                <li className="mb-1 flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  Diseñador Gráfico
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  Editor de Video
+                </li>
+              </ul>
+            </div>
+
+            {/* Funciona más o menos */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-yellow-600 flex items-center text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" /> Funciona más o menos
+              </h4>
+              <ul className="bg-yellow-50 p-3 rounded-lg border border-yellow-200 text-sm">
+                <li className="mb-1 flex items-center">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></div>
+                  Fotógrafo
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></div>
+                  Videógrafo
+                </li>
+              </ul>
+            </div>
+
+            {/* Funciona de forma mecánica */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-red-600 flex items-center text-sm">
+                <X className="h-4 w-4 mr-1" /> Funciona mecánicamente
+              </h4>
+              <ul className="bg-red-50 p-3 rounded-lg border border-red-200 text-sm">
+                <li className="mb-1 flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                  Moderadores
+                </li>
+                <li className="mb-1 flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                  Área de Planificación
+                </li>
+                <li className="mb-1 flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                  Atención al Cliente
+                </li>
+                <li className="mb-1 flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                  Área Bartender
+                </li>
+                <li className="mb-1 flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                  Área Escenario
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                  Área Música/DJs
+                </li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Problemas y Soluciones en columnas paralelas */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mt-8">
+        {/* Columna Problemas */}
+        <div>
+          <h2 className="text-xl font-bold text-red-600 mb-4 flex items-center">
+            <X className="h-5 w-5 mr-2" /> Problemas Detectados
+          </h2>
+          <div className="space-y-4">
+            {/* Problema destacado - Reuniones ineficientes */}
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-start">
+                <Clock className="text-red-500 h-5 w-5 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <span className="text-gray-900 font-semibold">Reuniones ineficientes</span>
+                  <p className="text-gray-700 text-sm mt-1">Mucho acuerdo, casi nada de resultados concretos</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Otros problemas */}
+            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
+              <CardContent className="p-4 flex items-start">
+                <div className="text-red-500 mr-3 mt-0.5">•</div>
+                <span className="text-gray-800">Ausencia de visión estratégica global en el entorno digital</span>
+              </CardContent>
+            </Card>
+            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
+              <CardContent className="p-4 flex items-start">
+                <div className="text-red-500 mr-3 mt-0.5">•</div>
+                <span className="text-gray-800">Deficiencias en fomentar cultura de trabajo colaborativo</span>
+              </CardContent>
+            </Card>
+            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
+              <CardContent className="p-4 flex items-start">
+                <div className="text-red-500 mr-3 mt-0.5">•</div>
+                <span className="text-gray-800">Protocolos de ejecución inexistentes</span>
+              </CardContent>
+            </Card>
+            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
+              <CardContent className="p-4 flex items-start">
+                <div className="text-red-500 mr-3 mt-0.5">•</div>
+                <span className="text-gray-800">Objetivos no medibles ni estratégicos</span>
+              </CardContent>
+            </Card>
+            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
+              <CardContent className="p-4 flex items-start">
+                <div className="text-red-500 mr-3 mt-0.5">•</div>
+                <span className="text-gray-800">Equipo no comprometido más allá de tareas mecánicas</span>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Columna Soluciones */}
+        <div>
+          <h2 className="text-xl font-bold text-green-600 mb-4 flex items-center">
+            <CheckCircle className="h-5 w-5 mr-2" /> Plan de Soluciones
+          </h2>
+          <div className="space-y-4">
+            {[
+              { title: "Realizaré una auditoría completa", desc: "Evaluaré el estado actual digital e interno" },
+              { title: "Estableceré procesos claros", desc: "Definiré roles, valores y prácticas educativas" },
+              { title: "Fijaré objetivos medibles", desc: "Crearé metas concretas para ingresos y engagement" },
+              { title: "Construiré bases digitales sólidas", desc: "Desarrollaré un ecosistema digital profesional" },
+              { title: "Capacitaré a todo el equipo", desc: "Implementaré formación en habilidades digitales" },
+            ].map((solution, i) => (
+              <Card key={i} className="border-green-200 bg-green-50 hover:bg-green-100 transition-colors">
+                <CardContent className="p-4">
+                  <div className="font-semibold text-green-700 flex items-center">
+                    <span className="bg-green-100 text-green-600 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">
+                      {i + 1}
+                    </span>
+                    {solution.title}
+                  </div>
+                  <div className="text-gray-700 text-sm mt-1 ml-9">{solution.desc}</div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Resultados en 35 días */}
+      <Card className="w-full max-w-6xl border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-indigo-50 mt-8">
+        <CardContent className="p-6">
+          <div className="flex items-center mb-4">
+            <Calendar className="text-purple-600 h-5 w-5 mr-2" />
+            <h3 className="font-bold text-xl text-purple-800">Resultados en 35 días</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <Card className="border border-purple-200 bg-white shadow-md mb-6">
+                <CardContent className="p-4">
+                  <h4 className="font-semibold text-purple-700 flex items-center uppercase">
+                    <Star className="h-4 w-4 mr-2 text-yellow-500" />
+                    Gestión Operativa
+                  </h4>
+                  <ul className="mt-2 space-y-2 text-sm">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Discoteca con todos los sistemas funcionando en sincronía</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Logística, planificación y producción integradas</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Mozas, mozos, seguridad, barra, escenario y demás informados del día a día del negocio, incluye
+                        información básica, ofertas del día, promos vigentes y demás datos
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Shows planificados con antelación y detalle completo</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Plan de emergencia y contingencia para cada evento</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-purple-200 bg-white shadow-md">
+                <CardContent className="p-4">
+                  <h4 className="font-semibold text-purple-700 flex items-center uppercase">
+                    <Star className="h-4 w-4 mr-2 text-yellow-500" />
+                    Gestión de Personal
+                  </h4>
+                  <ul className="mt-2 space-y-2 text-sm">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Todas las áreas participan en la creación de contenido digital</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>DJs, artistas y bartenders integrados en la estrategia de marca</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Roles definidos con claridad para cada miembro del equipo</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Responsabilidades claras y medibles para cada área</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div>
+              <Card className="border border-purple-200 bg-white shadow-md mb-6">
+                <CardContent className="p-4">
+                  <h4 className="font-semibold text-purple-700 flex items-center uppercase">
+                    <Star className="h-4 w-4 mr-2 text-yellow-500" />
+                    Gestión de Recursos Multimedia
+                  </h4>
+                  <ul className="mt-2 space-y-2 text-sm">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Fotógrafo y videógrafo integrados en estrategia digital</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Amplificación de rendimiento en redes sociales</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Contenido de calidad profesional generado constantemente</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Calendarización de contenidos con garantía 100% de cumplimiento</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Moderación activa en todas las redes, comentarios y chats</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Gestión integral de WhatsApp, grupos y canales activos</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-purple-200 bg-white shadow-md">
+                <CardContent className="p-4">
+                  <h4 className="font-semibold text-purple-700 flex items-center uppercase">
+                    <Shield className="h-4 w-4 mr-2 text-blue-500" />
+                    Gestión de Seguridad Digital
+                  </h4>
+                  <ul className="mt-2 space-y-2 text-sm">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Administración de activos digitales</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Software y cuentas compradas registradas a correo corporativo</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Registro de dominio en internet</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Verificación del perfil Meta para mayor seguridad</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>Biblioteca digital de la marca en la nube para almacenar archivos multimedia</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* PROCESOS 100% FUNCIONALES */}
+          <Card className="border-2 border-green-400 bg-gradient-to-r from-green-50 to-emerald-50 shadow-lg mt-6">
+            <CardContent className="p-5">
+              <h4 className="font-bold text-emerald-800 flex items-center justify-center text-lg uppercase mb-3">
+                <Sparkles className="h-5 w-5 mr-2 text-yellow-500" />
+                Procesos 100% Funcionales
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="space-y-2">
+                  <p className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>La planificación funciona con precisión y eficiencia</span>
+                  </p>
+                  <p className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>La logística opera sin contratiempos ni retrasos</span>
+                  </p>
+                  <p className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>La producción alcanza estándares profesionales</span>
+                  </p>
+                  <p className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>El contenido en internet genera resultados medibles</span>
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Los objetivos se cumplen y superan expectativas</span>
+                  </p>
+                  <p className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Personal capacitado y entrenado para la nueva metodología</span>
+                  </p>
+                  <p className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Software de seguimiento para marcar progreso y avances</span>
+                  </p>
+                  <p className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Monitoreo constante para informes a gerencia</span>
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </CardContent>
+      </Card>
+
+      {/* Inversión */}
+      <Card className="w-full max-w-3xl mt-8 border-2 border-yellow-300 bg-gradient-to-r from-amber-50 to-yellow-50 shadow-lg">
+        <CardContent className="p-6">
+          <div className="flex flex-col items-center text-center">
+            <DollarSign className="h-10 w-10 text-amber-500 mb-2" />
+            <h3 className="text-xl font-bold text-amber-800 mb-3">Inversión para tu Transformación Digital</h3>
+
+            <div className="bg-white p-4 rounded-lg border border-yellow-200 w-full max-w-md mb-4">
+              <div className="text-3xl font-bold text-amber-600 mb-1">$1,000 USD</div>
+              <p className="text-gray-600 text-sm">Implementación completa del plan estratégico</p>
+            </div>
+
+            <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4">
+              <div className="text-lg font-semibold text-green-700 mb-1">¡OFERTA ESPECIAL HOY!</div>
+              <div className="text-2xl font-bold text-green-600">Descuento de S/1,000</div>
+              <p className="text-gray-600 text-sm mt-1">Si completas la transacción hoy mismo</p>
+            </div>
+
+            <button className="bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition-colors mt-2 flex items-center">
+              <Zap className="h-5 w-5 mr-2" />
+              Asegurar mi Transformación Digital
+            </button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Call to Action */}
+      <Card className="w-full max-w-3xl mt-8 border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <CardContent className="p-6 text-center">
+          <h3 className="text-xl font-bold text-blue-800 mb-2">¿Listo para transformar tu estrategia digital?</h3>
+          <p className="text-gray-700 mb-4">
+            Implementemos juntos este plan de acción para superar los bloqueos actuales
+          </p>
+          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg shadow transition-colors">
+            Iniciar Transformación
+          </button>
+        </CardContent>
+      </Card>
     </div>
-  );
+  )
 }
+
