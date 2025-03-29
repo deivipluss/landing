@@ -36,7 +36,8 @@ export default function DiagnosticoDigital() {
       {/* Flowchart principal */}
       <div className="flex flex-wrap items-center justify-center gap-2 relative w-full px-4 md:px-8">
         {/* Contenido - Completado */}
-        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow relative">
+          <div className="absolute top-1 left-1 bg-green-500 text-white text-xs px-2 py-1 rounded">Superado</div>
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800 flex items-center justify-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-2 hidden md:inline" />
@@ -50,7 +51,8 @@ export default function DiagnosticoDigital() {
         </div>
 
         {/* Comunidad - Completado */}
-        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-green-500 bg-green-50 shadow-lg hover:shadow-xl transition-shadow relative">
+          <div className="absolute top-1 left-1 bg-green-500 text-white text-xs px-2 py-1 rounded">Superado</div>
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800 flex items-center justify-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-2 hidden md:inline" />
@@ -69,7 +71,8 @@ export default function DiagnosticoDigital() {
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow">
+          <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow relative">
+            <div className="absolute top-1 left-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Error</div>
             <CardContent className="p-2">
               <div className="font-semibold text-gray-800">Social Media</div>
             </CardContent>
@@ -81,7 +84,8 @@ export default function DiagnosticoDigital() {
         </div>
 
         {/* Software - Pendiente */}
-        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="p-3 min-w-[120px] md:min-w-40 text-center border-2 border-red-400 bg-red-50 shadow-lg hover:shadow-xl transition-shadow relative">
+          <div className="absolute top-1 left-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Error</div>
           <CardContent className="p-2">
             <div className="font-semibold text-gray-800">Software</div>
           </CardContent>
@@ -570,10 +574,15 @@ export default function DiagnosticoDigital() {
               <p className="text-gray-600 text-sm mt-1">Si completas la transacción hoy mismo</p>
             </motion.div>
 
-            <button className="bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition-colors mt-2 flex items-center">
+            <a
+              href="https://api.whatsapp.com/send?phone=+51989843709&text=Hola%20Deivis,%20quiero%20aprovechar%20los%20s/1000%20de%20descuento%20en%20tu%20propuesta%20para%20Ktdral%20Lounge!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition-colors mt-2 flex items-center"
+            >
               <Zap className="h-5 w-5 mr-2" />
-              Asegurar mi Transformación Digital
-            </button>
+              Contratar Ahora
+            </a>
           </div>
         </CardContent>
       </Card>
