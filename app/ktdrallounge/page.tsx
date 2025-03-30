@@ -23,6 +23,8 @@ export default function DiagnosticoDigital() {
 
   // Add countdown timer that doesn't affect the discount amount
   useEffect(() => {
+    let intervalId: NodeJS.Timeout; // Declarar intervalId para usarlo en el cleanup
+
     const updateCountdown = () => {
       // Recalcular la fecha de finalización en cada ejecución sumando 12 horas a la hora actual
       const now = new Date();
@@ -37,9 +39,14 @@ export default function DiagnosticoDigital() {
       setTimeLeft(`${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
     };
 
+    // Ejecutar updateCountdown inmediatamente
     updateCountdown();
-    const interval = setInterval(updateCountdown, 1000); // Update every second
-    return () => clearInterval(interval);
+    
+    // Configurar el intervalo y guardar el ID
+    intervalId = setInterval(updateCountdown, 1000);
+
+    // Función de limpieza para clearInterval
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
