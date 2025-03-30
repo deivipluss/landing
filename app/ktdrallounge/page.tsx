@@ -27,10 +27,11 @@ export default function DiagnosticoDigital() {
       const startTime = new Date("2025-01-01T00:00:00").getTime(); // Replace with the actual start time
       const now = Date.now();
       const hoursElapsed = Math.floor((now - startTime) / (1000 * 60 * 60));
-      const newDiscount = Math.max(0, 1000 - Math.floor(hoursElapsed / 12) * 100);
+      const reductions = Math.floor(hoursElapsed / 12);
+      const newDiscount = Math.max(1000 - reductions * 100, 0); // Ensure it starts at 1000 and decreases by 100 every 12 hours
       setDiscount(newDiscount);
 
-      const nextReduction = startTime + Math.ceil(hoursElapsed / 12) * 12 * 60 * 60 * 1000;
+      const nextReduction = startTime + (reductions + 1) * 12 * 60 * 60 * 1000;
       const timeRemaining = nextReduction - now;
       const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
