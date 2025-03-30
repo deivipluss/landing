@@ -23,29 +23,31 @@ export default function DiagnosticoDigital() {
 
   // Add countdown timer that doesn't affect the discount amount
   useEffect(() => {
-    const updateCountdown = () => {
-      // Recalcular la fecha de finalización en cada ejecución sumando 12 horas a la hora actual
-      const now = new Date();
-      const endTime = new Date(now.getTime() + 12 * 60 * 60 * 1000);
+    // Establecer la fecha de finalización una sola vez
+    const endTime = new Date(Date.now() + 12 * 60 * 60 * 1000);
 
-      // Convertir a timestamps (milisegundos) antes de restar
+    const updateCountdown = () => {
+      const now = new Date();
       const diff = endTime.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        setTimeLeft("00:00:00"); // Mostrar 0 cuando el tiempo se agote
+        clearInterval(intervalId); // Detener el intervalo
+        return;
+      }
+
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      // Actualizar el estado solo si el valor ha cambiado
-      const newTimeLeft = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      if (newTimeLeft !== timeLeft) {
-        setTimeLeft(newTimeLeft);
-      }
+      setTimeLeft(`${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
     };
 
-    updateCountdown();
-    const intervalId = setInterval(updateCountdown, 1000); // Update every second
+    updateCountdown(); // Ejecutar inmediatamente para evitar el retraso inicial
+    const intervalId = setInterval(updateCountdown, 1000); // Actualizar cada segundo
 
-    return () => clearInterval(intervalId);
-  }, [timeLeft]); // Agregar timeLeft como dependencia para que se vuelva a ejecutar si cambia
+    return () => clearInterval(intervalId); // Limpiar el intervalo al desmontar
+  }, []);
 
   return (
     <div className="flex flex-col items-center p-6 space-y-6 w-full max-w-6xl mx-auto">
