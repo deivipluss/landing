@@ -16,10 +16,31 @@ import {
   Clock,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function DiagnosticoDigital() {
-  const [timeLeft, setTimeLeft] = useState("11h 59m 59s");
+  const [timeLeft, setTimeLeft] = useState("");
+
+  // Add countdown timer that doesn't affect the discount amount
+  useEffect(() => {
+    const updateCountdown = () => {
+      // Set a fixed end date (e.g., 12 hours from now)
+      const now = new Date();
+      const endTime = new Date(now);
+      endTime.setHours(endTime.getHours() + 12);
+
+      const diff = endTime - now;
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex flex-col items-center p-6 space-y-6 w-full max-w-6xl mx-auto">
@@ -733,8 +754,11 @@ export default function DiagnosticoDigital() {
                 <span className="text-red-600 font-bold text-lg">
                   ¡El tiempo corre!
                 </span>
-                <p className="text-gray-500 text-sm mt-2">
-                  Esta oferta especial es por tiempo limitado
+                <div className="text-red-500 font-extrabold text-2xl animate-pulse">
+                  {timeLeft}
+                </div>
+                <p className="text-gray-500 text-xs mt-1">
+                  Oferta especial por tiempo limitado
                 </p>
               </div>
             </motion.div>
