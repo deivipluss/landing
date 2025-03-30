@@ -24,9 +24,17 @@ export default function DiagnosticoDigital() {
   // Add countdown timer that dynamically adjusts to 12-hour intervals
   useEffect(() => {
     const calculateNext12HourInterval = () => {
-      const now = Date.now();
+      const now = new Date();
       const twelveHoursInMs = 12 * 60 * 60 * 1000;
-      return new Date(Math.ceil(now / twelveHoursInMs) * twelveHoursInMs);
+
+      // Fecha inicial fija: 30.03.2025 a las 12:00 PM
+      const initialDate = new Date("2025-03-30T12:00:00Z").getTime();
+
+      // Calcular el próximo múltiplo de 12 horas desde la fecha inicial
+      const nowInMs = now.getTime();
+      const nextIntervalInMs = Math.ceil((nowInMs - initialDate) / twelveHoursInMs) * twelveHoursInMs + initialDate;
+
+      return new Date(nextIntervalInMs);
     };
 
     const nextEndTime = calculateNext12HourInterval();
