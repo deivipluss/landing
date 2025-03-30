@@ -16,41 +16,10 @@ import {
   Clock,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function DiagnosticoDigital() {
-  const [discount, setDiscount] = useState(1000);
-  const [timeLeft, setTimeLeft] = useState("");
-
-  useEffect(() => {
-    const calculateDiscount = () => {
-      // Use current date instead of a future date to ensure the discount starts at 1000
-      // This makes the discount calculation work properly for demo purposes
-      // In production, you would use the actual campaign start date
-      const now = Date.now();
-      const startTime = now - 24 * 60 * 60 * 1000; // Start from yesterday for demo
-
-      const hoursElapsed = Math.floor((now - startTime) / (1000 * 60 * 60));
-      const reductions = Math.min(Math.floor(hoursElapsed / 12), 10); // Cap at 10 reductions (minimum 0 soles)
-      const newDiscount = Math.max(1000 - reductions * 100, 0);
-      setDiscount(newDiscount);
-
-      // Calculate next reduction time
-      const nextReduction =
-        startTime + (Math.floor(hoursElapsed / 12) + 1) * 12 * 60 * 60 * 1000;
-      const timeRemaining = nextReduction - now;
-      const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
-      const seconds = Math.floor((timeRemaining / 1000) % 60);
-      setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
-    };
-
-    // Set initial discount to 1000 immediately
-    setDiscount(1000);
-    calculateDiscount();
-    const interval = setInterval(calculateDiscount, 1000); // Update every second
-    return () => clearInterval(interval);
-  }, []);
+  const [timeLeft, setTimeLeft] = useState("11h 59m 59s");
 
   return (
     <div className="flex flex-col items-center p-6 space-y-6 w-full max-w-6xl mx-auto">
@@ -755,7 +724,7 @@ export default function DiagnosticoDigital() {
                 ¡OFERTA ESPECIAL HOY!
               </div>
               <div className="text-3xl font-bold text-green-600">
-                Descuento de S/{discount}
+                Descuento de S/1000
               </div>
               <p className="text-gray-600 text-sm mt-1">
                 Aprovecha antes de que el descuento disminuya
@@ -764,11 +733,8 @@ export default function DiagnosticoDigital() {
                 <span className="text-red-600 font-bold text-lg">
                   ¡El tiempo corre!
                 </span>
-                <div className="text-red-500 font-extrabold text-2xl">
-                  {timeLeft}
-                </div>
-                <p className="text-gray-500 text-xs mt-1">
-                  El descuento bajará S/100 cada 12 horas
+                <p className="text-gray-500 text-sm mt-2">
+                  Esta oferta especial es por tiempo limitado
                 </p>
               </div>
             </motion.div>
