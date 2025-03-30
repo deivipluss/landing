@@ -24,7 +24,7 @@ export default function DiagnosticoDigital() {
   // Add countdown timer that doesn't affect the discount amount
   useEffect(() => {
     const updateCountdown = () => {
-      // Set a fixed end date (e.g., 12 hours from now)
+      // Recalcular la fecha de finalización en cada ejecución
       const now = new Date();
       const endTime = new Date(now);
       endTime.setHours(endTime.getHours() + 12);
