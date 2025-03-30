@@ -116,25 +116,26 @@ export default function DiagnosticoDigital() {
           <div className="flex flex-wrap justify-between gap-2 text-sm mb-4">
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-green-600 font-semibold text-lg">5.2M</div>
-              <div className="text-gray-600">Visualizaciones</div>
-              <div className="font-bold text-xs text-green-600 mt-1">MILLONES</div>
+              <div className="font-bold text-xs text-green-600">MILLONES</div>
+              <div className="text-gray-600 mt-1">Visualizaciones</div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-blue-600 font-semibold text-lg">2.4M</div>
-              <div className="text-gray-600">Alcance</div>
-              <div className="font-bold text-xs text-blue-600 mt-1">MILLONES</div>
+              <div className="font-bold text-xs text-blue-600">MILLONES</div>
+              <div className="text-gray-600 mt-1">Alcance</div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-purple-600 font-semibold text-lg">569.7K</div>
-              <div className="text-gray-600">Vistas</div>
-              <div className="font-bold text-xs text-purple-600 mt-1">MILES</div>
+              <div className="font-bold text-xs text-purple-600">MILES</div>
+              <div className="text-gray-600 mt-1">Vistas</div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-orange-600 font-semibold text-lg">123%</div>
-              <div className="text-gray-600">Crecimiento</div>
-              <div className="font-bold text-xs text-orange-600 mt-1">PORCENTAJE</div>
+              <div className="font-bold text-xs text-orange-600">PORCENTAJE</div>
+              <div className="text-gray-600 mt-1">Crecimiento</div>
             </div>
           </div>
+          
           <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
             <h4 className="font-semibold text-blue-800 mb-2">
               ¡Es hora de evolucionar estos números!
@@ -329,6 +330,32 @@ export default function DiagnosticoDigital() {
                 <div className="text-red-500 mr-3 mt-0.5">•</div>
                 <span className="text-gray-800">
                   Equipo no comprometido más allá de tareas mecánicas
+                </span>
+              </CardContent>
+            </Card>
+            
+            {/* Nuevos problemas añadidos */}
+            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
+              <CardContent className="p-4 flex items-start">
+                <div className="text-red-500 mr-3 mt-0.5">•</div>
+                <span className="text-gray-800">
+                  Disfunción en los programas de fidelización y retención de clientes
+                </span>
+              </CardContent>
+            </Card>
+            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
+              <CardContent className="p-4 flex items-start">
+                <div className="text-red-500 mr-3 mt-0.5">•</div>
+                <span className="text-gray-800">
+                  Disfunción en programas de sociedades comerciales con otros negocios y/o empresas
+                </span>
+              </CardContent>
+            </Card>
+            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
+              <CardContent className="p-4 flex items-start">
+                <div className="text-red-500 mr-3 mt-0.5">•</div>
+                <span className="text-gray-800">
+                  Disfunción en el programa de ofertas, descuentos y promociones
                 </span>
               </CardContent>
             </Card>
