@@ -21,9 +21,9 @@ import { useState, useEffect } from "react";
 export default function DiagnosticoDigital() {
   return (
     <div className="flex flex-col items-center p-6 space-y-6 w-full max-w-6xl mx-auto">
-      {/* Título */}
+      {/* Título mejorado */}
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">
+        <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-transparent bg-clip-text drop-shadow-sm px-4 py-1 border-b-2 border-indigo-200">
           Diagnóstico Digital - El Lounge
         </h1>
       </div>
@@ -143,7 +143,7 @@ export default function DiagnosticoDigital() {
               <div className="font-bold text-xs text-orange-600">PORCENTAJE</div>
               <div className="text-gray-600 mt-1">Crecimiento</div>
               <div className="text-xs text-gray-500 italic mt-1 border-t border-gray-100 pt-1">
-                Tu ritmo duplica al promedio del sector nocturno
+                Tu ritmo duplica al promedio del sector nocturno local
               </div>
             </div>
           </div>
