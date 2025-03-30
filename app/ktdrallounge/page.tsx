@@ -141,25 +141,29 @@ export default function DiagnosticoDigital() {
               ¡Es hora de evolucionar estos números!
             </h4>
             <p className="text-gray-700 text-sm">
-              Tu discoteca ya es un referente, pero podemos ir más allá. Transformemos juntos este alcance digital en{" "}
+              Tu discoteca ya tiene presencia digital sólida, pero juntos podemos llevarla al siguiente nivel. Convirtamos estas métricas en{" "}
               <span className="font-semibold text-green-600">
-                flujo de caja real
+                estrategias pagas de Meta Ads
               </span>
               ,{" "}
               <span className="font-semibold text-purple-600">
-                fans que defiendan tu marca
+                landing pages específicas para cada evento
               </span>
               , y{" "}
               <span className="font-semibold text-blue-600">
-                una comunidad que interactúe constantemente
+                un ecosistema digital completo
               </span>
-              . Convirtamos cada scroll en una reserva, cada like en un cliente recurrente, y cada mención en{" "}
+              . Desarrollemos{" "}
               <span className="font-semibold text-orange-600">
-                un embajador de tu experiencia nocturna
+                storytelling que conecte emocionalmente con tu audiencia
               </span>
-              . Pasemos de ser una cuenta popular a{" "}
-              <span className="font-semibold text-indigo-600">una marca irresistible</span>{" "}
-              que dicta tendencia en la escena. ¡Los números están, ahora moneticémoslos juntos!
+              , implementemos un{" "}
+              <span className="font-semibold text-indigo-600">blog con contenido exclusivo</span>{" "}
+              y mejoremos la{" "}
+              <span className="font-semibold text-pink-600">
+                experiencia digital de tus clientes
+              </span>
+              . ¡Transformemos tus seguidores en una comunidad fiel que interactúe constantemente con tu marca!
             </p>
           </div>
         </CardContent>
@@ -453,6 +457,30 @@ export default function DiagnosticoDigital() {
                         Plan de emergencia y contingencia para cada evento
                       </span>
                     </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Programas de fidelización, ejecutándose
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Programas de retención ejecutándose
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Ofertas controladas, en ejecución y producción
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span>
+                        Promociones controladas, en ejecución y producción
+                      </span>
+                    </li>
                   </ul>
                 </CardContent>
               </Card>
@@ -500,6 +528,7 @@ export default function DiagnosticoDigital() {
               <Card className="border border-purple-200 bg-white shadow-md mb-6">
                 <CardContent className="p-4">
                   <h4 className="font-semibold text-purple-700 flex items-center uppercase">
+                    <Star className="h-4 w-4 mr-2 text-yellow-500" />
                     Gestión de Recursos Multimedia
                   </h4>
                   <ul className="mt-2 space-y-2 text-sm">
@@ -548,7 +577,7 @@ export default function DiagnosticoDigital() {
               <Card className="border border-purple-200 bg-white shadow-md">
                 <CardContent className="p-4">
                   <h4 className="font-semibold text-purple-700 flex items-center uppercase">
-                    <Shield className="h-4 w-4 mr-2 text-blue-500" />
+                    <Star className="h-4 w-4 mr-2 text-yellow-500" />
                     Gestión de Seguridad Digital
                   </h4>
                   <ul className="mt-2 space-y-2 text-sm">
