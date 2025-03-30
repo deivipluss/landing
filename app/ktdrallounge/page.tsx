@@ -751,7 +751,11 @@ function DiscountSection() {
 
       if (diff <= 0) {
         // Reducir el descuento en 100 si es mayor a 0
-        setDiscount((prev) => Math.max(prev - 100, 0));
+        setDiscount((prev) => {
+          const newDiscount = Math.max(prev - 100, 0);
+          console.log(`Descuento actualizado: S/${newDiscount}`); // Verificar en consola
+          return newDiscount;
+        });
 
         // Calcular el próximo intervalo de 12 horas
         nextEndTime = calculateNext12HourInterval();
