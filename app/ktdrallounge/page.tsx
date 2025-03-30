@@ -731,28 +731,28 @@ function DiscountSection() {
       const twelveHoursInMs = 12 * 60 * 60 * 1000;
 
       // Fecha inicial fija: 30.03.2025 a las 11:00 AM UTC
-      const initialDate = new Date("2025-03-30T11:00:00Z").getTime();
+      const initialDateUTC = Date.UTC(2025, 2, 30, 11, 0, 0); // Año, Mes (0-indexado), Día, Hora, Minuto, Segundo
 
       // Calcular el próximo múltiplo de 12 horas desde la fecha inicial
       const nextIntervalInMs =
-        Math.ceil((nowUTC - initialDate) / twelveHoursInMs) * twelveHoursInMs +
-        initialDate;
+        Math.ceil((nowUTC - initialDateUTC) / twelveHoursInMs) * twelveHoursInMs +
+        initialDateUTC;
 
-      return new Date(nextIntervalInMs);
+      return nextIntervalInMs; // Retorna el tiempo en milisegundos UTC
     };
 
-    let nextEndTime = calculateNext12HourInterval();
+    let nextEndTimeUTC = calculateNext12HourInterval();
 
     const updateCountdown = () => {
       const nowUTC = Date.now(); // Hora actual en UTC
-      const diff = nextEndTime.getTime() - nowUTC;
+      const diff = nextEndTimeUTC - nowUTC;
 
       if (diff <= 0) {
         // Reducir el descuento en 100 si es mayor a 0
         setDiscount((prev) => Math.max(prev - 100, 0));
 
         // Calcular el próximo intervalo de 12 horas
-        nextEndTime = calculateNext12HourInterval();
+        nextEndTimeUTC = calculateNext12HourInterval();
         return;
       }
 
@@ -762,7 +762,7 @@ function DiscountSection() {
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      // Mostrar el tiempo restante en UTC
+      // Mostrar el tiempo restante en formato UTC
       setTimeLeft(
         `${hours.toString().padStart(2, "0")}:${minutes
           .toString()
