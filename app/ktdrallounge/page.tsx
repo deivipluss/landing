@@ -723,19 +723,16 @@ export default function DiagnosticoDigital() {
 
 function DiscountSection() {
   const [timeLeft, setTimeLeft] = useState("");
-  const [discount, setDiscount] = useState(1000); // Estado inicial del descuento
-  const [debugInfo, setDebugInfo] = useState(""); // Estado para información de depuración
+  const [discount, setDiscount] = useState(1000);
+  const [debugInfo, setDebugInfo] = useState("");
 
   useEffect(() => {
-    // Función que calcula la fecha objetivo del próximo evento (primera vez o próxima reducción)
-    const calculateTimeToNextEvent = () => {
-      // Fecha objetivo fija: 30.03.2025 a las 11:00 AM UTC
-      const targetYear = 2025;
-      const targetMonth = 2; // 0-indexed (marzo = 2)
-      const targetDay = 30;
-      const targetHour = 11;
-      
-      const targetDateUTC = Date.UTC(targetYear, targetMonth, targetDay, targetHour, 0, 0);
+    // Ajustar manualmente la zona horaria para asegurar que estamos en UTC
+    // La fecha objetivo ahora es: 30.03.2025 a las 16:00 UTC (equivalente a 11:00 AM -5 UTC)
+    // Estamos compensando la diferencia de 5 horas que estás experimentando
+    const targetDateUTC = Date.UTC(2025, 2, 30, 16, 0, 0);
+    
+    const calculateNextEvent = () => {
       const nowUTC = Date.now();
       
       // Si la fecha objetivo ya pasó, calcular el próximo intervalo de 12 horas
@@ -749,55 +746,46 @@ function DiscountSection() {
         return targetDateUTC;
       }
     };
-
-    let nextEventTime = calculateTimeToNextEvent();
-
+    
+    let nextEventTime = calculateNextEvent();
+    
     const updateCountdown = () => {
       const nowUTC = Date.now();
       const diff = nextEventTime - nowUTC;
-
-      // Para depuración: información detallada sobre las fechas
+      
+      // Depuración para verificar las fechas y tiempos
       const debugNextEvent = new Date(nextEventTime).toUTCString();
       const debugCurrentTime = new Date(nowUTC).toUTCString();
       const debugDiffHours = Math.floor(diff / (1000 * 60 * 60));
       const debugDiffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       
-      setDebugInfo(`Próximo: ${debugNextEvent}\nAhora: ${debugCurrentTime}\nDiferencia: ${debugDiffHours}h ${debugDiffMinutes}m`);
-
+      setDebugInfo(`Próximo evento: ${debugNextEvent}
+Hora actual: ${debugCurrentTime}
+Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m`);
+      
       if (diff <= 0) {
-        // Reducir el descuento en 100 si es mayor a 0
         setDiscount((prev) => Math.max(prev - 100, 0));
-
-        // Calcular el próximo intervalo
-        nextEventTime = calculateTimeToNextEvent();
-        setTimeout(updateCountdown, 100); // Actualizar después de un breve retraso
+        nextEventTime = calculateNextEvent();
+        setTimeout(updateCountdown, 100);
         return;
       }
-
-      // Calculamos los componentes de tiempo de manera independiente
-      // Utilizamos los valores absolutos de la diferencia en milisegundos
-      const totalSeconds = Math.floor(diff / 1000);
-      const days = Math.floor(totalSeconds / (60 * 60 * 24));
-      const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
-      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-      const seconds = totalSeconds % 60;
-
-      // Convertimos los días a horas para el formato de visualización
-      const totalHours = days * 24 + hours;
+      
+      // Cálculo simple y directo del tiempo restante
+      const totalHours = Math.floor(diff / (1000 * 60 * 60));
+      const totalMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const totalSeconds = Math.floor((diff % (1000 * 60)) / 1000);
       
       setTimeLeft(
-        `${totalHours.toString().padStart(2, "0")}:${minutes
-          .toString()
-          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
+        `${String(totalHours).padStart(2, "0")}:${String(totalMinutes).padStart(2, "0")}:${String(totalSeconds).padStart(2, "0")}`
       );
     };
-
-    updateCountdown(); // Ejecutar inmediatamente 
-    const intervalId = setInterval(updateCountdown, 1000); // Actualizar cada segundo
-
-    return () => clearInterval(intervalId); // Limpiar el intervalo al desmontar
+    
+    updateCountdown();
+    const intervalId = setInterval(updateCountdown, 1000);
+    
+    return () => clearInterval(intervalId);
   }, []);
-
+  
   return (
     <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
       <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
@@ -831,12 +819,17 @@ function DiscountSection() {
         </div>
       </div>
       
-      {/* Información de depuración (visible solo en desarrollo) */}
+      {/* Información de depuración visible solo en desarrollo */}
       {process.env.NODE_ENV === 'development' && (
         <div className="mt-2 p-2 bg-black/10 rounded text-xs text-left whitespace-pre-wrap">
           {debugInfo}
         </div>
       )}
+      
+      {/* Nota sobre zona horaria */}
+      <div className="mt-2 text-center text-xs text-gray-500">
+        Tiempo mostrado en UTC
+      </div>
     </div>
   );
 }
