@@ -724,22 +724,29 @@ export default function DiagnosticoDigital() {
 function DiscountSection() {
   const [timeLeft, setTimeLeft] = useState("");
   const [discount, setDiscount] = useState(1000); // Estado inicial del descuento
+  const [debugInfo, setDebugInfo] = useState(""); // Estado para información de depuración
 
   useEffect(() => {
+    // Función que calcula la fecha objetivo del próximo evento (primera vez o próxima reducción)
     const calculateTimeToNextEvent = () => {
       // Fecha objetivo fija: 30.03.2025 a las 11:00 AM UTC
-      const targetDate = Date.UTC(2025, 2, 30, 11, 0, 0);
+      const targetYear = 2025;
+      const targetMonth = 2; // 0-indexed (marzo = 2)
+      const targetDay = 30;
+      const targetHour = 11;
+      
+      const targetDateUTC = Date.UTC(targetYear, targetMonth, targetDay, targetHour, 0, 0);
       const nowUTC = Date.now();
       
       // Si la fecha objetivo ya pasó, calcular el próximo intervalo de 12 horas
-      if (nowUTC >= targetDate) {
+      if (nowUTC >= targetDateUTC) {
         const twelveHoursInMs = 12 * 60 * 60 * 1000;
-        const elapsedSinceTarget = nowUTC - targetDate;
+        const elapsedSinceTarget = nowUTC - targetDateUTC;
         const intervalsPassed = Math.floor(elapsedSinceTarget / twelveHoursInMs);
-        return targetDate + (intervalsPassed + 1) * twelveHoursInMs;
+        return targetDateUTC + (intervalsPassed + 1) * twelveHoursInMs;
       } else {
         // Si la fecha objetivo aún no ha llegado, usar esa fecha directamente
-        return targetDate;
+        return targetDateUTC;
       }
     };
 
@@ -749,29 +756,35 @@ function DiscountSection() {
       const nowUTC = Date.now();
       const diff = nextEventTime - nowUTC;
 
+      // Para depuración: información detallada sobre las fechas
+      const debugNextEvent = new Date(nextEventTime).toUTCString();
+      const debugCurrentTime = new Date(nowUTC).toUTCString();
+      const debugDiffHours = Math.floor(diff / (1000 * 60 * 60));
+      const debugDiffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      
+      setDebugInfo(`Próximo: ${debugNextEvent}\nAhora: ${debugCurrentTime}\nDiferencia: ${debugDiffHours}h ${debugDiffMinutes}m`);
+
       if (diff <= 0) {
         // Reducir el descuento en 100 si es mayor a 0
         setDiscount((prev) => Math.max(prev - 100, 0));
 
         // Calcular el próximo intervalo
         nextEventTime = calculateTimeToNextEvent();
-        updateCountdown(); // Actualizar inmediatamente
+        setTimeout(updateCountdown, 100); // Actualizar después de un breve retraso
         return;
       }
 
-      // Calcular días, horas, minutos y segundos restantes
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      // Calculamos los componentes de tiempo de manera independiente
+      // Utilizamos los valores absolutos de la diferencia en milisegundos
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (60 * 60 * 24));
+      const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+      const seconds = totalSeconds % 60;
 
-      // Para depuración: mostrar la fecha objetivo en formato legible
-      console.log("Tiempo hasta próximo evento:", new Date(nextEventTime).toUTCString());
-      console.log(`Tiempo restante: ${days}d ${hours}h ${minutes}m ${seconds}s`);
-
-      // Mostrar el tiempo restante en formato HH:MM:SS
-      // Si hay días, convertirlos a horas adicionales
+      // Convertimos los días a horas para el formato de visualización
       const totalHours = days * 24 + hours;
+      
       setTimeLeft(
         `${totalHours.toString().padStart(2, "0")}:${minutes
           .toString()
@@ -779,7 +792,7 @@ function DiscountSection() {
       );
     };
 
-    updateCountdown(); // Ejecutar inmediatamente para evitar el retraso inicial
+    updateCountdown(); // Ejecutar inmediatamente 
     const intervalId = setInterval(updateCountdown, 1000); // Actualizar cada segundo
 
     return () => clearInterval(intervalId); // Limpiar el intervalo al desmontar
@@ -817,6 +830,13 @@ function DiscountSection() {
           </span>
         </div>
       </div>
+      
+      {/* Información de depuración (visible solo en desarrollo) */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="mt-2 p-2 bg-black/10 rounded text-xs text-left whitespace-pre-wrap">
+          {debugInfo}
+        </div>
+      )}
     </div>
   );
 }
