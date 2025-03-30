@@ -361,15 +361,15 @@ export default function DiagnosticoDigital() {
               },
               {
                 title: "Estableceré procesos operativos y comerciales",
-                desc: "Diseñaré sistemas que automatizan la promoción de tus eventos y maximizan cada oportunidad de venta",
+                desc: "Diseñaré sistemas que automatizan la organización , logística, producción, y ejecución de eventos, ofertas, lanzamientos, programas de fidelización, retención y así maximizaré cada oportunidad de venta",
               },
               {
                 title: "Orientaré la cultura empresarial hacia la modernidad",
-                desc: "Posicionaré tu marca como eco-friendly y socialmente responsable, atrayendo al público que valora estas cualidades",
+                desc: "Posicionaré la marca con solidez, autoridad y en ritmo al mundo actual;  eco-friendly, socialmente responsable y comercialmente exitosa",
               },
               {
                 title: "Fijaré objetivos medibles",
-                desc: "Estableceré KPIs claros que traducen likes y views en ingresos tangibles y reservas confirmadas",
+                desc: "Estableceré indicadores claros que traducen likes y views en ingresos tangibles y reservas confirmadas",
               },
               {
                 title: "Construiré bases digitales sólidas",
@@ -377,7 +377,7 @@ export default function DiagnosticoDigital() {
               },
               {
                 title: "Capacitaré a todo el equipo",
-                desc: "Convertiré a cada miembro en un experto digital que potencia tu marca desde su rol específico",
+                desc: "Cada colaborador involucrado desarrollará pensamiento crítico orientado al negocio y  tendrá la capacidad de utilizar herramientas que le permitan medir su progreso, demostrar su rendimiento y mejorar su desempeño",
               },
             ].map((solution, i) => (
               <Card
