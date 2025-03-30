@@ -374,8 +374,16 @@ export default function DiagnosticoDigital() {
                 desc: "Evaluaré el estado actual digital e interno",
               },
               {
-                title: "Estableceré procesos claros",
+                title: "Implantaré cultura organizativa y colaborativa",
                 desc: "Definiré roles, valores y prácticas educativas",
+              },
+              {
+                title: "Estableceré procesos operativos y comerciales",
+                desc: "Optimizados y a medida de la empresa",
+              },
+              {
+                title: "Orientaré la cultura empresarial hacia la modernidad",
+                desc: "Fomentando innovación, inclusión y valores green con enfoque comercial",
               },
               {
                 title: "Fijaré objetivos medibles",
@@ -427,7 +435,7 @@ export default function DiagnosticoDigital() {
                 <CardContent className="p-4">
                   <h4 className="font-semibold text-purple-700 flex items-center uppercase">
                     <Star className="h-4 w-4 mr-2 text-yellow-500" />
-                    Gestión Operativa
+                    Gestión Operativa/Comercial
                   </h4>
                   <ul className="mt-2 space-y-2 text-sm">
                     <li className="flex items-start">
