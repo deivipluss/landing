@@ -598,15 +598,16 @@ export default function DiagnosticoDigital() {
               transition={{ duration: 1.5, repeat: Infinity }}
               className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative"
             >
-              <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
+              <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                 ¡Tiempo limitado!
               </div>
               <div className="text-lg font-semibold text-green-700 mb-1">¡OFERTA ESPECIAL HOY!</div>
-              <div className="text-2xl font-bold text-green-600">Descuento de S/{discount}</div>
-              <p className="text-gray-600 text-sm mt-1">Solo si completas la transacción hoy mismo</p>
-              <div className="mt-3 text-center">
-                <span className="text-red-600 font-bold text-lg">Próxima reducción en:</span>
-                <div className="text-red-500 font-extrabold text-xl">{timeLeft}</div>
+              <div className="text-3xl font-bold text-green-600">Descuento de S/{discount}</div>
+              <p className="text-gray-600 text-sm mt-1">Aprovecha antes de que el descuento disminuya</p>
+              <div className="mt-4 text-center">
+                <span className="text-red-600 font-bold text-lg">¡El tiempo corre!</span>
+                <div className="text-red-500 font-extrabold text-2xl">{timeLeft}</div>
+                <p className="text-gray-500 text-xs mt-1">El descuento bajará S/100 cada 12 horas</p>
               </div>
             </motion.div>
 
