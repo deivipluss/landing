@@ -29,7 +29,8 @@ export default function DiagnosticoDigital() {
       const endTime = new Date(now);
       endTime.setHours(endTime.getHours() + 12);
 
-      const diff = endTime - now;
+      // Convertir a timestamps (milisegundos) antes de restar
+      const diff = endTime.getTime() - now.getTime();
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
