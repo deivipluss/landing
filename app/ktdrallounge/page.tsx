@@ -733,10 +733,10 @@ function DiscountSection() {
       // Fecha inicial fija: 30.03.2025 a las 11:00 AM UTC
       const initialDateUTC = Date.UTC(2025, 2, 30, 11, 0, 0); // Año, Mes (0-indexado), Día, Hora, Minuto, Segundo
 
-      // Calcular el próximo múltiplo de 12 horas desde la fecha inicial
-      const nextIntervalInMs =
-        Math.ceil((nowUTC - initialDateUTC) / twelveHoursInMs) * twelveHoursInMs +
-        initialDateUTC;
+      // Calcular el próximo intervalo de 12 horas desde la fecha inicial
+      const elapsedTime = nowUTC - initialDateUTC;
+      const intervalsPassed = Math.floor(elapsedTime / twelveHoursInMs);
+      const nextIntervalInMs = initialDateUTC + (intervalsPassed + 1) * twelveHoursInMs;
 
       return nextIntervalInMs; // Retorna el tiempo en milisegundos UTC
     };
