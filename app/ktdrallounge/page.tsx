@@ -751,12 +751,16 @@ export default function DiagnosticoDigital() {
               <p className="text-gray-600 text-sm mt-1">
                 Aprovecha antes de que el descuento disminuya
               </p>
-              <div className="mt-4 text-center">
-                <span className="text-red-600 font-bold text-sm">
+              <div className="mt-4 text-center flex items-center justify-center">
+                <span className="text-red-600 font-bold text-sm mr-2">
                   ¡El tiempo corre!
                 </span>
-                <div className="text-red-500 font-semibold text-sm inline-block ml-2 bg-red-100 px-2 py-1 rounded-md">
-                  {timeLeft}
+                <div className="text-red-500 font-mono text-sm bg-red-100 px-2 py-1 rounded-md flex items-center">
+                  <span className="inline-block w-7 text-center">{timeLeft.split(':')[0]}</span>
+                  <span className="animate-pulse">:</span>
+                  <span className="inline-block w-7 text-center">{timeLeft.split(':')[1]}</span>
+                  <span className="animate-pulse">:</span>
+                  <span className="inline-block w-7 text-center animate-pulse">{timeLeft.split(':')[2]}</span>
                 </div>
               </div>
             </motion.div>
