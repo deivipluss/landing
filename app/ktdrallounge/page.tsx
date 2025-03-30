@@ -19,53 +19,6 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function DiagnosticoDigital() {
-  const [timeLeft, setTimeLeft] = useState("");
-  const [discount, setDiscount] = useState(1000); // Estado inicial del descuento
-
-  // Add countdown timer that dynamically adjusts to 12-hour intervals
-  useEffect(() => {
-    const calculateNext12HourInterval = () => {
-      const now = new Date();
-      const twelveHoursInMs = 12 * 60 * 60 * 1000;
-
-      // Fecha inicial fija: 30.03.2025 a las 12:00 PM
-      const initialDate = new Date("2025-03-30T12:00:00Z").getTime();
-
-      // Calcular el próximo múltiplo de 12 horas desde la fecha inicial
-      const nowInMs = now.getTime();
-      const nextIntervalInMs = Math.ceil((nowInMs - initialDate) / twelveHoursInMs) * twelveHoursInMs + initialDate;
-
-      return new Date(nextIntervalInMs);
-    };
-
-    let nextEndTime = calculateNext12HourInterval();
-
-    const updateCountdown = () => {
-      const now = new Date();
-      const diff = nextEndTime.getTime() - now.getTime();
-
-      if (diff <= 0) {
-        // Reducir el descuento en 100 si es mayor a 0
-        setDiscount((prev) => Math.max(prev - 100, 0));
-
-        // Calcular el próximo intervalo de 12 horas
-        nextEndTime = calculateNext12HourInterval();
-        return;
-      }
-
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      setTimeLeft(`${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
-    };
-
-    updateCountdown(); // Ejecutar inmediatamente para evitar el retraso inicial
-    const intervalId = setInterval(updateCountdown, 1000); // Actualizar cada segundo
-
-    return () => clearInterval(intervalId); // Limpiar el intervalo al desmontar
-  }, []);
-
   return (
     <div className="flex flex-col items-center p-6 space-y-6 w-full max-w-6xl mx-auto">
       {/* Título */}
@@ -73,21 +26,6 @@ export default function DiagnosticoDigital() {
         <h1 className="text-2xl font-bold text-gray-800">
           Diagnóstico Digital - El Lounge
         </h1>
-      </div>
-
-      {/* Mostrar descuento actual */}
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center w-full max-w-md">
-        <h2 className="text-xl font-bold text-green-800">Descuento Actual</h2>
-        <p className="text-3xl font-bold text-green-600">S/{discount}</p>
-        <p className="text-sm text-gray-600 mt-2">
-          ¡Aprovecha antes de que el descuento disminuya!
-        </p>
-      </div>
-
-      {/* Contador */}
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center w-full max-w-md">
-        <h2 className="text-xl font-bold text-red-800">Tiempo Restante</h2>
-        <p className="text-3xl font-mono text-red-600">{timeLeft}</p>
       </div>
 
       {/* Texto explicativo del flujo */}
@@ -771,43 +709,8 @@ export default function DiagnosticoDigital() {
               </p>
             </div>
 
-            {/* Mostrar descuento actual */}
-            <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
-              <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                ¡Tiempo limitado!
-              </div>
-              <div className="text-lg font-semibold text-green-700 mb-1">
-                ¡OFERTA ESPECIAL HOY!
-              </div>
-              <div className="text-3xl font-bold text-green-600">
-                Descuento de S/{discount}
-              </div>
-              <p className="text-gray-600 text-sm mt-1">
-                Aprovecha antes de que el descuento disminuya
-              </p>
-              <div className="mt-4 text-center flex items-center justify-center">
-                <span className="text-red-600 font-bold text-sm mr-2">
-                  ¡El tiempo corre!
-                </span>
-                <div className="text-red-500 font-mono text-sm bg-red-100 px-2 py-1 rounded-md flex items-center">
-                  <span className="inline-block w-7 text-center">{timeLeft.split(':')[0]}</span>
-                  <span className="animate-pulse">:</span>
-                  <span className="inline-block w-7 text-center">{timeLeft.split(':')[1]}</span>
-                  <span className="animate-pulse">:</span>
-                  <span className="inline-block w-7 text-center animate-pulse">{timeLeft.split(':')[2]}</span>
-                </div>
-              </div>
-            </div>
-
-            <a
-              href="https://api.whatsapp.com/send?phone=+51989843709&text=Hola%20Deivis,%20quiero%20aprovechar%20los%20s/1000%20de%20descuento%20en%20tu%20propuesta%20para%20Ktdral%20Lounge!"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-lg shadow-md transition-colors mt-2 flex items-center"
-            >
-              <Zap className="h-5 w-5 mr-2" />
-              Contratar Ahora
-            </a>
+            {/* Lógica e información del descuento */}
+            <DiscountSection />
           </div>
         </CardContent>
       </Card>
@@ -815,6 +718,97 @@ export default function DiagnosticoDigital() {
       <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
         © 2025 - Deivipluss. ¡Todos los derechos reservados!
       </footer>
+    </div>
+  );
+}
+
+function DiscountSection() {
+  const [timeLeft, setTimeLeft] = useState("");
+  const [discount, setDiscount] = useState(1000); // Estado inicial del descuento
+
+  useEffect(() => {
+    const calculateNext12HourInterval = () => {
+      const now = new Date();
+      const twelveHoursInMs = 12 * 60 * 60 * 1000;
+
+      // Fecha inicial fija: 30.03.2025 a las 12:00 PM
+      const initialDate = new Date("2025-03-30T12:00:00Z").getTime();
+
+      // Calcular el próximo múltiplo de 12 horas desde la fecha inicial
+      const nowInMs = now.getTime();
+      const nextIntervalInMs =
+        Math.ceil((nowInMs - initialDate) / twelveHoursInMs) * twelveHoursInMs +
+        initialDate;
+
+      return new Date(nextIntervalInMs);
+    };
+
+    let nextEndTime = calculateNext12HourInterval();
+
+    const updateCountdown = () => {
+      const now = new Date();
+      const diff = nextEndTime.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        // Reducir el descuento en 100 si es mayor a 0
+        setDiscount((prev) => Math.max(prev - 100, 0));
+
+        // Calcular el próximo intervalo de 12 horas
+        nextEndTime = calculateNext12HourInterval();
+        return;
+      }
+
+      const hours = Math.floor(
+        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      setTimeLeft(
+        `${hours.toString().padStart(2, "0")}:${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
+      );
+    };
+
+    updateCountdown(); // Ejecutar inmediatamente para evitar el retraso inicial
+    const intervalId = setInterval(updateCountdown, 1000); // Actualizar cada segundo
+
+    return () => clearInterval(intervalId); // Limpiar el intervalo al desmontar
+  }, []);
+
+  return (
+    <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
+      <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+        ¡Tiempo limitado!
+      </div>
+      <div className="text-lg font-semibold text-green-700 mb-1">
+        ¡OFERTA ESPECIAL HOY!
+      </div>
+      <div className="text-3xl font-bold text-green-600">
+        Descuento de S/{discount}
+      </div>
+      <p className="text-gray-600 text-sm mt-1">
+        Aprovecha antes de que el descuento disminuya
+      </p>
+      <div className="mt-4 text-center flex items-center justify-center">
+        <span className="text-red-600 font-bold text-sm mr-2">
+          ¡El tiempo corre!
+        </span>
+        <div className="text-red-500 font-mono text-sm bg-red-100 px-2 py-1 rounded-md flex items-center">
+          <span className="inline-block w-7 text-center">
+            {timeLeft.split(":")[0]}
+          </span>
+          <span className="animate-pulse">:</span>
+          <span className="inline-block w-7 text-center">
+            {timeLeft.split(":")[1]}
+          </span>
+          <span className="animate-pulse">:</span>
+          <span className="inline-block w-7 text-center animate-pulse">
+            {timeLeft.split(":")[2]}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
