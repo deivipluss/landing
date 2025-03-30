@@ -332,7 +332,7 @@ export default function DiagnosticoDigital() {
             <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
               <CardContent className="p-4 flex items-center justify-center">
                 <span className="text-gray-900 font-semibold">
-                  Disfunción en programas de sociedades comerciales con otros negocios
+                  Disfunción en programas de sociedades comerciales o de marca  con otros negocios, personas o productos
                 </span>
               </CardContent>
             </Card>
@@ -790,9 +790,17 @@ export default function DiagnosticoDigital() {
         </CardContent>
       </Card>
 
-      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 text-gray-400 text-sm mt-auto border-t border-[#4A90E2]/20">
-        © 2025 - Deivipluss. ¡Todos los derechos reservados!
+      {/* Footer mejorado */}
+      <footer className="py-6 mt-12 border-t border-indigo-100 bg-gradient-to-r from-blue-50 to-indigo-50 w-full">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="flex items-center justify-center mb-3">
+            <Sparkles className="h-4 w-4 text-indigo-400 mr-2" />
+            <span className="text-indigo-600 font-medium text-sm">Elevando negocios al siguiente nivel digital</span>
+          </div>
+          <p className="text-gray-500 text-sm">© 2025 - Deivipluss. Todos los derechos reservados.</p>
+        </div>
       </footer>
+
     </div>
   );
 }
