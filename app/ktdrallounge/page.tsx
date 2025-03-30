@@ -483,7 +483,6 @@ export default function DiagnosticoDigital() {
               <Card className="border border-purple-200 bg-white shadow-md mb-6">
                 <CardContent className="p-4">
                   <h4 className="font-semibold text-purple-700 flex items-center uppercase">
-                    <Star className="h-4 w-4 mr-2 text-yellow-500" />
                     Gestión de Recursos Multimedia
                   </h4>
                   <ul className="mt-2 space-y-2 text-sm">
@@ -728,16 +727,15 @@ function DiscountSection() {
 
   useEffect(() => {
     const calculateNext12HourInterval = () => {
-      const now = new Date();
+      const nowUTC = Date.now(); // Hora actual en UTC
       const twelveHoursInMs = 12 * 60 * 60 * 1000;
 
       // Fecha inicial fija: 30.03.2025 a las 11:00 AM UTC
       const initialDate = new Date("2025-03-30T11:00:00Z").getTime();
 
       // Calcular el próximo múltiplo de 12 horas desde la fecha inicial
-      const nowInMs = now.getTime();
       const nextIntervalInMs =
-        Math.ceil((nowInMs - initialDate) / twelveHoursInMs) * twelveHoursInMs +
+        Math.ceil((nowUTC - initialDate) / twelveHoursInMs) * twelveHoursInMs +
         initialDate;
 
       return new Date(nextIntervalInMs);
@@ -746,8 +744,8 @@ function DiscountSection() {
     let nextEndTime = calculateNext12HourInterval();
 
     const updateCountdown = () => {
-      const now = new Date();
-      const diff = nextEndTime.getTime() - now.getTime();
+      const nowUTC = Date.now(); // Hora actual en UTC
+      const diff = nextEndTime.getTime() - nowUTC;
 
       if (diff <= 0) {
         // Reducir el descuento en 100 si es mayor a 0
