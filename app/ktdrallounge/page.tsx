@@ -20,6 +20,7 @@ import { useState, useEffect } from "react";
 
 export default function DiagnosticoDigital() {
   const [timeLeft, setTimeLeft] = useState("");
+  const [discount, setDiscount] = useState(1000); // Estado inicial del descuento
 
   // Add countdown timer that dynamically adjusts to 12-hour intervals
   useEffect(() => {
@@ -37,15 +38,18 @@ export default function DiagnosticoDigital() {
       return new Date(nextIntervalInMs);
     };
 
-    const nextEndTime = calculateNext12HourInterval();
+    let nextEndTime = calculateNext12HourInterval();
 
     const updateCountdown = () => {
       const now = new Date();
       const diff = nextEndTime.getTime() - now.getTime();
 
       if (diff <= 0) {
-        setTimeLeft("00:00:00"); // Mostrar 0 cuando el tiempo se agote
-        clearInterval(intervalId); // Detener el intervalo
+        // Reducir el descuento en 100 si es mayor a 0
+        setDiscount((prev) => Math.max(prev - 100, 0));
+
+        // Calcular el próximo intervalo de 12 horas
+        nextEndTime = calculateNext12HourInterval();
         return;
       }
 
@@ -69,6 +73,21 @@ export default function DiagnosticoDigital() {
         <h1 className="text-2xl font-bold text-gray-800">
           Diagnóstico Digital - El Lounge
         </h1>
+      </div>
+
+      {/* Mostrar descuento actual */}
+      <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center w-full max-w-md">
+        <h2 className="text-xl font-bold text-green-800">Descuento Actual</h2>
+        <p className="text-3xl font-bold text-green-600">S/{discount}</p>
+        <p className="text-sm text-gray-600 mt-2">
+          ¡Aprovecha antes de que el descuento disminuya!
+        </p>
+      </div>
+
+      {/* Contador */}
+      <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center w-full max-w-md">
+        <h2 className="text-xl font-bold text-red-800">Tiempo Restante</h2>
+        <p className="text-3xl font-mono text-red-600">{timeLeft}</p>
       </div>
 
       {/* Texto explicativo del flujo */}
@@ -765,7 +784,7 @@ export default function DiagnosticoDigital() {
                 ¡OFERTA ESPECIAL HOY!
               </div>
               <div className="text-3xl font-bold text-green-600">
-                Descuento de S/1000
+                Descuento de S/{discount}
               </div>
               <p className="text-gray-600 text-sm mt-1">
                 Aprovecha antes de que el descuento disminuya
