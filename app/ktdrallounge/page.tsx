@@ -109,18 +109,22 @@ export default function DiagnosticoDigital() {
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-green-600 font-semibold text-lg">5.2M</div>
               <div className="text-gray-600">Visualizaciones</div>
+              <div className="text-xs text-gray-500">MILLONES</div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-blue-600 font-semibold text-lg">2.4M</div>
               <div className="text-gray-600">Alcance</div>
+              <div className="text-xs text-gray-500">MILLONES</div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-purple-600 font-semibold text-lg">569.7K</div>
               <div className="text-gray-600">Vistas</div>
+              <div className="text-xs text-gray-500">MILES</div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-orange-600 font-semibold text-lg">123%</div>
               <div className="text-gray-600">Crecimiento</div>
+              <div className="text-xs text-gray-500">PORCENTAJE</div>
             </div>
           </div>
           <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
