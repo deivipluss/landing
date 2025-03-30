@@ -277,84 +277,74 @@ export default function DiagnosticoDigital() {
             <X className="h-5 w-5 mr-2" /> Problemas Detectados
           </h2>
           <div className="space-y-4">
-            {/* Problema destacado - Reuniones ineficientes */}
+            {/* Todos los problemas con estilo uniforme */}
             <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
-              <CardContent className="p-4 flex items-start">
-                <Clock className="text-red-500 h-5 w-5 mr-3 mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-gray-900 font-semibold">
-                    Reuniones ineficientes
-                  </span>
-                  <p className="text-gray-700 text-sm mt-1">
-                    Mucho acuerdo, casi nada de resultados concretos
-                  </p>
-                </div>
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
+                  Reuniones ineficientes
+                </span>
               </CardContent>
             </Card>
 
-            {/* Otros problemas */}
-            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
-              <CardContent className="p-4 flex items-start">
-                <div className="text-red-500 mr-3 mt-0.5">•</div>
-                <span className="text-gray-800">
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
                   Ausencia de visión estratégica global en el entorno digital
                 </span>
               </CardContent>
             </Card>
-            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
-              <CardContent className="p-4 flex items-start">
-                <div className="text-red-500 mr-3 mt-0.5">•</div>
-                <span className="text-gray-800">
+
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
                   Deficiencias en fomentar cultura de trabajo colaborativo
                 </span>
               </CardContent>
             </Card>
-            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
-              <CardContent className="p-4 flex items-start">
-                <div className="text-red-500 mr-3 mt-0.5">•</div>
-                <span className="text-gray-800">
+
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
                   Protocolos de ejecución inexistentes
                 </span>
               </CardContent>
             </Card>
-            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
-              <CardContent className="p-4 flex items-start">
-                <div className="text-red-500 mr-3 mt-0.5">•</div>
-                <span className="text-gray-800">
+
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
                   Objetivos no medibles ni estratégicos
                 </span>
               </CardContent>
             </Card>
-            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
-              <CardContent className="p-4 flex items-start">
-                <div className="text-red-500 mr-3 mt-0.5">•</div>
-                <span className="text-gray-800">
+
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
                   Equipo no comprometido más allá de tareas mecánicas
                 </span>
               </CardContent>
             </Card>
             
-            {/* Nuevos problemas añadidos */}
-            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
-              <CardContent className="p-4 flex items-start">
-                <div className="text-red-500 mr-3 mt-0.5">•</div>
-                <span className="text-gray-800">
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
                   Disfunción en los programas de fidelización y retención de clientes
                 </span>
               </CardContent>
             </Card>
-            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
-              <CardContent className="p-4 flex items-start">
-                <div className="text-red-500 mr-3 mt-0.5">•</div>
-                <span className="text-gray-800">
-                  Disfunción en programas de sociedades comerciales con otros negocios y/o empresas
+
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
+                  Disfunción en programas de sociedades comerciales con otros negocios
                 </span>
               </CardContent>
             </Card>
-            <Card className="border-red-200 bg-red-50 hover:bg-red-100 transition-colors">
-              <CardContent className="p-4 flex items-start">
-                <div className="text-red-500 mr-3 mt-0.5">•</div>
-                <span className="text-gray-800">
+
+            <Card className="border-2 border-red-400 bg-red-50 hover:bg-red-100 transition-colors shadow-md">
+              <CardContent className="p-4 flex items-center justify-center">
+                <span className="text-gray-900 font-semibold">
                   Disfunción en el programa de ofertas, descuentos y promociones
                 </span>
               </CardContent>
