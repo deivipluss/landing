@@ -16,8 +16,25 @@ import {
   Clock,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function DiagnosticoDigital() {
+  const [discount, setDiscount] = useState(1000);
+
+  useEffect(() => {
+    const calculateDiscount = () => {
+      const startTime = new Date("2025-01-01T00:00:00").getTime(); // Replace with the actual start time
+      const now = Date.now();
+      const hoursElapsed = Math.floor((now - startTime) / (1000 * 60 * 60));
+      const newDiscount = Math.max(0, 1000 - Math.floor(hoursElapsed / 12) * 100);
+      setDiscount(newDiscount);
+    };
+
+    calculateDiscount();
+    const interval = setInterval(calculateDiscount, 1000 * 60 * 60); // Update every hour
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex flex-col items-center p-6 space-y-6 w-full max-w-6xl mx-auto">
       {/* Título */}
@@ -574,7 +591,7 @@ export default function DiagnosticoDigital() {
               className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4"
             >
               <div className="text-lg font-semibold text-green-700 mb-1">¡OFERTA ESPECIAL HOY!</div>
-              <div className="text-2xl font-bold text-green-600">Descuento de S/1,000</div>
+              <div className="text-2xl font-bold text-green-600">Descuento de S/{discount}</div>
               <p className="text-gray-600 text-sm mt-1">Solo si completas la transacción hoy mismo</p>
             </motion.div>
 
