@@ -141,33 +141,25 @@ export default function DiagnosticoDigital() {
               ¡Es hora de evolucionar estos números!
             </h4>
             <p className="text-gray-700 text-sm">
-              Estos datos son solo el comienzo. Transformémoslos en{" "}
+              Tu discoteca ya es un referente, pero podemos ir más allá. Transformemos juntos este alcance digital en{" "}
               <span className="font-semibold text-green-600">
-                ingresos reales
+                flujo de caja real
               </span>
-              ,
+              ,{" "}
               <span className="font-semibold text-purple-600">
-                {" "}
-                comunidad fanática
+                fans que defiendan tu marca
               </span>
-              ,
+              , y{" "}
               <span className="font-semibold text-blue-600">
-                {" "}
-                engagement sostenible
-              </span>{" "}
-              y
-              <span className="font-semibold text-orange-600">
-                {" "}
-                amplificación exponencial de tu marca
+                una comunidad que interactúe constantemente
               </span>
-              . Es momento de{" "}
-              <span className="font-semibold text-indigo-600">innovar</span> y
-              convertirte en una
-              <span className="font-semibold text-pink-600">
-                {" "}
-                marca inimitable
-              </span>{" "}
-              en tu sector. ¡El momento de dar el siguiente paso es ahora!
+              . Convirtamos cada scroll en una reserva, cada like en un cliente recurrente, y cada mención en{" "}
+              <span className="font-semibold text-orange-600">
+                un embajador de tu experiencia nocturna
+              </span>
+              . Pasemos de ser una cuenta popular a{" "}
+              <span className="font-semibold text-indigo-600">una marca irresistible</span>{" "}
+              que dicta tendencia en la escena. ¡Los números están, ahora moneticémoslos juntos!
             </p>
           </div>
         </CardContent>
@@ -361,31 +353,31 @@ export default function DiagnosticoDigital() {
             {[
               {
                 title: "Realizaré una auditoría completa",
-                desc: "Evaluaré el estado actual digital e interno",
+                desc: "Analizaré a fondo lo que funciona en tu ecosistema digital actual y dónde están los bloqueos que frenan tu crecimiento",
               },
               {
                 title: "Implantaré cultura organizativa y colaborativa",
-                desc: "Definiré roles, valores y prácticas educativas",
+                desc: "Transformaré tu equipo en un engranaje perfecto donde cada persona contribuye a la experiencia digital de tus clientes",
               },
               {
                 title: "Estableceré procesos operativos y comerciales",
-                desc: "Optimizados y a medida de la empresa",
+                desc: "Diseñaré sistemas que automatizan la promoción de tus eventos y maximizan cada oportunidad de venta",
               },
               {
                 title: "Orientaré la cultura empresarial hacia la modernidad",
-                desc: "Fomentando innovación, inclusión y valores green con enfoque comercial",
+                desc: "Posicionaré tu marca como eco-friendly y socialmente responsable, atrayendo al público que valora estas cualidades",
               },
               {
                 title: "Fijaré objetivos medibles",
-                desc: "Crearé metas concretas para ingresos y engagement",
+                desc: "Estableceré KPIs claros que traducen likes y views en ingresos tangibles y reservas confirmadas",
               },
               {
                 title: "Construiré bases digitales sólidas",
-                desc: "Desarrollaré un ecosistema digital profesional",
+                desc: "Desarrollaré una infraestructura digital que sostiene tu crecimiento y te protege de cambios en algoritmos",
               },
               {
                 title: "Capacitaré a todo el equipo",
-                desc: "Implementaré formación en habilidades digitales",
+                desc: "Convertiré a cada miembro en un experto digital que potencia tu marca desde su rol específico",
               },
             ].map((solution, i) => (
               <Card
