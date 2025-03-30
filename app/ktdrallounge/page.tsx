@@ -21,14 +21,19 @@ import { useState, useEffect } from "react";
 export default function DiagnosticoDigital() {
   const [timeLeft, setTimeLeft] = useState("");
 
-  // Add countdown timer that doesn't affect the discount amount
+  // Add countdown timer that dynamically adjusts to 12-hour intervals
   useEffect(() => {
-    // Definir una fecha de finalización fija (por ejemplo, 12 horas desde un momento inicial conocido)
-    const fixedEndTime = new Date("2025-12-31T23:59:59Z"); // Cambiar esta fecha según sea necesario
+    const calculateNext12HourInterval = () => {
+      const now = Date.now();
+      const twelveHoursInMs = 12 * 60 * 60 * 1000;
+      return new Date(Math.ceil(now / twelveHoursInMs) * twelveHoursInMs);
+    };
+
+    const nextEndTime = calculateNext12HourInterval();
 
     const updateCountdown = () => {
       const now = new Date();
-      const diff = fixedEndTime.getTime() - now.getTime();
+      const diff = nextEndTime.getTime() - now.getTime();
 
       if (diff <= 0) {
         setTimeLeft("00:00:00"); // Mostrar 0 cuando el tiempo se agote
