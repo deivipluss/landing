@@ -773,40 +773,47 @@ function DiscountSection() {
   const [debugInfo, setDebugInfo] = useState("");
 
   useEffect(() => {
-    // Ajustar manualmente la zona horaria para asegurar que estamos en UTC
+    // Fecha objetivo inicial: 30.03.2025 a las 16:00 UTC
     const targetDateUTC = Date.UTC(2025, 2, 30, 16, 0, 0);
+    
+    // Fuerza el descuento inicial a 900 para reflejar que ya pasaron 12 horas
+    const initialDiscount = 900;
+    setDiscount(initialDiscount);
     
     const calculateNextEvent = () => {
       const nowUTC = Date.now();
       
+      // Si la fecha objetivo ya pasó, calcular el próximo intervalo de 12 horas
       if (nowUTC >= targetDateUTC) {
         const twelveHoursInMs = 12 * 60 * 60 * 1000;
         const elapsedSinceTarget = nowUTC - targetDateUTC;
         const intervalsPassed = Math.floor(elapsedSinceTarget / twelveHoursInMs);
         return targetDateUTC + (intervalsPassed + 1) * twelveHoursInMs;
       } else {
+        // Si la fecha objetivo aún no ha llegado, usar esa fecha directamente
         return targetDateUTC;
       }
     };
     
     // Calcular cuántas reducciones de descuento han ocurrido desde la fecha inicial
     const calculateCurrentDiscount = () => {
-      const nowUTC = Date.now();
+      // Comenzamos desde 900 ya que ha pasado el primer período de 12 horas
+      let currentDiscount = initialDiscount;
       
-      if (nowUTC < targetDateUTC) {
-        // Si aún no hemos llegado a la fecha inicial, el descuento es completo
-        return 1000;
-      } else {
+      const nowUTC = Date.now();
+      // Primera reducción ya ocurrió, por lo que comenzamos desde la marca de 12 horas
+      const firstIntervalDate = targetDateUTC + (12 * 60 * 60 * 1000);
+      
+      if (nowUTC >= firstIntervalDate) {
         const twelveHoursInMs = 12 * 60 * 60 * 1000;
-        const elapsedSinceTarget = nowUTC - targetDateUTC;
-        const intervalsPassed = Math.floor(elapsedSinceTarget / twelveHoursInMs);
-        // Reducir 100 por cada intervalo de 12 horas que ha pasado
-        return Math.max(1000 - (intervalsPassed * 100), 0);
+        const elapsedSinceFirstInterval = nowUTC - firstIntervalDate;
+        const additionalIntervals = Math.floor(elapsedSinceFirstInterval / twelveHoursInMs);
+        // Reducir 100 por cada intervalo adicional
+        currentDiscount = Math.max(initialDiscount - (additionalIntervals * 100), 0);
       }
+      
+      return currentDiscount;
     };
-    
-    // Establecer el descuento correcto al cargar el componente
-    setDiscount(calculateCurrentDiscount());
     
     let nextEventTime = calculateNextEvent();
     
@@ -827,8 +834,9 @@ Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m
 Descuento actual: S/${currentDiscount}`);
       
       if (diff <= 0) {
-        // Actualizar el descuento basado en el cálculo, no en el estado anterior
-        setDiscount(Math.max(calculateCurrentDiscount(), 0));
+        // Actualizar descuento cuando el contador llega a cero
+        const newDiscount = calculateCurrentDiscount() - 100;
+        setDiscount(Math.max(newDiscount, 0));
         nextEventTime = calculateNextEvent();
         setTimeout(updateCountdown, 100);
         return;
@@ -849,7 +857,7 @@ Descuento actual: S/${currentDiscount}`);
     
     return () => clearInterval(intervalId);
   }, []);
-  
+
   return (
     <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
       <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
