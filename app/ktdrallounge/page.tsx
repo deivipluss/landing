@@ -771,12 +771,8 @@ export default function DiagnosticoDigital() {
               </p>
             </div>
 
-            <motion.div
-              initial={{ scale: 1 }}
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative"
-            >
+            {/* Mostrar descuento actual */}
+            <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
               <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                 ¡Tiempo limitado!
               </div>
@@ -801,7 +797,7 @@ export default function DiagnosticoDigital() {
                   <span className="inline-block w-7 text-center animate-pulse">{timeLeft.split(':')[2]}</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             <a
               href="https://api.whatsapp.com/send?phone=+51989843709&text=Hola%20Deivis,%20quiero%20aprovechar%20los%20s/1000%20de%20descuento%20en%20tu%20propuesta%20para%20Ktdral%20Lounge!"
