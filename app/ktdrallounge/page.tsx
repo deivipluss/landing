@@ -368,7 +368,7 @@ export default function DiagnosticoDigital() {
               },
               {
                 title: "Orientaré la cultura empresarial hacia la modernidad",
-                desc: "Posicionaré la marca con solidez, autoridad y en ritmo al mundo actual;  eco-friendly, socialmente responsable y comercialmente exitosa",
+                desc: "Sentaré las bases para que el proceso transmita con solidez, autoridad y en ritmo al mundo actual;  eco-friendly, socialmente responsable y comercialmente exitosa",
               },
               {
                 title: "Fijaré objetivos medibles",
@@ -376,7 +376,7 @@ export default function DiagnosticoDigital() {
               },
               {
                 title: "Construiré bases digitales sólidas",
-                desc: "Desarrollaré una infraestructura digital que sostiene tu crecimiento y te protege de cambios en algoritmos",
+                desc: "Implementaré infraestructura digital de base, aquella que sostendrá tu crecimiento y te protegerá de cambios en algoritmos",
               },
               {
                 title: "Capacitaré a todo el equipo",
@@ -678,15 +678,15 @@ export default function DiagnosticoDigital() {
             </CardContent>
           </Card>
 
-          {/* LISTO PARA SOCIAL MEDIA */}
+          {/* LISTO PARA SOCIAL MEDIA - Versión mejorada */}
           <Card className="border-3 border-blue-500 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 shadow-xl mt-6">
             <CardContent className="p-5">
               <div className="flex items-center justify-center mb-3">
                 <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center mr-3">
                   <Zap className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="font-extrabold text-blue-800 text-xl uppercase">
-                  Listo para el siguiente paso: SOCIAL MEDIA
+                <h4 className="font-extrabold text-blue-800 text-xl uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+                  DESPEGUE DIGITAL: TU FASE DE EXPANSIÓN
                 </h4>
               </div>
               <div className="bg-white p-4 rounded-lg border border-blue-200 mb-3">
@@ -701,14 +701,47 @@ export default function DiagnosticoDigital() {
                   multiplique tu impacto.
                 </p>
               </div>
+              
+              {/* Nueva sección: Características principales añadidas */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+                <div className="bg-indigo-50 rounded-lg p-3 text-center border border-indigo-200 shadow-sm hover:shadow-md transition-shadow">
+                  <DollarSign className="h-6 w-6 text-indigo-600 mx-auto mb-1" />
+                  <h5 className="font-semibold text-indigo-800 text-sm">Campañas Pagadas</h5>
+                  <p className="text-xs text-gray-600 mt-1">Meta Ads optimizadas por conversión</p>
+                </div>
+                
+                <div className="bg-purple-50 rounded-lg p-3 text-center border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
+                  <CheckCircle className="h-6 w-6 text-purple-600 mx-auto mb-1" />
+                  <h5 className="font-semibold text-purple-800 text-sm">Landing Pages</h5>
+                  <p className="text-xs text-gray-600 mt-1">Específicas para cada evento</p>
+                </div>
+                
+                <div className="bg-blue-50 rounded-lg p-3 text-center border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+                  <Star className="h-6 w-6 text-blue-600 mx-auto mb-1" />
+                  <h5 className="font-semibold text-blue-800 text-sm">Blog Exclusivo</h5>
+                  <p className="text-xs text-gray-600 mt-1">Contenido de valor que posiciona tu marca</p>
+                </div>
+                
+                <div className="bg-green-50 rounded-lg p-3 text-center border border-green-200 shadow-sm hover:shadow-md transition-shadow">
+                  <Sparkles className="h-6 w-6 text-green-600 mx-auto mb-1" />
+                  <h5 className="font-semibold text-green-800 text-sm">Mayor Valor</h5>
+                  <p className="text-xs text-gray-600 mt-1">Genera autoridad en el sector</p>
+                </div>
+              </div>
+              
+              {/* Mantener los cuadros existentes con título y texto en primera persona */}
+              <div className="mb-3 text-center">
+                <h5 className="text-indigo-800 font-semibold text-sm mb-1 inline-block border-b border-indigo-200 px-2">
+                  FACTORES DE GARANTÍA
+                </h5>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div className="bg-green-50 p-3 rounded-lg border border-green-200">
                   <h5 className="font-semibold text-green-700 mb-2 flex items-center">
                     <CheckCircle className="h-4 w-4 mr-2" /> Riesgo Minimizado
                   </h5>
                   <p className="text-gray-700">
-                    Tu inversión está protegida por procesos sólidos y un equipo
-                    preparado que garantiza resultados.
+                    Te aseguro que tu inversión estará protegida por los procesos que implementaré y el equipo que prepararé para garantizar resultados concretos.
                   </p>
                 </div>
                 <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
@@ -716,23 +749,21 @@ export default function DiagnosticoDigital() {
                     <Star className="h-4 w-4 mr-2" /> Estrategia Personalizada
                   </h5>
                   <p className="text-gray-700">
-                    Desarrollaremos tácticas específicas para tu audiencia que
-                    generarán engagement real y conversiones.
+                    Crearé tácticas específicas para tu audiencia que generarán engagement real y aumentarán tus conversiones de manera medible.
                   </p>
                 </div>
                 <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
                   <h5 className="font-semibold text-purple-700 mb-2 flex items-center">
-                    <Sparkles className="h-4 w-4 mr-2" /> Crecimiento
-                    Exponencial
+                    <Sparkles className="h-4 w-4 mr-2" /> Crecimiento Exponencial
                   </h5>
                   <p className="text-gray-700">
-                    Prepárate para ver cómo tu presencia digital se amplifica y
-                    genera resultados tangibles para tu negocio.
+                    Te garantizo que verás cómo tu presencia digital se amplifica y genera resultados tangibles para tu negocio en cada métrica importante.
                   </p>
                 </div>
               </div>
             </CardContent>
           </Card>
+
         </CardContent>
       </Card>
 
