@@ -726,44 +726,54 @@ function DiscountSection() {
   const [discount, setDiscount] = useState(1000); // Estado inicial del descuento
 
   useEffect(() => {
-    const calculateNext12HourInterval = () => {
-      const nowUTC = Date.now(); // Hora actual en UTC
-      const twelveHoursInMs = 12 * 60 * 60 * 1000;
-
-      // Fecha inicial fija: 30.03.2025 a las 11:00 AM UTC
-      const initialDateUTC = Date.UTC(2025, 2, 30, 11, 0, 0); // Año, Mes (0-indexado), Día, Hora, Minuto, Segundo
-
-      // Calcular el próximo intervalo de 12 horas desde la fecha inicial
-      const elapsedTime = nowUTC - initialDateUTC;
-      const intervalsPassed = Math.floor(elapsedTime / twelveHoursInMs);
-      const nextIntervalInMs = initialDateUTC + (intervalsPassed + 1) * twelveHoursInMs;
-
-      return nextIntervalInMs; // Retorna el tiempo en milisegundos UTC
+    const calculateTimeToNextEvent = () => {
+      // Fecha objetivo fija: 30.03.2025 a las 11:00 AM UTC
+      const targetDate = Date.UTC(2025, 2, 30, 11, 0, 0);
+      const nowUTC = Date.now();
+      
+      // Si la fecha objetivo ya pasó, calcular el próximo intervalo de 12 horas
+      if (nowUTC >= targetDate) {
+        const twelveHoursInMs = 12 * 60 * 60 * 1000;
+        const elapsedSinceTarget = nowUTC - targetDate;
+        const intervalsPassed = Math.floor(elapsedSinceTarget / twelveHoursInMs);
+        return targetDate + (intervalsPassed + 1) * twelveHoursInMs;
+      } else {
+        // Si la fecha objetivo aún no ha llegado, usar esa fecha directamente
+        return targetDate;
+      }
     };
 
-    let nextEndTimeUTC = calculateNext12HourInterval();
+    let nextEventTime = calculateTimeToNextEvent();
 
     const updateCountdown = () => {
-      const nowUTC = Date.now(); // Hora actual en UTC
-      const diff = nextEndTimeUTC - nowUTC;
+      const nowUTC = Date.now();
+      const diff = nextEventTime - nowUTC;
 
       if (diff <= 0) {
         // Reducir el descuento en 100 si es mayor a 0
         setDiscount((prev) => Math.max(prev - 100, 0));
 
-        // Calcular el próximo intervalo de 12 horas
-        nextEndTimeUTC = calculateNext12HourInterval();
+        // Calcular el próximo intervalo
+        nextEventTime = calculateTimeToNextEvent();
+        updateCountdown(); // Actualizar inmediatamente
         return;
       }
 
-      // Calcular horas, minutos y segundos restantes en UTC
-      const hours = Math.floor(diff / (1000 * 60 * 60));
+      // Calcular días, horas, minutos y segundos restantes
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      // Mostrar el tiempo restante en formato UTC
+      // Para depuración: mostrar la fecha objetivo en formato legible
+      console.log("Tiempo hasta próximo evento:", new Date(nextEventTime).toUTCString());
+      console.log(`Tiempo restante: ${days}d ${hours}h ${minutes}m ${seconds}s`);
+
+      // Mostrar el tiempo restante en formato HH:MM:SS
+      // Si hay días, convertirlos a horas adicionales
+      const totalHours = days * 24 + hours;
       setTimeLeft(
-        `${hours.toString().padStart(2, "0")}:${minutes
+        `${totalHours.toString().padStart(2, "0")}:${minutes
           .toString()
           .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
       );
