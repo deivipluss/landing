@@ -731,8 +731,8 @@ function DiscountSection() {
       const now = new Date();
       const twelveHoursInMs = 12 * 60 * 60 * 1000;
 
-      // Fecha inicial fija: 30.03.2025 a las 12:00 PM
-      const initialDate = new Date("2025-03-30T12:00:00Z").getTime();
+      // Fecha inicial fija: 30.03.2025 a las 11:00 AM UTC
+      const initialDate = new Date("2025-03-30T11:00:00Z").getTime();
 
       // Calcular el próximo múltiplo de 12 horas desde la fecha inicial
       const nowInMs = now.getTime();
@@ -751,11 +751,7 @@ function DiscountSection() {
 
       if (diff <= 0) {
         // Reducir el descuento en 100 si es mayor a 0
-        setDiscount((prev) => {
-          const newDiscount = Math.max(prev - 100, 0);
-          console.log(`Descuento actualizado: S/${newDiscount}`); // Verificar en consola
-          return newDiscount;
-        });
+        setDiscount((prev) => Math.max(prev - 100, 0));
 
         // Calcular el próximo intervalo de 12 horas
         nextEndTime = calculateNext12HourInterval();
@@ -768,6 +764,7 @@ function DiscountSection() {
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
+      // Mostrar el tiempo restante en UTC
       setTimeLeft(
         `${hours.toString().padStart(2, "0")}:${minutes
           .toString()
