@@ -35,11 +35,11 @@ export default function DiagnosticoDigital() {
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
+      setTimeLeft(`${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
     };
 
     updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
+    const interval = setInterval(updateCountdown, 1000); // Update every second
     return () => clearInterval(interval);
   }, []);
 
@@ -752,15 +752,12 @@ export default function DiagnosticoDigital() {
                 Aprovecha antes de que el descuento disminuya
               </p>
               <div className="mt-4 text-center">
-                <span className="text-red-600 font-bold text-lg">
+                <span className="text-red-600 font-bold text-sm">
                   ¡El tiempo corre!
                 </span>
-                <div className="text-red-500 font-extrabold text-2xl animate-pulse">
+                <div className="text-red-500 font-semibold text-sm inline-block ml-2 bg-red-100 px-2 py-1 rounded-md">
                   {timeLeft}
                 </div>
-                <p className="text-gray-500 text-xs mt-1">
-                  Oferta especial por tiempo limitado
-                </p>
               </div>
             </motion.div>
 
