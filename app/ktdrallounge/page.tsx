@@ -118,52 +118,51 @@ export default function DiagnosticoDigital() {
               <div className="text-green-600 font-semibold text-lg">5.2M</div>
               <div className="font-bold text-xs text-green-600">MILLONES</div>
               <div className="text-gray-600 mt-1">Visualizaciones</div>
+              <div className="text-xs text-gray-500 italic mt-1 border-t border-gray-100 pt-1">
+                Equivale a 100K potenciales clientes explorando tus ofertas
+              </div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-blue-600 font-semibold text-lg">2.4M</div>
               <div className="font-bold text-xs text-blue-600">MILLONES</div>
               <div className="text-gray-600 mt-1">Alcance</div>
+              <div className="text-xs text-gray-500 italic mt-1 border-t border-gray-100 pt-1">
+                Como llenar 24 estadios de fútbol con posibles clientes
+              </div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-purple-600 font-semibold text-lg">569.7K</div>
               <div className="font-bold text-xs text-purple-600">MILES</div>
               <div className="text-gray-600 mt-1">Vistas</div>
+              <div className="text-xs text-gray-500 italic mt-1 border-t border-gray-100 pt-1">
+                Casi 10K personas interesadas cada fin de semana
+              </div>
             </div>
             <div className="bg-white p-3 rounded-lg shadow flex-1 min-w-[120px] text-center">
               <div className="text-orange-600 font-semibold text-lg">123%</div>
               <div className="font-bold text-xs text-orange-600">PORCENTAJE</div>
               <div className="text-gray-600 mt-1">Crecimiento</div>
+              <div className="text-xs text-gray-500 italic mt-1 border-t border-gray-100 pt-1">
+                Tu ritmo duplica al promedio del sector nocturno
+              </div>
             </div>
           </div>
           
           <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
-            <h4 className="font-semibold text-blue-800 mb-2">
-              ¡Es hora de evolucionar estos números!
+            <h4 className="font-semibold text-blue-800 mb-2 flex items-center">
+              <Sparkles className="h-4 w-4 mr-2 text-yellow-500" />
+              ¡De Números Impresionantes a Resultados Tangibles!
             </h4>
             <p className="text-gray-700 text-sm">
-              Tu discoteca ya tiene presencia digital sólida, pero juntos podemos llevarla al siguiente nivel. Convirtamos estas métricas en{" "}
-              <span className="font-semibold text-green-600">
-                estrategias pagas de Meta Ads
-              </span>
-              ,{" "}
-              <span className="font-semibold text-purple-600">
-                landing pages específicas para cada evento
-              </span>
-              , y{" "}
-              <span className="font-semibold text-blue-600">
-                un ecosistema digital completo
-              </span>
-              . Desarrollemos{" "}
-              <span className="font-semibold text-orange-600">
-                storytelling que conecte emocionalmente con tu audiencia
-              </span>
-              , implementemos un{" "}
-              <span className="font-semibold text-indigo-600">blog con contenido exclusivo</span>{" "}
-              y mejoremos la{" "}
-              <span className="font-semibold text-pink-600">
-                experiencia digital de tus clientes
-              </span>
-              . ¡Transformemos tus seguidores en una comunidad fiel que interactúe constantemente con tu marca!
+              Los datos son evidentes: tu presencia digital es sólida, eficiente y confiable. 
+              Sin embargo, el camino hacia adelante está bloqueado por factores operativos internos 
+              que limitan tu potencial. <span className="font-semibold text-indigo-600">¡Es momento de desbloquear 
+              el siguiente nivel!</span> Implementemos campañas pagadas estratégicas, desarrollemos 
+              <span className="font-semibold text-purple-600"> landing pages personalizadas</span> para cada evento 
+              y actualicemos tus canales con un enfoque profesional. <span className="font-semibold text-green-600">
+              Transformemos estos impresionantes números en ventas reales, engagement sostenido y 
+              confianza inquebrantable.</span> <span className="font-bold text-red-600 uppercase">¡REVISA ESTE INFORME 
+              Y PREPÁRATE PARA EL DESPEGUE!</span>
             </p>
           </div>
         </CardContent>
@@ -769,16 +768,20 @@ export default function DiagnosticoDigital() {
 
 function DiscountSection() {
   const [timeLeft, setTimeLeft] = useState("");
-  const [discount, setDiscount] = useState(1000);
+  const [discount, setDiscount] = useState(900);
   const [debugInfo, setDebugInfo] = useState("");
+  const [descuentoAgotado, setDescuentoAgotado] = useState(false);
 
   useEffect(() => {
     // Fecha objetivo inicial: 30.03.2025 a las 16:00 UTC
     const targetDateUTC = Date.UTC(2025, 2, 30, 16, 0, 0);
     
-    // Fuerza el descuento inicial a 900 para reflejar que ya pasaron 12 horas
-    const initialDiscount = 900;
-    setDiscount(initialDiscount);
+    // Secuencia de descuentos personalizada
+    const descuentos = [900, 700, 500, 200, 0];
+    let indiceDescuento = 0;
+    
+    // Establecer el descuento inicial
+    setDiscount(descuentos[indiceDescuento]);
     
     const calculateNextEvent = () => {
       const nowUTC = Date.now();
@@ -790,29 +793,8 @@ function DiscountSection() {
         const intervalsPassed = Math.floor(elapsedSinceTarget / twelveHoursInMs);
         return targetDateUTC + (intervalsPassed + 1) * twelveHoursInMs;
       } else {
-        // Si la fecha objetivo aún no ha llegado, usar esa fecha directamente
         return targetDateUTC;
       }
-    };
-    
-    // Calcular cuántas reducciones de descuento han ocurrido desde la fecha inicial
-    const calculateCurrentDiscount = () => {
-      // Comenzamos desde 900 ya que ha pasado el primer período de 12 horas
-      let currentDiscount = initialDiscount;
-      
-      const nowUTC = Date.now();
-      // Primera reducción ya ocurrió, por lo que comenzamos desde la marca de 12 horas
-      const firstIntervalDate = targetDateUTC + (12 * 60 * 60 * 1000);
-      
-      if (nowUTC >= firstIntervalDate) {
-        const twelveHoursInMs = 12 * 60 * 60 * 1000;
-        const elapsedSinceFirstInterval = nowUTC - firstIntervalDate;
-        const additionalIntervals = Math.floor(elapsedSinceFirstInterval / twelveHoursInMs);
-        // Reducir 100 por cada intervalo adicional
-        currentDiscount = Math.max(initialDiscount - (additionalIntervals * 100), 0);
-      }
-      
-      return currentDiscount;
     };
     
     let nextEventTime = calculateNextEvent();
@@ -821,28 +803,36 @@ function DiscountSection() {
       const nowUTC = Date.now();
       const diff = nextEventTime - nowUTC;
       
-      // Depuración para verificar las fechas y tiempos
+      // Información de depuración
       const debugNextEvent = new Date(nextEventTime).toUTCString();
       const debugCurrentTime = new Date(nowUTC).toUTCString();
       const debugDiffHours = Math.floor(diff / (1000 * 60 * 60));
       const debugDiffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const currentDiscount = calculateCurrentDiscount();
       
       setDebugInfo(`Próximo evento: ${debugNextEvent}
 Hora actual: ${debugCurrentTime}
 Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m
-Descuento actual: S/${currentDiscount}`);
+Descuento actual: S/${discount}`);
       
       if (diff <= 0) {
-        // Actualizar descuento cuando el contador llega a cero
-        const newDiscount = calculateCurrentDiscount() - 100;
-        setDiscount(Math.max(newDiscount, 0));
+        // Avanzar al siguiente descuento en la secuencia
+        indiceDescuento = Math.min(indiceDescuento + 1, descuentos.length - 1);
+        
+        // Verificar si hemos llegado al último descuento (0)
+        if (indiceDescuento >= descuentos.length - 1) {
+          setDescuentoAgotado(true);
+        }
+        
+        // Actualizar el valor del descuento
+        setDiscount(descuentos[indiceDescuento]);
+        
+        // Calcular próximo evento y continuar la cuenta regresiva
         nextEventTime = calculateNextEvent();
         setTimeout(updateCountdown, 100);
         return;
       }
       
-      // Cálculo simple y directo del tiempo restante
+      // Cálculo del tiempo restante
       const totalHours = Math.floor(diff / (1000 * 60 * 60));
       const totalMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const totalSeconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -860,18 +850,34 @@ Descuento actual: S/${currentDiscount}`);
 
   return (
     <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
-      <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+      {/* Etiqueta de "Tiempo limitado" con animación mejorada */}
+      <motion.div 
+        className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg"
+        animate={{ scale: [1, 1.08, 1] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      >
         ¡Tiempo limitado!
-      </div>
+      </motion.div>
+      
       <div className="text-lg font-semibold text-green-700 mb-1">
         ¡OFERTA ESPECIAL HOY!
       </div>
-      <div className="text-3xl font-bold text-green-600">
-        Descuento de S/{discount}
-      </div>
+      
+      {/* Mensaje cuando el descuento está agotado */}
+      {descuentoAgotado ? (
+        <div className="text-2xl font-bold text-red-600 py-2">
+          ¡NO TIENES DESCUENTOS DISPONIBLES!
+        </div>
+      ) : (
+        <div className="text-3xl font-bold text-green-600">
+          Descuento de S/{discount}
+        </div>
+      )}
+      
       <p className="text-gray-600 text-sm mt-1">
         Aprovecha antes de que el descuento disminuya
       </p>
+      
       <div className="mt-4 text-center flex items-center justify-center">
         <span className="text-red-600 font-bold text-sm mr-2">
           ¡El tiempo corre!
@@ -897,11 +903,6 @@ Descuento actual: S/${currentDiscount}`);
           {debugInfo}
         </div>
       )}
-      
-      {/* Nota sobre zona horaria */}
-      <div className="mt-2 text-center text-xs text-gray-500">
-        Tiempo mostrado en UTC
-      </div>
     </div>
   );
 }
