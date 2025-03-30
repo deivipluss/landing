@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 
 export default function DiagnosticoDigital() {
   const [discount, setDiscount] = useState(1000);
+  const [timeLeft, setTimeLeft] = useState("");
 
   useEffect(() => {
     const calculateDiscount = () => {
@@ -28,10 +29,17 @@ export default function DiagnosticoDigital() {
       const hoursElapsed = Math.floor((now - startTime) / (1000 * 60 * 60));
       const newDiscount = Math.max(0, 1000 - Math.floor(hoursElapsed / 12) * 100);
       setDiscount(newDiscount);
+
+      const nextReduction = startTime + Math.ceil(hoursElapsed / 12) * 12 * 60 * 60 * 1000;
+      const timeRemaining = nextReduction - now;
+      const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
+      const seconds = Math.floor((timeRemaining / 1000) % 60);
+      setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
     };
 
     calculateDiscount();
-    const interval = setInterval(calculateDiscount, 1000 * 60 * 60); // Update every hour
+    const interval = setInterval(calculateDiscount, 1000); // Update every second
     return () => clearInterval(interval);
   }, []);
 
@@ -588,11 +596,18 @@ export default function DiagnosticoDigital() {
               initial={{ scale: 1 }}
               animate={{ scale: [1, 1.1, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4"
+              className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative"
             >
+              <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
+                ¡Tiempo limitado!
+              </div>
               <div className="text-lg font-semibold text-green-700 mb-1">¡OFERTA ESPECIAL HOY!</div>
               <div className="text-2xl font-bold text-green-600">Descuento de S/{discount}</div>
               <p className="text-gray-600 text-sm mt-1">Solo si completas la transacción hoy mismo</p>
+              <div className="mt-3 text-center">
+                <span className="text-red-600 font-bold text-lg">Próxima reducción en:</span>
+                <div className="text-red-500 font-extrabold text-xl">{timeLeft}</div>
+              </div>
             </motion.div>
 
             <a
