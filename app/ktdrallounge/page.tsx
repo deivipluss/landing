@@ -774,24 +774,39 @@ function DiscountSection() {
 
   useEffect(() => {
     // Ajustar manualmente la zona horaria para asegurar que estamos en UTC
-    // La fecha objetivo ahora es: 30.03.2025 a las 16:00 UTC (equivalente a 11:00 AM -5 UTC)
-    // Estamos compensando la diferencia de 5 horas que estás experimentando
     const targetDateUTC = Date.UTC(2025, 2, 30, 16, 0, 0);
     
     const calculateNextEvent = () => {
       const nowUTC = Date.now();
       
-      // Si la fecha objetivo ya pasó, calcular el próximo intervalo de 12 horas
       if (nowUTC >= targetDateUTC) {
         const twelveHoursInMs = 12 * 60 * 60 * 1000;
         const elapsedSinceTarget = nowUTC - targetDateUTC;
         const intervalsPassed = Math.floor(elapsedSinceTarget / twelveHoursInMs);
         return targetDateUTC + (intervalsPassed + 1) * twelveHoursInMs;
       } else {
-        // Si la fecha objetivo aún no ha llegado, usar esa fecha directamente
         return targetDateUTC;
       }
     };
+    
+    // Calcular cuántas reducciones de descuento han ocurrido desde la fecha inicial
+    const calculateCurrentDiscount = () => {
+      const nowUTC = Date.now();
+      
+      if (nowUTC < targetDateUTC) {
+        // Si aún no hemos llegado a la fecha inicial, el descuento es completo
+        return 1000;
+      } else {
+        const twelveHoursInMs = 12 * 60 * 60 * 1000;
+        const elapsedSinceTarget = nowUTC - targetDateUTC;
+        const intervalsPassed = Math.floor(elapsedSinceTarget / twelveHoursInMs);
+        // Reducir 100 por cada intervalo de 12 horas que ha pasado
+        return Math.max(1000 - (intervalsPassed * 100), 0);
+      }
+    };
+    
+    // Establecer el descuento correcto al cargar el componente
+    setDiscount(calculateCurrentDiscount());
     
     let nextEventTime = calculateNextEvent();
     
@@ -804,13 +819,16 @@ function DiscountSection() {
       const debugCurrentTime = new Date(nowUTC).toUTCString();
       const debugDiffHours = Math.floor(diff / (1000 * 60 * 60));
       const debugDiffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const currentDiscount = calculateCurrentDiscount();
       
       setDebugInfo(`Próximo evento: ${debugNextEvent}
 Hora actual: ${debugCurrentTime}
-Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m`);
+Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m
+Descuento actual: S/${currentDiscount}`);
       
       if (diff <= 0) {
-        setDiscount((prev) => Math.max(prev - 100, 0));
+        // Actualizar el descuento basado en el cálculo, no en el estado anterior
+        setDiscount(Math.max(calculateCurrentDiscount(), 0));
         nextEventTime = calculateNextEvent();
         setTimeout(updateCountdown, 100);
         return;
