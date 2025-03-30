@@ -23,19 +23,12 @@ export default function DiagnosticoDigital() {
 
   // Add countdown timer that doesn't affect the discount amount
   useEffect(() => {
-    // Verificar si ya existe un endTime en localStorage
-    let endTime = localStorage.getItem("endTime");
-
-    if (!endTime) {
-      // Si no existe, establecer un nuevo endTime 12 horas desde ahora
-      endTime = new Date(Date.now() + 12 * 60 * 60 * 1000).toISOString();
-      localStorage.setItem("endTime", endTime);
-    }
+    // Definir una fecha de finalización fija (por ejemplo, 12 horas desde un momento inicial conocido)
+    const fixedEndTime = new Date("2025-12-31T23:59:59Z"); // Cambiar esta fecha según sea necesario
 
     const updateCountdown = () => {
       const now = new Date();
-      const targetTime = new Date(endTime);
-      const diff = targetTime.getTime() - now.getTime();
+      const diff = fixedEndTime.getTime() - now.getTime();
 
       if (diff <= 0) {
         setTimeLeft("00:00:00"); // Mostrar 0 cuando el tiempo se agote
