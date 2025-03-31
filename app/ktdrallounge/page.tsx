@@ -848,6 +848,12 @@ function DiscountSection() {
       const debugDiffHours = Math.floor(diff / (1000 * 60 * 60));
       const debugDiffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
+      console.log(`DEBUG: Próximo evento: ${debugNextEvent}`);
+      console.log(`DEBUG: Hora actual: ${debugCurrentTime}`);
+      console.log(`DEBUG: Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m`);
+      console.log(`DEBUG: Descuento actual: S/${discount}`);
+      console.log(`DEBUG: Índice actual: ${indiceDescuento}`);
+
       setDebugInfo(`Próximo evento: ${debugNextEvent}
 Hora actual: ${debugCurrentTime}
 Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m
@@ -859,10 +865,12 @@ Descuento actual: S/${discount}`);
 
         // Actualizar el valor del descuento inmediatamente
         setDiscount(descuentos[indiceDescuento]);
+        console.log(`DEBUG: Nuevo descuento aplicado: S/${descuentos[indiceDescuento]}`);
 
         // Verificar si hemos llegado al último descuento (0)
         if (indiceDescuento >= descuentos.length - 1) {
           setDescuentoAgotado(true);
+          console.log("DEBUG: Descuento agotado.");
         }
 
         // Calcular próximo evento y continuar la cuenta regresiva
