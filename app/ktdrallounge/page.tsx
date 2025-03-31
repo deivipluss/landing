@@ -859,8 +859,7 @@ Hora actual: ${debugCurrentTime}
 Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m
 Descuento actual: S/${discount}`);
 
-      // TEMPORAL: Forzar la actualización del descuento para pruebas
-      if (diff <= 0 || true) { // <-- Forzamos la condición para pruebas
+      if (diff <= 0) {
         // Avanzar al siguiente descuento en la secuencia
         indiceDescuento = Math.min(indiceDescuento + 1, descuentos.length - 1);
 
@@ -894,7 +893,7 @@ Descuento actual: S/${discount}`);
     const intervalId = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, []); // Eliminamos `discount` como dependencia para evitar bucles infinitos
 
   return (
     <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
