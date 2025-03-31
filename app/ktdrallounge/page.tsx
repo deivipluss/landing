@@ -812,54 +812,79 @@ function DiscountSection() {
 
   useEffect(() => {
     // Secuencia de descuentos
-    const descuentos = [700, 500, 200, 0]; // Eliminado 900, comienza en 700
-    let indiceDescuento = 0;
+    const descuentos = [700, 500, 200, 0];
 
-    // Función para calcular el tiempo restante
+    const fetchDiscountState = async () => {
+      try {
+        const response = await fetch("/api/discount");
+        const data = await response.json();
+
+        if (data) {
+          const { targetTime, indiceDescuento } = data;
+          const now = Date.now();
+
+          if (now < targetTime) {
+            setDiscount(descuentos[indiceDescuento]);
+          } else {
+            // Calcular el nuevo índice si el tiempo objetivo ya pasó
+            const elapsedIntervals = Math.floor((now - targetTime) / (12 * 60 * 60 * 1000));
+            const newIndiceDescuento = Math.min(indiceDescuento + elapsedIntervals + 1, descuentos.length - 1);
+            setDiscount(descuentos[newIndiceDescuento]);
+
+            if (newIndiceDescuento === descuentos.length - 1) {
+              setDescuentoAgotado(true);
+            }
+
+            // Actualizar el estado remoto
+            const newTargetTime = now + 12 * 60 * 60 * 1000;
+            await fetch("/api/discount", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ targetTime: newTargetTime, indiceDescuento: newIndiceDescuento }),
+            });
+          }
+
+          return targetTime;
+        }
+      } catch (error) {
+        console.error("Error fetching discount state:", error);
+      }
+    };
+
     const calculateTimeLeft = (targetTime: number) => {
       const now = Date.now();
       const diff = targetTime - now;
 
       if (diff <= 0) {
-        // Avanzar al siguiente descuento
-        indiceDescuento = Math.min(indiceDescuento + 1, descuentos.length - 1);
-        setDiscount(descuentos[indiceDescuento]);
-
-        if (indiceDescuento === descuentos.length - 1) {
-          setDescuentoAgotado(true);
-        }
-
-        // Reiniciar el contador para el próximo descuento
-        return 12 * 60 * 60 * 1000; // 12 horas en milisegundos
+        return 0;
       }
 
       return diff;
     };
 
-    // Inicializar el tiempo objetivo
-    let targetTime = Date.now() + 12 * 60 * 60 * 1000; // 12 horas desde ahora
+    const updateCountdown = async () => {
+      const targetTime = await fetchDiscountState();
 
-    const updateCountdown = () => {
-      const remainingTime = calculateTimeLeft(targetTime);
+      const intervalId = setInterval(() => {
+        const remainingTime = calculateTimeLeft(targetTime);
 
-      if (remainingTime > 0) {
-        const hours = Math.floor(remainingTime / (1000 * 60 * 60));
-        const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+        if (remainingTime > 0) {
+          const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+          const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
-        setTimeLeft(
-          `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
-        );
-      } else {
-        // Reiniciar el tiempo objetivo
-        targetTime = Date.now() + 12 * 60 * 60 * 1000;
-      }
+          setTimeLeft(
+            `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+          );
+        } else {
+          clearInterval(intervalId);
+        }
+      }, 1000);
+
+      return () => clearInterval(intervalId);
     };
 
-    // Actualizar el contador cada segundo
-    const intervalId = setInterval(updateCountdown, 1000);
-
-    return () => clearInterval(intervalId);
+    updateCountdown();
   }, []);
 
   return (
