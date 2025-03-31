@@ -859,7 +859,8 @@ Hora actual: ${debugCurrentTime}
 Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m
 Descuento actual: S/${discount}`);
 
-      if (diff <= 0) {
+      // TEMPORAL: Forzar la actualización del descuento para pruebas
+      if (diff <= 0 || true) { // <-- Forzamos la condición para pruebas
         // Avanzar al siguiente descuento en la secuencia
         indiceDescuento = Math.min(indiceDescuento + 1, descuentos.length - 1);
 
