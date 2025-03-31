@@ -807,12 +807,12 @@ export default function DiagnosticoDigital() {
 
 function DiscountSection() {
   const [timeLeft, setTimeLeft] = useState("");
-  const [discount, setDiscount] = useState(900);
+  const [discount, setDiscount] = useState(700); // Cambiado de 900 a 700
   const [descuentoAgotado, setDescuentoAgotado] = useState(false);
 
   useEffect(() => {
     // Secuencia de descuentos
-    const descuentos = [900, 700, 500, 200, 0];
+    const descuentos = [700, 500, 200, 0]; // Eliminado 900, comienza en 700
     let indiceDescuento = 0;
 
     // Función para calcular el tiempo restante
