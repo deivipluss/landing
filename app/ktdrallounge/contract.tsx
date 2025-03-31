@@ -65,26 +65,28 @@ export default function ContractPage() {
       )}
 
       {/* Contenido principal de la página */}
-      <div className="bg-white rounded-lg shadow-lg p-6 max-w-4xl w-full">
-        <h1 className="text-2xl font-bold text-gray-800 mb-4">
-          Contrato de Servicios
-        </h1>
-        <p className="text-gray-600 text-sm mb-6">
-          Este contrato detalla los términos y condiciones para la prestación
-          de servicios. Por favor, revisa cuidadosamente antes de proceder.
-        </p>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h2 className="text-lg font-semibold text-blue-800 mb-2">
-            Detalles del Contrato
-          </h2>
-          <ul className="list-disc list-inside text-gray-700 text-sm space-y-2">
-            <li>Duración del contrato: 6 meses.</li>
-            <li>Servicios incluidos: Diseño, desarrollo y soporte técnico.</li>
-            <li>Condiciones de pago: 50% inicial, 50% al finalizar.</li>
-            <li>Política de cancelación: No reembolsable después de iniciar.</li>
-          </ul>
+      {!termsExpired && (
+        <div className="bg-white rounded-lg shadow-lg p-6 max-w-4xl w-full">
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">
+            Contrato de Servicios
+          </h1>
+          <p className="text-gray-600 text-sm mb-6">
+            Este contrato detalla los términos y condiciones para la prestación
+            de servicios. Por favor, revisa cuidadosamente antes de proceder.
+          </p>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <h2 className="text-lg font-semibold text-blue-800 mb-2">
+              Detalles del Contrato
+            </h2>
+            <ul className="list-disc list-inside text-gray-700 text-sm space-y-2">
+              <li>Duración del contrato: 6 meses.</li>
+              <li>Servicios incluidos: Diseño, desarrollo y soporte técnico.</li>
+              <li>Condiciones de pago: 50% inicial, 50% al finalizar.</li>
+              <li>Política de cancelación: No reembolsable después de iniciar.</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
