@@ -232,33 +232,39 @@ export default function ContratoPage() {
             className="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full mx-auto"
           >
             <div className="text-center">
-              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <AlertCircle className="h-8 w-8 text-red-500" />
+              <div className="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <AlertCircle className="h-8 w-8 text-amber-500" />
               </div>
 
               <h2 className="text-2xl font-bold text-gray-800 mb-3">
-                Acceso Restringido
+                ¡Ups! La oferta ha expirado
               </h2>
 
-              <p className="text-gray-600 mb-6">
-                Este contrato requiere una cotización actualizada para ser
-                visualizado. Por favor, solicita una nueva cotización para
-                continuar.
-              </p>
+              <div className="space-y-4 mb-6">
+                <p className="text-gray-600">
+                  ¡Hola! Soy Deivis, y me apena informarte que la propuesta en este contrato ya no está vigente.
+                </p>
+                <p className="text-gray-600 font-medium">
+                  Los precios y condiciones se actualizan constantemente para asegurar que recibas el mejor valor por tu inversión.
+                </p>
+                <p className="text-indigo-600 font-semibold">
+                  ¿Te gustaría recibir una propuesta actualizada y personalizada para tu negocio?
+                </p>
+              </div>
 
               <div className="space-y-3">
                 <a
-                  href="https://wa.me/51999113934?text=Hola,%20necesito%20una%20cotización%20actualizada%20para%20acceder%20al%20contrato"
+                  href="https://wa.me/51999113934?text=Hola%20Deivis,%20me%20interesa%20recibir%20una%20propuesta%20actualizada%20para%20mi%20negocio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white w-full py-3 rounded-lg font-semibold flex items-center justify-center transition-colors"
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
-                  Solicitar Cotización por WhatsApp
+                  Solicitar Propuesta Actualizada
                 </a>
 
                 <button
-                  onClick={() => (window.location.href = "/")}
+                  onClick={() => window.location.href = "/"}
                   className="bg-blue-500 hover:bg-blue-600 text-white w-full py-3 rounded-lg font-semibold flex items-center justify-center transition-colors"
                 >
                   <Home className="h-5 w-5 mr-2" />
@@ -549,7 +555,7 @@ export default function ContratoPage() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                          d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
                         />
                       </svg>
                       <span className="text-xs mt-1">
@@ -600,7 +606,7 @@ export default function ContratoPage() {
                       >
                         <path
                           fillRule="evenodd"
-                          d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z"
+                          d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z"
                           clipRule="evenodd"
                         />
                       </svg>
