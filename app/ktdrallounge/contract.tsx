@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { AlertCircle, MessageCircle, X } from "lucide-react";
+import { AlertCircle, MessageCircle, X, Home } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function ContractPage() {
   const [termsExpired, setTermsExpired] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Simulación de verificación de términos expirados
@@ -46,11 +48,18 @@ export default function ContractPage() {
               href="https://wa.me/1234567890" // Reemplaza con tu número de WhatsApp
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition"
+              className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition mb-4"
             >
               <MessageCircle className="h-5 w-5 mr-2" />
               Solicitar Cotización en WhatsApp
             </a>
+            <button
+              onClick={() => router.push("/")}
+              className="inline-flex items-center justify-center px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition"
+            >
+              <Home className="h-5 w-5 mr-2" />
+              Volver al Inicio
+            </button>
           </div>
         </motion.div>
       )}
