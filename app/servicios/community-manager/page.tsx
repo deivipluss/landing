@@ -304,15 +304,18 @@ export default function CommunityManagerPage() {
                 transition={{ duration: 0.7 }}
               >
                 <div className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-fuchsia-500/20 to-violet-500/20 text-fuchsia-300 text-sm font-medium mb-4 border border-fuchsia-500/30">
-                  GESTIÓN DE REDES SOCIALES
+                  FASE 2: CONSTRUYENDO TU COMUNIDAD
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-400 to-violet-500">Community</span> Manager <span className="text-fuchsia-400">Estratégico</span>
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-400 to-violet-500">Community</span> Manager Transformador
                 </h1>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  Construyo, gestiono y hago crecer comunidades digitales que no solo generan engagement, sino que se convierten en una fuente constante de clientes para tu marca. Más que posts y likes, creo estrategias que producen resultados medibles para tu negocio.
+                  Con una base sólida de contenido establecida, mi rol es transformar tu audiencia en una 
+                  comunidad comprometida y valiosa. Me especializo en crear conexiones significativas, 
+                  cultivar relaciones auténticas y construir una identidad de marca respaldada por el 
+                  reconocimiento genuino de tu comunidad.
                 </p>
                 
                 <div className="flex flex-wrap gap-4">
@@ -332,6 +335,36 @@ export default function CommunityManagerPage() {
                   >
                     Agendar diagnóstico gratuito
                   </Link>
+                </div>
+                
+                <div className="mt-8 bg-fuchsia-900/20 border border-fuchsia-500/30 rounded-lg p-4">
+                  <div className="flex flex-col space-y-4">
+                    <div className="flex justify-between items-center text-sm">
+                      <Link 
+                        href="/servicios/content-manager"
+                        className="text-fuchsia-400 hover:text-fuchsia-300 transition-colors flex items-center gap-2"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Anterior: Content Manager
+                      </Link>
+                      <Link 
+                        href="/servicios/social-media-manager"
+                        className="text-fuchsia-400 hover:text-fuchsia-300 transition-colors flex items-center gap-2"
+                      >
+                        Siguiente: Social Media Manager
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                    <div className="text-gray-300 text-sm">
+                      <strong className="text-fuchsia-400">¿De dónde venimos?</strong> Tu marca cuenta con contenido estratégico y optimizado que atrae orgánicamente.
+                      <br />
+                      <strong className="text-fuchsia-400">¿Hacia dónde vamos?</strong> Construiremos una comunidad comprometida que luego amplificaremos con estrategias de Social Media.
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="mt-8 flex flex-wrap gap-6">
@@ -851,12 +884,12 @@ export default function CommunityManagerPage() {
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
                   <div className="md:flex-1">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                      ¿Listo para potenciar tu comunidad digital?
+                      Construye una comunidad que impulse tu marca
                     </h2>
                     <p className="text-gray-300 mb-6">
-                      Las redes sociales gestionadas estratégicamente pueden convertirse en uno de los canales
-                      más efectivos para conectar con tu audiencia y generar crecimiento para tu negocio.
-                      No pierdas más tiempo y oportunidades con una presencia digital inconsistente.
+                      Una comunidad comprometida es el activo más valioso para tu marca. 
+                      Comienza a construir relaciones significativas que transformarán 
+                      seguidores en embajadores leales y defensores de tu marca.
                     </p>
                     
                     <div className="flex flex-wrap gap-4 mb-6">

@@ -195,15 +195,18 @@ export default function ContentManagerPage() {
                 transition={{ duration: 0.7 }}
               >
                 <div className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500/20 to-green-500/20 text-emerald-300 text-sm font-medium mb-4 border border-emerald-500/30">
-                  ESTRATEGIA DE CONTENIDOS
+                  FASE 1: ESTABLECIENDO TUS BASES DIGITALES
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                  Content <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-green-600">Manager</span> para tu Negocio
+                  Content <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-green-600">Manager</span> Estratégico
                 </h1>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  Creo y gestiono contenido estratégico que conecta con tu audiencia, construye autoridad y genera conversiones. Transforma tu presencia digital con contenido de alto impacto que realmente impulsa resultados.
+                  Como tu Content Manager, mi misión es construir los cimientos sólidos de tu presencia digital. 
+                  Me especializo en crear y optimizar contenido estratégico que posiciona naturalmente tu marca, 
+                  genera tráfico orgánico valioso y establece tu autoridad en la industria. Esta base será 
+                  fundamental para tu futura comunidad y estrategias de crecimiento.
                 </p>
                 
                 <div className="flex flex-wrap gap-4">
@@ -225,17 +228,19 @@ export default function ContentManagerPage() {
                   </Link>
                 </div>
 
-                <div className="mt-8 flex items-center">
-                  <div className="flex -space-x-2 mr-4">
-                    {[1, 2, 3, 4].map(num => (
-                      <div key={num} className="w-8 h-8 rounded-full border-2 border-[#0D0C1D] bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center text-white text-xs font-bold">
-                        {String.fromCharCode(64 + num)}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-gray-300 text-sm">
-                    <span className="text-white font-medium">+180</span> marcas confían en mi estrategia de contenidos
-                  </div>
+                <div className="mt-8 bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+                  <h4 className="text-emerald-300 font-medium mb-2">¿Qué sigue después?</h4>
+                  <p className="text-gray-300 text-sm mb-3">
+                    Una vez establecida una base sólida de contenido, el siguiente paso es construir una 
+                    comunidad comprometida alrededor de tu marca.
+                  </p>
+                  <Link 
+                    href="/servicios/community-manager"
+                    className="text-emerald-400 hover:text-emerald-300 transition-colors inline-flex items-center gap-2"
+                  >
+                    Continuar a Community Manager
+                    <FaArrowRight className="text-sm" />
+                  </Link>
                 </div>
               </motion.div>
               
@@ -338,12 +343,12 @@ export default function ContentManagerPage() {
               </span>
               
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Estrategias adaptadas a tus objetivos
+                Construyendo tu Base Digital
               </h2>
               
               <p className="text-gray-300 max-w-2xl mx-auto">
-                Creo contenido estratégico que complementa tus objetivos de marketing, genera 
-                autoridad y convierte visitantes en clientes leales.
+                Creo contenido estratégico que no solo atrae tráfico orgánico, sino que 
+                prepara el terreno para una comunidad activa y estrategias de crecimiento futuras.
               </p>
             </motion.div>
 
@@ -723,11 +728,11 @@ export default function ContentManagerPage() {
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
                   <div className="md:flex-1">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                      ¿Listo para transformar tu estrategia de contenidos?
+                      Comienza con bases sólidas
                     </h2>
                     <p className="text-gray-300 mb-6">
-                      Permite que mi experiencia impulse tu presencia digital con contenido estratégico 
-                      que realmente conecta con tu audiencia y genera resultados tangibles.
+                      El contenido estratégico es el primer paso fundamental en tu transformación digital. 
+                      Construyamos juntos una base que soporte tu crecimiento futuro.
                     </p>
                     
                     <div className="flex flex-wrap gap-y-2 gap-x-6 mb-6">

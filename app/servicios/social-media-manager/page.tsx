@@ -293,7 +293,7 @@ export default function SocialMediaManagerPage() {
                 transition={{ duration: 0.7 }}
               >
                 <div className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-blue-300 text-sm font-medium mb-4 border border-blue-500/30">
-                  GESTIÓN DE REDES SOCIALES
+                  FASE 3: AMPLIFICACIÓN Y ESCALAMIENTO
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
@@ -301,7 +301,10 @@ export default function SocialMediaManagerPage() {
                 </h1>
                 
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  Transformo tus redes sociales en poderosas herramientas de negocio que generan engagement real, potencian tu marca y te conectan con clientes ideales. No solo gestiono perfiles, construyo activos digitales que impulsan resultados medibles.
+                  Con una base sólida de contenido y una comunidad comprometida, es momento de 
+                  escalar tu presencia digital. Me especializo en implementar estrategias de 
+                  publicidad pagada y SEO que amplifican tu alcance, maximizan la conversión 
+                  y generan un retorno medible de tu inversión en marketing digital.
                 </p>
                 
                 <div className="flex flex-wrap gap-4">
@@ -323,16 +326,24 @@ export default function SocialMediaManagerPage() {
                   </Link>
                 </div>
                 
-                <div className="mt-8 flex items-center gap-4">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map(num => (
-                      <div key={num} className="w-8 h-8 rounded-full border-2 border-[#0D0C1D] bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-white text-xs font-bold">
-                        {String.fromCharCode(64 + num)}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-gray-300 text-sm">
-                    <span className="text-white font-medium">+200</span> empresas han mejorado sus resultados
+                <div className="mt-8 bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+                  <div className="flex flex-col space-y-4">
+                    <div className="flex justify-between items-center text-sm">
+                      <Link 
+                        href="/servicios/community-manager"
+                        className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Anterior: Community Manager
+                      </Link>
+                    </div>
+                    <div className="text-gray-300 text-sm">
+                      <strong className="text-blue-400">¿De dónde venimos?</strong> Tu marca cuenta con contenido estratégico y una comunidad comprometida.
+                      <br />
+                      <strong className="text-blue-400">¿Qué sigue?</strong> Amplificaremos tu alcance con estrategias pagadas y SEO para maximizar resultados.
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -518,12 +529,12 @@ export default function SocialMediaManagerPage() {
               </span>
               
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Soluciones completas para redes sociales
+                Amplificación estratégica para máximo impacto
               </h2>
               
-              <p className="text-gray-300 max-w-3xl mx-auto">
-                Ofrezco servicios integrales que abarcan todos los aspectos de la gestión de 
-                redes sociales, desde estrategia hasta implementación y análisis.
+              <p className="text-gray-300 max-w-2xl mx-auto">
+                Transformo tu presencia digital establecida en una máquina de generación 
+                de leads y ventas a través de publicidad estratégica y optimización continua.
               </p>
             </motion.div>
 
@@ -830,12 +841,12 @@ export default function SocialMediaManagerPage() {
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
                   <div className="md:flex-1">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                      Eleva tu presencia digital al siguiente nivel
+                      Maximiza el retorno de tu inversión digital
                     </h2>
                     <p className="text-gray-300 mb-6">
-                      Las redes sociales bien gestionadas pueden convertirse en uno de los canales
-                      más rentables para tu negocio. Convierte tus redes sociales en verdaderos
-                      activos que generan resultados medibles.
+                      Es momento de llevar tu estrategia digital al siguiente nivel. 
+                      Aprovecha el poder de la publicidad pagada y el SEO para multiplicar 
+                      tus resultados y alcanzar nuevas audiencias.
                     </p>
                     
                     <div className="flex flex-wrap gap-y-2 gap-x-6 mb-6">
