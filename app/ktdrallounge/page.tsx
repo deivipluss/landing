@@ -814,17 +814,17 @@ function DiscountSection() {
   useEffect(() => {
     // Fecha objetivo inicial: 30.03.2025 a las 16:00 UTC
     const targetDateUTC = Date.UTC(2025, 2, 30, 16, 0, 0);
-    
+
     // Secuencia de descuentos personalizada
     const descuentos = [900, 700, 500, 200, 0];
     let indiceDescuento = 0;
-    
+
     // Establecer el descuento inicial
     setDiscount(descuentos[indiceDescuento]);
-    
+
     const calculateNextEvent = () => {
       const nowUTC = Date.now();
-      
+
       // Si la fecha objetivo ya pasó, calcular el próximo intervalo de 12 horas
       if (nowUTC >= targetDateUTC) {
         const twelveHoursInMs = 12 * 60 * 60 * 1000;
@@ -835,55 +835,55 @@ function DiscountSection() {
         return targetDateUTC;
       }
     };
-    
+
     let nextEventTime = calculateNextEvent();
-    
+
     const updateCountdown = () => {
       const nowUTC = Date.now();
       const diff = nextEventTime - nowUTC;
-      
+
       // Información de depuración
       const debugNextEvent = new Date(nextEventTime).toUTCString();
       const debugCurrentTime = new Date(nowUTC).toUTCString();
       const debugDiffHours = Math.floor(diff / (1000 * 60 * 60));
       const debugDiffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      
+
       setDebugInfo(`Próximo evento: ${debugNextEvent}
 Hora actual: ${debugCurrentTime}
 Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m
 Descuento actual: S/${discount}`);
-      
+
       if (diff <= 0) {
         // Avanzar al siguiente descuento en la secuencia
         indiceDescuento = Math.min(indiceDescuento + 1, descuentos.length - 1);
-        
+
+        // Actualizar el valor del descuento inmediatamente
+        setDiscount(descuentos[indiceDescuento]);
+
         // Verificar si hemos llegado al último descuento (0)
         if (indiceDescuento >= descuentos.length - 1) {
           setDescuentoAgotado(true);
         }
-        
-        // Actualizar el valor del descuento
-        setDiscount(descuentos[indiceDescuento]);
-        
+
         // Calcular próximo evento y continuar la cuenta regresiva
         nextEventTime = calculateNextEvent();
         setTimeout(updateCountdown, 100);
         return;
       }
-      
+
       // Cálculo del tiempo restante
       const totalHours = Math.floor(diff / (1000 * 60 * 60));
       const totalMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const totalSeconds = Math.floor((diff % (1000 * 60)) / 1000);
-      
+
       setTimeLeft(
         `${String(totalHours).padStart(2, "0")}:${String(totalMinutes).padStart(2, "0")}:${String(totalSeconds).padStart(2, "0")}`
       );
     };
-    
+
     updateCountdown();
     const intervalId = setInterval(updateCountdown, 1000);
-    
+
     return () => clearInterval(intervalId);
   }, []);
 
