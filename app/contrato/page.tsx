@@ -225,47 +225,51 @@ export default function ContratoPage() {
     <>
       {/* Popup Modal Bloqueante */}
       {showBlockingModal && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999] p-4">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[9999] p-4">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full mx-auto"
+            className="bg-[#1A1A2E] rounded-xl shadow-glow max-w-lg w-full mx-auto border border-[#4A90E2]/20 relative overflow-hidden"
           >
-            <div className="text-center">
-              <div className="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <AlertCircle className="h-8 w-8 text-amber-500" />
+            {/* Efectos de resplandor */}
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#4A90E2] rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#FF5C5C] rounded-full opacity-20 blur-3xl"></div>
+
+            <div className="relative p-6 text-center z-10">
+              <div className="bg-gradient-to-r from-amber-500/20 to-red-500/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <AlertCircle className="h-10 w-10 text-amber-500" />
               </div>
 
-              <h2 className="text-2xl font-bold text-gray-800 mb-3">
-                ¡Ups! La oferta ha expirado
+              <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#4A90E2] to-[#9370DB] mb-4">
+                ¡Ups! Oferta Expirada
               </h2>
 
-              <div className="space-y-4 mb-6">
-                <p className="text-gray-600">
-                  ¡Hola! Soy Deivis, y me apena informarte que la propuesta en este contrato ya no está vigente.
+              <div className="space-y-4 mb-8">
+                <p className="text-[#E1E1E1] text-lg">
+                  ¡Hola! Soy Deivis, y me apena informarte que esta propuesta ya no está vigente.
                 </p>
-                <p className="text-gray-600 font-medium">
-                  Los precios y condiciones se actualizan constantemente para asegurar que recibas el mejor valor por tu inversión.
+                <p className="text-gray-400">
+                  Las condiciones se actualizan constantemente para asegurar el mejor valor para tu inversión.
                 </p>
-                <p className="text-indigo-600 font-semibold">
-                  ¿Te gustaría recibir una propuesta actualizada y personalizada para tu negocio?
+                <p className="text-[#4A90E2] font-semibold text-lg">
+                  ¿Te gustaría recibir una propuesta personalizada y actualizada?
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <a
-                  href="https://wa.me/51999113934?text=Hola%20Deivis,%20me%20interesa%20recibir%20una%20propuesta%20actualizada%20para%20mi%20negocio"
+                  href="https://api.whatsapp.com/send?phone=+51989843709&text=Hola%20Deivis,%20quiero%20recibir%20una%20nueva%20cotizaci%C3%B3n%20para%20formalizar%20el%20contrato!"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-500 hover:bg-green-600 text-white w-full py-3 rounded-lg font-semibold flex items-center justify-center transition-colors"
+                  className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white w-full py-4 rounded-lg font-semibold flex items-center justify-center transition-all duration-300 shadow-glow-green"
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
-                  Solicitar Propuesta Actualizada
+                  Solicitar Nueva Propuesta
                 </a>
 
                 <button
                   onClick={() => window.location.href = "/"}
-                  className="bg-blue-500 hover:bg-blue-600 text-white w-full py-3 rounded-lg font-semibold flex items-center justify-center transition-colors"
+                  className="bg-gradient-to-r from-[#4A90E2] to-[#9370DB] hover:from-[#4A90E2]/90 hover:to-[#9370DB]/90 text-white w-full py-4 rounded-lg font-semibold flex items-center justify-center transition-all duration-300 shadow-glow"
                 >
                   <Home className="h-5 w-5 mr-2" />
                   Volver al Inicio
@@ -399,7 +403,7 @@ export default function ContratoPage() {
                 >
                   <path
                     fillRule="evenodd"
-                    d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                    d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110-2H5.414l4.293 4.293a1 1 0 010 1.414z"
                     clipRule="evenodd"
                   />
                 </svg>
@@ -555,7 +559,7 @@ export default function ContratoPage() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                          d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
                         />
                       </svg>
                       <span className="text-xs mt-1">
