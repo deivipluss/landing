@@ -806,20 +806,22 @@ export default function DiagnosticoDigital() {
 }
 
 function DiscountSection() {
-  const [timeLeft, setTimeLeft] = useState("");
-  const [discount, setDiscount] = useState(500); // Cambiado a 500 para reflejar el estado actual
+  const [timeLeft, setTimeLeft] = useState("00:00:00");
+  const [discount, setDiscount] = useState(500);
   const [descuentoAgotado, setDescuentoAgotado] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const initializeTimer = async () => {
+    let intervalId: NodeJS.Timeout;
+
+    const updateTimer = async () => {
       try {
         const response = await fetch('/api/discount');
         const data = await response.json();
 
         if (!data.targetTime) {
-          // Si no hay targetTime, crear uno nuevo
-          const newTargetTime = Date.now() + 12 * 60 * 60 * 1000; // 12 horas desde ahora
+          // Si no hay targetTime, establecer uno nuevo
+          const newTargetTime = Date.now() + (12 * 60 * 60 * 1000); // 12 horas
           await fetch('/api/discount', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -828,52 +830,54 @@ function DiscountSection() {
               indiceDescuento: data.indiceDescuento || 1
             })
           });
-          return;
+          data.targetTime = newTargetTime;
         }
 
-        // Actualizar el contador cada segundo
-        const intervalId = setInterval(async () => {
-          const now = Date.now();
-          const timeRemaining = data.targetTime - now;
+        const now = Date.now();
+        const timeRemaining = Math.max(0, data.targetTime - now);
 
-          if (timeRemaining <= 0) {
-            // Tiempo expirado, actualizar índice y crear nuevo tiempo objetivo
-            const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
-            const newTargetTime = now + 12 * 60 * 60 * 1000;
+        if (timeRemaining === 0) {
+          // Si el tiempo expiró, actualizar el descuento
+          const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
+          const newTargetTime = now + (12 * 60 * 60 * 1000);
 
-            await fetch('/api/discount', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                targetTime: newTargetTime,
-                indiceDescuento: newIndiceDescuento
-              })
-            });
+          await fetch('/api/discount', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              targetTime: newTargetTime,
+              indiceDescuento: newIndiceDescuento
+            })
+          });
 
-            setDiscount([700, 500, 200, 0][newIndiceDescuento]);
-            setDescuentoAgotado(newIndiceDescuento === 3);
-          } else {
-            // Actualizar el contador
-            const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+          setDiscount([700, 500, 200, 0][newIndiceDescuento]);
+          setDescuentoAgotado(newIndiceDescuento === 3);
+        } else {
+          // Actualizar el contador
+          const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+          const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-            setTimeLeft(
-              `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
-            );
-            setDiscount([700, 500, 200, 0][data.indiceDescuento]);
-          }
-        }, 1000);
+          setTimeLeft(
+            `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+          );
+          setDiscount([700, 500, 200, 0][data.indiceDescuento]);
+        }
 
-        return () => clearInterval(intervalId);
+        setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching discount state:', error);
-      } finally {
+        console.error('Error:', error);
         setIsLoading(false);
       }
     };
 
-    initializeTimer();
+    // Actualizar inmediatamente y luego cada segundo
+    updateTimer();
+    intervalId = setInterval(updateTimer, 1000);
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
   }, []);
 
   // Mostrar un loader mientras se carga el estado inicial
