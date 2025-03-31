@@ -808,108 +808,75 @@ export default function DiagnosticoDigital() {
 function DiscountSection() {
   const [timeLeft, setTimeLeft] = useState("");
   const [discount, setDiscount] = useState(900);
-  const [debugInfo, setDebugInfo] = useState("");
   const [descuentoAgotado, setDescuentoAgotado] = useState(false);
 
   useEffect(() => {
-    // Fecha objetivo inicial: 30.03.2025 a las 16:00 UTC
-    const targetDateUTC = Date.UTC(2025, 2, 30, 16, 0, 0);
-
-    // Secuencia de descuentos personalizada
+    // Secuencia de descuentos
     const descuentos = [900, 700, 500, 200, 0];
     let indiceDescuento = 0;
 
-    // Establecer el descuento inicial
-    setDiscount(descuentos[indiceDescuento]);
-
-    const calculateNextEvent = () => {
-      const nowUTC = Date.now();
-
-      // Si la fecha objetivo ya pasó, calcular el próximo intervalo de 12 horas
-      if (nowUTC >= targetDateUTC) {
-        const twelveHoursInMs = 12 * 60 * 60 * 1000;
-        const elapsedSinceTarget = nowUTC - targetDateUTC;
-        const intervalsPassed = Math.floor(elapsedSinceTarget / twelveHoursInMs);
-        return targetDateUTC + (intervalsPassed + 1) * twelveHoursInMs;
-      } else {
-        return targetDateUTC;
-      }
-    };
-
-    let nextEventTime = calculateNextEvent();
-
-    const updateCountdown = () => {
-      const nowUTC = Date.now();
-      const diff = nextEventTime - nowUTC;
-
-      // Información de depuración
-      const debugNextEvent = new Date(nextEventTime).toUTCString();
-      const debugCurrentTime = new Date(nowUTC).toUTCString();
-      const debugDiffHours = Math.floor(diff / (1000 * 60 * 60));
-      const debugDiffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-      console.log(`DEBUG: Próximo evento: ${debugNextEvent}`);
-      console.log(`DEBUG: Hora actual: ${debugCurrentTime}`);
-      console.log(`DEBUG: Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m`);
-      console.log(`DEBUG: Descuento actual: S/${discount}`);
-      console.log(`DEBUG: Índice actual: ${indiceDescuento}`);
-
-      setDebugInfo(`Próximo evento: ${debugNextEvent}
-Hora actual: ${debugCurrentTime}
-Diferencia: ${debugDiffHours}h ${debugDiffMinutes}m
-Descuento actual: S/${discount}`);
+    // Función para calcular el tiempo restante
+    const calculateTimeLeft = (targetTime: number) => {
+      const now = Date.now();
+      const diff = targetTime - now;
 
       if (diff <= 0) {
-        // Avanzar al siguiente descuento en la secuencia
+        // Avanzar al siguiente descuento
         indiceDescuento = Math.min(indiceDescuento + 1, descuentos.length - 1);
-
-        // Actualizar el valor del descuento inmediatamente
         setDiscount(descuentos[indiceDescuento]);
-        console.log(`DEBUG: Nuevo descuento aplicado: S/${descuentos[indiceDescuento]}`);
 
-        // Verificar si hemos llegado al último descuento (0)
-        if (indiceDescuento >= descuentos.length - 1) {
+        if (indiceDescuento === descuentos.length - 1) {
           setDescuentoAgotado(true);
-          console.log("DEBUG: Descuento agotado.");
         }
 
-        // Calcular próximo evento y continuar la cuenta regresiva
-        nextEventTime = calculateNextEvent();
-        setTimeout(updateCountdown, 100);
-        return;
+        // Reiniciar el contador para el próximo descuento
+        return 12 * 60 * 60 * 1000; // 12 horas en milisegundos
       }
 
-      // Cálculo del tiempo restante
-      const totalHours = Math.floor(diff / (1000 * 60 * 60));
-      const totalMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const totalSeconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      setTimeLeft(
-        `${String(totalHours).padStart(2, "0")}:${String(totalMinutes).padStart(2, "0")}:${String(totalSeconds).padStart(2, "0")}`
-      );
+      return diff;
     };
 
-    updateCountdown();
+    // Inicializar el tiempo objetivo
+    let targetTime = Date.now() + 12 * 60 * 60 * 1000; // 12 horas desde ahora
+
+    const updateCountdown = () => {
+      const remainingTime = calculateTimeLeft(targetTime);
+
+      if (remainingTime > 0) {
+        const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+        const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+        setTimeLeft(
+          `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+        );
+      } else {
+        // Reiniciar el tiempo objetivo
+        targetTime = Date.now() + 12 * 60 * 60 * 1000;
+      }
+    };
+
+    // Actualizar el contador cada segundo
     const intervalId = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(intervalId);
-  }, []); // Eliminamos `discount` como dependencia para evitar bucles infinitos
+  }, []);
 
   return (
     <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
-      {/* Etiqueta de "Tiempo limitado" con animación mejorada */}
-      <motion.div 
+      {/* Etiqueta de "Tiempo limitado" */}
+      <motion.div
         className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg"
         animate={{ scale: [1, 1.08, 1] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       >
         ¡Tiempo limitado!
       </motion.div>
-      
+
       <div className="text-lg font-semibold text-green-700 mb-1">
         ¡OFERTA ESPECIAL HOY!
       </div>
-      
+
       {/* Mensaje cuando el descuento está agotado */}
       {descuentoAgotado ? (
         <div className="text-2xl font-bold text-red-600 py-2">
@@ -920,11 +887,11 @@ Descuento actual: S/${discount}`);
           Descuento de S/{discount}
         </div>
       )}
-      
+
       <p className="text-gray-600 text-sm mt-1">
         Aprovecha antes de que el descuento disminuya
       </p>
-      
+
       <div className="mt-4 text-center flex items-center justify-center">
         <span className="text-red-600 font-bold text-sm mr-2">
           ¡El tiempo corre!
@@ -943,13 +910,6 @@ Descuento actual: S/${discount}`);
           </span>
         </div>
       </div>
-      
-      {/* Información de depuración visible solo en desarrollo */}
-      {process.env.NODE_ENV === 'development' && (
-        <div className="mt-2 p-2 bg-black/10 rounded text-xs text-left whitespace-pre-wrap">
-          {debugInfo}
-        </div>
-      )}
     </div>
   );
 }
