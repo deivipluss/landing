@@ -20,20 +20,23 @@ async function getDiscountState() {
     await ensureDirectoryExists();
     const fileData = await fs.readFile(dataFilePath, 'utf-8');
     const data = JSON.parse(fileData);
-    
-    // Verificar si necesitamos renovar el tiempo
     const now = Date.now();
+
+    // Si no hay targetTime o ya expiró, crear nuevo período
     if (!data.targetTime || data.targetTime <= now) {
       const newData = {
-        targetTime: now + (12 * 60 * 60 * 1000), // 12 horas desde ahora
+        targetTime: now + (12 * 60 * 60 * 1000), // 12 horas
         indiceDescuento: data.indiceDescuento || 0
       };
+      
+      // Guardar el nuevo estado
       await fs.writeFile(dataFilePath, JSON.stringify(newData, null, 2));
       return newData;
     }
     
     return data;
   } catch {
+    // Estado inicial con tiempo actual + 12 horas
     const initialState = {
       targetTime: Date.now() + (12 * 60 * 60 * 1000),
       indiceDescuento: 0

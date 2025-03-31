@@ -814,50 +814,32 @@ function DiscountSection() {
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
 
-    const fetchAndUpdateTimer = async () => {
+    const updateTimer = async () => {
       try {
         const response = await fetch('/api/discount');
         const data = await response.json();
-        
-        // Si no hay targetTime o es null, establecer uno nuevo
-        if (!data.targetTime) {
-          const newTargetTime = Date.now() + (12 * 60 * 60 * 1000); // 12 horas
+        const now = Date.now();
+        const timeRemaining = data.targetTime - now;
+
+        if (timeRemaining <= 0) {
+          // Si el tiempo expiró, actualizar inmediatamente
+          const newTargetTime = now + (12 * 60 * 60 * 1000);
+          const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
+          
           await fetch('/api/discount', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               targetTime: newTargetTime,
-              indiceDescuento: 1 // Mantener el índice actual
+              indiceDescuento: newIndiceDescuento
             })
           });
-          data.targetTime = newTargetTime;
-        }
 
-        // Actualizar el estado basado en el tiempo actual
-        const updateState = () => {
-          const now = Date.now();
-          const timeRemaining = Math.max(0, data.targetTime - now);
-
-          if (timeRemaining <= 0) {
-            // Tiempo expirado, crear nuevo período
-            const newTime = now + (12 * 60 * 60 * 1000);
-            const newIndiceDescuento = Math.min(data.indiceDescuento + 1, 3);
-            
-            fetch('/api/discount', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                targetTime: newTime,
-                indiceDescuento: newIndiceDescuento
-              })
-            });
-
-            data.targetTime = newTime;
-            setDiscount([700, 500, 200, 0][newIndiceDescuento]);
-            setDescuentoAgotado(newIndiceDescuento === 3);
-          }
-
-          // Calcular y mostrar el tiempo restante
+          // Actualizar estado local
+          setDiscount([700, 500, 200, 0][newIndiceDescuento]);
+          setDescuentoAgotado(newIndiceDescuento === 3);
+        } else {
+          // Actualizar contador
           const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
           const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
@@ -865,13 +847,8 @@ function DiscountSection() {
           setTimeLeft(
             `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
           );
-        };
-
-        // Actualizar inmediatamente
-        updateState();
-        
-        // Configurar intervalo para actualizaciones
-        intervalId = setInterval(updateState, 1000);
+          setDiscount([700, 500, 200, 0][data.indiceDescuento]);
+        }
         setIsLoading(false);
       } catch (error) {
         console.error('Error:', error);
@@ -879,11 +856,11 @@ function DiscountSection() {
       }
     };
 
-    fetchAndUpdateTimer();
+    // Actualizar inmediatamente y cada segundo
+    updateTimer();
+    intervalId = setInterval(updateTimer, 1000);
 
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
+    return () => clearInterval(intervalId);
   }, []);
 
   // Mostrar un loader mientras se carga el estado inicial
