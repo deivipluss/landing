@@ -797,7 +797,7 @@ export default function DiagnosticoDigital() {
             <Sparkles className="h-4 w-4 text-indigo-400 mr-2" />
             <span className="text-indigo-600 font-medium text-sm">Elevando negocios al siguiente nivel digital</span>
           </div>
-          <p className="text-gray-500 text-sm">© 2025 - Deivipluss. Todos los derechos reservados.</p>
+          <p className="text-gray-500 text-sm">© 2025 - Deivipluss Todos los derechos reservados.</p>
         </div>
       </footer>
 
