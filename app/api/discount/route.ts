@@ -14,19 +14,31 @@ async function ensureDirectoryExists() {
   }
 }
 
-// Obtener el estado actual
+// Modificado para manejar persistencia global
 async function getDiscountState() {
   try {
     await ensureDirectoryExists();
     const fileData = await fs.readFile(dataFilePath, 'utf-8');
-    return JSON.parse(fileData);
+    const data = JSON.parse(fileData);
+    
+    // Verificar si necesitamos renovar el tiempo
+    const now = Date.now();
+    if (!data.targetTime || data.targetTime <= now) {
+      const newData = {
+        targetTime: now + (12 * 60 * 60 * 1000), // 12 horas desde ahora
+        indiceDescuento: data.indiceDescuento || 0
+      };
+      await fs.writeFile(dataFilePath, JSON.stringify(newData, null, 2));
+      return newData;
+    }
+    
+    return data;
   } catch {
-    // Estado inicial si no existe el archivo
     const initialState = {
-      targetTime: Date.now() + 12 * 60 * 60 * 1000,
-      indiceDescuento: 0,
+      targetTime: Date.now() + (12 * 60 * 60 * 1000),
+      indiceDescuento: 0
     };
-    await fs.writeFile(dataFilePath, JSON.stringify(initialState));
+    await fs.writeFile(dataFilePath, JSON.stringify(initialState, null, 2));
     return initialState;
   }
 }
@@ -39,19 +51,21 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { targetTime, indiceDescuento } = body;
-
-    if (typeof targetTime !== "number" || typeof indiceDescuento !== "number") {
-      return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
+    const currentState = await getDiscountState();
+    
+    // Solo actualizar si es necesario
+    if (body.targetTime && body.targetTime > Date.now()) {
+      await fs.writeFile(
+        dataFilePath,
+        JSON.stringify({
+          targetTime: body.targetTime,
+          indiceDescuento: body.indiceDescuento
+        }, null, 2)
+      );
+      return NextResponse.json({ message: "Estado actualizado correctamente" });
     }
-
-    await ensureDirectoryExists();
-    await fs.writeFile(
-      dataFilePath,
-      JSON.stringify({ targetTime, indiceDescuento })
-    );
-
-    return NextResponse.json({ message: "Estado actualizado correctamente" });
+    
+    return NextResponse.json(currentState);
   } catch (error) {
     return NextResponse.json(
       { error: "Error al procesar la solicitud" },
