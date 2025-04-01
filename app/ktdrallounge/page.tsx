@@ -816,32 +816,37 @@ function DiscountSection() {
 
     const updateTimer = async () => {
       try {
-        const response = await fetch('/api/discount', {
-          cache: 'no-store' // Evitar el caché
+        const response = await fetch(`/api/discount?t=${Date.now()}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+          }
         });
+        
         const data = await response.json();
         const now = Date.now();
-        const timeRemaining = data.targetTime - now;
+        const timeRemaining = Math.max(0, data.targetTime - now);
 
         if (timeRemaining <= 0) {
-          // Si el tiempo expiró, actualizar inmediatamente
-          const newTargetTime = now + (8 * 60 * 60 * 1000); // Cambiado a 8 horas
+          const newTargetTime = now + (8 * 60 * 60 * 1000);
           const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
           
           await fetch('/api/discount', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              'Cache-Control': 'no-cache'
+            },
             body: JSON.stringify({
               targetTime: newTargetTime,
               indiceDescuento: newIndiceDescuento
             })
           });
 
-          // Actualizar estado local
           setDiscount([700, 500, 200, 0][newIndiceDescuento]);
           setDescuentoAgotado(newIndiceDescuento === 3);
         } else {
-          // Actualizar contador
           const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
           const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
@@ -859,7 +864,6 @@ function DiscountSection() {
       }
     };
 
-    // Actualizar inmediatamente y cada segundo
     updateTimer();
     intervalId = setInterval(updateTimer, 1000);
 
