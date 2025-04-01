@@ -16,7 +16,7 @@ import {
   Clock,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 
 export default function DiagnosticoDigital() {
   return (
@@ -806,6 +806,7 @@ export default function DiagnosticoDigital() {
 }
 
 function DiscountSection() {
+  const [state, dispatch] = useReducer((state: any) => state + 1, 0);
   const [timeLeft, setTimeLeft] = useState("00:00:00");
   const [discount, setDiscount] = useState(500);
   const [descuentoAgotado, setDescuentoAgotado] = useState(false);
@@ -835,6 +836,7 @@ function DiscountSection() {
         setDiscount([700, 500, 200, 0][data.indiceDescuento]);
         setDescuentoAgotado(data.indiceDescuento === 3);
         setIsLoading(false);
+        dispatch(); // Forzar una actualización
       } catch (error) {
         console.error('Error:', error);
         setIsLoading(false);
