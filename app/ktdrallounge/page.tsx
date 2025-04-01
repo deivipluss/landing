@@ -810,11 +810,8 @@ function DiscountSection() {
   const [discount, setDiscount] = useState(500);
   const [descuentoAgotado, setDescuentoAgotado] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [, setUpdate] = useState(0); // Estado para forzar la actualización
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
     const updateTimer = async () => {
       try {
         const response = await fetch(`/api/discount?t=${Date.now()}`, {
@@ -824,54 +821,31 @@ function DiscountSection() {
             'Pragma': 'no-cache'
           }
         });
-        
         const data = await response.json();
         const now = Date.now();
         const timeRemaining = Math.max(0, data.targetTime - now);
 
-        if (timeRemaining <= 0) {
-          const newTargetTime = now + (8 * 60 * 60 * 1000);
-          const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
-          
-          await fetch('/api/discount', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Cache-Control': 'no-cache'
-            },
-            body: JSON.stringify({
-              targetTime: newTargetTime,
-              indiceDescuento: newIndiceDescuento
-            })
-          });
+        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-          setDiscount([700, 500, 200, 0][newIndiceDescuento]);
-          setDescuentoAgotado(newIndiceDescuento === 3);
-        } else {
-          const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-          const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-          setTimeLeft(
-            `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
-          );
-          setDiscount([700, 500, 200, 0][data.indiceDescuento]);
-          setDescuentoAgotado(data.indiceDescuento === 3);
-        }
+        setTimeLeft(
+          `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+        );
+        setDiscount([700, 500, 200, 0][data.indiceDescuento]);
+        setDescuentoAgotado(data.indiceDescuento === 3);
         setIsLoading(false);
-        setUpdate(prev => prev + 1); // Forzar la actualización del componente
       } catch (error) {
         console.error('Error:', error);
         setIsLoading(false);
       }
     };
 
-    updateTimer();
-    intervalId = setInterval(updateTimer, 1000);
+    updateTimer(); // Llama a la función inmediatamente
 
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
+    const intervalId = setInterval(updateTimer, 1000); // Configura el intervalo
+
+    return () => clearInterval(intervalId); // Limpia el intervalo al desmontar
   }, []);
 
   // Mostrar un loader mientras se carga el estado inicial

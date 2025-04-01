@@ -33,11 +33,18 @@ function writeData(data: any) {
 
 export async function GET() {
   let data = readData();
-  
-  if (!data || Date.now() >= data.targetTime) {
+
+  if (!data) {
     data = {
       targetTime: Date.now() + (8 * 60 * 60 * 1000),
-      indiceDescuento: data ? Math.min((data.indiceDescuento || 0) + 1, 3) : 0
+      indiceDescuento: 0
+    };
+    writeData(data);
+  } else if (Date.now() >= data.targetTime) {
+    const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
+    data = {
+      targetTime: Date.now() + (8 * 60 * 60 * 1000),
+      indiceDescuento: newIndiceDescuento
     };
     writeData(data);
   }
