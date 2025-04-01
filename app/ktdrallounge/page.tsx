@@ -848,6 +848,7 @@ function DiscountSection() {
             `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
           );
           setDiscount([700, 500, 200, 0][data.indiceDescuento]);
+          setDescuentoAgotado(data.indiceDescuento === 3);
         }
         setIsLoading(false);
       } catch (error) {
