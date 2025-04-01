@@ -16,7 +16,7 @@ import {
   Clock,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect } from "react";
 
 export default function DiagnosticoDigital() {
   return (
@@ -806,51 +806,62 @@ export default function DiagnosticoDigital() {
 }
 
 function DiscountSection() {
-  const [state, dispatch] = useReducer((state: any) => state + 1, 0);
   const [timeLeft, setTimeLeft] = useState("00:00:00");
   const [discount, setDiscount] = useState(500);
   const [descuentoAgotado, setDescuentoAgotado] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+
     const updateTimer = async () => {
       try {
         const response = await fetch(`/api/discount?t=${Date.now()}`, {
           cache: 'no-store',
-          headers: {
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache'
-          }
         });
         const data = await response.json();
         const now = Date.now();
         const timeRemaining = Math.max(0, data.targetTime - now);
 
-        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        if (timeRemaining <= 0) {
+          const newTargetTime = now + 8 * 60 * 60 * 1000;
+          const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
 
-        setTimeLeft(
-          `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
-        );
-        setDiscount([700, 500, 200, 0][data.indiceDescuento]);
-        setDescuentoAgotado(data.indiceDescuento === 3);
+          await fetch('/api/discount', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              targetTime: newTargetTime,
+              indiceDescuento: newIndiceDescuento,
+            }),
+          });
+
+          setDiscount([700, 500, 200, 0][newIndiceDescuento]);
+          setDescuentoAgotado(newIndiceDescuento === 3);
+        } else {
+          const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+          const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+          setTimeLeft(
+            `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+          );
+          setDiscount([700, 500, 200, 0][data.indiceDescuento]);
+          setDescuentoAgotado(data.indiceDescuento === 3);
+        }
         setIsLoading(false);
-        dispatch(); // Forzar una actualización
       } catch (error) {
         console.error('Error:', error);
         setIsLoading(false);
       }
     };
 
-    updateTimer(); // Llama a la función inmediatamente
-
-    const intervalId = setInterval(updateTimer, 1000); // Configura el intervalo
+    updateTimer(); // Llama a la función inmediatamente para inicializar el contador
+    intervalId = setInterval(updateTimer, 1000); // Actualiza cada segundo
 
     return () => clearInterval(intervalId); // Limpia el intervalo al desmontar
   }, []);
 
-  // Mostrar un loader mientras se carga el estado inicial
   if (isLoading) {
     return (
       <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4">
@@ -864,7 +875,6 @@ function DiscountSection() {
 
   return (
     <div className="bg-green-50 p-4 rounded-lg border border-green-200 w-full max-w-md mb-4 relative">
-      {/* Etiqueta de "Tiempo limitado" */}
       <motion.div
         className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg"
         animate={{ scale: [1, 1.08, 1] }}
@@ -877,7 +887,6 @@ function DiscountSection() {
         ¡OFERTA ESPECIAL HOY!
       </div>
 
-      {/* Mensaje cuando el descuento está agotado */}
       {descuentoAgotado ? (
         <div className="text-2xl font-bold text-red-600 py-2">
           ¡NO TIENES DESCUENTOS DISPONIBLES!
