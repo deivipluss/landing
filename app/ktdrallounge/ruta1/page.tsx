@@ -19,7 +19,8 @@ import {
   BarChart,
   Calendar as CalendarIcon2,
   Bell,
-  ChevronRight
+  ChevronRight,
+  Sparkles
 } from "lucide-react";
 
 const RoadmapElLounge: React.FC = () => {
@@ -888,98 +889,6 @@ const RoadmapElLounge: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Calendario completo de implementación */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.0, duration: 0.5 }}
-        className="mt-12 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-6 border border-purple-200 shadow-sm"
-      >
-        <h2 className="text-2xl font-bold text-center text-indigo-800 mb-6">Calendario de Implementación</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white p-5 rounded-xl border border-indigo-200 shadow-xs">
-            <h3 className="font-semibold text-indigo-700 mb-3 pb-2 border-b border-indigo-100 flex items-center">
-              <Calendar className="h-5 w-5 mr-2 text-indigo-500" />
-              Primera Fase (Días 1-14)
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <div className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded mr-3">2-3</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Auditoría Completa</h4>
-                  <p className="text-gray-600 text-sm">Diagnóstico integral del estado actual</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="bg-teal-100 text-teal-800 text-xs font-medium px-2 py-1 rounded mr-3">4-5</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Metodologías para la Planificación</h4>
-                  <p className="text-gray-600 text-sm">Diseño de estrategias y calendarización</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded mr-3">6</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Cultura Organizativa</h4>
-                  <p className="text-gray-600 text-sm">Reunión presencial con líderes</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded mr-3">8</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Procesos Operativos</h4>
-                  <p className="text-gray-600 text-sm">Tercera y cuarta reunión</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded mr-3">9-10</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Fijación de Objetivos</h4>
-                  <p className="text-gray-600 text-sm">Definición de KPIs y métricas</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded mr-3">11</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Bases Digitales Sólidas</h4>
-                  <p className="text-gray-600 text-sm">Implementación de infraestructura</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded mr-3">13-14</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Capacitación del Equipo</h4>
-                  <p className="text-gray-600 text-sm">Sesiones intensivas presenciales</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="bg-white p-5 rounded-xl border border-indigo-200 shadow-xs">
-            <h3 className="font-semibold text-indigo-700 mb-3 pb-2 border-b border-indigo-100 flex items-center">
-              <Calendar className="h-5 w-5 mr-2 text-indigo-500" />
-              Segunda Fase (Días 15-35)
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <div className="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded mr-3">15-30</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Pruebas y Ajustes</h4>
-                  <p className="text-gray-600 text-sm">Verificación, corrección y optimización</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded mr-3">35</div>
-                <div>
-                  <h4 className="font-medium text-gray-800">Implementación Final</h4>
-                  <p className="text-gray-600 text-sm">Sistema completo funcionando sin problemas</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </motion.div>
-
       {/* Resultados esperados */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -1010,20 +919,24 @@ const RoadmapElLounge: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.5 }}
-        className="text-center mt-12 p-6 bg-white rounded-2xl shadow-sm border border-gray-200"
+        className="py-6 mt-12 border-t border-indigo-100 bg-gradient-to-r from-blue-50 to-indigo-50 w-full rounded-2xl"
       >
-        <p className="text-gray-700 max-w-2xl mx-auto">
-          Este plan implementado entre el 2 y el 14 de abril de 2025 establecerá las bases sólidas para la transformación digital de <i>El Lounge</i>, 
-          asegurando un negocio moderno, eficiente y preparado para escalar en el entorno digital.
-        </p>
-        <div className="mt-6">
-          <Link 
-            href="/ktdrallounge" 
-            className="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver al diagnóstico
-          </Link>
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="flex items-center justify-center mb-3">
+            <Sparkles className="h-4 w-4 text-indigo-400 mr-2" />
+            <span className="text-indigo-600 font-medium text-sm">Elevando negocios al siguiente nivel digital</span>
+          </div>
+          <p className="text-gray-500 text-sm">© 2025 - Deivipluss Todos los derechos reservados.</p>
+          
+          <div className="mt-6">
+            <Link 
+              href="/ktdrallounge" 
+              className="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Volver al diagnóstico
+            </Link>
+          </div>
         </div>
       </motion.footer>
     </div>
