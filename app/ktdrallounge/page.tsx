@@ -820,6 +820,8 @@ function DiscountSection() {
           cache: 'no-store',
         });
         const data = await response.json();
+        console.log('Datos recibidos del servidor:', data); // Log para depuración
+
         const now = Date.now();
         const timeRemaining = Math.max(0, data.targetTime - now);
 
@@ -851,7 +853,7 @@ function DiscountSection() {
         }
         setIsLoading(false);
       } catch (error) {
-        console.error('Error:', error);
+        console.error('Error al actualizar el temporizador:', error);
         setIsLoading(false);
       }
     };

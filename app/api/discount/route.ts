@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-const DATA_FILE = path.join(process.cwd(), 'data', 'discount.json');
+const DATA_FILE = path.join(process.cwd(), 'data', 'discount-state.json');
 
 // Asegurar que el directorio data existe
 if (!fs.existsSync(path.dirname(DATA_FILE))) {
@@ -14,10 +14,11 @@ function readData() {
   try {
     if (fs.existsSync(DATA_FILE)) {
       const data = fs.readFileSync(DATA_FILE, 'utf-8');
+      console.log('Datos leídos del archivo:', data); // Log para depuración
       return JSON.parse(data);
     }
   } catch (error) {
-    console.error('Error reading discount data:', error);
+    console.error('Error leyendo discount-state.json:', error);
   }
   return null;
 }
@@ -26,8 +27,9 @@ function readData() {
 function writeData(data: any) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data));
+    console.log('Datos escritos en el archivo:', data); // Log para depuración
   } catch (error) {
-    console.error('Error writing discount data:', error);
+    console.error('Error escribiendo discount-state.json:', error);
   }
 }
 
@@ -35,7 +37,7 @@ export async function GET() {
   let data = readData();
 
   if (!data || typeof data.targetTime !== "number" || typeof data.indiceDescuento !== "number") {
-    console.warn("Archivo discount.json no válido o no encontrado. Creando uno nuevo...");
+    console.warn("Archivo discount-state.json no válido o no encontrado. Creando uno nuevo...");
     data = {
       targetTime: Date.now() + 8 * 60 * 60 * 1000,
       indiceDescuento: 0,
@@ -50,6 +52,7 @@ export async function GET() {
     writeData(data);
   }
 
+  console.log('Datos enviados al cliente:', data); // Log para depuración
   return new NextResponse(JSON.stringify(data), {
     headers: {
       'Content-Type': 'application/json',
@@ -62,6 +65,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const body = await req.json();
+  console.log('Datos recibidos del cliente para guardar:', body); // Log para depuración
   writeData(body);
   return NextResponse.json(body);
 }
