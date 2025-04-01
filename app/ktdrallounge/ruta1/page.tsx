@@ -11,7 +11,9 @@ import {
   BarChart2, 
   Database, 
   BookOpen,
-  CheckCircle
+  CheckCircle,
+  Calendar,
+  Clock
 } from "lucide-react";
 
 const RoadmapElLounge: React.FC = () => {
@@ -113,14 +115,22 @@ const RoadmapElLounge: React.FC = () => {
             <div className="mr-4 bg-blue-100 p-3 rounded-full">
               {icons[0]}
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800">1. Auditoría Completa (Días 1-3)</h2>
-              <p className="text-gray-700 my-2">Objetivo: Realizar un análisis profundo del ecosistema digital y operatividad comercial de <i>El Lounge</i> para identificar bloqueos y oportunidades de mejora.</p>
+            <div className="w-full">
+              <div className="flex justify-between items-center flex-wrap">
+                <h2 className="text-2xl font-semibold text-gray-800">1. Auditoría Completa</h2>
+                <div className="flex items-center bg-blue-100 px-3 py-1 rounded-full text-sm text-blue-700 font-medium mt-1 md:mt-0">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span>Duración: 3 días</span>
+                </div>
+              </div>
+              <p className="text-gray-700 my-2 text-justify">
+                Objetivo: Realizar un análisis profundo del ecosistema digital y operatividad comercial de <i>El Lounge</i> para identificar bloqueos y oportunidades de mejora.
+              </p>
               
               <div className="mt-4 space-y-4">
                 <div>
                   <h3 className="text-xl font-medium text-blue-700">Análisis de Infraestructura Tecnológica</h3>
-                  <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+                  <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                     <li>Evaluación del estado y capacidad del hardware utilizado en el negocio.</li>
                     <li>Diagnóstico de conectividad y redes.</li>
                     <li>Verificación del software y activos digitales adquiridos por la empresa.</li>
@@ -131,7 +141,7 @@ const RoadmapElLounge: React.FC = () => {
 
                 <div>
                   <h3 className="text-xl font-medium text-blue-700">Análisis del Ecosistema Digital</h3>
-                  <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+                  <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                     <li>Registro de todas las cuentas digitales de la empresa.</li>
                     <li>Verificación de disponibilidad de dominio.</li>
                     <li>Comprobación de disponibilidad de correos electrónicos.</li>
@@ -142,7 +152,7 @@ const RoadmapElLounge: React.FC = () => {
 
                 <div>
                   <h3 className="text-xl font-medium text-blue-700">Análisis de Procesos Comerciales y Recurso Humano</h3>
-                  <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+                  <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                     <li>Mapeo del customer journey.</li>
                     <li>Evaluación de estrategias de captación y fidelización.</li>
                     <li>Revisión de canales de venta y reservas.</li>
@@ -150,6 +160,18 @@ const RoadmapElLounge: React.FC = () => {
                     <li>Evaluación del compromiso y efectividad del recurso humano.</li>
                     <li>Análisis de la oferta vigente, promociones y evaluación de la carta de productos.</li>
                   </ul>
+                </div>
+                
+                {/* Added highlight for PRIMERA REUNIÓN */}
+                <div className="mt-6 bg-yellow-50 p-4 rounded-lg border border-yellow-300 shadow-sm">
+                  <div className="flex items-center justify-center mb-2">
+                    <Clock className="h-5 w-5 text-yellow-600 mr-2" />
+                    <h3 className="text-lg font-bold text-yellow-800 uppercase tracking-wider">PRIMERA REUNIÓN</h3>
+                  </div>
+                  <p className="text-gray-700 text-justify">
+                    Al finalizar esta etapa, realizaremos una reunión clave con todo el equipo para presentar los hallazgos, 
+                    establecer expectativas claras y obtener el compromiso de todas las áreas en el proceso de transformación digital.
+                  </p>
                 </div>
               </div>
             </div>
@@ -165,9 +187,15 @@ const RoadmapElLounge: React.FC = () => {
             <div className="mr-4 bg-green-100 p-3 rounded-full">
               {icons[1]}
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800">2. Implantación de Cultura Organizativa y Colaborativa (Días 4-6)</h2>
-              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+            <div className="w-full">
+              <div className="flex justify-between items-center flex-wrap">
+                <h2 className="text-2xl font-semibold text-gray-800">2. Implantación de Cultura Organizativa y Colaborativa</h2>
+                <div className="flex items-center bg-green-100 px-3 py-1 rounded-full text-sm text-green-700 font-medium mt-1 md:mt-0">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span>Duración: 3 días</span>
+                </div>
+              </div>
+              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                 <li>Definir roles operativos, adicionales y/o digitales en cada área de operación.</li>
                 <li>Crear protocolos de comunicación interna utilizando herramientas como Trello, Notion, WhatsApp, entre otras.</li>
                 <li>Fomentar la necesidad de adaptarse a la modernidad y digitalización, tanto como individuos como en la empresa, para mantener una cultura de innovación continua.</li>
@@ -185,9 +213,15 @@ const RoadmapElLounge: React.FC = () => {
             <div className="mr-4 bg-purple-100 p-3 rounded-full">
               {icons[2]}
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800">3. Establecimiento de Procesos Operativos y Comerciales (Días 7-9)</h2>
-              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+            <div className="w-full">
+              <div className="flex justify-between items-center flex-wrap">
+                <h2 className="text-2xl font-semibold text-gray-800">3. Establecimiento de Procesos Operativos y Comerciales</h2>
+                <div className="flex items-center bg-purple-100 px-3 py-1 rounded-full text-sm text-purple-700 font-medium mt-1 md:mt-0">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span>Duración: 3 días</span>
+                </div>
+              </div>
+              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                 <li>Implementar metodologías para planificación de eventos y promociones.</li>
                 <li>Crear un sistema de registro de clientes y bases de datos.</li>
                 <li>Establecer un flujo de atención al cliente eficiente.</li>
@@ -207,9 +241,15 @@ const RoadmapElLounge: React.FC = () => {
             <div className="mr-4 bg-emerald-100 p-3 rounded-full">
               {icons[3]}
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800">4. Orientación de la Cultura Empresarial hacia la Modernidad (Días 10-11)</h2>
-              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+            <div className="w-full">
+              <div className="flex justify-between items-center flex-wrap">
+                <h2 className="text-2xl font-semibold text-gray-800">4. Orientación de la Cultura Empresarial hacia la Modernidad</h2>
+                <div className="flex items-center bg-emerald-100 px-3 py-1 rounded-full text-sm text-emerald-700 font-medium mt-1 md:mt-0">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span>Duración: 2 días</span>
+                </div>
+              </div>
+              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                 <li>Introducir prácticas eco-friendly y sostenibles en la operación diaria.</li>
                 <li>Adaptar estrategias de marketing digital responsables y conscientes.</li>
                 <li>Fomentar un ambiente de trabajo que valore la innovación y el pensamiento creativo.</li>
@@ -228,9 +268,15 @@ const RoadmapElLounge: React.FC = () => {
             <div className="mr-4 bg-amber-100 p-3 rounded-full">
               {icons[4]}
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800">5. Fijación de Objetivos Medibles (Días 12-13)</h2>
-              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+            <div className="w-full">
+              <div className="flex justify-between items-center flex-wrap">
+                <h2 className="text-2xl font-semibold text-gray-800">5. Fijación de Objetivos Medibles</h2>
+                <div className="flex items-center bg-amber-100 px-3 py-1 rounded-full text-sm text-amber-700 font-medium mt-1 md:mt-0">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span>Duración: 2 días</span>
+                </div>
+              </div>
+              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                 <li>Definir indicadores clave de rendimiento (KPIs) para engagement y ventas.</li>
                 <li>Crear dashboards de seguimiento para monitorear el progreso.</li>
                 <li>Establecer metas realistas pero ambiciosas para cada área del negocio.</li>
@@ -249,9 +295,15 @@ const RoadmapElLounge: React.FC = () => {
             <div className="mr-4 bg-indigo-100 p-3 rounded-full">
               {icons[5]}
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800">6. Construcción de Bases Digitales Sólidas (Días 14-15)</h2>
-              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+            <div className="w-full">
+              <div className="flex justify-between items-center flex-wrap">
+                <h2 className="text-2xl font-semibold text-gray-800">6. Construcción de Bases Digitales Sólidas</h2>
+                <div className="flex items-center bg-indigo-100 px-3 py-1 rounded-full text-sm text-indigo-700 font-medium mt-1 md:mt-0">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span>Duración: 2 días</span>
+                </div>
+              </div>
+              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                 <li>Optimizar perfiles en redes sociales y plataformas de atención al cliente.</li>
                 <li>Diseñar estrategias de contenido sostenibles y escalables.</li>
                 <li>Implementar herramientas de automatización para tareas repetitivas.</li>
@@ -271,9 +323,15 @@ const RoadmapElLounge: React.FC = () => {
             <div className="mr-4 bg-red-100 p-3 rounded-full">
               {icons[6]}
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-800">7. Capacitación del Equipo (Días 16-20)</h2>
-              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
+            <div className="w-full">
+              <div className="flex justify-between items-center flex-wrap">
+                <h2 className="text-2xl font-semibold text-gray-800">7. Capacitación del Equipo</h2>
+                <div className="flex items-center bg-red-100 px-3 py-1 rounded-full text-sm text-red-700 font-medium mt-1 md:mt-0">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span>Duración: 5 días</span>
+                </div>
+              </div>
+              <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                 <li>Entrenamiento en herramientas digitales relevantes para cada área.</li>
                 <li>Desarrollo de pensamiento estratégico orientado al negocio digital.</li>
                 <li>Capacitación en atención al cliente a través de canales digitales.</li>
@@ -296,27 +354,27 @@ const RoadmapElLounge: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex items-start">
             <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-            <p className="text-gray-700">Incremento de la eficiencia operativa en al menos un 40%</p>
+            <p className="text-gray-700 text-justify">Incremento de la eficiencia operativa en al menos un 40%</p>
           </div>
           <div className="flex items-start">
             <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-            <p className="text-gray-700">Aumento de engagement en redes sociales superior al 60%</p>
+            <p className="text-gray-700 text-justify">Aumento de engagement en redes sociales superior al 60%</p>
           </div>
           <div className="flex items-start">
             <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-            <p className="text-gray-700">Crecimiento en ventas de al menos 25% en los siguientes 2 meses</p>
+            <p className="text-gray-700 text-justify">Crecimiento en ventas de al menos 25% en los siguientes 2 meses</p>
           </div>
           <div className="flex items-start">
             <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-            <p className="text-gray-700">Reducción de tiempo de respuesta al cliente en un 70%</p>
+            <p className="text-gray-700 text-justify">Reducción de tiempo de respuesta al cliente en un 70%</p>
           </div>
           <div className="flex items-start">
             <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-            <p className="text-gray-700">Equipo totalmente capacitado y alineado con los objetivos digitales</p>
+            <p className="text-gray-700 text-justify">Equipo totalmente capacitado y alineado con los objetivos digitales</p>
           </div>
           <div className="flex items-start">
             <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-            <p className="text-gray-700">Sistemas y procesos digitales optimizados y documentados</p>
+            <p className="text-gray-700 text-justify">Sistemas y procesos digitales optimizados y documentados</p>
           </div>
         </div>
       </motion.div>
@@ -328,7 +386,7 @@ const RoadmapElLounge: React.FC = () => {
         transition={{ delay: 1.5, duration: 0.5 }}
         className="text-center mt-12 p-6 bg-white rounded-lg shadow-sm border border-gray-100"
       >
-        <p className="text-gray-700">
+        <p className="text-gray-700 text-justify">
           Este plan en 35 días establecerá las bases sólidas para la transformación digital de <i>El Lounge</i>, 
           asegurando un negocio moderno, eficiente y preparado para escalar en el entorno digital.
         </p>
