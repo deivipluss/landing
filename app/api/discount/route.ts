@@ -34,17 +34,18 @@ function writeData(data: any) {
 export async function GET() {
   let data = readData();
 
-  if (!data) {
+  if (!data || typeof data.targetTime !== "number" || typeof data.indiceDescuento !== "number") {
+    console.warn("Archivo discount.json no válido o no encontrado. Creando uno nuevo...");
     data = {
-      targetTime: Date.now() + (8 * 60 * 60 * 1000),
-      indiceDescuento: 0
+      targetTime: Date.now() + 8 * 60 * 60 * 1000,
+      indiceDescuento: 0,
     };
     writeData(data);
   } else if (Date.now() >= data.targetTime) {
     const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
     data = {
-      targetTime: Date.now() + (8 * 60 * 60 * 1000),
-      indiceDescuento: newIndiceDescuento
+      targetTime: Date.now() + 8 * 60 * 60 * 1000,
+      indiceDescuento: newIndiceDescuento,
     };
     writeData(data);
   }
