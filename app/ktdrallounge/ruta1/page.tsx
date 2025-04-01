@@ -141,12 +141,20 @@ const RoadmapElLounge: React.FC = () => {
 
                 <div>
                   <h3 className="text-xl font-medium text-blue-700">Análisis del Ecosistema Digital</h3>
-                  <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
+                  <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify space-y-2">
                     <li>Registro de todas las cuentas digitales de la empresa.</li>
+                    
                     <li>Verificación de disponibilidad de dominio.</li>
+                    
                     <li>Comprobación de disponibilidad de correos electrónicos.</li>
+                    
                     <li>Verificación de todas las cuentas sociales registradas a nombre del negocio.</li>
+                    
                     <li>Diagnóstico de presencia en redes sociales.</li>
+                    
+                    <li>Verificación de infracciones del negocio en redes sociales o registros de internet.</li>
+                    
+                    <li>Evaluación del feedback y comentarios de clientes en internet (Google, TripAdvisor, redes sociales, etc).</li>
                   </ul>
                 </div>
 
@@ -178,7 +186,7 @@ const RoadmapElLounge: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Section 2 */}
+        {/* Section 2 - Updated to include in-person sessions */}
         <motion.section 
           variants={itemVariants}
           className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500 hover:shadow-lg transition-shadow"
@@ -195,6 +203,14 @@ const RoadmapElLounge: React.FC = () => {
                   <span>Duración: 3 días</span>
                 </div>
               </div>
+              
+              {/* Added information about in-person sessions */}
+              <div className="bg-green-50 p-3 rounded-md my-3 border border-green-200">
+                <p className="text-gray-700 text-justify">
+                  <strong>Metodología:</strong> Se realizarán dos sesiones presenciales con todos los colaboradores. Estas reuniones serán fundamentales para establecer las bases de la nueva cultura organizativa y asegurar que todos comprendan su rol en el proceso de transformación digital.
+                </p>
+              </div>
+              
               <ul className="list-disc list-inside text-gray-600 mt-2 ml-2 text-justify">
                 <li>Definir roles operativos, adicionales y/o digitales en cada área de operación.</li>
                 <li>Crear protocolos de comunicación interna utilizando herramientas como Trello, Notion, WhatsApp, entre otras.</li>
