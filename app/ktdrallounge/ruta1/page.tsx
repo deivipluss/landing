@@ -126,7 +126,7 @@ const RoadmapElLounge: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">1. Auditoría Completa</h2>
                 <div className="flex items-center bg-blue-100 px-3 py-1 rounded-full text-sm text-blue-700 font-medium mt-1 md:mt-0">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>Duración: 3 días</span>
+                  <span>2-3 de abril, 2025</span>
                 </div>
               </div>
               <p className="text-gray-700 my-2">
@@ -190,7 +190,7 @@ const RoadmapElLounge: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* NEW Section - Planning Methodologies */}
+        {/* Section 2 */}
         <motion.section 
           variants={itemVariants}
           className="bg-white rounded-xl shadow-md p-6 border-l-4 border-teal-500 border border-gray-300 hover:shadow-lg transition-shadow"
@@ -204,7 +204,7 @@ const RoadmapElLounge: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">2. Metodologías para la Planificación</h2>
                 <div className="flex items-center bg-teal-100 px-3 py-1 rounded-full text-sm text-teal-700 font-medium mt-1 md:mt-0">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>Duración: 2 días</span>
+                  <span>4-5 de abril, 2025</span>
                 </div>
               </div>
               
@@ -220,7 +220,7 @@ const RoadmapElLounge: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Section 2 */}
+        {/* Section 3 */}
         <motion.section 
           variants={itemVariants}
           className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500 border border-gray-300 hover:shadow-lg transition-shadow"
@@ -234,14 +234,14 @@ const RoadmapElLounge: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">3. Implantación de Cultura Organizativa y Colaborativa</h2>
                 <div className="flex items-center bg-green-100 px-3 py-1 rounded-full text-sm text-green-700 font-medium mt-1 md:mt-0">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>Duración: 3 días</span>
+                  <span>6 de abril, 2025</span>
                 </div>
               </div>
               
               <div className="bg-green-50 p-3 rounded-md my-3 border border-green-300">
                 <div className="flex items-center mb-1">
                   <MessageSquare className="h-5 w-5 text-green-600 mr-2" />
-                  <h3 className="font-bold text-green-800">SEGUNDA REUNIÓN (PRESENCIAL)</h3>
+                  <h3 className="font-bold text-green-800">SEGUNDA REUNIÓN (PRESENCIAL) - 6 DE ABRIL</h3>
                 </div>
                 <p className="text-gray-700">
                   Realizaré una sesión presencial con los líderes de cada equipo para profundizar en su rol dentro del proceso de optimización, eficiencia empresarial y transformación digital. El objetivo será lograr que cada líder comprenda claramente cómo su área contribuye al ecosistema digital completo.
@@ -261,14 +261,14 @@ const RoadmapElLounge: React.FC = () => {
         <div className="bg-purple-50 p-4 rounded-lg border border-purple-300 shadow-sm my-4">
           <div className="flex items-center justify-center mb-2">
             <MessageSquare className="h-5 w-5 text-purple-600 mr-2" />
-            <h3 className="text-lg font-bold text-purple-800 uppercase tracking-wider">TERCERA REUNIÓN (PRESENCIAL)</h3>
+            <h3 className="text-lg font-bold text-purple-800 uppercase tracking-wider">TERCERA REUNIÓN (PRESENCIAL) - 8 DE ABRIL</h3>
           </div>
           <p className="text-gray-700">
             Previo al establecimiento de procesos operativos, realizaré una reunión presencial con todos los líderes para validar las propuestas de mejora y asegurar que se adapten a la realidad operativa de El Lounge. Presentaré un borrador de los procesos y recogeré feedback para su implementación efectiva.
           </p>
         </div>
 
-        {/* Section 3 */}
+        {/* Section 4 */}
         <motion.section 
           variants={itemVariants}
           className="bg-white rounded-xl shadow-md p-6 border-l-4 border-purple-500 border border-gray-300 hover:shadow-lg transition-shadow"
@@ -282,7 +282,7 @@ const RoadmapElLounge: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">4. Establecimiento de Procesos Operativos y Comerciales</h2>
                 <div className="flex items-center bg-purple-100 px-3 py-1 rounded-full text-sm text-purple-700 font-medium mt-1 md:mt-0">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>Duración: 3 días</span>
+                  <span>8 de abril, 2025</span>
                 </div>
               </div>
               <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
@@ -302,14 +302,14 @@ const RoadmapElLounge: React.FC = () => {
         <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-300 shadow-sm my-4">
           <div className="flex items-center justify-center mb-2">
             <Video className="h-5 w-5 text-emerald-600 mr-2" />
-            <h3 className="text-lg font-bold text-emerald-800 uppercase tracking-wider">CUARTA REUNIÓN (VIRTUAL)</h3>
+            <h3 className="text-lg font-bold text-emerald-800 uppercase tracking-wider">CUARTA REUNIÓN (VIRTUAL) - 8 DE ABRIL</h3>
           </div>
           <p className="text-gray-700">
             Organizaré una sesión virtual para revisar el progreso alcanzado hasta el momento y alinear la visión empresarial con las prácticas modernas. Esta reunión servirá como punto intermedio para evaluar la adaptación del equipo y realizar ajustes necesarios en la implementación.
           </p>
         </div>
 
-        {/* Section 4 */}
+        {/* Section 5 */}
         <motion.section 
           variants={itemVariants}
           className="bg-white rounded-xl shadow-md p-6 border-l-4 border-emerald-500 border border-gray-300 hover:shadow-lg transition-shadow"
@@ -323,7 +323,7 @@ const RoadmapElLounge: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">5. Orientación de la Cultura Empresarial hacia la Modernidad</h2>
                 <div className="flex items-center bg-emerald-100 px-3 py-1 rounded-full text-sm text-emerald-700 font-medium mt-1 md:mt-0">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>Duración: 2 días</span>
+                  <span>8 de abril, 2025</span>
                 </div>
               </div>
               <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
@@ -336,7 +336,7 @@ const RoadmapElLounge: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Section 5 */}
+        {/* Section 6 */}
         <motion.section 
           variants={itemVariants}
           className="bg-white rounded-xl shadow-md p-6 border-l-4 border-amber-500 border border-gray-300 hover:shadow-lg transition-shadow"
@@ -350,7 +350,7 @@ const RoadmapElLounge: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">6. Fijación de Objetivos Medibles</h2>
                 <div className="flex items-center bg-amber-100 px-3 py-1 rounded-full text-sm text-amber-700 font-medium mt-1 md:mt-0">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>Duración: 2 días</span>
+                  <span>9-10 de abril, 2025</span>
                 </div>
               </div>
               <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
@@ -363,7 +363,7 @@ const RoadmapElLounge: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Section 6 */}
+        {/* Section 7 */}
         <motion.section 
           variants={itemVariants}
           className="bg-white rounded-xl shadow-md p-6 border-l-4 border-indigo-500 border border-gray-300 hover:shadow-lg transition-shadow"
@@ -377,7 +377,7 @@ const RoadmapElLounge: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">7. Construcción de Bases Digitales Sólidas</h2>
                 <div className="flex items-center bg-indigo-100 px-3 py-1 rounded-full text-sm text-indigo-700 font-medium mt-1 md:mt-0">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>Duración: 2 días</span>
+                  <span>11 de abril, 2025</span>
                 </div>
               </div>
               <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
@@ -394,7 +394,7 @@ const RoadmapElLounge: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Section 7 */}
+        {/* Section 8 */}
         <motion.section 
           variants={itemVariants}
           className="bg-white rounded-xl shadow-md p-6 border-l-4 border-red-500 border border-gray-300 hover:shadow-lg transition-shadow"
@@ -408,9 +408,20 @@ const RoadmapElLounge: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">8. Capacitación del Equipo</h2>
                 <div className="flex items-center bg-red-100 px-3 py-1 rounded-full text-sm text-red-700 font-medium mt-1 md:mt-0">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>Duración: 5 días</span>
+                  <span>13-14 de abril, 2025</span>
                 </div>
               </div>
+              
+              <div className="bg-red-50 p-3 rounded-md my-3 border border-red-300">
+                <div className="flex items-center mb-1">
+                  <MessageSquare className="h-5 w-5 text-red-600 mr-2" />
+                  <h3 className="font-bold text-red-800">REUNIONES DE CAPACITACIÓN (PRESENCIALES)</h3>
+                </div>
+                <p className="text-gray-700">
+                  Organizaré dos sesiones presenciales de capacitación intensiva los días 13 y 14 de abril. Estas reuniones serán fundamentales para asegurar que todo el equipo comprenda las nuevas herramientas, procesos y metodologías implementadas. Trabajaremos con casos prácticos y situaciones reales del negocio.
+                </p>
+              </div>
+              
               <ul className="list-disc list-inside text-gray-600 mt-2 ml-2">
                 <li>Entrenamiento en herramientas digitales relevantes para cada área.</li>
                 <li>Desarrollo de pensamiento estratégico orientado al negocio digital.</li>
@@ -421,6 +432,35 @@ const RoadmapElLounge: React.FC = () => {
             </div>
           </div>
         </motion.section>
+      </motion.div>
+
+      {/* Calendario completo de implementación */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 0.5 }}
+        className="mt-12 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 border border-purple-200"
+      >
+        <h2 className="text-2xl font-bold text-center text-indigo-800 mb-4">Calendario de Implementación</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white p-3 rounded-lg border border-indigo-200">
+            <h3 className="font-semibold text-indigo-700 mb-2">Primera Semana</h3>
+            <ul className="text-sm space-y-1">
+              <li className="flex items-center"><span className="font-semibold mr-2">2-3 abril:</span> Auditoría Completa</li>
+              <li className="flex items-center"><span className="font-semibold mr-2">4-5 abril:</span> Metodologías para la Planificación</li>
+              <li className="flex items-center"><span className="font-semibold mr-2">6 abril:</span> Cultura Organizativa + Segunda Reunión</li>
+            </ul>
+          </div>
+          <div className="bg-white p-3 rounded-lg border border-indigo-200">
+            <h3 className="font-semibold text-indigo-700 mb-2">Segunda Semana</h3>
+            <ul className="text-sm space-y-1">
+              <li className="flex items-center"><span className="font-semibold mr-2">8 abril:</span> Procesos Operativos + Tercera y Cuarta Reunión + Cultura Empresarial</li>
+              <li className="flex items-center"><span className="font-semibold mr-2">9-10 abril:</span> Fijación de Objetivos</li>
+              <li className="flex items-center"><span className="font-semibold mr-2">11 abril:</span> Bases Digitales Sólidas</li>
+              <li className="flex items-center"><span className="font-semibold mr-2">13-14 abril:</span> Capacitación del Equipo</li>
+            </ul>
+          </div>
+        </div>
       </motion.div>
 
       {/* Resultados esperados */}
@@ -467,7 +507,7 @@ const RoadmapElLounge: React.FC = () => {
         className="text-center mt-12 p-6 bg-white rounded-lg shadow-sm border border-gray-300"
       >
         <p className="text-gray-700">
-          Este plan en 35 días establecerá las bases sólidas para la transformación digital de <i>El Lounge</i>, 
+          Este plan implementado entre el 2 y el 14 de abril de 2025 establecerá las bases sólidas para la transformación digital de <i>El Lounge</i>, 
           asegurando un negocio moderno, eficiente y preparado para escalar en el entorno digital.
         </p>
         <div className="mt-4">
