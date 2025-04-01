@@ -35,4 +35,4 @@ yarn-error.log*
 next-env.d.ts
 
 # Descomentar la siguiente línea si NO quieres versionar el estado del descuento
-# /data/discount-state.json
+data/discount-state.json
