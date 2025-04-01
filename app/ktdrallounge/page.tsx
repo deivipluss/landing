@@ -902,7 +902,7 @@ function DiscountSection() {
       </p>
 
       <div className="mt-4 text-center flex items-center justify-center">
-        <span className="text-red-600 font-bold text-sm mr-2"></span>
+        <span className="text-red-600 font-bold text-sm mr-2">
           ¡El tiempo corre!
         </span>
         <div className="text-red-500 font-mono text-sm bg-red-100 px-2 py-1 rounded-md flex items-center">
