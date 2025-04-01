@@ -440,22 +440,6 @@ const RoadmapElLounge: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Third Meeting */}
-        <motion.div 
-          variants={itemVariants}
-          className="bg-purple-50 p-5 rounded-2xl border border-purple-200 shadow-sm"
-        >
-          <div className="flex items-center">
-            <MessageSquare className="h-5 w-5 text-purple-600 mr-3 flex-shrink-0" />
-            <div>
-              <h3 className="font-bold text-purple-800 uppercase tracking-wider">TERCERA REUNIÓN (PRESENCIAL) - 8 DE ABRIL</h3>
-              <p className="text-gray-700 mt-1">
-                Previo al establecimiento de procesos operativos, realizaré una reunión presencial con todos los líderes para validar las propuestas de mejora y asegurar que se adapten a la realidad operativa de El Lounge. Presentaré un borrador de los procesos y recogeré feedback para su implementación efectiva.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Section 4 */}
         <motion.section 
           variants={itemVariants}
@@ -485,6 +469,16 @@ const RoadmapElLounge: React.FC = () => {
                   </h3>
                   <p className="text-gray-700 mt-1 ml-7">
                     Documentar y optimizar los procesos para aumentar eficiencia y mejorar la experiencia del cliente.
+                  </p>
+                </div>
+                
+                <div className="bg-purple-100 p-4 rounded-lg border border-purple-200">
+                  <div className="flex items-center">
+                    <MessageSquare className="h-5 w-5 text-purple-600 mr-2" />
+                    <h3 className="font-bold text-purple-800">TERCERA REUNIÓN (PRESENCIAL) - 8 DE ABRIL</h3>
+                  </div>
+                  <p className="text-gray-700 mt-2 ml-7">
+                    Previo al establecimiento de procesos operativos, realizaré una reunión presencial con todos los líderes para validar las propuestas de mejora y asegurar que se adapten a la realidad operativa de El Lounge. Presentaré un borrador de los procesos y recogeré feedback para su implementación efectiva.
                   </p>
                 </div>
                 
@@ -537,22 +531,6 @@ const RoadmapElLounge: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Fourth Meeting */}
-        <motion.div 
-          variants={itemVariants}
-          className="bg-emerald-50 p-5 rounded-2xl border border-emerald-200 shadow-sm"
-        >
-          <div className="flex items-center">
-            <Video className="h-5 w-5 text-emerald-600 mr-3 flex-shrink-0" />
-            <div>
-              <h3 className="font-bold text-emerald-800 uppercase tracking-wider">CUARTA REUNIÓN (VIRTUAL) - 8 DE ABRIL</h3>
-              <p className="text-gray-700 mt-1">
-                Organizaré una sesión virtual para revisar el progreso alcanzado hasta el momento y alinear la visión empresarial con las prácticas modernas. Esta reunión servirá como punto intermedio para evaluar la adaptación del equipo y realizar ajustes necesarios en la implementación.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Section 5 */}
         <motion.section 
           variants={itemVariants}
@@ -590,6 +568,18 @@ const RoadmapElLounge: React.FC = () => {
                     <div className={`${colors[4]} p-1 rounded-full mr-3 mt-0.5 flex-shrink-0`}>
                       <ChevronRight className="h-4 w-4" />
                     </div>
+                    Implementaré y fomentaré buenas prácticas post atención al cliente y post venta.
+                  </li>
+                  <li className="flex items-start">
+                    <div className={`${colors[4]} p-1 rounded-full mr-3 mt-0.5 flex-shrink-0`}>
+                      <ChevronRight className="h-4 w-4" />
+                    </div>
+                    Estableceré métodos de seguimiento y conversión desde cada área específica.
+                  </li>
+                  <li className="flex items-start">
+                    <div className={`${colors[4]} p-1 rounded-full mr-3 mt-0.5 flex-shrink-0`}>
+                      <ChevronRight className="h-4 w-4" />
+                    </div>
                     Introduciré prácticas eco-friendly y sostenibles en la operación diaria.
                   </li>
                   <li className="flex items-start">
@@ -611,6 +601,16 @@ const RoadmapElLounge: React.FC = () => {
                     Implementaré políticas de responsabilidad social empresarial.
                   </li>
                 </ul>
+                
+                <div className="bg-emerald-100 p-4 rounded-lg border border-emerald-200">
+                  <div className="flex items-center">
+                    <Video className="h-5 w-5 text-emerald-600 mr-2" />
+                    <h3 className="font-bold text-emerald-800">CUARTA REUNIÓN (VIRTUAL) - 8 DE ABRIL</h3>
+                  </div>
+                  <p className="text-gray-700 mt-2 ml-7">
+                    Organizaré una sesión virtual para revisar el progreso alcanzado hasta el momento y alinear la visión empresarial con las prácticas modernas. Esta reunión servirá como punto intermedio para evaluar la adaptación del equipo y realizar ajustes necesarios en la implementación.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -846,6 +846,48 @@ const RoadmapElLounge: React.FC = () => {
         </motion.section>
       </motion.div>
 
+      {/* Testing phase information */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.1, duration: 0.5 }}
+        className="mt-12 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl p-6 border border-amber-200 shadow-sm"
+      >
+        <h2 className="text-2xl font-bold text-center text-amber-800 mb-4">Fase de Pruebas y Ajustes</h2>
+        
+        <div className="bg-white p-4 rounded-xl border border-amber-100 shadow-sm mb-5">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex items-center justify-center bg-amber-100 p-3 rounded-lg">
+              <Clock className="h-10 w-10 text-amber-600" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-amber-800 text-lg">Días 15-30: Período de Pruebas</h3>
+              <p className="text-gray-700">
+                Durante estas dos semanas, se realizarán pruebas exhaustivas de todos los sistemas y procesos implementados. 
+                Detectaremos errores, fallos o ineficiencias y realizaremos correcciones sobre la marcha. Este período es crucial 
+                para asegurar que todos los elementos funcionen correctamente antes de la implementación final.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="bg-white p-4 rounded-xl border border-green-100 shadow-sm">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex items-center justify-center bg-green-100 p-3 rounded-lg">
+              <CheckCircle className="h-10 w-10 text-green-600" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-green-800 text-lg">Día 35: Implementación Final</h3>
+              <p className="text-gray-700">
+                Para el día 35, todos los sistemas, procesos y metodologías estarán completamente implementados y funcionando 
+                sin problemas. El equipo estará capacitado y operando bajo los nuevos estándares, y la transformación 
+                digital de El Lounge estará completamente implementada y lista para generar resultados tangibles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
       {/* Calendario completo de implementación */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -858,7 +900,7 @@ const RoadmapElLounge: React.FC = () => {
           <div className="bg-white p-5 rounded-xl border border-indigo-200 shadow-xs">
             <h3 className="font-semibold text-indigo-700 mb-3 pb-2 border-b border-indigo-100 flex items-center">
               <Calendar className="h-5 w-5 mr-2 text-indigo-500" />
-              Primera Semana
+              Primera Fase (Días 1-14)
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start">
@@ -882,15 +924,6 @@ const RoadmapElLounge: React.FC = () => {
                   <p className="text-gray-600 text-sm">Reunión presencial con líderes</p>
                 </div>
               </li>
-            </ul>
-          </div>
-          
-          <div className="bg-white p-5 rounded-xl border border-indigo-200 shadow-xs">
-            <h3 className="font-semibold text-indigo-700 mb-3 pb-2 border-b border-indigo-100 flex items-center">
-              <Calendar className="h-5 w-5 mr-2 text-indigo-500" />
-              Segunda Semana
-            </h3>
-            <ul className="space-y-3">
               <li className="flex items-start">
                 <div className="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded mr-3">8</div>
                 <div>
@@ -917,6 +950,29 @@ const RoadmapElLounge: React.FC = () => {
                 <div>
                   <h4 className="font-medium text-gray-800">Capacitación del Equipo</h4>
                   <p className="text-gray-600 text-sm">Sesiones intensivas presenciales</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="bg-white p-5 rounded-xl border border-indigo-200 shadow-xs">
+            <h3 className="font-semibold text-indigo-700 mb-3 pb-2 border-b border-indigo-100 flex items-center">
+              <Calendar className="h-5 w-5 mr-2 text-indigo-500" />
+              Segunda Fase (Días 15-35)
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <div className="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded mr-3">15-30</div>
+                <div>
+                  <h4 className="font-medium text-gray-800">Pruebas y Ajustes</h4>
+                  <p className="text-gray-600 text-sm">Verificación, corrección y optimización</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <div className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded mr-3">35</div>
+                <div>
+                  <h4 className="font-medium text-gray-800">Implementación Final</h4>
+                  <p className="text-gray-600 text-sm">Sistema completo funcionando sin problemas</p>
                 </div>
               </li>
             </ul>
