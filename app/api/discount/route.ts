@@ -37,7 +37,7 @@ export async function GET() {
   if (!data) {
     // Inicializar con valores por defecto
     data = {
-      targetTime: Date.now() + (12 * 60 * 60 * 1000), // 12 horas desde ahora
+      targetTime: Date.now() + (8 * 60 * 60 * 1000), // 8 horas desde ahora
       indiceDescuento: 0
     };
     writeData(data);

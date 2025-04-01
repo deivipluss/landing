@@ -816,14 +816,16 @@ function DiscountSection() {
 
     const updateTimer = async () => {
       try {
-        const response = await fetch('/api/discount');
+        const response = await fetch('/api/discount', {
+          cache: 'no-store' // Evitar el caché
+        });
         const data = await response.json();
         const now = Date.now();
         const timeRemaining = data.targetTime - now;
 
         if (timeRemaining <= 0) {
           // Si el tiempo expiró, actualizar inmediatamente
-          const newTargetTime = now + (12 * 60 * 60 * 1000);
+          const newTargetTime = now + (8 * 60 * 60 * 1000); // Cambiado a 8 horas
           const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
           
           await fetch('/api/discount', {
@@ -861,7 +863,9 @@ function DiscountSection() {
     updateTimer();
     intervalId = setInterval(updateTimer, 1000);
 
-    return () => clearInterval(intervalId);
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
   }, []);
 
   // Mostrar un loader mientras se carga el estado inicial
