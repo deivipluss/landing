@@ -39,14 +39,15 @@ export async function GET() {
   if (!data || typeof data.targetTime !== "number" || typeof data.indiceDescuento !== "number") {
     console.warn("Archivo discount-state.json no válido o no encontrado. Creando uno nuevo...");
     data = {
-      targetTime: Date.now() + 8 * 60 * 60 * 1000,
+      targetTime: Date.now() + 8 * 60 * 60 * 1000, // 8 horas desde ahora
       indiceDescuento: 0,
     };
     writeData(data);
   } else if (Date.now() >= data.targetTime) {
+    // Solo actualiza el targetTime si ya se alcanzó
     const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
     data = {
-      targetTime: Date.now() + 8 * 60 * 60 * 1000,
+      targetTime: Date.now() + 8 * 60 * 60 * 1000, // 8 horas desde ahora
       indiceDescuento: newIndiceDescuento,
     };
     writeData(data);

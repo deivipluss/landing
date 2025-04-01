@@ -810,36 +810,20 @@ function DiscountSection() {
   const [discount, setDiscount] = useState(500);
   const [descuentoAgotado, setDescuentoAgotado] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [targetTime, setTargetTime] = useState<number | null>(null);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
 
-    const updateTimer = async () => {
-      try {
-        const response = await fetch(`/api/discount?t=${Date.now()}`, {
-          cache: 'no-store',
-        });
-        const data = await response.json();
-        console.log('Datos recibidos del servidor:', data); // Log para depuración
-
+    const updateTimer = () => {
+      if (targetTime) {
         const now = Date.now();
-        const timeRemaining = Math.max(0, data.targetTime - now);
+        const timeRemaining = Math.max(0, targetTime - now);
 
         if (timeRemaining <= 0) {
-          const newTargetTime = now + 8 * 60 * 60 * 1000;
-          const newIndiceDescuento = Math.min((data.indiceDescuento || 0) + 1, 3);
-
-          await fetch('/api/discount', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              targetTime: newTargetTime,
-              indiceDescuento: newIndiceDescuento,
-            }),
-          });
-
-          setDiscount([700, 500, 200, 0][newIndiceDescuento]);
-          setDescuentoAgotado(newIndiceDescuento === 3);
+          clearInterval(intervalId);
+          setTimeLeft("00:00:00");
+          setDescuentoAgotado(true);
         } else {
           const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
           const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
@@ -848,21 +832,35 @@ function DiscountSection() {
           setTimeLeft(
             `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
           );
-          setDiscount([700, 500, 200, 0][data.indiceDescuento]);
-          setDescuentoAgotado(data.indiceDescuento === 3);
         }
+      }
+    };
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/discount?t=${Date.now()}`, {
+          cache: 'no-store',
+        });
+        const data = await response.json();
+        console.log('Datos recibidos del servidor:', data); // Log para depuración
+
+        setTargetTime(data.targetTime);
+        setDiscount([700, 500, 200, 0][data.indiceDescuento]);
+        setDescuentoAgotado(data.indiceDescuento === 3);
         setIsLoading(false);
+
+        // Inicia el intervalo para actualizar el contador
+        intervalId = setInterval(updateTimer, 1000);
       } catch (error) {
-        console.error('Error al actualizar el temporizador:', error);
+        console.error('Error al obtener los datos del servidor:', error);
         setIsLoading(false);
       }
     };
 
-    updateTimer(); // Llama a la función inmediatamente para inicializar el contador
-    intervalId = setInterval(updateTimer, 1000); // Actualiza cada segundo
+    fetchData();
 
     return () => clearInterval(intervalId); // Limpia el intervalo al desmontar
-  }, []);
+  }, [targetTime]);
 
   if (isLoading) {
     return (
@@ -904,7 +902,7 @@ function DiscountSection() {
       </p>
 
       <div className="mt-4 text-center flex items-center justify-center">
-        <span className="text-red-600 font-bold text-sm mr-2">
+        <span className="text-red-600 font-bold text-sm mr-2"></span>
           ¡El tiempo corre!
         </span>
         <div className="text-red-500 font-mono text-sm bg-red-100 px-2 py-1 rounded-md flex items-center">
