@@ -844,13 +844,19 @@ function DiscountSection() {
         const data = await response.json();
         console.log('Datos recibidos del servidor:', data); // Log para depuración
 
-        setTargetTime(data.targetTime);
-        setDiscount([700, 500, 200, 0][data.indiceDescuento]);
-        setDescuentoAgotado(data.indiceDescuento === 3);
-        setIsLoading(false);
+        if (data.targetTime > Date.now()) {
+          setTargetTime(data.targetTime);
+          setDiscount([700, 500, 200, 0][data.indiceDescuento]);
+          setDescuentoAgotado(data.indiceDescuento === 3);
+          setIsLoading(false);
 
-        // Inicia el intervalo para actualizar el contador
-        intervalId = setInterval(updateTimer, 1000);
+          // Inicia el intervalo para actualizar el contador
+          intervalId = setInterval(updateTimer, 1000);
+        } else {
+          setTimeLeft("00:00:00");
+          setDescuentoAgotado(true);
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error('Error al obtener los datos del servidor:', error);
         setIsLoading(false);

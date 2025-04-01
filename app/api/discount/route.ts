@@ -36,7 +36,7 @@ function writeData(data: any) {
 export async function GET() {
   let data = readData();
 
-  if (!data || typeof data.targetTime !== "number" || typeof data.indiceDescuento !== "number") {
+  if (!data || typeof data.targetTime !== "number" || typeof data.indiceDescuento !== "number" || data.targetTime === 0) {
     console.warn("Archivo discount-state.json no válido o no encontrado. Creando uno nuevo...");
     data = {
       targetTime: Date.now() + 8 * 60 * 60 * 1000, // 8 horas desde ahora
