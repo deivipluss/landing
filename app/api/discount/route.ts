@@ -34,16 +34,22 @@ function writeData(data: any) {
 export async function GET() {
   let data = readData();
   
-  if (!data) {
-    // Inicializar con valores por defecto
+  if (!data || Date.now() >= data.targetTime) {
     data = {
-      targetTime: Date.now() + (8 * 60 * 60 * 1000), // 8 horas desde ahora
-      indiceDescuento: 0
+      targetTime: Date.now() + (8 * 60 * 60 * 1000),
+      indiceDescuento: data ? Math.min((data.indiceDescuento || 0) + 1, 3) : 0
     };
     writeData(data);
   }
 
-  return NextResponse.json(data);
+  return new NextResponse(JSON.stringify(data), {
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+    },
+  });
 }
 
 export async function POST(req: Request) {

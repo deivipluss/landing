@@ -810,6 +810,7 @@ function DiscountSection() {
   const [discount, setDiscount] = useState(500);
   const [descuentoAgotado, setDescuentoAgotado] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [, setUpdate] = useState(0); // Estado para forzar la actualización
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -858,6 +859,7 @@ function DiscountSection() {
           setDescuentoAgotado(data.indiceDescuento === 3);
         }
         setIsLoading(false);
+        setUpdate(prev => prev + 1); // Forzar la actualización del componente
       } catch (error) {
         console.error('Error:', error);
         setIsLoading(false);
