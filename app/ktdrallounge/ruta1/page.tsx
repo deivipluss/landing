@@ -82,7 +82,7 @@ const RoadmapElLounge: React.FC = () => {
         </Link>
       </motion.div>
       
-      {/* Header */}
+      {/* Header - Updated title and subtitle */}
       <motion.div 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -90,12 +90,12 @@ const RoadmapElLounge: React.FC = () => {
         className="text-center mb-12"
       >
         <motion.h1 
-          className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-transparent bg-clip-text"
+          className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-transparent bg-clip-text text-center mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          Hoja de Ruta - Transformación Digital de El Lounge
+          HOJA DE RUTA 1 - EL LOUNGE
         </motion.h1>
         <motion.p 
           className="text-gray-600 max-w-3xl mx-auto text-lg"
@@ -103,22 +103,12 @@ const RoadmapElLounge: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Plan estratégico para implementar en 35 días y transformar completamente 
-          la operación digital y comercial de El Lounge.
+          Plan estratégico de 35 días diseñado para transformar integralmente la presencia digital, 
+          optimizar procesos operativos y maximizar el rendimiento comercial de El Lounge.
         </motion.p>
-        
-        <motion.div 
-          className="mt-6 inline-flex items-center bg-indigo-50 px-4 py-2 rounded-full border border-indigo-200 text-indigo-700 font-medium"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <Calendar className="h-5 w-5 mr-2" />
-          <span>2 al 14 de Abril, 2025</span>
-        </motion.div>
       </motion.div>
       
-      {/* Timeline visualization */}
+      {/* Timeline visualization - Updated to include up to day 35 */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -129,24 +119,24 @@ const RoadmapElLounge: React.FC = () => {
           <div className="w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full"></div>
         </div>
         <div className="relative flex justify-between">
-          {[1, 2, 3, 4, 5, 6, 7].map((step, index) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((step, index) => (
             <motion.div 
               key={step}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.9 + index * 0.1, duration: 0.3 }}
-              className={`h-8 w-8 rounded-full ${colors[index]} border-2 flex items-center justify-center text-sm font-bold shadow-sm`}
+              className={`h-8 w-8 rounded-full ${index < 8 ? colors[index % colors.length] : "bg-green-100 text-green-600 border-green-500"} border-2 flex items-center justify-center text-sm font-bold shadow-sm`}
             >
               {step}
             </motion.div>
           ))}
         </div>
         <div className="flex justify-between mt-8">
-          {["Días 1-3", "Días 4-5", "Día 6", "Día 8", "Días 9-10", "Día 11", "Días 13-14"].map((days, index) => (
+          {["Días 1-3", "Días 4-5", "Día 6", "Día 8", "Días 9-10", "Día 11", "Días 13-14", "Días 15-30", "Día 35"].map((days, index) => (
             <div 
               key={days} 
               className="text-xs text-gray-600 text-center font-medium"
-              style={{ width: "14%", marginLeft: index === 0 ? "-10px" : index === 6 ? "10px" : "0" }}
+              style={{ width: "11%", marginLeft: index === 0 ? "-10px" : index === 8 ? "10px" : "0" }}
             >
               {days}
             </div>
@@ -284,16 +274,6 @@ const RoadmapElLounge: React.FC = () => {
                     </ul>
                   </div>
                 </div>
-                
-                <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
-                  <div className="flex items-center">
-                    <Video className="h-5 w-5 text-blue-600 mr-2" />
-                    <h3 className="font-bold text-blue-800">PRIMERA REUNIÓN (VIRTUAL)</h3>
-                  </div>
-                  <p className="text-gray-700 mt-2 ml-7">
-                    Al finalizar esta etapa, realizaré una reunión virtual con todos los líderes de equipo para presentarme, compartir los hallazgos iniciales y establecer las expectativas del proceso. Incluiré a los líderes de barra, escenario, atención al cliente, seguridad y demás áreas clave.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -328,6 +308,16 @@ const RoadmapElLounge: React.FC = () => {
                   </h3>
                   <p className="text-gray-700 mt-1 ml-7">
                     Establecer metodologías claras para la gestión digital y operativa del negocio.
+                  </p>
+                </div>
+                
+                <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
+                  <div className="flex items-center">
+                    <Video className="h-5 w-5 text-blue-600 mr-2" />
+                    <h3 className="font-bold text-blue-800">PRIMERA REUNIÓN (VIRTUAL)</h3>
+                  </div>
+                  <p className="text-gray-700 mt-2 ml-7">
+                    Realizaré una reunión virtual con todos los líderes de equipo para presentarme, compartir los hallazgos iniciales y establecer las expectativas del proceso. Incluiré a los líderes de barra, escenario, atención al cliente, seguridad y demás áreas clave.
                   </p>
                 </div>
                 
@@ -479,7 +469,7 @@ const RoadmapElLounge: React.FC = () => {
                     <h3 className="font-bold text-purple-800">TERCERA REUNIÓN (PRESENCIAL) - 8 DE ABRIL</h3>
                   </div>
                   <p className="text-gray-700 mt-2 ml-7">
-                    Previo al establecimiento de procesos operativos, realizaré una reunión presencial con todos los líderes para validar las propuestas de mejora y asegurar que se adapten a la realidad operativa de El Lounge. Presentaré un borrador de los procesos y recogeré feedback para su implementación efectiva.
+                    Realizaré una reunión presencial con todos los líderes para validar las propuestas de mejora y asegurar que se adapten a la realidad operativa de El Lounge. Presentaré un borrador de los procesos y recogeré feedback para su implementación efectiva.
                   </p>
                 </div>
                 
@@ -564,6 +554,16 @@ const RoadmapElLounge: React.FC = () => {
                   </p>
                 </div>
                 
+                <div className="bg-emerald-100 p-4 rounded-lg border border-emerald-200">
+                  <div className="flex items-center">
+                    <Video className="h-5 w-5 text-emerald-600 mr-2" />
+                    <h3 className="font-bold text-emerald-800">CUARTA REUNIÓN (VIRTUAL) - 8 DE ABRIL</h3>
+                  </div>
+                  <p className="text-gray-700 mt-2 ml-7">
+                    Organizaré una sesión virtual para revisar el progreso alcanzado hasta el momento y alinear la visión empresarial con las prácticas modernas. Esta reunión servirá como punto intermedio para evaluar la adaptación del equipo y realizar ajustes necesarios en la implementación.
+                  </p>
+                </div>
+                
                 <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start">
                     <div className={`${colors[4]} p-1 rounded-full mr-3 mt-0.5 flex-shrink-0`}>
@@ -602,16 +602,6 @@ const RoadmapElLounge: React.FC = () => {
                     Implementaré políticas de responsabilidad social empresarial.
                   </li>
                 </ul>
-                
-                <div className="bg-emerald-100 p-4 rounded-lg border border-emerald-200">
-                  <div className="flex items-center">
-                    <Video className="h-5 w-5 text-emerald-600 mr-2" />
-                    <h3 className="font-bold text-emerald-800">CUARTA REUNIÓN (VIRTUAL) - 8 DE ABRIL</h3>
-                  </div>
-                  <p className="text-gray-700 mt-2 ml-7">
-                    Organizaré una sesión virtual para revisar el progreso alcanzado hasta el momento y alinear la visión empresarial con las prácticas modernas. Esta reunión servirá como punto intermedio para evaluar la adaptación del equipo y realizar ajustes necesarios en la implementación.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
