@@ -12,7 +12,7 @@ import {
   Music,
   Utensils,
   Camera,
-  Glass,
+  Glasses,
   Mic,
   Shield,
   ChevronRight,
@@ -77,7 +77,7 @@ const processData = [
   },
   {
     area: "BARTENDER",
-    icon: <Glass className="h-5 w-5" />,
+    icon: <Glasses className="h-5 w-5" />,
     color: "bg-red-500",
     badgeColor: "bg-red-100 text-red-700",
     prioridad1: [
