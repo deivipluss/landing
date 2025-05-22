@@ -38,7 +38,7 @@ export const proposalSlides: ProposalSlideType[] = [
         </p>
         <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
           <p className="text-base text-neutral-300">
-            Ideal para gestión de información en tiempo real, formularios, pedidos, inventario, reportes u otras necesidades operativas.
+            Ideal para gestión de información en tiempo real formularios, pedidos, inventario, reportes u otras necesidades operativas.
           </p>
         </div>
       </div>
