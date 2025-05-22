@@ -143,21 +143,28 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
   "use client";
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [progress, setProgress] = React.useState(0);
+  const [active, setActive] = React.useState(0);
 
+  // Scroll suave y centrado
   const scrollTo = (dir: "left" | "right") => {
     if (containerRef.current) {
       const width = containerRef.current.offsetWidth;
-      containerRef.current.scrollBy({
-        left: dir === "right" ? width : -width,
+      let next = active + (dir === "right" ? 1 : -1);
+      next = Math.max(0, Math.min(slides.length - 1, next));
+      setActive(next);
+      containerRef.current.scrollTo({
+        left: width * next,
         behavior: "smooth",
       });
     }
   };
 
+  // Progreso visual y slide activo
   const handleScroll = () => {
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, offsetWidth } = containerRef.current;
       setProgress(scrollLeft / (scrollWidth - offsetWidth));
+      setActive(Math.round(scrollLeft / offsetWidth));
     }
   };
 
@@ -175,21 +182,23 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[#1A1A2E]/80 p-2 rounded-full shadow-glow hover:bg-[#4A90E2] transition"
         onClick={() => scrollTo("left")}
         aria-label="Anterior"
+        disabled={active === 0}
+        style={{ opacity: active === 0 ? 0.3 : 1 }}
       >
         <span className="text-2xl">⟨</span>
       </button>
       <div
         ref={containerRef}
-        className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth"
+        className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide"
         onScroll={handleScroll}
-        style={{ scrollSnapType: "x mandatory" }}
+        style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}
       >
         {slides.map((slide, idx) => (
           <section
             key={idx}
             className="w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-4 py-8 transition-shadow duration-300"
+            style={{ transition: 'box-shadow 0.3s cubic-bezier(0.4,0,0.2,1)', boxShadow: active === idx ? '0 0 32px 0 #4A90E2aa' : 'none' }}
           >
-            {/* Puedes reutilizar ProposalSlide aquí si lo deseas */}
             {slide.img && (
               <img
                 src={slide.img}
@@ -218,9 +227,19 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[#1A1A2E]/80 p-2 rounded-full shadow-glow hover:bg-[#4A90E2] transition"
         onClick={() => scrollTo("right")}
         aria-label="Siguiente"
+        disabled={active === slides.length - 1}
+        style={{ opacity: active === slides.length - 1 ? 0.3 : 1 }}
       >
         <span className="text-2xl">⟩</span>
       </button>
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-10">
+        {slides.map((_, idx) => (
+          <span
+            key={idx}
+            className={`inline-block w-3 h-3 rounded-full transition-all duration-300 ${active === idx ? 'bg-[#4A90E2]' : 'bg-[#222]'}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
