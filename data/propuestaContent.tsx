@@ -158,6 +158,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [progress, setProgress] = React.useState(0);
   const [active, setActive] = React.useState(0);
+  const [isDragging, setIsDragging] = React.useState(false);
 
   // Scroll suave y centrado
   const scrollTo = (dir: "left" | "right") => {
@@ -173,13 +174,38 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
     }
   };
 
-  const handleScroll = () => {
+  const handleScroll = React.useCallback(() => {
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, offsetWidth } = containerRef.current;
-      setProgress(scrollLeft / (scrollWidth - offsetWidth));
-      setActive(Math.round(scrollLeft / offsetWidth));
+      const newProgress = scrollLeft / (scrollWidth - offsetWidth);
+      setProgress(newProgress);
+      
+      // Calcular el slide activo basado en el scroll
+      const newActive = Math.round(scrollLeft / offsetWidth);
+      if (newActive !== active) {
+        setActive(newActive);
+      }
     }
-  };
+  }, [active]);
+
+  // Eventos táctiles
+  const handleTouchStart = () => setIsDragging(true);
+  const handleTouchEnd = () => setIsDragging(false);
+
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('touchstart', handleTouchStart);
+      container.addEventListener('touchend', handleTouchEnd);
+      container.addEventListener('scroll', handleScroll);
+      
+      return () => {
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchend', handleTouchEnd);
+        container.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [handleScroll]);
 
   return (
     <div className="relative w-full h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#111827] via-[#1f2937] to-[#111827]">
@@ -191,9 +217,9 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         />
       </div>
       
-      {/* Controles de navegación */}
+      {/* Controles de navegación - ocultos en móvil */}
       <button
-        className="fixed left-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg"
+        className="fixed left-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg hidden md:block"
         onClick={() => scrollTo("left")}
         aria-label="Anterior"
         disabled={active === 0}
@@ -206,22 +232,25 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
       <div
         ref={containerRef}
         className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide"
-        onScroll={handleScroll}
-        style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+        style={{ 
+          scrollSnapType: "x mandatory",
+          scrollBehavior: isDragging ? 'auto' : 'smooth',
+          touchAction: 'pan-x'
+        }}
       >
         {slides.map((slide, idx) => (
           <section
             key={idx}
-            className={`w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-6 md:px-12 py-16 transition-all duration-500`}
+            className="w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-6 md:px-12 py-16 transition-all duration-300"
             style={{
-              opacity: active === idx ? 1 : 0.3,
-              transform: `scale(${active === idx ? 1 : 0.95})`,
+              opacity: isDragging ? 1 : (active === idx ? 1 : 0.3),
+              transform: isDragging ? 'none' : `scale(${active === idx ? 1 : 0.95})`,
             }}
           >
             <div className="w-full max-w-4xl mx-auto space-y-8 text-center">
               {/* Título */}
               <h1 
-                className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600"
+                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600"
                 style={{
                   textShadow: "0 0 30px rgba(59, 130, 246, 0.2)",
                 }}
@@ -237,7 +266,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
               )}
 
               {/* Contenido */}
-              <div className="text-lg sm:text-xl text-gray-200 leading-relaxed mt-8 max-w-3xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+              <div className="text-base sm:text-lg text-gray-200 leading-relaxed mt-8 max-w-3xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl">
                 {slide.content}
               </div>
             </div>
@@ -245,9 +274,9 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         ))}
       </div>
 
-      {/* Botón siguiente */}
+      {/* Botón siguiente - oculto en móvil */}
       <button
-        className="fixed right-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg"
+        className="fixed right-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg hidden md:block"
         onClick={() => scrollTo("right")}
         aria-label="Siguiente"
         disabled={active === slides.length - 1}
@@ -286,6 +315,12 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+
+        @media (max-width: 768px) {
+          .snap-mandatory > * {
+            scroll-snap-align: center;
+          }
         }
       `}</style>
     </div>
