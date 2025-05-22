@@ -10,15 +10,15 @@ export interface ProposalSlideType {
 
 export const proposalSlides: ProposalSlideType[] = [
   {
-    title: "Aplicación Web para Revista Turística",
-    subtitle: "Desarrollo visual, interactivo y funcional",
+    title: "Promo Tours Pasco",
+    subtitle: "Tu guía digital de experiencias turísticas",
     content: (
       <div className="space-y-4">
         <p className="text-lg sm:text-xl font-light text-slate-100">
-          Experiencia moderna y elegante para compartir historias de viaje.
+          Plataforma digital interactiva que conecta viajeros con las mejores experiencias turísticas de Pasco.
         </p>
-        <p className="text-indigo-300 font-medium">
-          ¡Oferta especial por tiempo limitado!
+        <p className="text-[#4A90E2] font-medium">
+          ¡Lanzamiento especial con beneficios exclusivos!
         </p>
       </div>
     )
@@ -28,49 +28,49 @@ export const proposalSlides: ProposalSlideType[] = [
     content: (
       <div className="space-y-4">
         <p className="text-lg font-light leading-relaxed text-slate-100">
-          Una revista digital interactiva que combina diseño moderno y funcionalidad intuitiva, permitiendo a los usuarios compartir sus historias de viaje de forma elegante y profesional.
+          Un ecosistema digital que revoluciona la forma de descubrir y compartir experiencias en Pasco. Conectamos viajeros con destinos únicos, historias auténticas y aventuras inolvidables.
         </p>
-        <p className="text-indigo-200">
-          Administración simple vía Google Sheets + Hosting y dominio incluidos
+        <p className="text-[#4A90E2]">
+          Portal web + Revista digital + Comunidad de viajeros
         </p>
       </div>
     )
   },
   {
-    title: "Stack Tecnológico",
+    title: "Características Premium",
     content: (
       <div className="space-y-6">
         <div className="space-y-3">
-          <h3 className="text-indigo-300 font-medium text-lg">Frontend</h3>
+          <h3 className="text-[#4A90E2] font-medium text-lg">Para Viajeros</h3>
           <ul className="space-y-2 text-slate-200">
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              React + Next.js
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Guías interactivas de destinos
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              TailwindCSS
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Experiencias verificadas
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              Framer Motion
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Reseñas y testimonios reales
             </li>
           </ul>
         </div>
         <div className="space-y-3">
-          <h3 className="text-blue-300 font-medium text-lg">Backend</h3>
+          <h3 className="text-[#FF5C5C] font-medium text-lg">Para Negocios</h3>
           <ul className="space-y-2 text-slate-200">
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Google Sheets API
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              Promoción estratégica
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Vercel Hosting
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              Dashboard analítico
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Dominio .com
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              Gestión de reservas
             </li>
           </ul>
         </div>
@@ -78,40 +78,40 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "Características Clave",
+    title: "Experiencia Única",
     content: (
       <div className="space-y-6 text-left w-full max-w-2xl mx-auto">
         <div className="space-y-3">
-          <h3 className="text-indigo-300 font-medium">Experiencia de Usuario</h3>
+          <h3 className="text-[#4A90E2] font-medium">Contenido Premium</h3>
           <ul className="space-y-2 text-slate-200">
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              Diseño responsive moderno
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Fotografías profesionales
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              Animaciones fluidas
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Videos inmersivos
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              Navegación intuitiva
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Historias locales
             </li>
           </ul>
         </div>
         <div className="space-y-3">
-          <h3 className="text-blue-300 font-medium">Funcionalidades</h3>
+          <h3 className="text-[#FF5C5C] font-medium">Tecnología Avanzada</h3>
           <ul className="space-y-2 text-slate-200">
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Blog interactivo
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              Mapas interactivos
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Panel de administración
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              Reservas en tiempo real
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Analytics integrado
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              App móvil integrada
             </li>
           </ul>
         </div>
@@ -119,41 +119,41 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "Cronograma",
-    subtitle: "Desarrollo Ágil",
+    title: "Plan de Desarrollo",
+    subtitle: "Lanzamiento por Fases",
     content: (
       <div className="space-y-6 text-left w-full max-w-xl mx-auto">
         <div>
-          <h3 className="text-indigo-300 mb-3 font-medium">Fase 1 (1-2 semanas)</h3>
+          <h3 className="text-[#4A90E2] mb-3 font-medium">Fase 1: Base Digital</h3>
           <ul className="space-y-2 text-slate-200 text-sm">
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              Diseño UI/UX
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Portal web y revista digital
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              Prototipado
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Perfiles de destinos
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-indigo-400">•</span>
-              Arquitectura base
+              <span className="mr-2 text-[#4A90E2]">•</span>
+              Sistema de reseñas
             </li>
           </ul>
         </div>
         <div>
-          <h3 className="text-blue-300 mb-3 font-medium">Fase 2 (2-3 semanas)</h3>
+          <h3 className="text-[#FF5C5C] mb-3 font-medium">Fase 2: Expansión</h3>
           <ul className="space-y-2 text-slate-200 text-sm">
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Desarrollo frontend
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              App móvil nativa
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Integración backend
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              Sistema de reservas
             </li>
             <li className="flex items-center">
-              <span className="mr-2 text-blue-400">•</span>
-              Testing & Deploy
+              <span className="mr-2 text-[#FF5C5C]">•</span>
+              Marketplace local
             </li>
           </ul>
         </div>
@@ -162,45 +162,45 @@ export const proposalSlides: ProposalSlideType[] = [
   },
   {
     title: "Inversión",
-    subtitle: "Oferta por Tiempo Limitado",
+    subtitle: "Oferta de Lanzamiento",
     content: (
       <div className="space-y-6 max-w-lg mx-auto">
         <div className="text-center space-y-2">
-          <p className="text-3xl font-bold text-indigo-300">$450 USD</p>
+          <p className="text-3xl font-bold text-[#4A90E2]">$450 USD</p>
           <p className="text-slate-400 line-through">Valor regular: $900 USD</p>
         </div>
         <ul className="text-left space-y-3 text-slate-200">
           <li className="flex items-center">
             <span className="text-emerald-400 mr-2">✓</span>
-            Desarrollo completo
+            Plataforma web completa
           </li>
           <li className="flex items-center">
             <span className="text-emerald-400 mr-2">✓</span>
-            Dominio y hosting 1 año
+            Hosting y dominio 1 año
           </li>
           <li className="flex items-center">
             <span className="text-emerald-400 mr-2">✓</span>
-            Soporte técnico 15 días
+            15 días de soporte premium
           </li>
         </ul>
-        <p className="text-rose-300 font-medium text-sm">
-          * Oferta válida solo por 24 horas
+        <p className="text-[#FF5C5C] font-medium text-sm">
+          * Precio especial de lanzamiento por tiempo limitado
         </p>
       </div>
     )
   },
   {
-    title: "¿Comenzamos?",
-    subtitle: "Tu Proyecto en Buenas Manos",
+    title: "¿Listo para Comenzar?",
+    subtitle: "Impulsa el Turismo en Pasco",
     content: (
       <div className="space-y-8 max-w-lg mx-auto">
         <div className="space-y-4 text-center">
-          <h3 className="text-xl font-medium text-indigo-300">Deivis</h3>
+          <h3 className="text-xl font-medium text-[#4A90E2]">Deivis</h3>
           <p className="text-lg text-slate-100">
-            Desarrollador Web & UX/UI Designer con +10 años de experiencia creando soluciones digitales efectivas.
+            Desarrollador Web & UX/UI Designer especializado en plataformas turísticas digitales.
           </p>
           <p className="text-slate-300 text-sm">
-            Especializado en crear experiencias web modernas y orientadas a resultados.
+            +10 años creando experiencias digitales memorables y efectivas.
           </p>
         </div>
         
@@ -209,23 +209,23 @@ export const proposalSlides: ProposalSlideType[] = [
             href="https://wa.me/51989843709" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
           >
             <span className="text-xl">📱</span>
-            Aceptar Propuesta vía WhatsApp
+            Iniciar Proyecto vía WhatsApp
           </a>
           
           <a 
             href="/contacto" 
-            className="flex items-center justify-center gap-2 bg-indigo-500/20 hover:bg-indigo-500 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-indigo-500/30 hover:border-indigo-500"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#4A90E2]/20 to-[#FF5C5C]/20 hover:from-[#4A90E2] hover:to-[#FF5C5C] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-[#4A90E2]/30 hover:border-[#4A90E2]"
           >
             <span className="text-xl">✉️</span>
-            Contactar por Email
+            Solicitar Más Información
           </a>
         </div>
 
         <p className="text-slate-400 text-sm text-center">
-          * El desarrollo comienza tras la confirmación del pago
+          * El desarrollo comienza tras la confirmación del pago inicial
         </p>
       </div>
     )
