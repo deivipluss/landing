@@ -238,21 +238,21 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [progress, setProgress] = React.useState(0);
   const [active, setActive] = React.useState(0);
+  const [startX, setStartX] = React.useState(0);
   const [isDragging, setIsDragging] = React.useState(false);
 
-  // Scroll suave y centrado
-  const scrollTo = (dir: "left" | "right") => {
+  // Scroll suave y centrado con detección de dirección
+  const scrollTo = React.useCallback((index: number) => {
     if (containerRef.current) {
       const width = containerRef.current.offsetWidth;
-      let next = active + (dir === "right" ? 1 : -1);
-      next = Math.max(0, Math.min(slides.length - 1, next));
-      setActive(next);
+      const targetIndex = Math.max(0, Math.min(slides.length - 1, index));
+      setActive(targetIndex);
       containerRef.current.scrollTo({
-        left: width * next,
-        behavior: "smooth",
+        left: width * targetIndex,
+        behavior: 'smooth'
       });
     }
-  };
+  }, [slides.length]);
 
   const handleScroll = React.useCallback(() => {
     if (containerRef.current) {
@@ -260,29 +260,50 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
       const newProgress = scrollLeft / (scrollWidth - offsetWidth);
       setProgress(newProgress);
       
+      // Calcular el slide activo con más precisión
       const newActive = Math.round(scrollLeft / offsetWidth);
-      if (newActive !== active) {
+      if (newActive !== active && newActive >= 0 && newActive < slides.length) {
         setActive(newActive);
       }
     }
-  }, [active]);
+  }, [active, slides.length]);
 
-  // Eventos táctiles mejorados
-  const handleTouchStart = () => setIsDragging(true);
-  const handleTouchEnd = () => setIsDragging(false);
+  // Manejo mejorado de eventos táctiles
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.touches[0].clientX);
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = React.useCallback((e: React.TouchEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    
+    const currentX = e.touches[0].clientX;
+    const diff = startX - currentX;
+    const sensitivity = 50; // Sensibilidad del deslizamiento
+
+    if (Math.abs(diff) > sensitivity) {
+      // Determinar dirección y cambiar slide
+      const direction = diff > 0 ? 1 : -1;
+      const nextIndex = active + direction;
+      
+      if (nextIndex >= 0 && nextIndex < slides.length) {
+        scrollTo(nextIndex);
+      }
+      setIsDragging(false);
+    }
+  }, [active, isDragging, scrollTo, slides.length, startX]);
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    // Asegurar que el slide actual esté completamente centrado
+    scrollTo(active);
+  };
 
   React.useEffect(() => {
     const container = containerRef.current;
     if (container) {
-      container.addEventListener('touchstart', handleTouchStart);
-      container.addEventListener('touchend', handleTouchEnd);
       container.addEventListener('scroll', handleScroll);
-      
-      return () => {
-        container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchend', handleTouchEnd);
-        container.removeEventListener('scroll', handleScroll);
-      };
+      return () => container.removeEventListener('scroll', handleScroll);
     }
   }, [handleScroll]);
 
@@ -334,6 +355,9 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
           scrollBehavior: isDragging ? 'auto' : 'smooth',
           touchAction: 'pan-x'
         }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         onScroll={handleScroll}
       >
         {/* Contenedor de slides */}
@@ -342,6 +366,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
             <div
               key={idx}
               className="relative flex-shrink-0 w-full h-full snap-center flex items-center justify-center"
+              style={{ scrollSnapAlign: 'center', scrollSnapStop: 'always' }}
             >
               <div className="w-full max-w-2xl mx-auto px-4 py-12">
                 {/* Título */}
@@ -373,7 +398,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
       {/* Botones de navegación - Ocultos en móvil */}
       <button
         className="fixed left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-indigo-500/20 backdrop-blur-sm text-white hover:bg-indigo-500 transition-all duration-300 shadow-lg hidden md:block"
-        onClick={() => scrollTo("left")}
+        onClick={() => scrollTo(active - 1)}
         disabled={active === 0}
         style={{ opacity: active === 0 ? 0.3 : 1 }}
       >
@@ -382,7 +407,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
 
       <button
         className="fixed right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-indigo-500/20 backdrop-blur-sm text-white hover:bg-indigo-500 transition-all duration-300 shadow-lg hidden md:block"
-        onClick={() => scrollTo("right")}
+        onClick={() => scrollTo(active + 1)}
         disabled={active === slides.length - 1}
         style={{ opacity: active === slides.length - 1 ? 0.3 : 1 }}
       >
