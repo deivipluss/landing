@@ -165,7 +165,7 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "Inversión en tu Proyecto Digital",
     content: (
       <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-border shadow-lg">
-        <div className="space-y-4">
+        <div className="space-y-4 bg-white/5 p-4 rounded-lg">
           <ul className="text-left space-y-3">
             <li className="flex items-center justify-between text-neutral-300 font-medium">
               <span>Desarrollo frontend (React)</span>
