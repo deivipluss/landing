@@ -49,35 +49,35 @@ export const proposalSlides: ProposalSlideType[] = [
     content: (
       <div className="space-y-6">
         <div className="space-y-3">
-          <h3 className="text-[#4A90E2] font-medium text-lg">Frontend y Backend</h3>
-          <ul className="space-y-2 text-slate-200">
-            <li className="flex items-center">
-              <span className="mr-2 text-[#4A90E2]">•</span>
+          <h3 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] animate-gradient bg-[length:200%_100%]">Frontend y Backend</h3>
+          <ul className="space-y-2">
+            <li className="flex items-center text-[#4A90E2] font-medium">
+              <span className="mr-2">•</span>
               React.js + TailwindCSS para diseño moderno
             </li>
-            <li className="flex items-center">
-              <span className="mr-2 text-[#4A90E2]">•</span>
+            <li className="flex items-center text-[#4A90E2] font-medium">
+              <span className="mr-2">•</span>
               Integración a Google Sheets vía API segura
             </li>
-            <li className="flex items-center">
-              <span className="mr-2 text-[#4A90E2]">•</span>
+            <li className="flex items-center text-[#4A90E2] font-medium">
+              <span className="mr-2">•</span>
               Base de datos en Google Sheets estructurado
             </li>
           </ul>
         </div>
         <div className="space-y-3">
-          <h3 className="text-[#FF5C5C] font-medium text-lg">Infraestructura</h3>
-          <ul className="space-y-2 text-slate-200">
-            <li className="flex items-center">
-              <span className="mr-2 text-[#FF5C5C]">•</span>
+          <h3 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF5C5C] to-[#4A90E2] animate-gradient bg-[length:200%_100%]">Infraestructura</h3>
+          <ul className="space-y-2">
+            <li className="flex items-center text-[#FF5C5C] font-medium">
+              <span className="mr-2">•</span>
               Hosting en Vercel/Netlify/Firebase
             </li>
-            <li className="flex items-center">
-              <span className="mr-2 text-[#FF5C5C]">•</span>
+            <li className="flex items-center text-[#FF5C5C] font-medium">
+              <span className="mr-2">•</span>
               Dominio personalizado (.com/.pe/.xyz)
             </li>
-            <li className="flex items-center">
-              <span className="mr-2 text-[#FF5C5C]">•</span>
+            <li className="flex items-center text-[#FF5C5C] font-medium">
+              <span className="mr-2">•</span>
               Panel de administración opcional
             </li>
           </ul>
