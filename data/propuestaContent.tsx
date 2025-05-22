@@ -193,15 +193,38 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "¿Comenzamos?",
     subtitle: "Tu Proyecto en Buenas Manos",
     content: (
-      <div className="space-y-6 max-w-lg mx-auto text-center">
-        <p className="text-xl font-light leading-relaxed text-slate-100">
-          Estoy listo para crear tu revista digital interactiva con los más altos estándares de calidad y diseño.
-        </p>
-        <div className="space-y-2">
-          <p className="font-medium text-indigo-300">📱 WhatsApp: [tu número]</p>
-          <p className="font-medium text-indigo-300">📧 Email: [tu correo]</p>
+      <div className="space-y-8 max-w-lg mx-auto">
+        <div className="space-y-4 text-center">
+          <h3 className="text-xl font-medium text-indigo-300">Deivis</h3>
+          <p className="text-lg text-slate-100">
+            Desarrollador Web & UX/UI Designer con +10 años de experiencia creando soluciones digitales efectivas.
+          </p>
+          <p className="text-slate-300 text-sm">
+            Especializado en crear experiencias web modernas y orientadas a resultados.
+          </p>
         </div>
-        <p className="text-slate-400 text-sm">
+        
+        <div className="flex flex-col gap-4">
+          <a 
+            href="https://wa.me/51989843709" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <span className="text-xl">📱</span>
+            Aceptar Propuesta vía WhatsApp
+          </a>
+          
+          <a 
+            href="/contacto" 
+            className="flex items-center justify-center gap-2 bg-indigo-500/20 hover:bg-indigo-500 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-indigo-500/30 hover:border-indigo-500"
+          >
+            <span className="text-xl">✉️</span>
+            Contactar por Email
+          </a>
+        </div>
+
+        <p className="text-slate-400 text-sm text-center">
           * El desarrollo comienza tras la confirmación del pago
         </p>
       </div>
@@ -265,6 +288,35 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
 
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-[#0A1120] via-[#1A1F2E] to-[#0A1120]">
+      {/* Navegación lateral */}
+      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-3 bg-[#1E293B]/70 backdrop-blur-sm p-3 rounded-2xl border border-indigo-500/20">
+        {slides.map((slide, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              if (containerRef.current) {
+                containerRef.current.scrollTo({
+                  left: containerRef.current.offsetWidth * idx,
+                  behavior: "smooth"
+                });
+              }
+            }}
+            className={`flex items-center gap-3 transition-all duration-300 group px-3 py-2 rounded-lg ${
+              active === idx 
+                ? 'bg-indigo-500/20 text-white' 
+                : 'hover:bg-indigo-500/10 text-slate-300 hover:text-white'
+            }`}
+          >
+            <span className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              active === idx 
+                ? 'bg-indigo-400' 
+                : 'bg-slate-500 group-hover:bg-indigo-400'
+            }`} />
+            <span className="text-sm font-medium whitespace-nowrap">{slide.title}</span>
+          </button>
+        ))}
+      </div>
+
       {/* Barra de progreso */}
       <div className="absolute top-0 left-0 right-0 h-1 z-50">
         <div 
