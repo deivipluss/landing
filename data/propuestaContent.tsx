@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 export interface ProposalSlideType {
   title: string;
@@ -136,3 +136,91 @@ export const proposalSlides: ProposalSlideType[] = [
     ),
   },
 ];
+
+// Nuevo componente para navegación horizontal y UX/UI
+export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Función para avanzar/retroceder
+  const scrollTo = (dir: "left" | "right") => {
+    if (containerRef.current) {
+      const width = containerRef.current.offsetWidth;
+      containerRef.current.scrollBy({
+        left: dir === "right" ? width : -width,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // Progreso visual
+  const [progress, setProgress] = React.useState(0);
+  const handleScroll = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, offsetWidth } = containerRef.current;
+      setProgress(scrollLeft / (scrollWidth - offsetWidth));
+    }
+  };
+
+  return (
+    <div className="relative w-full h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E]">
+      <div className="absolute top-4 left-0 right-0 flex justify-center z-10">
+        <div className="w-2/3 h-2 bg-[#222] rounded-full overflow-hidden">
+          <div
+            className="h-full bg-[#4A90E2] transition-all duration-300"
+            style={{ width: `${progress * 100}%` }}
+          />
+        </div>
+      </div>
+      <button
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[#1A1A2E]/80 p-2 rounded-full shadow-glow hover:bg-[#4A90E2] transition"
+        onClick={() => scrollTo("left")}
+        aria-label="Anterior"
+      >
+        <span className="text-2xl">⟨</span>
+      </button>
+      <div
+        ref={containerRef}
+        className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth"
+        onScroll={handleScroll}
+        style={{ scrollSnapType: "x mandatory" }}
+      >
+        {slides.map((slide, idx) => (
+          <section
+            key={idx}
+            className="w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-4 py-8 transition-shadow duration-300"
+          >
+            {/* Puedes reutilizar ProposalSlide aquí si lo deseas */}
+            {slide.img && (
+              <img
+                src={slide.img}
+                alt={slide.title}
+                className="w-full max-w-xl rounded-xl shadow-glow mb-8 object-cover border border-[#4A90E2]/30"
+                style={{ maxHeight: 320 }}
+              />
+            )}
+            <div className="w-full max-w-2xl text-center flex flex-col items-center">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-poppins mb-2 drop-shadow-glow text-[#4A90E2]">
+                {slide.title}
+              </h1>
+              {slide.subtitle && (
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#FF5C5C] mb-4 drop-shadow-glow">
+                  {slide.subtitle}
+                </h2>
+              )}
+              <div className="text-base sm:text-lg md:text-xl font-poppins text-[#E1E1E1] opacity-90 mt-2 mb-4">
+                {slide.content}
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+      <button
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[#1A1A2E]/80 p-2 rounded-full shadow-glow hover:bg-[#4A90E2] transition"
+        onClick={() => scrollTo("right")}
+        aria-label="Siguiente"
+      >
+        <span className="text-2xl">⟩</span>
+      </button>
+    </div>
+  );
+}
