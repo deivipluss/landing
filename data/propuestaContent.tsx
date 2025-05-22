@@ -17,7 +17,7 @@ export const proposalSlides: ProposalSlideType[] = [
         <p className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg">
           Solución web moderna y escalable para gestión de información en tiempo real
         </p>
-        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
+        <div className="bg-white/5 p-4 rounded-lg">
           <p className="font-semibold text-center text-primary space-x-4">
             <span className="hover:text-secondary transition-colors">React.js</span>
             <span className="text-secondary">+</span>
@@ -36,8 +36,8 @@ export const proposalSlides: ProposalSlideType[] = [
         <p className="text-lg font-semibold text-primary">
           Desarrollar una aplicación web visualmente atractiva, de carga rápida, accesible desde cualquier dispositivo y alimentada por una base de datos sencilla conectada a Google Sheets.
         </p>
-        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
-          <p className="text-base text-neutral-300">
+        <div className="bg-white/5 p-4 rounded-lg">
+          <p className="text-base text-neutral-200">
             Ideal para gestión de información en tiempo real formularios, pedidos, inventario, reportes u otras necesidades operativas.
           </p>
         </div>
@@ -131,7 +131,7 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "8 a 10 días hábiles",
     content: (
       <div className="space-y-6 text-left w-full max-w-xl mx-auto">
-        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
+        <div className="bg-white/5 p-4 rounded-lg">
           <h3 className="text-primary mb-3 font-bold">Primera Fase</h3>
           <ul className="space-y-2 text-neutral-300 text-sm font-medium">
             <li className="flex items-center justify-between">
@@ -144,7 +144,7 @@ export const proposalSlides: ProposalSlideType[] = [
             </li>
           </ul>
         </div>
-        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
+        <div className="bg-white/5 p-4 rounded-lg">
           <h3 className="text-secondary mb-3 font-bold">Segunda Fase</h3>
           <ul className="space-y-2 text-neutral-300 text-sm font-medium">
             <li className="flex items-center justify-between">
