@@ -200,22 +200,22 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Condiciones",
     content: (
-      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-border shadow-lg">
-        <ul className="space-y-4 text-neutral-300 font-medium">
+      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A]/90 p-6 rounded-xl border border-primary/30 shadow-none">
+        <ul className="space-y-4 text-neutral-200 font-medium">
           <li className="flex items-center gap-3">
-            <span className="text-primary text-xl">•</span>
+            <span className="text-primary text-lg">●</span>
             <span>50% adelanto para inicio del proyecto</span>
           </li>
           <li className="flex items-center gap-3">
-            <span className="text-primary text-xl">•</span>
+            <span className="text-primary text-lg">●</span>
             <span>50% contra entrega de la versión publicada</span>
           </li>
           <li className="flex items-center gap-3">
-            <span className="text-primary text-xl">•</span>
+            <span className="text-primary text-lg">●</span>
             <span>Reuniones de avance por videollamada o presencial</span>
           </li>
           <li className="flex items-center gap-3">
-            <span className="text-primary text-xl">•</span>
+            <span className="text-primary text-lg">●</span>
             <span>Soporte inicial incluido (15 días)</span>
           </li>
         </ul>
