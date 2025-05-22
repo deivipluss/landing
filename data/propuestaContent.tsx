@@ -30,194 +30,159 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "Objetivo del Proyecto",
+    title: "🎯 Objetivo del Proyecto",
     content: (
       <div className="space-y-4">
-        <p className="text-lg font-semibold text-primary">
-          Desarrollar una aplicación web visualmente atractiva, de carga rápida, accesible desde cualquier dispositivo y alimentada por una base de datos sencilla conectada a Google Sheets.
-        </p>
-        <div className="bg-white/5 p-4 rounded-lg">
-          <p className="text-base text-neutral-200">
-            Ideal para gestión de información en tiempo real formularios, pedidos, inventario, reportes u otras necesidades operativas.
-          </p>
+        <ul className="space-y-3 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl">
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Diseñar y desarrollar una aplicación web profesional enfocada en turismo.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Funcionará como una revista digital interactiva.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Integrará animaciones, visuales atractivos y una sección de blog autogestionado por usuarios.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Será responsiva, rápida y conectada a Google Sheets como sistema ligero de base de datos.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Ideal para MVPs o proyectos en crecimiento.</li>
+        </ul>
+      </div>
+    )
+  },
+  {
+    title: "🧩 Tecnologías y Recursos a Utilizar",
+    content: (
+      <div className="space-y-4">
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-sm bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl">
+            <thead>
+              <tr className="text-left text-primary font-bold">
+                <th className="py-2 px-3">Componente</th>
+                <th className="py-2 px-3">Tecnología / Herramienta</th>
+              </tr>
+            </thead>
+            <tbody className="text-white/90">
+              <tr><td className="py-2 px-3">Frontend</td><td className="py-2 px-3">React.js + TailwindCSS (diseño moderno y animado)</td></tr>
+              <tr><td className="py-2 px-3">Backend / CMS básico</td><td className="py-2 px-3">Google Sheets vía API segura</td></tr>
+              <tr><td className="py-2 px-3">Blog & Posts</td><td className="py-2 px-3">Sistema de ingreso, visualización y validación simple</td></tr>
+              <tr><td className="py-2 px-3">Animaciones UI</td><td className="py-2 px-3">Framer Motion / GSAP / CSS Transitions</td></tr>
+              <tr><td className="py-2 px-3">Base de Datos</td><td className="py-2 px-3">Google Sheets estructurada como backend ligero</td></tr>
+              <tr><td className="py-2 px-3">Hosting</td><td className="py-2 px-3">Vercel (incluido 1 año)</td></tr>
+              <tr><td className="py-2 px-3">Dominio</td><td className="py-2 px-3">Registro .com (incluido 1 año)</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     )
   },
   {
-    title: "Tecnologías y Recursos",
+    title: "📖 Estructura y Funcionalidades",
     content: (
-      <div className="space-y-6">
-        <div className="space-y-3">
-          <h3 className="text-lg font-bold text-primary">Frontend y Backend</h3>
-          <ul className="space-y-2">
-            <li className="flex items-center text-primary font-medium">
-              <span className="mr-2">•</span>
-              React.js + TailwindCSS para diseño moderno
-            </li>
-            <li className="flex items-center text-primary font-medium">
-              <span className="mr-2">•</span>
-              Integración a Google Sheets vía API segura
-            </li>
-            <li className="flex items-center text-primary font-medium">
-              <span className="mr-2">•</span>
-              Base de datos en Google Sheets estructurado
-            </li>
-          </ul>
-        </div>
-        <div className="space-y-3">
-          <h3 className="text-lg font-bold text-secondary">Infraestructura</h3>
-          <ul className="space-y-2">
-            <li className="flex items-center text-secondary font-medium">
-              <span className="mr-2">•</span>
-              Hosting en Vercel/Netlify/Firebase
-            </li>
-            <li className="flex items-center text-secondary font-medium">
-              <span className="mr-2">•</span>
-              Dominio personalizado (.com/.pe/.xyz)
-            </li>
-            <li className="flex items-center text-secondary font-medium">
-              <span className="mr-2">•</span>
-              Panel de administración opcional
-            </li>
-          </ul>
-        </div>
-      </div>
-    )
-  },
-  {
-    title: "Diseño y Experiencia",
-    content: (
-      <div className="space-y-6 text-left w-full max-w-2xl mx-auto">
-        <div className="space-y-3">
-          <h3 className="text-primary font-bold">Diseño Visual</h3>
-          <ul className="space-y-2">
-            <li className="flex items-center text-primary font-medium">
-              <span className="mr-2">•</span>
-              Adaptado a identidad del cliente
-            </li>
-            <li className="flex items-center text-primary font-medium">
-              <span className="mr-2">•</span>
-              Estilo moderno y limpio
-            </li>
-            <li className="flex items-center text-primary font-medium">
-              <span className="mr-2">•</span>
-              Iconografía clara y coherente
-            </li>
-          </ul>
-        </div>
-        <div className="space-y-3">
-          <h3 className="text-secondary font-bold">Experiencia de Usuario</h3>
-          <ul className="space-y-2">
-            <li className="flex items-center text-secondary font-medium">
-              <span className="mr-2">•</span>
-              Mobile first
-            </li>
-            <li className="flex items-center text-secondary font-medium">
-              <span className="mr-2">•</span>
-              Animaciones suaves
-            </li>
-            <li className="flex items-center text-secondary font-medium">
-              <span className="mr-2">•</span>
-              Optimización de carga
-            </li>
-          </ul>
-        </div>
-      </div>
-    )
-  },
-  {
-    title: "Plazos de Entrega",
-    subtitle: "8 a 10 días hábiles",
-    content: (
-      <div className="space-y-6 text-left w-full max-w-xl mx-auto">
-        <div className="bg-white/5 p-4 rounded-lg">
-          <h3 className="text-primary mb-3 font-bold">Primera Fase</h3>
-          <ul className="space-y-2 text-neutral-300 text-sm font-medium">
-            <li className="flex items-center justify-between">
-              <span>Prototipado y diseño UI</span>
-              <span className="text-primary">2-3 días</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span>Desarrollo funcional</span>
-              <span className="text-primary">4-5 días</span>
-            </li>
-          </ul>
-        </div>
-        <div className="bg-white/5 p-4 rounded-lg">
-          <h3 className="text-secondary mb-3 font-bold">Segunda Fase</h3>
-          <ul className="space-y-2 text-neutral-300 text-sm font-medium">
-            <li className="flex items-center justify-between">
-              <span>Conexión con Sheets</span>
-              <span className="text-secondary">1 día</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span>Testing y entrega</span>
-              <span className="text-secondary">1-2 días</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    )
-  },
-  {
-    title: "Presupuesto Total",
-    subtitle: "Inversión en tu Proyecto Digital",
-    content: (
-      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl shadow-lg">
-        <div className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-4 rounded-lg">
-          <ul className="text-left space-y-3">
-            <li className="flex items-center justify-between text-neutral-300 font-medium">
-              <span>Desarrollo frontend (React)</span>
-              <span className="text-primary">S/ XXX</span>
-            </li>
-            <li className="flex items-center justify-between text-neutral-300 font-medium">
-              <span>Conexión a Sheets</span>
-              <span className="text-primary">S/ XXX</span>
-            </li>
-            <li className="flex items-center justify-between text-neutral-300 font-medium">
-              <span>Diseño visual personalizado</span>
-              <span className="text-primary">S/ XXX</span>
-            </li>
-            <li className="flex items-center justify-between text-neutral-300 font-medium">
-              <span>Dominio y hosting (1 año)</span>
-              <span className="text-primary">S/ XXX</span>
-            </li>
-          </ul>
-          <div className="border-t border-primary/30 pt-4 mt-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xl font-bold text-neutral-300">Total</span>
-              <span className="text-2xl font-bold text-primary">S/ XXXX</span>
-            </div>
-          </div>
-        </div>
-        <p className="text-secondary font-medium text-sm text-center">
-          * Los precios pueden ajustarse según características específicas adicionales
-        </p>
-      </div>
-    )
-  },
-  {
-    title: "Condiciones",
-    content: (
-      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A]/90 p-6 rounded-xl shadow-none">
-        <ul className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-4 rounded-lg text-neutral-200 font-medium">
-          <li className="flex items-center gap-3">
-            <span className="text-primary text-lg">●</span>
-            <span>50% adelanto para inicio del proyecto</span>
+      <div className="space-y-4">
+        <ul className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
+          <li>
+            <span className="font-bold text-primary">🧭 Home - Revista Visual</span>
+            <ul className="ml-4 mt-1 space-y-1 list-disc text-white/80">
+              <li>Portada animada estilo revista digital</li>
+              <li>Carrusel de ediciones o destinos destacados</li>
+              <li>Efectos visuales con transición fluida</li>
+            </ul>
           </li>
-          <li className="flex items-center gap-3">
-            <span className="text-primary text-lg">●</span>
-            <span>50% contra entrega de la versión publicada</span>
+          <li>
+            <span className="font-bold text-primary">✍️ Blog Turístico</span>
+            <ul className="ml-4 mt-1 space-y-1 list-disc text-white/80">
+              <li>Visualización de artículos por categorías</li>
+              <li>Sección para que los usuarios publiquen entradas (con validación)</li>
+              <li>Animaciones al navegar en las entradas</li>
+              <li>Autor, fecha, tags, foto destacada</li>
+            </ul>
           </li>
-          <li className="flex items-center gap-3">
-            <span className="text-primary text-lg">●</span>
-            <span>Reuniones de avance por videollamada o presencial</span>
+          <li>
+            <span className="font-bold text-primary">💬 Panel de Usuario Ligero</span>
+            <ul className="ml-4 mt-1 space-y-1 list-disc text-white/80">
+              <li>Nombre, correo y contenido del post</li>
+              <li>Validación de contenido antes de publicación</li>
+            </ul>
           </li>
-          <li className="flex items-center gap-3">
-            <span className="text-primary text-lg">●</span>
-            <span>Soporte inicial incluido (15 días)</span>
+          <li>
+            <span className="font-bold text-primary">📊 Backend Admin Simplificado</span>
+            <ul className="ml-4 mt-1 space-y-1 list-disc text-white/80">
+              <li>Base conectada a Google Sheets (registro de entradas)</li>
+              <li>Panel editable desde el propio Sheets (modo administrador)</li>
+            </ul>
           </li>
+        </ul>
+      </div>
+    )
+  },
+  {
+    title: "🎨 Diseño y Experiencia Visual",
+    content: (
+      <div className="space-y-4">
+        <ul className="space-y-3 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
+          <li>Interfaz moderna, dinámica y adaptativa (mobile-first)</li>
+          <li>Uso de animaciones suaves y visuales editoriales</li>
+          <li>Colores y estilos inspirados en revistas turísticas</li>
+          <li>Branding personalizado</li>
+          <li>Alta usabilidad y jerarquía de contenidos</li>
+        </ul>
+      </div>
+    )
+  },
+  {
+    title: "📆 Tiempo Estimado de Desarrollo",
+    content: (
+      <div className="space-y-4">
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-sm bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl">
+            <thead>
+              <tr className="text-left text-primary font-bold">
+                <th className="py-2 px-3">Etapa</th>
+                <th className="py-2 px-3">Duración estimada</th>
+              </tr>
+            </thead>
+            <tbody className="text-white/90">
+              <tr><td className="py-2 px-3">Prototipo UI + navegación UX</td><td className="py-2 px-3">3 - 5 días hábiles</td></tr>
+              <tr><td className="py-2 px-3">Desarrollo frontend y blog</td><td className="py-2 px-3">7 - 10 días hábiles</td></tr>
+              <tr><td className="py-2 px-3">Integración con Sheets + test</td><td className="py-2 px-3">3 - 4 días hábiles</td></tr>
+              <tr><td className="py-2 px-3">Animaciones, validaciones y QA</td><td className="py-2 px-3">2 - 3 días hábiles</td></tr>
+              <tr className="font-bold text-primary"><td className="py-2 px-3">Total estimado</td><td className="py-2 px-3">15 - 25 días hábiles</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )
+  },
+  {
+    title: "💰 Inversión del Proyecto",
+    content: (
+      <div className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
+        <table className="min-w-full text-sm">
+          <thead>
+            <tr className="text-left text-primary font-bold">
+              <th className="py-2 px-3">Concepto</th>
+              <th className="py-2 px-3">Precio Promocional (USD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td className="py-2 px-3">Desarrollo completo (app web)</td><td className="py-2 px-3">$450.00*</td></tr>
+            <tr><td className="py-2 px-3">Hosting (1 año)</td><td className="py-2 px-3">Incluido</td></tr>
+            <tr><td className="py-2 px-3">Dominio .com (1 año)</td><td className="py-2 px-3">Incluido</td></tr>
+            <tr><td className="py-2 px-3">Animaciones y blog interactivo</td><td className="py-2 px-3">Incluido</td></tr>
+            <tr><td className="py-2 px-3">Soporte técnico inicial (15 días)</td><td className="py-2 px-3">Incluido</td></tr>
+            <tr className="font-bold text-primary"><td className="py-2 px-3">TOTAL HOY</td><td className="py-2 px-3">$450.00 USD</td></tr>
+          </tbody>
+        </table>
+        <div className="mt-2 text-yellow-300 text-xs font-semibold">
+          🟨 IMPORTANTE: Esta tarifa especial es válida solo por 24 horas tras la presentación de esta propuesta.<br />A partir de mañana, el costo será de $900.00 USD.
+        </div>
+      </div>
+    )
+  },
+  {
+    title: "💼 Condiciones del Servicio",
+    content: (
+      <div className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
+        <ul className="space-y-2">
+          <li>100% del pago dentro de las siguientes 24 horas para acceder a tarifa promocional.</li>
+          <li>El desarrollo inicia inmediatamente después del pago.</li>
+          <li>Soporte técnico incluido por 15 días después del despliegue.</li>
+          <li>Cambios mayores o extensiones se cotizan aparte.</li>
+          <li>Entregables incluidos: acceso al dominio, base de datos, hosting, y manual básico de uso.</li>
         </ul>
       </div>
     )
