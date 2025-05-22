@@ -14,16 +14,16 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "Desarrollo de Aplicación Web React + Google Sheets",
     content: (
       <div className="space-y-4">
-        <p className="text-xl sm:text-2xl font-bold text-[#4A90E2] drop-shadow-lg">
+        <p className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg">
           Solución web moderna y escalable para gestión de información en tiempo real
         </p>
-        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-[#26304B] shadow-lg">
-          <p className="font-semibold text-center text-[#4A90E2] space-x-4">
-            <span className="hover:text-[#FF5C5C] transition-colors">React.js</span>
-            <span className="text-[#FF5C5C]">+</span>
-            <span className="hover:text-[#FF5C5C] transition-colors">Google Sheets</span>
-            <span className="text-[#FF5C5C]">+</span>
-            <span className="hover:text-[#FF5C5C] transition-colors">APIs</span>
+        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
+          <p className="font-semibold text-center text-primary space-x-4">
+            <span className="hover:text-secondary transition-colors">React.js</span>
+            <span className="text-secondary">+</span>
+            <span className="hover:text-secondary transition-colors">Google Sheets</span>
+            <span className="text-secondary">+</span>
+            <span className="hover:text-secondary transition-colors">APIs</span>
           </p>
         </div>
       </div>
@@ -33,11 +33,11 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Objetivo del Proyecto",
     content: (
       <div className="space-y-4">
-        <p className="text-lg font-semibold text-[#4A90E2]">
+        <p className="text-lg font-semibold text-primary">
           Desarrollar una aplicación web visualmente atractiva, de carga rápida, accesible desde cualquier dispositivo y alimentada por una base de datos sencilla conectada a Google Sheets.
         </p>
-        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-[#26304B] shadow-lg">
-          <p className="text-base text-[#C7D0E0]">
+        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
+          <p className="text-base text-neutral-300">
             Ideal para gestión de información en tiempo real, formularios, pedidos, inventario, reportes u otras necesidades operativas.
           </p>
         </div>
@@ -49,34 +49,34 @@ export const proposalSlides: ProposalSlideType[] = [
     content: (
       <div className="space-y-6">
         <div className="space-y-3">
-          <h3 className="text-lg font-bold text-[#4A90E2]">Frontend y Backend</h3>
+          <h3 className="text-lg font-bold text-primary">Frontend y Backend</h3>
           <ul className="space-y-2">
-            <li className="flex items-center text-[#4A90E2] font-medium">
+            <li className="flex items-center text-primary font-medium">
               <span className="mr-2">•</span>
               React.js + TailwindCSS para diseño moderno
             </li>
-            <li className="flex items-center text-[#4A90E2] font-medium">
+            <li className="flex items-center text-primary font-medium">
               <span className="mr-2">•</span>
               Integración a Google Sheets vía API segura
             </li>
-            <li className="flex items-center text-[#4A90E2] font-medium">
+            <li className="flex items-center text-primary font-medium">
               <span className="mr-2">•</span>
               Base de datos en Google Sheets estructurado
             </li>
           </ul>
         </div>
         <div className="space-y-3">
-          <h3 className="text-lg font-bold text-[#FF5C5C]">Infraestructura</h3>
+          <h3 className="text-lg font-bold text-secondary">Infraestructura</h3>
           <ul className="space-y-2">
-            <li className="flex items-center text-[#FF5C5C] font-medium">
+            <li className="flex items-center text-secondary font-medium">
               <span className="mr-2">•</span>
               Hosting en Vercel/Netlify/Firebase
             </li>
-            <li className="flex items-center text-[#FF5C5C] font-medium">
+            <li className="flex items-center text-secondary font-medium">
               <span className="mr-2">•</span>
               Dominio personalizado (.com/.pe/.xyz)
             </li>
-            <li className="flex items-center text-[#FF5C5C] font-medium">
+            <li className="flex items-center text-secondary font-medium">
               <span className="mr-2">•</span>
               Panel de administración opcional
             </li>
@@ -90,34 +90,34 @@ export const proposalSlides: ProposalSlideType[] = [
     content: (
       <div className="space-y-6 text-left w-full max-w-2xl mx-auto">
         <div className="space-y-3">
-          <h3 className="text-[#4A90E2] font-bold">Diseño Visual</h3>
+          <h3 className="text-primary font-bold">Diseño Visual</h3>
           <ul className="space-y-2">
-            <li className="flex items-center text-[#4A90E2] font-medium">
+            <li className="flex items-center text-primary font-medium">
               <span className="mr-2">•</span>
               Adaptado a identidad del cliente
             </li>
-            <li className="flex items-center text-[#4A90E2] font-medium">
+            <li className="flex items-center text-primary font-medium">
               <span className="mr-2">•</span>
               Estilo moderno y limpio
             </li>
-            <li className="flex items-center text-[#4A90E2] font-medium">
+            <li className="flex items-center text-primary font-medium">
               <span className="mr-2">•</span>
               Iconografía clara y coherente
             </li>
           </ul>
         </div>
         <div className="space-y-3">
-          <h3 className="text-[#FF5C5C] font-bold">Experiencia de Usuario</h3>
+          <h3 className="text-secondary font-bold">Experiencia de Usuario</h3>
           <ul className="space-y-2">
-            <li className="flex items-center text-[#FF5C5C] font-medium">
+            <li className="flex items-center text-secondary font-medium">
               <span className="mr-2">•</span>
               Mobile first
             </li>
-            <li className="flex items-center text-[#FF5C5C] font-medium">
+            <li className="flex items-center text-secondary font-medium">
               <span className="mr-2">•</span>
               Animaciones suaves
             </li>
-            <li className="flex items-center text-[#FF5C5C] font-medium">
+            <li className="flex items-center text-secondary font-medium">
               <span className="mr-2">•</span>
               Optimización de carga
             </li>
@@ -131,29 +131,29 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "8 a 10 días hábiles",
     content: (
       <div className="space-y-6 text-left w-full max-w-xl mx-auto">
-        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-[#26304B] shadow-lg">
-          <h3 className="text-[#4A90E2] mb-3 font-bold">Primera Fase</h3>
-          <ul className="space-y-2 text-[#C7D0E0] text-sm font-medium">
+        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
+          <h3 className="text-primary mb-3 font-bold">Primera Fase</h3>
+          <ul className="space-y-2 text-neutral-300 text-sm font-medium">
             <li className="flex items-center justify-between">
               <span>Prototipado y diseño UI</span>
-              <span className="text-[#4A90E2]">2-3 días</span>
+              <span className="text-primary">2-3 días</span>
             </li>
             <li className="flex items-center justify-between">
               <span>Desarrollo funcional</span>
-              <span className="text-[#4A90E2]">4-5 días</span>
+              <span className="text-primary">4-5 días</span>
             </li>
           </ul>
         </div>
-        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-[#26304B] shadow-lg">
-          <h3 className="text-[#FF5C5C] mb-3 font-bold">Segunda Fase</h3>
-          <ul className="space-y-2 text-[#C7D0E0] text-sm font-medium">
+        <div className="bg-[#181E2A] bg-opacity-90 p-4 rounded-xl border border-border shadow-lg">
+          <h3 className="text-secondary mb-3 font-bold">Segunda Fase</h3>
+          <ul className="space-y-2 text-neutral-300 text-sm font-medium">
             <li className="flex items-center justify-between">
               <span>Conexión con Sheets</span>
-              <span className="text-[#FF5C5C]">1 día</span>
+              <span className="text-secondary">1 día</span>
             </li>
             <li className="flex items-center justify-between">
               <span>Testing y entrega</span>
-              <span className="text-[#FF5C5C]">1-2 días</span>
+              <span className="text-secondary">1-2 días</span>
             </li>
           </ul>
         </div>
@@ -164,34 +164,34 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Presupuesto Total",
     subtitle: "Inversión en tu Proyecto Digital",
     content: (
-      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-[#26304B] shadow-lg">
+      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-border shadow-lg">
         <div className="space-y-4">
           <ul className="text-left space-y-3">
-            <li className="flex items-center justify-between text-[#C7D0E0] font-medium">
+            <li className="flex items-center justify-between text-neutral-300 font-medium">
               <span>Desarrollo frontend (React)</span>
-              <span className="text-[#4A90E2]">S/ XXX</span>
+              <span className="text-primary">S/ XXX</span>
             </li>
-            <li className="flex items-center justify-between text-[#C7D0E0] font-medium">
+            <li className="flex items-center justify-between text-neutral-300 font-medium">
               <span>Conexión a Sheets</span>
-              <span className="text-[#4A90E2]">S/ XXX</span>
+              <span className="text-primary">S/ XXX</span>
             </li>
-            <li className="flex items-center justify-between text-[#C7D0E0] font-medium">
+            <li className="flex items-center justify-between text-neutral-300 font-medium">
               <span>Diseño visual personalizado</span>
-              <span className="text-[#4A90E2]">S/ XXX</span>
+              <span className="text-primary">S/ XXX</span>
             </li>
-            <li className="flex items-center justify-between text-[#C7D0E0] font-medium">
+            <li className="flex items-center justify-between text-neutral-300 font-medium">
               <span>Dominio y hosting (1 año)</span>
-              <span className="text-[#4A90E2]">S/ XXX</span>
+              <span className="text-primary">S/ XXX</span>
             </li>
           </ul>
-          <div className="border-t border-[#4A90E2]/30 pt-4 mt-4">
+          <div className="border-t border-primary/30 pt-4 mt-4">
             <div className="flex items-center justify-between">
-              <span className="text-xl font-bold text-[#C7D0E0]">Total</span>
-              <span className="text-2xl font-bold text-[#4A90E2]">S/ XXXX</span>
+              <span className="text-xl font-bold text-neutral-300">Total</span>
+              <span className="text-2xl font-bold text-primary">S/ XXXX</span>
             </div>
           </div>
         </div>
-        <p className="text-[#FF5C5C] font-medium text-sm text-center">
+        <p className="text-secondary font-medium text-sm text-center">
           * Los precios pueden ajustarse según características específicas adicionales
         </p>
       </div>
@@ -200,22 +200,22 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Condiciones",
     content: (
-      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-[#26304B] shadow-lg">
-        <ul className="space-y-4 text-[#C7D0E0] font-medium">
+      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-border shadow-lg">
+        <ul className="space-y-4 text-neutral-300 font-medium">
           <li className="flex items-center gap-3">
-            <span className="text-[#4A90E2] text-xl">•</span>
+            <span className="text-primary text-xl">•</span>
             <span>50% adelanto para inicio del proyecto</span>
           </li>
           <li className="flex items-center gap-3">
-            <span className="text-[#4A90E2] text-xl">•</span>
+            <span className="text-primary text-xl">•</span>
             <span>50% contra entrega de la versión publicada</span>
           </li>
           <li className="flex items-center gap-3">
-            <span className="text-[#4A90E2] text-xl">•</span>
+            <span className="text-primary text-xl">•</span>
             <span>Reuniones de avance por videollamada o presencial</span>
           </li>
           <li className="flex items-center gap-3">
-            <span className="text-[#4A90E2] text-xl">•</span>
+            <span className="text-primary text-xl">•</span>
             <span>Soporte inicial incluido (15 días)</span>
           </li>
         </ul>
@@ -226,13 +226,13 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "¿Empezamos tu Proyecto?",
     subtitle: "Contacta con nosotros",
     content: (
-      <div className="space-y-8 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-[#26304B] shadow-lg">
+      <div className="space-y-8 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-border shadow-lg">
         <div className="space-y-4 text-center">
-          <h3 className="text-xl font-bold text-[#4A90E2]">Deivis</h3>
-          <p className="text-lg text-[#C7D0E0]">
+          <h3 className="text-xl font-bold text-primary">Deivis</h3>
+          <p className="text-lg text-neutral-300">
             Desarrollador Web & UX/UI Designer
           </p>
-          <p className="text-[#C7D0E0] text-sm">
+          <p className="text-neutral-300 text-sm">
             Especialista en Desarrollo Web con React y Gestión de Datos
           </p>
         </div>
@@ -248,7 +248,7 @@ export const proposalSlides: ProposalSlideType[] = [
           </a>
           <a 
             href="/contacto" 
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#4A90E2]/20 to-[#FF5C5C]/20 hover:from-[#4A90E2] hover:to-[#FF5C5C] text-[#C7D0E0] font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-[#4A90E2]/30 hover:border-[#4A90E2]"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary hover:to-secondary text-neutral-300 font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-primary/30 hover:border-primary"
           >
             <span className="text-xl">✉️</span>
             Solicitar Más Información
