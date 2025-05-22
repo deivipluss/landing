@@ -308,30 +308,23 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
   }, [handleScroll]);
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-[#0A1120] via-[#1A1F2E] to-[#0A1120]">
+    <div className="fixed inset-0 bg-gradient-to-br from-[#0A1120] via-[#1A1A2E] to-[#0D0C1D]">
       {/* Navegación lateral */}
-      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-3 bg-[#1E293B]/70 backdrop-blur-sm p-3 rounded-2xl border border-indigo-500/20">
+      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-3 bg-[#1E293B]/80 backdrop-blur-md p-4 rounded-2xl border border-[#4A90E2]/30 shadow-glow">
         {slides.map((slide, idx) => (
           <button
             key={idx}
-            onClick={() => {
-              if (containerRef.current) {
-                containerRef.current.scrollTo({
-                  left: containerRef.current.offsetWidth * idx,
-                  behavior: "smooth"
-                });
-              }
-            }}
+            onClick={() => scrollTo(idx)}
             className={`flex items-center gap-3 transition-all duration-300 group px-3 py-2 rounded-lg ${
               active === idx 
-                ? 'bg-indigo-500/20 text-white' 
-                : 'hover:bg-indigo-500/10 text-slate-300 hover:text-white'
+                ? 'bg-[#4A90E2]/20 text-white' 
+                : 'hover:bg-[#4A90E2]/10 text-slate-300 hover:text-white'
             }`}
           >
             <span className={`h-2 w-2 rounded-full transition-all duration-300 ${
               active === idx 
-                ? 'bg-indigo-400' 
-                : 'bg-slate-500 group-hover:bg-indigo-400'
+                ? 'bg-[#4A90E2] shadow-glow-sm' 
+                : 'bg-slate-500 group-hover:bg-[#4A90E2]'
             }`} />
             <span className="text-sm font-medium whitespace-nowrap">{slide.title}</span>
           </button>
@@ -341,7 +334,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
       {/* Barra de progreso */}
       <div className="absolute top-0 left-0 right-0 h-1 z-50">
         <div 
-          className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300 ease-out"
+          className="h-full bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] transition-all duration-300 ease-out"
           style={{ width: `${progress * 100}%` }}
         />
       </div>
@@ -371,20 +364,21 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
               <div className="w-full max-w-2xl mx-auto px-4 py-12">
                 {/* Título */}
                 <h1 
-                  className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 text-center mb-4 drop-shadow-lg"
+                  className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-center mb-4 drop-shadow-glow font-poppins"
+                  style={{ letterSpacing: "-1px" }}
                 >
                   {slide.title}
                 </h1>
 
                 {/* Subtítulo */}
                 {slide.subtitle && (
-                  <h2 className="text-lg sm:text-xl text-indigo-300 font-medium text-center mb-6">
+                  <h2 className="text-lg sm:text-xl text-[#4A90E2] font-medium text-center mb-6 opacity-90">
                     {slide.subtitle}
                   </h2>
                 )}
 
                 {/* Tarjeta de contenido */}
-                <div className="w-full bg-[#1E293B]/70 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-indigo-500/20">
+                <div className="w-full bg-[#1E293B]/80 backdrop-blur-md rounded-xl p-6 shadow-glow border border-[#4A90E2]/20 animate-float">
                   <div className="text-slate-100">
                     {slide.content}
                   </div>
@@ -397,7 +391,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
 
       {/* Botones de navegación - Ocultos en móvil */}
       <button
-        className="fixed left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-indigo-500/20 backdrop-blur-sm text-white hover:bg-indigo-500 transition-all duration-300 shadow-lg hidden md:block"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-[#4A90E2]/20 backdrop-blur-md text-white hover:bg-[#4A90E2] transition-all duration-300 shadow-glow hidden md:block"
         onClick={() => scrollTo(active - 1)}
         disabled={active === 0}
         style={{ opacity: active === 0 ? 0.3 : 1 }}
@@ -406,7 +400,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
       </button>
 
       <button
-        className="fixed right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-indigo-500/20 backdrop-blur-sm text-white hover:bg-indigo-500 transition-all duration-300 shadow-lg hidden md:block"
+        className="fixed right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-[#4A90E2]/20 backdrop-blur-md text-white hover:bg-[#4A90E2] transition-all duration-300 shadow-glow hidden md:block"
         onClick={() => scrollTo(active + 1)}
         disabled={active === slides.length - 1}
         style={{ opacity: active === slides.length - 1 ? 0.3 : 1 }}
@@ -419,18 +413,11 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         {slides.map((_, idx) => (
           <button
             key={idx}
-            onClick={() => {
-              if (containerRef.current) {
-                containerRef.current.scrollTo({
-                  left: containerRef.current.offsetWidth * idx,
-                  behavior: "smooth"
-                });
-              }
-            }}
+            onClick={() => scrollTo(idx)}
             className={`h-1 rounded-full transition-all duration-300 ${
               active === idx 
-                ? 'bg-indigo-500 w-8' 
-                : 'bg-white/20 w-4 hover:bg-indigo-400'
+                ? 'bg-[#4A90E2] w-8 shadow-glow-sm' 
+                : 'bg-white/20 w-4 hover:bg-[#4A90E2]/60'
             }`}
           />
         ))}
@@ -444,6 +431,28 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+
+        .shadow-glow {
+          box-shadow: 0 0 20px rgba(74, 144, 226, 0.1),
+                      0 0 40px rgba(74, 144, 226, 0.05);
+        }
+
+        .shadow-glow-sm {
+          box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
         }
       `}</style>
     </div>
