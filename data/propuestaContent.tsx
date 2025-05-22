@@ -176,7 +176,6 @@ export const proposalSlides: ProposalSlideType[] = [
 // Nuevo componente para navegación horizontal y UX/UI
 // Marcar como 'use client' para permitir hooks
 export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
-  "use client";
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [progress, setProgress] = React.useState(0);
   const [active, setActive] = React.useState(0);
@@ -202,7 +201,6 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
       const newProgress = scrollLeft / (scrollWidth - offsetWidth);
       setProgress(newProgress);
       
-      // Calcular el slide activo basado en el scroll
       const newActive = Math.round(scrollLeft / offsetWidth);
       if (newActive !== active) {
         setActive(newActive);
@@ -210,7 +208,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
     }
   }, [active]);
 
-  // Eventos táctiles
+  // Eventos táctiles mejorados
   const handleTouchStart = () => setIsDragging(true);
   const handleTouchEnd = () => setIsDragging(false);
 
@@ -230,87 +228,84 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
   }, [handleScroll]);
 
   return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#111827] via-[#1f2937] to-[#111827]">
+    <div className="fixed inset-0 bg-gradient-to-br from-[#111827] via-[#1f2937] to-[#111827] overflow-hidden">
       {/* Barra de progreso */}
-      <div className="fixed top-0 left-0 right-0 h-1">
+      <div className="absolute top-0 left-0 right-0 h-1 z-50">
         <div 
           className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300 ease-out"
           style={{ width: `${progress * 100}%` }}
         />
       </div>
-      
-      {/* Controles de navegación - ocultos en móvil */}
+
+      {/* Contenedor principal con scroll horizontal */}
+      <div
+        ref={containerRef}
+        className="h-[100dvh] w-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide"
+        style={{ 
+          scrollSnapType: "x mandatory",
+          scrollBehavior: isDragging ? 'auto' : 'smooth',
+          touchAction: 'pan-x'
+        }}
+        onScroll={handleScroll}
+      >
+        {/* Contenedor de slides */}
+        <div className="flex h-full">
+          {slides.map((slide, idx) => (
+            <div
+              key={idx}
+              className="relative flex-shrink-0 w-full h-full snap-center"
+            >
+              {/* Contenedor del contenido del slide con scroll vertical independiente */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-full h-full max-h-screen overflow-y-auto px-4 py-16 md:py-12 scrollbar-hide">
+                  <div className="container mx-auto max-w-2xl flex flex-col items-center justify-center min-h-[calc(100dvh-8rem)]">
+                    {/* Título */}
+                    <h1 
+                      className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 text-center mb-4"
+                    >
+                      {slide.title}
+                    </h1>
+
+                    {/* Subtítulo */}
+                    {slide.subtitle && (
+                      <h2 className="text-lg sm:text-xl text-blue-300 font-medium text-center mb-6">
+                        {slide.subtitle}
+                      </h2>
+                    )}
+
+                    {/* Tarjeta de contenido */}
+                    <div className="w-full mt-4 bg-white/5 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/10">
+                      {slide.content}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Botones de navegación - Ocultos en móvil */}
       <button
-        className="fixed left-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg hidden md:block"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 transition-all duration-300 shadow-lg hidden md:block"
         onClick={() => scrollTo("left")}
-        aria-label="Anterior"
         disabled={active === 0}
         style={{ opacity: active === 0 ? 0.3 : 1 }}
       >
         <span className="text-xl">←</span>
       </button>
 
-      {/* Contenedor principal de slides */}
-      <div
-        ref={containerRef}
-        className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide"
-        style={{ 
-          scrollSnapType: "x mandatory",
-          scrollBehavior: isDragging ? 'auto' : 'smooth',
-          touchAction: 'pan-x'
-        }}
-      >
-        {slides.map((slide, idx) => (
-          <section
-            key={idx}
-            className="w-full min-w-full h-full flex flex-col items-center justify-start pt-16 snap-center transition-all duration-300"
-            style={{
-              opacity: isDragging ? 1 : (active === idx ? 1 : 0.3),
-              transform: isDragging ? 'none' : `scale(${active === idx ? 1 : 0.95})`,
-            }}
-          >
-            <div className="w-full h-full flex flex-col px-4 sm:px-8">
-              {/* Título con gradiente */}
-              <h1 
-                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 mb-2"
-                style={{
-                  textShadow: "0 0 30px rgba(59, 130, 246, 0.2)",
-                }}
-              >
-                {slide.title}
-              </h1>
-
-              {/* Subtítulo */}
-              {slide.subtitle && (
-                <h2 className="text-lg sm:text-xl text-blue-300 font-medium mb-4">
-                  {slide.subtitle}
-                </h2>
-              )}
-
-              {/* Contenido en un contenedor scrolleable si es necesario */}
-              <div className="flex-1 overflow-y-auto">
-                <div className="max-w-lg mx-auto bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-xl">
-                  {slide.content}
-                </div>
-              </div>
-            </div>
-          </section>
-        ))}
-      </div>
-
-      {/* Botón siguiente - oculto en móvil */}
       <button
-        className="fixed right-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg hidden md:block"
+        className="fixed right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 transition-all duration-300 shadow-lg hidden md:block"
         onClick={() => scrollTo("right")}
-        aria-label="Siguiente"
         disabled={active === slides.length - 1}
         style={{ opacity: active === slides.length - 1 ? 0.3 : 1 }}
       >
         <span className="text-xl">→</span>
       </button>
 
-      {/* Indicadores de posición */}
-      <div className="fixed bottom-8 left-0 right-0 flex justify-center gap-2 z-10">
+      {/* Indicadores de progreso */}
+      <div className="fixed bottom-4 left-0 right-0 flex justify-center gap-2 z-50">
         {slides.map((_, idx) => (
           <button
             key={idx}
@@ -322,7 +317,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
                 });
               }
             }}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
+            className={`h-1 rounded-full transition-all duration-300 ${
               active === idx 
                 ? 'bg-blue-500 w-8' 
                 : 'bg-white/20 w-4 hover:bg-white/40'
@@ -339,12 +334,6 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
-        }
-
-        @media (max-width: 768px) {
-          .snap-mandatory > * {
-            scroll-snap-align: center;
-          }
         }
       `}</style>
     </div>
