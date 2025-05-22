@@ -15,8 +15,8 @@ export default function ProposalSlide({ title, subtitle, content }: ProposalSlid
             {subtitle}
           </h2>
         )}
-        <div className="w-full bg-background/90 backdrop-blur-md rounded-xl p-6 shadow-[0_0_30px_rgba(74,144,226,0.15)] border border-border hover:border-primary/50 transition-all duration-500 animate-float">
-          <div className="text-foreground dark:text-neutral-200">
+        <div className="w-full bg-[#181E2A] bg-opacity-95 backdrop-blur-md rounded-xl p-6 shadow-[0_0_30px_rgba(74,144,226,0.15)] border border-border hover:border-primary/50 transition-all duration-500 animate-float">
+          <div>
             {content}
           </div>
         </div>
