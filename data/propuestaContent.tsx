@@ -35,7 +35,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Stack Tecnológico",
     content: (
-      <div className="grid grid-cols-2 gap-6 text-left max-w-xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-xl mx-auto">
         <div>
           <h3 className="text-[#4A90E2] mb-2 font-medium">Frontend</h3>
           <ul className="space-y-2 text-gray-300">
@@ -58,7 +58,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Características Clave",
     content: (
-      <div className="grid sm:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
         <div className="space-y-3">
           <h3 className="text-[#4A90E2] font-medium">Experiencia de Usuario</h3>
           <ul className="space-y-2 text-gray-300">
@@ -82,7 +82,7 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Cronograma",
     subtitle: "Desarrollo Ágil",
     content: (
-      <div className="grid grid-cols-2 gap-8 max-w-xl mx-auto text-left">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto text-left">
         <div>
           <h3 className="text-[#4A90E2] mb-3 font-medium">Fase 1 (1-2 semanas)</h3>
           <ul className="space-y-2 text-gray-300 text-sm">
