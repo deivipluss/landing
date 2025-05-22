@@ -14,16 +14,16 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "Desarrollo de Aplicación Web React + Google Sheets",
     content: (
       <div className="space-y-4">
-        <p className="text-xl sm:text-2xl font-light text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
+        <p className="text-xl sm:text-2xl font-light text-transparent bg-clip-text bg-gradient-to-r from-[#4A90E2] via-[#FF5C5C] to-[#4A90E2] animate-gradient bg-[length:200%_100%]">
           Solución web moderna y escalable para gestión de información en tiempo real
         </p>
-        <div className="bg-gradient-to-r from-[#1A1A2E] to-[#1E293B] p-4 rounded-lg border border-[#4A90E2]/20">
+        <div className="bg-gradient-to-r from-[#1A1A2E] to-[#1E293B] p-4 rounded-lg border border-[#4A90E2]/20 shadow-[0_0_15px_rgba(74,144,226,0.15)]">
           <p className="text-[#4A90E2] font-medium text-center space-x-4">
-            <span>React.js</span>
+            <span className="hover:text-[#FF5C5C] transition-colors">React.js</span>
             <span className="text-[#FF5C5C]">+</span>
-            <span>Google Sheets</span>
+            <span className="hover:text-[#FF5C5C] transition-colors">Google Sheets</span>
             <span className="text-[#FF5C5C]">+</span>
-            <span>APIs</span>
+            <span className="hover:text-[#FF5C5C] transition-colors">APIs</span>
           </p>
         </div>
       </div>
@@ -33,11 +33,11 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Objetivo del Proyecto",
     content: (
       <div className="space-y-4">
-        <p className="text-lg font-light leading-relaxed text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
+        <p className="text-lg font-light leading-relaxed text-transparent bg-clip-text bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] animate-gradient bg-[length:200%_100%]">
           Desarrollar una aplicación web visualmente atractiva, de carga rápida, accesible desde cualquier dispositivo y alimentada por una base de datos sencilla conectada a Google Sheets.
         </p>
-        <div className="bg-gradient-to-r from-[#1A1A2E] to-[#1E293B] p-4 rounded-lg border border-[#4A90E2]/20">
-          <p className="text-slate-200 text-sm leading-relaxed">
+        <div className="bg-gradient-to-r from-[#1A1A2E] to-[#1E293B] p-4 rounded-lg border border-[#4A90E2]/20 shadow-[0_0_15px_rgba(74,144,226,0.15)]">
+          <p className="text-[#4A90E2] text-sm leading-relaxed hover:text-[#FF5C5C] transition-colors">
             Ideal para gestión de información en tiempo real, formularios, pedidos, inventario, reportes u otras necesidades operativas.
           </p>
         </div>
