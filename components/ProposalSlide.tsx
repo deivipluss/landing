@@ -3,7 +3,7 @@ import type { ProposalSlideType } from "@/data/propuestaContent";
 export default function ProposalSlide({ title, subtitle, content }: ProposalSlideType) {
   return (
     <section
-      className="h-screen flex flex-col items-center justify-center snap-start px-4 py-8 text-white bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E]"
+      className="h-screen flex flex-col items-center justify-center snap-start px-4 py-8 bg-[#0D0C1D] text-white"
       style={{ minHeight: '100vh' }}
     >
       <div className="w-full max-w-2xl text-center flex flex-col items-center">

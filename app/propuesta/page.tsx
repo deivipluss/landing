@@ -5,7 +5,7 @@ import { HorizontalSlides, proposalSlides } from "../../data/propuestaContent";
 
 export default function PropuestaPage() {
   return (
-    <main className="w-full h-screen overflow-hidden">
+    <main className="w-full min-h-screen bg-[#0D0C1D] overflow-hidden">
       <HorizontalSlides slides={proposalSlides} />
     </main>
   );
