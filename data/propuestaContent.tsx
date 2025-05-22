@@ -6,8 +6,6 @@ export interface ProposalSlideType {
   title: string;
   subtitle?: string;
   content: React.ReactNode;
-  bg?: string;
-  img?: string;
 }
 
 export const proposalSlides: ProposalSlideType[] = [
@@ -15,128 +13,142 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Aplicación Web para Revista Turística",
     subtitle: "Desarrollo visual, interactivo y funcional",
     content: (
-      <>
-        <p>Incluye blog editable, animaciones visuales y una experiencia única de usuario.</p>
-        <p className="mt-2 font-semibold text-blue-500">¡Promoción válida por 24 horas!</p>
-      </>
-    ),
-    img: "/images/propuesta-hero.jpg",
+      <div className="space-y-4">
+        <p className="text-xl font-light">Experiencia moderna y elegante para compartir historias de viaje.</p>
+        <p className="text-blue-400 font-medium">¡Oferta especial por tiempo limitado!</p>
+      </div>
+    )
   },
   {
-    title: "Objetivo del Proyecto",
+    title: "Visión del Proyecto",
     content: (
-      <p>
-        Diseñar una revista digital interactiva con diseño moderno, animaciones suaves y una sección de blog que permita publicaciones por parte de los usuarios. El backend será gestionado con Google Sheets. Hosting y dominio están incluidos para una solución completa.
-      </p>
-    ),
+      <div className="space-y-4">
+        <p className="text-xl font-light leading-relaxed">
+          Una revista digital interactiva que combina diseño moderno y funcionalidad intuitiva, permitiendo a los usuarios compartir sus historias de viaje de forma elegante y profesional.
+        </p>
+        <p className="text-gray-400 text-lg">
+          Administración simple vía Google Sheets + Hosting y dominio incluidos
+        </p>
+      </div>
+    )
   },
   {
-    title: "Tecnologías Utilizadas",
+    title: "Stack Tecnológico",
     content: (
-      <ul className="list-disc pl-5 text-left">
-        <li>React + Next.js</li>
-        <li>TailwindCSS</li>
-        <li>Framer Motion (animaciones visuales)</li>
-        <li>Google Sheets API como backend ligero</li>
-        <li>Vercel (Hosting rápido y gratuito)</li>
-        <li>Dominio personalizado `.com` incluido</li>
-      </ul>
-    ),
+      <div className="grid grid-cols-2 gap-6 text-left max-w-xl mx-auto">
+        <div>
+          <h3 className="text-[#4A90E2] mb-2 font-medium">Frontend</h3>
+          <ul className="space-y-2 text-gray-300">
+            <li>• React + Next.js</li>
+            <li>• TailwindCSS</li>
+            <li>• Framer Motion</li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-[#FF5C5C] mb-2 font-medium">Backend</h3>
+          <ul className="space-y-2 text-gray-300">
+            <li>• Google Sheets API</li>
+            <li>• Vercel Hosting</li>
+            <li>• Dominio .com</li>
+          </ul>
+        </div>
+      </div>
+    )
   },
   {
-    title: "Estructura y Funcionalidades",
+    title: "Características Clave",
     content: (
-      <ul className="list-disc pl-5 text-left">
-        <li>Landing visual estilo revista digital</li>
-        <li>Blog con publicaciones editables por usuarios</li>
-        <li>Animaciones editoriales suaves</li>
-        <li>Visualización dinámica de artículos</li>
-        <li>Validación ligera de entradas</li>
-        <li>Administración desde Google Sheets</li>
-      </ul>
-    ),
+      <div className="grid sm:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
+        <div className="space-y-3">
+          <h3 className="text-[#4A90E2] font-medium">Experiencia de Usuario</h3>
+          <ul className="space-y-2 text-gray-300">
+            <li>• Diseño responsive moderno</li>
+            <li>• Animaciones fluidas</li>
+            <li>• Navegación intuitiva</li>
+          </ul>
+        </div>
+        <div className="space-y-3">
+          <h3 className="text-[#FF5C5C] font-medium">Funcionalidades</h3>
+          <ul className="space-y-2 text-gray-300">
+            <li>• Blog interactivo</li>
+            <li>• Panel de administración</li>
+            <li>• Analytics integrado</li>
+          </ul>
+        </div>
+      </div>
+    )
   },
   {
-    title: "Diseño y Experiencia Visual",
+    title: "Cronograma",
+    subtitle: "Desarrollo Ágil",
     content: (
-      <ul className="list-disc pl-5 text-left">
-        <li>Diseño responsive (adaptado a todos los dispositivos)</li>
-        <li>Estilo moderno, limpio y editorial</li>
-        <li>Animaciones suaves al navegar entre secciones</li>
-        <li>Iconografía y estructura de revista</li>
-        <li>Colores adaptados al branding turístico</li>
-      </ul>
-    ),
+      <div className="grid grid-cols-2 gap-8 max-w-xl mx-auto text-left">
+        <div>
+          <h3 className="text-[#4A90E2] mb-3 font-medium">Fase 1 (1-2 semanas)</h3>
+          <ul className="space-y-2 text-gray-300 text-sm">
+            <li>• Diseño UI/UX</li>
+            <li>• Prototipado</li>
+            <li>• Arquitectura base</li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-[#FF5C5C] mb-3 font-medium">Fase 2 (2-3 semanas)</h3>
+          <ul className="space-y-2 text-gray-300 text-sm">
+            <li>• Desarrollo frontend</li>
+            <li>• Integración backend</li>
+            <li>• Testing & Deploy</li>
+          </ul>
+        </div>
+      </div>
+    )
   },
   {
-    title: "Plazos de Entrega",
-    subtitle: "Tiempo estimado según alcance",
+    title: "Inversión",
+    subtitle: "Oferta por Tiempo Limitado",
     content: (
-      <table className="w-full text-left mt-4">
-        <thead>
-          <tr>
-            <th className="pb-2 font-semibold">Etapa</th>
-            <th className="pb-2 font-semibold">Duración</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Prototipo UI + UX</td><td>3 - 5 días hábiles</td></tr>
-          <tr><td>Frontend y Blog</td><td>7 - 10 días hábiles</td></tr>
-          <tr><td>Integración con Sheets</td><td>3 - 4 días hábiles</td></tr>
-          <tr><td>Animaciones y QA</td><td>2 - 3 días hábiles</td></tr>
-          <tr className="font-bold"><td>Total</td><td>15 - 25 días hábiles</td></tr>
-        </tbody>
-      </table>
-    ),
-  },
-  {
-    title: "Presupuesto del Proyecto",
-    subtitle: "Tarifa especial por tiempo limitado",
-    content: (
-      <>
-        <ul className="list-disc pl-5 text-left">
-          <li>Desarrollo completo: <strong>$450.00 USD</strong> (por 24 hrs)</li>
-          <li>Precio regular: <span className="line-through">$900.00 USD</span></li>
-          <li>Incluye dominio, hosting y soporte</li>
-          <li>Soporte técnico 15 días después del lanzamiento</li>
+      <div className="space-y-6 max-w-lg mx-auto">
+        <div className="text-center space-y-2">
+          <p className="text-3xl font-bold text-[#4A90E2]">$450 USD</p>
+          <p className="text-gray-400 line-through">Valor regular: $900 USD</p>
+        </div>
+        <ul className="text-left space-y-3 text-gray-300">
+          <li className="flex items-center">
+            <span className="text-green-400 mr-2">✓</span>
+            Desarrollo completo
+          </li>
+          <li className="flex items-center">
+            <span className="text-green-400 mr-2">✓</span>
+            Dominio y hosting 1 año
+          </li>
+          <li className="flex items-center">
+            <span className="text-green-400 mr-2">✓</span>
+            Soporte técnico 15 días
+          </li>
         </ul>
-        <p className="mt-4 text-blue-600 font-bold">⚠️ Tarifa válida solo por 24 horas tras esta presentación.</p>
-      </>
-    ),
+        <p className="text-[#FF5C5C] font-medium text-sm">
+          * Oferta válida solo por 24 horas
+        </p>
+      </div>
+    )
   },
   {
-    title: "Condiciones y Forma de Pago",
+    title: "¿Comenzamos?",
+    subtitle: "Tu Proyecto en Buenas Manos",
     content: (
-      <ul className="list-disc pl-5 text-left">
-        <li>Pago único de $450.00 para acceder a la oferta</li>
-        <li>Entrega en máximo 25 días hábiles</li>
-        <li>Incluye soporte técnico por 15 días</li>
-        <li>Cambios mayores o ampliaciones se cotizan aparte</li>
-      </ul>
-    ),
-  },
-  {
-    title: "Copy Promocional de Lanzamiento",
-    subtitle: "Texto propuesto para marketing o sección principal",
-    content: (
-      <>
-        <p className="italic mb-2">✈️🌎 ¡Explora, escribe y comparte!</p>
-        <p>Bienvenid@s a <strong>[Nombre de la Revista]</strong>, la primera revista turística donde tú eres el protagonista.</p>
-        <p>Con solo un clic puedes leer historias de viaje, publicar tus propias aventuras, y recorrer el mundo sin salir de la pantalla. Todo esto, en una app visual, rápida y lista para acompañarte a donde vayas. 📱💫</p>
-      </>
-    ),
-  },
-  {
-    title: "Contacto y Próximo Paso",
-    subtitle: "¿Activamos el desarrollo?",
-    content: (
-      <>
-        <p>Estoy listo para comenzar el desarrollo apenas se confirme el pago.</p>
-        <p className="mt-2 font-semibold">📞 WhatsApp: [tu número]<br/>📧 Correo: [tu correo]</p>
-        <p className="mt-4">Gracias por confiar. Esta propuesta ha sido pensada para brindarte un producto funcional, profesional y visualmente potente.</p>
-      </>
-    ),
-  },
+      <div className="space-y-6 max-w-lg mx-auto text-center">
+        <p className="text-xl font-light leading-relaxed">
+          Estoy listo para crear tu revista digital interactiva con los más altos estándares de calidad y diseño.
+        </p>
+        <div className="space-y-2 text-[#4A90E2]">
+          <p className="font-medium">📱 WhatsApp: [tu número]</p>
+          <p className="font-medium">📧 Email: [tu correo]</p>
+        </div>
+        <p className="text-gray-400 text-sm">
+          * El desarrollo comienza tras la confirmación del pago
+        </p>
+      </div>
+    )
+  }
 ];
 
 // Nuevo componente para navegación horizontal y UX/UI
@@ -161,7 +173,6 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
     }
   };
 
-  // Progreso visual y slide activo
   const handleScroll = () => {
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, offsetWidth } = containerRef.current;
@@ -171,77 +182,115 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
   };
 
   return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E]">
-      <div className="absolute top-4 left-0 right-0 flex justify-center z-10">
-        <div className="w-2/3 h-2 bg-[#222] rounded-full overflow-hidden">
-          <div
-            className="h-full bg-[#4A90E2] transition-all duration-300"
-            style={{ width: `${progress * 100}%` }}
-          />
-        </div>
-      </div>
+    <div className="relative w-full h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0D0C1D] via-[#1A1A2E] to-[#0D0C1D]">
+      {/* Barra de progreso */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C]" style={{ width: `${progress * 100}%` }} />
+      
+      {/* Controles de navegación */}
       <button
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[#1A1A2E]/80 p-2 rounded-full shadow-glow hover:bg-[#4A90E2] transition"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-[#1A1A2E]/80 backdrop-blur-sm text-[#4A90E2] hover:text-white hover:bg-[#4A90E2] transition-all duration-300"
         onClick={() => scrollTo("left")}
         aria-label="Anterior"
         disabled={active === 0}
         style={{ opacity: active === 0 ? 0.3 : 1 }}
       >
-        <span className="text-2xl">⟨</span>
+        <span className="text-2xl">←</span>
       </button>
+
+      {/* Contenedor principal de slides */}
       <div
         ref={containerRef}
         className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide"
         onScroll={handleScroll}
-        style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}
+        style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
       >
         {slides.map((slide, idx) => (
           <section
             key={idx}
-            className="w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-4 py-8 transition-shadow duration-300"
-            style={{ transition: 'box-shadow 0.3s cubic-bezier(0.4,0,0.2,1)', boxShadow: active === idx ? '0 0 32px 0 #4A90E2aa' : 'none' }}
+            className={`w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-8 md:px-16 py-12 transition-all duration-500`}
+            style={{
+              opacity: active === idx ? 1 : 0.3,
+              transform: `scale(${active === idx ? 1 : 0.95})`,
+            }}
           >
-            {slide.img && (
-              <img
-                src={slide.img}
-                alt={slide.title}
-                className="w-full max-w-xl rounded-xl shadow-glow mb-8 object-cover border border-[#4A90E2]/30"
-                style={{ maxHeight: 320 }}
-              />
-            )}
-            <div className="w-full max-w-2xl text-center flex flex-col items-center">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-poppins mb-2 drop-shadow-glow text-[#4A90E2]">
+            <div className="w-full max-w-3xl mx-auto space-y-6 text-center">
+              {/* Título con gradiente animado */}
+              <h1 
+                className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-[#4A90E2] via-white to-[#FF5C5C] bg-clip-text text-transparent"
+                style={{
+                  backgroundSize: '200% auto',
+                  animation: 'gradient 8s linear infinite',
+                }}
+              >
                 {slide.title}
               </h1>
+
+              {/* Subtítulo con efecto de brillo */}
               {slide.subtitle && (
-                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#FF5C5C] mb-4 drop-shadow-glow">
+                <h2 className="text-xl sm:text-2xl text-[#FF5C5C] font-medium mt-4 drop-shadow-glow">
                   {slide.subtitle}
                 </h2>
               )}
-              <div className="text-base sm:text-lg md:text-xl font-poppins text-[#E1E1E1] opacity-90 mt-2 mb-4">
+
+              {/* Contenido con estilo mejorado */}
+              <div className="text-lg sm:text-xl text-[#E1E1E1]/90 leading-relaxed mt-8 max-w-2xl mx-auto">
                 {slide.content}
               </div>
             </div>
           </section>
         ))}
       </div>
+
+      {/* Botón siguiente */}
       <button
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[#1A1A2E]/80 p-2 rounded-full shadow-glow hover:bg-[#4A90E2] transition"
+        className="fixed right-4 top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-[#1A1A2E]/80 backdrop-blur-sm text-[#4A90E2] hover:text-white hover:bg-[#4A90E2] transition-all duration-300"
         onClick={() => scrollTo("right")}
         aria-label="Siguiente"
         disabled={active === slides.length - 1}
         style={{ opacity: active === slides.length - 1 ? 0.3 : 1 }}
       >
-        <span className="text-2xl">⟩</span>
+        <span className="text-2xl">→</span>
       </button>
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-10">
+
+      {/* Indicadores de posición */}
+      <div className="fixed bottom-8 left-0 right-0 flex justify-center gap-3 z-10">
         {slides.map((_, idx) => (
-          <span
+          <button
             key={idx}
-            className={`inline-block w-3 h-3 rounded-full transition-all duration-300 ${active === idx ? 'bg-[#4A90E2]' : 'bg-[#222]'}`}
+            onClick={() => {
+              if (containerRef.current) {
+                containerRef.current.scrollTo({
+                  left: containerRef.current.offsetWidth * idx,
+                  behavior: "smooth"
+                });
+              }
+            }}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              active === idx 
+                ? 'bg-[#4A90E2] w-6' 
+                : 'bg-[#4A90E2]/20 hover:bg-[#4A90E2]/40'
+            }`}
           />
         ))}
       </div>
+
+      {/* Estilos globales para animaciones */}
+      <style jsx global>{`
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }
