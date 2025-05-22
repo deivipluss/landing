@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 export interface ProposalSlideType {
   title: string;
@@ -138,10 +138,12 @@ export const proposalSlides: ProposalSlideType[] = [
 ];
 
 // Nuevo componente para navegación horizontal y UX/UI
+// Marcar como 'use client' para permitir hooks
 export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  "use client";
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = React.useState(0);
 
-  // Función para avanzar/retroceder
   const scrollTo = (dir: "left" | "right") => {
     if (containerRef.current) {
       const width = containerRef.current.offsetWidth;
@@ -152,8 +154,6 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
     }
   };
 
-  // Progreso visual
-  const [progress, setProgress] = React.useState(0);
   const handleScroll = () => {
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, offsetWidth } = containerRef.current;
