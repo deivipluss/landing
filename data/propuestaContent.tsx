@@ -14,8 +14,12 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "Desarrollo visual, interactivo y funcional",
     content: (
       <div className="space-y-4">
-        <p className="text-base sm:text-xl font-light">Experiencia moderna y elegante para compartir historias de viaje.</p>
-        <p className="text-blue-400 font-medium text-sm sm:text-base">¡Oferta especial por tiempo limitado!</p>
+        <p className="text-lg sm:text-xl font-light">
+          Experiencia moderna y elegante para compartir historias de viaje.
+        </p>
+        <p className="text-blue-400 font-medium">
+          ¡Oferta especial por tiempo limitado!
+        </p>
       </div>
     )
   },
@@ -23,10 +27,10 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Visión del Proyecto",
     content: (
       <div className="space-y-4">
-        <p className="text-base sm:text-xl font-light leading-relaxed">
+        <p className="text-lg font-light leading-relaxed">
           Una revista digital interactiva que combina diseño moderno y funcionalidad intuitiva, permitiendo a los usuarios compartir sus historias de viaje de forma elegante y profesional.
         </p>
-        <p className="text-gray-400 text-sm sm:text-base">
+        <p className="text-gray-400">
           Administración simple vía Google Sheets + Hosting y dominio incluidos
         </p>
       </div>
@@ -35,21 +39,39 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Stack Tecnológico",
     content: (
-      <div className="space-y-6 text-left w-full max-w-xl mx-auto">
-        <div>
-          <h3 className="text-[#4A90E2] mb-2 font-medium">Frontend</h3>
+      <div className="space-y-6">
+        <div className="space-y-3">
+          <h3 className="text-[#4A90E2] font-medium text-lg">Frontend</h3>
           <ul className="space-y-2 text-gray-300">
-            <li>• React + Next.js</li>
-            <li>• TailwindCSS</li>
-            <li>• Framer Motion</li>
+            <li className="flex items-center">
+              <span className="mr-2">•</span>
+              React + Next.js
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2">•</span>
+              TailwindCSS
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2">•</span>
+              Framer Motion
+            </li>
           </ul>
         </div>
-        <div>
-          <h3 className="text-[#FF5C5C] mb-2 font-medium">Backend</h3>
+        <div className="space-y-3">
+          <h3 className="text-[#FF5C5C] font-medium text-lg">Backend</h3>
           <ul className="space-y-2 text-gray-300">
-            <li>• Google Sheets API</li>
-            <li>• Vercel Hosting</li>
-            <li>• Dominio .com</li>
+            <li className="flex items-center">
+              <span className="mr-2">•</span>
+              Google Sheets API
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2">•</span>
+              Vercel Hosting
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2">•</span>
+              Dominio .com
+            </li>
           </ul>
         </div>
       </div>
@@ -241,16 +263,16 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         {slides.map((slide, idx) => (
           <section
             key={idx}
-            className="w-full min-w-full h-full flex flex-col items-center justify-center snap-center p-4 sm:p-8 transition-all duration-300"
+            className="w-full min-w-full h-full flex flex-col items-center justify-start pt-16 snap-center transition-all duration-300"
             style={{
               opacity: isDragging ? 1 : (active === idx ? 1 : 0.3),
               transform: isDragging ? 'none' : `scale(${active === idx ? 1 : 0.95})`,
             }}
           >
-            <div className="w-full max-w-[90%] sm:max-w-2xl lg:max-w-4xl mx-auto space-y-6">
-              {/* Título */}
+            <div className="w-full h-full flex flex-col px-4 sm:px-8">
+              {/* Título con gradiente */}
               <h1 
-                className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600"
+                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 mb-2"
                 style={{
                   textShadow: "0 0 30px rgba(59, 130, 246, 0.2)",
                 }}
@@ -260,14 +282,16 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
 
               {/* Subtítulo */}
               {slide.subtitle && (
-                <h2 className="text-lg sm:text-xl md:text-2xl text-blue-300 font-medium mt-2">
+                <h2 className="text-lg sm:text-xl text-blue-300 font-medium mb-4">
                   {slide.subtitle}
                 </h2>
               )}
 
-              {/* Contenido */}
-              <div className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed mt-4 bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-xl">
-                {slide.content}
+              {/* Contenido en un contenedor scrolleable si es necesario */}
+              <div className="flex-1 overflow-y-auto">
+                <div className="max-w-lg mx-auto bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-xl">
+                  {slide.content}
+                </div>
               </div>
             </div>
           </section>
