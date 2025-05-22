@@ -14,8 +14,8 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "Desarrollo visual, interactivo y funcional",
     content: (
       <div className="space-y-4">
-        <p className="text-xl font-light">Experiencia moderna y elegante para compartir historias de viaje.</p>
-        <p className="text-blue-400 font-medium">¡Oferta especial por tiempo limitado!</p>
+        <p className="text-base sm:text-xl font-light">Experiencia moderna y elegante para compartir historias de viaje.</p>
+        <p className="text-blue-400 font-medium text-sm sm:text-base">¡Oferta especial por tiempo limitado!</p>
       </div>
     )
   },
@@ -23,10 +23,10 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Visión del Proyecto",
     content: (
       <div className="space-y-4">
-        <p className="text-xl font-light leading-relaxed">
+        <p className="text-base sm:text-xl font-light leading-relaxed">
           Una revista digital interactiva que combina diseño moderno y funcionalidad intuitiva, permitiendo a los usuarios compartir sus historias de viaje de forma elegante y profesional.
         </p>
-        <p className="text-gray-400 text-lg">
+        <p className="text-gray-400 text-sm sm:text-base">
           Administración simple vía Google Sheets + Hosting y dominio incluidos
         </p>
       </div>
@@ -35,7 +35,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Stack Tecnológico",
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-xl mx-auto">
+      <div className="space-y-6 text-left w-full max-w-xl mx-auto">
         <div>
           <h3 className="text-[#4A90E2] mb-2 font-medium">Frontend</h3>
           <ul className="space-y-2 text-gray-300">
@@ -58,7 +58,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Características Clave",
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
+      <div className="space-y-6 text-left w-full max-w-2xl mx-auto">
         <div className="space-y-3">
           <h3 className="text-[#4A90E2] font-medium">Experiencia de Usuario</h3>
           <ul className="space-y-2 text-gray-300">
@@ -82,7 +82,7 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Cronograma",
     subtitle: "Desarrollo Ágil",
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto text-left">
+      <div className="space-y-6 text-left w-full max-w-xl mx-auto">
         <div>
           <h3 className="text-[#4A90E2] mb-3 font-medium">Fase 1 (1-2 semanas)</h3>
           <ul className="space-y-2 text-gray-300 text-sm">
@@ -241,16 +241,16 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         {slides.map((slide, idx) => (
           <section
             key={idx}
-            className="w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-6 md:px-12 py-16 transition-all duration-300"
+            className="w-full min-w-full h-full flex flex-col items-center justify-center snap-center p-4 sm:p-8 transition-all duration-300"
             style={{
               opacity: isDragging ? 1 : (active === idx ? 1 : 0.3),
               transform: isDragging ? 'none' : `scale(${active === idx ? 1 : 0.95})`,
             }}
           >
-            <div className="w-full max-w-4xl mx-auto space-y-8 text-center">
+            <div className="w-full max-w-[90%] sm:max-w-2xl lg:max-w-4xl mx-auto space-y-6">
               {/* Título */}
               <h1 
-                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600"
+                className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600"
                 style={{
                   textShadow: "0 0 30px rgba(59, 130, 246, 0.2)",
                 }}
@@ -260,13 +260,13 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
 
               {/* Subtítulo */}
               {slide.subtitle && (
-                <h2 className="text-xl sm:text-2xl text-blue-300 font-medium mt-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl text-blue-300 font-medium mt-2">
                   {slide.subtitle}
                 </h2>
               )}
 
               {/* Contenido */}
-              <div className="text-base sm:text-lg text-gray-200 leading-relaxed mt-8 max-w-3xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl">
+              <div className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed mt-4 bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-xl">
                 {slide.content}
               </div>
             </div>
