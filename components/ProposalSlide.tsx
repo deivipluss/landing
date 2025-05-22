@@ -14,11 +14,9 @@ export default function ProposalSlide({ title, subtitle, content }: ProposalSlid
           <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#FF5C5C] mb-4 drop-shadow-glow">
             {subtitle}
           </h2>
-        )}git add .
-git commit -m "propuesta"
-git push
-        <div className="w-full bg-[#181E2A] bg-opacity-95 backdrop-blur-md rounded-xl p-6 shadow-[0_0_30px_rgba(74,144,226,0.15)] border border-border hover:border-primary/50 transition-all duration-500 animate-float">
-          <div className="text-white dark:text-neutral-200">
+        )}
+        <div className="w-full bg-background/90 backdrop-blur-md rounded-xl p-6 shadow-[0_0_30px_rgba(74,144,226,0.15)] border border-border hover:border-primary/50 transition-all duration-500 animate-float">
+          <div className="text-foreground dark:text-neutral-200">
             {content}
           </div>
         </div>
