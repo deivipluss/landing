@@ -182,19 +182,24 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
   };
 
   return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0D0C1D] via-[#1A1A2E] to-[#0D0C1D]">
+    <div className="relative w-full h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#111827] via-[#1f2937] to-[#111827]">
       {/* Barra de progreso */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C]" style={{ width: `${progress * 100}%` }} />
+      <div className="fixed top-0 left-0 right-0 h-1">
+        <div 
+          className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300 ease-out"
+          style={{ width: `${progress * 100}%` }}
+        />
+      </div>
       
       {/* Controles de navegación */}
       <button
-        className="fixed left-4 top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-[#1A1A2E]/80 backdrop-blur-sm text-[#4A90E2] hover:text-white hover:bg-[#4A90E2] transition-all duration-300"
+        className="fixed left-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg"
         onClick={() => scrollTo("left")}
         aria-label="Anterior"
         disabled={active === 0}
         style={{ opacity: active === 0 ? 0.3 : 1 }}
       >
-        <span className="text-2xl">←</span>
+        <span className="text-xl">←</span>
       </button>
 
       {/* Contenedor principal de slides */}
@@ -207,33 +212,32 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
         {slides.map((slide, idx) => (
           <section
             key={idx}
-            className={`w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-8 md:px-16 py-12 transition-all duration-500`}
+            className={`w-full min-w-full h-full flex flex-col items-center justify-center snap-center px-6 md:px-12 py-16 transition-all duration-500`}
             style={{
               opacity: active === idx ? 1 : 0.3,
               transform: `scale(${active === idx ? 1 : 0.95})`,
             }}
           >
-            <div className="w-full max-w-3xl mx-auto space-y-6 text-center">
-              {/* Título con gradiente animado */}
+            <div className="w-full max-w-4xl mx-auto space-y-8 text-center">
+              {/* Título */}
               <h1 
-                className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-[#4A90E2] via-white to-[#FF5C5C] bg-clip-text text-transparent"
+                className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600"
                 style={{
-                  backgroundSize: '200% auto',
-                  animation: 'gradient 8s linear infinite',
+                  textShadow: "0 0 30px rgba(59, 130, 246, 0.2)",
                 }}
               >
                 {slide.title}
               </h1>
 
-              {/* Subtítulo con efecto de brillo */}
+              {/* Subtítulo */}
               {slide.subtitle && (
-                <h2 className="text-xl sm:text-2xl text-[#FF5C5C] font-medium mt-4 drop-shadow-glow">
+                <h2 className="text-xl sm:text-2xl text-blue-300 font-medium mt-4">
                   {slide.subtitle}
                 </h2>
               )}
 
-              {/* Contenido con estilo mejorado */}
-              <div className="text-lg sm:text-xl text-[#E1E1E1]/90 leading-relaxed mt-8 max-w-2xl mx-auto">
+              {/* Contenido */}
+              <div className="text-lg sm:text-xl text-gray-200 leading-relaxed mt-8 max-w-3xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
                 {slide.content}
               </div>
             </div>
@@ -243,17 +247,17 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
 
       {/* Botón siguiente */}
       <button
-        className="fixed right-4 top-1/2 -translate-y-1/2 z-10 p-4 rounded-full bg-[#1A1A2E]/80 backdrop-blur-sm text-[#4A90E2] hover:text-white hover:bg-[#4A90E2] transition-all duration-300"
+        className="fixed right-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg"
         onClick={() => scrollTo("right")}
         aria-label="Siguiente"
         disabled={active === slides.length - 1}
         style={{ opacity: active === slides.length - 1 ? 0.3 : 1 }}
       >
-        <span className="text-2xl">→</span>
+        <span className="text-xl">→</span>
       </button>
 
       {/* Indicadores de posición */}
-      <div className="fixed bottom-8 left-0 right-0 flex justify-center gap-3 z-10">
+      <div className="fixed bottom-8 left-0 right-0 flex justify-center gap-2 z-10">
         {slides.map((_, idx) => (
           <button
             key={idx}
@@ -265,23 +269,16 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
                 });
               }
             }}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            className={`h-1.5 rounded-full transition-all duration-300 ${
               active === idx 
-                ? 'bg-[#4A90E2] w-6' 
-                : 'bg-[#4A90E2]/20 hover:bg-[#4A90E2]/40'
+                ? 'bg-blue-500 w-8' 
+                : 'bg-white/20 w-4 hover:bg-white/40'
             }`}
           />
         ))}
       </div>
 
-      {/* Estilos globales para animaciones */}
       <style jsx global>{`
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
