@@ -164,7 +164,7 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Presupuesto Total",
     subtitle: "Inversión en tu Proyecto Digital",
     content: (
-      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-primary/40 shadow-lg">
+      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl shadow-lg">
         <div className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-4 rounded-lg">
           <ul className="text-left space-y-3">
             <li className="flex items-center justify-between text-neutral-300 font-medium">
@@ -200,7 +200,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Condiciones",
     content: (
-      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A]/90 p-6 rounded-xl border border-primary/40 shadow-none">
+      <div className="space-y-6 max-w-lg mx-auto bg-[#181E2A]/90 p-6 rounded-xl shadow-none">
         <ul className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-4 rounded-lg text-neutral-200 font-medium">
           <li className="flex items-center gap-3">
             <span className="text-primary text-lg">●</span>
@@ -226,7 +226,7 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "¿Empezamos tu Proyecto?",
     subtitle: "Contacta con nosotros",
     content: (
-      <div className="space-y-8 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl border border-primary/40 shadow-lg">
+      <div className="space-y-8 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl shadow-lg">
         <div className="space-y-4 text-center bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-4 rounded-lg">
           <h3 className="text-xl font-bold text-primary">Deivis</h3>
           <p className="text-lg text-neutral-300">
