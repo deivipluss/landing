@@ -228,7 +228,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
   }, [handleScroll]);
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-[#111827] via-[#1f2937] to-[#111827] overflow-hidden">
+    <div className="fixed inset-0 bg-gradient-to-br from-[#111827] via-[#1f2937] to-[#111827]">
       {/* Barra de progreso */}
       <div className="absolute top-0 left-0 right-0 h-1 z-50">
         <div 
@@ -240,7 +240,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
       {/* Contenedor principal con scroll horizontal */}
       <div
         ref={containerRef}
-        className="h-[100dvh] w-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide"
+        className="h-screen w-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide"
         style={{ 
           scrollSnapType: "x mandatory",
           scrollBehavior: isDragging ? 'auto' : 'smooth',
@@ -253,31 +253,26 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
           {slides.map((slide, idx) => (
             <div
               key={idx}
-              className="relative flex-shrink-0 w-full h-full snap-center"
+              className="relative flex-shrink-0 w-full h-full snap-center flex items-center justify-center"
             >
-              {/* Contenedor del contenido del slide con scroll vertical independiente */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-full h-full max-h-screen overflow-y-auto px-4 py-16 md:py-12 scrollbar-hide">
-                  <div className="container mx-auto max-w-2xl flex flex-col items-center justify-center min-h-[calc(100dvh-8rem)]">
-                    {/* Título */}
-                    <h1 
-                      className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 text-center mb-4"
-                    >
-                      {slide.title}
-                    </h1>
+              <div className="w-full max-w-2xl mx-auto px-4 py-12">
+                {/* Título */}
+                <h1 
+                  className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 text-center mb-4"
+                >
+                  {slide.title}
+                </h1>
 
-                    {/* Subtítulo */}
-                    {slide.subtitle && (
-                      <h2 className="text-lg sm:text-xl text-blue-300 font-medium text-center mb-6">
-                        {slide.subtitle}
-                      </h2>
-                    )}
+                {/* Subtítulo */}
+                {slide.subtitle && (
+                  <h2 className="text-lg sm:text-xl text-blue-300 font-medium text-center mb-6">
+                    {slide.subtitle}
+                  </h2>
+                )}
 
-                    {/* Tarjeta de contenido */}
-                    <div className="w-full mt-4 bg-white/5 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/10">
-                      {slide.content}
-                    </div>
-                  </div>
+                {/* Tarjeta de contenido */}
+                <div className="w-full bg-white/5 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/10 text-white">
+                  {slide.content}
                 </div>
               </div>
             </div>
