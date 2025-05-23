@@ -369,10 +369,10 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
               className="relative flex-shrink-0 w-full h-full snap-center flex items-center justify-center"
               style={{ scrollSnapAlign: 'center', scrollSnapStop: 'always' }}
             >
-              <div className="w-full max-w-2xl mx-auto px-4 py-12">
+              <div className="w-full max-w-2xl mx-auto px-4 py-8">
                 {/* Título */}
                 <h1 
-                  className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#4A90E2] via-[#FF5C5C] to-[#4A90E2] text-center mb-4 drop-shadow-[0_0_25px_rgba(74,144,226,0.3)] font-poppins animate-gradient bg-[length:200%_100%]"
+                  className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#4A90E2] via-[#FF5C5C] to-[#4A90E2] text-center mb-4 drop-shadow-[0_0_25px_rgba(74,144,226,0.3)] font-poppins animate-gradient bg-[length:200%_100%] mt-2"
                   style={{ letterSpacing: "-1px" }}
                 >
                   {slide.title}
