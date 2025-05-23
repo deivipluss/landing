@@ -76,33 +76,28 @@ export const proposalSlides: ProposalSlideType[] = [
         <ul className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
           <li>
             <span className="font-bold text-primary">🧭 Home - Revista Visual</span>
-            <ul className="ml-4 mt-1 space-y-1 list-disc text-white/80">
-              <li>Portada animada estilo revista digital</li>
-              <li>Carrusel de ediciones o destinos destacados</li>
-              <li>Efectos visuales con transición fluida</li>
+            <ul className="ml-4 mt-1 space-y-1">
+              <li className="flex items-start gap-2"><span className="text-primary">•</span>Portada animada estilo revista digital</li>
+              <li className="flex items-start gap-2"><span className="text-primary">•</span>Carrusel de ediciones o destinos destacados</li>
             </ul>
           </li>
           <li>
             <span className="font-bold text-primary">✍️ Blog Turístico</span>
-            <ul className="ml-4 mt-1 space-y-1 list-disc text-white/80">
-              <li>Visualización de artículos por categorías</li>
-              <li>Sección para que los usuarios publiquen entradas (con validación)</li>
-              <li>Animaciones al navegar en las entradas</li>
-              <li>Autor, fecha, tags, foto destacada</li>
+            <ul className="ml-4 mt-1 space-y-1">
+              <li className="flex items-start gap-2"><span className="text-primary">•</span>Visualización de artículos por categorías</li>
+              <li className="flex items-start gap-2"><span className="text-primary">•</span>Publicación de entradas por usuarios (con validación)</li>
             </ul>
           </li>
           <li>
             <span className="font-bold text-primary">💬 Panel de Usuario Ligero</span>
-            <ul className="ml-4 mt-1 space-y-1 list-disc text-white/80">
-              <li>Nombre, correo y contenido del post</li>
-              <li>Validación de contenido antes de publicación</li>
+            <ul className="ml-4 mt-1 space-y-1">
+              <li className="flex items-start gap-2"><span className="text-primary">•</span>Validación de contenido antes de publicación</li>
             </ul>
           </li>
           <li>
             <span className="font-bold text-primary">📊 Backend Admin Simplificado</span>
-            <ul className="ml-4 mt-1 space-y-1 list-disc text-white/80">
-              <li>Base conectada a Google Sheets (registro de entradas)</li>
-              <li>Panel editable desde el propio Sheets (modo administrador)</li>
+            <ul className="ml-4 mt-1 space-y-1">
+              <li className="flex items-start gap-2"><span className="text-primary">•</span>Base conectada a Google Sheets</li>
             </ul>
           </li>
         </ul>
@@ -114,11 +109,11 @@ export const proposalSlides: ProposalSlideType[] = [
     content: (
       <div className="space-y-4">
         <ul className="space-y-3 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
-          <li>Interfaz moderna, dinámica y adaptativa (mobile-first)</li>
-          <li>Uso de animaciones suaves y visuales editoriales</li>
-          <li>Colores y estilos inspirados en revistas turísticas</li>
-          <li>Branding personalizado</li>
-          <li>Alta usabilidad y jerarquía de contenidos</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>Interfaz moderna, dinámica y adaptativa (mobile-first)</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>Animaciones suaves y visuales editoriales</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>Colores y estilos inspirados en revistas turísticas</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>Branding personalizado</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>Alta usabilidad y jerarquía de contenidos</li>
         </ul>
       </div>
     )
@@ -178,11 +173,11 @@ export const proposalSlides: ProposalSlideType[] = [
     content: (
       <div className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
         <ul className="space-y-2">
-          <li>100% del pago dentro de las siguientes 24 horas para acceder a tarifa promocional.</li>
-          <li>El desarrollo inicia inmediatamente después del pago.</li>
-          <li>Soporte técnico incluido por 15 días después del despliegue.</li>
-          <li>Cambios mayores o extensiones se cotizan aparte.</li>
-          <li>Entregables incluidos: acceso al dominio, base de datos, hosting, y manual básico de uso.</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>100% del pago dentro de las siguientes 24 horas para acceder a tarifa promocional.</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>El desarrollo inicia inmediatamente después del pago.</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>Soporte técnico incluido por 15 días después del despliegue.</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>Cambios mayores o extensiones se cotizan aparte.</li>
+          <li className="flex items-start gap-2"><span className="text-primary">•</span>Entregables incluidos: acceso al dominio, base de datos, hosting, y manual básico de uso.</li>
         </ul>
       </div>
     )
