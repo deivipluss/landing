@@ -155,7 +155,7 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "💸 Inversión del Proyecto",
+    title: "💸 Inversión",
     content: (
       <div className="space-y-4">
         <div className="bg-white/5 p-5 rounded-xl border border-white/20">
@@ -168,7 +168,7 @@ export const proposalSlides: ProposalSlideType[] = [
             </thead>
             <tbody>
               <tr>
-                <td className="py-1 align-top">Desarrollo completo (app web)</td>
+                <td className="py-1 align-top">Desarrollo completo </td>
                 <td className="py-1 text-right font-semibold pl-8 md:pl-12">$450.00*</td>
               </tr>
               <tr>
@@ -180,7 +180,7 @@ export const proposalSlides: ProposalSlideType[] = [
                 <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
               </tr>
               <tr>
-                <td className="py-1 align-top">Soporte técnico inicial (15 días)</td>
+                <td className="py-1 align-top">Soporte (30 días)</td>
                 <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
               </tr>
               <tr>
