@@ -17,14 +17,12 @@ export const proposalSlides: ProposalSlideType[] = [
         <p className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg">
           Solución web moderna y escalable para gestión de información en tiempo real
         </p>
-        <div className="bg-white/5 p-4 rounded-lg">
-          <p className="font-semibold text-center text-primary space-x-4">
-            <span className="hover:text-secondary transition-colors">React.js</span>
-            <span className="text-secondary">+</span>
-            <span className="hover:text-secondary transition-colors">Google Sheets</span>
-            <span className="text-secondary">+</span>
-            <span className="hover:text-secondary transition-colors">APIs</span>
-          </p>
+        <div className="flex flex-wrap items-center justify-center gap-2 bg-white/5 p-2 rounded-lg">
+          <span className="font-semibold text-primary whitespace-nowrap hover:text-secondary transition-colors">React.js</span>
+          <span className="text-secondary font-bold">+</span>
+          <span className="font-semibold text-primary whitespace-nowrap hover:text-secondary transition-colors">Google Sheets</span>
+          <span className="text-secondary font-bold">+</span>
+          <span className="font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">APIs</span>
         </div>
       </div>
     )
@@ -34,10 +32,11 @@ export const proposalSlides: ProposalSlideType[] = [
     content: (
       <div className="space-y-4">
         <ul className="space-y-3 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl">
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Diseñar y desarrollar una aplicación web profesional enfocada en turismo.</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Funcionará como una revista digital interactiva.</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Integrará animaciones, visuales atractivos y una sección de blog autogestionado por usuarios.</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Será responsiva, rápida y conectada a Google Sheets como sistema ligero de base de datos.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Desarrollar una <b>aplicación web profesional</b> enfocada en turismo, que informe y motive viajes, visitas y experiencias.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Home moderna, adaptativa y alineada al objetivo de inspirar turismo.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Incluye <b>revista digital interactiva</b> como característica adicional para destacar destinos y experiencias.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Animaciones, visuales atractivos y blog autogestionado por usuarios.</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Responsiva, rápida y conectada a Google Sheets como base de datos ligera.</li>
           <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Ideal para MVPs o proyectos en crecimiento.</li>
         </ul>
       </div>
@@ -162,8 +161,11 @@ export const proposalSlides: ProposalSlideType[] = [
             <tr className="font-bold text-primary"><td className="py-2 px-3">TOTAL HOY</td><td className="py-2 px-3">$450.00 USD</td></tr>
           </tbody>
         </table>
-        <div className="mt-2 text-yellow-300 text-xs font-semibold">
-          🟨 IMPORTANTE: Esta tarifa especial es válida solo por 24 horas tras la presentación de esta propuesta.<br />A partir de mañana, el costo será de $900.00 USD.
+        <div className="mt-2">
+          <div className="bg-[#181E2A]/80 border-l-4 border-yellow-400 p-4 rounded-md">
+            <span className="block text-yellow-300 text-base font-bold mb-1">¡Importante!</span>
+            <span className="text-white/90 text-sm font-medium">Esta tarifa especial es válida solo por 24 horas tras la presentación de esta propuesta.<br />A partir de mañana, el costo será de <span className='text-pink-400 font-bold'>$1100.00 USD</span>.</span>
+          </div>
         </div>
       </div>
     )
@@ -184,17 +186,13 @@ export const proposalSlides: ProposalSlideType[] = [
   },
   {
     title: "¿Empezamos tu Proyecto?",
-    subtitle: "Contacta con nosotros",
+    subtitle: "Contacta conmigo",
     content: (
       <div className="space-y-8 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl shadow-lg">
         <div className="space-y-4 text-center bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-4 rounded-lg">
-          <h3 className="text-xl font-bold text-primary">Deivis</h3>
-          <p className="text-lg text-neutral-300">
-            Desarrollador Web & UX/UI Designer
-          </p>
-          <p className="text-neutral-300 text-sm">
-            Especialista en Desarrollo Web con React y Gestión de Datos
-          </p>
+          <h3 className="text-xl font-bold text-primary">Deivis Contreras Cardenas</h3>
+          <p className="text-lg text-neutral-300 font-semibold">Consultor de negocios, desarrollador de marcas y especialista en transformación digital</p>
+          <p className="text-neutral-300 text-sm italic">Más de 10 años de experiencia impulsando proyectos digitales y marcas.</p>
         </div>
         <div className="flex flex-col gap-4">
           <a 
@@ -207,11 +205,11 @@ export const proposalSlides: ProposalSlideType[] = [
             Iniciar Proyecto vía WhatsApp
           </a>
           <a 
-            href="/contacto" 
+            href="/"
             className="flex items-center justify-center gap-2 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary hover:to-secondary text-neutral-300 font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-primary/30 hover:border-primary"
           >
-            <span className="text-xl">✉️</span>
-            Solicitar Más Información
+            <span className="text-xl">🏠</span>
+            Ir a la Home
           </a>
         </div>
       </div>
