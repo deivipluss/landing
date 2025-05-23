@@ -14,15 +14,25 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "Desarrollo de Aplicación Web React + Google Sheets",
     content: (
       <div className="space-y-4">
-        <p className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg">
-          Solución web moderna y escalable para gestión de información en tiempo real
-        </p>
+        <div className="flex justify-between items-center">
+          <p className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg flex items-center gap-2">
+            <span className="inline-block align-middle text-2xl">🚀</span>
+            Solución web moderna y escalable para gestión de información en tiempo real
+          </p>
+          <span className="text-xs text-white/60 ml-2">22/05/2025</span>
+        </div>
         <div className="flex flex-wrap items-center gap-2 bg-white/5 p-2 rounded-lg">
-          <span className="font-semibold text-primary whitespace-nowrap hover:text-secondary transition-colors">React.js</span>
+          <span className="inline-flex items-center gap-1 font-semibold text-primary whitespace-nowrap hover:text-secondary transition-colors">
+            <span className="text-lg">⚛️</span> React.js
+          </span>
           <span className="text-secondary font-bold">+</span>
-          <span className="font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">Google Sheets</span>
+          <span className="inline-flex items-center gap-1 font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">
+            <span className="text-lg">📊</span> Google Sheets
+          </span>
           <span className="text-secondary font-bold">+</span>
-          <span className="font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">APIs</span>
+          <span className="inline-flex items-center gap-1 font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">
+            <span className="text-lg">🔗</span> APIs
+          </span>
         </div>
       </div>
     )
