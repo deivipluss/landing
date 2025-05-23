@@ -194,11 +194,25 @@ export const proposalSlides: ProposalSlideType[] = [
             </tbody>
           </table>
         </div>
-        <div className="flex items-start gap-2 border-l-2 border-pink-400 pl-3 mt-2">
-          <span className="font-bold text-white">¡Importante!</span>
-          <div className="text-white/80 text-sm">
-            Esta tarifa especial es válida solo por 24 horas tras la presentación de esta propuesta.<br />
-            <span className="text-pink-400 font-bold">A partir de mañana, el costo será de $1100.00 USD.</span>
+        <div className="bg-gradient-to-r from-[#4A90E2]/10 to-[#FF5C5C]/10 rounded-xl p-4 mt-4 border border-pink-400/30">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-pink-400 text-xl">⏰</span>
+              <span className="font-bold text-pink-400 text-lg">¡Oferta por Tiempo Limitado!</span>
+            </div>
+            <div className="text-white/90">
+              <div className="mb-2">Esta propuesta especial estará disponible solo hasta las:</div>
+              <div className="text-center py-2 px-4 bg-gradient-to-r from-[#4A90E2]/20 to-[#FF5C5C]/20 rounded-lg mb-2">
+                <span className="text-pink-400 font-bold text-xl">13:00 hrs del 23.05.2025</span>
+              </div>
+              <div className="flex items-center gap-2 mt-2">
+                <span className="text-pink-400 text-xl">💡</span>
+                <span>Después de esta hora, el precio se ajustará a:</span>
+              </div>
+              <div className="text-center mt-2">
+                <span className="text-2xl font-bold bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-transparent bg-clip-text">$1,100.00 USD</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -219,14 +233,14 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "¿Empezamos tu Proyecto?",
+    title: "¡Iniciemos con tu Proyecto Ahora!",
     content: (
       <div className="space-y-6">
         <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl p-5 text-center">
           <div className="text-pink-400 font-bold text-lg mb-1">Deivis Contreras Cardenas</div>
           <div className="text-white font-semibold mb-2">Consultor de negocios, desarrollador de marcas y especialista en transformación digital</div>
           <div className="text-white/70 italic text-sm mb-4">Más de 10 años de experiencia impulsando proyectos digitales y marcas.</div>
-          <a href="https://wa.me/51999999999" target="_blank" rel="noopener" className="block w-full bg-green-500 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-600 transition mb-3">Iniciar Proyecto vía WhatsApp</a>
+          <a href="https://wa.me/51999999999" target="_blank" rel="noopener" className="block w-full bg-green-600 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg hover:bg-green-500 transition-all duration-300 transform hover:scale-[1.02] mb-3 uppercase tracking-wide">¡ARRANQUEMOS AHORA!</a>
           <a href="/" className="block w-full bg-transparent text-white font-semibold px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition">🏠 Ir a la Home</a>
         </div>
       </div>
