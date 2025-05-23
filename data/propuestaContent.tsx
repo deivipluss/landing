@@ -67,13 +67,59 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "📖 Estructura",
+    title: "📖 Funcionalidades",
     content: (
-      <div className="space-y-4">
-        <ul className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
-          <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Home</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Destinos</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Revista digital interactiva</li>
+      <div className="border border-white/70 rounded-xl p-5 bg-transparent">
+        <ul className="space-y-6">
+          <li>
+            <div className="flex items-center gap-2 mb-1">
+              <span role="img" aria-label="Páginas" className="text-lg">📄</span>
+              <span className="font-bold text-pink-400">Páginas</span>
+            </div>
+            <ul className="ml-6 list-disc text-white/90 text-sm space-y-1">
+              <li>Home</li>
+              <li>Destinos</li>
+              <li>Revista digital interactiva</li>
+            </ul>
+          </li>
+          <li>
+            <div className="flex items-center gap-2 mb-1">
+              <span role="img" aria-label="Blog Turístico" className="text-lg">📰</span>
+              <span className="font-bold text-pink-400">Blog Turístico</span>
+            </div>
+            <ul className="ml-6 list-disc text-white/90 text-sm space-y-1">
+              <li>Visualización de artículos por categorías</li>
+              <li>Buscador de artículos</li>
+              <li>Sección de comentarios para los lectores</li>
+            </ul>
+          </li>
+          <li>
+            <div className="flex items-center gap-2 mb-1">
+              <span role="img" aria-label="Panel de Blogger" className="text-lg">🧑‍💻</span>
+              <span className="font-bold text-pink-400">Panel de Blogger</span>
+            </div>
+            <ul className="ml-6 list-disc text-white/90 text-sm space-y-1">
+              <li>Permite a usuarios registrados subir entradas/post en el blog</li>
+            </ul>
+          </li>
+          <li>
+            <div className="flex items-center gap-2 mb-1">
+              <span role="img" aria-label="Panel de Administrador" className="text-lg">🛠️</span>
+              <span className="font-bold text-pink-400">Panel de Administrador</span>
+            </div>
+            <ul className="ml-6 list-disc text-white/90 text-sm space-y-1">
+              <li>Crear/eliminar usuarios y ver estadísticas del blog</li>
+            </ul>
+          </li>
+          <li>
+            <div className="flex items-center gap-2 mb-1">
+              <span role="img" aria-label="Backend Admin Simplificado" className="text-lg">📊</span>
+              <span className="font-bold text-pink-400">Backend Admin Simplificado</span>
+            </div>
+            <ul className="ml-6 list-disc text-white/90 text-sm space-y-1">
+              <li>Base conectada a Google Sheets</li>
+            </ul>
+          </li>
         </ul>
       </div>
     )
