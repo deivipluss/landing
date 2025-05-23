@@ -52,11 +52,11 @@ export const proposalSlides: ProposalSlideType[] = [
               </tr>
             </thead>
             <tbody className="text-white/90">
-              <tr><td className="py-2 px-3">Frontend</td><td className="py-2 pl-8">React.js + TailwindCSS (diseño moderno y animado)</td></tr>
+              <tr><td className="py-2 px-3">Frontend</td><td className="py-2 pl-8">React.js + TailwindCSS</td></tr>
               <tr><td className="py-2 px-3">Backend / CMS básico</td><td className="py-2 pl-8">Google Sheets vía API segura</td></tr>
               <tr><td className="py-2 px-3">Blog & Posts</td><td className="py-2 pl-8">Sistema de ingreso, visualización y validación simple</td></tr>
               <tr><td className="py-2 px-3">Animaciones UI</td><td className="py-2 pl-8">Framer Motion / GSAP / CSS Transitions</td></tr>
-              <tr><td className="py-2 px-3">Base de Datos</td><td className="py-2 pl-8">Google Sheets estructurada como backend ligero</td></tr>
+              <tr><td className="py-2 px-3">Base de Datos</td><td className="py-2 pl-8">Google Sheets</td></tr>
               <tr><td className="py-2 px-3">Hosting</td><td className="py-2 pl-8">Vercel (incluido 1 año)</td></tr>
               <tr><td className="py-2 px-3">Dominio</td><td className="py-2 pl-8">Registro .com (incluido 1 año)</td></tr>
             </tbody>
