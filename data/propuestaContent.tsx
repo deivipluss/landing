@@ -39,7 +39,7 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "🧩 Tecnologías a Utilizar",
+    title: "🧩 Tecnologías",
     content: (
       <div className="space-y-4">
         <div className="overflow-x-auto">
@@ -109,15 +109,7 @@ export const proposalSlides: ProposalSlideType[] = [
               <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Crear/eliminar usuarios y ver estadísticas del blog</li>
             </ul>
           </li>
-          <li>
-            <div className="flex items-center gap-2 mb-1">
-              <span role="img" aria-label="Backend Admin Simplificado" className="text-lg text-pink-400">📊</span>
-              <span className="font-bold text-pink-400">Backend Admin Simplificado</span>
-            </div>
-            <ul className="ml-6 text-white/90 text-sm space-y-1">
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Base conectada a Google Sheets</li>
-            </ul>
-          </li>
+
         </ul>
       </div>
     )
