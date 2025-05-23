@@ -14,15 +14,15 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "PROMOTOURS PERÚ",
     content: (
       <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl p-5">
-        <div className="text-white/70 text-sm mb-2 text-right">22.05.2025</div>
-        <div className="text-lg font-bold text-pink-400 mb-2">Aplicación Web moderna y escalable para gestión de información y contenido turístico</div>
-        <div className="flex flex-row flex-wrap gap-x-3 gap-y-1 text-pink-400 font-semibold text-base whitespace-nowrap mt-2">
+        <div className="text-lg font-bold text-pink-400 mb-4">Aplicación Web moderna y escalable para gestión de información y contenido turístico</div>
+        <div className="flex flex-row flex-wrap gap-x-3 gap-y-1 text-pink-400 font-semibold text-base whitespace-nowrap mb-3">
           <span>React.js</span>
           <span className="text-white/40">+</span>
           <span>Google Sheets</span>
           <span className="text-white/40">+</span>
           <span>APIs</span>
         </div>
+        <div className="text-white/70 text-sm text-right border-t border-white/10 pt-3">22.05.2025</div>
       </div>
     )
   },
