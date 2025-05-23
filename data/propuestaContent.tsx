@@ -202,7 +202,7 @@ export const proposalSlides: ProposalSlideType[] = [
               <span className="text-pink-400">💫</span>
               <div className="flex items-center gap-2">
                 <span className="text-white/90">Precio luego de esa fecha:</span>
-                <span className="text-xl font-bold text-pink-400">$1,100.00 USD</span>
+                <span className="text-xl font-bold text-pink-400">$900.00 USD</span>
               </div>
             </div>
           </div>
