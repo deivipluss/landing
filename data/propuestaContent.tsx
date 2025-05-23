@@ -75,9 +75,9 @@ export const proposalSlides: ProposalSlideType[] = [
           <li>
             <span className="font-bold text-pink-400">📄 Páginas</span>
             <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex flex-wrap items-center gap-2 text-pink-400"><span className="text-pink-400">•</span>Home: moderno, de alto impacto</li>
-              <li className="flex flex-wrap items-center gap-2 text-pink-400"><span className="text-pink-400">•</span>Destinos: con carruseles de destinos destacados e información vital</li>
-              <li className="flex flex-wrap items-center gap-2 text-pink-400"><span className="text-pink-400">•</span>Revista digital interactiva</li>
+              <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Home</li>
+              <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Destinos</li>
+              <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Revista digital interactiva</li>
             </ul>
           </li>
           <li>
