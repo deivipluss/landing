@@ -198,17 +198,15 @@ export const proposalSlides: ProposalSlideType[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="text-pink-400 text-lg">⏰</span>
-              <div className="text-white/90 text-base">
-                <span className="font-bold text-pink-400">OFERTA VÁLIDA SOLO HASTA LAS</span>
-                <br />
-                <span className="text-pink-400 font-bold text-lg">13:00hrs</span> del 23.05.2025
+              <div className="text-base">
+                <span className="font-bold text-pink-400">OFERTA VÁLIDA SOLO HASTA LAS 13:00hrs del 23.05.2025</span>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-pink-400">💫</span>
               <div className="flex items-center gap-2">
                 <span className="text-white/90">Precio luego de esa fecha:</span>
-                <span className="text-xl font-bold bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-transparent bg-clip-text">$1,100.00 USD</span>
+                <span className="text-xl font-bold text-pink-400">$1,100.00 USD</span>
               </div>
             </div>
           </div>
