@@ -17,9 +17,9 @@ export const proposalSlides: ProposalSlideType[] = [
         <div className="text-lg font-bold text-pink-400 mb-4">Aplicación Web moderna y escalable para gestión de información y contenido turístico</div>
         <div className="flex flex-row flex-wrap gap-x-3 gap-y-1 font-semibold text-base whitespace-nowrap mb-3">
           <span className="text-[#4A90E2]">React.js</span>
-          <span className="text-white/40">+</span>
+          <span className="text-pink-400">+</span>
           <span className="text-[#4A90E2]">Google Sheets</span>
-          <span className="text-white/40">+</span>
+          <span className="text-pink-400">+</span>
           <span className="text-[#4A90E2]">APIs</span>
         </div>
         <div className="text-white/70 text-sm text-right border-t border-white/10 pt-3">22.05.2025</div>
@@ -380,7 +380,7 @@ export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
 
                 {/* Subtítulo */}
                 {slide.subtitle && (
-                  <h2 className="text-lg sm:text-xl font-medium text-center mb-6 bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-transparent bg-clip-text">
+                  <h2 className="text-lg sm:text-xl font-medium text-center mb-6 text-[#4A90E2]">
                     {slide.subtitle}
                   </h2>
                 )}
