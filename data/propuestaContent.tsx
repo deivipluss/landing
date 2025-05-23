@@ -78,6 +78,7 @@ export const proposalSlides: ProposalSlideType[] = [
               <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Home</li>
               <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Destinos</li>
               <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Revista digital interactiva</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Contacto</li>
             </ul>
           </li>
           <li>
@@ -220,7 +221,7 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "¿Empezamos tu Proyecto?",
     content: (
       <div className="space-y-6">
-        <div className="bg-white/5 p-5 rounded-xl border border-white/20 text-center">
+        <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl p-5 text-center">
           <div className="text-pink-400 font-bold text-lg mb-1">Deivis Contreras Cardenas</div>
           <div className="text-white font-semibold mb-2">Consultor de negocios, desarrollador de marcas y especialista en transformación digital</div>
           <div className="text-white/70 italic text-sm mb-4">Más de 10 años de experiencia impulsando proyectos digitales y marcas.</div>
