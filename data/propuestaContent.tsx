@@ -74,11 +74,11 @@ export const proposalSlides: ProposalSlideType[] = [
       <div className="space-y-4">
         <ul className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
           <li>
-            <span className="font-bold text-pink-400">📖 Home - Revista Visual</span>
+            <span className="font-bold text-pink-400">📄 Páginas</span>
             <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Portada moderna, atractiva y de alto impacto</li>
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Carrusel de ediciones o destinos destacados</li>
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Incluye revista digital interactiva</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span><b>Home:</b> moderno, de alto impacto</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span><b>Destinos:</b> con carruseles de destinos destacados e información vital</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span><b>Revista digital interactiva</b></li>
             </ul>
           </li>
           <li>
