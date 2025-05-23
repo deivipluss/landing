@@ -13,7 +13,7 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Proforma de Servicios",
     subtitle: "Desarrollo de Aplicación Web React + Google Sheets",
     content: (
-      <div className="border border-white/70 rounded-xl p-5">
+      <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl p-5">
         <div className="text-lg font-bold text-pink-400 mb-2">Solución web moderna y escalable para gestión de información en tiempo real</div>
         <div className="flex flex-row flex-wrap gap-x-3 gap-y-1 text-pink-400 font-semibold text-base whitespace-nowrap mt-2">
           <span>React.js</span>
@@ -67,7 +67,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "📖 Estructura",
     content: (
-      <div className="border border-white/70 rounded-xl p-5">
+      <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl p-5">
         <ul className="space-y-6">
           <li>
             <div className="flex items-center gap-2 mb-1">
