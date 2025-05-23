@@ -94,13 +94,20 @@ export const proposalSlides: ProposalSlideType[] = [
             <span className="font-bold text-pink-400">📝 Blog Turístico</span>
             <ul className="ml-4 mt-1 space-y-1">
               <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Visualización de artículos por categorías</li>
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Publicación de entradas por usuarios (con validación)</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Buscador de artículos</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Sección de comentarios para los lectores</li>
             </ul>
           </li>
           <li>
-            <span className="font-bold text-pink-400">💬 Panel de Usuario Ligero</span>
+            <span className="font-bold text-pink-400">🧑‍💻 Panel de Blogger</span>
             <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Permite a los usuarios postear en el blog, y al administrador crear/eliminar usuarios y ver estadísticas del blog</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Permite a usuarios registrados subir entradas/post en el blog</li>
+            </ul>
+          </li>
+          <li>
+            <span className="font-bold text-pink-400">🛠️ Panel de Administrador</span>
+            <ul className="ml-4 mt-1 space-y-1">
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Crear/eliminar usuarios y ver estadísticas del blog</li>
             </ul>
           </li>
           <li>
