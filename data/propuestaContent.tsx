@@ -69,7 +69,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "📖 Estructura",
     content: (
-      <div className="border border-white/70 rounded-xl p-5 bg-transparent">
+      <div className="rounded-xl p-5 bg-transparent border border-white/70">
         <ul className="space-y-6">
           <li>
             <div className="flex items-center gap-2 mb-1">
