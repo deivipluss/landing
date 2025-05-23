@@ -145,27 +145,48 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "💸 Inversión del Proyecto",
     content: (
       <div className="space-y-4">
-        <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl">
+        <div className="bg-white/5 p-5 rounded-xl border border-white/20">
           <table className="w-full text-white/90 text-sm md:text-base">
+            <thead>
+              <tr>
+                <th className="text-pink-400 font-bold text-left pb-2">Concepto</th>
+                <th className="text-pink-400 font-bold text-right pb-2">Precio Promocional (USD)</th>
+              </tr>
+            </thead>
             <tbody>
               <tr>
-                <td className="font-semibold whitespace-nowrap pr-4">Desarrollo Web MVP</td>
-                <td className="text-right font-bold text-2xl text-primary">$900</td>
+                <td className="py-1 align-top">Desarrollo completo (app web)</td>
+                <td className="py-1 text-right font-semibold">$450.00*</td>
               </tr>
               <tr>
-                <td className="whitespace-nowrap pr-4">Dominio y hosting 1 año</td>
-                <td className="text-right">Incluido</td>
+                <td className="py-1 align-top">Hosting (1 año)</td>
+                <td className="py-1 text-right">Incluido</td>
               </tr>
               <tr>
-                <td className="whitespace-nowrap pr-4">Soporte y ajustes 1 mes</td>
-                <td className="text-right">Incluido</td>
+                <td className="py-1 align-top">Dominio .com (1 año)</td>
+                <td className="py-1 text-right">Incluido</td>
+              </tr>
+              <tr>
+                <td className="py-1 align-top">Animaciones y blog interactivo</td>
+                <td className="py-1 text-right">Incluido</td>
+              </tr>
+              <tr>
+                <td className="py-1 align-top">Soporte técnico inicial (15 días)</td>
+                <td className="py-1 text-right">Incluido</td>
+              </tr>
+              <tr>
+                <td className="pt-3 font-bold text-pink-400">TOTAL HOY</td>
+                <td className="pt-3 text-right font-bold text-pink-400">$450.00 USD</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div className="flex items-center gap-3 bg-gradient-to-r from-[#FF5C5C]/20 to-[#4A90E2]/10 p-3 rounded-lg">
-          <span className="text-yellow-400 text-xl">⚠️</span>
-          <span className="text-white/90 text-sm md:text-base">Precio especial por 24h. Luego: <span className="font-bold text-primary">$1100</span></span>
+        <div className="flex items-start gap-2 border-l-2 border-pink-400 pl-3 mt-2">
+          <span className="font-bold text-white">¡Importante!</span>
+          <div className="text-white/80 text-sm">
+            Esta tarifa especial es válida solo por 24 horas tras la presentación de esta propuesta.<br />
+            <span className="text-pink-400 font-bold">A partir de mañana, el costo será de $1100.00 USD.</span>
+          </div>
         </div>
       </div>
     )
@@ -188,13 +209,12 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "¿Empezamos tu Proyecto?",
     content: (
       <div className="space-y-6">
-        <div className="text-center space-y-2">
-          <div className="text-lg md:text-xl font-bold text-primary">Contacta conmigo</div>
-          <div className="text-white/80 text-sm md:text-base">Deivis Contreras Cardenas<br />+10 años creando productos digitales de alto impacto</div>
-        </div>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-          <a href="https://wa.me/51999999999" target="_blank" rel="noopener" className="bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-primary/90 transition whitespace-nowrap">WhatsApp</a>
-          <a href="/" className="bg-white/10 text-white font-semibold px-6 py-3 rounded-lg border border-white/20 hover:bg-white/20 transition whitespace-nowrap">Ir a Home</a>
+        <div className="bg-white/5 p-5 rounded-xl border border-white/20 text-center">
+          <div className="text-pink-400 font-bold text-lg mb-1">Deivis Contreras Cardenas</div>
+          <div className="text-white font-semibold mb-2">Consultor de negocios, desarrollador de marcas y especialista en transformación digital</div>
+          <div className="text-white/70 italic text-sm mb-4">Más de 10 años de experiencia impulsando proyectos digitales y marcas.</div>
+          <a href="https://wa.me/51999999999" target="_blank" rel="noopener" className="block w-full bg-green-500 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-600 transition mb-3">Iniciar Proyecto vía WhatsApp</a>
+          <a href="/" className="block w-full bg-transparent text-white font-semibold px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition">🏠 Ir a la Home</a>
         </div>
       </div>
     )
