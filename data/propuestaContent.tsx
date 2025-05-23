@@ -14,25 +14,23 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "Desarrollo de Aplicación Web React + Google Sheets",
     content: (
       <div className="space-y-4">
-        <div className="flex justify-between items-center">
-          <p className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg flex items-center gap-2">
-            <span className="inline-block align-middle text-2xl">🚀</span>
+        <div>
+          <p className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg">
             Solución web moderna y escalable para gestión de información en tiempo real
           </p>
-          <span className="text-xs text-white/60 ml-2">22/05/2025</span>
+          <span className="block text-xs text-white/50 mt-1 mb-2 text-right sm:text-left">22/05/2025</span>
         </div>
-        <div className="flex flex-wrap items-center gap-2 bg-white/5 p-2 rounded-lg">
-          <span className="inline-flex items-center gap-1 font-semibold text-primary whitespace-nowrap hover:text-secondary transition-colors">
-            <span className="text-lg">⚛️</span> React.js
-          </span>
-          <span className="text-secondary font-bold">+</span>
-          <span className="inline-flex items-center gap-1 font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">
-            <span className="text-lg">📊</span> Google Sheets
-          </span>
-          <span className="text-secondary font-bold">+</span>
-          <span className="inline-flex items-center gap-1 font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">
-            <span className="text-lg">🔗</span> APIs
-          </span>
+        <div className="flex flex-col gap-4 bg-white/5 p-4 rounded-lg">
+          <div className="flex flex-col items-start gap-2">
+            <span className="font-semibold text-pink-400 text-base sm:text-lg">React.js</span>
+            <span className="font-semibold text-pink-400 text-base sm:text-lg">Google Sheets</span>
+            <span className="font-semibold text-pink-400 text-base sm:text-lg">APIs</span>
+          </div>
+          <div className="flex justify-end w-full mt-2 gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m4 4h-1v-4h-1m-4 4h-1v-4h-1m4 4h-1v-4h-1" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-400 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v4a1 1 0 001 1h3m10-5v4a1 1 0 001 1h3m-7 4v4a1 1 0 001 1h3m-10-5v4a1 1 0 001 1h3" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-400 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
         </div>
       </div>
     )
