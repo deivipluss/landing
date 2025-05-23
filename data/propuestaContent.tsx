@@ -16,11 +16,11 @@ export const proposalSlides: ProposalSlideType[] = [
       <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl p-5">
         <div className="text-lg font-bold text-pink-400 mb-4">Aplicación Web moderna y escalable para gestión de información y contenido turístico</div>
         <div className="flex flex-row flex-wrap gap-x-3 gap-y-1 font-semibold text-base whitespace-nowrap mb-3">
-          <span className="bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-transparent bg-clip-text">React.js</span>
+          <span className="text-[#4A90E2]">React.js</span>
           <span className="text-white/40">+</span>
-          <span className="bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-transparent bg-clip-text">Google Sheets</span>
+          <span className="text-[#4A90E2]">Google Sheets</span>
           <span className="text-white/40">+</span>
-          <span className="bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-transparent bg-clip-text">APIs</span>
+          <span className="text-[#4A90E2]">APIs</span>
         </div>
         <div className="text-white/70 text-sm text-right border-t border-white/10 pt-3">22.05.2025</div>
       </div>
@@ -180,10 +180,6 @@ export const proposalSlides: ProposalSlideType[] = [
                 <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
               </tr>
               <tr>
-                <td className="py-1 align-top">Animaciones y blog interactivo</td>
-                <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
-              </tr>
-              <tr>
                 <td className="py-1 align-top">Soporte técnico inicial (15 días)</td>
                 <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
               </tr>
@@ -237,7 +233,7 @@ export const proposalSlides: ProposalSlideType[] = [
           <div className="text-white font-semibold mb-2">Consultor de negocios, desarrollador de marcas y especialista en transformación digital</div>
           <div className="text-white/70 italic text-sm mb-4">Más de 10 años de experiencia impulsando proyectos digitales y marcas.</div>
           <a href="https://wa.me/51999999999" target="_blank" rel="noopener" className="block w-full bg-green-600 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg hover:bg-green-500 transition-all duration-300 transform hover:scale-[1.02] mb-3 uppercase tracking-wide">¡ARRANQUEMOS AHORA!</a>
-          <a href="/" className="block w-full bg-transparent text-white font-semibold px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition">🏠 Ir a la Home</a>
+          <a href="/" className="block w-full bg-transparent text-white font-semibold px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition">🌐 Ir a mi web</a>
         </div>
       </div>
     )
