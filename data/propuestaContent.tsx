@@ -195,7 +195,7 @@ export const proposalSlides: ProposalSlideType[] = [
             <div className="flex items-center gap-2">
               <span className="text-pink-400 text-lg">⏰</span>
               <div className="text-base">
-                <span className="font-bold text-pink-400">OFERTA VÁLIDA SOLO HASTA LAS 13:00hrs del 23.05.2025</span>
+                <span className="font-bold text-pink-400">OFERTA VÁLIDA SOLO HASTA LAS 13:00HRS DEL 23.05.2025</span>
               </div>
             </div>
             <div className="flex items-center gap-3">
