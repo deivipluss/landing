@@ -13,18 +13,17 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Proforma de Servicios",
     subtitle: "Desarrollo de Aplicación Web React + Google Sheets",
     content: (
-      <div className="space-y-4">
-        <h1 className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg">
-          Proforma de Servicios
-        </h1>
-        <span className="block text-xs text-white/50 mt-1 mb-1 text-right sm:text-left">22/05/2025</span>
-        <div className="text-base sm:text-lg font-semibold text-pink-400">Desarrollo de Aplicación Web para PROMOTOUR PASCO</div>
-        <div className="text-base sm:text-lg font-bold text-white mb-2">Solución web moderna y escalable para gestión de información en tiempo real</div>
-        <ul className="space-y-1 mt-2">
-          <li className="flex items-center gap-2 text-pink-400 font-medium"><span className="text-pink-400">•</span>React.js</li>
-          <li className="flex items-center gap-2 text-pink-400 font-medium"><span className="text-pink-400">•</span>Google Sheets</li>
-          <li className="flex items-center gap-2 text-pink-400 font-medium"><span className="text-pink-400">•</span>APIs</li>
-        </ul>
+      <div className="space-y-6">
+        <div className="border border-white/70 rounded-xl p-5 bg-transparent">
+          <div className="text-lg font-bold text-pink-400 mb-2">Solución web moderna y escalable para gestión de información en tiempo real</div>
+          <div className="flex flex-row flex-wrap gap-x-3 gap-y-1 text-pink-400 font-semibold text-base whitespace-nowrap mt-2">
+            <span>React.js</span>
+            <span className="text-white/40">+</span>
+            <span>Google Sheets</span>
+            <span className="text-white/40">+</span>
+            <span>APIs</span>
+          </div>
+        </div>
       </div>
     )
   },
