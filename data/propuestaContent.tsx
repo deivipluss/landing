@@ -194,24 +194,23 @@ export const proposalSlides: ProposalSlideType[] = [
             </tbody>
           </table>
         </div>
-        <div className="bg-gradient-to-r from-[#4A90E2]/10 to-[#FF5C5C]/10 rounded-xl p-4 mt-4 border border-pink-400/30">
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-pink-400 text-xl">⏰</span>
-              <span className="font-bold text-pink-400 text-lg">¡Oferta por Tiempo Limitado!</span>
+        <div className="bg-gradient-to-r from-[#4A90E2]/10 to-[#FF5C5C]/10 rounded-xl p-3 mt-3 border border-pink-400/30">
+          <div className="flex flex-col">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-pink-400 text-lg">⏰</span>
+                <span className="font-bold text-pink-400">Oferta Limitada</span>
+              </div>
+              <div className="text-white/90 text-sm">
+                <span className="text-pink-400 font-bold">13:00 hrs</span> del 23.05.2025
+              </div>
             </div>
-            <div className="text-white/90">
-              <div className="mb-2">Esta propuesta especial estará disponible solo hasta las:</div>
-              <div className="text-center py-2 px-4 bg-gradient-to-r from-[#4A90E2]/20 to-[#FF5C5C]/20 rounded-lg mb-2">
-                <span className="text-pink-400 font-bold text-xl">13:00 hrs del 23.05.2025</span>
-              </div>
-              <div className="flex items-center gap-2 mt-2">
-                <span className="text-pink-400 text-xl">💡</span>
-                <span>Después de esta hora, el precio se ajustará a:</span>
-              </div>
-              <div className="text-center mt-2">
-                <span className="text-2xl font-bold bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-transparent bg-clip-text">$1,100.00 USD</span>
-              </div>
+            <div className="flex items-center justify-between mt-2 px-1">
+              <span className="text-white/90 text-sm flex items-center gap-2">
+                <span className="text-pink-400">💡</span>
+                Después el precio será:
+              </span>
+              <span className="text-lg font-bold bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] text-transparent bg-clip-text">$1,100.00 USD</span>
             </div>
           </div>
         </div>
