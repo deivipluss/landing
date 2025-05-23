@@ -73,30 +73,30 @@ export const proposalSlides: ProposalSlideType[] = [
       <div className="space-y-4">
         <ul className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
           <li>
-            <span className="font-bold text-primary">🧭 Home - Revista Visual</span>
+            <span className="font-bold text-pink-400">📖 Home - Revista Visual</span>
             <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-primary">•</span>Portada animada estilo revista digital</li>
-              <li className="flex items-start gap-2"><span className="text-primary">•</span>Carrusel de ediciones o destinos destacados</li>
-              <li className="flex items-start gap-2"><span className="text-primary">•</span><b>Incluye revista digital interactiva</b> como característica adicional para destacar destinos y experiencias.</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Portada moderna, atractiva y de alto impacto</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Carrusel de ediciones o destinos destacados</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Incluye revista digital interactiva</li>
             </ul>
           </li>
           <li>
-            <span className="font-bold text-primary">✍️ Blog Turístico</span>
+            <span className="font-bold text-pink-400">📝 Blog Turístico</span>
             <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-primary">•</span>Visualización de artículos por categorías</li>
-              <li className="flex items-start gap-2"><span className="text-primary">•</span>Publicación de entradas por usuarios (con validación)</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Visualización de artículos por categorías</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Publicación de entradas por usuarios (con validación)</li>
             </ul>
           </li>
           <li>
-            <span className="font-bold text-primary">💬 Panel de Usuario Ligero</span>
+            <span className="font-bold text-pink-400">💬 Panel de Usuario Ligero</span>
             <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-primary">•</span>Validación de contenido antes de publicación</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Permite a los usuarios postear en el blog, y al administrador crear/eliminar usuarios y ver estadísticas del blog</li>
             </ul>
           </li>
           <li>
-            <span className="font-bold text-primary">📊 Backend Admin Simplificado</span>
+            <span className="font-bold text-pink-400">📊 Backend Admin Simplificado</span>
             <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-primary">•</span>Base conectada a Google Sheets</li>
+              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Base conectada a Google Sheets</li>
             </ul>
           </li>
         </ul>
@@ -156,27 +156,27 @@ export const proposalSlides: ProposalSlideType[] = [
             <tbody>
               <tr>
                 <td className="py-1 align-top">Desarrollo completo (app web)</td>
-                <td className="py-1 text-right font-semibold">$450.00*</td>
+                <td className="py-1 text-right font-semibold pl-8 md:pl-12">$450.00*</td>
               </tr>
               <tr>
                 <td className="py-1 align-top">Hosting (1 año)</td>
-                <td className="py-1 text-right">Incluido</td>
+                <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
               </tr>
               <tr>
                 <td className="py-1 align-top">Dominio .com (1 año)</td>
-                <td className="py-1 text-right">Incluido</td>
+                <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
               </tr>
               <tr>
                 <td className="py-1 align-top">Animaciones y blog interactivo</td>
-                <td className="py-1 text-right">Incluido</td>
+                <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
               </tr>
               <tr>
                 <td className="py-1 align-top">Soporte técnico inicial (15 días)</td>
-                <td className="py-1 text-right">Incluido</td>
+                <td className="py-1 text-right pl-8 md:pl-12">Incluido</td>
               </tr>
               <tr>
                 <td className="pt-3 font-bold text-pink-400">TOTAL HOY</td>
-                <td className="pt-3 text-right font-bold text-pink-400">$450.00 USD</td>
+                <td className="pt-3 text-right font-bold text-pink-400 pl-8 md:pl-12">$450.00 USD</td>
               </tr>
             </tbody>
           </table>
