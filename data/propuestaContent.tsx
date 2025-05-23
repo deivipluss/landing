@@ -68,44 +68,13 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "📖 Estructura y Funcionalidades",
+    title: "📖 Estructura",
     content: (
       <div className="space-y-4">
         <ul className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
-          <li>
-            <span className="font-bold text-pink-400">📄 Páginas</span>
-            <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Home</li>
-              <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Destinos</li>
-              <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Revista digital interactiva</li>
-            </ul>
-          </li>
-          <li>
-            <span className="font-bold text-pink-400">📝 Blog Turístico</span>
-            <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Visualización de artículos por categorías</li>
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Buscador de artículos</li>
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Sección de comentarios para los lectores</li>
-            </ul>
-          </li>
-          <li>
-            <span className="font-bold text-pink-400">🧑‍💻 Panel de Blogger</span>
-            <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Permite a usuarios registrados subir entradas/post en el blog</li>
-            </ul>
-          </li>
-          <li>
-            <span className="font-bold text-pink-400">🛠️ Panel de Administrador</span>
-            <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Crear/eliminar usuarios y ver estadísticas del blog</li>
-            </ul>
-          </li>
-          <li>
-            <span className="font-bold text-pink-400">📊 Backend Admin Simplificado</span>
-            <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span>Base conectada a Google Sheets</li>
-            </ul>
-          </li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Home</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Destinos</li>
+          <li className="flex items-start gap-2 text-white/90"><span className="text-pink-400">•</span>Revista digital interactiva</li>
         </ul>
       </div>
     )
