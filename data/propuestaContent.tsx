@@ -37,13 +37,12 @@ export const proposalSlides: ProposalSlideType[] = [
           <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Home moderna, adaptativa y alineada al objetivo de inspirar turismo.</span></li>
           <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Animaciones, visuales atractivos y blog autogestionado por usuarios.</span></li>
           <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Responsiva, rápida y conectada a Google Sheets como base de datos ligera.</span></li>
-          <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Ideal para MVPs o proyectos en crecimiento.</span></li>
         </ul>
       </div>
     )
   },
   {
-    title: "🧩 Tecnologías y Recursos a Utilizar",
+    title: "🧩 Tecnologías a Utilizar",
     content: (
       <div className="space-y-4">
         <div className="overflow-x-auto">
@@ -76,9 +75,9 @@ export const proposalSlides: ProposalSlideType[] = [
           <li>
             <span className="font-bold text-pink-400">📄 Páginas</span>
             <ul className="ml-4 mt-1 space-y-1">
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span><b>Home:</b> moderno, de alto impacto</li>
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span><b>Destinos:</b> con carruseles de destinos destacados e información vital</li>
-              <li className="flex items-start gap-2"><span className="text-pink-400">•</span><b>Revista digital interactiva</b></li>
+              <li className="flex flex-wrap items-center gap-2 text-pink-400"><span className="text-pink-400">•</span>Home: moderno, de alto impacto</li>
+              <li className="flex flex-wrap items-center gap-2 text-pink-400"><span className="text-pink-400">•</span>Destinos: con carruseles de destinos destacados e información vital</li>
+              <li className="flex flex-wrap items-center gap-2 text-pink-400"><span className="text-pink-400">•</span>Revista digital interactiva</li>
             </ul>
           </li>
           <li>
