@@ -11,10 +11,11 @@ export interface ProposalSlideType {
 export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Proforma de Servicios",
-    subtitle: "PROMOTOUR PASCO",
+    subtitle: "PROMOTOURS PERÚ",
     content: (
       <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl p-5">
-        <div className="text-lg font-bold text-pink-400 mb-2">Solución web moderna y escalable para gestión de información en tiempo real</div>
+        <div className="text-white/70 text-sm mb-2 text-right">22.05.2025</div>
+        <div className="text-lg font-bold text-pink-400 mb-2">Aplicación Web moderna y escalable para gestión de información y contenido turístico</div>
         <div className="flex flex-row flex-wrap gap-x-3 gap-y-1 text-pink-400 font-semibold text-base whitespace-nowrap mt-2">
           <span>React.js</span>
           <span className="text-white/40">+</span>
@@ -47,7 +48,7 @@ export const proposalSlides: ProposalSlideType[] = [
             <thead>
               <tr className="text-left text-primary font-bold">
                 <th className="py-2 px-3">Componente</th>
-                <th className="py-2 px-3">Tecnología / Herramienta</th>
+                <th className="py-2 pl-8">Tecnología / Herramienta</th>
               </tr>
             </thead>
             <tbody className="text-white/90">
