@@ -14,7 +14,7 @@ export const proposalSlides: ProposalSlideType[] = [
     subtitle: "Desarrollo de Aplicación Web React + Google Sheets",
     content: (
       <div className="space-y-6">
-        <div className="border border-white/70 rounded-xl p-5 bg-transparent">
+        <div className="rounded-xl p-5 bg-transparent border border-white/70">
           <div className="text-lg font-bold text-pink-400 mb-2">Solución web moderna y escalable para gestión de información en tiempo real</div>
           <div className="flex flex-row flex-wrap gap-x-3 gap-y-1 text-pink-400 font-semibold text-base whitespace-nowrap mt-2">
             <span>React.js</span>
