@@ -11,7 +11,7 @@ export interface ProposalSlideType {
 export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Proforma de Servicios",
-    subtitle: "Desarrollo de Aplicación Web React + Google Sheets",
+    subtitle: "PROMOTOUR PASCO",
     content: (
       <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 rounded-xl p-5">
         <div className="text-lg font-bold text-pink-400 mb-2">Solución web moderna y escalable para gestión de información en tiempo real</div>
@@ -51,13 +51,13 @@ export const proposalSlides: ProposalSlideType[] = [
               </tr>
             </thead>
             <tbody className="text-white/90">
-              <tr><td className="py-2 px-3">Frontend</td><td className="py-2 px-3">React.js + TailwindCSS (diseño moderno y animado)</td></tr>
-              <tr><td className="py-2 px-3">Backend / CMS básico</td><td className="py-2 px-3">Google Sheets vía API segura</td></tr>
-              <tr><td className="py-2 px-3">Blog & Posts</td><td className="py-2 px-3">Sistema de ingreso, visualización y validación simple</td></tr>
-              <tr><td className="py-2 px-3">Animaciones UI</td><td className="py-2 px-3">Framer Motion / GSAP / CSS Transitions</td></tr>
-              <tr><td className="py-2 px-3">Base de Datos</td><td className="py-2 px-3">Google Sheets estructurada como backend ligero</td></tr>
-              <tr><td className="py-2 px-3">Hosting</td><td className="py-2 px-3">Vercel (incluido 1 año)</td></tr>
-              <tr><td className="py-2 px-3">Dominio</td><td className="py-2 px-3">Registro .com (incluido 1 año)</td></tr>
+              <tr><td className="py-2 px-3">Frontend</td><td className="py-2 pl-8">React.js + TailwindCSS (diseño moderno y animado)</td></tr>
+              <tr><td className="py-2 px-3">Backend / CMS básico</td><td className="py-2 pl-8">Google Sheets vía API segura</td></tr>
+              <tr><td className="py-2 px-3">Blog & Posts</td><td className="py-2 pl-8">Sistema de ingreso, visualización y validación simple</td></tr>
+              <tr><td className="py-2 px-3">Animaciones UI</td><td className="py-2 pl-8">Framer Motion / GSAP / CSS Transitions</td></tr>
+              <tr><td className="py-2 px-3">Base de Datos</td><td className="py-2 pl-8">Google Sheets estructurada como backend ligero</td></tr>
+              <tr><td className="py-2 px-3">Hosting</td><td className="py-2 pl-8">Vercel (incluido 1 año)</td></tr>
+              <tr><td className="py-2 px-3">Dominio</td><td className="py-2 pl-8">Registro .com (incluido 1 año)</td></tr>
             </tbody>
           </table>
         </div>
