@@ -17,10 +17,10 @@ export const proposalSlides: ProposalSlideType[] = [
         <p className="text-xl sm:text-2xl font-bold text-primary drop-shadow-lg">
           Solución web moderna y escalable para gestión de información en tiempo real
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-2 bg-white/5 p-2 rounded-lg">
+        <div className="flex flex-wrap items-center gap-2 bg-white/5 p-2 rounded-lg">
           <span className="font-semibold text-primary whitespace-nowrap hover:text-secondary transition-colors">React.js</span>
           <span className="text-secondary font-bold">+</span>
-          <span className="font-semibold text-primary whitespace-nowrap hover:text-secondary transition-colors">Google Sheets</span>
+          <span className="font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">Google Sheets</span>
           <span className="text-secondary font-bold">+</span>
           <span className="font-semibold text-primary whitespace-nowrap hover:textsecondary transition-colors">APIs</span>
         </div>
@@ -32,12 +32,11 @@ export const proposalSlides: ProposalSlideType[] = [
     content: (
       <div className="space-y-4">
         <ul className="space-y-3 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl">
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Desarrollar una <b>aplicación web profesional</b> enfocada en turismo, que informe y motive viajes, visitas y experiencias.</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Home moderna, adaptativa y alineada al objetivo de inspirar turismo.</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Incluye <b>revista digital interactiva</b> como característica adicional para destacar destinos y experiencias.</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Animaciones, visuales atractivos y blog autogestionado por usuarios.</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Responsiva, rápida y conectada a Google Sheets como base de datos ligera.</li>
-          <li className="flex items-start gap-2 text-white/90"><span className="text-primary">•</span>Ideal para MVPs o proyectos en crecimiento.</li>
+          <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Desarrollar una <b>aplicación web profesional</b> enfocada en turismo, que informe y motive viajes, visitas y experiencias.</span></li>
+          <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Home moderna, adaptativa y alineada al objetivo de inspirar turismo.</span></li>
+          <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Animaciones, visuales atractivos y blog autogestionado por usuarios.</span></li>
+          <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Responsiva, rápida y conectada a Google Sheets como base de datos ligera.</span></li>
+          <li className="flex items-start gap-3 text-white/90"><span className="mt-1 text-primary">•</span><span>Ideal para MVPs o proyectos en crecimiento.</span></li>
         </ul>
       </div>
     )
@@ -78,6 +77,7 @@ export const proposalSlides: ProposalSlideType[] = [
             <ul className="ml-4 mt-1 space-y-1">
               <li className="flex items-start gap-2"><span className="text-primary">•</span>Portada animada estilo revista digital</li>
               <li className="flex items-start gap-2"><span className="text-primary">•</span>Carrusel de ediciones o destinos destacados</li>
+              <li className="flex items-start gap-2"><span className="text-primary">•</span><b>Incluye revista digital interactiva</b> como característica adicional para destacar destinos y experiencias.</li>
             </ul>
           </li>
           <li>
@@ -142,30 +142,30 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "💰 Inversión del Proyecto",
+    title: "💸 Inversión del Proyecto",
     content: (
-      <div className="space-y-4 bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl text-white/90">
-        <table className="min-w-full text-sm">
-          <thead>
-            <tr className="text-left text-primary font-bold">
-              <th className="py-2 px-3">Concepto</th>
-              <th className="py-2 px-3">Precio Promocional (USD)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td className="py-2 px-3">Desarrollo completo (app web)</td><td className="py-2 px-3">$450.00*</td></tr>
-            <tr><td className="py-2 px-3">Hosting (1 año)</td><td className="py-2 px-3">Incluido</td></tr>
-            <tr><td className="py-2 px-3">Dominio .com (1 año)</td><td className="py-2 px-3">Incluido</td></tr>
-            <tr><td className="py-2 px-3">Animaciones y blog interactivo</td><td className="py-2 px-3">Incluido</td></tr>
-            <tr><td className="py-2 px-3">Soporte técnico inicial (15 días)</td><td className="py-2 px-3">Incluido</td></tr>
-            <tr className="font-bold text-primary"><td className="py-2 px-3">TOTAL HOY</td><td className="py-2 px-3">$450.00 USD</td></tr>
-          </tbody>
-        </table>
-        <div className="mt-2">
-          <div className="bg-[#181E2A]/80 border-l-4 border-yellow-400 p-4 rounded-md">
-            <span className="block text-yellow-300 text-base font-bold mb-1">¡Importante!</span>
-            <span className="text-white/90 text-sm font-medium">Esta tarifa especial es válida solo por 24 horas tras la presentación de esta propuesta.<br />A partir de mañana, el costo será de <span className='text-pink-400 font-bold'>$1100.00 USD</span>.</span>
-          </div>
+      <div className="space-y-4">
+        <div className="bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-5 rounded-xl">
+          <table className="w-full text-white/90 text-sm md:text-base">
+            <tbody>
+              <tr>
+                <td className="font-semibold whitespace-nowrap pr-4">Desarrollo Web MVP</td>
+                <td className="text-right font-bold text-2xl text-primary">$900</td>
+              </tr>
+              <tr>
+                <td className="whitespace-nowrap pr-4">Dominio y hosting 1 año</td>
+                <td className="text-right">Incluido</td>
+              </tr>
+              <tr>
+                <td className="whitespace-nowrap pr-4">Soporte y ajustes 1 mes</td>
+                <td className="text-right">Incluido</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="flex items-center gap-3 bg-gradient-to-r from-[#FF5C5C]/20 to-[#4A90E2]/10 p-3 rounded-lg">
+          <span className="text-yellow-400 text-xl">⚠️</span>
+          <span className="text-white/90 text-sm md:text-base">Precio especial por 24h. Luego: <span className="font-bold text-primary">$1100</span></span>
         </div>
       </div>
     )
@@ -186,31 +186,15 @@ export const proposalSlides: ProposalSlideType[] = [
   },
   {
     title: "¿Empezamos tu Proyecto?",
-    subtitle: "Contacta conmigo",
     content: (
-      <div className="space-y-8 max-w-lg mx-auto bg-[#181E2A] bg-opacity-90 p-6 rounded-xl shadow-lg">
-        <div className="space-y-4 text-center bg-gradient-to-br from-[#4A90E2]/20 to-[#FF5C5C]/10 p-4 rounded-lg">
-          <h3 className="text-xl font-bold text-primary">Deivis Contreras Cardenas</h3>
-          <p className="text-lg text-neutral-300 font-semibold">Consultor de negocios, desarrollador de marcas y especialista en transformación digital</p>
-          <p className="text-neutral-300 text-sm italic">Más de 10 años de experiencia impulsando proyectos digitales y marcas.</p>
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <div className="text-lg md:text-xl font-bold text-primary">Contacta conmigo</div>
+          <div className="text-white/80 text-sm md:text-base">Deivis Contreras Cardenas<br />+10 años creando productos digitales de alto impacto</div>
         </div>
-        <div className="flex flex-col gap-4">
-          <a 
-            href="https://wa.me/51989843709" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
-          >
-            <span className="text-xl">📱</span>
-            Iniciar Proyecto vía WhatsApp
-          </a>
-          <a 
-            href="/"
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary hover:to-secondary text-neutral-300 font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-primary/30 hover:border-primary"
-          >
-            <span className="text-xl">🏠</span>
-            Ir a la Home
-          </a>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+          <a href="https://wa.me/51999999999" target="_blank" rel="noopener" className="bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-primary/90 transition whitespace-nowrap">WhatsApp</a>
+          <a href="/" className="bg-white/10 text-white font-semibold px-6 py-3 rounded-lg border border-white/20 hover:bg-white/20 transition whitespace-nowrap">Ir a Home</a>
         </div>
       </div>
     )
