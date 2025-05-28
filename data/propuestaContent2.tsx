@@ -199,6 +199,216 @@ export const proposalSlides: ProposalSlideType[] = [
 ];
 
 export function HorizontalSlides({ slides }: { slides: ProposalSlideType[] }) {
-  // ...puedes copiar aquí la función real si la necesitas...
-  return null;
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = React.useState(0);
+  const [active, setActive] = React.useState(0);
+  const [startX, setStartX] = React.useState(0);
+  const [isDragging, setIsDragging] = React.useState(false);
+
+  const scrollTo = React.useCallback((index: number) => {
+    if (containerRef.current) {
+      const width = containerRef.current.offsetWidth;
+      const targetIndex = Math.max(0, Math.min(slides.length - 1, index));
+      setActive(targetIndex);
+      containerRef.current.scrollTo({
+        left: width * targetIndex,
+        behavior: 'smooth'
+      });
+    }
+  }, [slides.length]);
+
+  const handleScroll = React.useCallback(() => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, offsetWidth } = containerRef.current;
+      const newProgress = scrollLeft / (scrollWidth - offsetWidth);
+      setProgress(newProgress);
+      const newActive = Math.round(scrollLeft / offsetWidth);
+      if (newActive !== active && newActive >= 0 && newActive < slides.length) {
+        setActive(newActive);
+      }
+    }
+  }, [active, slides.length]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.touches[0].clientX);
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = React.useCallback((e: React.TouchEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    const currentX = e.touches[0].clientX;
+    const diff = startX - currentX;
+    const sensitivity = 50;
+    if (Math.abs(diff) > sensitivity) {
+      const direction = diff > 0 ? 1 : -1;
+      const nextIndex = active + direction;
+      if (nextIndex >= 0 && nextIndex < slides.length) {
+        scrollTo(nextIndex);
+      }
+      setIsDragging(false);
+    }
+  }, [active, isDragging, scrollTo, slides.length, startX]);
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    scrollTo(active);
+  };
+
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, [handleScroll]);
+
+  return (
+    <div className="fixed inset-0 bg-gradient-to-br from-[#111827] via-[#1f2937] to-[#111827] overflow-hidden">
+      {/* Navegación lateral */}
+      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-3 bg-gradient-to-b from-[#1A1A2E]/90 to-[#1E293B]/90 backdrop-blur-md p-4 rounded-2xl border border-[#4A90E2]/40 shadow-[0_0_15px_rgba(74,144,226,0.3)]">
+        {slides.map((slide, idx) => (
+          <button
+            key={idx}
+            onClick={() => scrollTo(idx)}
+            className={`flex items-center gap-3 transition-all duration-300 group px-3 py-2 rounded-lg ${
+              active === idx 
+                ? 'bg-gradient-to-r from-[#4A90E2]/30 to-[#FF5C5C]/30 text-white' 
+                : 'hover:bg-gradient-to-r hover:from-[#4A90E2]/20 hover:to-[#FF5C5C]/20 text-slate-300 hover:text-white'
+            }`}
+          >
+            <span className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              active === idx 
+                ? 'bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] shadow-[0_0_10px_rgba(74,144,226,0.5)]' 
+                : 'bg-slate-500 group-hover:bg-[#4A90E2]'
+            }`} />
+            <span className="text-sm font-medium whitespace-nowrap">{slide.title}</span>
+          </button>
+        ))}
+      </div>
+      {/* Barra de progreso */}
+      <div className="absolute top-0 left-0 right-0 h-1 z-50">
+        <div 
+          className="h-full bg-gradient-to-r from-[#4A90E2] via-[#FF5C5C] to-[#4A90E2] bg-[length:200%_100%] animate-gradient transition-all duration-300 ease-out"
+          style={{ width: `${progress * 100}%` }}
+        />
+      </div>
+      {/* Contenedor principal con scroll horizontal */}
+      <div
+        ref={containerRef}
+        className="h-screen w-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide"
+        style={{ 
+          scrollSnapType: "x mandatory",
+          scrollBehavior: isDragging ? 'auto' : 'smooth',
+          touchAction: 'pan-x'
+        }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onScroll={handleScroll}
+      >
+        {/* Contenedor de slides */}
+        <div className="flex h-full">
+          {slides.map((slide, idx) => (
+            <div
+              key={idx}
+              className="relative flex-shrink-0 w-full h-full snap-center flex items-center justify-center"
+              style={{ scrollSnapAlign: 'center', scrollSnapStop: 'always' }}
+            >
+              <div className="w-full max-w-2xl mx-auto px-4 py-8">
+                {/* Título */}
+                <h1 
+                  className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#4A90E2] via-[#FF5C5C] to-[#4A90E2] text-center mb-4 drop-shadow-[0_0_25px_rgba(74,144,226,0.3)] font-poppins animate-gradient bg-[length:200%_100%] mt-2"
+                  style={{ letterSpacing: "-1px" }}
+                >
+                  {slide.title}
+                </h1>
+                {/* Subtítulo */}
+                {slide.subtitle && (
+                  <h2 className="text-lg sm:text-xl font-medium text-center mb-6 text-[#4A90E2]">
+                    {slide.subtitle}
+                  </h2>
+                )}
+                {/* Tarjeta de contenido */}
+                <div className="w-full bg-gradient-to-br from-[#1A1A2E]/95 to-[#1E293B]/95 backdrop-blur-md rounded-xl p-6 shadow-[0_0_30px_rgba(74,144,226,0.15)] border border-[#4A90E2]/30 hover:border-[#4A90E2]/50 transition-all duration-500 animate-float">
+                  <div className="text-white">
+                    {slide.content}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Botones de navegación */}
+      <button
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-gradient-to-r from-[#4A90E2]/20 to-[#FF5C5C]/20 backdrop-blur-md text-white hover:from-[#4A90E2]/40 hover:to-[#FF5C5C]/40 transition-all duration-300 shadow-[0_0_15px_rgba(74,144,226,0.2)] hidden md:block"
+        onClick={() => scrollTo(active - 1)}
+        disabled={active === 0}
+        style={{ opacity: active === 0 ? 0.3 : 1 }}
+      >
+        <span className="text-xl">←</span>
+      </button>
+      <button
+        className="fixed right-4 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-gradient-to-r from-[#4A90E2]/20 to-[#FF5C5C]/20 backdrop-blur-md text-white hover:from-[#4A90E2]/40 hover:to-[#FF5C5C]/40 transition-all duration-300 shadow-[0_0_15px_rgba(74,144,226,0.2)] hidden md:block"
+        onClick={() => scrollTo(active + 1)}
+        disabled={active === slides.length - 1}
+        style={{ opacity: active === slides.length - 1 ? 0.3 : 1 }}
+      >
+        <span className="text-xl">→</span>
+      </button>
+      {/* Indicadores de progreso */}
+      <div className="fixed bottom-4 left-0 right-0 flex justify-center gap-2 z-50">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => scrollTo(idx)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              active === idx 
+                ? 'bg-gradient-to-r from-[#4A90E2] to-[#FF5C5C] w-10 shadow-[0_0_10px_rgba(74,144,226,0.5)]' 
+                : 'bg-white/20 w-5 hover:bg-gradient-to-r hover:from-[#4A90E2]/60 hover:to-[#FF5C5C]/60'
+            }`}
+          />
+        ))}
+      </div>
+      <style jsx global>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+
+        .animate-gradient {
+          animation: gradient 8s linear infinite;
+        }
+
+        @keyframes gradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+      `}</style>
+    </div>
+  );
 }
