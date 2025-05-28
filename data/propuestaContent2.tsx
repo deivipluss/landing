@@ -227,9 +227,7 @@ export const proposalSlides: ProposalSlideType[] = [
           <div className="font-semibold text-yellow-700">📌 Importancia:</div>
           <ul className="list-disc ml-6 text-gray-900/90 space-y-1">
             <li>Son costos imprescindibles para desplegar el sistema digital (sitio, pauta, reservas, tráfico).</li>
-            <li>Se realiza por única vez en esta etapa como inversión base.</li>
-            <li>Permite arrancar con todo el ecosistema activo desde la primera semana.</li>
-          </ul>
+                      </ul>
         </div>
       </div>
     )
