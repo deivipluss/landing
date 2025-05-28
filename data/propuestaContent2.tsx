@@ -13,7 +13,7 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Despegue Digital del Hotel Sol de Oro",
     subtitle: "Estrategia operativa, comercial y comunicacional para Junio",
     content: (
-      <div className="flex flex-col items-center justify-center min-h-[300px]">
+      <div className="flex flex-col items-center justify-center">
         <span className="block text-2xl font-bold text-yellow-600 mb-2">Objetivo</span>
         <span className="block text-lg md:text-xl font-semibold text-white bg-yellow-500/90 rounded-lg px-4 py-2 inline-block shadow-sm">Profesionalizar canales, atraer huéspedes y fidelizar visitas</span>
       </div>
@@ -22,7 +22,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Diagnóstico Rápido",
     content: (
-      <div className="flex flex-col items-center justify-center min-h-[300px]">
+      <div className="flex flex-col items-center justify-center">
         <div className="w-full max-w-lg">
           <table className="min-w-full text-sm bg-gradient-to-br from-yellow-200/10 to-yellow-400/10 rounded-xl mx-auto">
             <thead>
@@ -46,7 +46,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Ruta Estratégica Junio",
     content: (
-      <div className="flex flex-col items-center justify-center min-h-[300px]">
+      <div className="flex flex-col items-center justify-center">
         <ul className="list-disc ml-0 space-y-3 text-lg">
           <li className="text-pink-500 font-semibold">Brochure comercial</li>
           <li className="text-pink-500 font-semibold">Redes sociales activas</li>
@@ -61,7 +61,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Brochure Comercial",
     content: (
-      <div className="flex flex-col items-center justify-center min-h-[300px]">
+      <div className="flex flex-col items-center justify-center">
         <div className="space-y-2 text-center">
           <div><b>Formato PDF y físico:</b></div>
           <ul className="list-disc ml-6 space-y-1">
@@ -80,7 +80,7 @@ export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Activación de Redes Sociales",
     content: (
-      <div className="flex flex-col items-center justify-center min-h-[300px]">
+      <div className="flex flex-col items-center justify-center">
         <div className="space-y-2 text-center">
           <div><b>Canales principales:</b></div>
           <ul className="list-disc ml-6">
