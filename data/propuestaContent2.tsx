@@ -72,7 +72,7 @@ export const proposalSlides: ProposalSlideType[] = [
             <li>Tarifas base o llamada a reservar</li>
             <li>Contacto y redes</li>
           </ul>
-          <div className="mt-2 text-center">👉 <b>Uso:</b> WhatsApp, recepciones, ferias, correos</div>
+          <div className="mt-2 text-center">👉 <b>Uso:</b> WhatsApp, recepciones, correos y demás</div>
         </div>
       </div>
     )
