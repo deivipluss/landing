@@ -169,7 +169,7 @@ export const proposalSlides: ProposalSlideType[] = [
           <li>Reels tipo “¿Buscas un hotel cómodo para trabajar?”</li>
           <li>Promociones por temporada</li>
         </ul>
-        <div className="mt-2">Presupuesto sugerido inicial: <b>S/300 por mes</b></div>
+        
         <div>Objetivo: +3000 visualizaciones por semana y generación de mensajes directos</div>
       </div>
     )
@@ -240,7 +240,7 @@ export const proposalSlides: ProposalSlideType[] = [
           <div className="text-pink-400 font-bold text-lg mb-1">Deivis Contreras Cardenas</div>
           <div className="text-white font-semibold mb-2">Consultor de negocios, desarrollador de marcas y especialista en transformación digital</div>
           <div className="text-white/70 italic text-sm mb-4">Más de 10 años de experiencia impulsando proyectos digitales y marcas.</div>
-          <a href="https://wa.me/51989843709?text=Hola%20Deivis%2C%20iniciemos%20con%20la%20aplicaci%C3%B3n%20web%20de%20Promotours%20per%C3%BA!" target="_blank" rel="noopener" className="block w-full bg-green-600 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg hover:bg-green-500 transition-all duration-300 transform hover:scale-[1.02] mb-3 uppercase tracking-wide">¡ARRANQUEMOS AHORA!</a>
+          <a href="https://wa.me/51989843709?text=Iniciemos%20ahora%20con%20la%20transformaci%C3%B3n%20del%20Hotel%20Sol%20de%20Oro" target="_blank" rel="noopener" className="block w-full bg-green-600 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg hover:bg-green-500 transition-all duration-300 transform hover:scale-[1.02] mb-3 uppercase tracking-wide">¡ARRANQUEMOS AHORA!</a>
           <a href="/" className="block w-full bg-transparent text-white font-semibold px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition">🌐 Ir a mi web</a>
         </div>
       </div>
