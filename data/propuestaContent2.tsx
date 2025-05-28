@@ -13,84 +13,90 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Despegue Digital del Hotel Sol de Oro",
     subtitle: "Estrategia operativa, comercial y comunicacional para Junio",
     content: (
-      <div className="space-y-5">
-        <div className="text-center">
-          <span className="block text-2xl font-bold text-yellow-600 mb-2">Objetivo</span>
-          <span className="block text-lg md:text-xl font-semibold text-gray-900 bg-yellow-100 rounded-lg px-4 py-2 inline-block shadow-sm">Profesionalizar canales, atraer huéspedes y fidelizar visitas</span>
-        </div>
+      <div className="flex flex-col items-center justify-center min-h-[300px]">
+        <span className="block text-2xl font-bold text-yellow-600 mb-2">Objetivo</span>
+        <span className="block text-lg md:text-xl font-semibold text-white bg-yellow-500/90 rounded-lg px-4 py-2 inline-block shadow-sm">Profesionalizar canales, atraer huéspedes y fidelizar visitas</span>
       </div>
     )
   },
   {
     title: "Diagnóstico Rápido",
     content: (
-      <div className="overflow-x-auto">
-        <table className="min-w-full text-sm bg-gradient-to-br from-yellow-200/10 to-yellow-400/10 rounded-xl">
-          <thead>
-            <tr className="text-left text-yellow-600 font-bold">
-              <th className="py-2 px-3">Aspecto</th>
-              <th className="py-2 px-3">Estado Actual</th>
-            </tr>
-          </thead>
-          <tbody className="text-gray-900/90">
-            <tr><td className="py-1 px-3">Redes sociales</td><td className="py-1 px-3">Facebook con buen diseño pero sin uso</td></tr>
-            <tr><td className="py-1 px-3">Página web</td><td className="py-1 px-3">Inexistente</td></tr>
-            <tr><td className="py-1 px-3">Reservas digitales</td><td className="py-1 px-3">No automatizadas</td></tr>
-            <tr><td className="py-1 px-3">Posicionamiento</td><td className="py-1 px-3">Débil en Google, cero pauta</td></tr>
-            <tr><td className="py-1 px-3">Comunicación</td><td className="py-1 px-3">No sistematizada</td></tr>
-          </tbody>
-        </table>
+      <div className="flex flex-col items-center justify-center min-h-[300px]">
+        <div className="w-full max-w-lg">
+          <table className="min-w-full text-sm bg-gradient-to-br from-yellow-200/10 to-yellow-400/10 rounded-xl mx-auto">
+            <thead>
+              <tr className="text-left text-yellow-600 font-bold">
+                <th className="py-2 px-3">Objetivo</th>
+                <th className="py-2 px-3">Estado Actual</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-900/90">
+              <tr><td className="py-1 px-3">Redes sociales</td><td className="py-1 px-3">Facebook con buen diseño pero sin uso</td></tr>
+              <tr><td className="py-1 px-3">Página web</td><td className="py-1 px-3">Inexistente</td></tr>
+              <tr><td className="py-1 px-3">Reservas digitales</td><td className="py-1 px-3">No automatizadas</td></tr>
+              <tr><td className="py-1 px-3">Posicionamiento</td><td className="py-1 px-3">Débil en Google, cero pauta</td></tr>
+              <tr><td className="py-1 px-3">Comunicación</td><td className="py-1 px-3">No sistematizada</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   },
   {
     title: "Ruta Estratégica Junio",
     content: (
-      <div className="space-y-4">
-        <div className="mb-2"><b>Objetivo General:</b> Profesionalizar la presencia digital del Hotel Sol de Oro para aumentar la ocupación, mejorar reputación y activar el flujo comercial.</div>
-        <ol className="list-decimal ml-8 space-y-2 text-base">
-          <li><span className="font-semibold text-yellow-700">Brochure comercial</span></li>
-          <li><span className="font-semibold text-yellow-700">Redes sociales activas</span></li>
-          <li><span className="font-semibold text-yellow-700">Landing page para reservas</span></li>
-          <li><span className="font-semibold text-yellow-700">Chatbots automatizados</span></li>
-          <li><span className="font-semibold text-yellow-700">Campaña con creadores locales</span></li>
-          <li><span className="font-semibold text-yellow-700">Campaña Facebook Ads geolocalizada</span></li>
-        </ol>
+      <div className="flex flex-col items-center justify-center min-h-[300px]">
+        <ul className="list-disc ml-0 space-y-3 text-lg">
+          <li className="text-pink-500 font-semibold">Brochure comercial</li>
+          <li className="text-pink-500 font-semibold">Redes sociales activas</li>
+          <li className="text-pink-500 font-semibold">Landing page para reservas</li>
+          <li className="text-pink-500 font-semibold">Chatbots automatizados</li>
+          <li className="text-pink-500 font-semibold">Campaña con creadores locales</li>
+          <li className="text-pink-500 font-semibold">Campaña Facebook Ads geolocalizada</li>
+        </ul>
       </div>
     )
   },
   {
     title: "Brochure Comercial",
     content: (
-      <div className="space-y-2">
-        <div><b>Formato PDF y físico:</b></div>
-        <ul className="list-disc ml-6 space-y-1">
-          <li>¿Quiénes somos?</li>
-          <li>Servicios del hotel</li>
-          <li>Habitaciones con íconos y descripciones</li>
-          <li>Fotos reales + ubicación</li>
-          <li>Tarifas base o llamada a reservar</li>
-          <li>Contacto y redes</li>
-        </ul>
-        <div className="mt-2">👉 <b>Uso:</b> WhatsApp, recepciones, ferias, correos</div>
+      <div className="flex flex-col items-center justify-center min-h-[300px]">
+        <div className="space-y-2 text-center">
+          <div><b>Formato PDF y físico:</b></div>
+          <ul className="list-disc ml-6 space-y-1">
+            <li>¿Quiénes somos?</li>
+            <li>Servicios del hotel</li>
+            <li>Habitaciones con íconos y descripciones</li>
+            <li>Fotos reales + ubicación</li>
+            <li>Tarifas base o llamada a reservar</li>
+            <li>Contacto y redes</li>
+          </ul>
+          <div className="mt-2">👉 <b>Uso:</b> WhatsApp, recepciones, ferias, correos</div>
+        </div>
       </div>
     )
   },
   {
     title: "Activación de Redes Sociales",
     content: (
-      <div className="space-y-2">
-        <div><b>Canales principales:</b></div>
-        <ul className="list-disc ml-6">
-          <li>Facebook (corporativo e informativo)</li>
-          <li>Instagram (humano y visual)</li>
-        </ul>
-        <div className="mt-2"><b>Tipo de contenido semanal:</b></div>
-        <ul className="list-disc ml-6">
-          <li>1 post de habitaciones / servicios</li>
-          <li>1 historia + reel experiencial</li>
-          <li>1 testimonio o dato útil (tips altura, negocios, etc.)</li>
-        </ul>
+      <div className="flex flex-col items-center justify-center min-h-[300px]">
+        <div className="space-y-2 text-center">
+          <div><b>Canales principales:</b></div>
+          <ul className="list-disc ml-6">
+            <li>Facebook (corporativo e informativo)</li>
+            <li>Instagram (humano y visual)</li>
+            <li>WhatsApp (atención directa y difusión)</li>
+          </ul>
+          <div className="mt-2"><b>Tipos de contenido y acciones semanales:</b></div>
+          <ul className="list-disc ml-6">
+            <li>1 post de habitaciones/servicios en Facebook e Instagram</li>
+            <li>1 historia + reel experiencial en Instagram y Facebook</li>
+            <li>1 testimonio o dato útil (tips altura, negocios, etc.)</li>
+            <li>Enlaces y llamados a la landing page y WhatsApp en cada publicación</li>
+            <li>Respuestas rápidas y atención por WhatsApp</li>
+          </ul>
+        </div>
       </div>
     )
   },
