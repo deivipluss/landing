@@ -47,7 +47,7 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Ruta Estratégica Junio",
     content: (
       <div className="flex flex-col items-center justify-center">
-        <ul className="list-disc ml-0 space-y-3 text-lg">
+        <ul className="list-disc ml-6 space-y-2 text-base">
           <li className="text-pink-500 font-semibold">Brochure comercial</li>
           <li className="text-pink-500 font-semibold">Redes sociales activas</li>
           <li className="text-pink-500 font-semibold">Landing page para reservas</li>
@@ -62,9 +62,9 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Brochure Comercial",
     content: (
       <div className="flex flex-col items-center justify-center">
-        <div className="space-y-2 text-center">
-          <div><b>Formato PDF y físico:</b></div>
-          <ul className="list-disc ml-6 space-y-1">
+        <div className="space-y-2">
+          <div className="text-center"><b>Formato PDF y físico:</b></div>
+          <ul className="list-disc ml-6 space-y-1 text-base text-white/90">
             <li>¿Quiénes somos?</li>
             <li>Servicios del hotel</li>
             <li>Habitaciones con íconos y descripciones</li>
@@ -72,7 +72,7 @@ export const proposalSlides: ProposalSlideType[] = [
             <li>Tarifas base o llamada a reservar</li>
             <li>Contacto y redes</li>
           </ul>
-          <div className="mt-2">👉 <b>Uso:</b> WhatsApp, recepciones, ferias, correos</div>
+          <div className="mt-2 text-center">👉 <b>Uso:</b> WhatsApp, recepciones, ferias, correos</div>
         </div>
       </div>
     )
@@ -81,15 +81,15 @@ export const proposalSlides: ProposalSlideType[] = [
     title: "Activación de Redes Sociales",
     content: (
       <div className="flex flex-col items-center justify-center">
-        <div className="space-y-2 text-center">
-          <div><b>Canales principales:</b></div>
-          <ul className="list-disc ml-6">
+        <div className="space-y-2">
+          <div className="text-center"><b>Canales principales:</b></div>
+          <ul className="list-disc ml-6 text-base text-white/90">
             <li>Facebook (corporativo e informativo)</li>
             <li>Instagram (humano y visual)</li>
             <li>WhatsApp (atención directa y difusión)</li>
           </ul>
-          <div className="mt-2"><b>Tipos de contenido y acciones semanales:</b></div>
-          <ul className="list-disc ml-6">
+          <div className="mt-2 text-center"><b>Tipos de contenido y acciones semanales:</b></div>
+          <ul className="list-disc ml-6 text-base text-white/90">
             <li>1 post de habitaciones/servicios en Facebook e Instagram</li>
             <li>1 historia + reel experiencial en Instagram y Facebook</li>
             <li>1 testimonio o dato útil (tips altura, negocios, etc.)</li>
