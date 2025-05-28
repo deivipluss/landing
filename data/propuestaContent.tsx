@@ -169,7 +169,7 @@ export const proposalSlides: ProposalSlideType[] = [
             <tbody>
               <tr>
                 <td className="py-1 align-top">Desarrollo completo </td>
-                <td className="py-1 text-right font-semibold pl-8 md:pl-12">$450.00*</td>
+                <td className="py-1 text-right font-semibold pl-8 md:pl-12">$900.00*</td>
               </tr>
               <tr>
                 <td className="py-1 align-top">Hosting (1 año)</td>
@@ -185,7 +185,7 @@ export const proposalSlides: ProposalSlideType[] = [
               </tr>
               <tr>
                 <td className="pt-3 font-bold text-pink-400">TOTAL HOY</td>
-                <td className="pt-3 text-right font-bold text-pink-400 pl-8 md:pl-12">$450.00 USD</td>
+                <td className="pt-3 text-right font-bold text-pink-400 pl-8 md:pl-12">$900.00 USD</td>
               </tr>
             </tbody>
           </table>
@@ -195,14 +195,14 @@ export const proposalSlides: ProposalSlideType[] = [
             <div className="flex items-center gap-2">
               <span className="text-pink-400 text-lg">⏰</span>
               <div className="text-base">
-                <span className="font-bold text-pink-400">OFERTA VÁLIDA SOLO HASTA LAS 13:00HRS DEL 23.05.2025</span>
+                <span className="font-bold text-pink-400">NO HAY OFERTAS DISPONIBLES </span>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-pink-400">💫</span>
               <div className="flex items-center gap-2">
-                <span className="text-white/90">Precio luego de esa fecha:</span>
-                <span className="text-xl font-bold text-pink-400">$900.00 USD</span>
+                <span className="text-white/90">No hay ofertas disponibles</span>
+                <span className="text-xl font-bold text-pink-400">$00.00 USD</span>
               </div>
             </div>
           </div>
