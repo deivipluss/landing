@@ -11,11 +11,13 @@ export interface ProposalSlideType {
 export const proposalSlides: ProposalSlideType[] = [
   {
     title: "Despegue Digital del Hotel Sol de Oro",
-    subtitle: "Estrategia operativa, comercial y comunicacional para 2025",
+    subtitle: "Estrategia operativa, comercial y comunicacional para Junio",
     content: (
-      <div className="space-y-3">
-        <div><b>Diagnóstico:</b> presencia digital desaprovechada</div>
-        <div><b>Objetivo:</b> profesionalizar canales, atraer huéspedes, fidelizar visitas</div>
+      <div className="space-y-5">
+        <div className="text-center">
+          <span className="block text-2xl font-bold text-yellow-600 mb-2">Objetivo</span>
+          <span className="block text-lg md:text-xl font-semibold text-gray-900 bg-yellow-100 rounded-lg px-4 py-2 inline-block shadow-sm">Profesionalizar canales, atraer huéspedes y fidelizar visitas</span>
+        </div>
       </div>
     )
   },
@@ -42,18 +44,18 @@ export const proposalSlides: ProposalSlideType[] = [
     )
   },
   {
-    title: "Ruta Estratégica 2025",
+    title: "Ruta Estratégica Junio",
     content: (
-      <div className="space-y-2">
-        <div><b>Objetivo General:</b> Profesionalizar la presencia digital del Hotel Sol de Oro para aumentar la ocupación, mejorar reputación y activar el flujo comercial.</div>
-        <ul className="list-disc ml-6 mt-2 space-y-1">
-          <li>Brochure comercial</li>
-          <li>Redes sociales activas</li>
-          <li>Landing page para reservas</li>
-          <li>Chatbots automatizados</li>
-          <li>Campaña con creadores locales</li>
-          <li>Campaña Facebook Ads geolocalizada</li>
-        </ul>
+      <div className="space-y-4">
+        <div className="mb-2"><b>Objetivo General:</b> Profesionalizar la presencia digital del Hotel Sol de Oro para aumentar la ocupación, mejorar reputación y activar el flujo comercial.</div>
+        <ol className="list-decimal ml-8 space-y-2 text-base">
+          <li><span className="font-semibold text-yellow-700">Brochure comercial</span></li>
+          <li><span className="font-semibold text-yellow-700">Redes sociales activas</span></li>
+          <li><span className="font-semibold text-yellow-700">Landing page para reservas</span></li>
+          <li><span className="font-semibold text-yellow-700">Chatbots automatizados</span></li>
+          <li><span className="font-semibold text-yellow-700">Campaña con creadores locales</span></li>
+          <li><span className="font-semibold text-yellow-700">Campaña Facebook Ads geolocalizada</span></li>
+        </ol>
       </div>
     )
   },
