@@ -84,16 +84,17 @@ export const proposalSlides: ProposalSlideType[] = [
         <div className="space-y-2">
           <div className="text-center"><b>Canales principales:</b></div>
           <ul className="list-disc ml-6 text-base text-white/90">
-            <li>Facebook (corporativo e informativo)</li>
-            <li>Instagram (humano y visual)</li>
-            <li>WhatsApp (atención directa y difusión)</li>
+            <li>Facebook</li>
+            <li>Instagram </li>
+            <li>TikTok </li>
+            <li>WhatsApp</li>
           </ul>
           <div className="mt-2 text-center"><b>Tipos de contenido y acciones semanales:</b></div>
           <ul className="list-disc ml-6 text-base text-white/90">
-            <li>1 post de habitaciones/servicios en Facebook e Instagram</li>
-            <li>1 historia + reel experiencial en Instagram y Facebook</li>
-            <li>1 testimonio o dato útil (tips altura, negocios, etc.)</li>
-            <li>Enlaces y llamados a la landing page y WhatsApp en cada publicación</li>
+            <li>Post's de habitaciones/servicios</li>
+            <li>Historias + reels experienciales</li>
+            <li>Testimonios</li>
+            <li>Enlaces y llamados a la landing page y WhatsApp </li>
             <li>Respuestas rápidas y atención por WhatsApp</li>
           </ul>
         </div>
@@ -188,27 +189,17 @@ export const proposalSlides: ProposalSlideType[] = [
             <tr><td className="py-1 px-3">1</td><td className="py-1 px-3">Brochure + diagnóstico visual completo</td></tr>
             <tr><td className="py-1 px-3">2</td><td className="py-1 px-3">Activación redes + chatbot básico</td></tr>
             <tr><td className="py-1 px-3">3</td><td className="py-1 px-3">Lanzamiento landing page</td></tr>
-            <tr><td className="py-1 px-3">4</td><td className="py-1 px-3">Primer video de creador local</td></tr>
-            <tr><td className="py-1 px-3">5</td><td className="py-1 px-3">Inicio de campaña Facebook Ads</td></tr>
+            <tr><td className="py-1 px-3">4</td><td className="py-1 px-3">Primer video de creador local + inicio campaña Facebook Ads</td></tr>
           </tbody>
         </table>
       </div>
     )
   },
   {
-    title: "Cierre y Siguiente Paso",
-    content: (
-      <div className="space-y-3">
-        <div className="font-bold">"Cerro de Pasco merece un referente de hospitalidad digital. Este plan convierte al Hotel Sol de Oro en una marca viva, cercana y profesional."</div>
-        <div className="mt-2">Siguiente paso: Aprobar la propuesta y definir responsables internos para activar el proceso.</div>
-      </div>
-    )
-  },
-  {
-    title: "Costos operativos base que el cliente debe asumir para el reinicio del proyecto",
+    title: "COSTOS OPERATIVOS BASE",
     content: (
       <div className="space-y-4">
-        <div className="text-xl font-bold text-yellow-600 flex items-center gap-2">💰 Monto total a cubrir por el cliente: <span className="text-gray-900 bg-yellow-100 rounded px-3 py-1 ml-2">$140.00 USD</span></div>
+        <div className="text-xl font-bold text-yellow-600 flex items-center gap-2">💰 Monto total a cubrir por el cliente: <span className="text-white bg-yellow-500 rounded px-3 py-1 ml-2">$140.00 USD</span></div>
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm bg-gradient-to-br from-yellow-200/10 to-yellow-400/10 rounded-xl">
             <thead>
