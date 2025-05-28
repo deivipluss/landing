@@ -197,6 +197,45 @@ export const proposalSlides: ProposalSlideType[] = [
         <div className="mt-2">Siguiente paso: Aprobar la propuesta y definir responsables internos para activar el proceso.</div>
       </div>
     )
+  },
+  {
+    title: "Costos operativos base que el cliente debe asumir para el reinicio del proyecto",
+    content: (
+      <div className="space-y-4">
+        <div className="text-xl font-bold text-yellow-600 flex items-center gap-2">💰 Monto total a cubrir por el cliente: <span className="text-gray-900 bg-yellow-100 rounded px-3 py-1 ml-2">$140.00 USD</span></div>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-sm bg-gradient-to-br from-yellow-200/10 to-yellow-400/10 rounded-xl">
+            <thead>
+              <tr className="text-left text-yellow-600 font-bold">
+                <th className="py-2 px-3">Concepto</th>
+                <th className="py-2 px-3">Detalle</th>
+                <th className="py-2 px-3">Monto</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-900/90">
+              <tr>
+                <td className="py-1 px-3">Hosting y dominio web</td>
+                <td className="py-1 px-3">Alojamiento anual + activación del dominio</td>
+                <td className="py-1 px-3 font-semibold">$80.00</td>
+              </tr>
+              <tr>
+                <td className="py-1 px-3">Facebook Ads inicial</td>
+                <td className="py-1 px-3">Activación de campaña publicitaria geolocalizada</td>
+                <td className="py-1 px-3 font-semibold">$60.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="space-y-2 mt-2">
+          <div className="font-semibold text-yellow-700">📌 Importancia:</div>
+          <ul className="list-disc ml-6 text-gray-900/90 space-y-1">
+            <li>Son costos imprescindibles para desplegar el sistema digital (sitio, pauta, reservas, tráfico).</li>
+            <li>Se realiza por única vez en esta etapa como inversión base.</li>
+            <li>Permite arrancar con todo el ecosistema activo desde la primera semana.</li>
+          </ul>
+        </div>
+      </div>
+    )
   }
 ];
 
