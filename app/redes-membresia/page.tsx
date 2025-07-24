@@ -36,7 +36,7 @@ export default function RedesMembresia() {
         <HomeNavigation />
       </motion.div>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden pt-16">
+      <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden pt-24">
         <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <motion.h1 
