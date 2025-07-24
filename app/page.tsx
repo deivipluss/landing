@@ -10,25 +10,39 @@ const serviceCards = [
     href: "/gerencias"
   },
   {
-    title: "Redes de membresía",
-    desc: "Gestión y crecimiento de comunidades y plataformas de membresía.",
+    title: "Redes de Membresía",
+    desc: "Gestión profesional de OnlyFans, Fansly, Loverfans y Patreon para maximizar ingresos.",
     icon: <FaStore className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#9370DB] to-[#6A5ACD]",
     href: "/redes-membresia"
   },
   {
-    title: "Social Media Manager, UX/UI",
-    desc: "Estrategia, diseño y experiencia digital para marcas y productos.",
-    icon: <FaBrain className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    title: "Gestión de Contenido",
+    desc: "Estrategia y cobertura 360° para creación y distribución de contenido multiplataforma.",
+    icon: <FaStream className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#FF5C5C] to-[#FF914D]",
-    href: "/social-media-uxui"
+    href: "/gestion-contenido"
   },
   {
-    title: "Diseño y desarrollo con IA",
-    desc: "Automatización, creatividad y tecnología para el futuro digital.",
-    icon: <FaRocket className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    title: "UX/UI & Desarrollo",
+    desc: "Diseño de interfaces y desarrollo de software con las últimas tecnologías de programación.",
+    icon: <FaCode className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    color: "from-[#FF6B6B] to-[#4ECDC4]",
+    href: "/ux-desarrollo"
+  },
+  {
+    title: "Funnels & Leads IA",
+    desc: "Embudos de venta y captación de leads potenciados con inteligencia artificial para mayor conversión.",
+    icon: <FaChartLine className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#00C9A7] to-[#4A90E2]",
-    href: "/ia-design-dev"
+    href: "/funnels-leads"
+  },
+  {
+    title: "Entrenamiento Ejecutivo",
+    desc: "Capacitación especializada para directivos en transformación digital y liderazgo tecnológico.",
+    icon: <FaGraduationCap className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    color: "from-[#FFB75E] to-[#ED8F03]",
+    href: "/entrenamiento-ejecutivo"
   }
 ];
 
@@ -87,22 +101,24 @@ const ServiceSlider: React.FC = () => {
     );
   }
 
-  // Desktop: slider 2x2 (2 slides con 2 tarjetas cada uno)
-  const handlePrev = () => setSlide(slide === 0 ? 1 : 0);
-  const handleNext = () => setSlide(slide === 1 ? 0 : 1);
+  // Desktop: slider con 3 slides de 2 tarjetas cada uno
+  const totalSlides = 3;
+  const handlePrev = () => setSlide((slide - 1 + totalSlides) % totalSlides);
+  const handleNext = () => setSlide((slide + 1) % totalSlides);
 
   return (
     <div className="relative w-full overflow-hidden">
       <div
         className="flex transition-transform duration-500"
         style={{
-          width: '200%',
-          transform: `translateX(-${slide * 50}%)`,
+          width: `${totalSlides * 100}%`,
+          transform: `translateX(-${slide * (100 / totalSlides)}%)`,
         }}
       >
-        {/* Primer slide: primeras 2 tarjetas */}
-        <div className="flex w-1/2 gap-6 px-1">
-          {serviceCards.slice(0, 2).map((card) => (
+        {/* Tres slides de 2 tarjetas cada uno */}
+        {[0, 1, 2].map((slideIndex) => (
+          <div key={slideIndex} className="flex w-1/3 gap-6 px-1">
+            {serviceCards.slice(slideIndex * 2, (slideIndex * 2) + 2).map((card) => (
               <Link href={card.href} className="w-1/2" key={card.title}>
                 <motion.div
                   whileHover={{ scale: 1.03 }}
@@ -119,32 +135,19 @@ const ServiceSlider: React.FC = () => {
                 </motion.div>
               </Link>
             ))}
-        </div>
-        {/* Segundo slide: últimas 2 tarjetas */}
-        <div className="flex w-1/2 gap-6 px-1">
-          {serviceCards.slice(2, 4).map((card) => (
-              <Link href={card.href} className="w-1/2" key={card.title}>
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
-                >
-                  <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
-                    {card.icon}
-                    <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
-                    <span className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</span>
-                    <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
-                      Descubrir más
-                    </div>
-                  </div>
-                </motion.div>
-              </Link>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
       {/* Controles del slider */}
       <div className="flex justify-center mt-4 gap-2">
-        <button onClick={handlePrev} className={`w-3 h-3 rounded-full ${slide === 0 ? 'bg-[#4A90E2]' : 'bg-gray-400/40'} hover:opacity-100 transition`} aria-label="Primer slide" />
-        <button onClick={handleNext} className={`w-3 h-3 rounded-full ${slide === 1 ? 'bg-[#4A90E2]' : 'bg-gray-400/40'} hover:opacity-100 transition`} aria-label="Segundo slide" />
+        {[0, 1, 2].map((index) => (
+          <button
+            key={index}
+            onClick={() => setSlide(index)}
+            className={`w-3 h-3 rounded-full ${slide === index ? 'bg-[#4A90E2]' : 'bg-gray-400/40'} hover:opacity-100 transition`}
+            aria-label={`Slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -163,8 +166,12 @@ import {
   FaPinterest,
   FaSpotify,
   FaArrowUp,
-  FaBuilding,  // Nuevo icono para Empresas
-  FaStore      // Nuevo icono para Negocios
+  FaBuilding,
+  FaStore,
+  FaStream,
+  FaCode,
+  FaChartLine,
+  FaGraduationCap
 } from "react-icons/fa";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
