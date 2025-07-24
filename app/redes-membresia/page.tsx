@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { CreatorMetricsChart } from './CreatorMetricsChart';
 import { creatorMetrics, testimonials, platformFeatures, faqData, blogPosts } from './data';
-import { FaWhatsapp, FaArrowUp, FaBlog } from 'react-icons/fa';
+import { FaWhatsapp, FaArrowUp, FaBlog, FaUserTie, FaCogs, FaLightbulb } from 'react-icons/fa';
 import Link from 'next/link';
 import HomeNavigation from '@/components/HomeNavigation';
 
@@ -60,10 +60,44 @@ export default function RedesMembresia() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] flex flex-col overflow-hidden">
+      {/* Barra lateral de navegación (solo escritorio) */}
+      <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40">
+        <motion.div 
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="py-6 px-3 bg-[#1A1A2E]/60 backdrop-blur-md rounded-xl flex flex-col gap-6 border border-blue-500/20"
+        >
+          {[
+            { id: "overview", label: "Visión General", icon: <FaUserTie /> },
+            { id: "metrics", label: "Métricas", icon: <FaCogs /> },
+            { id: "features", label: "Plataformas", icon: <FaLightbulb /> },
+            { id: "blog", label: "Blog", icon: <FaBlog /> }
+          ].map(item => (
+            <div key={item.id} className="relative group">
+              <button 
+                onClick={() => {
+                  const el = document.getElementById(item.id);
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className={`p-3 rounded-lg ${activeSection === item.id ? "bg-[#4A90E2] text-white" : "text-gray-400 hover:text-white"}`}
+              >
+                {item.icon}
+              </button>
+              <div className="absolute left-full ml-2 px-2 py-1 bg-[#1A1A2E] text-white text-xs whitespace-nowrap rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {item.label}
+              </div>
+              {activeSection === item.id && (
+                <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5 bg-[#4A90E2]"></div>
+              )}
+            </div>
+          ))}
+        </motion.div>
+      </div>
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
         <HomeNavigation />
         {/* Hero Section */}
-        <section ref={overviewRef} className="relative h-screen flex items-center justify-center overflow-hidden">
+        <section ref={overviewRef} id="overview" className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <motion.h1 
@@ -94,7 +128,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Métricas Section */}
-      <section ref={metricsRef} className="py-20">
+      <section ref={metricsRef} id="metrics" className="py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Resultados que Hablan por Sí Mismos
@@ -138,7 +172,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Platform Features */}
-      <section ref={featuresRef} className="py-20">
+      <section ref={featuresRef} id="features" className="py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Maximiza tu Presencia en Cada Plataforma
@@ -193,7 +227,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Blog Section */}
-      <section ref={blogRef} className="py-20">
+      <section ref={blogRef} id="blog" className="py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Blog y Recursos
@@ -241,32 +275,7 @@ export default function RedesMembresia() {
         </div>
       </section>
 
-      {/* Botones flotantes de navegación */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
-        <Link
-          href="https://wa.me/1234567890"
-          target="_blank"
-          className="bg-green-500 text-white p-4 rounded-full hover:scale-110 transition-transform"
-        >
-          <FaWhatsapp size={24} />
-        </Link>
 
-        <Link
-          href="/blog"
-          className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-4 rounded-full hover:scale-110 transition-transform"
-        >
-          <FaBlog size={24} />
-        </Link>
-
-        {showScrollTop && (
-          <button
-            onClick={scrollToTop}
-            className="bg-gray-800 text-white p-4 rounded-full hover:scale-110 transition-transform"
-          >
-            <FaArrowUp size={24} />
-          </button>
-        )}
-      </div>
 
       {/* Footer */}
       <footer className="bg-black/30 text-white py-12">
