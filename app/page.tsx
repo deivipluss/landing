@@ -34,7 +34,29 @@ const serviceCards = [
 
 const ServiceSlider: React.FC = () => {
   const [slide, setSlide] = useSliderState(0);
-  const totalSlides = Math.ceil(serviceCards.length / 2);
+  const [cardsPerSlide, setCardsPerSlide] = useState(2);
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    // Responsive: 2 cards per slide in desktop, 1 in mobile
+    const updateCardsPerSlide = () => {
+      setCardsPerSlide(window.innerWidth >= 1024 ? 2 : 1);
+    };
+    updateCardsPerSlide();
+    window.addEventListener('resize', updateCardsPerSlide);
+    return () => window.removeEventListener('resize', updateCardsPerSlide);
+  }, []);
+
+  // Ajustar slide si cambia cardsPerSlide y el slide actual queda fuera de rango
+  useEffect(() => {
+    if (!isFirstRender.current) {
+      setSlide(0);
+    } else {
+      isFirstRender.current = false;
+    }
+  }, [cardsPerSlide]);
+
+  const totalSlides = Math.ceil(serviceCards.length / cardsPerSlide);
 
   const handlePrev = () => setSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   const handleNext = () => setSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
@@ -42,12 +64,12 @@ const ServiceSlider: React.FC = () => {
   return (
     <div className="relative w-full">
       <div className="flex flex-row gap-4 sm:gap-6 transition-transform duration-500" style={{transform: `translateX(-${slide * 100}%)`}}>
-        {[0, 1].map((offset) => {
-          const idx = slide * 2 + offset;
+        {Array.from({ length: cardsPerSlide }).map((_, offset) => {
+          const idx = slide * cardsPerSlide + offset;
           const card = serviceCards[idx];
           if (!card) return null;
           return (
-            <Link href={card.href} className="w-1/2" key={card.title}>
+            <Link href={card.href} className={cardsPerSlide === 2 ? "w-1/2" : "w-full"} key={card.title}>
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
