@@ -13,7 +13,7 @@ const serviceCards = [
     title: "Redes de Membresía",
     desc: "OnlyFans · Loverfans · Fansly · Patreon",
     icon: <FaFire className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
-    color: "from-[#FF0000] to-[#8B0000]",
+    color: "from-[#FF69B4] to-[#DB7093]",
     href: "/redes-membresia"
   },
   {
