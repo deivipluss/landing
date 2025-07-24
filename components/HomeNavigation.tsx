@@ -17,22 +17,22 @@ const HomeNavigation = () => {
   const navItems = [
     { 
       href: "/", 
-      icon: <FaCogs className="transition-transform duration-300 group-hover:rotate-180" />, 
+      icon: <FaCogs className="transition-transform duration-300 group-hover:rotate-180 text-[#A259F7] group-hover:text-[#7C3AED]" />, 
       label: "Home" 
     },
     { 
       href: "/#solutions", 
-      icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110" />, 
+      icon: <FaBrain className="transition-transform duration-300 group-hover:scale-110 text-[#A259F7] group-hover:text-[#7C3AED]" />, 
       label: "Soluciones" 
     },
     { 
       href: "/novedades-tech", 
-      icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110" />, 
+      icon: <FaRocket className="transition-transform duration-300 group-hover:scale-110 text-[#A259F7] group-hover:text-[#7C3AED]" />, 
       label: "Tech News" 
     },
     { 
       href: "/contacto", 
-      icon: <FaWhatsapp className="transition-transform duration-300 group-hover:rotate-12" />, 
+      icon: <FaWhatsapp className="transition-transform duration-300 group-hover:rotate-12 text-[#A259F7] group-hover:text-[#7C3AED]" />, 
       label: "Contacto" 
     },
   ];
@@ -57,7 +57,7 @@ const HomeNavigation = () => {
   };
 
   return (
-    <header className="flex justify-center py-3 sm:py-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10 space-x-3 sm:space-x-4 bg-[#1A1A2E]/80 backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#4A90E2]/20">
+    <header className="flex justify-center py-3 sm:py-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10 space-x-3 sm:space-x-4 bg-gradient-to-br from-[#22c55e] to-[#14532d] backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#22c55e]/30">
       {navItems.map((item) => (
         <Link 
           key={item.href}
