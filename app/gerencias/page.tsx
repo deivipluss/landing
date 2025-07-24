@@ -79,13 +79,17 @@ export default function GerenciasPage() {
         if (ref.current) {
           const element = ref.current;
           const { top, bottom } = element.getBoundingClientRect();
-          
           if (top < window.innerHeight / 2 && bottom > window.innerHeight / 2) {
             setActiveSection(id);
             break;
           }
         }
-        // ...existing code...
+      }
+    };
+    // Si quieres usar handleScroll, aquí deberías agregar el event listener
+    // window.addEventListener('scroll', handleScroll);
+    // return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
