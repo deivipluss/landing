@@ -4,36 +4,42 @@ import React, { useState, useEffect, useRef } from "react";
 const serviceCards = [
   {
     title: "Gerencias 360°",
+    desc: "Comunicación, operaciones y rentabilidad para el éxito empresarial.",
     icon: <FaUserTie className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#4A90E2] to-[#00F5D4]",
     href: "/gerencias"
   },
   {
     title: "Redes de Membresía",
+    desc: "OnlyFans · Loverfans · Fansly · Patreon",
     icon: <FaFire className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#FF0000] to-[#8B0000]",
     href: "/redes-membresia"
   },
   {
     title: "Gestión de Contenido",
+    desc: "Estrategia y cobertura 360° multiplataforma.",
     icon: <FaStream className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#9B59B6] to-[#8E44AD]",
     href: "/gestion-contenido"
   },
   {
     title: "UX/UI & Desarrollo",
+    desc: "Diseño de interfaces y desarrollo de software profesional.",
     icon: <FaCode className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#3498DB] to-[#2980B9]",
     href: "/ux-desarrollo"
   },
   {
     title: "Funnels & Leads IA",
+    desc: "Embudos de venta y captación automatizada de clientes.",
     icon: <FaChartLine className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#00C9A7] to-[#4A90E2]",
     href: "/funnels-leads"
   },
   {
     title: "Entrenamiento Ejecutivo",
+    desc: "Desarrollo de habilidades para la toma de decisiones estratégicas.",
     icon: <FaGraduationCap className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#FFB75E] to-[#ED8F03]",
     href: "/entrenamiento-ejecutivo"
@@ -81,10 +87,11 @@ const ServiceSlider: React.FC = () => {
               whileHover={{ scale: 1.03 }}
               className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
             >
-              <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+              <div className="flex flex-col items-center justify-center text-center space-y-2 z-10">
                 {card.icon}
                 <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
-                <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
+                <p className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</p>
+                <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all">
                   Descubrir más
                 </div>
               </div>
@@ -125,10 +132,11 @@ const ServiceSlider: React.FC = () => {
                   className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden group`}
                   style={{ transformOrigin: 'center' }}
                 >
-                  <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+                  <div className="flex flex-col items-center justify-center text-center space-y-2 z-10">
                     {card.icon}
                     <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
-                    <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
+                    <p className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</p>
+                    <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all">
                       Descubrir más
                     </div>
                   </div>
