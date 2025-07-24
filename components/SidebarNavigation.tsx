@@ -36,31 +36,40 @@ const serviceColors = {
   }
 };
 
-const SidebarNavigation = ({ activeSection, setActiveSection }) => {
+interface SidebarNavigationProps {
+  activeSection: string;
+  setActiveSection: (id: string) => void;
+}
+
+const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, setActiveSection }) => {
   const pathname = usePathname();
-  const colors = serviceColors[
-    Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default"
-  ];
+  const routeKey = Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default";
+  const colors = serviceColors[routeKey as keyof typeof serviceColors];
 
   return (
     <div className={`py-6 px-3 bg-gradient-to-br ${colors.bg} backdrop-blur-md rounded-xl flex flex-col gap-6 border`} style={{ borderColor: colors.border }}>
       {sidebarItems.map((item) => {
         const Icon = item.icon;
+        const isActive = activeSection === item.id;
         return (
           <div key={item.id} className="relative group">
             <button
               onClick={() => setActiveSection(item.id)}
-              className={`p-3 rounded-lg group/icon ${activeSection === item.id ? `bg-[${colors.icon}] text-white` : `bg-transparent text-[${colors.text}]`}`}
+              className={`p-3 rounded-lg group/icon ${isActive ? "text-white" : "bg-transparent"}`}
+              style={isActive ? { background: colors.icon, color: '#fff' } : { color: colors.text }}
             >
-              <span className={activeSection === item.id ? "text-white" : `text-[${colors.icon}] group-hover/icon:text-[${colors.iconHover}] transition-colors`}>
+              <span
+                className={isActive ? "text-white" : "transition-colors"}
+                style={!isActive ? { color: colors.icon } : { color: '#fff' }}
+              >
                 <Icon />
               </span>
             </button>
             <div className="absolute left-full ml-2 px-2 py-1 bg-[#1A1A2E] text-white text-xs whitespace-nowrap rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               {item.label}
             </div>
-            {activeSection === item.id && (
-              <div className={`absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5`} style={{ background: colors.icon }}></div>
+            {isActive && (
+              <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5" style={{ background: colors.icon }}></div>
             )}
           </div>
         );
