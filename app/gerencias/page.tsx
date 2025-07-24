@@ -32,7 +32,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 
 // Importar los datos y componentes
 import { faqData, metricsData, processSteps, successMetrics, impactMetrics } from './data';
-import { FAQItem, MetricCard, TimelineStep, SuccessStory } from './components';
+import { FAQItem, MetricCard, TimelineStep, SuccessStory, ServiceCard, BlogPost } from './components';
 import { MetricsChart } from './MetricsChart';
 
 export default function GerenciasPage() {
@@ -85,17 +85,7 @@ export default function GerenciasPage() {
             break;
           }
         }
-        <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40">
-          <SidebarNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
-    >
-      <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-      <p className="text-blue-400 text-sm mb-3">{date}</p>
-      <p className="text-gray-300 text-sm">{excerpt}</p>
-      <button className="mt-4 text-blue-400 hover:text-blue-300 text-sm font-medium">
-        Leer más →
-      </button>
-    </motion.div>
-  );
+        // ...existing code...
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">

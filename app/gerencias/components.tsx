@@ -1,3 +1,33 @@
+// Card para servicios
+interface ServiceCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+export const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => (
+  <div className="bg-[#1A1A2E]/60 rounded-xl p-6 flex flex-col items-center border border-[#4A90E2]/20 shadow-md hover:shadow-lg transition-all duration-300">
+    <div className="text-4xl mb-4 text-[#4A90E2]">{icon}</div>
+    <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+    <p className="text-gray-300 text-sm text-center">{description}</p>
+  </div>
+);
+
+// Card para posts de blog
+interface BlogPostProps {
+  title: string;
+  date: string;
+  excerpt: string;
+}
+
+export const BlogPost: React.FC<BlogPostProps> = ({ title, date, excerpt }) => (
+  <div className="bg-[#1A1A2E]/60 rounded-xl p-6 border border-[#4A90E2]/20 shadow-md hover:shadow-lg transition-all duration-300">
+    <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+    <p className="text-blue-400 text-sm mb-3">{date}</p>
+    <p className="text-gray-300 text-sm">{excerpt}</p>
+    <button className="mt-4 text-blue-400 hover:text-blue-300 text-sm font-medium">Leer más →</button>
+  </div>
+);
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaQuestionCircle } from 'react-icons/fa';
