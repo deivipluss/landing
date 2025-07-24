@@ -94,9 +94,19 @@ const ServiceSlider: React.FC = () => {
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="flex transition-transform duration-500 gap-6" style={{ width: `${totalSlides * 100}%`, transform: `translateX(-${slide * (100 / totalSlides)}%)` }}>
+      <div
+        className="flex transition-transform duration-500"
+        style={{
+          width: `${totalSlides * 100}%`,
+          transform: `translateX(-${slide * 100}%)`,
+        }}
+      >
         {Array.from({ length: totalSlides }).map((_, slideIdx) => (
-          <div className="flex w-full gap-6" style={{ minWidth: '100%' }} key={slideIdx}>
+          <div
+            className="flex w-full gap-6 px-1"
+            style={{ minWidth: '100%' }}
+            key={slideIdx}
+          >
             {serviceCards.slice(slideIdx * 2, slideIdx * 2 + 2).map((card) => (
               <Link href={card.href} className="w-1/2" key={card.title}>
                 <motion.div
