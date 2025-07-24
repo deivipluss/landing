@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { CreatorMetricsChart } from './CreatorMetricsChart';
 import { creatorMetrics, testimonials, platformFeatures, faqData, blogPosts } from './data';
@@ -10,13 +10,44 @@ import HomeNavigation from '@/components/HomeNavigation';
 
 export default function RedesMembresia() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeSection, setActiveSection] = useState("overview");
   const { scrollY, scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.2]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+
+  // Referencias para las secciones
+  const overviewRef = useRef<HTMLElement>(null);
+  const metricsRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
+  const blogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     return scrollY.onChange(() => {
       setShowScrollTop(scrollY.get() > 100);
+
+      // Actualizar sección activa basado en el scroll
+      const sections = [
+        { ref: overviewRef, id: "overview" },
+        { ref: metricsRef, id: "metrics" },
+        { ref: testimonialsRef, id: "testimonials" },
+        { ref: featuresRef, id: "features" },
+        { ref: faqRef, id: "faq" },
+        { ref: blogRef, id: "blog" }
+      ];
+
+      const currentSection = sections.find(section => {
+        if (section.ref.current) {
+          const { top, bottom } = section.ref.current.getBoundingClientRect();
+          return top <= 100 && bottom >= 100;
+        }
+        return false;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection.id);
+      }
     });
   }, [scrollY]);
 
@@ -36,7 +67,7 @@ export default function RedesMembresia() {
         <HomeNavigation />
       </motion.div>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden pt-24">
+      <section ref={overviewRef} className="relative h-screen flex items-center justify-center px-4 overflow-hidden pt-24">
         <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <motion.h1 
@@ -67,7 +98,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Métricas Section */}
-      <section className="py-20 px-4">
+      <section ref={metricsRef} className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Resultados que Hablan por Sí Mismos
@@ -77,7 +108,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-black/30">
+      <section ref={testimonialsRef} className="py-20 px-4 bg-black/30">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Historias de Éxito
@@ -111,7 +142,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Platform Features */}
-      <section className="py-20 px-4">
+      <section ref={featuresRef} className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Maximiza tu Presencia en Cada Plataforma
@@ -142,7 +173,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 bg-black/30">
+      <section ref={faqRef} className="py-20 px-4 bg-black/30">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Preguntas Frecuentes
@@ -166,7 +197,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Blog Section */}
-      <section className="py-20 px-4">
+      <section ref={blogRef} className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Blog y Recursos
