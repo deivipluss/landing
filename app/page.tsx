@@ -87,27 +87,22 @@ const ServiceSlider: React.FC = () => {
     );
   }
 
-  // Desktop: slider 2x2
-  const totalSlides = Math.ceil(serviceCards.length / 2);
-  const handlePrev = () => setSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-  const handleNext = () => setSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+  // Desktop: slider 2x2 (2 slides con 2 tarjetas cada uno)
+  const handlePrev = () => setSlide(slide === 0 ? 1 : 0);
+  const handleNext = () => setSlide(slide === 1 ? 0 : 1);
 
   return (
     <div className="relative w-full overflow-hidden">
       <div
         className="flex transition-transform duration-500"
         style={{
-          width: `${totalSlides * 100}%`,
-          transform: `translateX(-${slide * 100}%)`,
+          width: '200%',
+          transform: `translateX(-${slide * 50}%)`,
         }}
       >
-        {Array.from({ length: totalSlides }).map((_, slideIdx) => (
-          <div
-            className="flex w-full gap-6 px-1"
-            style={{ minWidth: '100%' }}
-            key={slideIdx}
-          >
-            {serviceCards.slice(slideIdx * 2, slideIdx * 2 + 2).map((card) => (
+        {/* Primer slide: primeras 2 tarjetas */}
+        <div className="flex w-1/2 gap-6 px-1">
+          {serviceCards.slice(0, 2).map((card) => (
               <Link href={card.href} className="w-1/2" key={card.title}>
                 <motion.div
                   whileHover={{ scale: 1.03 }}
@@ -124,13 +119,32 @@ const ServiceSlider: React.FC = () => {
                 </motion.div>
               </Link>
             ))}
-          </div>
-        ))}
+        </div>
+        {/* Segundo slide: últimas 2 tarjetas */}
+        <div className="flex w-1/2 gap-6 px-1">
+          {serviceCards.slice(2, 4).map((card) => (
+              <Link href={card.href} className="w-1/2" key={card.title}>
+                <motion.div
+                  whileHover={{ scale: 1.03 }}
+                  className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
+                >
+                  <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+                    {card.icon}
+                    <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
+                    <span className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</span>
+                    <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
+                      Descubrir más
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
+          ))}
+        </div>
       </div>
       {/* Controles del slider */}
       <div className="flex justify-center mt-4 gap-2">
-        <button onClick={handlePrev} className="w-3 h-3 rounded-full bg-[#4A90E2] opacity-70 hover:opacity-100 transition" aria-label="Anterior" />
-        <button onClick={handleNext} className="w-3 h-3 rounded-full bg-[#4A90E2] opacity-70 hover:opacity-100 transition" aria-label="Siguiente" />
+        <button onClick={handlePrev} className={`w-3 h-3 rounded-full ${slide === 0 ? 'bg-[#4A90E2]' : 'bg-gray-400/40'} hover:opacity-100 transition`} aria-label="Primer slide" />
+        <button onClick={handleNext} className={`w-3 h-3 rounded-full ${slide === 1 ? 'bg-[#4A90E2]' : 'bg-gray-400/40'} hover:opacity-100 transition`} aria-label="Segundo slide" />
       </div>
     </div>
   );
