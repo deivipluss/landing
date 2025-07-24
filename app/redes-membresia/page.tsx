@@ -85,7 +85,6 @@ export default function RedesMembresia() {
                 <span className={activeSection === item.id ? "text-white" : "text-[#A259F7] group-hover/icon:text-[#7C3AED] transition-colors"}>
                   {item.icon}
                 </span>
-              >
               </button>
               <div className="absolute left-full ml-2 px-2 py-1 bg-[#1A1A2E] text-white text-xs whitespace-nowrap rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {item.label}
