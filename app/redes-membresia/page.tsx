@@ -59,15 +59,11 @@ export default function RedesMembresia() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] relative">
-      <motion.div 
-        className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent"
-        style={{ opacity, scale }}
-      >
+    <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] flex flex-col overflow-hidden">
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
         <HomeNavigation />
-      </motion.div>
-      {/* Hero Section */}
-      <section ref={overviewRef} className="relative h-screen flex items-center justify-center px-4 overflow-hidden pt-24">
+        {/* Hero Section */}
+        <section ref={overviewRef} className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <motion.h1 
@@ -98,7 +94,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Métricas Section */}
-      <section ref={metricsRef} className="py-20 px-4">
+      <section ref={metricsRef} className="py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Resultados que Hablan por Sí Mismos
@@ -108,7 +104,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Testimonials Section */}
-      <section ref={testimonialsRef} className="py-20 px-4 bg-black/30">
+      <section ref={testimonialsRef} className="py-20 bg-black/30">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Historias de Éxito
@@ -142,7 +138,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Platform Features */}
-      <section ref={featuresRef} className="py-20 px-4">
+      <section ref={featuresRef} className="py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Maximiza tu Presencia en Cada Plataforma
@@ -173,7 +169,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* FAQ Section */}
-      <section ref={faqRef} className="py-20 px-4 bg-black/30">
+      <section ref={faqRef} className="py-20 bg-black/30">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Preguntas Frecuentes
@@ -197,7 +193,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* Blog Section */}
-      <section ref={blogRef} className="py-20 px-4">
+      <section ref={blogRef} className="py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">
             Blog y Recursos
@@ -231,7 +227,7 @@ export default function RedesMembresia() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-pink-900/50 to-purple-900/50">
+      <section className="py-20 bg-gradient-to-r from-pink-900/50 to-purple-900/50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             ¿Lista para Llevar tu Contenido al Siguiente Nivel?
@@ -314,6 +310,7 @@ export default function RedesMembresia() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
