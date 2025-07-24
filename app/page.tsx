@@ -17,13 +17,13 @@ const serviceCards = [
   {
     title: "Gestión de Contenido",
     icon: <FaStream className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
-    color: "from-[#FF5C5C] to-[#FF914D]",
+    color: "from-[#9B59B6] to-[#8E44AD]",
     href: "/gestion-contenido"
   },
   {
     title: "UX/UI & Desarrollo",
     icon: <FaCode className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
-    color: "from-[#FF6B6B] to-[#4ECDC4]",
+    color: "from-[#3498DB] to-[#2980B9]",
     href: "/ux-desarrollo"
   },
   {
@@ -43,6 +43,7 @@ const serviceCards = [
 const ServiceSlider: React.FC = () => {
   const [slide, setSlide] = useSliderState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isAutoplay, setIsAutoplay] = useState(true);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -54,9 +55,9 @@ const ServiceSlider: React.FC = () => {
     return () => window.removeEventListener('resize', updateIsDesktop);
   }, []);
 
-  // Autoplay solo en desktop
+  // Autoplay solo en desktop y cuando no hay interacción del usuario
   useEffect(() => {
-    if (isDesktop) {
+    if (isDesktop && isAutoplay) {
       autoplayRef.current = setInterval(() => {
         setSlide((prev) => (prev + 1) % Math.ceil(serviceCards.length / 2));
       }, 3500);
@@ -64,10 +65,10 @@ const ServiceSlider: React.FC = () => {
         if (autoplayRef.current) clearInterval(autoplayRef.current);
       };
     } else {
-      setSlide(0);
+      if (!isDesktop) setSlide(0);
       if (autoplayRef.current) clearInterval(autoplayRef.current);
     }
-  }, [isDesktop]);
+  }, [isDesktop, isAutoplay]);
 
   // Slider sólo en desktop
   if (!isDesktop) {
@@ -96,8 +97,14 @@ const ServiceSlider: React.FC = () => {
 
   // Desktop: slider con 3 slides de 2 tarjetas cada uno
   const totalSlides = 3;
-  const handlePrev = () => setSlide((slide - 1 + totalSlides) % totalSlides);
-  const handleNext = () => setSlide((slide + 1) % totalSlides);
+  const handlePrev = () => {
+    setIsAutoplay(false);
+    setSlide((slide - 1 + totalSlides) % totalSlides);
+  };
+  const handleNext = () => {
+    setIsAutoplay(false);
+    setSlide((slide + 1) % totalSlides);
+  };
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -115,7 +122,8 @@ const ServiceSlider: React.FC = () => {
               <Link href={card.href} className="w-1/2" key={card.title}>
                 <motion.div
                   whileHover={{ scale: 1.03 }}
-                  className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
+                  className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden group`}
+                  style={{ transformOrigin: 'center' }}
                 >
                   <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
                     {card.icon}
@@ -135,7 +143,10 @@ const ServiceSlider: React.FC = () => {
         {[0, 1, 2].map((index) => (
           <button
             key={index}
-            onClick={() => setSlide(index)}
+            onClick={() => {
+              setIsAutoplay(false);
+              setSlide(index);
+            }}
             className={`w-3 h-3 rounded-full ${slide === index ? 'bg-[#4A90E2]' : 'bg-gray-400/40'} hover:opacity-100 transition`}
             aria-label={`Slide ${index + 1}`}
           />
