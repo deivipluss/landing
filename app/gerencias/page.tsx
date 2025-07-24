@@ -25,6 +25,7 @@ import {
   FaHandshake
 } from "react-icons/fa";
 import HomeNavigation from "@/components/HomeNavigation";
+import SidebarNavigation from "@/components/SidebarNavigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
@@ -84,36 +85,8 @@ export default function GerenciasPage() {
             break;
           }
         }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const ServiceCard = ({ icon, title, description }: { icon: JSX.Element, title: string, description: string }) => (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
-      className="flex flex-col items-center text-center p-6 bg-[#1A1A2E]/50 rounded-xl border border-blue-500/10 hover:border-blue-500/30 hover:bg-[#1A1A2E]/80 transition-all duration-300"
-    >
-      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] flex items-center justify-center text-white text-2xl mb-4">
-        {icon}
-      </div>
-      <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-      <p className="text-gray-300 text-sm">{description}</p>
-    </motion.div>
-  );
-
-  const BlogPost = ({ title, date, excerpt }: { title: string, date: string, excerpt: string }) => (
-    <motion.div 
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="p-6 bg-[#1A1A2E]/50 rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300"
+        <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40">
+          <SidebarNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
     >
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
       <p className="text-blue-400 text-sm mb-3">{date}</p>

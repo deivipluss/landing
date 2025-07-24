@@ -7,6 +7,7 @@ import { creatorMetrics, testimonials, platformFeatures, faqData, blogPosts } fr
 import { FaWhatsapp, FaArrowUp, FaBlog, FaUserTie, FaCogs, FaLightbulb } from 'react-icons/fa';
 import Link from 'next/link';
 import HomeNavigation from '@/components/HomeNavigation';
+import SidebarNavigation from '@/components/SidebarNavigation';
 
 export default function RedesMembresia() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -62,39 +63,7 @@ export default function RedesMembresia() {
     <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] flex flex-col overflow-hidden">
       {/* Barra lateral de navegación (solo escritorio) */}
       <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40">
-        <motion.div 
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="py-6 px-3 bg-[#1A1A2E]/60 backdrop-blur-md rounded-xl flex flex-col gap-6 border border-blue-500/20"
-        >
-          {[
-            { id: "overview", label: "Visión General", icon: <FaUserTie /> },
-            { id: "metrics", label: "Métricas", icon: <FaCogs /> },
-            { id: "features", label: "Plataformas", icon: <FaLightbulb /> },
-            { id: "blog", label: "Blog", icon: <FaBlog /> }
-          ].map(item => (
-            <div key={item.id} className="relative group">
-              <button 
-                onClick={() => {
-                  const el = document.getElementById(item.id);
-                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }}
-                className={`p-3 rounded-lg group/icon ${activeSection === item.id ? "bg-[#7C3AED] text-white" : "bg-transparent"}`}
-              >
-                <span className={activeSection === item.id ? "text-white" : "text-[#A259F7] group-hover/icon:text-[#7C3AED] transition-colors"}>
-                  {item.icon}
-                </span>
-              </button>
-              <div className="absolute left-full ml-2 px-2 py-1 bg-[#1A1A2E] text-white text-xs whitespace-nowrap rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                {item.label}
-              </div>
-              {activeSection === item.id && (
-                <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5 bg-[#A259F7]"></div>
-              )}
-            </div>
-          ))}
-        </motion.div>
+        <SidebarNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
       </div>
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
         <HomeNavigation />
