@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { CreatorMetricsChart } from './CreatorMetricsChart';
 import { creatorMetrics, testimonials, platformFeatures, faqData, blogPosts } from './data';
 import { FaWhatsapp, FaArrowUp, FaBlog } from 'react-icons/fa';
@@ -10,7 +10,9 @@ import HomeNavigation from '@/components/HomeNavigation';
 
 export default function RedesMembresia() {
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const { scrollY } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
   useEffect(() => {
     return scrollY.onChange(() => {
@@ -27,9 +29,12 @@ export default function RedesMembresia() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] relative">
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent">
+      <motion.div 
+        className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent"
+        style={{ opacity, scale }}
+      >
         <HomeNavigation />
-      </div>
+      </motion.div>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden pt-16">
         <div className="absolute inset-0 bg-black/50 z-0" />
