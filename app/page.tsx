@@ -34,58 +34,88 @@ const serviceCards = [
 
 const ServiceSlider: React.FC = () => {
   const [slide, setSlide] = useSliderState(0);
-  const [cardsPerSlide, setCardsPerSlide] = useState(2);
-  const isFirstRender = useRef(true);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Responsive: 2 cards per slide in desktop, 1 in mobile
-    const updateCardsPerSlide = () => {
-      setCardsPerSlide(window.innerWidth >= 1024 ? 2 : 1);
+    const updateIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
     };
-    updateCardsPerSlide();
-    window.addEventListener('resize', updateCardsPerSlide);
-    return () => window.removeEventListener('resize', updateCardsPerSlide);
+    updateIsDesktop();
+    window.addEventListener('resize', updateIsDesktop);
+    return () => window.removeEventListener('resize', updateIsDesktop);
   }, []);
 
-  // Ajustar slide si cambia cardsPerSlide y el slide actual queda fuera de rango
+  // Autoplay solo en desktop
   useEffect(() => {
-    if (!isFirstRender.current) {
-      setSlide(0);
+    if (isDesktop) {
+      autoplayRef.current = setInterval(() => {
+        setSlide((prev) => (prev + 1) % Math.ceil(serviceCards.length / 2));
+      }, 3500);
+      return () => {
+        if (autoplayRef.current) clearInterval(autoplayRef.current);
+      };
     } else {
-      isFirstRender.current = false;
+      setSlide(0);
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
     }
-  }, [cardsPerSlide]);
+  }, [isDesktop]);
 
-  const totalSlides = Math.ceil(serviceCards.length / cardsPerSlide);
+  // Slider sólo en desktop
+  if (!isDesktop) {
+    // Móvil: mostrar todas las tarjetas apiladas
+    return (
+      <div className="flex flex-col gap-4 sm:gap-6">
+        {serviceCards.map((card) => (
+          <Link href={card.href} className="w-full" key={card.title}>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
+            >
+              <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+                {card.icon}
+                <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
+                <span className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</span>
+                <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
+                  Descubrir más
+                </div>
+              </div>
+            </motion.div>
+          </Link>
+        ))}
+      </div>
+    );
+  }
 
+  // Desktop: slider 2x2
+  const totalSlides = Math.ceil(serviceCards.length / 2);
   const handlePrev = () => setSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   const handleNext = () => setSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
 
   return (
-    <div className="relative w-full">
-      <div className="flex flex-row gap-4 sm:gap-6 transition-transform duration-500" style={{transform: `translateX(-${slide * 100}%)`}}>
-        {Array.from({ length: cardsPerSlide }).map((_, offset) => {
-          const idx = slide * cardsPerSlide + offset;
-          const card = serviceCards[idx];
-          if (!card) return null;
-          return (
-            <Link href={card.href} className={cardsPerSlide === 2 ? "w-1/2" : "w-full"} key={card.title}>
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
-              >
-                <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
-                  {card.icon}
-                  <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
-                  <span className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</span>
-                  <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
-                    Descubrir más
+    <div className="relative w-full overflow-hidden">
+      <div className="flex transition-transform duration-500 gap-6" style={{ width: `${totalSlides * 100}%`, transform: `translateX(-${slide * (100 / totalSlides)}%)` }}>
+        {Array.from({ length: totalSlides }).map((_, slideIdx) => (
+          <div className="flex w-full gap-6" style={{ minWidth: '100%' }} key={slideIdx}>
+            {serviceCards.slice(slideIdx * 2, slideIdx * 2 + 2).map((card) => (
+              <Link href={card.href} className="w-1/2" key={card.title}>
+                <motion.div
+                  whileHover={{ scale: 1.03 }}
+                  className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
+                >
+                  <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+                    {card.icon}
+                    <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
+                    <span className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</span>
+                    <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
+                      Descubrir más
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            </Link>
-          );
-        })}
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+        ))}
       </div>
       {/* Controles del slider */}
       <div className="flex justify-center mt-4 gap-2">
