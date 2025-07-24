@@ -83,7 +83,7 @@ export default function RedesMembresia() {
                   const el = document.getElementById(item.id);
                   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
-                className={`p-3 rounded-lg ${activeSection === item.id ? "bg-[#4A90E2] text-white" : "text-gray-400 hover:text-white"}`}
+                className={`p-3 rounded-lg ${activeSection === item.id ? "bg-[#A259F7] text-white" : "text-[#A259F7] hover:text-white"}`}
               >
                 {item.icon}
               </button>
@@ -119,7 +119,7 @@ export default function RedesMembresia() {
                   const el = document.getElementById(item.id);
                   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
-                className={`p-2 rounded-full ${activeSection === item.id ? "bg-[#4A90E2] text-white" : "text-gray-400"}`}
+                className={`p-2 rounded-full ${activeSection === item.id ? "bg-[#A259F7] text-white" : "text-[#A259F7]"}`}
               >
                 {item.icon}
               </button>
@@ -311,46 +311,8 @@ export default function RedesMembresia() {
 
 
       {/* Footer */}
-      <footer className="bg-black/30 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Nosotros</h3>
-              <ul className="space-y-2">
-                <li><Link href="/about" className="text-gray-400 hover:text-pink-500">Sobre Nosotros</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-pink-500">Contacto</Link></li>
-                <li><Link href="/careers" className="text-gray-400 hover:text-pink-500">Carreras</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Servicios</h3>
-              <ul className="space-y-2">
-                <li><Link href="/onlyfans" className="text-gray-400 hover:text-pink-500">OnlyFans Management</Link></li>
-                <li><Link href="/fansly" className="text-gray-400 hover:text-pink-500">Fansly Growth</Link></li>
-                <li><Link href="/loverfans" className="text-gray-400 hover:text-pink-500">LoverFans Strategy</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Recursos</h3>
-              <ul className="space-y-2">
-                <li><Link href="/blog" className="text-gray-400 hover:text-pink-500">Blog</Link></li>
-                <li><Link href="/guides" className="text-gray-400 hover:text-pink-500">Guías</Link></li>
-                <li><Link href="/faq" className="text-gray-400 hover:text-pink-500">FAQ</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li><Link href="/privacy" className="text-gray-400 hover:text-pink-500">Privacidad</Link></li>
-                <li><Link href="/terms" className="text-gray-400 hover:text-pink-500">Términos</Link></li>
-                <li><Link href="/cookies" className="text-gray-400 hover:text-pink-500">Cookies</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400">© 2025 Digital Growth Agency. Todos los derechos reservados.</p>
-          </div>
-        </div>
+      <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20">
+        © 2025 - @Deivipluss Todos los derechos reservados.
       </footer>
       </div>
     </div>
