@@ -599,6 +599,47 @@ export default function GerenciasPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* Newsletter/CTA Section */}
+        <section className="py-16 md:py-24 bg-gradient-to-b from-[#1A1A2E]/50 to-transparent">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-gradient-to-br from-[#4A90E2]/10 to-[#00F5D4]/10 rounded-2xl border border-[#4A90E2]/20 p-8 md:p-12 text-center"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                ¿Listo para Transformar tu Empresa?
+              </h2>
+              <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+                Únete a las empresas que ya están experimentando un crecimiento exponencial con nuestras soluciones gerenciales
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => setShowContactForm(true)}
+                  className="px-8 py-4 bg-gradient-to-r from-[#4A90E2] to-[#00F5D4] text-white rounded-full hover:shadow-glow transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                >
+                  <FaRocket className="text-xl" />
+                  Comenzar Ahora
+                </button>
+                <a
+                  href="#services"
+                  className="px-8 py-4 border border-[#4A90E2]/30 text-white rounded-full hover:bg-[#4A90E2]/10 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <FaChartLine className="text-xl" />
+                  Explorar Servicios
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20">
+          © 2025 - @Deivipluss Todos los derechos reservados.
+        </footer>
       </div>
     </div>
   );
