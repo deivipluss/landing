@@ -26,11 +26,11 @@ export default function RedesMembresia() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E]">
-      {/* Navegación Superior */}
-      <HomeNavigation />
+    <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] relative">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent">
+        <HomeNavigation />
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden pt-16">
         <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <motion.h1 
