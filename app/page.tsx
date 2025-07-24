@@ -19,9 +19,9 @@ const serviceCards = [
   {
     title: "Gestión de Contenido",
     desc: "Estrategia y cobertura 360° multiplataforma.",
-    icon: <FaStream className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
-    color: "from-[#9B59B6] to-[#8E44AD]",
-    href: "/gestion-contenido"
+    icon: <FaStream className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity text-[#22c55e] group-hover:text-[#16a34a]" />,
+    color: "from-[#22c55e] to-[#14532d]",
+    href: "/gestion-contenidos"
   },
   {
     title: "UX/UI & Desarrollo",
