@@ -1,13 +1,34 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, useScroll } from 'framer-motion';
 import { CreatorMetricsChart } from './CreatorMetricsChart';
 import { creatorMetrics, testimonials, platformFeatures, faqData, blogPosts } from './data';
+import { FaWhatsapp, FaArrowUp, FaBlog } from 'react-icons/fa';
+import Link from 'next/link';
+import HomeNavigation from '@/components/HomeNavigation';
 
 export default function RedesMembresia() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    return scrollY.onChange(() => {
+      setShowScrollTop(scrollY.get() > 100);
+    });
+  }, [scrollY]);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E]">
+      {/* Navegación Superior */}
+      <HomeNavigation />
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-black/50 z-0" />
@@ -186,6 +207,76 @@ export default function RedesMembresia() {
           </button>
         </div>
       </section>
+
+      {/* Botones flotantes de navegación */}
+      <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+        <Link
+          href="https://wa.me/1234567890"
+          target="_blank"
+          className="bg-green-500 text-white p-4 rounded-full hover:scale-110 transition-transform"
+        >
+          <FaWhatsapp size={24} />
+        </Link>
+
+        <Link
+          href="/blog"
+          className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-4 rounded-full hover:scale-110 transition-transform"
+        >
+          <FaBlog size={24} />
+        </Link>
+
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="bg-gray-800 text-white p-4 rounded-full hover:scale-110 transition-transform"
+          >
+            <FaArrowUp size={24} />
+          </button>
+        )}
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-black/30 text-white py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Nosotros</h3>
+              <ul className="space-y-2">
+                <li><Link href="/about" className="text-gray-400 hover:text-pink-500">Sobre Nosotros</Link></li>
+                <li><Link href="/contact" className="text-gray-400 hover:text-pink-500">Contacto</Link></li>
+                <li><Link href="/careers" className="text-gray-400 hover:text-pink-500">Carreras</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Servicios</h3>
+              <ul className="space-y-2">
+                <li><Link href="/onlyfans" className="text-gray-400 hover:text-pink-500">OnlyFans Management</Link></li>
+                <li><Link href="/fansly" className="text-gray-400 hover:text-pink-500">Fansly Growth</Link></li>
+                <li><Link href="/loverfans" className="text-gray-400 hover:text-pink-500">LoverFans Strategy</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Recursos</h3>
+              <ul className="space-y-2">
+                <li><Link href="/blog" className="text-gray-400 hover:text-pink-500">Blog</Link></li>
+                <li><Link href="/guides" className="text-gray-400 hover:text-pink-500">Guías</Link></li>
+                <li><Link href="/faq" className="text-gray-400 hover:text-pink-500">FAQ</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li><Link href="/privacy" className="text-gray-400 hover:text-pink-500">Privacidad</Link></li>
+                <li><Link href="/terms" className="text-gray-400 hover:text-pink-500">Términos</Link></li>
+                <li><Link href="/cookies" className="text-gray-400 hover:text-pink-500">Cookies</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p className="text-gray-400">© 2025 Digital Growth Agency. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

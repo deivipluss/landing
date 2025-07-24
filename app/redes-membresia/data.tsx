@@ -35,7 +35,7 @@ export const testimonials = [
   },
   {
     name: "Ana Valentina",
-    platform: "OF & Patreon",
+    platform: "OF & LoverFans",
     income: "$18,000/mes",
     growth: "950%",
     image: "/imagenes/creator3.jpg",
@@ -47,10 +47,10 @@ export const platformFeatures = [
   {
     platform: "OnlyFans",
     features: [
-      "Gestión profesional de cuenta",
-      "Estrategias de precios premium",
-      "Optimización de mensajes privados",
-      "Marketing personalizado"
+      "Monetización de mensajes privados",
+      "Gestión de tips y regalos",
+      "Contenido PPV estratégico",
+      "Marketing de listas de deseos"
     ]
   },
   {
@@ -63,12 +63,12 @@ export const platformFeatures = [
     ]
   },
   {
-    platform: "Patreon",
+    platform: "LoverFans",
     features: [
-      "Contenido artístico y creativo",
-      "Comunidad exclusiva",
-      "Beneficios por niveles",
-      "Eventos especiales"
+      "Lista de deseos y regalos de fans",
+      "Transmisiones en vivo monetizadas",
+      "Mensajes privados premium",
+      "Subastas exclusivas"
     ]
   }
 ];
@@ -76,11 +76,11 @@ export const platformFeatures = [
 export const faqData = [
   {
     question: "¿Cómo me ayudan a monetizar mi contenido?",
-    answer: "Desarrollamos estrategias personalizadas que incluyen pricing óptimo, gestión de suscripciones, contenido exclusivo y campañas de marketing digital para maximizar tus ingresos en cada plataforma."
+    answer: "Desarrollamos estrategias integrales que incluyen múltiples fuentes de ingresos: suscripciones premium, mensajes privados PPV, transmisiones en vivo, listas de deseos, tips y regalos de fans, subastas de contenido exclusivo y campañas personalizadas de marketing digital para maximizar tus ingresos en cada plataforma."
   },
   {
     question: "¿Qué plataformas manejan?",
-    answer: "Trabajamos con las principales plataformas: OnlyFans, Fansly, Patreon, LoverFans y más. Te ayudamos a elegir la mejor combinación según tu contenido y objetivos."
+    answer: "Trabajamos con las principales plataformas: OnlyFans, Fansly, LoverFans y más. Te ayudamos a elegir la mejor combinación de plataformas y estrategias según tu contenido y objetivos."
   },
   {
     question: "¿Cómo protegen mi privacidad?",
