@@ -1,5 +1,79 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+// Slider de servicios para la home
+const serviceCards = [
+  {
+    title: "Gerencias 360°",
+    desc: "Soluciones integrales para la alta dirección y gestión empresarial.",
+    icon: <FaUserTie className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    color: "from-[#4A90E2] to-[#00F5D4]",
+    href: "/gerencias"
+  },
+  {
+    title: "Redes de membresía",
+    desc: "Gestión y crecimiento de comunidades y plataformas de membresía.",
+    icon: <FaStore className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    color: "from-[#9370DB] to-[#6A5ACD]",
+    href: "/redes-membresia"
+  },
+  {
+    title: "Social Media Manager, UX/UI",
+    desc: "Estrategia, diseño y experiencia digital para marcas y productos.",
+    icon: <FaBrain className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    color: "from-[#FF5C5C] to-[#FF914D]",
+    href: "/social-media-uxui"
+  },
+  {
+    title: "Diseño y desarrollo con IA",
+    desc: "Automatización, creatividad y tecnología para el futuro digital.",
+    icon: <FaRocket className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    color: "from-[#00C9A7] to-[#4A90E2]",
+    href: "/ia-design-dev"
+  }
+];
+
+const ServiceSlider: React.FC = () => {
+  const [slide, setSlide] = useSliderState(0);
+  const totalSlides = Math.ceil(serviceCards.length / 2);
+
+  const handlePrev = () => setSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
+  const handleNext = () => setSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+
+  return (
+    <div className="relative w-full">
+      <div className="flex flex-row gap-4 sm:gap-6 transition-transform duration-500" style={{transform: `translateX(-${slide * 100}%)`}}>
+        {[0, 1].map((offset) => {
+          const idx = slide * 2 + offset;
+          const card = serviceCards[idx];
+          if (!card) return null;
+          return (
+            <Link href={card.href} className="w-1/2" key={card.title}>
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                className={`bg-gradient-to-br ${card.color} text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden`}
+              >
+                <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
+                  {card.icon}
+                  <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
+                  <span className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</span>
+                  <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
+                    Descubrir más
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+          );
+        })}
+      </div>
+      {/* Controles del slider */}
+      <div className="flex justify-center mt-4 gap-2">
+        <button onClick={handlePrev} className="w-3 h-3 rounded-full bg-[#4A90E2] opacity-70 hover:opacity-100 transition" aria-label="Anterior" />
+        <button onClick={handleNext} className="w-3 h-3 rounded-full bg-[#4A90E2] opacity-70 hover:opacity-100 transition" aria-label="Siguiente" />
+      </div>
+    </div>
+  );
+};
+import { useState as useSliderState } from "react";
 import { 
   FaCogs, 
   FaBrain, 
@@ -242,57 +316,8 @@ const App: React.FC = () => {
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-black leading-none z-10 relative text-center lg:hidden mb-4" style={{ letterSpacing: "-2px" }}>
                   <span className="text-[#4A90E2] drop-shadow-glow">SOLUCIONES</span>
                 </h2>
-                
-                {/* Nueva implementación para tres tarjetas */}
-                <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
-                  {/* Tarjeta 1: Para Empresas */}
-                  <Link href="/empresas" className="w-full">
-                    <motion.div 
-                      whileHover={{ scale: 1.03 }}
-                      className="bg-gradient-to-br from-[#4A90E2] to-[#00F5D4] text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden"
-                    >
-                      <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
-                        <FaBuilding className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <h3 className="text-lg font-bold tracking-wide">EMPRESAS</h3>
-                        <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all">
-                          Descubrir más
-                        </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                  
-                  {/* Tarjeta 2: Para Negocios */}
-                  <Link href="/negocios" className="w-full">
-                    <motion.div 
-                      whileHover={{ scale: 1.03 }}
-                      className="bg-gradient-to-br from-[#9370DB] to-[#6A5ACD] text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden"
-                    >
-                      <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
-                        <FaStore className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <h3 className="text-lg font-bold tracking-wide">NEGOCIOS</h3>
-                        <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all">
-                          Descubrir más
-                        </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                  
-                  {/* Tarjeta 3: Para Personas */}
-                  <Link href="/personas" className="w-full">
-                    <motion.div 
-                      whileHover={{ scale: 1.03 }}
-                      className="bg-gradient-to-br from-[#FF5C5C] to-[#FF914D] text-white p-4 sm:p-5 rounded-xl relative shadow-glow h-[170px] sm:h-[190px] flex items-center justify-center w-full overflow-hidden"
-                    >
-                      <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
-                        <FaUserTie className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <h3 className="text-lg font-bold tracking-wide">PERSONAS</h3>
-                        <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all">
-                          Descubrir más
-                        </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                </div>
+                {/* Slider de servicios: 4 tarjetas, 2 por slide */}
+                <ServiceSlider />
               </motion.div>
             </div>
           </div>
