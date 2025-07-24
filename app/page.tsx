@@ -366,23 +366,23 @@ const App: React.FC = () => {
             <div className="flex justify-center lg:justify-end items-center">
               <ProfileCard />
             </div>
-            <div className="space-y-6 sm:space-y-8 lg:space-y-8 flex flex-col items-center lg:items-start">
+            <div className="space-y-6 sm:space-y-8 lg:space-y-8 flex flex-col items-center lg:items-start w-full">
               <ProfessionalInfo className="mt-4 sm:mt-6 lg:mt-0" />
+              <motion.div 
+                id="solutions"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="w-full mt-6 sm:mt-8 lg:mt-4 highlight"
+              >
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-black leading-none z-10 relative text-center lg:hidden mb-4" style={{ letterSpacing: "-2px" }}>
+                  <span className="text-[#4A90E2] drop-shadow-glow">SOLUCIONES</span>
+                </h2>
+                {/* Slider de servicios: 4 tarjetas, 2 por slide */}
+                <ServiceSlider />
+              </motion.div>
             </div>
           </div>
-          <motion.div 
-            id="solutions"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="w-full mt-6 sm:mt-8 lg:mt-4 highlight max-w-7xl mx-auto"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-black leading-none z-10 relative text-center lg:hidden mb-4" style={{ letterSpacing: "-2px" }}>
-              <span className="text-[#4A90E2] drop-shadow-glow">SOLUCIONES</span>
-            </h2>
-            {/* Slider de servicios: 4 tarjetas, 2 por slide */}
-            <ServiceSlider />
-          </motion.div>
         </main>
 
         {showBackToTop && (
