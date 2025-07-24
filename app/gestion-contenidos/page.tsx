@@ -94,7 +94,7 @@ export default function GestionContenidos() {
         </motion.div>
       </div>
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
-        <HomeNavigation iconColor="#22c55e" iconHoverColor="#16a34a" />
+        <HomeNavigation />
         {/* Hero Section */}
         <section ref={overviewRef} id="overview" className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-green-900/60 z-0" />
