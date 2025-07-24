@@ -60,7 +60,7 @@ export default function RedesMembresia() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] flex flex-col overflow-hidden">
-      {/* Barra lateral de navegación (solo escritorio) */}
+      {/* Barra lateral de navegación (escritorio) */}
       <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40">
         <motion.div 
           initial={{ x: -50, opacity: 0 }}
@@ -91,6 +91,34 @@ export default function RedesMembresia() {
                 <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5 bg-[#4A90E2]"></div>
               )}
             </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Menú flotante de navegación (móvil) */}
+      <div className="fixed bottom-8 left-0 right-0 z-40 flex justify-center md:hidden">
+        <motion.div 
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg"
+        >
+          {[
+            { id: "overview", icon: <FaUserTie />, label: "Visión General" },
+            { id: "metrics", icon: <FaCogs />, label: "Métricas" },
+            { id: "features", icon: <FaLightbulb />, label: "Plataformas" },
+            { id: "blog", icon: <FaBlog />, label: "Blog" }
+          ].map(item => (
+            <button 
+              key={item.id}
+              onClick={() => {
+                const el = document.getElementById(item.id);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              className={`p-2 rounded-full ${activeSection === item.id ? "bg-[#4A90E2] text-white" : "text-gray-400"}`}
+            >
+              {item.icon}
+            </button>
           ))}
         </motion.div>
       </div>
