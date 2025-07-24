@@ -94,10 +94,16 @@ const HomeNavigation = () => {
           onClick={(e) => item.href.includes('#') && handleNavClick(item.href, e)}
           className="group flex flex-col items-center cursor-pointer"
         >
-          <div className={`text-xl sm:text-2xl mx-2 sm:mx-3 text-[${colors.text}] group-hover:text-[${colors.textHover}] transition-all duration-300`}>
+          <div
+            className="text-xl sm:text-2xl mx-2 sm:mx-3 transition-all duration-300"
+            style={{ color: colors.border }}
+          >
             {item.icon}
           </div>
-          <span className={`text-[10px] sm:text-xs text-[${colors.text}] group-hover:text-[${colors.textHover}] transition-colors duration-300`}>
+          <span
+            className="text-[10px] sm:text-xs transition-colors duration-300"
+            style={{ color: colors.border }}
+          >
             {item.label}
           </span>
         </Link>
