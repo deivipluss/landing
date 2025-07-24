@@ -9,16 +9,35 @@ import {
   FaLightbulb,
   FaMicrochip,
   FaWhatsapp,
-  FaBlog
+  FaBlog,
+  FaQuestionCircle,
+  FaCheckCircle,
+  FaUsers,
+  FaChartBar,
+  FaArrowRight,
+  FaPlay,
+  FaStar,
+  FaClock,
+  FaCalendar,
+  FaPercent,
+  FaDollarSign,
+  FaTrophy,
+  FaHandshake
 } from "react-icons/fa";
 import HomeNavigation from "@/components/HomeNavigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
+// Importar los datos y componentes
+import { faqData, metricsData, processSteps, successMetrics, impactMetrics } from './data';
+import { FAQItem, MetricCard, TimelineStep, SuccessStory } from './components';
+import { MetricsChart } from './MetricsChart';
+
 export default function GerenciasPage() {
   const [activeSection, setActiveSection] = useState("overview");
   const [showContactForm, setShowContactForm] = useState(false);
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.2]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
@@ -26,6 +45,10 @@ export default function GerenciasPage() {
   const overviewRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const innovationRef = useRef<HTMLDivElement>(null);
+  const metricsRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
   const blogRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (section: string) => {
@@ -43,7 +66,11 @@ export default function GerenciasPage() {
       const refs = [
         { id: "overview", ref: overviewRef },
         { id: "services", ref: servicesRef },
+        { id: "metrics", ref: metricsRef },
+        { id: "process", ref: processRef },
         { id: "innovation", ref: innovationRef },
+        { id: "success", ref: successRef },
+        { id: "faq", ref: faqRef },
         { id: "blog", ref: blogRef }
       ];
       
@@ -111,10 +138,14 @@ export default function GerenciasPage() {
             className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg"
           >
             {[
-              { id: "overview", icon: <FaUserTie /> },
-              { id: "services", icon: <FaCogs /> },
-              { id: "innovation", icon: <FaLightbulb /> },
-              { id: "blog", icon: <FaBlog /> }
+              { id: "overview", icon: <FaUserTie />, label: "Visión General" },
+              { id: "services", icon: <FaCogs />, label: "Servicios" },
+              { id: "metrics", icon: <FaChartBar />, label: "Métricas" },
+              { id: "process", icon: <FaClock />, label: "Proceso" },
+              { id: "innovation", icon: <FaLightbulb />, label: "Innovación" },
+              { id: "success", icon: <FaTrophy />, label: "Casos de Éxito" },
+              { id: "faq", icon: <FaQuestionCircle />, label: "FAQ" },
+              { id: "blog", icon: <FaBlog />, label: "Blog" }
             ].map(item => (
               <button 
                 key={item.id}
@@ -272,6 +303,95 @@ export default function GerenciasPage() {
           </div>
         </section>
 
+        {/* Sección de Métricas */}
+        <section
+          ref={metricsRef}
+          id="metrics"
+          className="py-16 md:py-24 bg-gradient-to-b from-[#1A1A2E]/50 to-transparent"
+        >
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Impacto Medible en tu Negocio
+              </h2>
+              <p className="text-gray-300 max-w-2xl mx-auto">
+                Resultados comprobados que impulsan el crecimiento de tu empresa
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {metricsData.map((metric, index) => (
+                <MetricCard key={index} {...metric} index={index} />
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-[#1A1A2E]/50 rounded-xl border border-[#4A90E2]/20 p-6"
+            >
+              <h3 className="text-2xl font-bold text-white mb-8 text-center">
+                Evolución del Impacto por Área
+              </h3>
+              <MetricsChart data={impactMetrics} />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-8 text-center"
+            >
+              <button
+                onClick={() => setShowContactForm(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#4A90E2] to-[#00F5D4] text-white rounded-full hover:shadow-glow transition-all duration-300 hover:scale-105"
+              >
+                <FaChartLine className="text-xl" />
+                Impulsa tu Crecimiento
+              </button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Sección del Proceso */}
+        <section
+          ref={processRef}
+          id="process"
+          className="py-16 md:py-24"
+        >
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Proceso de Implementación
+              </h2>
+              <p className="text-gray-300 max-w-2xl mx-auto">
+                Un enfoque estructurado para garantizar resultados excepcionales
+              </p>
+            </motion.div>
+
+            <div className="space-y-8">
+              {processSteps.map((step, index) => (
+                <TimelineStep key={index} {...step} index={index} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Sección de Innovación */}
         <section
           ref={innovationRef}
@@ -324,6 +444,105 @@ export default function GerenciasPage() {
                   className="rounded-2xl"
                 />
               </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Sección de Casos de Éxito */}
+        <section
+          ref={successRef}
+          id="success"
+          className="py-16 md:py-24 bg-gradient-to-b from-[#1A1A2E]/50 to-transparent"
+        >
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Casos de Éxito
+              </h2>
+              <p className="text-gray-300 max-w-2xl mx-auto">
+                Historias reales de transformación y crecimiento
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {successMetrics.map((story, index) => (
+                <SuccessStory key={index} {...story} index={index} />
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-12 text-center"
+            >
+              <button
+                onClick={() => setShowContactForm(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[#4A90E2]/30 text-white rounded-full hover:bg-[#4A90E2]/10 transition-all duration-300"
+              >
+                <FaHandshake className="text-xl" />
+                Sé el Próximo Caso de Éxito
+              </button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Sección FAQ */}
+        <section
+          ref={faqRef}
+          id="faq"
+          className="py-16 md:py-24"
+        >
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Preguntas Frecuentes
+              </h2>
+              <p className="text-gray-300 max-w-2xl mx-auto">
+                Resolvemos tus dudas sobre nuestros servicios gerenciales
+              </p>
+            </motion.div>
+
+            <div className="max-w-3xl mx-auto">
+              {faqData.map((faq, index) => (
+                <FAQItem
+                  key={index}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openFAQ === index}
+                  onToggle={() => setOpenFAQ(openFAQ === index ? null : index)}
+                />
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mt-12"
+            >
+              <p className="text-gray-300 mb-4">¿No encontraste lo que buscabas?</p>
+              <button
+                onClick={() => setShowContactForm(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#4A90E2] to-[#00F5D4] text-white rounded-full hover:shadow-glow transition-all duration-300 hover:scale-105"
+              >
+                <FaWhatsapp className="text-xl" />
+                Pregúntanos Directamente
+              </button>
             </motion.div>
           </div>
         </section>
