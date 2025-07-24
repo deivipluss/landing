@@ -67,12 +67,12 @@ const HomeNavigation = () => {
         >
           <div className={`
             text-xl sm:text-2xl mx-2 sm:mx-3
-            ${isActive(item.href) ? 'text-[#00F5D4]' : 'text-[#4A90E2]'}
-            group-hover:text-[#00F5D4] transition-all duration-300
+            ${isActive(item.href) ? 'text-[#A259F7]' : 'text-[#A259F7]'}
+            group-hover:text-[#7C3AED] transition-all duration-300
           `}>
             {item.icon}
           </div>
-          <span className="text-[10px] sm:text-xs text-[#4A90E2] group-hover:text-[#00F5D4] transition-colors duration-300">
+          <span className="text-[10px] sm:text-xs text-[#A259F7] group-hover:text-[#7C3AED] transition-colors duration-300">
             {item.label}
           </span>
         </Link>
