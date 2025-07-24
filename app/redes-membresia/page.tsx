@@ -10,6 +10,7 @@ import HomeNavigation from '@/components/HomeNavigation';
 
 export default function RedesMembresia() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showMobileNav, setShowMobileNav] = useState(false);
   const [activeSection, setActiveSection] = useState("overview");
   const { scrollY, scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.2]);
@@ -25,7 +26,9 @@ export default function RedesMembresia() {
 
   useEffect(() => {
     return scrollY.onChange(() => {
-      setShowScrollTop(scrollY.get() > 100);
+      const scrollValue = scrollY.get();
+      setShowScrollTop(scrollValue > 100);
+      setShowMobileNav(scrollValue > 80); // Mostrar menú móvil tras hacer scroll
 
       // Actualizar sección activa basado en el scroll
       const sections = [
@@ -95,33 +98,35 @@ export default function RedesMembresia() {
         </motion.div>
       </div>
 
-      {/* Menú flotante de navegación (móvil) */}
-      <div className="fixed bottom-8 left-0 right-0 z-40 flex justify-center md:hidden">
-        <motion.div 
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg"
-        >
-          {[
-            { id: "overview", icon: <FaUserTie />, label: "Visión General" },
-            { id: "metrics", icon: <FaCogs />, label: "Métricas" },
-            { id: "features", icon: <FaLightbulb />, label: "Plataformas" },
-            { id: "blog", icon: <FaBlog />, label: "Blog" }
-          ].map(item => (
-            <button 
-              key={item.id}
-              onClick={() => {
-                const el = document.getElementById(item.id);
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }}
-              className={`p-2 rounded-full ${activeSection === item.id ? "bg-[#4A90E2] text-white" : "text-gray-400"}`}
-            >
-              {item.icon}
-            </button>
-          ))}
-        </motion.div>
-      </div>
+      {/* Menú flotante de navegación (móvil, aparece tras scroll) */}
+      {showMobileNav && (
+        <div className="fixed bottom-8 left-0 right-0 z-40 flex justify-center md:hidden">
+          <motion.div 
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg"
+          >
+            {[
+              { id: "overview", icon: <FaUserTie />, label: "Visión General" },
+              { id: "metrics", icon: <FaCogs />, label: "Métricas" },
+              { id: "features", icon: <FaLightbulb />, label: "Plataformas" },
+              { id: "blog", icon: <FaBlog />, label: "Blog" }
+            ].map(item => (
+              <button 
+                key={item.id}
+                onClick={() => {
+                  const el = document.getElementById(item.id);
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className={`p-2 rounded-full ${activeSection === item.id ? "bg-[#4A90E2] text-white" : "text-gray-400"}`}
+              >
+                {item.icon}
+              </button>
+            ))}
+          </motion.div>
+        </div>
+      )}
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
         <HomeNavigation />
         {/* Hero Section */}
