@@ -57,7 +57,7 @@ const HomeNavigation = () => {
   };
 
   return (
-    <header className="flex justify-center py-3 sm:py-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10 space-x-3 sm:space-x-4 bg-gradient-to-br from-[#22c55e] to-[#14532d] backdrop-blur-lg shadow-glow rounded-full w-[90%] max-w-3xl mx-auto border border-[#22c55e]/30">
+    <header className="flex justify-center py-3 sm:py-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10 space-x-3 sm:space-x-4 bg-transparent rounded-full w-[90%] max-w-3xl mx-auto border border-[#22c55e] shadow-glow">
       {navItems.map((item) => (
         <Link 
           key={item.href}
