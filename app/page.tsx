@@ -4,42 +4,36 @@ import React, { useState, useEffect, useRef } from "react";
 const serviceCards = [
   {
     title: "Gerencias 360°",
-    desc: "Soluciones integrales para la alta dirección y gestión empresarial.",
     icon: <FaUserTie className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#4A90E2] to-[#00F5D4]",
     href: "/gerencias"
   },
   {
     title: "Redes de Membresía",
-    desc: "Gestión profesional de OnlyFans, Fansly, Loverfans y Patreon para maximizar ingresos.",
-    icon: <FaStore className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
-    color: "from-[#9370DB] to-[#6A5ACD]",
+    icon: <FaFire className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
+    color: "from-[#FF0000] to-[#8B0000]",
     href: "/redes-membresia"
   },
   {
     title: "Gestión de Contenido",
-    desc: "Estrategia y cobertura 360° para creación y distribución de contenido multiplataforma.",
     icon: <FaStream className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#FF5C5C] to-[#FF914D]",
     href: "/gestion-contenido"
   },
   {
     title: "UX/UI & Desarrollo",
-    desc: "Diseño de interfaces y desarrollo de software con las últimas tecnologías de programación.",
     icon: <FaCode className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#FF6B6B] to-[#4ECDC4]",
     href: "/ux-desarrollo"
   },
   {
     title: "Funnels & Leads IA",
-    desc: "Embudos de venta y captación de leads potenciados con inteligencia artificial para mayor conversión.",
     icon: <FaChartLine className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#00C9A7] to-[#4A90E2]",
     href: "/funnels-leads"
   },
   {
     title: "Entrenamiento Ejecutivo",
-    desc: "Capacitación especializada para directivos en transformación digital y liderazgo tecnológico.",
     icon: <FaGraduationCap className="text-2xl sm:text-3xl opacity-80 group-hover:opacity-100 transition-opacity" />,
     color: "from-[#FFB75E] to-[#ED8F03]",
     href: "/entrenamiento-ejecutivo"
@@ -89,7 +83,6 @@ const ServiceSlider: React.FC = () => {
               <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
                 {card.icon}
                 <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
-                <span className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</span>
                 <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
                   Descubrir más
                 </div>
@@ -127,7 +120,6 @@ const ServiceSlider: React.FC = () => {
                   <div className="flex flex-col items-center justify-center text-center space-y-3 z-10">
                     {card.icon}
                     <h3 className="text-lg font-bold tracking-wide">{card.title}</h3>
-                    <span className="text-xs opacity-80 font-poppins font-medium leading-tight">{card.desc}</span>
                     <div className="bg-white/20 px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-all mt-2">
                       Descubrir más
                     </div>
@@ -167,7 +159,7 @@ import {
   FaSpotify,
   FaArrowUp,
   FaBuilding,
-  FaStore,
+  FaFire,
   FaStream,
   FaCode,
   FaChartLine,
