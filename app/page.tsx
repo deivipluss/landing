@@ -334,7 +334,8 @@ const App: React.FC = () => {
       }
       if (mainRef.current) {
         const { bottom } = mainRef.current.getBoundingClientRect();
-        setShowFooter(bottom <= window.innerHeight);
+        const scrolledToBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
+        setShowFooter(scrolledToBottom || bottom <= window.innerHeight);
       }
     };
     
@@ -428,11 +429,9 @@ const App: React.FC = () => {
           </motion.button>
         )}
 
-        {showFooter && (
-          <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20 w-full">
-            © 2025 - @Deivipluss Todos los derechos reservados.
-          </footer>
-        )}
+        <footer className={`bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20 w-full transition-opacity duration-300 ${showFooter ? 'opacity-100' : 'opacity-0'}`}>
+          © 2025 - @Deivipluss Todos los derechos reservados.
+        </footer>
       </div>
       <style jsx global>{`
         .drop-shadow-glow {
