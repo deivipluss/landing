@@ -34,6 +34,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { faqData, metricsData, processSteps, successMetrics, impactMetrics } from './data';
 import { FAQItem, MetricCard, TimelineStep, SuccessStory, ServiceCard, BlogPost } from './components';
 import { MetricsChart } from './MetricsChart';
+import Footer from "@/components/Footer";
 
 export default function GerenciasPage() {
   const [activeSection, setActiveSection] = useState("overview");
@@ -604,9 +605,7 @@ export default function GerenciasPage() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20">
-          © 2025 - @Deivipluss Todos los derechos reservados.
-        </footer>
+        <Footer />
       </div>
     </div>
   );
