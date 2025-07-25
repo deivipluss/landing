@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-'use client';
+"use client";
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
