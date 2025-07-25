@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 // Replica exacta de la página de Gerencias, adaptada para Gestión de Contenidos
 'use client';
 
@@ -96,9 +97,7 @@ export default function GestionContenidos() {
       </section>
       {/* ...resto igual que gerencias... */}
       {/* Footer */}
-      <footer className="bg-[#14532d]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-[#22c55e] text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#22c55e]/30">
-        © 2025 - @Deivipluss Todos los derechos reservados.
-      </footer>
+      <Footer />
       </div>
     </div>
   );
