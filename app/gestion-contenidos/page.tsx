@@ -1,6 +1,7 @@
+
+"use client";
 import Footer from "@/components/Footer";
 // Replica exacta de la página de Gerencias, adaptada para Gestión de Contenidos
-"use client";
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
