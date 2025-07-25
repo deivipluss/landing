@@ -46,8 +46,14 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
   const routeKey = Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default";
   const colors = serviceColors[routeKey as keyof typeof serviceColors];
 
+  // Detect if current route is 'redes-membresia' or 'gestion-contenidos' for no fill
+  const noFillRoutes = ["/redes-membresia", "/gestion-contenidos"];
+  const noFill = noFillRoutes.includes(routeKey);
   return (
-    <div className={`py-6 px-3 bg-gradient-to-br ${colors.bg} backdrop-blur-md rounded-xl flex flex-col gap-6 border`} style={{ borderColor: colors.border }}>
+    <div
+      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border${noFill ? '' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'}`}
+      style={{ borderColor: colors.border }}
+    >
       {sidebarItems.map((item) => {
         const Icon = item.icon;
         const isActive = activeSection === item.id;
