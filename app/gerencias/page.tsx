@@ -97,66 +97,10 @@ export default function GerenciasPage() {
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
         <HomeNavigation />
         
-        {/* Floating navigation for mobile */}
-        <div className="fixed bottom-8 left-0 right-0 z-40 flex justify-center md:hidden">
-          <motion.div 
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg"
-          >
-            {[
-              { id: "overview", icon: <FaUserTie />, label: "Visión General" },
-              { id: "services", icon: <FaCogs />, label: "Servicios" },
-              { id: "metrics", icon: <FaChartBar />, label: "Métricas" },
-              { id: "process", icon: <FaClock />, label: "Proceso" },
-              { id: "innovation", icon: <FaLightbulb />, label: "Innovación" },
-              { id: "success", icon: <FaTrophy />, label: "Casos de Éxito" },
-              { id: "faq", icon: <FaQuestionCircle />, label: "FAQ" },
-              { id: "blog", icon: <FaBlog />, label: "Blog" }
-            ].map(item => (
-              <button 
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`p-2 rounded-full ${activeSection === item.id ? "bg-[#4A90E2] text-white" : "text-gray-400"}`}
-              >
-                {item.icon}
-              </button>
-            ))}
-          </motion.div>
-        </div>
+        {/* Sidebar de navegación */}
+        <SidebarNavigation activeSection={activeSection} setActiveSection={scrollToSection} />
         
-        {/* Desktop sidebar navigation */}
-        <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40">
-          <motion.div 
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="py-6 px-3 bg-[#1A1A2E]/60 backdrop-blur-md rounded-xl flex flex-col gap-6 border border-blue-500/20"
-          >
-            {[
-              { id: "overview", label: "Visión General", icon: <FaUserTie /> },
-              { id: "services", label: "Servicios", icon: <FaCogs /> },
-              { id: "innovation", label: "Innovación", icon: <FaLightbulb /> },
-              { id: "blog", label: "Blog", icon: <FaBlog /> }
-            ].map(item => (
-              <div key={item.id} className="relative group">
-                <button 
-                  onClick={() => scrollToSection(item.id)}
-                  className={`p-3 rounded-lg ${activeSection === item.id ? "bg-[#4A90E2] text-white" : "text-gray-400 hover:text-white"}`}
-                >
-                  {item.icon}
-                </button>
-                <div className="absolute left-full ml-2 px-2 py-1 bg-[#1A1A2E] text-white text-xs whitespace-nowrap rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  {item.label}
-                </div>
-                {activeSection === item.id && (
-                  <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5 bg-[#4A90E2]"></div>
-                )}
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        {/* El componente SidebarNavigation ya renderiza el sidebar adecuado */}
 
         {/* Hero section */}
         <motion.section

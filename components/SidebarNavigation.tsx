@@ -37,6 +37,14 @@ const serviceColors = {
   }
 };
 
+// Mensajes de WhatsApp personalizados por ruta
+const whatsappMessages: Record<string, string> = {
+  "/gerencias": "Quiero contratar servicios de Gerencias",
+  "/redes-membresia": "Quiero contratar Redes y Membresía",
+  "/gestion-contenidos": "Quiero contratar Gestión de Contenidos",
+  default: "Quiero más información"
+};
+
 interface SidebarNavigationProps {
   activeSection: string;
   setActiveSection: (id: string) => void;
@@ -51,6 +59,8 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
   const pathname = usePathname();
   const routeKey = Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default";
   const colors = serviceColors[routeKey as keyof typeof serviceColors];
+  const message = whatsappMessages[routeKey as keyof typeof whatsappMessages] || whatsappMessages.default;
+  const whatsappLink = `https://wa.me/51989843709?text=${encodeURIComponent(message)}`;
   const items = menu ?? sidebarItems;
 
   // Detectar tamaño de pantalla (mobile vs desktop)
@@ -103,12 +113,12 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
           })}
           {/* Botón Contratar Ahora */}
           <a
-            href="https://wa.me/51989843709?text=Quiero%20contratar%20una%20gerencia...."
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full border border-green-400 text-green-400 flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-none hover:bg-green-50/10 transition-all"
             style={{ boxShadow: '0 0 0 0.1rem #25D36640' }}
-            aria-label="Contratar ahora por WhatsApp"
+            aria-label="Contactar por WhatsApp"
           >
             <FiMessageCircle size={22} />
           </a>
@@ -165,14 +175,14 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
           </div>
         );
       })}
-      {/* Botón Contratar Ahora */}
+      {/* Botón de WhatsApp */}
       <a
-        href="https://wa.me/51989843709?text=Quiero%20contratar%20una%20gerencia...."
+        href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
         className="p-3 rounded-lg border border-green-400 text-green-400 flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-none hover:bg-green-50/10 transition-all mt-4"
         style={{ boxShadow: '0 0 0 0.1rem #25D36640' }}
-        aria-label="Contratar ahora por WhatsApp"
+        aria-label="Contactar por WhatsApp"
       >
         <FiMessageCircle size={24} />
       </a>
