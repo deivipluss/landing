@@ -176,14 +176,14 @@ export default function ContenidosPage() {
   ];
 
   return (
-    <div className="relative bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] min-h-screen">
-      <HomeNavigation />
+    <div className="min-h-screen bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
       <SidebarNavigation
         menu={sidebarMenu}
         activeSection={activeSection}
         setActiveSection={setActiveSection}
       />
-      <div className="md:ml-28 lg:ml-40">
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative md:ml-28 lg:ml-40">
+        <HomeNavigation />
         {/* Hero Section */}
         <section
           id="overview"
