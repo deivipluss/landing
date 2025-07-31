@@ -178,14 +178,14 @@ export default function ContenidosPage() {
   return (
     <div className="relative bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] min-h-screen">
       <HomeNavigation />
-      <div className="hidden md:block fixed left-0 top-0 h-full z-50">
+      <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-50">
         <SidebarNavigation
           menu={sidebarMenu}
           activeSection={activeSection}
           setActiveSection={setActiveSection}
         />
       </div>
-      <div className="md:ml-64">
+      <div className="md:ml-28 lg:ml-40">
         {/* Hero Section */}
         <section
           id="overview"
