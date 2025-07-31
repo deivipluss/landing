@@ -50,19 +50,71 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
   const pathname = usePathname();
   const routeKey = Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default";
   const colors = serviceColors[routeKey as keyof typeof serviceColors];
-
-  // Detect if current route is 'redes-membresia' or 'gestion-contenidos' for no fill
   const noFillRoutes = ["/redes-membresia", "/gestion-contenidos"];
   const noFill = noFillRoutes.includes(routeKey);
-  // Usar el menú por props si existe, si no usar el default
   const items = menu ?? sidebarItems;
+
+  // Detectar tamaño de pantalla (mobile vs desktop)
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Animación de entrada
+  const sidebarMotion = {
+    initial: { x: -50, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    transition: { delay: 0.5 }
+  };
+  const bottomBarMotion = {
+    initial: { y: 100, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    transition: { delay: 0.7 }
+  };
+
+  // Render mobile bottom bar
+  if (isMobile) {
+    return (
+      <motion.div
+        {...bottomBarMotion}
+        className="fixed bottom-4 left-0 right-0 z-50 flex justify-center md:hidden"
+      >
+        <div className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg">
+          {items.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveSection(item.id)}
+                className={`p-2 rounded-full ${isActive ? "bg-[#4A90E2] text-white" : "text-gray-400 hover:text-white"}`}
+                style={isActive ? { background: colors.icon, color: '#fff' } : { color: colors.text }}
+                aria-label={item.label}
+              >
+                {React.isValidElement(Icon)
+                  ? Icon
+                  : typeof Icon === "function"
+                  ? <Icon />
+                  : null}
+              </button>
+            );
+          })}
+        </div>
+      </motion.div>
+    );
+  }
+
+  // Render desktop sidebar
   return (
-    <div
-      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border${noFill ? '' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'}`}
+    <motion.div
+      {...sidebarMotion}
+      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border${noFill ? '' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'} fixed left-0 top-0 h-full z-50 md:block hidden`}
       style={{ borderColor: colors.border }}
     >
       {items.map((item) => {
-        // Si el icono es un nodo (por props), renderizarlo directamente; si es función (componente), renderizarlo como <Icon />
         const Icon = item.icon;
         const isActive = activeSection === item.id;
         return (
@@ -71,6 +123,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
               onClick={() => setActiveSection(item.id)}
               className={`p-3 rounded-lg group/icon ${isActive ? "text-white" : "bg-transparent"}`}
               style={isActive ? { background: colors.icon, color: '#fff' } : { color: colors.text }}
+              aria-label={item.label}
             >
               <span
                 className={isActive ? "text-white" : "transition-colors"}
@@ -92,7 +145,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
           </div>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 
