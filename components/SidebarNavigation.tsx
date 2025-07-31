@@ -2,7 +2,8 @@
 "use client";
 import React from "react";
 import { usePathname } from "next/navigation";
-import { FaUserTie, FaCogs, FaLightbulb, FaBlog, FaWhatsapp } from "react-icons/fa";
+import { FaUserTie, FaCogs, FaLightbulb, FaBlog } from "react-icons/fa";
+import { FiMessageCircle } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 const sidebarItems = [
@@ -107,11 +108,11 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
             href="https://wa.me/51989843709?text=Quiero%20contratar%20una%20gerencia...."
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-green-500 text-white flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-lg hover:bg-green-600 transition-all"
-            style={{ boxShadow: '0 0 0 0.2rem #25D36680' }}
+            className="p-2 rounded-full border-2 border-green-400 text-green-400 flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-none hover:bg-green-50/10 transition-all"
+            style={{ boxShadow: '0 0 0 0.1rem #25D36640' }}
             aria-label="Contratar ahora por WhatsApp"
           >
-            <FaWhatsapp size={22} />
+            <FiMessageCircle size={22} />
           </a>
           <style>{`
             @keyframes heartbeat {
@@ -170,11 +171,11 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
         href="https://wa.me/51989843709?text=Quiero%20contratar%20una%20gerencia...."
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 rounded-lg bg-green-500 text-white flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-lg hover:bg-green-600 transition-all mt-4"
-        style={{ boxShadow: '0 0 0 0.2rem #25D36680' }}
+        className="p-3 rounded-lg border-2 border-green-400 text-green-400 flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-none hover:bg-green-50/10 transition-all mt-4"
+        style={{ boxShadow: '0 0 0 0.1rem #25D36640' }}
         aria-label="Contratar ahora por WhatsApp"
       >
-        <FaWhatsapp size={24} />
+        <FiMessageCircle size={24} />
       </a>
       <style>{`
         @keyframes heartbeat {
