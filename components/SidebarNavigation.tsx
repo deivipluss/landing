@@ -3,13 +3,14 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { FaUserTie, FaCogs, FaLightbulb, FaBlog } from "react-icons/fa";
-import { FiMessageCircle } from "react-icons/fi";
+import { FiMessageCircle, FiHelpCircle } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 const sidebarItems = [
   { id: "overview", label: "Visión General", icon: FaUserTie },
   { id: "metrics", label: "Métricas", icon: FaCogs },
   { id: "features", label: "Plataformas", icon: FaLightbulb },
+  { id: "faq", label: "FAQ", icon: FiHelpCircle },
   { id: "blog", label: "Blog", icon: FaBlog }
 ];
 
