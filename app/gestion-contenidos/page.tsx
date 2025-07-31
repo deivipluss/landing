@@ -151,7 +151,7 @@ export default function ContenidosPage() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] min-h-screen">
       <HomeNavigation />
       <div className="hidden md:block fixed left-0 top-0 h-full z-50">
         <SidebarNavigation
@@ -164,7 +164,7 @@ export default function ContenidosPage() {
         <section
           id="overview"
           ref={overviewRef}
-          className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-16 text-center bg-gradient-to-br from-[#00F5D4] via-white to-[#4A90E2]"
+          className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-16 text-center bg-gradient-to-br from-[#0D0C1D] via-[#1A1A2E] to-[#4A90E2]"
         >
           <motion.h1
             style={{ opacity, scale }}
@@ -195,7 +195,7 @@ export default function ContenidosPage() {
         <section
           id="metrics"
           ref={metricsRef}
-          className="py-16 px-6 md:px-12 bg-white"
+          className="py-16 px-6 md:px-12 bg-[#181828]"
         >
           <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center text-[#00B894]">
             Resultados que hablan por sí mismos
@@ -212,7 +212,7 @@ export default function ContenidosPage() {
         <section
           id="features"
           ref={featuresRef}
-          className="py-16 px-6 md:px-12"
+          className="py-16 px-6 md:px-12 bg-[#181828]"
         >
           <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
             Servicios a tu medida
@@ -248,7 +248,7 @@ export default function ContenidosPage() {
         <section
           id="blog"
           ref={blogRef}
-          className="py-16 px-6 md:px-12 bg-white"
+          className="py-16 px-6 md:px-12 bg-[#181828]"
         >
           <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
             Preguntas Frecuentes
