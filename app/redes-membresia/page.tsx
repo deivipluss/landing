@@ -63,11 +63,8 @@ export default function RedesMembresia() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] flex flex-col overflow-hidden">
-      {/* Barra lateral de navegación (solo escritorio) */}
-      <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40">
-        <SidebarNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
-      </div>
-      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
+      <SidebarNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative md:ml-28 lg:ml-40">
         <HomeNavigation />
         {/* Hero Section */}
         <section ref={overviewRef} id="overview" className="relative h-screen flex items-center justify-center overflow-hidden">

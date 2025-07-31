@@ -132,7 +132,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
   return (
     <motion.div
       {...sidebarMotion}
-      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border-2 border-solid ${noFill ? '' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'} fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-50 md:block hidden`}
+      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border-2 border-solid ${noFill ? 'bg-[#1A1A2E]/60 backdrop-blur-md' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'} fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40 md:block hidden`}
       style={{ borderColor: colors.border }}
     >
       {items.map((item) => {
