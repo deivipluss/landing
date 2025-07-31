@@ -108,7 +108,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
             href="https://wa.me/51989843709?text=Quiero%20contratar%20una%20gerencia...."
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full border-2 border-green-400 text-green-400 flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-none hover:bg-green-50/10 transition-all"
+            className="p-2 rounded-full border border-green-400 text-green-400 flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-none hover:bg-green-50/10 transition-all"
             style={{ boxShadow: '0 0 0 0.1rem #25D36640' }}
             aria-label="Contratar ahora por WhatsApp"
           >
@@ -132,8 +132,8 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
   return (
     <motion.div
       {...sidebarMotion}
-      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border-2 border-solid ${noFill ? 'bg-[#1A1A2E]/60 backdrop-blur-md' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'} fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40 md:block hidden`}
-      style={{ borderColor: colors.border }}
+      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border border-solid ${noFill ? 'bg-[#1A1A2E]/60 backdrop-blur-md border-blue-500/20' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'} fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40 md:block hidden`}
+      style={!noFill ? { borderColor: colors.border } : {}}
     >
       {items.map((item) => {
         const Icon = item.icon;
@@ -143,12 +143,12 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
             <button
               onClick={() => setActiveSection(item.id)}
               className={`p-3 rounded-lg group/icon ${isActive ? "text-white" : "bg-transparent"}`}
-              style={isActive ? { background: colors.icon, color: '#fff' } : { color: colors.text }}
+              style={isActive ? { background: noFill ? "#4A90E2" : colors.icon, color: '#fff' } : { color: noFill ? "#999" : colors.text }}
               aria-label={item.label}
             >
               <span
                 className={isActive ? "text-white" : "transition-colors"}
-                style={!isActive ? { color: colors.icon } : { color: '#fff' }}
+                style={!isActive ? { color: noFill ? "#999" : colors.icon } : { color: '#fff' }}
               >
                 {React.isValidElement(Icon)
                   ? Icon
@@ -161,7 +161,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
               {item.label}
             </div>
             {isActive && (
-              <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5" style={{ background: colors.icon }}></div>
+              <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5" style={{ background: noFill ? "#4A90E2" : colors.icon }}></div>
             )}
           </div>
         );
@@ -171,7 +171,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
         href="https://wa.me/51989843709?text=Quiero%20contratar%20una%20gerencia...."
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 rounded-lg border-2 border-green-400 text-green-400 flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-none hover:bg-green-50/10 transition-all mt-4"
+        className="p-3 rounded-lg border border-green-400 text-green-400 flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-none hover:bg-green-50/10 transition-all mt-4"
         style={{ boxShadow: '0 0 0 0.1rem #25D36640' }}
         aria-label="Contratar ahora por WhatsApp"
       >
