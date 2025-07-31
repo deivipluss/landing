@@ -128,12 +128,13 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
 
   // Render desktop sidebar (centrado vertical y borde visible)
   return (
-    <motion.div
-      {...sidebarMotion}
-      className="py-6 px-3 bg-[#1A1A2E]/60 backdrop-blur-md rounded-xl flex flex-col gap-6 border fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40 md:block hidden"
-      style={{ borderColor: colors.border }}
-    >
-      {items.map((item) => {
+    <div className="hidden md:block fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40">
+      <motion.div
+        {...sidebarMotion}
+        className="py-6 px-3 bg-[#1A1A2E]/60 backdrop-blur-md rounded-xl flex flex-col gap-6 border border-solid"
+        style={{ borderColor: colors.border }}
+      >
+        {items.map((item) => {
         const Icon = item.icon;
         const isActive = activeSection === item.id;
         return (
@@ -185,6 +186,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
         }
       `}</style>
     </motion.div>
+  </div>
   );
 };
 
