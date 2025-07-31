@@ -51,8 +51,8 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
   const pathname = usePathname();
   const routeKey = Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default";
   const colors = serviceColors[routeKey as keyof typeof serviceColors];
-  const noFillRoutes = ["/redes-membresia", "/gestion-contenidos"];
-  const noFill = noFillRoutes.includes(routeKey);
+  // Todas las rutas usan sus propios colores, sin rutas especiales
+  const noFill = false;
   const items = menu ?? sidebarItems;
 
   // Detectar tamaño de pantalla (mobile vs desktop)
@@ -132,8 +132,8 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
   return (
     <motion.div
       {...sidebarMotion}
-      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border border-solid ${noFill ? 'bg-[#1A1A2E]/60 backdrop-blur-md border-blue-500/20' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'} fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40 md:block hidden`}
-      style={!noFill ? { borderColor: colors.border } : {}}
+      className={`py-6 px-3 rounded-xl flex flex-col gap-6 border border-solid ${noFill ? 'bg-[#1A1A2E]/60 backdrop-blur-md' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'} fixed left-4 lg:left-10 top-1/2 transform -translate-y-1/2 z-40 md:block hidden`}
+      style={{ borderColor: colors.border }}
     >
       {items.map((item) => {
         const Icon = item.icon;
@@ -143,12 +143,12 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
             <button
               onClick={() => setActiveSection(item.id)}
               className={`p-3 rounded-lg group/icon ${isActive ? "text-white" : "bg-transparent"}`}
-              style={isActive ? { background: noFill ? "#4A90E2" : colors.icon, color: '#fff' } : { color: noFill ? "#999" : colors.text }}
+              style={isActive ? { background: colors.icon, color: '#fff' } : { color: colors.text }}
               aria-label={item.label}
             >
               <span
                 className={isActive ? "text-white" : "transition-colors"}
-                style={!isActive ? { color: noFill ? "#999" : colors.icon } : { color: '#fff' }}
+                style={!isActive ? { color: colors.icon } : { color: '#fff' }}
               >
                 {React.isValidElement(Icon)
                   ? Icon
@@ -161,7 +161,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
               {item.label}
             </div>
             {isActive && (
-              <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5" style={{ background: noFill ? "#4A90E2" : colors.icon }}></div>
+              <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-8 h-0.5" style={{ background: colors.icon }}></div>
             )}
           </div>
         );
