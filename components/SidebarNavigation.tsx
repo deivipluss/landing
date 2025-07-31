@@ -91,7 +91,10 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
         {...bottomBarMotion}
         className="fixed bottom-4 left-0 right-0 z-50 flex justify-center md:hidden"
       >
-        <div className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg items-center">
+        <div
+          className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-solid shadow-lg items-center"
+          style={{ borderColor: `${colors.border}33` }}
+        >
           {items.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
