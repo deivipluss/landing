@@ -8,126 +8,120 @@ import Footer from "@/components/Footer";
 import { CreatorMetricsChart } from "../redes-membresia/CreatorMetricsChart";
 import Link from "next/link";
 
-// Datos para la sección de métricas: se muestran tendencias de alcance, seguidores y conversiones a lo largo del tiempo.
-const socialMetrics = {
+// Métricas de ejemplo para la sección de resultados
+const contentMetrics = {
   alcance: [
-    { year: 2023, value: 10000 },
-    { year: 2024, value: 45000 },
-    { year: 2025, value: 90000 },
+    { year: 2023, value: 12000 },
+    { year: 2024, value: 60000 },
+    { year: 2025, value: 130000 },
   ],
   seguidores: [
-    { year: 2023, value: 1500 },
-    { year: 2024, value: 8000 },
-    { year: 2025, value: 20000 },
+    { year: 2023, value: 2000 },
+    { year: 2024, value: 12000 },
+    { year: 2025, value: 30000 },
   ],
   conversiones: [
-    { year: 2023, value: 5 },
-    { year: 2024, value: 20 },
-    { year: 2025, value: 40 },
+    { year: 2023, value: 8 },
+    { year: 2024, value: 35 },
+    { year: 2025, value: 75 },
   ],
 };
 
-// Servicios que ofrecen para la gestión de contenido y redes sociales.
 const services = [
   {
-    title: "Gestión Orgánica de Redes",
+    title: "Estrategia de Contenidos",
     features: [
-      "Estrategias de contenido personalizadas para Facebook, Instagram, LinkedIn, YouTube y más",
-      "Investigación de audiencia y optimización de horarios de publicación",
-      "Interacción con la comunidad y respuesta ágil a la alta demanda",
+      "Calendario editorial personalizado para cada red",
+      "Análisis de tendencias y benchmarking sectorial",
+      "Optimización de horarios y formatos según audiencia",
     ],
   },
   {
-    title: "Publicidad Pagada",
+    title: "Producción Creativa",
     features: [
-      "Diseño y gestión de campañas en Meta Ads, Google Ads y LinkedIn Ads",
-      "Segmentación avanzada y remarketing para maximizar ROI",
-      "Informes detallados y ajustes continuos para mejorar resultados",
+      "Copywriting persuasivo y storytelling de marca",
+      "Diseño gráfico, animación y video profesional",
+      "Fotografía y edición para identidad visual potente",
     ],
   },
   {
-    title: "Producción y Diseño",
+    title: "Gestión y Automatización",
     features: [
-      "Equipo de copywriters especializados en storytelling y SEO",
-      "Diseñadores gráficos, animadores y editores para crear piezas de impacto",
-      "Fotógrafos y filmmakers que elevan tu identidad visual",
+      "Publicación programada y multicanal",
+      "Monitoreo de interacciones y respuesta ágil",
+      "Reportes automáticos de performance y KPIs",
     ],
   },
   {
-    title: "Estrategia 360°",
+    title: "Campañas Pagadas",
     features: [
-      "Integración de contenido orgánico, campañas pagadas y gestión de comunidad",
-      "Planificación y calendario editorial mensual",
-      "Medición de KPIs y asesoría constante para optimizar tu presencia digital",
+      "Segmentación avanzada y remarketing",
+      "Creatividades para Ads en Meta, Google y LinkedIn",
+      "Optimización de presupuesto y resultados",
     ],
   },
 ];
 
-// Preguntas frecuentes para resolver las dudas más comunes.
 const faqData = [
   {
-    question: "¿Qué redes sociales gestionan?",
+    question: "¿Qué plataformas gestionan?",
     answer:
-      "Trabajamos con las plataformas donde está tu audiencia: Facebook, Instagram, LinkedIn, TikTok, YouTube y otras. Definimos una estrategia específica para cada canal según tus objetivos.",
+      "Trabajamos con Facebook, Instagram, LinkedIn, TikTok, YouTube y más. Adaptamos la estrategia a cada canal y objetivo de tu marca.",
   },
   {
-    question: "¿Cuál es la diferencia entre crecimiento orgánico y pagado?",
+    question: "¿Cómo se mide el éxito?",
     answer:
-      "El crecimiento orgánico se basa en contenido de valor que atrae a tu comunidad de manera natural; el crecimiento pagado incluye campañas publicitarias segmentadas que amplifican tu alcance y aceleran los resultados.",
+      "Analizamos métricas de alcance, engagement, leads y conversiones. Recibes reportes periódicos y asesoría para mejorar resultados.",
   },
   {
-    question: "¿Quién crea el contenido?",
+    question: "¿Quién produce el contenido?",
     answer:
-      "Contamos con copywriters, diseñadores, animadores, editores, fotógrafos y filmmakers que trabajan en conjunto para producir contenido creativo y alineado a tu marca.",
+      "Nuestro equipo multidisciplinario: copywriters, diseñadores, animadores, editores, fotógrafos y filmmakers.",
   },
   {
-    question: "¿Manejan la pauta publicitaria?",
+    question: "¿Pueden gestionar campañas pagadas?",
     answer:
-      "Sí. Diseñamos, ejecutamos y optimizamos campañas pagadas en todas las plataformas relevantes, cuidando tu presupuesto y maximizando el retorno de inversión.",
+      "Sí, diseñamos y optimizamos campañas en Meta, Google, LinkedIn y más, maximizando tu inversión.",
   },
 ];
 
-// Publicaciones de blog para la sección de recursos.
 const blogPosts = [
   {
-    title: "Tendencias de Contenido para 2025",
-    date: "20 Julio, 2025",
+    title: "Tendencias de Contenido 2025",
+    date: "Julio 2025",
     image: "/imagenes/blog-tendencias.jpg",
     excerpt:
-      "Descubre las tendencias que marcarán el contenido en redes sociales durante el próximo año.",
+      "Descubre las estrategias que dominarán el marketing de contenidos el próximo año y cómo aplicarlas en tu empresa.",
   },
   {
-    title: "Cómo Construir una Comunidad Leal",
-    date: "12 Julio, 2025",
-    image: "/imagenes/blog-comunidad.jpg",
+    title: "Cómo la IA revoluciona la producción",
+    date: "Junio 2025",
+    image: "/imagenes/blog-ia.jpg",
     excerpt:
-      "Aprende a crear una comunidad sólida y participativa en torno a tu marca en redes sociales.",
+      "La inteligencia artificial permite crear, optimizar y distribuir contenido a escala. Aprende a aprovecharla.",
   },
   {
-    title: "Publicidad Digital Eficiente",
-    date: "05 Julio, 2025",
-    image: "/imagenes/blog-publicidad.jpg",
+    title: "De seguidores a clientes fieles",
+    date: "Mayo 2025",
+    image: "/imagenes/blog-clientes.jpg",
     excerpt:
-      "Guía para optimizar tus campañas pagadas y obtener el máximo rendimiento de tu inversión.",
+      "Estrategias para convertir tu comunidad digital en ventas y relaciones duraderas.",
   },
 ];
 
 export default function ContenidosPage() {
-  // Estado para mostrar el botón de volver al inicio y para controlar la sección activa del sidebar.
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState("overview");
   const { scrollY, scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.2]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
-  // Referencias a cada sección para detectar cuándo están en el viewport.
   const overviewRef = useRef<HTMLDivElement>(null);
   const metricsRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
   const blogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Suscribirse a los cambios de scroll para actualizar la sección activa y la visibilidad del botón.
     return scrollY.onChange(() => {
       setShowScrollTop(scrollY.get() > 100);
       const sections = [
@@ -138,8 +132,7 @@ export default function ContenidosPage() {
       ];
       const currentSection = sections.find((section) => {
         if (section.ref.current) {
-          const { top, bottom } =
-            section.ref.current.getBoundingClientRect();
+          const { top, bottom } = section.ref.current.getBoundingClientRect();
           return top <= 100 && bottom >= 100;
         }
         return false;
@@ -150,7 +143,6 @@ export default function ContenidosPage() {
     });
   }, [scrollY]);
 
-  // Desplaza la pantalla hasta arriba de forma suave.
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -160,87 +152,78 @@ export default function ContenidosPage() {
 
   return (
     <div className="relative">
-      {/* Navegación superior (mobile) */}
       <HomeNavigation />
-
-      {/* Navegación lateral (desktop) */}
       <div className="hidden md:block fixed left-0 top-0 h-full z-50">
         <SidebarNavigation
           activeSection={activeSection}
           setActiveSection={setActiveSection}
         />
       </div>
-
-      {/* Contenedor principal */}
       <div className="md:ml-64">
-        {/* Sección Hero / Overview */}
+        {/* Hero Section */}
         <section
           id="overview"
           ref={overviewRef}
-          className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-16 text-center"
+          className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-16 text-center bg-gradient-to-br from-[#00F5D4] via-white to-[#4A90E2]"
         >
           <motion.h1
             style={{ opacity, scale }}
-            className="text-3xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-[#4A90E2] to-[#00F5D4] text-transparent bg-clip-text"
+            className="text-3xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-[#00F5D4] to-[#4A90E2] text-transparent bg-clip-text"
           >
-            Gestión de Contenido y Redes Sociales 360°
+            Gestión de Contenidos y Social Media
           </motion.h1>
           <p className="text-lg md:text-2xl max-w-3xl mb-8 text-gray-700">
-            Impulsamos tu presencia en Facebook, Instagram, LinkedIn y otras
-            plataformas con estrategias orgánicas, campañas pagadas y un
-            equipo creativo integral.
+            Multiplica tu alcance, engagement y ventas con estrategias de contenido, creatividad y automatización.
           </p>
           <div className="flex gap-4 flex-col sm:flex-row">
             <Link
               href="#features"
-              className="px-6 py-3 bg-gradient-to-r from-[#4A90E2] to-[#00F5D4] text-white rounded-full hover:shadow-glow transition-all duration-300 hover:scale-105"
+              className="px-6 py-3 bg-gradient-to-r from-[#00F5D4] to-[#4A90E2] text-white rounded-full hover:shadow-glow transition-all duration-300 hover:scale-105"
             >
               Explorar servicios
             </Link>
             <Link
               href="#blog"
-              className="px-6 py-3 border border-[#4A90E2] text-[#4A90E2] rounded-full hover:bg-[#4A90E2] hover:text-white transition-all duration-300 hover:scale-105"
+              className="px-6 py-3 border border-[#00F5D4] text-[#00F5D4] rounded-full hover:bg-[#00F5D4] hover:text-white transition-all duration-300 hover:scale-105"
             >
               Ver recursos
             </Link>
           </div>
         </section>
 
-        {/* Sección de métricas */}
+        {/* Métricas de Impacto */}
         <section
           id="metrics"
           ref={metricsRef}
-          className="py-16 px-6 md:px-12 bg-gray-50"
+          className="py-16 px-6 md:px-12 bg-white"
         >
-          <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
-            Resultados que se pueden medir
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center text-[#00B894]">
+            Resultados que hablan por sí mismos
           </h2>
           <p className="text-center max-w-2xl mx-auto mb-8 text-gray-600">
-            Nuestro enfoque está basado en datos. Analizamos y optimizamos
-            continuamente para garantizar un crecimiento orgánico sostenido y
-            un retorno de inversión positivo.
+            Analizamos y optimizamos cada acción para garantizar crecimiento orgánico, engagement real y retorno de inversión.
           </p>
           <div className="max-w-4xl mx-auto">
-            <CreatorMetricsChart data={socialMetrics} />
+            <CreatorMetricsChart data={contentMetrics} />
           </div>
         </section>
 
-        {/* Sección de servicios y equipo (features) */}
+        {/* Servicios y equipo */}
         <section
           id="features"
           ref={featuresRef}
           className="py-16 px-6 md:px-12"
         >
-          <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
             Servicios a tu medida
           </h2>
           <div className="grid gap-10 md:grid-cols-2">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                className="p-6 rounded-xl border border-[#00F5D4] shadow-sm hover:shadow-md transition-shadow bg-white"
               >
-                <h3 className="text-xl font-semibold mb-3">
+                <h3 className="text-xl font-semibold mb-3 text-[#4A90E2]">
                   {service.title}
                 </h3>
                 <ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -252,65 +235,60 @@ export default function ContenidosPage() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <h3 className="text-xl md:text-2xl font-semibold mb-3">
+            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-[#4A90E2]">
               Equipo multidisciplinario
             </h3>
             <p className="max-w-3xl mx-auto text-gray-700">
-              Nuestro equipo está formado por copywriters creativos, diseñadores
-              talentosos, animadores, editores expertos, fotógrafos y filmmakers
-              que trabajan en conjunto para dar vida a tu marca. Con su ayuda,
-              creamos experiencias visuales y narrativas que conectan con tu
-              audiencia y elevan tu presencia digital.
+              Copywriters, diseñadores, animadores, editores, fotógrafos y filmmakers trabajan juntos para crear experiencias visuales y narrativas que conectan con tu audiencia y elevan tu marca.
             </p>
           </div>
         </section>
 
-        {/* Sección de FAQ y Blog */}
+        {/* FAQ y Blog */}
         <section
           id="blog"
           ref={blogRef}
-          className="py-16 px-6 md:px-12 bg-gray-50"
+          className="py-16 px-6 md:px-12 bg-white"
         >
-          <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
             Preguntas Frecuentes
           </h2>
           <div className="max-w-4xl mx-auto space-y-6">
             {faqData.map((faq, index) => (
-              <div key={index} className="border-b border-gray-200 pb-4">
-                <h4 className="text-lg font-semibold mb-2">
+              <div key={index} className="border-b border-[#00F5D4] pb-4">
+                <h4 className="text-lg font-semibold mb-2 text-[#4A90E2]">
                   {faq.question}
                 </h4>
                 <p className="text-gray-700">{faq.answer}</p>
               </div>
             ))}
           </div>
-          <h2 className="text-2xl md:text-4xl font-bold mt-12 mb-8 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold mt-12 mb-8 text-center text-[#00B894]">
             Blog y Recursos
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             {blogPosts.map((post, index) => (
               <div
                 key={index}
-                className="rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow"
+                className="rounded-xl border border-[#00F5D4] p-4 shadow-sm hover:shadow-md transition-shadow bg-white"
               >
+                <img src={post.image} alt={post.title} className="w-full h-40 object-cover rounded mb-3" />
                 <p className="text-sm text-gray-500">{post.date}</p>
-                <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 text-[#4A90E2]">{post.title}</h3>
                 <p className="text-gray-700 text-sm">{post.excerpt}</p>
               </div>
             ))}
           </div>
           <div className="mt-12 text-center">
-            <h3 className="text-xl md:text-2xl font-semibold mb-3">
-              ¿Listo para llevar tu marca al siguiente nivel?
+            <h3 className="text-xl md:text-2xl font-semibold mb-3 text-[#4A90E2]">
+              ¿Listo para transformar tu contenido?
             </h3>
             <p className="max-w-3xl mx-auto mb-6 text-gray-700">
-              Agenda una consulta gratuita con nuestro equipo y descubre cómo
-              podemos ayudarte a crecer orgánicamente y con publicidad
-              estratégica.
+              Agenda una consulta gratuita y descubre cómo podemos ayudarte a crecer con contenido estratégico y creatividad.
             </p>
             <Link
               href="#"
-              className="px-8 py-3 bg-gradient-to-r from-[#4A90E2] to-[#00F5D4] text-white rounded-full hover:shadow-glow transition-all duration-300 hover:scale-105"
+              className="px-8 py-3 bg-gradient-to-r from-[#00F5D4] to-[#4A90E2] text-white rounded-full hover:shadow-glow transition-all duration-300 hover:scale-105"
             >
               Agendar consulta
             </Link>
@@ -321,13 +299,13 @@ export default function ContenidosPage() {
         {showScrollTop && (
           <button
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 bg-[#4A90E2] text-white p-3 rounded-full shadow-lg hover:bg-[#00F5D4] transition-colors z-50"
+            className="fixed bottom-6 right-6 bg-[#00F5D4] text-[#4A90E2] p-3 rounded-full shadow-lg hover:bg-[#4A90E2] hover:text-white transition-colors z-50"
           >
             ↑
           </button>
         )}
 
-        {/* Pie de página */}
+        {/* Footer */}
         <Footer />
       </div>
     </div>
