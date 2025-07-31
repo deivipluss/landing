@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import HomeNavigation from "@/components/HomeNavigation";
 import SidebarNavigation from "@/components/SidebarNavigation";
+import { FiBarChart2, FiUsers, FiSettings, FiBookOpen } from "react-icons/fi";
 import Footer from "@/components/Footer";
 import { CreatorMetricsChart } from "../redes-membresia/CreatorMetricsChart";
 import Link from "next/link";
@@ -150,11 +151,36 @@ export default function ContenidosPage() {
     });
   };
 
+  // Menú lateral específico para esta página
+  const sidebarMenu = [
+    {
+      id: "overview",
+      label: "Visión General",
+      icon: <FiBarChart2 size={20} />,
+    },
+    {
+      id: "metrics",
+      label: "Resultados",
+      icon: <FiBarChart2 size={20} />,
+    },
+    {
+      id: "features",
+      label: "Servicios",
+      icon: <FiSettings size={20} />,
+    },
+    {
+      id: "blog",
+      label: "FAQ & Blog",
+      icon: <FiBookOpen size={20} />,
+    },
+  ];
+
   return (
     <div className="relative bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] min-h-screen">
       <HomeNavigation />
       <div className="hidden md:block fixed left-0 top-0 h-full z-50">
         <SidebarNavigation
+          menu={sidebarMenu}
           activeSection={activeSection}
           setActiveSection={setActiveSection}
         />

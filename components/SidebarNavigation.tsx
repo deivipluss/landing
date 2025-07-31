@@ -39,9 +39,14 @@ const serviceColors = {
 interface SidebarNavigationProps {
   activeSection: string;
   setActiveSection: (id: string) => void;
+  menu?: Array<{
+    id: string;
+    label: string;
+    icon: React.ReactNode;
+  }>;
 }
 
-const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, setActiveSection }) => {
+const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, setActiveSection, menu }) => {
   const pathname = usePathname();
   const routeKey = Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default";
   const colors = serviceColors[routeKey as keyof typeof serviceColors];
@@ -49,12 +54,15 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
   // Detect if current route is 'redes-membresia' or 'gestion-contenidos' for no fill
   const noFillRoutes = ["/redes-membresia", "/gestion-contenidos"];
   const noFill = noFillRoutes.includes(routeKey);
+  // Usar el menú por props si existe, si no usar el default
+  const items = menu ?? sidebarItems;
   return (
     <div
       className={`py-6 px-3 rounded-xl flex flex-col gap-6 border${noFill ? '' : ' bg-gradient-to-br ' + colors.bg + ' backdrop-blur-md'}`}
       style={{ borderColor: colors.border }}
     >
-      {sidebarItems.map((item) => {
+      {items.map((item) => {
+        // Si el icono es un nodo (por props), renderizarlo directamente; si es función (componente), renderizarlo como <Icon />
         const Icon = item.icon;
         const isActive = activeSection === item.id;
         return (
@@ -68,7 +76,11 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
                 className={isActive ? "text-white" : "transition-colors"}
                 style={!isActive ? { color: colors.icon } : { color: '#fff' }}
               >
-                <Icon />
+                {React.isValidElement(Icon)
+                  ? Icon
+                  : typeof Icon === "function"
+                  ? <Icon />
+                  : null}
               </span>
             </button>
             <div className="absolute left-full ml-2 px-2 py-1 bg-[#1A1A2E] text-white text-xs whitespace-nowrap rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
