@@ -94,13 +94,10 @@ export default function GerenciasPage() {
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
-      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative">
+      {/* Sidebar de navegación */}
+      <SidebarNavigation activeSection={activeSection} setActiveSection={scrollToSection} />
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative md:ml-28 lg:ml-40">
         <HomeNavigation />
-        
-        {/* Sidebar de navegación */}
-        <SidebarNavigation activeSection={activeSection} setActiveSection={scrollToSection} />
-        
-        {/* El componente SidebarNavigation ya renderiza el sidebar adecuado */}
 
         {/* Hero section */}
         <motion.section
