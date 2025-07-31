@@ -2,7 +2,7 @@
 "use client";
 import React from "react";
 import { usePathname } from "next/navigation";
-import { FaUserTie, FaCogs, FaLightbulb, FaBlog } from "react-icons/fa";
+import { FaUserTie, FaCogs, FaLightbulb, FaBlog, FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const sidebarItems = [
@@ -82,7 +82,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
         {...bottomBarMotion}
         className="fixed bottom-4 left-0 right-0 z-50 flex justify-center md:hidden"
       >
-        <div className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg">
+        <div className="px-4 py-3 bg-[#1A1A2E]/90 backdrop-blur-lg rounded-full flex gap-3 border border-blue-500/20 shadow-lg items-center">
           {items.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -102,6 +102,26 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
               </button>
             );
           })}
+          {/* Botón Contratar Ahora */}
+          <a
+            href="https://wa.me/51989843709?text=Quiero%20contratar%20una%20gerencia...."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-green-500 text-white flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-lg hover:bg-green-600 transition-all"
+            style={{ boxShadow: '0 0 0 0.2rem #25D36680' }}
+            aria-label="Contratar ahora por WhatsApp"
+          >
+            <FaWhatsapp size={22} />
+          </a>
+          <style>{`
+            @keyframes heartbeat {
+              0%, 100% { transform: scale(1); }
+              10%, 30% { transform: scale(1.12); }
+              20%, 40% { transform: scale(0.95); }
+              50% { transform: scale(1.08); }
+              60% { transform: scale(1); }
+            }
+          `}</style>
         </div>
       </motion.div>
     );
@@ -145,6 +165,26 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ activeSection, se
           </div>
         );
       })}
+      {/* Botón Contratar Ahora */}
+      <a
+        href="https://wa.me/51989843709?text=Quiero%20contratar%20una%20gerencia...."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="p-3 rounded-lg bg-green-500 text-white flex items-center justify-center animate-[heartbeat_1.5s_infinite] shadow-lg hover:bg-green-600 transition-all mt-4"
+        style={{ boxShadow: '0 0 0 0.2rem #25D36680' }}
+        aria-label="Contratar ahora por WhatsApp"
+      >
+        <FaWhatsapp size={24} />
+      </a>
+      <style>{`
+        @keyframes heartbeat {
+          0%, 100% { transform: scale(1); }
+          10%, 30% { transform: scale(1.12); }
+          20%, 40% { transform: scale(0.95); }
+          50% { transform: scale(1.08); }
+          60% { transform: scale(1); }
+        }
+      `}</style>
     </motion.div>
   );
 };
