@@ -6,7 +6,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { CreatorMetricsChart } from './CreatorMetricsChart';
 import { creatorMetrics, testimonials, platformFeatures, faqData, blogPosts } from './data';
-import { FaWhatsapp, FaArrowUp, FaBlog, FaUserTie, FaCogs, FaLightbulb } from 'react-icons/fa';
+import { FaWhatsapp, FaArrowUp, FaBlog, FaUserTie, FaCogs, FaUsers, FaChartLine } from 'react-icons/fa';
+import { FiHelpCircle } from 'react-icons/fi';
 import Link from 'next/link';
 import HomeNavigation from '@/components/HomeNavigation';
 import SidebarNavigation from '@/components/SidebarNavigation';
@@ -61,9 +62,21 @@ export default function RedesMembresia() {
     });
   };
 
+  // Menú lateral personalizado (máximo 5 íconos + WhatsApp)
+  const sidebarMenu = [
+    { id: 'overview', label: 'Visión General', icon: <FaUserTie /> },
+    { id: 'metrics', label: 'Métricas', icon: <FaChartLine /> },
+    { id: 'testimonials', label: 'Testimonios', icon: <FaUsers /> },
+    { id: 'faq', label: 'FAQ', icon: <FiHelpCircle /> },
+    { id: 'blog', label: 'Blog', icon: <FaBlog /> }
+  ];
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#1A1A2E] flex flex-col overflow-hidden">
-      <SidebarNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
+      <SidebarNavigation
+        menu={sidebarMenu}
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+      />
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative md:ml-28 lg:ml-40">
         <HomeNavigation />
         {/* Hero Section */}
