@@ -12,7 +12,7 @@ import Link from 'next/link';
 import HomeNavigation from '@/components/HomeNavigation';
 import SidebarNavigation from '@/components/SidebarNavigation';
 
-import ScrollToTopButton from '@/components/ScrollToTopButton';
+import ScrollToTopButton from '../../components/ScrollToTopButton';
 export default function RedesMembresia() {
   const [activeSection, setActiveSection] = useState("overview");
   const { scrollY, scrollYProgress } = useScroll();
