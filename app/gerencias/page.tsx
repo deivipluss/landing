@@ -35,6 +35,7 @@ import { faqData, metricsData, processSteps, successMetrics, impactMetrics } fro
 import { FAQItem, MetricCard, TimelineStep, SuccessStory, ServiceCard, BlogPost } from './components';
 import { MetricsChart } from './MetricsChart';
 import Footer from "@/components/Footer";
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export default function GerenciasPage() {
   const [activeSection, setActiveSection] = useState("overview");
@@ -559,6 +560,7 @@ export default function GerenciasPage() {
 
         {/* Footer */}
         <Footer />
+        <ScrollToTopButton />
       </div>
     </div>
   );
