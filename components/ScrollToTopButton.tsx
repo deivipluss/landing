@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { FaArrowUp } from "react-icons/fa";
+import { usePathname } from "next/navigation";
+import { serviceColors } from "./SidebarNavigation";
 
 const ScrollToTopButton: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
@@ -13,16 +15,19 @@ const ScrollToTopButton: React.FC = () => {
 
   if (!visible) return null;
 
+  // Obtener colores según ruta
+  const pathname = usePathname();
+  const routeKey = Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default";
+  const colors = serviceColors[routeKey as keyof typeof serviceColors];
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Ir arriba"
       className={
-        "fixed right-4 p-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full shadow-lg z-50 " +
-        // Móvil: centrar verticalmente, evita sidebar inferior
-        "top-1/2 transform -translate-y-1/2 " +
-        // Desktop (md y superior): ubicar en bottom
-        "md:bottom-8 md:top-auto md:transform-none"
+        `fixed right-4 text-white rounded-full shadow-lg z-50
+        bg-gradient-to-r ${colors.bg}
+        top-1/2 transform -translate-y-1/2
+        md:bottom-8 md:top-auto md:transform-none p-3`
       }
     >
       <FaArrowUp size={20} />

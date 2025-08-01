@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import ScrollToTopButton from '../components/ScrollToTopButton';
 // Slider de servicios para la home
 const serviceCards = [
   {
@@ -418,16 +419,8 @@ const App: React.FC = () => {
           </div>
         </main>
 
-        {showBackToTop && (
-          <motion.button
-            className="fixed bottom-16 sm:bottom-24 right-4 sm:right-8 bg-[#4A90E2] text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 lg:hidden z-50"
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-            onClick={handleBackToTop}
-          >
-            <FaArrowUp className="text-lg sm:text-xl" />
-          </motion.button>
-        )}
+        {/* Botón ScrollToTop reutilizable */}
+        <ScrollToTopButton />
 
         <footer className={`bg-[#1A1A2E]/80 backdrop-blur-lg text-center py-6 sm:py-8 text-gray-400 text-xs sm:text-sm mt-12 sm:mt-16 border-t border-[#4A90E2]/20 w-full transition-opacity duration-300 ${showFooter ? 'opacity-100' : 'opacity-0'}`}>
           © 2025 - @Deivipluss Todos los derechos reservados.

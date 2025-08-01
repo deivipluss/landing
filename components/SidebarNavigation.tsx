@@ -14,7 +14,7 @@ const sidebarItems = [
   { id: "blog", label: "Blog", icon: FaBlog }
 ];
 
-const serviceColors = {
+export const serviceColors = {
   "/gerencias": {
     border: "#4A90E2", bg: "from-[#4A90E2] to-[#00F5D4]", icon: "#4A90E2", iconHover: "#00F5D4", text: "#4A90E2", textHover: "#00F5D4"
   },
