@@ -113,7 +113,7 @@ const blogPosts = [
 ];
 
 export default function ContenidosPage() {
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  // const [showScrollTop, setShowScrollTop] = useState(false); // Eliminado: usar ScrollToTopButton en su lugar
   const [activeSection, setActiveSection] = useState("overview");
   const { scrollY, scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.2]);
@@ -127,7 +127,7 @@ export default function ContenidosPage() {
 
   useEffect(() => {
     return scrollY.onChange(() => {
-      setShowScrollTop(scrollY.get() > 100);
+      // Eliminado: setShowScrollTop(scrollY.get() > 100);
       const sections = [
         { ref: overviewRef, id: "overview" },
         { ref: metricsRef, id: "metrics" },
@@ -147,12 +147,6 @@ export default function ContenidosPage() {
     });
   }, [scrollY]);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   // Función para desplazar a la sección seleccionada
   const scrollToSection = (section: string) => {
@@ -320,15 +314,6 @@ export default function ContenidosPage() {
           </div>
         </section>
 
-        {/* Botón para volver al inicio */}
-        {showScrollTop && (
-          <button
-            onClick={scrollToTop}
-            className="fixed bottom-6 right-6 bg-[#00F5D4] text-[#4A90E2] p-3 rounded-full shadow-lg hover:bg-[#4A90E2] hover:text-white transition-colors z-50"
-          >
-            ↑
-          </button>
-        )}
 
         {/* Footer */}
         <Footer />
