@@ -84,7 +84,7 @@ export default function Page() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
       <SidebarNavigation menu={sidebarMenu} activeSection={activeSection} setActiveSection={scrollToSection} />
-      <div className="container mx-auto pt-16 relative md:ml-28 px-4">
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative md:ml-28 lg:ml-40">
         <HomeNavigation />
 
         {/* 1. Hero */}
