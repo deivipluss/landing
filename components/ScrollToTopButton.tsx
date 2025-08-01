@@ -15,13 +15,14 @@ const ScrollToTopButton: React.FC = () => {
 
   if (!visible) return null;
 
-  // Obtener colores según ruta
-  const pathname = usePathname();
-  // En la home ("/"), usar color de contacto (rojo)
+  // Obtener ruta actual con fallback a "/"
+  const pathname = usePathname() || "/";
+  // Determinar la clave de color basada en la ruta (usar "/contacto" para home)
   const routeKey = pathname === "/"
     ? "/contacto"
     : Object.keys(serviceColors).find((route) => pathname.startsWith(route)) || "default";
-  const colors = serviceColors[routeKey as keyof typeof serviceColors];
+  // Obtener colores con fallback a 'default' si no se encuentra la clave
+  const colors = serviceColors[routeKey as keyof typeof serviceColors] ?? serviceColors.default;
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
