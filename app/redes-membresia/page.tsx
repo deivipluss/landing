@@ -12,8 +12,8 @@ import Link from 'next/link';
 import HomeNavigation from '@/components/HomeNavigation';
 import SidebarNavigation from '@/components/SidebarNavigation';
 
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 export default function RedesMembresia() {
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState("overview");
   const { scrollY, scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.2]);
@@ -29,8 +29,6 @@ export default function RedesMembresia() {
 
   useEffect(() => {
     return scrollY.onChange(() => {
-      setShowScrollTop(scrollY.get() > 100);
-
       // Actualizar sección activa basado en el scroll
       const sections = [
         { ref: overviewRef, id: "overview" },
@@ -49,18 +47,11 @@ export default function RedesMembresia() {
         return false;
       });
 
-      if (currentSection) {
-        setActiveSection(currentSection.id);
-      }
+      if (currentSection) setActiveSection(currentSection.id);
     });
   }, [scrollY]);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
+  // ...existing code...
 
   // Menú lateral personalizado (máximo 5 íconos + WhatsApp)
   const sidebarMenu = [
@@ -262,6 +253,7 @@ export default function RedesMembresia() {
 
       {/* Footer */}
       <Footer />
+      <ScrollToTopButton />
       </div>
     </div>
   );
