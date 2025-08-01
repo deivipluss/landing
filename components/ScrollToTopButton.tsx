@@ -16,8 +16,14 @@ const ScrollToTopButton: React.FC = () => {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-8 right-4 p-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full shadow-lg z-50"
       aria-label="Ir arriba"
+      className={
+        "fixed right-4 p-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full shadow-lg z-50 " +
+        // Móvil: centrar verticalmente, evita sidebar inferior
+        "top-1/2 transform -translate-y-1/2 " +
+        // Desktop (md y superior): ubicar en bottom
+        "md:bottom-8 md:top-auto md:transform-none"
+      }
     >
       <FaArrowUp size={20} />
     </button>
