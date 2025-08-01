@@ -91,11 +91,23 @@ export default function GerenciasPage() {
     // window.addEventListener('scroll', handleScroll);
     // return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  // Menú lateral personalizado (máximo 5 íconos + WhatsApp)
+  const sidebarMenu = [
+    { id: "overview", label: "Visión General", icon: <FaUserTie /> },
+    { id: "services", label: "Servicios", icon: <FaCogs /> },
+    { id: "metrics", label: "Métricas", icon: <FaChartBar /> },
+    { id: "faq", label: "FAQ", icon: <FaQuestionCircle /> },
+    { id: "blog", label: "Blog", icon: <FaBlog /> }
+  ];
 
   return (
     <div className="min-h-screen bg-[#0D0C1D] bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] flex flex-col overflow-hidden">
-      {/* Sidebar de navegación */}
-      <SidebarNavigation activeSection={activeSection} setActiveSection={scrollToSection} />
+      {/* Sidebar de navegación personalizado */}
+      <SidebarNavigation
+        menu={sidebarMenu}
+        activeSection={activeSection}
+        setActiveSection={scrollToSection}
+      />
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative md:ml-28 lg:ml-40">
         <HomeNavigation />
 
