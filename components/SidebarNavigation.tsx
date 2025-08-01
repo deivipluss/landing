@@ -33,6 +33,9 @@ export const serviceColors = {
   "/entrenamiento-ejecutivo": {
     border: "#FFB75E", bg: "from-[#FFB75E] to-[#ED8F03]", icon: "#FFB75E", iconHover: "#ED8F03", text: "#FFB75E", textHover: "#ED8F03"
   },
+  "/contacto": {
+    border: "#FF0000", bg: "from-[#FF0000] to-[#C00000]", icon: "#FF0000", iconHover: "#C00000", text: "#FF0000", textHover: "#C00000"
+  },
   default: {
     border: "#A259F7", bg: "from-[#A259F7] to-[#7C3AED]", icon: "#A259F7", iconHover: "#7C3AED", text: "#A259F7", textHover: "#7C3AED"
   }
