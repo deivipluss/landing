@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import HomeNavigation from "@/components/HomeNavigation";
 import SidebarNavigation from "@/components/SidebarNavigation";
 import { FiBarChart2, FiUsers, FiSettings, FiBookOpen } from "react-icons/fi";
+import { FiHelpCircle } from "react-icons/fi";
 import Footer from "@/components/Footer";
 import { CreatorMetricsChart } from "../redes-membresia/CreatorMetricsChart";
 import Link from "next/link";
@@ -121,6 +122,7 @@ export default function ContenidosPage() {
   const metricsRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
   const blogRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     return scrollY.onChange(() => {
@@ -151,28 +153,13 @@ export default function ContenidosPage() {
     });
   };
 
-  // Menú lateral específico para esta página
+  // Menú lateral personalizado (máximo 5 íconos + WhatsApp)
   const sidebarMenu = [
-    {
-      id: "overview",
-      label: "Visión General",
-      icon: <FiBarChart2 size={20} />,
-    },
-    {
-      id: "metrics",
-      label: "Resultados",
-      icon: <FiBarChart2 size={20} />,
-    },
-    {
-      id: "features",
-      label: "Servicios",
-      icon: <FiSettings size={20} />,
-    },
-    {
-      id: "blog",
-      label: "FAQ & Blog",
-      icon: <FiBookOpen size={20} />,
-    },
+    { id: "overview", label: "Visión General", icon: <FiBarChart2 size={20} /> },
+    { id: "metrics", label: "Resultados", icon: <FiBarChart2 size={20} /> },
+    { id: "features", label: "Servicios", icon: <FiSettings size={20} /> },
+    { id: "faq", label: "FAQ", icon: <FiHelpCircle size={20} /> },
+    { id: "blog", label: "Blog", icon: <FiBookOpen size={20} /> }
   ];
 
   return (
@@ -268,10 +255,10 @@ export default function ContenidosPage() {
           </div>
         </section>
 
-        {/* FAQ y Blog */}
+        {/* FAQ Section */}
         <section
-          id="blog"
-          ref={blogRef}
+          id="faq"
+          ref={faqRef}
           className="py-16 px-6 md:px-12 bg-[#181828]"
         >
           <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
@@ -287,7 +274,14 @@ export default function ContenidosPage() {
               </div>
             ))}
           </div>
-          <h2 className="text-2xl md:text-4xl font-bold mt-12 mb-8 text-center text-[#00B894]">
+        </section>
+        {/* Blog Section */}
+        <section
+          id="blog"
+          ref={blogRef}
+          className="py-16 px-6 md:px-12 bg-[#181828]"
+        >
+          <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
             Blog y Recursos
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
