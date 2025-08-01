@@ -109,7 +109,7 @@ export default function Page() {
               <li>Abandono en formularios</li>
               <li>Falta de nutrición de leads</li>
             </ul>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="p-6 bg-gray-700 rounded-lg text-white">Proceso automatizado</div>
               <div className="p-6 bg-gray-700 rounded-lg text-white">Segmentación inteligente</div>
               <div className="p-6 bg-gray-700 rounded-lg text-white">Seguimiento medible</div>
