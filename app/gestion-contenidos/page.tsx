@@ -156,7 +156,7 @@ export default function ContenidosPage() {
   };
   // Menú lateral personalizado (máximo 5 íconos + WhatsApp)
   const sidebarMenu = [
-    { id: "overview", label: "Visión General", icon: <FiBarChart2 size={20} /> },
+    { id: "overview", label: "Visión General", icon: <FiUsers size={20} /> },
     { id: "metrics", label: "Resultados", icon: <FiBarChart2 size={20} /> },
     { id: "features", label: "Servicios", icon: <FiSettings size={20} /> },
     { id: "faq", label: "FAQ", icon: <FiHelpCircle size={20} /> },
@@ -207,7 +207,7 @@ export default function ContenidosPage() {
         <section
           id="metrics"
           ref={metricsRef}
-          className="py-16 px-6 md:px-12 bg-[#181828]"
+          className="py-16 px-6 md:px-12"
         >
           <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center text-[#00B894]">
             Resultados que hablan por sí mismos
@@ -224,7 +224,7 @@ export default function ContenidosPage() {
         <section
           id="features"
           ref={featuresRef}
-          className="py-16 px-6 md:px-12 bg-[#181828]"
+          className="py-16 px-6 md:px-12"
         >
           <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
             Servicios a tu medida
@@ -233,7 +233,7 @@ export default function ContenidosPage() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl border border-[#00F5D4] shadow-sm hover:shadow-md transition-shadow bg-white"
+                className="p-6 rounded-xl border border-[#00F5D4] shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="text-xl font-semibold mb-3 text-[#4A90E2]">
                   {service.title}
@@ -260,7 +260,7 @@ export default function ContenidosPage() {
         <section
           id="faq"
           ref={faqRef}
-          className="py-16 px-6 md:px-12 bg-[#181828]"
+          className="py-16 px-6 md:px-12"
         >
           <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
             Preguntas Frecuentes
@@ -280,7 +280,7 @@ export default function ContenidosPage() {
         <section
           id="blog"
           ref={blogRef}
-          className="py-16 px-6 md:px-12 bg-[#181828]"
+          className="py-16 px-6 md:px-12"
         >
           <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-[#00B894]">
             Blog y Recursos
@@ -289,7 +289,7 @@ export default function ContenidosPage() {
             {blogPosts.map((post, index) => (
               <div
                 key={index}
-                className="rounded-xl border border-[#00F5D4] p-4 shadow-sm hover:shadow-md transition-shadow bg-white"
+                className="rounded-xl border border-[#00F5D4] p-4 shadow-sm hover:shadow-md transition-shadow"
               >
                 <img src={post.image} alt={post.title} className="w-full h-40 object-cover rounded mb-3" />
                 <p className="text-sm text-gray-500">{post.date}</p>
