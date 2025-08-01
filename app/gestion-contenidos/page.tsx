@@ -7,6 +7,7 @@ import SidebarNavigation from "@/components/SidebarNavigation";
 import { FiBarChart2, FiUsers, FiSettings, FiBookOpen } from "react-icons/fi";
 import { FiHelpCircle } from "react-icons/fi";
 import Footer from "@/components/Footer";
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 import { CreatorMetricsChart } from "../redes-membresia/CreatorMetricsChart";
 import Link from "next/link";
 
@@ -325,6 +326,7 @@ export default function ContenidosPage() {
 
         {/* Footer */}
         <Footer />
+        <ScrollToTopButton />
       </div>
     </div>
   );
