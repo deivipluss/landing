@@ -27,6 +27,12 @@ export default function RedesMembresia() {
   const faqRef = useRef<HTMLDivElement>(null);
   const blogRef = useRef<HTMLDivElement>(null);
 
+  // Función para desplazar hacia la sección seleccionada
+  const scrollToSection = (section: string) => {
+    setActiveSection(section);
+    const el = document.getElementById(section);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
   useEffect(() => {
     return scrollY.onChange(() => {
       // Actualizar sección activa basado en el scroll
@@ -66,7 +72,7 @@ export default function RedesMembresia() {
       <SidebarNavigation
         menu={sidebarMenu}
         activeSection={activeSection}
-        setActiveSection={setActiveSection}
+        setActiveSection={scrollToSection}
       />
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative md:ml-28 lg:ml-40">
         <HomeNavigation />

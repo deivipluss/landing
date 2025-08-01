@@ -154,6 +154,12 @@ export default function ContenidosPage() {
     });
   };
 
+  // Función para desplazar a la sección seleccionada
+  const scrollToSection = (section: string) => {
+    setActiveSection(section);
+    const el = document.getElementById(section);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
   // Menú lateral personalizado (máximo 5 íconos + WhatsApp)
   const sidebarMenu = [
     { id: "overview", label: "Visión General", icon: <FiBarChart2 size={20} /> },
@@ -168,7 +174,7 @@ export default function ContenidosPage() {
       <SidebarNavigation
         menu={sidebarMenu}
         activeSection={activeSection}
-        setActiveSection={setActiveSection}
+        setActiveSection={scrollToSection}
       />
       <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 container mx-auto px-4 flex-1 relative md:ml-28 lg:ml-40">
         <HomeNavigation />
