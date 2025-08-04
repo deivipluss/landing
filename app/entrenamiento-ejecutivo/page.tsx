@@ -3,27 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import HomeNavigation from "@/components/HomeNavigation";
 import SidebarNavigation from "@/components/SidebarNavigation";
-import Footer from "@/components/Footer";
 import ScrollToTopButton from "../../components/ScrollToTopButton";
-import { FaChalkboardTeacher, FaUsersCog, FaLightbulb, FaHandsHelping, FaChartLine, FaChartBar, FaClipboardList, FaArrowUp } from "react-icons/fa";
-import { FiHelpCircle } from "react-icons/fi";
+import { FaChalkboardTeacher, FaUsersCog, FaLightbulb, FaChartLine, FaChartBar, FaArrowUp } from "react-icons/fa";
 import Link from "next/link";
-
-// Preguntas frecuentes para Entrenamiento Ejecutivo
-const faqTrain = [
-  {
-    question: "¿Qué temas cubren?",
-    answer: "Liderazgo, toma de decisiones, comunicación efectiva y gestión de equipos.",
-  },
-  {
-    question: "¿Modalidad de capacitación?",
-    answer: "Online, presencial o mixto, según tus necesidades.",
-  },
-  {
-    question: "¿Incluye certificación?",
-    answer: "Sí, entregamos certificado con aval académico.",
-  },
-];
 
 export default function EntrenamientoEjecutivoPage() {
   const { scrollY } = useScroll();
@@ -37,8 +19,6 @@ export default function EntrenamientoEjecutivoPage() {
   const trustRef = useRef<HTMLDivElement>(null);
   const persuasionRef = useRef<HTMLDivElement>(null);
   const leadMagnetRef = useRef<HTMLDivElement>(null);
-  const faqRef = useRef<HTMLDivElement>(null);
-  const finalRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState<string>("hero");
   const scrollToSection = (id: string) => { setActiveSection(id); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block:'start' }); };
 
@@ -52,8 +32,6 @@ export default function EntrenamientoEjecutivoPage() {
       { id: 'trust', ref: trustRef },
       { id: 'persuasion', ref: persuasionRef },
       { id: 'leadMagnet', ref: leadMagnetRef },
-      { id: 'faq', ref: faqRef },
-      { id: 'final', ref: finalRef },
     ];
     const handle = () => {
       for (let s of sections) {
@@ -1579,26 +1557,8 @@ export default function EntrenamientoEjecutivoPage() {
               </div>
             </motion.div>
             
-            <div className="mt-16 text-center">
-              <p className="text-gray-400">© 2023 Programa de Entrenamiento Ejecutivo. Todos los derechos reservados.</p>
-            </div>
           </div>
         </section>
-        {/* 9. FAQ */}
-        <section id="faq" ref={faqRef} className="py-16 bg-gray-800">
-          <div className="max-w-6xl mx-auto px-4 text-center text-gray-300">
-            <h2 className="text-3xl font-bold text-white mb-8">Preguntas Frecuentes</h2>
-            {/* FAQ items */}
-          </div>
-        </section>
-        {/* 10. CTA Final + Formulario de Conversión */}
-        <section id="final" ref={finalRef} className="py-20 bg-gradient-to-br from-[#FFB75E] to-[#ED8F03]">
-          <div className="max-w-6xl mx-auto px-4 text-center text-white">
-            <h2 className="text-3xl font-bold mb-4">Solicita tu evaluación ejecutiva gratuita</h2>
-            {/* Minimal form placeholder */}
-          </div>
-        </section>
-        <Footer />
         <ScrollToTopButton />
       </div>
     </div>

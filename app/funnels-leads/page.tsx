@@ -3,26 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import HomeNavigation from "@/components/HomeNavigation";
 import SidebarNavigation from "@/components/SidebarNavigation";
-import Footer from "@/components/Footer";
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 import { FaDownload, FaRocket, FaFunnelDollar, FaChartLine, FaClipboard, FaWpforms, FaSync, FaCheckCircle } from "react-icons/fa";
 import Link from "next/link";
-
-// Preguntas frecuentes para Funnels & Leads IA
-const faqFunnels = [
-  {
-    question: "¿Cómo optimizan los embudos de venta?",
-    answer: "Analizamos el comportamiento de usuarios y ajustamos continuamente para maximizar conversiones.",
-  },
-  {
-    question: "¿Qué tipo de automatizaciones implementan?",
-    answer: "Workflows de email, chatbots y triggers personalizados según la etapa del lead.",
-  },
-  {
-    question: "¿Se integra con CRM?",
-    answer: "Sí, conectamos con tu CRM y sistemas de analítica para un flujo de datos unificado.",
-  },
-];
 
 export default function Page() {
   const { scrollY } = useScroll();
@@ -38,8 +21,6 @@ export default function Page() {
   const trustRef = useRef<HTMLDivElement>(null);
   const persuasionRef = useRef<HTMLDivElement>(null);
   const leadMagnetRef = useRef<HTMLDivElement>(null);
-  const faqRef = useRef<HTMLDivElement>(null);
-  const finalRef = useRef<HTMLDivElement>(null);
 
   const [activeSection, setActiveSection] = useState<string>("hero");
   const scrollToSection = (id: string) => { setActiveSection(id); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); };
@@ -54,8 +35,6 @@ export default function Page() {
       { id: 'trust', ref: trustRef },
       { id: 'persuasion', ref: persuasionRef },
       { id: 'leadMagnet', ref: leadMagnetRef },
-      { id: 'faq', ref: faqRef },
-      { id: 'final', ref: finalRef },
     ];
     const handle = () => {
       for (let s of sections) {
@@ -1458,152 +1437,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* 9. FAQ */}
-        <section id="faq" ref={faqRef} className="py-20 bg-gradient-to-b from-[#0D0C1D] to-[#1A1A2E] relative">
-          <div className="absolute inset-0 bg-[url('/imagenes/grid.svg')] bg-center opacity-5"></div>
-          <div className="absolute left-0 top-0 w-64 h-64 bg-[#00C9A7]/5 rounded-full filter blur-3xl"></div>
-          <div className="absolute right-0 bottom-0 w-72 h-72 bg-[#4A90E2]/5 rounded-full filter blur-3xl"></div>
-          
-          <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-16"
-            >
-              <span className="text-[#00C9A7] font-medium">RESPUESTAS A TUS DUDAS</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 mb-4">
-                Preguntas <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C9A7] to-[#4A90E2]">Frecuentes</span>
-              </h2>
-              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-                Todo lo que necesitas saber sobre nuestros servicios de embudos y generación de leads.
-              </p>
-            </motion.div>
-            
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-              {faqFunnels.map((faq, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700/30 hover:border-[#00C9A7]/30 transition-all duration-300"
-                >
-                  <div className="flex items-start">
-                    <div className="mr-4 mt-1">
-                      <div className="w-8 h-8 bg-gradient-to-br from-[#00C9A7]/20 to-[#4A90E2]/20 rounded-full flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="url(#qa-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <defs>
-                            <linearGradient id="qa-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                              <stop stopColor="#00C9A7"/>
-                              <stop offset="1" stopColor="#4A90E2"/>
-                            </linearGradient>
-                          </defs>
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                        </svg>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold mb-3 text-white">{faq.question}</h4>
-                      <p className="text-gray-300">{faq.answer}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-12 text-center"
-            >
-              <p className="text-gray-400 mb-6">¿No encuentras la respuesta que buscas?</p>
-              <button className="px-6 py-3 bg-gradient-to-r from-[#00C9A7] to-[#4A90E2] text-white rounded-full hover:shadow-glow transition-all duration-300 inline-flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-                Contactar Ahora
-              </button>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* 10. Final CTA */}
-        <section id="final" ref={finalRef} className="py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#00C9A7] to-[#4A90E2] opacity-95"></div>
-          <div className="absolute inset-0 bg-[url('/imagenes/grid.svg')] bg-center opacity-10"></div>
-          
-          {/* Abstract shapes */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full filter blur-3xl opacity-10"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white rounded-full filter blur-3xl opacity-10"></div>
-          
-          {/* Content */}
-          <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                ¿Listo para <span className="underline decoration-white decoration-4 underline-offset-4">transformar</span> tu negocio?
-              </h2>
-              <p className="text-white text-xl mb-12 max-w-3xl mx-auto">
-                Contáctanos y descubre cómo nuestros embudos de venta pueden multiplicar tus leads y llevar tu negocio al siguiente nivel.
-              </p>
-              
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 max-w-3xl mx-auto mb-12">
-                <div className="flex flex-wrap gap-6 justify-center">
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3">
-                      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                      <path d="m9 12 2 2 4-4"></path>
-                    </svg>
-                    <span className="text-white">Diagnóstico personalizado</span>
-                  </div>
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3">
-                      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                      <path d="m9 12 2 2 4-4"></path>
-                    </svg>
-                    <span className="text-white">30 minutos de consultoría</span>
-                  </div>
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3">
-                      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                      <path d="m9 12 2 2 4-4"></path>
-                    </svg>
-                    <span className="text-white">Plan de acción inmediato</span>
-                  </div>
-                </div>
-              </div>
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Link href="/contacto" className="px-8 py-4 bg-white text-gray-800 rounded-full hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 text-lg font-bold">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 20h9"></path>
-                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                  </svg>
-                  Habla con un experto
-                </Link>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        <Footer />
         <ScrollToTopButton />
       </div>
     </div>
