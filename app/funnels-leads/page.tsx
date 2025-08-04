@@ -74,11 +74,7 @@ export default function Page() {
     { id: 'services', label: 'Servicios', icon: <FaWpforms size={20} /> },
     { id: 'metrics', label: 'Métricas', icon: <FaChartLine /> },
     { id: 'roadmap', label: 'Roadmap', icon: <FaRocket /> },
-    { id: 'trust', label: 'Confianza', icon: <FaChartLine /> },
-    { id: 'persuasion', label: 'Persuasión', icon: <FaSync size={20} /> },
-    { id: 'leadMagnet', label: 'Lead Magnet', icon: <FaDownload /> },
-    { id: 'faq', label: 'FAQ', icon: <FaClipboard size={20} /> },
-    { id: 'final', label: 'Contacto', icon: <FaRocket /> },
+    { id: 'final', label: 'Contacto', icon: <FaDownload /> },
   ];
 
   return (

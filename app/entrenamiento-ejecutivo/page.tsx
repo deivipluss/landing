@@ -73,10 +73,6 @@ export default function EntrenamientoEjecutivoPage() {
     { id:'services', label:'Servicios', icon:<FaUsersCog size={20}/> },
     { id:'impact', label:'Impacto', icon:<FaChartLine size={20}/> },
     { id:'roadmap', label:'Roadmap', icon:<FaChartBar size={20}/> },
-    { id:'trust', label:'Confianza', icon:<FaHandsHelping size={20}/> },
-    { id:'persuasion', label:'Persuasión', icon:<FaLightbulb size={20}/> },
-    { id:'leadMagnet', label:'Lead Magnet', icon:<FaClipboardList size={20}/> },
-    { id:'faq', label:'FAQ', icon:<FiHelpCircle size={20}/> },
     { id:'final', label:'Contacto', icon:<FaArrowUp size={20}/> },
   ];
 
